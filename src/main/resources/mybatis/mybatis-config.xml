@@ -5,6 +5,8 @@
  <configuration>
  	<typeAliases>
  		<typeAlias alias="MemberDTO" type="com.sevenelite.billbo.member.model.dto.MemDTO"/>
+ 		<typeAlias alias="MemBbDTO" type="com.sevenelite.billbo.member.model.dto.MemBbDTO"/>
+ 		<typeAlias alias="DeptDTO" type="com.sevenelite.billbo.member.model.dto.DeptDTO"/>
  	</typeAliases>
  	
  </configuration>

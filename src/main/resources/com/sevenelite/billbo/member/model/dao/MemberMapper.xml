@@ -22,7 +22,40 @@
 		<result property="blackList" column="CHECK_BLACKLIST" />
 		<result property="status" column="MEMBER_STATUS" />
 	</resultMap>
-
+	
+	<resultMap type="com.sevenelite.billbo.member.model.dto.MemBbDTO" id="memDTO">
+		<id property="no" column="MEMBER_NO" />
+		<result property="name" column="MEMBER_NAME" />
+		<result property="pwd" column="MEMBER_PWD" />
+		<result property="email" column="EMAIL" />
+		<result property="phone" column="PHONE" />
+	</resultMap>
+	
+	<resultMap type="com.sevenelite.billbo.member.model.dto.DeptDTO" id="DeptDTO">
+		<id property="no" column="DEPT_NO" />
+		<result property="name" column="DEPT_NAME" />
+		<result property="memNo" column="MEMBER_NO" />
+	</resultMap>
+	
+	<select id="loginBbMem" resultMap="memDTO" parameterType="MemBbDTO">
+        SELECT
+               A.MEMBER_NO
+             , A.MEMBER_NAME
+             , A.MEMBER_PWD
+             , A.EMAIL
+             , A.PHONE
+          FROM BB_MEMBER A
+         WHERE A.EMAIL = #{email} 
+	</select> 
+	
+	<select id="selectUserAuthone" resultType="java.lang.String" parameterType="String">
+         SELECT
+               A.DEPT_NAME
+          FROM BB_DEPT A
+          JOIN BB_MEMBER B ON (A.MEMBER_NO = B.MEMBER_NO)
+         WHERE B.EMAIL = #{email} 
+	</select> 
+	
 	<select id="selectMemberInfo" resultMap="mgDTO">
 		SELECT
 		       A.MEMBER_NO

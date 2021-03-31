@@ -47,7 +47,7 @@
 						alt=""></a>
 				</div>
 				<!-- /Account Logo -->
-
+				<h1>${ requestScope.loginFailMsg }</h1>
 				<div class="account-box">
 					<div class="account-wrapper">
 						<h3 class="account-title">Login</h3>

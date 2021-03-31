@@ -9,7 +9,8 @@
 </head>
 <body>
 	<h1>최초 메인 페이지</h1>
-	<button onclick="location.href='${pageContext.servletContext.contextPath}/member/login'">로그인가자</button>
+	<h3>BeansName 테스트</h3>
+	<button onclick="location.href='${pageContext.servletContext.contextPath}/mainpage/test'">테스트</button>
 	<hr>
 	<h1>이걸로 조회 가져오자</h1>
 	<button onclick="location.href='${pageContext.servletContext.contextPath}/member/memlist'">조회고고</button>

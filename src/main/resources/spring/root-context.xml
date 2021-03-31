@@ -5,7 +5,9 @@
 	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:tx="http://www.springframework.org/schema/tx"
-	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+	xmlns:s="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-5.2.xsd
+		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
@@ -15,14 +17,26 @@
 		
 	<context:property-placeholder location="classpath:connection/connection.properties"/>
 	
-	<context:component-scan base-package="com.sevenelite.billbo"/>
+	<!-- <context:component-scan base-package="com.sevenelite.billbo"/> -->
 	
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+	<!-- DB log 설정 -> 기존 dataSource 변경 -->
+	<bean id="realDataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="${oracle.dev.driver}"/>
 		<property name="url" value="${oracle.dev.url}"/>
 		<property name="username" value="${oracle.dev.username}"/>
 		<property name="password" value="${oracle.dev.password}"/>
 		<property name="defaultAutoCommit" value="false"/>
+	</bean>
+	
+	<!-- DB log 설정 -->
+	<bean id="dataSource" class="net.sf.log4jdbc.Log4jdbcProxyDataSource">
+		<constructor-arg ref="realDataSource"/>
+		<property name="logFormatter">
+			<bean class="net.sf.log4jdbc.tools.Log4JdbcCustomFormatter">
+				<property name="loggingType" value="MULTI_LINE"/>
+				<property name="sqlPrefix" value="[SQL]"></property>
+			</bean>
+		</property>
 	</bean>
 	
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
@@ -53,4 +67,76 @@
 	
 	<mybatis-spring:scan base-package="com.sevenelite.billbo.member.model.dao"/>
 		
+		
+	<!-- Spring Security 설정 -->
+	<s:http auto-config="true" use-expressions="true">
+		
+		<!-- 03/31 추가사항 -->
+		<s:csrf disabled="true"/>
+		<!-- 03/31 -->
+		
+		<!-- 정적 리소스는 모두 접근 허용 -->
+		<s:intercept-url pattern="/resources/**" access="permitAll" />
+		<s:intercept-url pattern="/member/login29" access="permitAll" />
+		<s:intercept-url pattern="/**/*" method="OPTIONS" access="permitAll" />
+		
+		<!-- 로그인된 상태에서는 로그인이나 회원가입 화면에 접근 못하도록 함 -->
+		<s:intercept-url pattern="/member/login" access="isAnonymous()" />
+		<s:intercept-url pattern="/member/regist" access="isAnonymous()" />
+		
+		<!-- 로그인이 되지 않은 상태에서는 main화면에 접속 불가 -->
+		<s:intercept-url pattern="/main" access="isAuthenticated()	" />
+		<s:intercept-url pattern="/" access="isAuthenticated()	" />
+		
+		<!-- 관리자 페이지는 관리자만 접근 허용 -->
+		<s:intercept-url pattern="/admin/**" access="hasRole('admin')" />
+		
+				
+		<!-- 로그인 설정 -->
+		<s:form-login
+						username-parameter="email"
+						password-parameter="pwd"
+						login-processing-url="/member/login"
+						login-page="/member/login"
+						authentication-success-handler-ref="userLoginSuccessHandler"
+						authentication-failure-handler-ref="userLoginFailHandler" />
+						<!-- 03/31 커스터마이징으로 대체해서 Default 제거 -->
+						<!-- authentication-failure-url="/member/login29" /> -->
+
+		<!-- 로그아웃 설정 -->		
+		<s:logout
+						logout-url="/member/logout"
+						logout-success-url="/"
+						invalidate-session="true"
+						delete-cookies="true" />
+						<!-- <s:cors /> -->
+						 <!-- <s:csrf disabled="false"/> -->
+	</s:http>
+	
+	<!-- 03/31 추가사항 -->
+	<s:global-method-security secured-annotations="enabled" />
+	<!-- 03/31 -->
+	
+	<!-- 권한이 없어서 금지된 URI 접속할 때 보여줄 페이지(403 에러 페이지 대체) -->
+	<!-- 03/30(화) 왜 오류나는지 모르겠다. -->
+	<!-- <s:access-denied-handler error-page="/mainpage/main" /> -->
+	
+	<!-- DB 연동 설정 -->
+	<s:authentication-manager>
+		<s:authentication-provider ref="authenticationProvider"/>
+	</s:authentication-manager>
+	
+	<!-- 03/31 추가사항 -->
+	<bean id="userAuthService" class="com.sevenelite.billbo.member.model.service.UserDetailsServiceCustom"/>
+	<bean id="authenticationProvider" class="com.sevenelite.billbo.common.springsecurity.CustomAuthenticationProvider"/>
+	<bean id="userLoginFailHandler" class="com.sevenelite.billbo.common.springsecurity.UserLoginFailHandler"/>
+	<bean id="userLoginSuccessHandler" class="com.sevenelite.billbo.common.springsecurity.UserLoginSuccessHandler"/>
+	<bean id="pwEncoding" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
+	
+	<bean id="userAuthProvider" class="com.sevenelite.billbo.common.springsecurity.UserAuthProvider">
+		<property name="userDetailsService" ref="userAuthService" />
+		<property name="passwordEncoder" ref="pwEncoding" />
+	</bean>
+	<!-- 03/31 -->
+	
 </beans>

@@ -332,7 +332,7 @@
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="profile.html">내 정보</a> <a
 							class="dropdown-item" href="settings.html">환경설정</a> <a
-							class="dropdown-item" href="login.html">로그아웃</a>
+							class="dropdown-item" href="${pageContext.servletContext.contextPath}/member/logout">로그아웃</a>
 					</div></li>
 			</ul>
 			<!-- /Header Menu -->
