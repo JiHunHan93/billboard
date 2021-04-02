@@ -9,7 +9,7 @@ public class MainController {
 	
 	@GetMapping(value= {"main", "/"})
 	public String mainPage() {
-		System.out.println("로그인 후 여기로 오나?");
+		
 		return "mainpage/main";
 	}
 	

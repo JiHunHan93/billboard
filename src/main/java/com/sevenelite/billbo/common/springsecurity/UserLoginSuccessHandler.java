@@ -55,13 +55,13 @@ public class UserLoginSuccessHandler implements AuthenticationSuccessHandler {
 			/* 세션에 저장된 객체를 다 사용한 뒤에는 지워줘서 메모리 누수 방지 */
 			requestCache.removeRequest(request, response);
 			
-			System.out.println("savedRequest : " + uri);
+//			System.out.println("savedRequest : " + uri);
 			/* 여기로 응답 */
 			response.sendRedirect(uri);
 		} else {
 			
 			/* 전에 URI가 없으면 바로 메인으로 이동 */
-			response.sendRedirect("/main");
+			response.sendRedirect("main");
 		}
 		
 		/* 03/31 여기 아래는 내려오지 않음 */

@@ -32,8 +32,8 @@
 	</resultMap>
 	
 	<resultMap type="com.sevenelite.billbo.member.model.dto.DeptDTO" id="DeptDTO">
-		<id property="no" column="DEPT_NO" />
-		<result property="name" column="DEPT_NAME" />
+		<id property="no" column="ROLE_NO" />
+		<result property="name" column="ROLE_NAME" />
 		<result property="memNo" column="MEMBER_NO" />
 	</resultMap>
 	
@@ -50,8 +50,8 @@
 	
 	<select id="selectUserAuthone" resultType="java.lang.String" parameterType="String">
          SELECT
-               A.DEPT_NAME
-          FROM BB_DEPT A
+               A.ROLE_NAME
+          FROM BB_ROLE A
           JOIN BB_MEMBER B ON (A.MEMBER_NO = B.MEMBER_NO)
          WHERE B.EMAIL = #{email} 
 	</select> 
