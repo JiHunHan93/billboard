@@ -11,6 +11,7 @@
 	content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
 <meta name="author" content="Dreamguys - Bootstrap Admin Template">
 <meta name="robots" content="noindex, nofollow">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <title>Login - HRMS admin template</title>
 
 <!-- Favicon -->
@@ -33,6 +34,12 @@
 		<![endif]-->
 </head>
 <body class="account-page">
+	<script>
+		const message = '${ requestScope.message }';
+		if(message != null && message !== '') {
+			alert(message);
+		}
+	</script>
 
 	<!-- Main Wrapper -->
 	<div class="main-wrapper">

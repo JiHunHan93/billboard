@@ -639,7 +639,7 @@
 							<div class="welcome-det">
 								<h3>
 									<!-- 해당 사원명 -->
-									님 환영합니다.
+									<%-- <s:authentication property="principal.username"/> --%>님 환영합니다.
 								</h3>
 								<p>
 									<!-- 연월일 -->

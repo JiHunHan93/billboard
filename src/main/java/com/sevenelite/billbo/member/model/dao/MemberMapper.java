@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.sevenelite.billbo.member.model.dto.MemBbDTO;
 import com.sevenelite.billbo.member.model.dto.MemDTO;
+import com.sevenelite.billbo.member.model.dto.RoleDTO;
 
 public interface MemberMapper {
 
@@ -14,5 +15,13 @@ public interface MemberMapper {
 	MemBbDTO loginBbMem(String username);
 
 	List<String> selectUserAuthone(String username);
+
+	String registCheckEmail(String email);
+
+	int registNewMem(MemBbDTO mem);
+
+	int insertNewMemRole(RoleDTO roleDTO);
+	
+
 
 }

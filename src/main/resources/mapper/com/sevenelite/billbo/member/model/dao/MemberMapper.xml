@@ -31,7 +31,7 @@
 		<result property="phone" column="PHONE" />
 	</resultMap>
 	
-	<resultMap type="com.sevenelite.billbo.member.model.dto.DeptDTO" id="DeptDTO">
+	<resultMap type="com.sevenelite.billbo.member.model.dto.RoleDTO" id="RoleDTO">
 		<id property="no" column="ROLE_NO" />
 		<result property="name" column="ROLE_NAME" />
 		<result property="memNo" column="MEMBER_NO" />
@@ -53,8 +53,44 @@
                A.ROLE_NAME
           FROM BB_ROLE A
           JOIN BB_MEMBER B ON (A.MEMBER_NO = B.MEMBER_NO)
-         WHERE B.EMAIL = #{email} 
-	</select> 
+         WHERE B.EMAIL = #{ email } 
+	</select>
+	
+	<select id="registCheckEmail" resultType="java.lang.String" parameterType="String">
+         SELECT
+               A.EMAIL
+          FROM BB_MEMBER A
+         WHERE A.EMAIL = #{ email } 
+	</select>
+	
+	<insert id="registNewMem" parameterType="MemBbDTO">
+        INSERT 
+          INTO BB_MEMBER A
+        (
+          A.MEMBER_NO, A.EMAIL, A.MEMBER_NAME, A.MEMBER_PWD
+        ) 
+		VALUES
+		(
+		  SEQ_MEMBER_NO.NEXTVAL, #{ email }, #{ name }, #{ pwd }
+		)
+	</insert> 
+	
+	<insert id="insertNewMemRole" parameterType="RoleDTO">
+		<selectKey keyProperty="memNo" order="BEFORE" resultType="_int">
+			SELECT
+			       SEQ_MEMBER_NO.CURRVAL
+			  FROM DUAL     
+		</selectKey>
+        INSERT 
+          INTO BB_ROLE A
+        (
+          A.ROLE_NO, A.ROLE_NAME, A.MEMBER_NO
+        ) 
+		VALUES
+		(
+		  SEQ_ROLE_NO.NEXTVAL, #{ name }, #{ memNo }
+		)
+	</insert> 
 	
 	<select id="selectMemberInfo" resultMap="mgDTO">
 		SELECT

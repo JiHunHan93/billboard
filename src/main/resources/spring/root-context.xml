@@ -48,6 +48,8 @@
 	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
 		<property name="dataSource" ref="dataSource"/>
 	</bean>
+
+	<aop:aspectj-autoproxy proxy-target-class="true"/>
 	
 	<tx:advice id="txAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
@@ -60,14 +62,14 @@
 		</tx:attributes>
 	</tx:advice>
 	
-	<!-- 없어서 오류 나는 듯 -->
-	<!-- <aop:config proxy-target-class="true">
-		<aop:pointcut expression="execution(* com.sevenelite.billbo.. *MemService.*(..))" id="serviceMethod"/>
+	<aop:config proxy-target-class="true">
+		<aop:pointcut expression="execution(* com.sevenelite.billbo..*MemServiceImpl.*(..))" id="serviceMethod"/>
 		<aop:advisor id="transactionAdvisor" pointcut-ref="serviceMethod" advice-ref="txAdvice"/>
-	</aop:config> -->
+	</aop:config>
 	
 	<mybatis-spring:scan base-package="com.sevenelite.billbo.member.model.dao"/>
-		
+
+
 	<!-- Spring Security 설정 -->
 	<s:http auto-config="true" use-expressions="true">
 		

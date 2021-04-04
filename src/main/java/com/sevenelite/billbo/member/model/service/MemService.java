@@ -10,5 +10,9 @@ public interface MemService {
 	List<MemDTO> selectMemList();
 
 	MemBbDTO loginBbMem(MemBbDTO mem);
+
+	String registCheckEmail(String email);
+
+	boolean registNewMem(MemBbDTO mem);
 	
 }
