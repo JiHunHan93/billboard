@@ -19,13 +19,16 @@
 	href="/billbo/resources/hrtemp/img/favicon.png">
 
 <!-- Bootstrap CSS -->
-<link rel="stylesheet" href="/billbo/resources/hrtemp/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="/billbo/resources/hrtemp/css/bootstrap.min.css">
 
 <!-- Fontawesome CSS -->
-<link rel="stylesheet" href="/billbo/resources/hrtemp/css/font-awesome.min.css">
+<link rel="stylesheet"
+	href="/billbo/resources/hrtemp/css/font-awesome.min.css">
 
 <!-- Lineawesome CSS -->
-<link rel="stylesheet" href="/billbo/resources/hrtemp/css/line-awesome.min.css">
+<link rel="stylesheet"
+	href="/billbo/resources/hrtemp/css/line-awesome.min.css">
 
 <!-- Main CSS -->
 <link rel="stylesheet" href="/billbo/resources/hrtemp/css/style.css">
@@ -60,7 +63,8 @@
 			<!-- Logo -->
 			<div class="header-left">
 				<a href="index.html" class="logo"> <img
-					src="/billbo/resources/hrtemp/img/Logo.png" width="40" height="40" alt="">
+					src="/billbo/resources/hrtemp/img/Logo.png" width="40" height="40"
+					alt="">
 				</a>
 			</div>
 			<!-- /Logo -->
@@ -101,18 +105,23 @@
 				<!-- Flag -->
 				<li class="nav-item dropdown has-arrow flag-nav"><a
 					class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
-					role="button"> <img src="/billbo/resources/hrtemp/img/flags/us.png" alt=""
-						height="20"> <span>English</span>
+					role="button"> <img
+						src="/billbo/resources/hrtemp/img/flags/us.png" alt="" height="20">
+						<span>English</span>
 				</a>
 					<div class="dropdown-menu dropdown-menu-right">
 						<a href="javascript:void(0);" class="dropdown-item"> <img
-							src="/billbo/resources/hrtemp/img/flags/us.png" alt="" height="16"> English
+							src="/billbo/resources/hrtemp/img/flags/us.png" alt=""
+							height="16"> English
 						</a> <a href="javascript:void(0);" class="dropdown-item"> <img
-							src="/billbo/resources/hrtemp/img/flags/fr.png" alt="" height="16"> French
+							src="/billbo/resources/hrtemp/img/flags/fr.png" alt=""
+							height="16"> French
 						</a> <a href="javascript:void(0);" class="dropdown-item"> <img
-							src="/billbo/resources/hrtemp/img/flags/es.png" alt="" height="16"> Spanish
+							src="/billbo/resources/hrtemp/img/flags/es.png" alt=""
+							height="16"> Spanish
 						</a> <a href="javascript:void(0);" class="dropdown-item"> <img
-							src="/billbo/resources/hrtemp/img/flags/de.png" alt="" height="16"> German
+							src="/billbo/resources/hrtemp/img/flags/de.png" alt=""
+							height="16"> German
 						</a>
 					</div></li>
 				<!-- /Flag -->
@@ -249,7 +258,7 @@
 											</div>
 										</div>
 								</a></li>
-								<li class="notification-message"><a href="chat.html">
+								<li class="notification-message"><a href="${pageContext.servletContext.contextPath}/apps/chat">
 										<div class="list-item">
 											<div class="list-left">
 												<span class="avatar"> <img alt=""
@@ -265,7 +274,7 @@
 											</div>
 										</div>
 								</a></li>
-								<li class="notification-message"><a href="chat.html">
+								<li class="notification-message"><a href="${pageContext.servletContext.contextPath}/apps/chat">
 										<div class="list-item">
 											<div class="list-left">
 												<span class="avatar"> <img alt=""
@@ -324,15 +333,15 @@
 				<li class="nav-item dropdown has-arrow main-drop"><a href="#"
 					class="dropdown-toggle nav-link" data-toggle="dropdown"> <span
 						class="user-img"><img
-							src="/billbo/resources/hrtemp/img/profiles/avatar-21.jpg" alt=""> <span
-							class="status online"></span></span> <span>
-							<!-- 해당 사원 명 -->
+							src="/billbo/resources/hrtemp/img/profiles/avatar-21.jpg" alt="">
+							<span class="status online"></span></span> <span> <!-- 해당 사원 명 -->
 					</span>
 				</a>
 					<div class="dropdown-menu">
 						<a class="dropdown-item" href="profile.html">내 정보</a> <a
 							class="dropdown-item" href="settings.html">환경설정</a> <a
-							class="dropdown-item" href="${pageContext.servletContext.contextPath}/member/logout">로그아웃</a>
+							class="dropdown-item"
+							href="${pageContext.servletContext.contextPath}/member/logout">로그아웃</a>
 					</div></li>
 			</ul>
 			<!-- /Header Menu -->
@@ -634,12 +643,14 @@
 					<div class="col-md-12">
 						<div class="welcome-box">
 							<div class="welcome-img">
-								<img alt="" src="/billbo/resources/hrtemp/img/profiles/avatar-02.jpg">
+								<img alt=""
+									src="/billbo/resources/hrtemp/img/profiles/avatar-02.jpg">
 							</div>
 							<div class="welcome-det">
 								<h3>
 									<!-- 해당 사원명 -->
-									<%-- <s:authentication property="principal.username"/> --%>님 환영합니다.
+									<%-- <s:authentication property="principal.username"/> --%>
+									님 환영합니다.
 								</h3>
 								<p>
 									<!-- 연월일 -->
@@ -669,7 +680,9 @@
 											</div>
 											<div class="dash-card-avatars">
 												<div class="e-avatar">
-													<img src="/billbo/resources/hrtemp/img/profiles/avatar-09.jpg" alt="">
+													<img
+														src="/billbo/resources/hrtemp/img/profiles/avatar-09.jpg"
+														alt="">
 												</div>
 											</div>
 										</div>
@@ -690,7 +703,9 @@
 											</div>
 											<div class="dash-card-avatars">
 												<div class="e-avatar">
-													<img src="/billbo/resources/hrtemp/img/profiles/avatar-02.jpg" alt="">
+													<img
+														src="/billbo/resources/hrtemp/img/profiles/avatar-02.jpg"
+														alt="">
 												</div>
 											</div>
 										</div>
@@ -711,7 +726,9 @@
 											</div>
 											<div class="dash-card-avatars">
 												<div class="e-avatar">
-													<img src="/billbo/resources/hrtemp/img/profiles/avatar-02.jpg" alt="">
+													<img
+														src="/billbo/resources/hrtemp/img/profiles/avatar-02.jpg"
+														alt="">
 												</div>
 											</div>
 										</div>
@@ -738,9 +755,10 @@
 											</div>
 											<div class="dash-card-avatars">
 												<a href="#" class="e-avatar"><img
-													src="/billbo/resources/hrtemp/img/profiles/avatar-04.jpg" alt=""></a> <a
-													href="#" class="e-avatar"><img
-													src="/billbo/resources/hrtemp/img/profiles/avatar-08.jpg" alt=""></a>
+													src="/billbo/resources/hrtemp/img/profiles/avatar-04.jpg"
+													alt=""></a> <a href="#" class="e-avatar"><img
+													src="/billbo/resources/hrtemp/img/profiles/avatar-08.jpg"
+													alt=""></a>
 											</div>
 										</div>
 									</div>
@@ -765,9 +783,10 @@
 											</div>
 											<div class="dash-card-avatars">
 												<a href="#" class="e-avatar"><img
-													src="/billbo/resources/hrtemp/img/profiles/avatar-05.jpg" alt=""></a> <a
-													href="#" class="e-avatar"><img
-													src="/billbo/resources/hrtemp/img/profiles/avatar-07.jpg" alt=""></a>
+													src="/billbo/resources/hrtemp/img/profiles/avatar-05.jpg"
+													alt=""></a> <a href="#" class="e-avatar"><img
+													src="/billbo/resources/hrtemp/img/profiles/avatar-07.jpg"
+													alt=""></a>
 											</div>
 										</div>
 									</div>
@@ -787,7 +806,9 @@
 											</div>
 											<div class="dash-card-avatars">
 												<div class="e-avatar">
-													<img src="/billbo/resources/hrtemp/img/profiles/avatar-02.jpg" alt="">
+													<img
+														src="/billbo/resources/hrtemp/img/profiles/avatar-02.jpg"
+														alt="">
 												</div>
 											</div>
 										</div>
@@ -867,30 +888,34 @@
 											</div>
 										</div>
 										<div class="request-btn">
-											<a class="btn btn-primary" href="#">연차 사용</a>
+											<a class="btn btn-primary" data-toggle="modal"
+												data-target="#away-select" href="#">연차 사용</a>
 										</div>
 									</div>
 								</div>
 							</section>
 							<section>
-								<h5 class="dash-title">나의 주휴 수당</h5>
+								<h5 class="dash-title">결재 현황</h5>
 								<div class="card">
 									<div class="card-body">
 										<div class="time-list">
 											<div class="dash-stats-list">
 												<h4>
-													<!-- 적용받을 시간 -->
-													5.0 시간
+													<!-- 승인 된 결재건 수 -->
+													5
 												</h4>
 												<p>승인됨</p>
 											</div>
 											<div class="dash-stats-list">
-												<h4>15 시간</h4>
-												<p>잔여 시간</p>
+												<h4>
+													<!-- 보류중인 결재건 수 -->
+													2
+												</h4>
+												<p>보류중인 결재 건</p>
 											</div>
 										</div>
 										<div class="request-btn">
-											<a class="btn btn-primary" href="#">휴가 적용</a>
+											<a class="btn btn-primary" href="#">내 결재 내역</a>
 										</div>
 									</div>
 								</div>
@@ -912,6 +937,59 @@
 			</div>
 			<!-- /Page Content -->
 
+			<!-- Away Modal -->
+			<div class="modal custom-modal fade" id="away-select" role="dialog">
+				<div class="modal-dialog modal-dialog-centered modal-lg"
+					role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">연차 신청 양식</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="card punch-status">
+										<div class="card-body">
+											<h5 class="card-title">휴가신청 양식</h5>
+											<a class="modal-sub-text">휴가</a>
+											<ul>
+												<li><a title="휴가신청서" rel="FORM" nodeid="708"
+													id="FORM_708" href="#" data-bypass="1"
+													class="modal-sub-text1">휴가신청서</a></li>
+												<li><a title="휴일근무신청서" rel="FORM" nodeid="673"
+													id="FORM_673" href="#" data-bypass="1"
+													class="modal-sub-text2">휴일근무신청서</a></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="card recent-activity">
+										<div class="card-body">
+											<h5 class="card-title">양식 미리보기</h5>
+											<ul class="modal-sub0img-area">
+												<li class="modal-sub-img1"><img
+													src="./resources/images/main/휴가 신청서.PNG"
+													class="modal-sub-img1"></li>
+												<li class="modal-sub-img2"><img
+													src="./resources/images/main/휴일근무신청서.PNG"
+													class="modal-sub-img2"></li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<button class="btn btn-success modal-sub-submit-btn">작성하기</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Away Modal -->
+
 		</div>
 		<!-- /Page Wrapper -->
 
@@ -931,5 +1009,25 @@
 	<!-- Custom JS -->
 	<script src="/billbo/resources/hrtemp/js/app.js"></script>
 </body>
-</body>
+
+<script>
+	$(function() {
+		$(".modal-sub-text1").click(function() {
+
+			const $t = $(this);
+
+			$(".modal-sub-img2.on").removeClass("on")
+			$(".modal-sub-img1").toggleClass("on");
+		})
+	})
+	$(function() {
+		$(".modal-sub-text2").click(function() {
+
+			const $t = $(this);
+
+			$(".modal-sub-img1.on").removeClass("on")
+			$(".modal-sub-img2").toggleClass("on");
+		})
+	})
+</script>
 </html>
