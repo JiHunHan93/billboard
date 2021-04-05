@@ -2,12 +2,12 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
 	xmlns:aop="http://www.springframework.org/schema/aop"
 	xmlns:tx="http://www.springframework.org/schema/tx"
 	xmlns:s="http://www.springframework.org/schema/security"
+	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
 	xmlns:security="http://www.springframework.org/schema/security"
-	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-5.2.xsd
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-5.3.xsd
 		http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
@@ -73,9 +73,7 @@
 	<!-- Spring Security 설정 -->
 	<s:http auto-config="true" use-expressions="true">
 		
-		<!-- 03/31 추가사항 -->
 		<s:csrf disabled="true"/>
-		<!-- 03/31 -->
 		
 		<!-- 정적 리소스는 모두 접근 허용 -->
 		<s:intercept-url pattern="/resources/**" access="permitAll" />
@@ -104,8 +102,6 @@
 						login-page="/member/login"
 						authentication-success-handler-ref="userLoginSuccessHandler"
 						authentication-failure-handler-ref="userLoginFailHandler" />
-						<!-- 03/31 커스터마이징으로 대체해서 Default 제거 -->
-						<!-- authentication-failure-url="/member/login29" /> -->
 
 		<!-- 로그아웃 설정 -->		
 		<s:logout
@@ -113,13 +109,9 @@
 						logout-success-url="/"
 						invalidate-session="true"
 						delete-cookies="true" />
-						<!-- <s:cors /> -->
-						 <!-- <s:csrf disabled="false"/> -->
 	</s:http>
 	
-	<!-- 03/31 추가사항 -->
 	<s:global-method-security secured-annotations="enabled" />
-	<!-- 03/31 -->
 	
 	<!-- 권한이 없어서 금지된 URI 접속할 때 보여줄 페이지(403 에러 페이지 대체) -->
 	<!-- 03/30(화) 왜 오류나는지 모르겠다. -->
@@ -130,9 +122,8 @@
 		<s:authentication-provider ref="authenticationProvider"/>
 	</s:authentication-manager>
 	
-	<!-- 03/31 추가사항 -->
-	<bean id="userAuthService" class="com.sevenelite.billbo.member.model.service.UserDetailsServiceCustom"/>
 	<bean id="authenticationProvider" class="com.sevenelite.billbo.common.springsecurity.CustomAuthenticationProvider"/>
+	<bean id="userAuthService" class="com.sevenelite.billbo.member.model.service.UserDetailsServiceCustom"/>
 	<bean id="userLoginFailHandler" class="com.sevenelite.billbo.common.springsecurity.UserLoginFailHandler"/>
 	<bean id="userLoginSuccessHandler" class="com.sevenelite.billbo.common.springsecurity.UserLoginSuccessHandler"/>
 	<bean id="pwEncoding" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"/>
@@ -141,6 +132,6 @@
 		<property name="userDetailsService" ref="userAuthService" />
 		<property name="passwordEncoder" ref="pwEncoding" />
 	</bean>
-	<!-- 03/31 -->
+	<!-- Spring Security 설정 완료 -->
 	
 </beans>
