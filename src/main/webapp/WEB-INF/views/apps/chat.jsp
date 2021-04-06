@@ -12,19 +12,19 @@
         <title>Chat - HRMS admin template</title>
 		
 		<!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+        <link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.png">
 		
 		<!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../resources/hrtemp/css/bootstrap.min.css">
 		
 		<!-- Fontawesome CSS -->
-        <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../resources/hrtemp/css/font-awesome.min.css">
 		
 		<!-- Lineawesome CSS -->
-		<link rel="stylesheet" href="assets/css/line-awesome.min.css">
+		<link rel="stylesheet" href="../resources/hrtemp/css/line-awesome.min.css">
 		
 		<!-- Main CSS -->
-        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="../resources/hrtemp/css/style.css">
 		
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
@@ -42,7 +42,7 @@
 				<!-- Logo -->
                 <div class="header-left">
                     <a href="employee-dashboard.html" class="logo">
-						<img src="assets/img/Logo.png" width="40" height="40" alt="">
+						<img src="../resources/images/main/logo.png" width="40" height="40" alt="">
 					</a>
                 </div>
 				<!-- /Logo -->
@@ -1286,20 +1286,20 @@
 		<!-- /Main Wrapper -->
 		
 		<!-- jQuery -->
-        <script src="assets/js/jquery-3.5.1.min.js"></script>
+        <script src="../resources/hrtemp/js/jquery-3.5.1.min.js"></script>
 		
 		<!-- Bootstrap Core JS -->
-        <script src="assets/js/popper.min.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="../resources/hrtemp/js/popper.min.js"></script>
+        <script src="../resources/hrtemp/js/bootstrap.min.js"></script>
 		
 		<!-- Slimscroll JS -->
-		<script src="assets/js/jquery.slimscroll.min.js"></script>
+		<script src="../resources/hrtemp/js/jquery.slimscroll.min.js"></script>
 		
 		<!-- Dropfiles JS -->
-		<script src="assets/js/dropfiles.js"></script>
+		<script src="../resources/hrtemp/js/dropfiles.js"></script>
 		
 		<!-- Custom JS -->
-		<script src="assets/js/app.js"></script>
+		<script src="../resources/hrtemp/js/app.js"></script>
 		
     </body>
 </html>

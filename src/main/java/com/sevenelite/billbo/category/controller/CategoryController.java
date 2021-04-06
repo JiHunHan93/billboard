@@ -1,4 +1,4 @@
-package com.sevenelite.billbo.apps.controller;
+package com.sevenelite.billbo.category.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,12 +7,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/")
-public class AppsController {
+public class CategoryController {
 	
-	@GetMapping("/apps/chat")
-	public String appsPage() {
+	@GetMapping("/apps")
+	public String apps() {
 		
-		return "apps/chat";
+		return "category/category-Apps";
 	}
+	
+
+	
 	
 }
