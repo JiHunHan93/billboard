@@ -12,31 +12,31 @@
         <title>Employee Profile - HRMS admin template</title>
 		
 		<!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+        <link rel="shortcut icon" type="image/x-icon" href="/billbo/resources/hrtemp/img/favicon.png">
 		
 		<!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/billbo/resources/hrtemp/css/bootstrap.min.css">
 		
 		<!-- Fontawesome CSS -->
-        <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/billbo/resources/hrtemp/css/font-awesome.min.css">
 		
 		<!-- Lineawesome CSS -->
-        <link rel="stylesheet" href="assets/css/line-awesome.min.css">
+        <link rel="stylesheet" href="/billbo/resources/hrtemp/css/line-awesome.min.css">
 		
 		<!-- Select2 CSS -->
-		<link rel="stylesheet" href="assets/css/select2.min.css">
+		<link rel="stylesheet" href="/billbo/resources/hrtemp/css/select2.min.css">
 		
 		<!-- Datetimepicker CSS -->
-		<link rel="stylesheet" href="assets/css/bootstrap-datetimepicker.min.css">
+		<link rel="stylesheet" href="/billbo/resources/hrtemp/css/bootstrap-datetimepicker.min.css">
 		
 		<!-- Tagsinput CSS -->
-		<link rel="stylesheet" href="assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css">
+		<link rel="stylesheet" href="/billbo/resources/hrtemp/css/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css">
 		
 		<!-- Main CSS -->
-        <link rel="stylesheet" href="assets/css/style.css">
-		<link rel="stylesheet" href="assets/css/profile.css">
-		<link rel="stylesheet" href="assets/css/profile1.css">
-		<link rel="stylesheet" href="assets/css/profile2.css">
+        <link rel="stylesheet" href="/billbo/resources/hrtemp/css/profile/style.css">
+		<link rel="stylesheet" href="/billbo/resources/hrtemp/css/profile/profile.css">
+		<link rel="stylesheet" href="/billbo/resources/hrtemp/css/profile/profile1.css">
+		<link rel="stylesheet" href="/billbo/resources/hrtemp/css/profile/profile2.css">
 		
 		
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -2374,27 +2374,27 @@
 		<!-- /Main Wrapper -->
 
 		<!-- jQuery -->
-        <script src="assets/js/jquery-3.5.1.min.js"></script>
+        <script src="/billbo/resources/hrtemp/js/jquery-3.5.1.min.js"></script>
 
 		<!-- Bootstrap Core JS -->
-        <script src="assets/js/popper.min.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="/billbo/resources/hrtemp/js/popper.min.js"></script>
+        <script src="/billbo/resources/hrtemp/js/bootstrap.min.js"></script>
 
 		<!-- Slimscroll JS -->
-		<script src="assets/js/jquery.slimscroll.min.js"></script>
+		<script src="/billbo/resources/hrtemp/js/jquery.slimscroll.min.js"></script>
 		
 		<!-- Select2 JS -->
-		<script src="assets/js/select2.min.js"></script>
+		<script src="/billbo/resources/hrtemp/js/select2.min.js"></script>
 		
 		<!-- Datetimepicker JS -->
-		<script src="assets/js/moment.min.js"></script>
-		<script src="assets/js/bootstrap-datetimepicker.min.js"></script>
+		<script src="/billbo/resources/hrtemp/js/moment.min.js"></script>
+		<script src="/billbo/resources/hrtemp/js/bootstrap-datetimepicker.min.js"></script>
 		
 		<!-- Tagsinput JS -->
-		<script src="assets/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
+		<script src="/billbo/resources/hrtemp/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
 
 		<!-- Custom JS -->
-		<script src="assets/js/app.js"></script>
+		<script src="/billbo/resources/hrtemp/js/app.js"></script>
 		
     </body>
 </html>

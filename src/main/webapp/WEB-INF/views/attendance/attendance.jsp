@@ -452,8 +452,8 @@
  
 									<div class="punch-det">
 						
-										<h6>출근시간:</h6><!--출근버튼 클릭시 기입-->
-										<h6>퇴근시간:</h6><!--퇴근버튼 클릭시 기입 -->
+										<h6>출근시간:</h6><p id="time"><!--출근버튼 클릭시 기입-->
+										<h6>퇴근시간:</h6><span id="finish"></span><br/><!--퇴근버튼 클릭시 기입 -->
 										<h6>주간 누적 근무 시간:</h6>									</div>
 									<div class="punch-info">
 										<div class="punch-hours">
@@ -461,10 +461,10 @@
 										</div>
 									</div>
 									<div class="custom-punch-btn-section">
-										<button type="button" class="btn btn-primary custom-punch-btn">출근</button>
+										<button type="button" onclick="document.getElementById('time').innerHTML=Date()" class="btn btn-primary custom-punch-btn">출근</button>
 									</div>
 									<div class="custom-punch-btn-section">
-										<button type="button" class="btn btn-primary custom-punch-btn">퇴근</button>
+										<button type="button" onclick="time" id="finish" class="btn btn-primary custom-punch-btn">퇴근</button>
 									</div>
 									<div class="statistics">
 										<div class="row">
@@ -591,7 +591,8 @@
 							</div>
 						</div>
 					</div>
-
+<button onclick="showClock()">show clock</button>
+    <input type="text" id="kk" size="30" readonly>
 				
                 </div>
 				<!-- /Page Content -->
@@ -623,7 +624,40 @@
 			</div>
 		 </div>
 		 <!-- /Profile Modal -->
-
+  <script>
+     
+ 
+        // 기준일 계산하는 웹페이지
+        function clickBtn(){
+            // 입력된 날짜 얻어오기
+            var e= document.getElementById('ss');
+            var s=e.value;
+            document.write(s+'<br>');
+ 
+            var a= new Date(s); // 입력된 날짜로 Date()객체 생성
+            var b= new Date(); //현재 날짜
+ 
+            // 입력된 날짜와 현재 날짜의 차이 계산
+           /*  var diff= b-a;
+            day= Math.floor(diff/(1000*60*60*24)); //floor 반올림을 안하고 없애버림.
+  */
+            if(day>0) document.write('오늘로 부터 :'+day+'일전 <br>');
+            else if(day<0) document.write('오늘로 부터 :'+(-day)+'일후 <br>');
+            else document.write('오늘 <br>');
+        }
+ 
+        // 디지털 시계... 일정시간(1초)마다 현재 날짜 출력
+        function showClock(){
+ 
+            var s =new Date(); //현재 시간
+            var e= document.getElementById('kk');
+            e.value=s.toLocaleString();
+ 
+            // 1초 후에 showClock()함수를 실행하시오.
+          //  setTimeout('showClock()', 1000); //JS에 이미 존재하는 함수
+        }
+ 
+    </script>
 		<script type="text/javascript">
 
     setInterval("clock()",1000);
@@ -674,6 +708,7 @@ document.getElementById("clock").innerHTML = ampm + hours + ":" + minutes + ":" 
         //$('#date').text(today);
     }
     </script>
+   
 		<!-- jQuery -->
         <script src="assets/js/jquery-3.5.1.min.js"></script>
 		
@@ -694,7 +729,20 @@ document.getElementById("clock").innerHTML = ampm + hours + ":" + minutes + ":" 
 		<!-- Custom JS -->
 		<script src="assets/js/app.js"></script>
 	
+<script type="text/javascript">
+ 
+ function showTime(){
+  var dd=new Date();
+  var str = dd.getHours()+"시" +
+      dd.getMinutes()+"분"+
+      dd.getSeconds()+"초";
+  var span=document.getElementById("today");
+  span.innerHTML=str;
+ }
+ 
+ 
 
+</script>
 
 </body>
 </html>
