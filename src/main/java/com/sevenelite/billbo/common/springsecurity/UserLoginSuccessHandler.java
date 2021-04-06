@@ -33,13 +33,13 @@ public class UserLoginSuccessHandler implements AuthenticationSuccessHandler {
 		System.out.println("Session ID : " + web.getSessionId());
 		
 		/* 인증 ID */
-		System.out.println("name : " + authentication.getName());
+		System.out.println("Login ID : " + authentication.getName());
 		
 		/* 권한 리스트 */
 		List<GrantedAuthority> authList = (List<GrantedAuthority>) authentication.getAuthorities();
-		System.out.println("권한 : ");
+		System.out.print("권한 : ");
 		for(int i = 0; i < authList.size(); i++) {
-			System.out.println(authList.get(i).getAuthority() + " ");
+			System.out.print(i + "." + authList.get(i).getAuthority() + "  ");
 		}
 		System.out.println();
 		
@@ -64,7 +64,6 @@ public class UserLoginSuccessHandler implements AuthenticationSuccessHandler {
 			response.sendRedirect("main");
 		}
 		
-		/* 03/31 여기 아래는 내려오지 않음 */
 		/* 세션 Attribute 확인 */
 		Enumeration<String> list = request.getSession().getAttributeNames();
 		
@@ -127,3 +126,43 @@ public class UserLoginSuccessHandler implements AuthenticationSuccessHandler {
 	}
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

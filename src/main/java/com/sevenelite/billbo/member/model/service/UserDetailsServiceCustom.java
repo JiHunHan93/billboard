@@ -27,7 +27,6 @@ public class UserDetailsServiceCustom implements UserDetailsService {
 		/* 사용자 정보 select */
 		MemBbDTO userInfo = mapper.loginBbMem(username);
 		
-		System.out.println("가져온 사용자 정보 : " + userInfo);
 		/* 사용자 정보 없으면 null 처리 */
 		if(userInfo == null) {
 		
@@ -38,6 +37,7 @@ public class UserDetailsServiceCustom implements UserDetailsService {
 			/* 사용자 정보 있을 경우 로직 전개 (userDetails에 데이터 넣기) */
 			userDetails.setUsername(userInfo.getEmail());
 			userDetails.setPassword(userInfo.getPwd());
+			userDetails.setMembername(userInfo.getName());
 			
 			/* 사용자 권한 select해서 받아온 뒤 VO setter에 List<String> 객체 주입 */
 			userDetails.setAuthorities(mapper.selectUserAuthone(username));

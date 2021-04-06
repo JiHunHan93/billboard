@@ -12,8 +12,9 @@ public class UserDetailsVO implements UserDetails {
 	
 	private static final long serialVersionUID = 1L;
 	
-	private String username; //ID
-	private String password; //PW
+	private String username;	 //ID
+	private String password; 	 //PW
+	private String membername;	 //MEMBER_NAME
 	private List<GrantedAuthority> authorities;
 	
 	// Setter
@@ -29,11 +30,15 @@ public class UserDetailsVO implements UserDetails {
 	}
 	
 	// Setter
+	public void setMembername(String membername) {
+		
+		this.membername = membername;
+	}
+	
+	// Setter
 	public void setAuthorities(List<String> authList) {
-		
-		System.out.println("값이 들어왔냐? : " + authList.get(0));
-		System.out.println("타입은? : " + authList.getClass().getName());
-		
+
+		/* 전달받은 권한 정보를 VO에 담아준다 */
 		List<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
 		
 		for(int i = 0; i < authList.size(); i++) {
@@ -53,6 +58,11 @@ public class UserDetailsVO implements UserDetails {
 	public String getPassword() {
 
 		return password;
+	}
+	
+	public String getMembername() {
+		
+		return membername;
 	}
 	
 	@Override	//권한
