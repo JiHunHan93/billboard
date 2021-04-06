@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%-- <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %> --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -652,7 +653,11 @@
 								<h3>
 									<!-- 해당 사원명 -->
 									<%-- <s:authentication property="principal.username"/> --%>
+<<<<<<< HEAD
 									${ sessionScope.authentication.getName } 님 환영합니다.
+=======
+									${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }님 환영합니다.
+>>>>>>> 2f422d1f5d21838db8b04525816662261a0631a6
 								</h3>
 								<p>
 									<!-- 연월일 -->
