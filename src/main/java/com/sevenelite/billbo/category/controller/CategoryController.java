@@ -15,6 +15,30 @@ public class CategoryController {
 		return "category/category-Apps";
 	}
 	
+	@GetMapping("/admin")
+	public String admin() {
+		
+		return "category/category-Admin";
+	}
+	
+	@GetMapping("/attendance")
+	public String attendance() {
+		
+		return "category/category-Attendance";
+	}
+	
+	@GetMapping("/employee")
+	public String employee() {
+		
+		return "category/category-Employee";
+	}
+	
+	@GetMapping("/information")
+	public String information() {
+		
+		return "category/category-Information";
+	}
+	
 
 	
 	

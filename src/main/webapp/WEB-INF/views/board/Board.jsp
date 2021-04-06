@@ -1,65 +1,55 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <meta name="description" content="Smarthr - Bootstrap Admin Template">
-		<meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
-        <meta name="author" content="Dreamguys - Bootstrap Admin Template">
-        <meta name="robots" content="noindex, nofollow">
-        <title>Employee Dashboard - HRMS admin template</title>
-		
-		<!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="./resources/hrtemp/img/favicon.png">
-		
-		<!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="./resources/hrtemp/css/bootstrap.min.css">
-		
-		<!-- 폰트어썸 -->
-		<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
-		
-		<!-- Fontawesome CSS -->
-        <link rel="stylesheet" href="./resources/hrtemp/css/font-awesome.min.css">
-		
-		<!-- Lineawesome CSS -->
-        <link rel="stylesheet" href="./resources/hrtemp/css/line-awesome.min.css">
-		
-		<!-- Main CSS -->
-        <link rel="stylesheet" href="./resources/hrtemp/css/style.css">
-		
-		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-		<!--[if lt IE 9]>
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, user-scalable=0">
+<meta name="description" content="Smarthr - Bootstrap Admin Template">
+<meta name="keywords"
+	content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
+<meta name="author" content="Dreamguys - Bootstrap Admin Template">
+<meta name="robots" content="noindex, nofollow">
+<title>2조BB-게시판/문서함</title>
+
+<!-- Favicon -->
+<link rel="shortcut icon" type="image/x-icon"
+	href="assets/img/favicon.png">
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="./resources/hrtemp/css/bootstrap.min.css">
+
+<!-- Fontawesome CSS -->
+<link rel="stylesheet" href="./resources/hrtemp/css/font-awesome.min.css">
+
+<!-- Lineawesome CSS -->
+<link rel="stylesheet" href="./resources/hrtemp/css/line-awesome.min.css">
+
+<!-- Datatable CSS -->
+<link rel="stylesheet" href="./resources/hrtemp/css/dataTables.bootstrap4.min.css">
+
+<!-- Main CSS -->
+<link rel="stylesheet" href="./resources/hrtemp/css/style.css">
+
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
 			<script src="assets/js/html5shiv.min.js"></script>
 			<script src="assets/js/respond.min.js"></script>
 		<![endif]-->
-    </head>
-    <body>
-		<!-- Main Wrapper -->
-        <div class="main-wrapper">
-		
-			<!-- Loader -->
-			<div id="loader-wrapper">
-				<div id="loader">
-					<div class="loader-ellips">
-					  <span class="loader-ellips__dot"></span>
-					  <span class="loader-ellips__dot"></span>
-					  <span class="loader-ellips__dot"></span>
-					  <span class="loader-ellips__dot"></span>
-					</div>
-				</div>
-			</div>
-			<!-- /Loader -->
-		
-			<!-- Header -->
+</head>
+<body>
+	<!-- Main Wrapper -->
+	<div class="main-wrapper">
+
+		<!-- Header -->
 		<div class="header">
 
 			<!-- Logo -->
 			<div class="header-left">
-				<a href="${pageContext.servletContext.contextPath}" class="logo"> <img
-					src="/billbo/resources/hrtemp/img/Logo.png" width="40" height="40"
-					alt="">
+				<a href="${pageContext.servletContext.contextPath}" class="logo">
+					<img src="/billbo/resources/hrtemp/img/Logo.png" width="40"
+					height="40" alt="">
 				</a>
 			</div>
 			<!-- /Logo -->
@@ -237,7 +227,8 @@
 						</div>
 						<div class="noti-content">
 							<ul class="notification-list">
-								<li class="notification-message"><a href="${pageContext.servletContext.contextPath}/apps/chat">
+								<li class="notification-message"><a
+									href="${pageContext.servletContext.contextPath}/apps/chat">
 										<div class="list-item">
 											<div class="list-left">
 												<span class="avatar"> <img alt=""
@@ -253,7 +244,8 @@
 											</div>
 										</div>
 								</a></li>
-								<li class="notification-message"><a href="${pageContext.servletContext.contextPath}/apps/chat">
+								<li class="notification-message"><a
+									href="${pageContext.servletContext.contextPath}/apps/chat">
 										<div class="list-item">
 											<div class="list-left">
 												<span class="avatar"> <img alt=""
@@ -269,7 +261,8 @@
 											</div>
 										</div>
 								</a></li>
-								<li class="notification-message"><a href="${pageContext.servletContext.contextPath}/apps/chat">
+								<li class="notification-message"><a
+									href="${pageContext.servletContext.contextPath}/apps/chat">
 										<div class="list-item">
 											<div class="list-left">
 												<span class="avatar"> <img alt=""
@@ -285,7 +278,8 @@
 											</div>
 										</div>
 								</a></li>
-								<li class="notification-message"><a href="${pageContext.servletContext.contextPath}/apps/chat">
+								<li class="notification-message"><a
+									href="${pageContext.servletContext.contextPath}/apps/chat">
 										<div class="list-item">
 											<div class="list-left">
 												<span class="avatar"> <img alt=""
@@ -301,7 +295,8 @@
 											</div>
 										</div>
 								</a></li>
-								<li class="notification-message"><a href="${pageContext.servletContext.contextPath}/apps/chat">
+								<li class="notification-message"><a
+									href="${pageContext.servletContext.contextPath}/apps/chat">
 										<div class="list-item">
 											<div class="list-left">
 												<span class="avatar"> <img alt=""
@@ -365,18 +360,18 @@
 								<span>Main</span>
 							</li> -->
 						<!-- 사이드바 서브메뉴 안쓰는 방향으로 수정 -->
-						<li><a href="${pageContext.servletContext.contextPath}" class="sidebar-default">
-								<i class="la la-home sidebar-icon"></i> <!-- <span class="menu-arrow"></span> -->
-								<span class="sidebar-text">Home</span>
+						<li><a href="${pageContext.servletContext.contextPath}"
+							class="sidebar-default"> <i class="la la-home sidebar-icon"></i>
+								<!-- <span class="menu-arrow"></span> --> <span
+								class="sidebar-text">Home</span>
 						</a> <!-- <ul style="display: none;">
 									<li><a href="index.html">Admin Dashboard</a></li>
 									<li><a class="active" href="employee-dashboard.html">Employee Dashboard</a></li>
 								</ul> --></li>
 						<div class="sidebar-line"></div>
-						<li>
-						<a href="${pageContext.servletContext.contextPath}/apps" class="sidebar-default">
-								<i class="la la-cube sidebar-icon"></i> <span
-								class="sidebar-text"> Apps</span> <!-- <span class="menu-arrow"></span> -->
+						<li><a href="${pageContext.servletContext.contextPath}/apps"
+							class="sidebar-default"> <i class="la la-cube sidebar-icon"></i>
+								<span class="sidebar-text"> Apps</span> <!-- <span class="menu-arrow"></span> -->
 						</a> <!-- <ul style="display: none;">
 									<li><a href="chat.html">Chat</a></li>
 									<li class="submenu">
@@ -397,7 +392,8 @@
 						<!-- <li class="menu-title"> 
 								<span>Apps</span>
 							</li> -->
-						<li><a href="${pageContext.servletContext.contextPath}/employee"
+						<li><a
+							href="${pageContext.servletContext.contextPath}/employee"
 							class="noti-dot sidebar-default"> <i
 								class="la la-user sidebar-icon"></i> <span class="sidebar-text">
 									Employees</span> <!-- <span class="menu-arrow"></span> -->
@@ -415,14 +411,16 @@
 									<li><a href="overtime.html">Overtime</a></li>
 								</ul> --></li>
 						<div class="sidebar-line"></div>
-						<li><a href="${pageContext.servletContext.contextPath}/attendance" class="sidebar-default"> <i
+						<li><a
+							href="${pageContext.servletContext.contextPath}/attendance"
+							class="sidebar-default"> <i
 								class="la la-briefcase sidebar-icon"></i> <span
 								class="sidebar-text">Attendance</span>
 						</a></li>
 						<div class="sidebar-line"></div>
-						<li><a href="${pageContext.servletContext.contextPath}/admin" class="sidebar-default">
-								<i class="la la-key sidebar-icon"></i> <span
-								class="sidebar-text">Admin</span> <!-- <span class="menu-arrow"></span> -->
+						<li><a href="${pageContext.servletContext.contextPath}/admin"
+							class="sidebar-default"> <i class="la la-key sidebar-icon"></i>
+								<span class="sidebar-text">Admin</span> <!-- <span class="menu-arrow"></span> -->
 						</a> <!-- <ul style="display: none;">
 									<li><a href="projects.html">Projects</a></li>
 									<li><a href="tasks.html">Tasks</a></li>
@@ -433,7 +431,9 @@
 								class="la la-money sidebar-icon"></i> <span class="sidebar-text">Payroll</span>
 						</a></li>
 						<div class="sidebar-line"></div>
-						<li><a href="${pageContext.servletContext.contextPath}/information" class="sidebar-default"> <i
+						<li><a
+							href="${pageContext.servletContext.contextPath}/information"
+							class="sidebar-default"> <i
 								class="la la-building sidebar-icon"></i> <span
 								class="sidebar-text">Information</span>
 						</a></li>
@@ -629,154 +629,382 @@
 			</div>
 		</div>
 		<!-- /Sidebar -->
-			<div class="page-wrapper" style="min-height: 937px;">
-			
-				<!-- Page Content -->
-                <div class="content container-fluid category-container">
+
+
+		<!-- Page Wrapper -->
+		<div class="page-wrapper">
+
+			<div class="content container-fluid">
+
+				<!-- Page Header -->
+				<div class="page-header">
 					<div class="row">
-						<div class="col-lg-8 col-md-8 category-three-box">
-							<section class="dash-section">
-								<div class="dash-sec-content">
-									<div class="dash-info-list">
-										<div class="dash-card category-card"> <!-- text-danger class -->
-											<div class="dash-card-container category-dash">
-												<!-- Employee 조직도 -->
-												<!-- <p class="category-text">조직도</p> -->
-												<!-- <i class="las la-sitemap category-icon"></i> -->
-												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">전체 조직도</div></i> -->
-												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">부서별 조직도</div></i> -->
-												<!-- Apps 게시판 -->
-												<p class="category-text">게시판</p>
-												<i class="fas fa-chalkboard-teacher category-icon"></i>
-												<i class="fas fa-circle category-dot"><div class="category-sub-text">공지사항</div></i>
-												<i class="fas fa-circle category-dot"><div class="category-sub-text">인사관리 게시판</div></i>
-												<i class="fas fa-circle category-dot"><div class="category-sub-text">근태관리 게시판</div></i>
-												<!-- Admin 인사고과 -->
-												<!-- <p class="category-text">인사고과</p> -->
-												<!-- <i class="las la-graduation-cap category-icon"></i> -->
-												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">업무평가</div></i> -->
-												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">업무평가 내역</div></i> -->
-												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">승진 심사</div></i> -->
-												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">상여 관리</div></i> -->
-												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">연봉 협상</div></i> -->
-												<!-- Attendance 출근스케줄관리 -->
-												<!-- <p class="category-text">출근스케줄관리</p> -->
-												<!-- <i class="las la-calendar category-icon"></i> -->
-												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">내 스케줄</div></i> -->
-												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">부서 스케줄</div></i> -->
-												<!-- Payroll 급상여 처리 -->
-												<!-- <p class="category-text">급상여 처리</p> -->
-												<!-- <i class="las la-money-bill-alt category-icon"></i> -->
-												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">급상여 처리</div></i> -->
-												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">급상여 전표 처리</div></i> -->
-												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">신고서 확인</div></i> -->
-												<!-- Information 회사정보 -->
-												<!-- <p class="category-text">회사정보</p> -->
-												<!-- <i class="las la-building category-icon"></i> -->
-												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">회사 정보</div></i> -->
-												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">조직도</div></i> -->
-											</div>
-										</div>
-									</div>
-								</div>
-							</section>
+						<div class="col">
+							<h3 class="page-title">게시판</h3>
+							<ul class="breadcrumb">
+								<!-- <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li> -->
+								<li class="breadcrumb-item active">NoticeBoard</li>
+							</ul>
 						</div>
-						<div></div>
-						<div class="col-lg-8 col-md-8 category-three-box">
-							<section class="dash-section">
-								<div class="dash-sec-content">
-									<div class="dash-info-list">
-										<div class="dash-card category-card">
-											<div class="dash-card-container category-dash">
-												<!-- Employee 조직도 -->
-												<!-- <p class="category-text">전자결재</p> -->
-												<!-- <i class="las la-inbox category-icon"></i> -->
-												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">전자결재 등록</div></i> -->
-												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">전자결재 조회</div></i> -->
-												<!-- Apps 이메일 -->
-												<p class="category-text">이메일</p>
-												<i class="las la-envelope category-icon"></i>
-												<i class="fas fa-circle category-dot"><div class="category-sub-text">메일함</div></i>
-												<!-- Admin 전자결재 -->
-												<!-- <p class="category-text">전자결재</p> -->
-												<!-- <i class="las la-inbox category-icon"></i> -->
-												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">전자결재 등록</div></i> -->
-												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">전자결재 조회</div></i> -->
-												<!-- Attendance 부서 및 전사관리 -->
-												<!-- <p class="category-text">부서 및 전사조회</p> -->
-												<!-- <i class="las la-users category-icon"></i> -->
-												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">부서조회</div></i> -->
-												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">전사조회</div></i> -->
-												<!-- Payroll 개인급여 확인 -->
-												<!-- <i class="las la-user-plus category-icon"></i> -->
-												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">급여 명세서 확인</div></i> -->
-												<!-- Information 문서함 -->
-												<!-- <i class="las la-folder category-icon"></i> -->
-												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">문서 조회</div></i> -->
-												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">문서 등록</div></i> -->
-											</div>
-										</div>
-									</div>
-								</div>
-							</section>
-						</div>
-						<!-- style.css 6549 max-width: 33% 주석 해제 후 나머지 주석처리 하면 세가지 박스 사용 가능 -->
-						<!-- 세번째 박스 -->
-						<div class="col-lg-8 col-md-8 category-three-box">
-							<section class="dash-section">
-								<div class="dash-sec-content">
-									<div class="dash-info-list">
-										<div class="dash-card category-card">
-											<div class="dash-card-container category-dash">
-												<!-- Admin 문서함 -->
-												<!-- <p class="category-text">문서함</p> -->
-												<!-- <i class="las la-folder category-icon"></i> -->
-												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">문서 조회</div></i> -->
-												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">문서 등록</div></i> -->
-												<!-- Apps 채팅 -->
-												<p class="category-text">채팅</p>
-												<i class="las la-comments category-icon"></i>
-												<i class="fas fa-circle category-dot"><a href="${pageContext.servletContext.contextPath}/apps/chat" class="category-sub-text">Bill-Board chat</a></i>
-												<!-- Attendance 근태관리 -->
-												<!-- <p class="category-text">근태관리</p> -->
-												<!-- <i class="las la-user-clock category-icon"></i> -->
-												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">내 근태 현황</div></i> -->
-												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">내 연차 내역</div></i> -->
-												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">내 인사 정보</div></i> -->
-												<!-- Payroll 연말정산 프로세스 -->
-												<!-- <p class="category-text">연말정산 프로세스</p> -->
-												<!-- <i class="las la-calendar-day category-icon"></i> -->
-												<!-- <i class="fas fa-circle category-long-dot"><div class="category-sub-text">개인별 연말정산 결과 조회</div></i> -->
-												<!-- <i class="fas fa-circle category-long-dot"><div class="category-sub-text">연말정산 처리/신고</div></i> -->
-											</div>
-										</div>
-									</div>
-								</div>
-							</section>
-						</div>
-						<!-- /세번째 박스 -->
 					</div>
 				</div>
-				<!-- /Page Content -->
+				<!-- /Page Header -->
 
-            </div>
-			<!-- /Page Wrapper -->
-			
-        </div>
-		<!-- /Main Wrapper -->
-		
-		<!-- jQuery -->
-        <script src="./resources/hrtemp/js/jquery-3.5.1.min.js"></script>
-		
-		<!-- Bootstrap Core JS -->
-        <script src="./resources/hrtemp/js/popper.min.js"></script>
-        <script src="./resources/hrtemp/js/bootstrap.min.js"></script>
-		
-		<!-- Slimscroll JS -->
-		<script src="./resources/hrtemp/js/jquery.slimscroll.min.js"></script>
-		
-		<!-- Custom JS -->
-		<script src="./resources/hrtemp/js/app.js"></script>
-		
-    </body>
+				<div class="file-sidebar dashboard-sub-sidebar">
+					<div class="file-header justify-content-center">
+						<span><button type="button" class="btn btn-write">글쓰기</button></span>
+						<a href="javascript:void(0);" class="file-side-close"><i class="fa fa-times"></i></a>
+					</div>
+					<br>
+					<form class="file-search">
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<input type="text" class="form-control" placeholder="Search" style="width: 226px;">
+								<i class="fa fa-search board-icon"></i>
+							</div>
+						</div>
+					</form>
+					<div class="file-pro-list">
+						<div class="file-scroll">
+							<br>
+							<ul class="file-menu">
+								<li class="active"><a href="#">자유게시판</a></li>
+								<li><a href="#">인사게시판</a></li>
+								<li><a href="#">사내공지사항</a></li>
+								<li><a href="#">Hospital Administration</a></li>
+								<li><a href="#">Virtual Host</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+
+				<div class="row dashboard-sub-container">
+
+					<div class="col-sm-12" style="height: 900px;">
+						<div class="card mb-0">
+
+							<div class="card-header">
+								<div class="col-md-6">
+									<div class="card-board-style">
+										<div class="notice-body" align="center">
+											<br>
+											<h4 class="card-title" style="width: 1255px;">게시판 홈</h4>
+											<ul class="nav nav-tabs nav-tabs-solid nav-justified"
+												style="width: 1255px;">
+												<li class="nav-item"><a class="nav-link active"
+													href="#solid-justified-tab1" data-toggle="tab">자유게시판</a></li>
+												<li class="nav-item"><a class="nav-link"
+													href="#solid-justified-tab2" data-toggle="tab">인사게시판</a></li>
+												<li class="nav-item"><a class="nav-link"
+													href="#solid-justified-tab3" data-toggle="tab">사내공지사항</a></li>
+											</ul>
+											<br>
+											<form class="file-search">
+
+												<div class="input-group" style="width: 300px; float: left;">
+													<select>
+														<option>제목</option>
+														<option>내용</option>
+														<option>통합</option>
+													</select> <input type="text" class="form-control"
+														placeholder="Search">
+													<div class="input-group-prepend">
+														<i class="fa fa-search board-icon"></i>
+													</div>
+												</div>
+
+											</form>
+
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card-body">
+								<div class="table-responsive">
+									<table class="datatable table table-stripped mb-0">
+										<thead>
+											<tr>
+												<th><input type="checkbox"></th>
+												<th>번호</th>
+												<th>제목</th>
+												<th>작성자</th>
+												<th>작성일</th>
+												<th>조회</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td><input type="checkbox"></td>
+												<td>Tiger Nixon</td>
+												<td>System Architect</td>
+												<td>Edinburgh</td>
+												<td>61</td>
+												<td>$320,800</td>
+											</tr>
+											<tr>
+												<td><input type="checkbox"></td>
+												<td>Garrett Winters</td>
+												<td>Accountant</td>
+												<td>Tokyo</td>
+												<td>63</td>
+												<td>$170,750</td>
+											</tr>
+											<tr>
+												<td><input type="checkbox"></td>
+												<td>Ashton Cox</td>
+												<td>Junior Technical Author</td>
+												<td>San Francisco</td>
+												<td>66</td>
+												<td>$86,000</td>
+											</tr>
+											<tr>
+												<td><input type="checkbox"></td>
+												<td>Cedric Kelly</td>
+												<td>Senior Javascript Developer</td>
+												<td>Edinburgh</td>
+												<td>22</td>
+												<td>$433,060</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Airi Satou</td>
+												<td>Accountant</td>
+												<td>Tokyo</td>
+												<td>33</td>
+												<td>$162,700</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Brielle Williamson</td>
+												<td>Integration Specialist</td>
+												<td>New York</td>
+												<td>61</td>
+												<td>$372,000</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Herrod Chandler</td>
+												<td>Sales Assistant</td>
+												<td>San Francisco</td>
+												<td>59</td>
+												<td>$137,500</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Rhona Davidson</td>
+												<td>Integration Specialist</td>
+												<td>Tokyo</td>
+												<td>55</td>
+												<td>$327,900</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Colleen Hurst</td>
+												<td>Javascript Developer</td>
+												<td>San Francisco</td>
+												<td>39</td>
+												<td>$205,500</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Sonya Frost</td>
+												<td>Software Engineer</td>
+												<td>Edinburgh</td>
+												<td>23</td>
+												<td>$103,600</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Jena Gaines</td>
+												<td>Office Manager</td>
+												<td>London</td>
+												<td>30</td>
+												<td>$90,560</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Quinn Flynn</td>
+												<td>Support Lead</td>
+												<td>Edinburgh</td>
+												<td>22</td>
+												<td>$342,000</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Charde Marshall</td>
+												<td>Regional Director</td>
+												<td>San Francisco</td>
+												<td>36</td>
+												<td>$470,600</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Haley Kennedy</td>
+												<td>Senior Marketing Designer</td>
+												<td>London</td>
+												<td>43</td>
+												<td>$313,500</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Tatyana Fitzpatrick</td>
+												<td>Regional Director</td>
+												<td>London</td>
+												<td>19</td>
+												<td>$385,750</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Michael Silva</td>
+												<td>Marketing Designer</td>
+												<td>London</td>
+												<td>66</td>
+												<td>$198,500</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Paul Byrd</td>
+												<td>Chief Financial Officer (CFO)</td>
+												<td>New York</td>
+												<td>64</td>
+												<td>$725,000</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Gloria Little</td>
+												<td>Systems Administrator</td>
+												<td>New York</td>
+												<td>59</td>
+												<td>$237,500</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Bradley Greer</td>
+												<td>Software Engineer</td>
+												<td>London</td>
+												<td>41</td>
+												<td>$132,000</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Dai Rios</td>
+												<td>Personnel Lead</td>
+												<td>Edinburgh</td>
+												<td>35</td>
+												<td>$217,500</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Jenette Caldwell</td>
+												<td>Development Lead</td>
+												<td>New York</td>
+												<td>30</td>
+												<td>$345,000</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Yuri Berry</td>
+												<td>Chief Marketing Officer (CMO)</td>
+												<td>New York</td>
+												<td>40</td>
+												<td>$675,000</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Caesar Vance</td>
+												<td>Pre-Sales Support</td>
+												<td>New York</td>
+												<td>21</td>
+												<td>$106,450</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Doris Wilder</td>
+												<td>Sales Assistant</td>
+												<td>Sidney</td>
+												<td>23</td>
+												<td>$85,600</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Angelica Ramos</td>
+												<td>Chief Executive Officer (CEO)</td>
+												<td>London</td>
+												<td>47</td>
+												<td>$1,200,000</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Gavin Joyce</td>
+												<td>Developer</td>
+												<td>Edinburgh</td>
+												<td>42</td>
+												<td>$92,575</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Jennifer Chang</td>
+												<td>Regional Director</td>
+												<td>Singapore</td>
+												<td>28</td>
+												<td>$357,650</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Brenden Wagner</td>
+												<td>Software Engineer</td>
+												<td>San Francisco</td>
+												<td>28</td>
+												<td>$206,850</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Fiona Green</td>
+												<td>Chief Operating Officer (COO)</td>
+												<td>San Francisco</td>
+												<td>48</td>
+												<td>$850,000</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Shou Itou</td>
+												<td>Regional Marketing</td>
+												<td>Tokyo</td>
+												<td>20</td>
+												<td>$163,000</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<!-- /Page Wrapper -->
+
+	</div>
+	<!-- /Main Wrapper -->
+
+	<!-- jQuery -->
+	<script src="./resources/hrtemp/js/jquery-3.5.1.min.js"></script>
+
+	<!-- Bootstrap Core JS -->
+	<script src="./resources/hrtemp/js/popper.min.js"></script>
+	<script src="./resources/hrtemp/js/bootstrap.min.js"></script>
+
+	<!-- Slimscroll JS -->
+	<script src="./resources/hrtemp/js/jquery.slimscroll.min.js"></script>
+
+	<!-- Datatable JS -->
+	<script src="./resources/hrtemp/js/jquery.dataTables.min.js"></script>
+	<script src="./resources/hrtemp/js/dataTables.bootstrap4.min.js"></script>
+
+	<!-- Custom JS -->
+	<script src="./resources/hrtemp/js/app.js"></script>
+
+</body>
 </html>

@@ -63,7 +63,7 @@
 
 			<!-- Logo -->
 			<div class="header-left">
-				<a href="index.html" class="logo"> <img
+				<a href="${pageContext.servletContext.contextPath}" class="logo"> <img
 					src="/billbo/resources/hrtemp/img/Logo.png" width="40" height="40"
 					alt="">
 				</a>
@@ -371,7 +371,7 @@
 								<span>Main</span>
 							</li> -->
 						<!-- 사이드바 서브메뉴 안쓰는 방향으로 수정 -->
-						<li class="submenu"><a href="#" class="sidebar-default">
+						<li><a href="${pageContext.servletContext.contextPath}" class="sidebar-default">
 								<i class="la la-home sidebar-icon"></i> <!-- <span class="menu-arrow"></span> -->
 								<span class="sidebar-text">Home</span>
 						</a> <!-- <ul style="display: none;">
@@ -379,7 +379,8 @@
 									<li><a class="active" href="employee-dashboard.html">Employee Dashboard</a></li>
 								</ul> --></li>
 						<div class="sidebar-line"></div>
-						<li class="submenu"><a href="${pageContext.servletContext.contextPath}/apps" class="sidebar-default">
+						<li>
+						<a href="${pageContext.servletContext.contextPath}/apps" class="sidebar-default">
 								<i class="la la-cube sidebar-icon"></i> <span
 								class="sidebar-text"> Apps</span> <!-- <span class="menu-arrow"></span> -->
 						</a> <!-- <ul style="display: none;">
@@ -402,7 +403,7 @@
 						<!-- <li class="menu-title"> 
 								<span>Apps</span>
 							</li> -->
-						<li class="submenu"><a href="#"
+						<li><a href="${pageContext.servletContext.contextPath}/employee"
 							class="noti-dot sidebar-default"> <i
 								class="la la-user sidebar-icon"></i> <span class="sidebar-text">
 									Employees</span> <!-- <span class="menu-arrow"></span> -->
@@ -420,12 +421,12 @@
 									<li><a href="overtime.html">Overtime</a></li>
 								</ul> --></li>
 						<div class="sidebar-line"></div>
-						<li><a href="#" class="sidebar-default"> <i
+						<li><a href="${pageContext.servletContext.contextPath}/attendance" class="sidebar-default"> <i
 								class="la la-briefcase sidebar-icon"></i> <span
 								class="sidebar-text">Attendance</span>
 						</a></li>
 						<div class="sidebar-line"></div>
-						<li class="submenu"><a href="#" class="sidebar-default">
+						<li><a href="${pageContext.servletContext.contextPath}/admin" class="sidebar-default">
 								<i class="la la-key sidebar-icon"></i> <span
 								class="sidebar-text">Admin</span> <!-- <span class="menu-arrow"></span> -->
 						</a> <!-- <ul style="display: none;">
@@ -438,7 +439,7 @@
 								class="la la-money sidebar-icon"></i> <span class="sidebar-text">Payroll</span>
 						</a></li>
 						<div class="sidebar-line"></div>
-						<li><a href="#" class="sidebar-default"> <i
+						<li><a href="${pageContext.servletContext.contextPath}/information" class="sidebar-default"> <i
 								class="la la-building sidebar-icon"></i> <span
 								class="sidebar-text">Information</span>
 						</a></li>
@@ -651,7 +652,7 @@
 								<h3>
 									<!-- 해당 사원명 -->
 									<%-- <s:authentication property="principal.username"/> --%>
-									님 환영합니다.
+									${ sessionScope.authentication.getName } 님 환영합니다.
 								</h3>
 								<p>
 									<!-- 연월일 -->

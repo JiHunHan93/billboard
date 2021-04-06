@@ -12,7 +12,7 @@
         <title>Chat - HRMS admin template</title>
 		
 		<!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="../resources/images/favicon.png">
+        <link rel="shortcut icon" type="image/x-icon" href="../resources/hrtemp/img/favicon.png">
 		
 		<!-- Bootstrap CSS -->
         <link rel="stylesheet" href="../resources/hrtemp/css/bootstrap.min.css">
@@ -37,291 +37,308 @@
         <div class="main-wrapper">
 		
 			<!-- Header -->
-            <div class="header">
-			
-				<!-- Logo -->
-                <div class="header-left">
-                    <a href="employee-dashboard.html" class="logo">
-						<img src="../resources/images/main/logo.png" width="40" height="40" alt="">
-					</a>
-                </div>
-				<!-- /Logo -->
-				
-				<a id="toggle_btn" href="javascript:void(0);">
-					<span class="bar-icon">
-						<span></span>
-						<span></span>
-						<span></span>
+		<div class="header">
+
+			<!-- Logo -->
+			<div class="header-left">
+				<a href="${pageContext.servletContext.contextPath}" class="logo"> <img
+					src="/billbo/resources/hrtemp/img/Logo.png" width="40" height="40"
+					alt="">
+				</a>
+			</div>
+			<!-- /Logo -->
+
+			<a id="toggle_btn" href="javascript:void(0);"> <span
+				class="bar-icon"> <span></span> <span></span> <span></span>
+			</span>
+			</a>
+
+			<!-- Header Title -->
+			<div class="page-title-box">
+				<h3>Bill-Board Employee Management</h3>
+			</div>
+			<!-- /Header Title -->
+
+			<a id="mobile_btn" class="mobile_btn" href="#sidebar"><i
+				class="fa fa-bars"></i></a>
+
+			<!-- Header Menu -->
+			<ul class="nav user-menu">
+
+				<!-- Search -->
+				<li class="nav-item">
+					<div class="top-nav-search">
+						<a href="javascript:void(0);" class="responsive-search"> <i
+							class="fa fa-search"></i>
+						</a>
+						<form action="search.html">
+							<input class="form-control" type="text" placeholder="Search here">
+							<button class="btn" type="submit">
+								<i class="fa fa-search"></i>
+							</button>
+						</form>
+					</div>
+				</li>
+				<!-- /Search -->
+
+				<!-- Flag -->
+				<li class="nav-item dropdown has-arrow flag-nav"><a
+					class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
+					role="button"> <img
+						src="/billbo/resources/hrtemp/img/flags/us.png" alt="" height="20">
+						<span>English</span>
+				</a>
+					<div class="dropdown-menu dropdown-menu-right">
+						<a href="javascript:void(0);" class="dropdown-item"> <img
+							src="/billbo/resources/hrtemp/img/flags/us.png" alt=""
+							height="16"> English
+						</a> <a href="javascript:void(0);" class="dropdown-item"> <img
+							src="/billbo/resources/hrtemp/img/flags/fr.png" alt=""
+							height="16"> French
+						</a> <a href="javascript:void(0);" class="dropdown-item"> <img
+							src="/billbo/resources/hrtemp/img/flags/es.png" alt=""
+							height="16"> Spanish
+						</a> <a href="javascript:void(0);" class="dropdown-item"> <img
+							src="/billbo/resources/hrtemp/img/flags/de.png" alt=""
+							height="16"> German
+						</a>
+					</div></li>
+				<!-- /Flag -->
+
+				<!-- Notifications -->
+				<li class="nav-item dropdown"><a href="#"
+					class="dropdown-toggle nav-link" data-toggle="dropdown"> <i
+						class="fa fa-bell-o"></i> <span class="badge badge-pill">3</span>
+				</a>
+					<div class="dropdown-menu notifications">
+						<div class="topnav-dropdown-header">
+							<span class="notification-title">Notifications</span> <a
+								href="javascript:void(0)" class="clear-noti"> Clear All </a>
+						</div>
+						<div class="noti-content">
+							<ul class="notification-list">
+								<li class="notification-message"><a href="activities.html">
+										<div class="media">
+											<span class="avatar"> <img alt=""
+												src="/billbo/resources/hrtemp/img/profiles/avatar-02.jpg">
+											</span>
+											<div class="media-body">
+												<p class="noti-details">
+													<span class="noti-title">John Doe</span> added new task <span
+														class="noti-title">Patient appointment booking</span>
+												</p>
+												<p class="noti-time">
+													<span class="notification-time">4 mins ago</span>
+												</p>
+											</div>
+										</div>
+								</a></li>
+								<li class="notification-message"><a href="activities.html">
+										<div class="media">
+											<span class="avatar"> <img alt=""
+												src="/billbo/resources/hrtemp/img/profiles/avatar-03.jpg">
+											</span>
+											<div class="media-body">
+												<p class="noti-details">
+													<span class="noti-title">Tarah Shropshire</span> changed
+													the task name <span class="noti-title">Appointment
+														booking with payment gateway</span>
+												</p>
+												<p class="noti-time">
+													<span class="notification-time">6 mins ago</span>
+												</p>
+											</div>
+										</div>
+								</a></li>
+								<li class="notification-message"><a href="activities.html">
+										<div class="media">
+											<span class="avatar"> <img alt=""
+												src="/billbo/resources/hrtemp/img/profiles/avatar-06.jpg">
+											</span>
+											<div class="media-body">
+												<p class="noti-details">
+													<span class="noti-title">Misty Tison</span> added <span
+														class="noti-title">Domenic Houston</span> and <span
+														class="noti-title">Claire Mapes</span> to project <span
+														class="noti-title">Doctor available module</span>
+												</p>
+												<p class="noti-time">
+													<span class="notification-time">8 mins ago</span>
+												</p>
+											</div>
+										</div>
+								</a></li>
+								<li class="notification-message"><a href="activities.html">
+										<div class="media">
+											<span class="avatar"> <img alt=""
+												src="/billbo/resources/hrtemp/img/profiles/avatar-17.jpg">
+											</span>
+											<div class="media-body">
+												<p class="noti-details">
+													<span class="noti-title">Rolland Webber</span> completed
+													task <span class="noti-title">Patient and Doctor
+														video conferencing</span>
+												</p>
+												<p class="noti-time">
+													<span class="notification-time">12 mins ago</span>
+												</p>
+											</div>
+										</div>
+								</a></li>
+								<li class="notification-message"><a href="activities.html">
+										<div class="media">
+											<span class="avatar"> <img alt=""
+												src="/billbo/resources/hrtemp/img/profiles/avatar-13.jpg">
+											</span>
+											<div class="media-body">
+												<p class="noti-details">
+													<span class="noti-title">Bernardo Galaviz</span> added new
+													task <span class="noti-title">Private chat module</span>
+												</p>
+												<p class="noti-time">
+													<span class="notification-time">2 days ago</span>
+												</p>
+											</div>
+										</div>
+								</a></li>
+							</ul>
+						</div>
+						<div class="topnav-dropdown-footer">
+							<a href="activities.html">View all Notifications</a>
+						</div>
+					</div></li>
+				<!-- /Notifications -->
+
+				<!-- Message Notifications -->
+				<li class="nav-item dropdown"><a href="#"
+					class="dropdown-toggle nav-link" data-toggle="dropdown"> <i
+						class="fa fa-comment-o"></i> <span class="badge badge-pill">8</span>
+				</a>
+					<div class="dropdown-menu notifications">
+						<div class="topnav-dropdown-header">
+							<span class="notification-title">Messages</span> <a
+								href="javascript:void(0)" class="clear-noti"> Clear All </a>
+						</div>
+						<div class="noti-content">
+							<ul class="notification-list">
+								<li class="notification-message"><a href="${pageContext.servletContext.contextPath}/apps/chat">
+										<div class="list-item">
+											<div class="list-left">
+												<span class="avatar"> <img alt=""
+													src="/billbo/resources/hrtemp/img/profiles/avatar-09.jpg">
+												</span>
+											</div>
+											<div class="list-body">
+												<span class="message-author">Richard Miles </span> <span
+													class="message-time">12:28 AM</span>
+												<div class="clearfix"></div>
+												<span class="message-content">Lorem ipsum dolor sit
+													amet, consectetur adipiscing</span>
+											</div>
+										</div>
+								</a></li>
+								<li class="notification-message"><a href="${pageContext.servletContext.contextPath}/apps/chat">
+										<div class="list-item">
+											<div class="list-left">
+												<span class="avatar"> <img alt=""
+													src="/billbo/resources/hrtemp/img/profiles/avatar-02.jpg">
+												</span>
+											</div>
+											<div class="list-body">
+												<span class="message-author">John Doe</span> <span
+													class="message-time">6 Mar</span>
+												<div class="clearfix"></div>
+												<span class="message-content">Lorem ipsum dolor sit
+													amet, consectetur adipiscing</span>
+											</div>
+										</div>
+								</a></li>
+								<li class="notification-message"><a href="${pageContext.servletContext.contextPath}/apps/chat">
+										<div class="list-item">
+											<div class="list-left">
+												<span class="avatar"> <img alt=""
+													src="/billbo/resources/hrtemp/img/profiles/avatar-03.jpg">
+												</span>
+											</div>
+											<div class="list-body">
+												<span class="message-author"> Tarah Shropshire </span> <span
+													class="message-time">5 Mar</span>
+												<div class="clearfix"></div>
+												<span class="message-content">Lorem ipsum dolor sit
+													amet, consectetur adipiscing</span>
+											</div>
+										</div>
+								</a></li>
+								<li class="notification-message"><a href="${pageContext.servletContext.contextPath}/apps/chat">
+										<div class="list-item">
+											<div class="list-left">
+												<span class="avatar"> <img alt=""
+													src="/billbo/resources/hrtemp/img/profiles/avatar-05.jpg">
+												</span>
+											</div>
+											<div class="list-body">
+												<span class="message-author">Mike Litorus</span> <span
+													class="message-time">3 Mar</span>
+												<div class="clearfix"></div>
+												<span class="message-content">Lorem ipsum dolor sit
+													amet, consectetur adipiscing</span>
+											</div>
+										</div>
+								</a></li>
+								<li class="notification-message"><a href="${pageContext.servletContext.contextPath}/apps/chat">
+										<div class="list-item">
+											<div class="list-left">
+												<span class="avatar"> <img alt=""
+													src="/billbo/resources/hrtemp/img/profiles/avatar-08.jpg">
+												</span>
+											</div>
+											<div class="list-body">
+												<span class="message-author"> Catherine Manseau </span> <span
+													class="message-time">27 Feb</span>
+												<div class="clearfix"></div>
+												<span class="message-content">Lorem ipsum dolor sit
+													amet, consectetur adipiscing</span>
+											</div>
+										</div>
+								</a></li>
+							</ul>
+						</div>
+						<div class="topnav-dropdown-footer">
+							<a href="chat.html">View all Messages</a>
+						</div>
+					</div></li>
+				<!-- /Message Notifications -->
+
+				<li class="nav-item dropdown has-arrow main-drop"><a href="#"
+					class="dropdown-toggle nav-link" data-toggle="dropdown"> <span
+						class="user-img"><img
+							src="/billbo/resources/hrtemp/img/profiles/avatar-21.jpg" alt="">
+							<span class="status online"></span></span> <span> <!-- 해당 사원 명 -->
 					</span>
 				</a>
-				
-				<!-- Header Title -->
-                <div class="page-title-box">
-					<h3>Bill-Board Employee Management</h3>
-                </div>
-				<!-- /Header Title -->
-				
-				<a id="mobile_btn" class="mobile_btn" href="#sidebar"><i class="fa fa-bars"></i></a>
-				
-				<!-- Header Menu -->
-				<ul class="nav user-menu">
-				
-					<!-- Search -->
-					<li class="nav-item">
-						<div class="top-nav-search">
-							<a href="javascript:void(0);" class="responsive-search">
-								<i class="fa fa-search"></i>
-						   </a>
-							<form action="search.html">
-								<input class="form-control" type="text" placeholder="Search here">
-								<button class="btn" type="submit"><i class="fa fa-search"></i></button>
-							</form>
-						</div>
-					</li>
-					<!-- /Search -->
-				
-					<!-- Flag -->
-					<li class="nav-item dropdown has-arrow flag-nav">
-						<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
-							<img src="assets/img/flags/us.png" alt="" height="20"> <span>English</span>
-						</a>
-						<div class="dropdown-menu dropdown-menu-right">
-							<a href="javascript:void(0);" class="dropdown-item">
-								<img src="assets/img/flags/us.png" alt="" height="16"> English
-							</a>
-							<a href="javascript:void(0);" class="dropdown-item">
-								<img src="assets/img/flags/fr.png" alt="" height="16"> French
-							</a>
-							<a href="javascript:void(0);" class="dropdown-item">
-								<img src="assets/img/flags/es.png" alt="" height="16"> Spanish
-							</a>
-							<a href="javascript:void(0);" class="dropdown-item">
-								<img src="assets/img/flags/de.png" alt="" height="16"> German
-							</a>
-						</div>
-					</li>
-					<!-- /Flag -->
-				
-					<!-- Notifications -->
-					<li class="nav-item dropdown">
-						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-							<i class="fa fa-bell-o"></i> <span class="badge badge-pill">3</span>
-						</a>
-						<div class="dropdown-menu notifications">
-							<div class="topnav-dropdown-header">
-								<span class="notification-title">Notifications</span>
-								<a href="javascript:void(0)" class="clear-noti"> Clear All </a>
-							</div>
-							<div class="noti-content">
-								<ul class="notification-list">
-									<li class="notification-message">
-										<a href="activities.html">
-											<div class="media">
-												<span class="avatar">
-													<img alt="" src="assets/img/profiles/avatar-02.jpg">
-												</span>
-												<div class="media-body">
-													<p class="noti-details"><span class="noti-title">John Doe</span> added new task <span class="noti-title">Patient appointment booking</span></p>
-													<p class="noti-time"><span class="notification-time">4 mins ago</span></p>
-												</div>
-											</div>
-										</a>
-									</li>
-									<li class="notification-message">
-										<a href="activities.html">
-											<div class="media">
-												<span class="avatar">
-													<img alt="" src="assets/img/profiles/avatar-03.jpg">
-												</span>
-												<div class="media-body">
-													<p class="noti-details"><span class="noti-title">Tarah Shropshire</span> changed the task name <span class="noti-title">Appointment booking with payment gateway</span></p>
-													<p class="noti-time"><span class="notification-time">6 mins ago</span></p>
-												</div>
-											</div>
-										</a>
-									</li>
-									<li class="notification-message">
-										<a href="activities.html">
-											<div class="media">
-												<span class="avatar">
-													<img alt="" src="assets/img/profiles/avatar-06.jpg">
-												</span>
-												<div class="media-body">
-													<p class="noti-details"><span class="noti-title">Misty Tison</span> added <span class="noti-title">Domenic Houston</span> and <span class="noti-title">Claire Mapes</span> to project <span class="noti-title">Doctor available module</span></p>
-													<p class="noti-time"><span class="notification-time">8 mins ago</span></p>
-												</div>
-											</div>
-										</a>
-									</li>
-									<li class="notification-message">
-										<a href="activities.html">
-											<div class="media">
-												<span class="avatar">
-													<img alt="" src="assets/img/profiles/avatar-17.jpg">
-												</span>
-												<div class="media-body">
-													<p class="noti-details"><span class="noti-title">Rolland Webber</span> completed task <span class="noti-title">Patient and Doctor video conferencing</span></p>
-													<p class="noti-time"><span class="notification-time">12 mins ago</span></p>
-												</div>
-											</div>
-										</a>
-									</li>
-									<li class="notification-message">
-										<a href="activities.html">
-											<div class="media">
-												<span class="avatar">
-													<img alt="" src="assets/img/profiles/avatar-13.jpg">
-												</span>
-												<div class="media-body">
-													<p class="noti-details"><span class="noti-title">Bernardo Galaviz</span> added new task <span class="noti-title">Private chat module</span></p>
-													<p class="noti-time"><span class="notification-time">2 days ago</span></p>
-												</div>
-											</div>
-										</a>
-									</li>
-								</ul>
-							</div>
-							<div class="topnav-dropdown-footer">
-								<a href="activities.html">View all Notifications</a>
-							</div>
-						</div>
-					</li>
-					<!-- /Notifications -->
-					
-					<!-- Message Notifications -->
-					<li class="nav-item dropdown">
-						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-							<i class="fa fa-comment-o"></i> <span class="badge badge-pill">8</span>
-						</a>
-						<div class="dropdown-menu notifications">
-							<div class="topnav-dropdown-header">
-								<span class="notification-title">Messages</span>
-								<a href="javascript:void(0)" class="clear-noti"> Clear All </a>
-							</div>
-							<div class="noti-content">
-								<ul class="notification-list">
-									<li class="notification-message">
-										<a href="chat.html">
-											<div class="list-item">
-												<div class="list-left">
-													<span class="avatar">
-														<img alt="" src="assets/img/profiles/avatar-09.jpg">
-													</span>
-												</div>
-												<div class="list-body">
-													<span class="message-author">Richard Miles </span>
-													<span class="message-time">12:28 AM</span>
-													<div class="clearfix"></div>
-													<span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
-												</div>
-											</div>
-										</a>
-									</li>
-									<li class="notification-message">
-										<a href="chat.html">
-											<div class="list-item">
-												<div class="list-left">
-													<span class="avatar">
-														<img alt="" src="assets/img/profiles/avatar-02.jpg">
-													</span>
-												</div>
-												<div class="list-body">
-													<span class="message-author">John Doe</span>
-													<span class="message-time">6 Mar</span>
-													<div class="clearfix"></div>
-													<span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
-												</div>
-											</div>
-										</a>
-									</li>
-									<li class="notification-message">
-										<a href="chat.html">
-											<div class="list-item">
-												<div class="list-left">
-													<span class="avatar">
-														<img alt="" src="assets/img/profiles/avatar-03.jpg">
-													</span>
-												</div>
-												<div class="list-body">
-													<span class="message-author"> Tarah Shropshire </span>
-													<span class="message-time">5 Mar</span>
-													<div class="clearfix"></div>
-													<span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
-												</div>
-											</div>
-										</a>
-									</li>
-									<li class="notification-message">
-										<a href="chat.html">
-											<div class="list-item">
-												<div class="list-left">
-													<span class="avatar">
-														<img alt="" src="assets/img/profiles/avatar-05.jpg">
-													</span>
-												</div>
-												<div class="list-body">
-													<span class="message-author">Mike Litorus</span>
-													<span class="message-time">3 Mar</span>
-													<div class="clearfix"></div>
-													<span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
-												</div>
-											</div>
-										</a>
-									</li>
-									<li class="notification-message">
-										<a href="chat.html">
-											<div class="list-item">
-												<div class="list-left">
-													<span class="avatar">
-														<img alt="" src="assets/img/profiles/avatar-08.jpg">
-													</span>
-												</div>
-												<div class="list-body">
-													<span class="message-author"> Catherine Manseau </span>
-													<span class="message-time">27 Feb</span>
-													<div class="clearfix"></div>
-													<span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
-												</div>
-											</div>
-										</a>
-									</li>
-								</ul>
-							</div>
-							<div class="topnav-dropdown-footer">
-								<a href="chat.html">View all Messages</a>
-							</div>
-						</div>
-					</li>
-					<!-- /Message Notifications -->
-	
-					<li class="nav-item dropdown has-arrow main-drop">
-						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-							<span class="user-img"><img src="assets/img/profiles/avatar-21.jpg" alt="">
-							<span class="status online"></span></span>
-							<span><!-- 해당 사원 명 --></span>
-						</a>
-						<div class="dropdown-menu">
-							<a class="dropdown-item" href="profile.html">내 정보</a>
-							<a class="dropdown-item" href="settings.html">환경설정</a>
-							<a class="dropdown-item" href="login.html">로그아웃</a>
-						</div>
-					</li>
-				</ul>
-				<!-- /Header Menu -->
-				
-				<!-- Mobile Menu -->
-				<div class="dropdown mobile-user-menu">
-					<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
-					<div class="dropdown-menu dropdown-menu-right">
-						<a class="dropdown-item" href="profile.html">내 정보</a>
-						<a class="dropdown-item" href="settings.html">환경설정</a>
-						<a class="dropdown-item" href="login.html">로그아웃</a>
-					</div>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="profile.html">내 정보</a> <a
+							class="dropdown-item" href="settings.html">환경설정</a> <a
+							class="dropdown-item"
+							href="${pageContext.servletContext.contextPath}/member/logout">로그아웃</a>
+					</div></li>
+			</ul>
+			<!-- /Header Menu -->
+
+			<!-- Mobile Menu -->
+			<div class="dropdown mobile-user-menu">
+				<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
+					aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+				<div class="dropdown-menu dropdown-menu-right">
+					<a class="dropdown-item" href="profile.html">내 정보</a> <a
+						class="dropdown-item" href="settings.html">환경설정</a> <a
+						class="dropdown-item" href="login.html">로그아웃</a>
 				</div>
-				<!-- /Mobile Menu -->
-				
-            </div>
-			<!-- /Header -->
+			</div>
+			<!-- /Mobile Menu -->
+
+		</div>
+		<!-- /Header -->
 			
 			<!-- Sidebar -->
             <div class="sidebar" id="sidebar">
@@ -329,13 +346,13 @@
 					<div class="sidebar-menu">
 						<ul>
 							<li> 
-								<a href="index.html"><i class="la la-home"></i> <span>Back to Home</span></a>
+								<a href="${pageContext.servletContext.contextPath}"><i class="la la-home"></i> <span>Back to Home</span></a>
 							</li>
 							<li class="menu-title"><span>Chat Groups</span> <a href="#" data-toggle="modal" data-target="#add_group"><i class="fa fa-plus"></i></a></li>
 							<li> 
 								<a href="chat.html">
 									<span class="chat-avatar-sm user-img">
-										<img class="rounded-circle" alt="" src="assets/img/user.jpg">
+										<img class="rounded-circle" alt="" src="../resources/hrtemp/img/user.jpg">
 									</span> 
 									<span class="chat-user">#그룹 1</span>
 								</a>
@@ -343,7 +360,7 @@
 							<li> 
 								<a href="chat.html">
 									<span class="chat-avatar-sm user-img">
-										<img class="rounded-circle" alt="" src="assets/img/user.jpg">
+										<img class="rounded-circle" alt="" src="../resources/hrtemp/img/user.jpg">
 									</span> 
 									<span class="chat-user">#그룹 2</span>
 								</a>
@@ -351,7 +368,7 @@
 							<li> 
 								<a href="chat.html">
 									<span class="chat-avatar-sm user-img">
-										<img class="rounded-circle" alt="" src="assets/img/user.jpg">
+										<img class="rounded-circle" alt="" src="../resources/hrtemp/img/user.jpg">
 									</span> 
 									<span class="chat-user">#그룹 3</span>
 								</a>
@@ -359,7 +376,7 @@
 							<li> 
 								<a href="chat.html">
 									<span class="chat-avatar-sm user-img">
-										<img class="rounded-circle" alt="" src="assets/img/user.jpg">
+										<img class="rounded-circle" alt="" src="../resources/hrtemp/img/user.jpg">
 									</span> 
 									<span class="chat-user">#그룹 4</span>
 								</a>
@@ -368,7 +385,7 @@
 							<li>
 								<a href="chat.html">
 									<span class="chat-avatar-sm user-img">
-										<img class="rounded-circle" alt="" src="assets/img/profiles/avatar-02.jpg"><span class="status online"></span>
+										<img class="rounded-circle" alt="" src="../resources/hrtemp/img/profiles/avatar-02.jpg"><span class="status online"></span>
 									</span> 
 									<span class="chat-user">사원 1</span> <span class="badge badge-pill bg-danger">1</span>
 								</a>
@@ -376,7 +393,7 @@
 							<li>
 								<a href="chat.html">
 									<span class="chat-avatar-sm user-img">
-										<img class="rounded-circle" alt="" src="assets/img/profiles/avatar-09.jpg"><span class="status offline"></span>
+										<img class="rounded-circle" alt="" src="../resources/hrtemp/img/profiles/avatar-09.jpg"><span class="status offline"></span>
 									</span> 
 									<span class="chat-user">사원 2</span> <span class="badge badge-pill bg-danger">7</span>
 								</a>
@@ -384,7 +401,7 @@
 							<li>
 								<a href="chat.html">
 									<span class="chat-avatar-sm user-img">
-										<img class="rounded-circle" alt="" src="assets/img/profiles/avatar-10.jpg"><span class="status away"></span>
+										<img class="rounded-circle" alt="" src="../resources/hrtemp/img/profiles/avatar-10.jpg"><span class="status away"></span>
 									</span> 
 									<span class="chat-user">사원 3</span>
 								</a>
@@ -392,7 +409,7 @@
 							<li class="active">
 								<a href="chat.html">
 									<span class="chat-avatar-sm user-img">
-										<img class="rounded-circle" alt="" src="assets/img/profiles/avatar-05.jpg"><span class="status online"></span>
+										<img class="rounded-circle" alt="" src="../resources/hrtemp/img/profiles/avatar-05.jpg"><span class="status online"></span>
 									</span> 
 									<span class="chat-user">사원 4</span> <span class="badge badge-pill bg-danger">2</span>
 								</a>
@@ -420,7 +437,7 @@
 										<div class="user-details mr-auto">
 											<div class="float-left user-img">
 												<a class="avatar" href="profile.html" title="Mike Litorus">
-													<img src="assets/img/profiles/avatar-05.jpg" alt="" class="rounded-circle">
+													<img src="../resources/hrtemp/img/profiles/avatar-05.jpg" alt="" class="rounded-circle">
 													<span class="status online"></span>
 												</a>
 											</div>
@@ -488,7 +505,7 @@
 													<div class="chat chat-left">
 														<div class="chat-avatar">
 															<a href="profile.html" class="avatar">
-																<!-- 상대방의 프로필 사진 --><img alt="" src="assets/img/profiles/avatar-05.jpg">
+																<!-- 상대방의 프로필 사진 --><img alt="" src="../resources/hrtemp/img/profiles/avatar-05.jpg">
 															</a>
 														</div>
 														<div class="chat-body">
@@ -554,7 +571,7 @@
 													<div class="chat chat-left">
 														<div class="chat-avatar">
 															<a href="profile.html" class="avatar">
-															<img alt="" src="assets/img/profiles/avatar-05.jpg">
+															<img alt="" src="../resources/hrtemp/img/profiles/avatar-05.jpg">
 															</a>
 														</div>
 														<div class="chat-body">
@@ -602,20 +619,20 @@
 																	<div class="chat-img-group clearfix">
 																		<p><!-- 갯수 -->3 개의 사진 업로드</p>
 																		<a class="chat-img-attach" href="#">
-																			<img width="182" height="137" alt="" src="assets/img/placeholder.jpg">
+																			<img width="182" height="137" alt="" src="../resources/hrtemp/img/placeholder.jpg">
 																			<div class="chat-placeholder">
 																				<div class="chat-img-name"><!-- 사진 제목 -->사진제목 예시</div>
 																				<div class="chat-file-desc"><!-- 사진 크기 -->842 KB</div>
 																			</div>
 																		</a>
 																		<a class="chat-img-attach" href="#">
-																			<img width="182" height="137" alt="" src="assets/img/placeholder.jpg">
+																			<img width="182" height="137" alt="" src="../resources/hrtemp/img/placeholder.jpg">
 																			<div class="chat-placeholder">
 																				<div class="chat-img-name">842 KB</div>
 																			</div>
 																		</a>
 																		<a class="chat-img-attach" href="#">
-																			<img width="182" height="137" alt="" src="assets/img/placeholder.jpg">
+																			<img width="182" height="137" alt="" src="../resources/hrtemp/img/placeholder.jpg">
 																			<div class="chat-placeholder">
 																				<div class="chat-img-name">사진제목.jpg</div>
 																				<div class="chat-file-desc">842 KB</div>
@@ -654,7 +671,7 @@
 													<div class="chat chat-left">
 														<div class="chat-avatar">
 															<a href="profile.html" class="avatar">
-																<img alt="" src="assets/img/profiles/avatar-05.jpg">
+																<img alt="" src="../resources/hrtemp/img/profiles/avatar-05.jpg">
 															</a>
 														</div>
 														<div class="chat-body">
@@ -710,41 +727,41 @@
 																	<div class="chat-img-group clearfix">
 																		<p><!-- 갯수 -->6 개의 이미지 업로드</p>
 																		<a class="chat-img-attach" href="#">
-																			<img width="182" height="137" alt="" src="assets/img/placeholder.jpg">
+																			<img width="182" height="137" alt="" src="../resources/hrtemp/img/placeholder.jpg">
 																			<div class="chat-placeholder">
 																				<div class="chat-img-name">이미지 명.jpg</div>
 																				<div class="chat-file-desc">842 KB</div>
 																			</div>
 																		</a>
 																		<a class="chat-img-attach" href="#">
-																			<img width="182" height="137" alt="" src="assets/img/placeholder.jpg">
+																			<img width="182" height="137" alt="" src="../resources/hrtemp/img/placeholder.jpg">
 																			<div class="chat-placeholder">
 																				<div class="chat-img-name">842 KB</div>
 																			</div>
 																		</a>
 																		<a class="chat-img-attach" href="#">
-																			<img width="182" height="137" alt="" src="assets/img/placeholder.jpg">
+																			<img width="182" height="137" alt="" src="../resources/hrtemp/img/placeholder.jpg">
 																			<div class="chat-placeholder">
 																				<div class="chat-img-name">이미지 명.jpg</div>
 																				<div class="chat-file-desc">842 KB</div>
 																			</div>
 																		</a>
 																		<a class="chat-img-attach" href="#">
-																			<img width="182" height="137" alt="" src="assets/img/placeholder.jpg">
+																			<img width="182" height="137" alt="" src="../resources/hrtemp/img/placeholder.jpg">
 																			<div class="chat-placeholder">
 																				<div class="chat-img-name">이미지 명.jpg</div>
 																				<div class="chat-file-desc">842 KB</div>
 																			</div>
 																		</a>
 																		<a class="chat-img-attach" href="#">
-																			<img width="182" height="137" alt="" src="assets/img/placeholder.jpg">
+																			<img width="182" height="137" alt="" src="../resources/hrtemp/img/placeholder.jpg">
 																			<div class="chat-placeholder">
 																				<div class="chat-img-name">이미지 명.jpg</div>
 																				<div class="chat-file-desc">842 KB</div>
 																			</div>
 																		</a>
 																		<a class="chat-img-attach" href="#">
-																			<img width="182" height="137" alt="" src="assets/img/placeholder.jpg">
+																			<img width="182" height="137" alt="" src="../resources/hrtemp/img/placeholder.jpg">
 																			<div class="chat-placeholder">
 																				<div class="chat-img-name">이미지 명.jpg</div>
 																				<div class="chat-file-desc">842 KB</div>
@@ -766,7 +783,7 @@
 													<div class="chat chat-left">
 														<div class="chat-avatar">
 															<a href="profile.html" class="avatar">
-																<img alt="" src="assets/img/profiles/avatar-05.jpg">
+																<img alt="" src="../resources/hrtemp/img/profiles/avatar-05.jpg">
 															</a>
 														</div>
 														<div class="chat-body">
@@ -809,7 +826,7 @@
 													<div class="chat chat-left">
 														<div class="chat-avatar">
 															<a href="profile.html" class="avatar">
-																<img alt="" src="assets/img/profiles/avatar-05.jpg">
+																<img alt="" src="../resources/hrtemp/img/profiles/avatar-05.jpg">
 															</a>
 														</div>
 														<div class="chat-body">
@@ -828,7 +845,7 @@
 								<div class="chat-footer">
 									<div class="message-bar">
 										<div class="message-inner">
-											<a class="link attach-icon" href="#" data-toggle="modal" data-target="#drag_files"><img src="assets/img/attachment.png" alt=""></a>
+											<a class="link attach-icon" href="#" data-toggle="modal" data-target="#drag_files"><img src="../resources/hrtemp/img/attachment.png" alt=""></a>
 											<div class="message-area">
 												<div class="input-group">
 													<textarea class="form-control" placeholder="Type message..."></textarea>
@@ -861,7 +878,7 @@
 													<div class="chat chat-left">
 														<div class="chat-avatar">
 															<a href="profile.html" class="avatar">
-																<img alt="" src="assets/img/profiles/avatar-02.jpg">
+																<img alt="" src="../resources/hrtemp/img/profiles/avatar-02.jpg">
 															</a>
 														</div>
 														<div class="chat-body">
@@ -883,7 +900,7 @@
 													<div class="chat chat-left">
 														<div class="chat-avatar">
 															<a href="profile.html" class="avatar">
-																<img alt="" src="assets/img/profiles/avatar-02.jpg">
+																<img alt="" src="../resources/hrtemp/img/profiles/avatar-02.jpg">
 															</a>
 														</div>
 														<div class="chat-body">
@@ -907,7 +924,7 @@
 													<div class="chat chat-left">
 														<div class="chat-avatar">
 															<a href="profile.html" class="avatar">
-																<img alt="" src="assets/img/profiles/avatar-05.jpg">
+																<img alt="" src="../resources/hrtemp/img/profiles/avatar-05.jpg">
 															</a>
 														</div>
 														<div class="chat-body">
@@ -929,7 +946,7 @@
 													<div class="chat chat-left">
 														<div class="chat-avatar">
 															<a href="profile.html" class="avatar">
-																<img alt="" src="assets/img/profiles/avatar-02.jpg">
+																<img alt="" src="../resources/hrtemp/img/profiles/avatar-02.jpg">
 															</a>
 														</div>
 														<div class="chat-body">
@@ -959,7 +976,7 @@
 													<div class="table-content">
 														<div class="chat-profile-img">
 															<div class="edit-profile-img">
-																<img src="assets/img/profiles/avatar-02.jpg" alt="">
+																<img src="../resources/hrtemp/img/profiles/avatar-02.jpg" alt="">
 																<span class="change-img">이미지 변경</span>
 															</div>
 															<h3 class="user-name m-t-10 mb-0"><!-- 사원명 -->홍길동</h3>
@@ -970,7 +987,7 @@
 															<ul class="user-det-list">
 																<li>
 																	<span>Username:</span>
-																	<span class="float-right text-muted">johndoe</span>
+																	<span class="float-right text-muted">hong</span>
 																</li>
 																<li>
 																	<span>DOB:</span><!-- Date Of Birth -->
@@ -1189,7 +1206,7 @@
 											<a href="#">
 												<div class="media">
 													<span class="avatar align-self-center">
-														<img src="assets/img/profiles/avatar-16.jpg" alt="">
+														<img src="../resources/hrtemp/img/profiles/avatar-16.jpg" alt="">
 													</span>
 												<div class="media-body align-self-center text-nowrap">
 													<div class="user-name">사원명</div>
@@ -1205,7 +1222,7 @@
 											<a href="#">
 												<div class="media ">
 													<span class="avatar align-self-center">
-														<img src="assets/img/profiles/avatar-13.jpg" alt="">
+														<img src="../resources/hrtemp/img/profiles/avatar-13.jpg" alt="">
 													</span>
 													<div class="media-body align-self-center text-nowrap">
 														<div class="user-name">사원 1</div>
@@ -1221,7 +1238,7 @@
 											<a href="#">
 												<div class="media">
 													<span class="avatar align-self-center">
-														<img src="assets/img/profiles/avatar-02.jpg" alt="">
+														<img src="../resources/hrtemp/img/profiles/avatar-02.jpg" alt="">
 													</span>
 													<div class="media-body text-nowrap align-self-center">
 														<div class="user-name">사원 2</div>
