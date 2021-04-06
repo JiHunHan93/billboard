@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
     <head>
-        <meta charset="utf-8">
+        <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
         <meta name="description" content="Smarthr - Bootstrap Admin Template">
 		<meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
@@ -45,7 +45,7 @@
 				<!-- Logo -->
                 <div class="header-left">
                     <a href="index.html" class="logo">
-						<img src="./resources/hrtemp/img/Logo.png" width="40" height="40" alt="">
+						<img src="assets/img/Logo.png" width="40" height="40" alt="">
 					</a>
                 </div>
 				<!-- /Logo -->
@@ -86,20 +86,20 @@
 					<!-- Flag -->
 					<li class="nav-item dropdown has-arrow flag-nav">
 						<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
-							<img src="./resources/hrtemp/img/flags/us.png" alt="" height="20"> <span>English</span>
+							<img src="assets/img/flags/us.png" alt="" height="20"> <span>English</span>
 						</a>
 						<div class="dropdown-menu dropdown-menu-right">
 							<a href="javascript:void(0);" class="dropdown-item">
-								<img src="./resources/hrtemp/img/flags/us.png" alt="" height="16"> English
+								<img src="assets/img/flags/us.png" alt="" height="16"> English
 							</a>
 							<a href="javascript:void(0);" class="dropdown-item">
-								<img src="./resources/hrtemp/img/flags/fr.png" alt="" height="16"> French
+								<img src="assets/img/flags/fr.png" alt="" height="16"> French
 							</a>
 							<a href="javascript:void(0);" class="dropdown-item">
-								<img src="./resources/hrtemp/img/flags/es.png" alt="" height="16"> Spanish
+								<img src="assets/img/flags/es.png" alt="" height="16"> Spanish
 							</a>
 							<a href="javascript:void(0);" class="dropdown-item">
-								<img src="./resources/hrtemp/img/flags/de.png" alt="" height="16"> German
+								<img src="assets/img/flags/de.png" alt="" height="16"> German
 							</a>
 						</div>
 					</li>
@@ -121,7 +121,7 @@
 										<a href="activities.html">
 											<div class="media">
 												<span class="avatar">
-													<img alt="" src="./resources/hrtemp/img/profiles/avatar-02.jpg">
+													<img alt="" src="assets/img/profiles/avatar-02.jpg">
 												</span>
 												<div class="media-body">
 													<p class="noti-details"><span class="noti-title">John Doe</span> added new task <span class="noti-title">Patient appointment booking</span></p>
@@ -134,7 +134,7 @@
 										<a href="activities.html">
 											<div class="media">
 												<span class="avatar">
-													<img alt="" src="./resources/hrtemp/img/profiles/avatar-03.jpg">
+													<img alt="" src="assets/img/profiles/avatar-03.jpg">
 												</span>
 												<div class="media-body">
 													<p class="noti-details"><span class="noti-title">Tarah Shropshire</span> changed the task name <span class="noti-title">Appointment booking with payment gateway</span></p>
@@ -147,7 +147,7 @@
 										<a href="activities.html">
 											<div class="media">
 												<span class="avatar">
-													<img alt="" src="./resources/hrtemp/img/profiles/avatar-06.jpg">
+													<img alt="" src="assets/img/profiles/avatar-06.jpg">
 												</span>
 												<div class="media-body">
 													<p class="noti-details"><span class="noti-title">Misty Tison</span> added <span class="noti-title">Domenic Houston</span> and <span class="noti-title">Claire Mapes</span> to project <span class="noti-title">Doctor available module</span></p>
@@ -160,7 +160,7 @@
 										<a href="activities.html">
 											<div class="media">
 												<span class="avatar">
-													<img alt="" src="./resources/hrtemp/img/profiles/avatar-17.jpg">
+													<img alt="" src="assets/img/profiles/avatar-17.jpg">
 												</span>
 												<div class="media-body">
 													<p class="noti-details"><span class="noti-title">Rolland Webber</span> completed task <span class="noti-title">Patient and Doctor video conferencing</span></p>
@@ -173,7 +173,7 @@
 										<a href="activities.html">
 											<div class="media">
 												<span class="avatar">
-													<img alt="" src="./resources/hrtemp/img/profiles/avatar-13.jpg">
+													<img alt="" src="assets/img/profiles/avatar-13.jpg">
 												</span>
 												<div class="media-body">
 													<p class="noti-details"><span class="noti-title">Bernardo Galaviz</span> added new task <span class="noti-title">Private chat module</span></p>
@@ -208,7 +208,7 @@
 											<div class="list-item">
 												<div class="list-left">
 													<span class="avatar">
-														<img alt="" src="./resources/hrtemp/img/profiles/avatar-09.jpg">
+														<img alt="" src="assets/img/profiles/avatar-09.jpg">
 													</span>
 												</div>
 												<div class="list-body">
@@ -225,7 +225,7 @@
 											<div class="list-item">
 												<div class="list-left">
 													<span class="avatar">
-														<img alt="" src="./resources/hrtemp/img/profiles/avatar-02.jpg">
+														<img alt="" src="assets/img/profiles/avatar-02.jpg">
 													</span>
 												</div>
 												<div class="list-body">
@@ -242,7 +242,7 @@
 											<div class="list-item">
 												<div class="list-left">
 													<span class="avatar">
-														<img alt="" src="./resources/hrtemp/img/profiles/avatar-03.jpg">
+														<img alt="" src="assets/img/profiles/avatar-03.jpg">
 													</span>
 												</div>
 												<div class="list-body">
@@ -259,7 +259,7 @@
 											<div class="list-item">
 												<div class="list-left">
 													<span class="avatar">
-														<img alt="" src="./resources/hrtemp/img/profiles/avatar-05.jpg">
+														<img alt="" src="assets/img/profiles/avatar-05.jpg">
 													</span>
 												</div>
 												<div class="list-body">
@@ -276,7 +276,7 @@
 											<div class="list-item">
 												<div class="list-left">
 													<span class="avatar">
-														<img alt="" src="./resources/hrtemp/img/profiles/avatar-08.jpg">
+														<img alt="" src="assets/img/profiles/avatar-08.jpg">
 													</span>
 												</div>
 												<div class="list-body">
@@ -299,14 +299,14 @@
 	
 					<li class="nav-item dropdown has-arrow main-drop">
 						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-							<span class="user-img"><img src="./resources/hrtemp/img/profiles/avatar-21.jpg" alt="">
+							<span class="user-img"><img src="assets/img/profiles/avatar-21.jpg" alt="">
 							<span class="status online"></span></span>
-							<span><!-- í´ë¹ ì¬ì ëª --></span>
+							<span><!-- 해당 사원 명 --></span>
 						</a>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" href="profile.html">ë´ ì ë³´</a>
-							<a class="dropdown-item" href="settings.html">íê²½ì¤ì </a>
-							<a class="dropdown-item" href="login.html">ë¡ê·¸ìì</a>
+							<a class="dropdown-item" href="profile.html">내 정보</a>
+							<a class="dropdown-item" href="settings.html">환경설정</a>
+							<a class="dropdown-item" href="login.html">로그아웃</a>
 						</div>
 					</li>
 				</ul>
@@ -316,9 +316,9 @@
 				<div class="dropdown mobile-user-menu">
 					<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
 					<div class="dropdown-menu dropdown-menu-right">
-						<a class="dropdown-item" href="profile.html">ë´ ì ë³´</a>
-						<a class="dropdown-item" href="settings.html">íê²½ì¤ì </a>
-						<a class="dropdown-item" href="login.html">ë¡ê·¸ìì</a>
+						<a class="dropdown-item" href="profile.html">내 정보</a>
+						<a class="dropdown-item" href="settings.html">환경설정</a>
+						<a class="dropdown-item" href="login.html">로그아웃</a>
 					</div>
 				</div>
 				<!-- /Mobile Menu -->
@@ -334,7 +334,7 @@
 							<!-- <li class="menu-title"> 
 								<span>Main</span>
 							</li> -->
-							<!-- ì¬ì´ëë° ìë¸ë©ë´ ìì°ë ë°©í¥ì¼ë¡ ìì  -->
+							<!-- 사이드바 서브메뉴 안쓰는 방향으로 수정 -->
 							<li class="submenu">
 								<a href="employee-dashboard.html" class="sidebar-default">	
 									<i class="la la-home sidebar-icon"></i>								
@@ -494,7 +494,7 @@
 								<span>Administration</span>
 							</li>
 							<li> 
-								<a href="./resources/hrtemp.html"><i class="la la-object-ungroup"></i> <span>./resources/hrtemp</span></a>
+								<a href="assets.html"><i class="la la-object-ungroup"></i> <span>Assets</span></a>
 							</li>
 							<li class="submenu">
 								<a href="#"><i class="la la-briefcase"></i> <span> Jobs </span> <span class="menu-arrow"></span></a>
@@ -649,14 +649,14 @@
 									<thead>
 										<tr>
 											<th style="width: 30px;">#</th>
-											<th>ë¶ì ëª</th>
+											<th>부서 명</th>
 											<th class="text-right">Action</th>
 										</tr>
 									</thead>
 									<tbody>
 										<tr>
 											<td>1</td>
-											<td><a href="Business_department.html">ììë¶</a></td>
+											<td><a href="Business_department.html">영업부</a></td>
 											<td class="text-right">
                                             <div class="dropdown dropdown-action">
 													<a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
@@ -669,7 +669,7 @@
 										</tr>
 										<tr>
 											<td>2</td>
-											<td><a href="management_department.html">ê´ë¦¬ë¶</a></td>
+											<td><a href="management_department.html">관리부</a></td>
 											<td class="text-right">
                                             <div class="dropdown dropdown-action">
 													<a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
@@ -682,7 +682,7 @@
 										</tr>
 										<tr>
 											<td>3</td>
-											<td><a href="Production_department.html">ìì°ë¶</a></td>
+											<td><a href="Production_department.html">생산부</a></td>
 											<td class="text-right">
                                             <div class="dropdown dropdown-action">
 													<a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
@@ -785,21 +785,21 @@
 		<!-- /Main Wrapper -->
 		
 		<!-- jQuery -->
-        <script src="./resources/hrtemp/js/jquery-3.5.1.min.js"></script>
+        <script src="assets/js/jquery-3.5.1.min.js"></script>
 		
 		<!-- Bootstrap Core JS -->
-        <script src="./resources/hrtemp/js/popper.min.js"></script>
-        <script src="./resources/hrtemp/js/bootstrap.min.js"></script>
+        <script src="assets/js/popper.min.js"></script>
+        <script src="assets/js/bootstrap.min.js"></script>
 		
 		<!-- Slimscroll JS -->
-		<script src="./resources/hrtemp/js/jquery.slimscroll.min.js"></script>
+		<script src="assets/js/jquery.slimscroll.min.js"></script>
 		
 		<!-- Datatable JS -->
-		<script src="./resources/hrtemp/js/jquery.dataTables.min.js"></script>
-		<script src="./resources/hrtemp/js/dataTables.bootstrap4.min.js"></script>
+		<script src="assets/js/jquery.dataTables.min.js"></script>
+		<script src="assets/js/dataTables.bootstrap4.min.js"></script>
 		
 		<!-- Custom JS -->
-		<script src="./resources/hrtemp/js/app.js"></script>
+		<script src="assets/js/app.js"></script>
 		
     </body>
 </html>

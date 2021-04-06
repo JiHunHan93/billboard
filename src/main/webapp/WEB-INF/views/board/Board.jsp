@@ -1,12 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%-- <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %> --%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<meta charset="utf-8">
 <meta name="viewport"
 	content="width=device-width, initial-scale=1.0, user-scalable=0">
 <meta name="description" content="Smarthr - Bootstrap Admin Template">
@@ -14,59 +11,45 @@
 	content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
 <meta name="author" content="Dreamguys - Bootstrap Admin Template">
 <meta name="robots" content="noindex, nofollow">
-<title>Employee Dashboard - HRMS admin template</title>
+<title>2조BB-게시판/문서함</title>
 
 <!-- Favicon -->
 <link rel="shortcut icon" type="image/x-icon"
-	href="/billbo/resources/hrtemp/img/favicon.png">
+	href="assets/img/favicon.png">
 
 <!-- Bootstrap CSS -->
-<link rel="stylesheet"
-	href="/billbo/resources/hrtemp/css/bootstrap.min.css">
+<link rel="stylesheet" href="./resources/hrtemp/css/bootstrap.min.css">
 
 <!-- Fontawesome CSS -->
-<link rel="stylesheet"
-	href="/billbo/resources/hrtemp/css/font-awesome.min.css">
+<link rel="stylesheet" href="./resources/hrtemp/css/font-awesome.min.css">
 
 <!-- Lineawesome CSS -->
-<link rel="stylesheet"
-	href="/billbo/resources/hrtemp/css/line-awesome.min.css">
+<link rel="stylesheet" href="./resources/hrtemp/css/line-awesome.min.css">
+
+<!-- Datatable CSS -->
+<link rel="stylesheet" href="./resources/hrtemp/css/dataTables.bootstrap4.min.css">
 
 <!-- Main CSS -->
-<link rel="stylesheet" href="/billbo/resources/hrtemp/css/style.css">
+<link rel="stylesheet" href="./resources/hrtemp/css/style.css">
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
 			<script src="assets/js/html5shiv.min.js"></script>
 			<script src="assets/js/respond.min.js"></script>
 		<![endif]-->
-<title>Insert title here</title>
 </head>
 <body>
 	<!-- Main Wrapper -->
 	<div class="main-wrapper">
-
-		<!-- Loader -->
-		<div id="loader-wrapper">
-			<div id="loader">
-				<div class="loader-ellips">
-					<span class="loader-ellips__dot"></span> <span
-						class="loader-ellips__dot"></span> <span
-						class="loader-ellips__dot"></span> <span
-						class="loader-ellips__dot"></span>
-				</div>
-			</div>
-		</div>
-		<!-- /Loader -->
 
 		<!-- Header -->
 		<div class="header">
 
 			<!-- Logo -->
 			<div class="header-left">
-				<a href="${pageContext.servletContext.contextPath}" class="logo"> <img
-					src="/billbo/resources/hrtemp/img/Logo.png" width="40" height="40"
-					alt="">
+				<a href="${pageContext.servletContext.contextPath}" class="logo">
+					<img src="/billbo/resources/hrtemp/img/Logo.png" width="40"
+					height="40" alt="">
 				</a>
 			</div>
 			<!-- /Logo -->
@@ -244,7 +227,8 @@
 						</div>
 						<div class="noti-content">
 							<ul class="notification-list">
-								<li class="notification-message"><a href="${pageContext.servletContext.contextPath}/apps/chat">
+								<li class="notification-message"><a
+									href="${pageContext.servletContext.contextPath}/apps/chat">
 										<div class="list-item">
 											<div class="list-left">
 												<span class="avatar"> <img alt=""
@@ -260,7 +244,8 @@
 											</div>
 										</div>
 								</a></li>
-								<li class="notification-message"><a href="${pageContext.servletContext.contextPath}/apps/chat">
+								<li class="notification-message"><a
+									href="${pageContext.servletContext.contextPath}/apps/chat">
 										<div class="list-item">
 											<div class="list-left">
 												<span class="avatar"> <img alt=""
@@ -276,7 +261,8 @@
 											</div>
 										</div>
 								</a></li>
-								<li class="notification-message"><a href="${pageContext.servletContext.contextPath}/apps/chat">
+								<li class="notification-message"><a
+									href="${pageContext.servletContext.contextPath}/apps/chat">
 										<div class="list-item">
 											<div class="list-left">
 												<span class="avatar"> <img alt=""
@@ -292,7 +278,8 @@
 											</div>
 										</div>
 								</a></li>
-								<li class="notification-message"><a href="${pageContext.servletContext.contextPath}/apps/chat">
+								<li class="notification-message"><a
+									href="${pageContext.servletContext.contextPath}/apps/chat">
 										<div class="list-item">
 											<div class="list-left">
 												<span class="avatar"> <img alt=""
@@ -308,7 +295,8 @@
 											</div>
 										</div>
 								</a></li>
-								<li class="notification-message"><a href="${pageContext.servletContext.contextPath}/apps/chat">
+								<li class="notification-message"><a
+									href="${pageContext.servletContext.contextPath}/apps/chat">
 										<div class="list-item">
 											<div class="list-left">
 												<span class="avatar"> <img alt=""
@@ -372,18 +360,18 @@
 								<span>Main</span>
 							</li> -->
 						<!-- 사이드바 서브메뉴 안쓰는 방향으로 수정 -->
-						<li><a href="${pageContext.servletContext.contextPath}" class="sidebar-default">
-								<i class="la la-home sidebar-icon"></i> <!-- <span class="menu-arrow"></span> -->
-								<span class="sidebar-text">Home</span>
+						<li><a href="${pageContext.servletContext.contextPath}"
+							class="sidebar-default"> <i class="la la-home sidebar-icon"></i>
+								<!-- <span class="menu-arrow"></span> --> <span
+								class="sidebar-text">Home</span>
 						</a> <!-- <ul style="display: none;">
 									<li><a href="index.html">Admin Dashboard</a></li>
 									<li><a class="active" href="employee-dashboard.html">Employee Dashboard</a></li>
 								</ul> --></li>
 						<div class="sidebar-line"></div>
-						<li>
-						<a href="${pageContext.servletContext.contextPath}/apps" class="sidebar-default">
-								<i class="la la-cube sidebar-icon"></i> <span
-								class="sidebar-text"> Apps</span> <!-- <span class="menu-arrow"></span> -->
+						<li><a href="${pageContext.servletContext.contextPath}/apps"
+							class="sidebar-default"> <i class="la la-cube sidebar-icon"></i>
+								<span class="sidebar-text"> Apps</span> <!-- <span class="menu-arrow"></span> -->
 						</a> <!-- <ul style="display: none;">
 									<li><a href="chat.html">Chat</a></li>
 									<li class="submenu">
@@ -404,7 +392,8 @@
 						<!-- <li class="menu-title"> 
 								<span>Apps</span>
 							</li> -->
-						<li><a href="${pageContext.servletContext.contextPath}/employee"
+						<li><a
+							href="${pageContext.servletContext.contextPath}/employee"
 							class="noti-dot sidebar-default"> <i
 								class="la la-user sidebar-icon"></i> <span class="sidebar-text">
 									Employees</span> <!-- <span class="menu-arrow"></span> -->
@@ -422,14 +411,16 @@
 									<li><a href="overtime.html">Overtime</a></li>
 								</ul> --></li>
 						<div class="sidebar-line"></div>
-						<li><a href="${pageContext.servletContext.contextPath}/attendance" class="sidebar-default"> <i
+						<li><a
+							href="${pageContext.servletContext.contextPath}/attendance"
+							class="sidebar-default"> <i
 								class="la la-briefcase sidebar-icon"></i> <span
 								class="sidebar-text">Attendance</span>
 						</a></li>
 						<div class="sidebar-line"></div>
-						<li><a href="${pageContext.servletContext.contextPath}/admin" class="sidebar-default">
-								<i class="la la-key sidebar-icon"></i> <span
-								class="sidebar-text">Admin</span> <!-- <span class="menu-arrow"></span> -->
+						<li><a href="${pageContext.servletContext.contextPath}/admin"
+							class="sidebar-default"> <i class="la la-key sidebar-icon"></i>
+								<span class="sidebar-text">Admin</span> <!-- <span class="menu-arrow"></span> -->
 						</a> <!-- <ul style="display: none;">
 									<li><a href="projects.html">Projects</a></li>
 									<li><a href="tasks.html">Tasks</a></li>
@@ -440,7 +431,9 @@
 								class="la la-money sidebar-icon"></i> <span class="sidebar-text">Payroll</span>
 						</a></li>
 						<div class="sidebar-line"></div>
-						<li><a href="${pageContext.servletContext.contextPath}/information" class="sidebar-default"> <i
+						<li><a
+							href="${pageContext.servletContext.contextPath}/information"
+							class="sidebar-default"> <i
 								class="la la-building sidebar-icon"></i> <span
 								class="sidebar-text">Information</span>
 						</a></li>
@@ -637,404 +630,381 @@
 		</div>
 		<!-- /Sidebar -->
 
+
 		<!-- Page Wrapper -->
 		<div class="page-wrapper">
 
-			<!-- Page Content -->
 			<div class="content container-fluid">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="welcome-box">
-							<div class="welcome-img">
-								<img alt=""
-									src="/billbo/resources/hrtemp/img/profiles/avatar-02.jpg">
+
+				<!-- Page Header -->
+				<div class="page-header">
+					<div class="row">
+						<div class="col">
+							<h3 class="page-title">게시판</h3>
+							<ul class="breadcrumb">
+								<!-- <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li> -->
+								<li class="breadcrumb-item active">NoticeBoard</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				<!-- /Page Header -->
+
+				<div class="file-sidebar dashboard-sub-sidebar">
+					<div class="file-header justify-content-center">
+						<span><button type="button" class="btn btn-write">글쓰기</button></span>
+						<a href="javascript:void(0);" class="file-side-close"><i class="fa fa-times"></i></a>
+					</div>
+					<br>
+					<form class="file-search">
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<input type="text" class="form-control" placeholder="Search" style="width: 226px;">
+								<i class="fa fa-search board-icon"></i>
 							</div>
-							<div class="welcome-det">
-								<h3>
-									<!-- 해당 사원명 -->
-									<%-- <s:authentication property="principal.username"/> --%>
-<<<<<<< HEAD
-									${ sessionScope.authentication.getName } 님 환영합니다.
-=======
-									${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }님 환영합니다.
->>>>>>> 2f422d1f5d21838db8b04525816662261a0631a6
-								</h3>
-								<p>
-									<!-- 연월일 -->
-									2021 03 29 월
-								</p>
-							</div>
+						</div>
+					</form>
+					<div class="file-pro-list">
+						<div class="file-scroll">
+							<br>
+							<ul class="file-menu">
+								<li class="active"><a href="#">자유게시판</a></li>
+								<li><a href="#">인사게시판</a></li>
+								<li><a href="#">사내공지사항</a></li>
+								<li><a href="#">Hospital Administration</a></li>
+								<li><a href="#">Virtual Host</a></li>
+							</ul>
 						</div>
 					</div>
 				</div>
 
-				<div class="row">
-					<div class="col-lg-8 col-md-8">
-						<section class="dash-section">
-							<h1 class="dash-sec-title">오늘</h1>
-							<div class="dash-sec-content">
-								<div class="dash-info-list">
-									<a href="#" class="dash-card text-danger">
-										<div class="dash-card-container">
-											<div class="dash-card-icon">
-												<i class="fa fa-hourglass-o"></i>
-											</div>
-											<div class="dash-card-content">
-												<p>
-													<!-- 해당 사원명 -->
-													질병결근
-												</p>
-											</div>
-											<div class="dash-card-avatars">
-												<div class="e-avatar">
-													<img
-														src="/billbo/resources/hrtemp/img/profiles/avatar-09.jpg"
-														alt="">
-												</div>
-											</div>
-										</div>
-									</a>
-								</div>
+				<div class="row dashboard-sub-container">
 
-								<div class="dash-info-list">
-									<a href="#" class="dash-card">
-										<div class="dash-card-container">
-											<div class="dash-card-icon">
-												<i class="fa fa-suitcase"></i>
-											</div>
-											<div class="dash-card-content">
-												<p>
-													<!-- 해당 사원명 -->
-													부재
-												</p>
-											</div>
-											<div class="dash-card-avatars">
-												<div class="e-avatar">
-													<img
-														src="/billbo/resources/hrtemp/img/profiles/avatar-02.jpg"
-														alt="">
-												</div>
-											</div>
-										</div>
-									</a>
-								</div>
+					<div class="col-sm-12" style="height: 900px;">
+						<div class="card mb-0">
 
-								<div class="dash-info-list">
-									<a href="#" class="dash-card">
-										<div class="dash-card-container">
-											<div class="dash-card-icon">
-												<i class="fa fa-building-o"></i>
-											</div>
-											<div class="dash-card-content">
-												<p>
-													<!-- 해당 사원명 -->
-													자택근무
-												</p>
-											</div>
-											<div class="dash-card-avatars">
-												<div class="e-avatar">
-													<img
-														src="/billbo/resources/hrtemp/img/profiles/avatar-02.jpg"
-														alt="">
-												</div>
-											</div>
-										</div>
-									</a>
-								</div>
-
-							</div>
-						</section>
-
-						<section class="dash-section">
-							<h1 class="dash-sec-title">내일</h1>
-							<div class="dash-sec-content">
-								<div class="dash-info-list">
-									<div class="dash-card">
-										<div class="dash-card-container">
-											<div class="dash-card-icon">
-												<i class="fa fa-suitcase"></i>
-											</div>
-											<div class="dash-card-content">
-												<p>
-													<!-- 해당 인원수 -->
-													명 부재
-												</p>
-											</div>
-											<div class="dash-card-avatars">
-												<a href="#" class="e-avatar"><img
-													src="/billbo/resources/hrtemp/img/profiles/avatar-04.jpg"
-													alt=""></a> <a href="#" class="e-avatar"><img
-													src="/billbo/resources/hrtemp/img/profiles/avatar-08.jpg"
-													alt=""></a>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-						</section>
-
-						<section class="dash-section">
-							<h1 class="dash-sec-title">다음주</h1>
-							<div class="dash-sec-content">
-								<div class="dash-info-list">
-									<div class="dash-card">
-										<div class="dash-card-container">
-											<div class="dash-card-icon">
-												<i class="fa fa-suitcase"></i>
-											</div>
-											<div class="dash-card-content">
-												<p>
-													<!-- 해당 인원수 -->
-													명 부재 예정
-												</p>
-											</div>
-											<div class="dash-card-avatars">
-												<a href="#" class="e-avatar"><img
-													src="/billbo/resources/hrtemp/img/profiles/avatar-05.jpg"
-													alt=""></a> <a href="#" class="e-avatar"><img
-													src="/billbo/resources/hrtemp/img/profiles/avatar-07.jpg"
-													alt=""></a>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="dash-info-list">
-									<div class="dash-card">
-										<div class="dash-card-container">
-											<div class="dash-card-icon">
-												<i class="fa fa-user-plus"></i>
-											</div>
-											<div class="dash-card-content">
-												<p>
-													신입 후임자
-													<!-- 해당 요일명 -->
-													요일에 첫출근 예정
-												</p>
-											</div>
-											<div class="dash-card-avatars">
-												<div class="e-avatar">
-													<img
-														src="/billbo/resources/hrtemp/img/profiles/avatar-02.jpg"
-														alt="">
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-								<div class="dash-info-list">
-									<a href="" class="dash-card">
-										<div class="dash-card-container">
-											<div class="dash-card-icon">
-												<i class="fa fa-calendar"></i>
-											</div>
-											<div class="dash-card-content">
-												<p>
-													<!-- 해당 이벤트 ex)은행 휴무일 -->
-													국민은행 월요일 휴무
-												</p>
-											</div>
-										</div>
-									</a>
-								</div>
-							</div>
-						</section>
-					</div>
-
-					<div class="col-lg-4 col-md-4">
-						<div class="dash-sidebar">
-							<section>
-								<h5 class="dash-title">프로젝트</h5>
-								<div class="card">
-									<div class="card-body">
-										<div class="time-list">
-											<div class="dash-stats-list">
-												<h4>
-													<!-- 작업 수 -->
-													71
-												</h4>
-												<p>작업 수</p>
-											</div>
-											<div class="dash-stats-list">
-												<h4>
-													<!-- 보류 작업 수 -->
-													14
-												</h4>
-												<p>보류 작업 수</p>
-											</div>
-										</div>
-										<div class="request-btn">
-											<div class="dash-stats-list">
-												<h4>
-													<!-- 총 프로젝트 수 -->
-													2
-												</h4>
-												<p>총 프로젝트</p>
-											</div>
-										</div>
-									</div>
-								</div>
-							</section>
-							<section>
-								<h5 class="dash-title">보유 연차</h5>
-								<div class="card">
-									<div class="card-body">
-										<div class="time-list">
-											<div class="dash-stats-list">
-												<h4>
-													<!-- 사용 연차 일수 -->
-													4.5
-												</h4>
-												<p>사용 연차</p>
-											</div>
-											<div class="dash-stats-list">
-												<h4>
-													<!-- 보유 연차 일수 -->
-													12
-												</h4>
-												<p>보유 연차</p>
-											</div>
-										</div>
-										<div class="request-btn">
-											<a class="btn btn-primary" data-toggle="modal"
-												data-target="#away-select" href="#">연차 사용</a>
-										</div>
-									</div>
-								</div>
-							</section>
-							<section>
-								<h5 class="dash-title">결재 현황</h5>
-								<div class="card">
-									<div class="card-body">
-										<div class="time-list">
-											<div class="dash-stats-list">
-												<h4>
-													<!-- 승인 된 결재건 수 -->
-													5
-												</h4>
-												<p>승인됨</p>
-											</div>
-											<div class="dash-stats-list">
-												<h4>
-													<!-- 보류중인 결재건 수 -->
-													2
-												</h4>
-												<p>보류중인 결재 건</p>
-											</div>
-										</div>
-										<div class="request-btn">
-											<a class="btn btn-primary" href="#">내 결재 내역</a>
-										</div>
-									</div>
-								</div>
-							</section>
-							<section>
-								<h5 class="dash-title">다가오는 휴일</h5>
-								<div class="card">
-									<div class="card-body text-center">
-										<h4 class="holiday-title mb-0">
-											<!-- 휴일 연월일 휴일명 -->
-										</h4>
-									</div>
-								</div>
-							</section>
-						</div>
-					</div>
-				</div>
-
-			</div>
-			<!-- /Page Content -->
-
-			<!-- Away Modal -->
-			<div class="modal custom-modal fade" id="away-select" role="dialog">
-				<div class="modal-dialog modal-dialog-centered modal-lg"
-					role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title">연차 신청 양식</h5>
-							<button type="button" class="close" data-dismiss="modal"
-								aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body">
-							<div class="row">
+							<div class="card-header">
 								<div class="col-md-6">
-									<div class="card punch-status">
-										<div class="card-body">
-											<h5 class="card-title">휴가신청 양식</h5>
-											<a class="modal-sub-text">휴가</a>
-											<ul>
-												<li><a title="휴가신청서" rel="FORM" nodeid="708"
-													id="FORM_708" href="#" data-bypass="1"
-													class="modal-sub-text1">휴가신청서</a></li>
-												<li><a title="휴일근무신청서" rel="FORM" nodeid="673"
-													id="FORM_673" href="#" data-bypass="1"
-													class="modal-sub-text2">휴일근무신청서</a></li>
+									<div class="card-board-style">
+										<div class="notice-body" align="center">
+											<br>
+											<h4 class="card-title" style="width: 1255px;">게시판 홈</h4>
+											<ul class="nav nav-tabs nav-tabs-solid nav-justified"
+												style="width: 1255px;">
+												<li class="nav-item"><a class="nav-link active"
+													href="#solid-justified-tab1" data-toggle="tab">자유게시판</a></li>
+												<li class="nav-item"><a class="nav-link"
+													href="#solid-justified-tab2" data-toggle="tab">인사게시판</a></li>
+												<li class="nav-item"><a class="nav-link"
+													href="#solid-justified-tab3" data-toggle="tab">사내공지사항</a></li>
 											</ul>
+											<br>
+											<form class="file-search">
+
+												<div class="input-group" style="width: 300px; float: left;">
+													<select>
+														<option>제목</option>
+														<option>내용</option>
+														<option>통합</option>
+													</select> <input type="text" class="form-control"
+														placeholder="Search">
+													<div class="input-group-prepend">
+														<i class="fa fa-search board-icon"></i>
+													</div>
+												</div>
+
+											</form>
+
 										</div>
 									</div>
 								</div>
-								<div class="col-md-6">
-									<div class="card recent-activity">
-										<div class="card-body">
-											<h5 class="card-title">양식 미리보기</h5>
-											<ul class="modal-sub0img-area">
-												<li class="modal-sub-img1"><img
-													src="./resources/images/main/휴가 신청서.PNG"
-													class="modal-sub-img1"></li>
-												<li class="modal-sub-img2"><img
-													src="./resources/images/main/휴일근무신청서.PNG"
-													class="modal-sub-img2"></li>
-											</ul>
-										</div>
-									</div>
+							</div>
+							<div class="card-body">
+								<div class="table-responsive">
+									<table class="datatable table table-stripped mb-0">
+										<thead>
+											<tr>
+												<th><input type="checkbox"></th>
+												<th>번호</th>
+												<th>제목</th>
+												<th>작성자</th>
+												<th>작성일</th>
+												<th>조회</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td><input type="checkbox"></td>
+												<td>Tiger Nixon</td>
+												<td>System Architect</td>
+												<td>Edinburgh</td>
+												<td>61</td>
+												<td>$320,800</td>
+											</tr>
+											<tr>
+												<td><input type="checkbox"></td>
+												<td>Garrett Winters</td>
+												<td>Accountant</td>
+												<td>Tokyo</td>
+												<td>63</td>
+												<td>$170,750</td>
+											</tr>
+											<tr>
+												<td><input type="checkbox"></td>
+												<td>Ashton Cox</td>
+												<td>Junior Technical Author</td>
+												<td>San Francisco</td>
+												<td>66</td>
+												<td>$86,000</td>
+											</tr>
+											<tr>
+												<td><input type="checkbox"></td>
+												<td>Cedric Kelly</td>
+												<td>Senior Javascript Developer</td>
+												<td>Edinburgh</td>
+												<td>22</td>
+												<td>$433,060</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Airi Satou</td>
+												<td>Accountant</td>
+												<td>Tokyo</td>
+												<td>33</td>
+												<td>$162,700</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Brielle Williamson</td>
+												<td>Integration Specialist</td>
+												<td>New York</td>
+												<td>61</td>
+												<td>$372,000</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Herrod Chandler</td>
+												<td>Sales Assistant</td>
+												<td>San Francisco</td>
+												<td>59</td>
+												<td>$137,500</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Rhona Davidson</td>
+												<td>Integration Specialist</td>
+												<td>Tokyo</td>
+												<td>55</td>
+												<td>$327,900</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Colleen Hurst</td>
+												<td>Javascript Developer</td>
+												<td>San Francisco</td>
+												<td>39</td>
+												<td>$205,500</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Sonya Frost</td>
+												<td>Software Engineer</td>
+												<td>Edinburgh</td>
+												<td>23</td>
+												<td>$103,600</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Jena Gaines</td>
+												<td>Office Manager</td>
+												<td>London</td>
+												<td>30</td>
+												<td>$90,560</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Quinn Flynn</td>
+												<td>Support Lead</td>
+												<td>Edinburgh</td>
+												<td>22</td>
+												<td>$342,000</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Charde Marshall</td>
+												<td>Regional Director</td>
+												<td>San Francisco</td>
+												<td>36</td>
+												<td>$470,600</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Haley Kennedy</td>
+												<td>Senior Marketing Designer</td>
+												<td>London</td>
+												<td>43</td>
+												<td>$313,500</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Tatyana Fitzpatrick</td>
+												<td>Regional Director</td>
+												<td>London</td>
+												<td>19</td>
+												<td>$385,750</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Michael Silva</td>
+												<td>Marketing Designer</td>
+												<td>London</td>
+												<td>66</td>
+												<td>$198,500</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Paul Byrd</td>
+												<td>Chief Financial Officer (CFO)</td>
+												<td>New York</td>
+												<td>64</td>
+												<td>$725,000</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Gloria Little</td>
+												<td>Systems Administrator</td>
+												<td>New York</td>
+												<td>59</td>
+												<td>$237,500</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Bradley Greer</td>
+												<td>Software Engineer</td>
+												<td>London</td>
+												<td>41</td>
+												<td>$132,000</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Dai Rios</td>
+												<td>Personnel Lead</td>
+												<td>Edinburgh</td>
+												<td>35</td>
+												<td>$217,500</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Jenette Caldwell</td>
+												<td>Development Lead</td>
+												<td>New York</td>
+												<td>30</td>
+												<td>$345,000</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Yuri Berry</td>
+												<td>Chief Marketing Officer (CMO)</td>
+												<td>New York</td>
+												<td>40</td>
+												<td>$675,000</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Caesar Vance</td>
+												<td>Pre-Sales Support</td>
+												<td>New York</td>
+												<td>21</td>
+												<td>$106,450</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Doris Wilder</td>
+												<td>Sales Assistant</td>
+												<td>Sidney</td>
+												<td>23</td>
+												<td>$85,600</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Angelica Ramos</td>
+												<td>Chief Executive Officer (CEO)</td>
+												<td>London</td>
+												<td>47</td>
+												<td>$1,200,000</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Gavin Joyce</td>
+												<td>Developer</td>
+												<td>Edinburgh</td>
+												<td>42</td>
+												<td>$92,575</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Jennifer Chang</td>
+												<td>Regional Director</td>
+												<td>Singapore</td>
+												<td>28</td>
+												<td>$357,650</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Brenden Wagner</td>
+												<td>Software Engineer</td>
+												<td>San Francisco</td>
+												<td>28</td>
+												<td>$206,850</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Fiona Green</td>
+												<td>Chief Operating Officer (COO)</td>
+												<td>San Francisco</td>
+												<td>48</td>
+												<td>$850,000</td>
+											</tr>
+											<tr>
+												<th><input type="checkbox"></th>
+												<td>Shou Itou</td>
+												<td>Regional Marketing</td>
+												<td>Tokyo</td>
+												<td>20</td>
+												<td>$163,000</td>
+											</tr>
+										</tbody>
+									</table>
 								</div>
-								<button class="btn btn-success modal-sub-submit-btn">작성하기</button>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<!-- /Away Modal -->
 
 		</div>
-		<!-- /Page Wrapper -->
+	</div>
+	<!-- /Page Wrapper -->
 
 	</div>
 	<!-- /Main Wrapper -->
 
 	<!-- jQuery -->
-	<script src="/billbo/resources/hrtemp/js/jquery-3.5.1.min.js"></script>
+	<script src="./resources/hrtemp/js/jquery-3.5.1.min.js"></script>
 
 	<!-- Bootstrap Core JS -->
-	<script src="/billbo/resources/hrtemp/js/popper.min.js"></script>
-	<script src="/billbo/resources/hrtemp/js/bootstrap.min.js"></script>
+	<script src="./resources/hrtemp/js/popper.min.js"></script>
+	<script src="./resources/hrtemp/js/bootstrap.min.js"></script>
 
 	<!-- Slimscroll JS -->
-	<script src="/billbo/resources/hrtemp/js/jquery.slimscroll.min.js"></script>
+	<script src="./resources/hrtemp/js/jquery.slimscroll.min.js"></script>
+
+	<!-- Datatable JS -->
+	<script src="./resources/hrtemp/js/jquery.dataTables.min.js"></script>
+	<script src="./resources/hrtemp/js/dataTables.bootstrap4.min.js"></script>
 
 	<!-- Custom JS -->
-	<script src="/billbo/resources/hrtemp/js/app.js"></script>
+	<script src="./resources/hrtemp/js/app.js"></script>
+
 </body>
-
-<script>
-	$(function() {
-		$(".modal-sub-text1").click(function() {
-
-			const $t = $(this);
-
-			$(".modal-sub-img2.on").removeClass("on")
-			$(".modal-sub-img1").toggleClass("on");
-		})
-	})
-	$(function() {
-		$(".modal-sub-text2").click(function() {
-
-			const $t = $(this);
-
-			$(".modal-sub-img1.on").removeClass("on")
-			$(".modal-sub-img2").toggleClass("on");
-		})
-	})
-</script>
 </html>

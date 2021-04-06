@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sevenelite.billbo.workhour.work.model.dao.WorkDAO">
+	<resultMap id="workResult" type="WorkDTO">
+	<id column="WEEK_WORK_STATISTIC_NO" property="wSTNo"/>
+	<result column="STATISTIC_DATE" property="sTDate"/>
+	<result column="TOTAL_WORK_HOURS" property="totalWork"/>
+	<result column="TOTAL_EXTRA_WORK_HOURS" property="extraWork"/>
+	<result column="WORK_LATE_COUNT" property = "lateCount"/>
+	<result column="WORK_COUNT" property="workCount"/>
+	<result column="MEMBER_NO" property="MemNo"/>
+	</resultMap>
+	
+	<select id="selectWork" resultMap="workResult" parameterType="MemberDTO">
+		SELECT
+		         A.STATISTIC_DATE
+		       , A.TOTAL_WORK_HOURS
+		       , A.TOTAL_EXTRA_WORK_HOURS
+		       , A.WORK_LATE_COUNT
+		       , A.WORK_COUNT
+		       , A.MEMBER_NO
+		   FROM BB_WEEK_WORK_STATISTIC A;    		        
+	</select>
