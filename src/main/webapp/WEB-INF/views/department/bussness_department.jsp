@@ -1,5 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
@@ -10,30 +12,30 @@
         <title>Designation</title>
 		
 		<!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+        <link rel="shortcut icon" type="image/x-icon" href="./resources/hrtemp/img/favicon.png">
 		
 		<!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./resources/hrtemp/css/bootstrap.min.css">
 		
 		<!-- Fontawesome CSS -->
-        <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+        <link rel="stylesheet" href="./resources/hrtemp/css/font-awesome.min.css">
 		
 		<!-- Lineawesome CSS -->
-        <link rel="stylesheet" href="assets/css/line-awesome.min.css">
+        <link rel="stylesheet" href="./resources/hrtemp/css/line-awesome.min.css">
 		
 		<!-- Select2 CSS -->
-		<link rel="stylesheet" href="assets/css/select2.min.css">
+		<link rel="stylesheet" href="./resources/hrtemp/css/select2.min.css">
 		
 		<!-- Datatable CSS -->
-		<link rel="stylesheet" href="assets/css/dataTables.bootstrap4.min.css">
+		<link rel="stylesheet" href="./resources/hrtemp/css/dataTables.bootstrap4.min.css">
 		
 		<!-- Main CSS -->
-        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="./resources/hrtemp/css/style.css">
 		
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
-			<script src="assets/js/html5shiv.min.js"></script>
-			<script src="assets/js/respond.min.js"></script>
+			<script src="./resources/hrtemp/js/html5shiv.min.js"></script>
+			<script src="./resources/hrtemp/js/respond.min.js"></script>
 		<![endif]-->
     </head>
     <body>
@@ -46,7 +48,7 @@
 				<!-- Logo -->
                 <div class="header-left">
                     <a href="index.html" class="logo">
-						<img src="assets/img/Logo.png" width="40" height="40" alt="">
+						<img src="./resources/hrtemp/img/Logo.png" width="40" height="40" alt="">
 					</a>
                 </div>
 				<!-- /Logo -->
@@ -87,20 +89,20 @@
 					<!-- Flag -->
 					<li class="nav-item dropdown has-arrow flag-nav">
 						<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
-							<img src="assets/img/flags/us.png" alt="" height="20"> <span>English</span>
+							<img src="./resources/hrtemp/img/flags/us.png" alt="" height="20"> <span>English</span>
 						</a>
 						<div class="dropdown-menu dropdown-menu-right">
 							<a href="javascript:void(0);" class="dropdown-item">
-								<img src="assets/img/flags/us.png" alt="" height="16"> English
+								<img src="./resources/hrtemp/img/flags/us.png" alt="" height="16"> English
 							</a>
 							<a href="javascript:void(0);" class="dropdown-item">
-								<img src="assets/img/flags/fr.png" alt="" height="16"> French
+								<img src="./resources/hrtemp/img/flags/fr.png" alt="" height="16"> French
 							</a>
 							<a href="javascript:void(0);" class="dropdown-item">
-								<img src="assets/img/flags/es.png" alt="" height="16"> Spanish
+								<img src="./resources/hrtemp/img/flags/es.png" alt="" height="16"> Spanish
 							</a>
 							<a href="javascript:void(0);" class="dropdown-item">
-								<img src="assets/img/flags/de.png" alt="" height="16"> German
+								<img src="./resources/hrtemp/img/flags/de.png" alt="" height="16"> German
 							</a>
 						</div>
 					</li>
@@ -122,7 +124,7 @@
 										<a href="activities.html">
 											<div class="media">
 												<span class="avatar">
-													<img alt="" src="assets/img/profiles/avatar-02.jpg">
+													<img alt="" src="./resources/hrtemp/img/profiles/avatar-02.jpg">
 												</span>
 												<div class="media-body">
 													<p class="noti-details"><span class="noti-title">John Doe</span> added new task <span class="noti-title">Patient appointment booking</span></p>
@@ -135,7 +137,7 @@
 										<a href="activities.html">
 											<div class="media">
 												<span class="avatar">
-													<img alt="" src="assets/img/profiles/avatar-03.jpg">
+													<img alt="" src="./resources/hrtemp/img/profiles/avatar-03.jpg">
 												</span>
 												<div class="media-body">
 													<p class="noti-details"><span class="noti-title">Tarah Shropshire</span> changed the task name <span class="noti-title">Appointment booking with payment gateway</span></p>
@@ -148,7 +150,7 @@
 										<a href="activities.html">
 											<div class="media">
 												<span class="avatar">
-													<img alt="" src="assets/img/profiles/avatar-06.jpg">
+													<img alt="" src="./resources/hrtemp/img/profiles/avatar-06.jpg">
 												</span>
 												<div class="media-body">
 													<p class="noti-details"><span class="noti-title">Misty Tison</span> added <span class="noti-title">Domenic Houston</span> and <span class="noti-title">Claire Mapes</span> to project <span class="noti-title">Doctor available module</span></p>
@@ -161,7 +163,7 @@
 										<a href="activities.html">
 											<div class="media">
 												<span class="avatar">
-													<img alt="" src="assets/img/profiles/avatar-17.jpg">
+													<img alt="" src="./resources/hrtemp/img/profiles/avatar-17.jpg">
 												</span>
 												<div class="media-body">
 													<p class="noti-details"><span class="noti-title">Rolland Webber</span> completed task <span class="noti-title">Patient and Doctor video conferencing</span></p>
@@ -174,7 +176,7 @@
 										<a href="activities.html">
 											<div class="media">
 												<span class="avatar">
-													<img alt="" src="assets/img/profiles/avatar-13.jpg">
+													<img alt="" src="./resources/hrtemp/img/profiles/avatar-13.jpg">
 												</span>
 												<div class="media-body">
 													<p class="noti-details"><span class="noti-title">Bernardo Galaviz</span> added new task <span class="noti-title">Private chat module</span></p>
@@ -209,7 +211,7 @@
 											<div class="list-item">
 												<div class="list-left">
 													<span class="avatar">
-														<img alt="" src="assets/img/profiles/avatar-09.jpg">
+														<img alt="" src="./resources/hrtemp/img/profiles/avatar-09.jpg">
 													</span>
 												</div>
 												<div class="list-body">
@@ -226,7 +228,7 @@
 											<div class="list-item">
 												<div class="list-left">
 													<span class="avatar">
-														<img alt="" src="assets/img/profiles/avatar-02.jpg">
+														<img alt="" src="./resources/hrtemp/img/profiles/avatar-02.jpg">
 													</span>
 												</div>
 												<div class="list-body">
@@ -243,7 +245,7 @@
 											<div class="list-item">
 												<div class="list-left">
 													<span class="avatar">
-														<img alt="" src="assets/img/profiles/avatar-03.jpg">
+														<img alt="" src="./resources/hrtemp/img/profiles/avatar-03.jpg">
 													</span>
 												</div>
 												<div class="list-body">
@@ -260,7 +262,7 @@
 											<div class="list-item">
 												<div class="list-left">
 													<span class="avatar">
-														<img alt="" src="assets/img/profiles/avatar-05.jpg">
+														<img alt="" src="./resources/hrtemp/img/profiles/avatar-05.jpg">
 													</span>
 												</div>
 												<div class="list-body">
@@ -277,7 +279,7 @@
 											<div class="list-item">
 												<div class="list-left">
 													<span class="avatar">
-														<img alt="" src="assets/img/profiles/avatar-08.jpg">
+														<img alt="" src="./resources/hrtemp/img/profiles/avatar-08.jpg">
 													</span>
 												</div>
 												<div class="list-body">
@@ -300,14 +302,14 @@
 	
 					<li class="nav-item dropdown has-arrow main-drop">
 						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-							<span class="user-img"><img src="assets/img/profiles/avatar-21.jpg" alt="">
+							<span class="user-img"><img src="./resources/hrtemp/img/profiles/avatar-21.jpg" alt="">
 							<span class="status online"></span></span>
-							<span><!-- 해당 사원 명 --></span>
+							<span><!-- í´ë¹ ì¬ì ëª --></span>
 						</a>
 						<div class="dropdown-menu">
-							<a class="dropdown-item" href="profile.html">내 정보</a>
-							<a class="dropdown-item" href="settings.html">환경설정</a>
-							<a class="dropdown-item" href="login.html">로그아웃</a>
+							<a class="dropdown-item" href="profile.html">ë´ ì ë³´</a>
+							<a class="dropdown-item" href="settings.html">íê²½ì¤ì </a>
+							<a class="dropdown-item" href="login.html">ë¡ê·¸ìì</a>
 						</div>
 					</li>
 				</ul>
@@ -317,9 +319,9 @@
 				<div class="dropdown mobile-user-menu">
 					<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
 					<div class="dropdown-menu dropdown-menu-right">
-						<a class="dropdown-item" href="profile.html">내 정보</a>
-						<a class="dropdown-item" href="settings.html">환경설정</a>
-						<a class="dropdown-item" href="login.html">로그아웃</a>
+						<a class="dropdown-item" href="profile.html">ë´ ì ë³´</a>
+						<a class="dropdown-item" href="settings.html">íê²½ì¤ì </a>
+						<a class="dropdown-item" href="login.html">ë¡ê·¸ìì</a>
 					</div>
 				</div>
 				<!-- /Mobile Menu -->
@@ -335,7 +337,7 @@
 							<!-- <li class="menu-title"> 
 								<span>Main</span>
 							</li> -->
-							<!-- 사이드바 서브메뉴 안쓰는 방향으로 수정 -->
+							<!-- ì¬ì´ëë° ìë¸ë©ë´ ìì°ë ë°©í¥ì¼ë¡ ìì  -->
 							<li class="submenu">
 								<a href="employee-dashboard.html" class="sidebar-default">	
 									<i class="la la-home sidebar-icon"></i>								
@@ -495,7 +497,7 @@
 								<span>Administration</span>
 							</li>
 							<li> 
-								<a href="assets.html"><i class="la la-object-ungroup"></i> <span>Assets</span></a>
+								<a href="./resources/hrtemp.html"><i class="la la-object-ungroup"></i> <span>./resources/hrtemp</span></a>
 							</li>
 							<li class="submenu">
 								<a href="#"><i class="la la-briefcase"></i> <span> Jobs </span> <span class="menu-arrow"></span></a>
@@ -632,9 +634,9 @@
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title">부서</h3>
+								<h3 class="page-title">ë¶ì</h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.html">영업부</a></li>
+									<li class="breadcrumb-item"><a href="index.html">ììë¶</a></li>
 								</ul>
 							</div>
 							
@@ -649,64 +651,64 @@
 									<thead>
 										<tr>
 											<th style="width: 30px;">#</th>
-											<th>부서</th>
-											<th>직위</th>
-											<th>직원</th>
+											<th>ë¶ì</th>
+											<th>ì§ì</th>
+											<th>ì§ì</th>
 										</tr>
 									</thead>
 									<tbody>
 										<tr>
 											<td>1</td>
-											<td>영업부</td>
-											<td>사원</td>
+											<td>ììë¶</td>
+											<td>ì¬ì</td>
 											<td><a href="shinProfile.html">Test</a></td>
 											</td>
 										</tr>
 										<tr>
 											<td>2</td>
-											<td>영업부</td>
-											<td>대리</td>
-											<td>이대리</td>	
+											<td>ììë¶</td>
+											<td>ëë¦¬</td>
+											<td>ì´ëë¦¬</td>	
 												</div>
 											</td>
 										</tr>
 										<tr>
 											<td>3</td>
-											<td>영업부</td>
-											<td>과장</td>
-											<td>최영업</td>
+											<td>ììë¶</td>
+											<td>ê³¼ì¥</td>
+											<td>ìµìì</td>
                                            
 											</td>
 										</tr>
 										<tr>
 											<td>4</td>
-											<td>영업부</td>
-											<td>부장</td>
-											<td>한부장</td>
+											<td>ììë¶</td>
+											<td>ë¶ì¥</td>
+											<td>íë¶ì¥</td>
                                         
 											</td>
 										</tr>
 										<tr>
 											<td>5</td>
-											<td>물류팀</td>
-											<td>과장</td>
-											<td>이물류</td>
+											<td>ë¬¼ë¥í</td>
+											<td>ê³¼ì¥</td>
+											<td>ì´ë¬¼ë¥</td>
                                         
 											</td>
 										</tr>
 										<tr>
 											<td>5</td>
-											<td>물류팀</td>
-											<td>사원</td>
-											<td>김물류</td>
+											<td>ë¬¼ë¥í</td>
+											<td>ì¬ì</td>
+											<td>ê¹ë¬¼ë¥</td>
                                           
 											</td>
 										</tr>
 										<tr>
 											<td>6</td>
-											<td>물류팀</td>
-											<td>과장</td>
-											<td>김물류</td>
+											<td>ë¬¼ë¥í</td>
+											<td>ê³¼ì¥</td>
+											<td>ê¹ë¬¼ë¥</td>
                                           
 											</td>
 										</tr>
@@ -823,24 +825,24 @@
 		<!-- /Main Wrapper -->
 		
 		<!-- jQuery -->
-        <script src="assets/js/jquery-3.5.1.min.js"></script>
+        <script src="./resources/hrtemp/js/jquery-3.5.1.min.js"></script>
 		
 		<!-- Bootstrap Core JS -->
-        <script src="assets/js/popper.min.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="./resources/hrtemp/js/popper.min.js"></script>
+        <script src="./resources/hrtemp/js/bootstrap.min.js"></script>
 		
 		<!-- Slimscroll JS -->
-		<script src="assets/js/jquery.slimscroll.min.js"></script>
+		<script src="./resources/hrtemp/js/jquery.slimscroll.min.js"></script>
 		
 		<!-- Select2 JS -->
-		<script src="assets/js/select2.min.js"></script>
+		<script src="./resources/hrtemp/js/select2.min.js"></script>
 		
 		<!-- Datatable JS -->
-		<script src="assets/js/jquery.dataTables.min.js"></script>
-		<script src="assets/js/dataTables.bootstrap4.min.js"></script>
+		<script src="./resources/hrtemp/js/jquery.dataTables.min.js"></script>
+		<script src="./resources/hrtemp/js/dataTables.bootstrap4.min.js"></script>
 		
 		<!-- Custom JS -->
-		<script src="assets/js/app.js"></script>
+		<script src="./resources/hrtemp/js/app.js"></script>
 
     </body>
 </html>

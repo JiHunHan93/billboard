@@ -243,7 +243,7 @@
 						</div>
 						<div class="noti-content">
 							<ul class="notification-list">
-								<li class="notification-message"><a href="chat.html">
+								<li class="notification-message"><a href="${pageContext.servletContext.contextPath}/apps/chat">
 										<div class="list-item">
 											<div class="list-left">
 												<span class="avatar"> <img alt=""
@@ -291,7 +291,7 @@
 											</div>
 										</div>
 								</a></li>
-								<li class="notification-message"><a href="chat.html">
+								<li class="notification-message"><a href="${pageContext.servletContext.contextPath}/apps/chat">
 										<div class="list-item">
 											<div class="list-left">
 												<span class="avatar"> <img alt=""
@@ -307,7 +307,7 @@
 											</div>
 										</div>
 								</a></li>
-								<li class="notification-message"><a href="chat.html">
+								<li class="notification-message"><a href="${pageContext.servletContext.contextPath}/apps/chat">
 										<div class="list-item">
 											<div class="list-left">
 												<span class="avatar"> <img alt=""
@@ -379,7 +379,7 @@
 									<li><a class="active" href="employee-dashboard.html">Employee Dashboard</a></li>
 								</ul> --></li>
 						<div class="sidebar-line"></div>
-						<li class="submenu"><a href="#" class="sidebar-default">
+						<li class="submenu"><a href="${pageContext.servletContext.contextPath}/apps" class="sidebar-default">
 								<i class="la la-cube sidebar-icon"></i> <span
 								class="sidebar-text"> Apps</span> <!-- <span class="menu-arrow"></span> -->
 						</a> <!-- <ul style="display: none;">

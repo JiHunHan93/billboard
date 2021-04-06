@@ -74,19 +74,6 @@ public class MemberController {
 		return "member/login";
 	}
 	
-//	@PostMapping("login")
-//	public String login(@ModelAttribute MemBbDTO mem, Model model) {
-//		
-//		/* 01. 기존 DB만 갔다온 로그인 방법 */
-////		model.addAttribute("loginBbMem", memSer.loginBbMem(mem));
-//		
-//		/* 02. 스프링 시큐리티 적용 로그인 */
-//		System.out.println("입구컷인가?");
-//		model.addAttribute("loginBbMem", userSer.loadUserByUsername(mem.getEmail())); 
-//		
-//		return "mainpage/main";
-//	}
-	
 	@GetMapping("regist")
 	public String registPage() {
 		

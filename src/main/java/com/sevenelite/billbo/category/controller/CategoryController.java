@@ -1,15 +1,21 @@
-package com.sevenelite.billbo.workhour;
+package com.sevenelite.billbo.category.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+
 @Controller
 @RequestMapping("/")
-public class WorkController {
+public class CategoryController {
 	
-	@GetMapping("work")
-	public String workController() {
+	@GetMapping("/apps")
+	public String apps() {
 		
-		return "workhour/workList";
+		return "category/category-Apps";
 	}
+	
+
+	
+	
 }
