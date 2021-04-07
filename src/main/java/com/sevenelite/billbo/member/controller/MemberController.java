@@ -123,6 +123,8 @@ public class MemberController {
 	@PostMapping("login22")
 	public String login22() {
 		
+		String name = "2022.10.30";
+		
 		return "member/login22";
 	}
 	
