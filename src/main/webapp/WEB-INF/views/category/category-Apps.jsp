@@ -648,7 +648,7 @@
 												<!-- Apps 게시판 -->
 												<p class="category-text">게시판</p>
 												<i class="fas fa-chalkboard-teacher category-icon"></i>
-												<i class="fas fa-circle category-dot"><div class="category-sub-text">공지사항</div></i>
+												<i class="fas fa-circle category-dot"><a href="${pageContext.servletContext.contextPath}/board" class="category-sub-text">공지사항</a></i>
 												<i class="fas fa-circle category-dot"><div class="category-sub-text">인사관리 게시판</div></i>
 												<i class="fas fa-circle category-dot"><div class="category-sub-text">근태관리 게시판</div></i>
 												<!-- Admin 인사고과 -->

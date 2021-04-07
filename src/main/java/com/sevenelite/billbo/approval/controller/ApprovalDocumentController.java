@@ -17,5 +17,21 @@ public class ApprovalDocumentController {
 		return "approval/main";
 	}
 	
+	@GetMapping("drafting")
+	public String draftingMagin() {
+		
+		System.out.println("가즈아");
+		
+		return "approval/drafting";
+	}
+	
+	
+	@GetMapping("ajax")
+	public String ajaxMain() {
+		
+		System.out.println("가즈아 ajax");
+		
+		return "approval/ajax";
+	}
 	
 }
