@@ -14,5 +14,16 @@ public class BoardController {
 		
 		return "board/Board";
 	}
+	
+	@GetMapping("/board/insert")
+	public String boardInsert() {
+		
+		return "board/BoardInsert";
+	}
+	@GetMapping("/board/modify")
+	public String boardModify() {
+		
+		return "board/BoardModify";
+	}
 
 }
