@@ -1,5 +1,7 @@
 package com.sevenelite.billbo.profile.model.dto;
 
+import java.util.Date;
+
 public class ArmyDTO {
 	
 	private int no;
@@ -7,21 +9,23 @@ public class ArmyDTO {
 	private String army_class;
 	private String service_num;
 	private String discharge;
-	private int date;
+	private java.util.Date start;
+	private java.util.Date end;
 	private int reason;
 	private int member_no;
 	
 	public ArmyDTO() {}
 
-	public ArmyDTO(int no, String branch, String army_class, String service_num, String discharge, int date, int reason,
-			int member_no) {
+	public ArmyDTO(int no, String branch, String army_class, String service_num, String discharge, Date start, Date end,
+			int reason, int member_no) {
 		super();
 		this.no = no;
 		this.branch = branch;
 		this.army_class = army_class;
 		this.service_num = service_num;
 		this.discharge = discharge;
-		this.date = date;
+		this.start = start;
+		this.end = end;
 		this.reason = reason;
 		this.member_no = member_no;
 	}
@@ -29,8 +33,8 @@ public class ArmyDTO {
 	@Override
 	public String toString() {
 		return "ArmyDTO [no=" + no + ", branch=" + branch + ", army_class=" + army_class + ", service_num="
-				+ service_num + ", discharge=" + discharge + ", date=" + date + ", reason=" + reason + ", member_no="
-				+ member_no + "]";
+				+ service_num + ", discharge=" + discharge + ", start=" + start + ", end=" + end + ", reason=" + reason
+				+ ", member_no=" + member_no + "]";
 	}
 
 	public int getNo() {
@@ -73,12 +77,20 @@ public class ArmyDTO {
 		this.discharge = discharge;
 	}
 
-	public int getDate() {
-		return date;
+	public Date getStart() {
+		return start;
 	}
 
-	public void setDate(int date) {
-		this.date = date;
+	public void setStart(Date start) {
+		this.start = start;
+	}
+
+	public Date getEnd() {
+		return end;
+	}
+
+	public void setEnd(Date end) {
+		this.end = end;
 	}
 
 	public int getReason() {
@@ -97,5 +109,4 @@ public class ArmyDTO {
 		this.member_no = member_no;
 	}
 
-		
-}
+	}

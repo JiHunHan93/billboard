@@ -35,12 +35,20 @@
 <!-- Main CSS -->
 <link rel="stylesheet" href="/billbo/resources/hrtemp/css/style.css">
 
+<!-- 지훈 CSS -->
+<link rel="stylesheet" href="/billbo/resources/jihunhan/css/approval.css">
+
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
 			<script src="assets/js/html5shiv.min.js"></script>
 			<script src="assets/js/respond.min.js"></script>
 		<![endif]-->
 <title>Insert title here</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<!-- 모달 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+<!-- 모달 끝 -->
 </head>
 <body>
 	<!-- Main Wrapper -->
@@ -638,635 +646,579 @@
 		
 		<!-- 사이드 메뉴 안으로 들어감 -->
 		<!-- Page Wrapper -->
+		<div class="page-wrapper">
+
+			<!-- Page Content -->
+			<div class="content container-fluid">
 		
-			<div class="gnb"><header class="go_header go_header_2row go_header_advanced">
-<span class="wrap_btn_list">   <a class="btn_list" data-expend="">       <span class="wrap_ic_gnb_adv">           <span class="ic_gnb_adv menu"></span>       </span>   </a></span>
-<h1 class="logo" id="advanced_logo">
-    <a href="/app/home" data-bypass="">
-        <img class="logo" src="/resources/images/logo_do.png">
-    </a>
-</h1>
-<nav id="menu-container" style="height: auto; width: 1481px;"><ul id="main-menu"><li class="" data-groupid="14"><a href="/app/home" data-bypass=""><span class="menu" title="홈">홈</span></a></li><li class="on" data-groupid="26" data-active="Y"><a href="/app/approval" data-bypass=""><span class="menu" title="전자결재">전자결재</span></a></li><li class="" data-groupid="29"><a href="/app/ehr" data-bypass=""><span class="menu" title="근태관리">근태관리</span></a></li><li class="" data-groupid="18"><a href="/app/calendar" data-bypass=""><span class="menu" title="캘린더">캘린더</span></a></li><li class="" data-groupid="28"><a href="/app/works" data-bypass=""><span class="menu" title="Works">Works</span></a></li><li class="" data-groupid="15"><a href="/app/mail" data-bypass=""><span class="menu" title="메일">메일</span></a></li><li class="" data-groupid="20"><a href="/app/community" data-bypass=""><span class="menu" title="커뮤니티">커뮤니티</span></a></li><li class="" data-groupid="19"><a href="/app/board" data-bypass=""><span class="menu" title="게시판">게시판</span></a></li><li class="" data-groupid="578"><a href="/app/docs" data-bypass=""><span class="menu" title="문서관리">문서관리</span></a></li><li class="" data-groupid="21"><a href="/app/asset" data-bypass=""><span class="menu" title="예약">예약</span></a></li><li class="" data-groupid="16"><a href="/app/contact" data-bypass=""><span class="menu" title="주소록">주소록</span></a></li><li class="" data-groupid="23"><a href="/app/report" data-bypass=""><span class="menu" title="보고">보고</span></a></li><li class="" data-groupid="22"><a href="/app/survey" data-bypass=""><span class="menu" title="설문">설문</span></a></li><li class="" data-groupid="25"><a href="/app/todo" data-bypass=""><span class="menu" title="ToDO+">ToDO+</span></a></li><li class="" data-groupid="17"><a href="/app/webfolder" data-bypass=""><span class="menu" title="자료실">자료실</span></a></li><li class="" data-groupid="710"><a href="https://mydaouoffice.channel.io/" data-bypass=""><span class="menu" title="채팅문의 바로가기 ▶">채팅문의 바로가기 ▶</span></a></li><li class="" data-groupid="711"><a href="https://tour.daouoffice.com/app/works/applet/845/home" data-bypass=""><span class="menu" title="(Works앱)채용관리">(Works앱)채용관리</span></a></li></ul></nav>
-<a class="btn_oganization" data-org="">   <span class="wrap_ic_gnb_adv">       <span class="ic_gnb_adv oganization"></span>   </span>   <span class="txt">조직도</span></a>
-</header>
-<section class="my_info snb" id="myInfo"><div class="wrap_docare"><a href="" class="btn_docare"><span class="ic_gnb ic_docare"></span><span class="txt">고객케어 라운지</span><span class="gnb_bar"></span></a></div>
-    <div class="profile">
-        <span class="photo" data-setting="">
-            <a href="#" class="btn-config" data-bypass="">
-                <img id="sessionThumbnail" src="/thumb/user/small/3493-17799" title="김지연 님" alt="김지연 님">
-            </a>
-        </span>
-    </div>
-    <ul class="ctrl">
-        <li id="top_notification">
-            <a href="#" class="btn_noti btn-noti" title="알림" data-bypass="">
-                <span id="noti-count-badge" class="badge noti" style="display: inline-block;">4</span>
-            </a>
-        </li>
-        
-    </ul>
-</section></div>
-	<div class="go_body go_renew">
-	    <div class="go_side" id="side" style="padding-bottom: 55px;"><!-- 사이드 바 기본 템플릿 -->
-    <section class="gnb_title">
-        <h1><a id="apprHome">전자결재</a></h1>
-    </section>
-<!-- 글 쓰기 -->
-<section class="function">
-    <a class="btn_function" id="writeBtn" data-bypass=""><span class="ic_side ic_app_appr"></span><span class="txt">새 결재 진행</span></a>
-</section>
-<!-- 글 쓰기 -->
+				<div class="go_body go_renew">
+				    <div class="go_side" id="side" style="padding-bottom: 55px;"><!-- 사이드 바 기본 템플릿 -->
+			    <section class="gnb_title">
+			        <h1><a id="apprHome">전자결재</a></h1>
+			    </section>
+			<!-- 글 쓰기 -->
+			<section class="function">
+			    <a href="drafting.html" class="btn_function" id="writeBtn" data-bypass=""><span class="ic_side ic_app_appr"></span><span class="txt">새 결재 진행</span></a>
+			</section>
+<button class="btn btn-default" id="popbutton">모달출력버튼</button><br/> <div class="modal fade"> <div class="modal-dialog"> <div class="modal-content"> <!-- remote ajax call이 되는영역 --> </div> </div> </div>
 
-<!-- 즐겨찾기  -->
-<section id="favoriteSide" class="lnb"><!-- 사이드 바 템플릿, 즐겨찾기 부분 (수정 전) -->
+			<!-- 글 쓰기 -->
+			<script>
+			$("#popbutton").click(function(){
+				
+				$('div.modal').modal({href : 'ajax.html'}); 
+			
+			});
 
-<h1 class="star ">
-	<ins class="ic"></ins>
-	<span class="ic_side ic_hide_up" title="접기" data-slide="true"></span>
-	<a class="txt" data-role="button" data-bypass="">자주 쓰는 양식</a>
-	<span class="btn_wrap">
-        <span class="btn_ic_list_reorder">
-            <span class="ic_side ic_list_reorder" title="편집"></span>
-        </span>
-	</span>
-</h1>
-<ul class="side_depth">
-	<li class="appr">
-		<p class="title">
-			<a class="go_boards" data-navi="favorite" data-deptid="130" data-formid="740" data-id="60" title="(신규)휴가신청-연차관리연동" data-bypass="">
-			<ins class="ic"></ins><span class="txt">(신규)휴가신청-연차관리연동</span></a>
-		</p>
-	</li>
-	<li class="appr">
-		<p class="title">
-			<a class="go_boards" data-navi="favorite" data-deptid="130" data-formid="750" data-id="75" title="(신규)연장근무신청-근태관리연동" data-bypass="">
-			<ins class="ic"></ins><span class="txt">(신규)연장근무신청-근태관리연동</span></a>
-		</p>
-	</li>
-	<li class="appr">
-		<p class="title">
-			<a class="go_boards" data-navi="favorite" data-deptid="130" data-formid="708" data-id="90" title="휴가신청서" data-bypass="">
-			<ins class="ic"></ins><span class="txt">휴가신청서</span></a>
-		</p>
-	</li>
-</ul></section>
-<!-- //즐겨찾기   -->
-
-<!-- side : 전자결재 -->
-<!-- <section class="function"> -->
-<!--    <a class="btn_function" href="#"><span class="ic_side ic_app_bbs"></span><span class="txt">새 결재 등록</span></a> -->
-<!-- </section> -->
-<section id="apprSide" class="lnb">
-    <h1 class="approval ">
-        <ins class="ic"></ins>
-        <span class="ic_side ic_hide_up" title=" 접기" data-slide="true"></span>
-        <a class="txt" data-role="button" data-bypass="">결재하기</a>
-    </h1>
-    <ul class="side_depth">
-        <li class="appr_standby" data-writable="true">
-            <p class="title">
-                <a class="go_boards" data-navi="todo" data-bypass="">
-                    <ins class="ic"></ins><span class="txt" title="결재 대기 문서">결재 대기 문서</span> <span class="num"></span>
-                </a>
-            </p>
-        </li>               
-        <li class="appr_inbox" data-writable="true">
-            <p class="title">
-                <a class="go_boards" data-navi="todoreception" data-bypass="">
-                    <ins class="ic"></ins><span class="txt" title="결재 수신 문서">결재 수신 문서</span> <span class="num"></span>
-                </a>
-            </p>
-        </li>    
-        <li class="appr_cc" data-writable="true">
-            <p class="title">
-                <a class="go_boards" data-navi="todoviewer" data-bypass="">
-                    <ins class="ic"></ins><span class="txt" title="참조/열람 대기 문서">참조/열람 대기 문서</span> <span class="num"></span>
-                </a>
-            </p>
-        </li>               
-        <li class="appr_expected" data-writable="true">
-            <p class="title">
-                <a class="go_boards" data-navi="upcoming" data-bypass="">
-                    <ins class="ic"></ins><span class="txt" title="결재 예정 문서">결재 예정 문서</span> <span class="num">1</span>
-                </a>
-            </p>
-        </li>
-    </ul>   
-</section>
- 
- <!-- 개인 문서함 -->
-<section id="userDocSide" class="lnb">
-    <h1 class="user ">
-        <ins class="ic"></ins>
-        <span class="ic_side ic_hide_up" title="접기" data-slide="true"></span>
-        <a class="txt" title="개인 문서함" data-role="button" data-bypass="">개인 문서함</a>
-        <span class="btn_wrap">
-            <span btn-type="userAdmin" class="ic_side ic_side_setting" title=""></span>
-        </span>
-    </h1>
-    <ul class="side_depth">
-
-    	<li class="delimiter">
-			<p class="title">
-			<ins class="ic"></ins><span class="txt" title="기본 문서함">&lt;기본 문서함&gt;</span>
-			</p>
-		</li>
-        <li class="appr_draft" data-writable="true">
-            <p class="title">
-                <a class="go_boards" data-navi="draft" data-bypass="">
-                    <ins class="ic"></ins><span class="txt" title="기안 문서함">기안 문서함</span>
-                </a>
-            </p>
-        </li>               
-        <li class="appr_temporarily" data-writable="true">
-            <p class="title">
-                <a class="go_boards" data-navi="tempsave" data-bypass="">
-                    <ins class="ic"></ins><span class="txt" title="임시 저장함">임시 저장함</span>
-                </a>
-            </p>
-        </li>               
-        <li class="appr_sign" data-writable="true">
-            <p class="title">
-                <a class="go_boards" data-navi="approve" data-bypass="">
-                    <ins class="ic"></ins><span class="txt" title="결재 문서함">결재 문서함</span>
-                </a>
-            </p>
-        </li>
-        <li class="appr_cc" data-writable="true">
-            <p class="title">
-                <a class="go_boards" data-navi="viewer" data-bypass="">
-                    <ins class="ic"></ins><span class="txt" title="참조/열람 문서함">참조/열람 문서함</span>
-                </a>
-            </p>
-        </li>
-        <li class="appr_inbox" data-writable="true">
-            <p class="title">
-                <a class="go_boards" data-navi="reception" data-bypass="">
-                    <ins class="ic"></ins><span class="txt" title="수신 문서함">수신 문서함</span>
-                </a>
-            </p>
-        </li>
-        <li class="appr_send" data-writable="true">
-            <p class="title">
-                <a class="go_boards" data-navi="send" data-bypass="">
-                    <ins class="ic"></ins><span class="txt" title="발송 문서함">발송 문서함</span>
-                </a>
-            </p>
-        </li>
-        <li class="appr" data-writable="true">
-            <p class="title">
-                <a class="go_boards" data-navi="userofficial" data-bypass="">
-                    <ins class="ic"></ins><span class="txt" title="공문 문서함">공문 문서함</span>
-                </a>
-            </p>
-        </li>
-        
+			
+			
+			
+			
+				$("#writeBtn").click(function(event) {
+					console.log("안녕");
+					/* location.href="${ pageContext.servletContext.contextPath }/approval/drafting"; */
+					event.preventDefault();
+					  this.blur(); // Manually remove focus from clicked link.
+					  $.get(this.href, function(html) {
+					    $(html).appendTo('body').modal();
+					});
+				});
+			</script>
+			<a href="ajax.html" id="manual-ajax">second example</a><br>
+			<a href="ajax.html" rel="modal:open">example</a><br>
+			<script>
+			/* $('#manual-ajax').click(function() {
+				
+				var url = "ajax";
+				
+				  $.this.load(url, function() {
+					  $('#manual-ajax').modal("show"); 
+				  });
+				}); */
+			
+			$('#manual-ajax').click(function(event) {
+					event.preventDefault();
+				    console.log(this.href);
+				    $('div.modal').modal({href : 'ajax.html'});
+				   /*  $('div.modal').modal({remote : 'layer.html'}); */
+				    
+				    /* (this.href).appendTo('body').modal(); */
+				  /* event.preventDefault();
+				  this.blur(); // Manually remove focus from clicked link.
+				  $.get(this.href, function(html) {
+				    $(html).appendTo('body').modal();
+				    console.log(this.href);
+				  }); */
+				});
+			</script>
+			<!-- side : 전자결재 -->
+			<!-- <section class="function"> -->
+			<!--    <a class="btn_function" href="#"><span class="ic_side ic_app_bbs"></span><span class="txt">새 결재 등록</span></a> -->
+			<!-- </section> -->
+			<section id="apprSide" class="lnb">
+			    <h1 class="approval ">
+			        <ins class="ic"></ins>
+			        <span class="ic_side ic_hide_up" title=" 접기" data-slide="true"></span>
+			        <a class="txt" data-role="button" data-bypass="">결재하기</a>
+			    </h1>
+			    <ul class="side_depth">
+			        <li class="appr_standby" data-writable="true">
+			            <p class="title">
+			                <a class="go_boards" data-navi="todo" data-bypass="">
+			                    <ins class="ic"></ins><span class="txt" title="결재 대기 문서">결재 대기 문서</span> <span class="num"></span>
+			                </a>
+			            </p>
+			        </li>               
+			        <li class="appr_inbox" data-writable="true">
+			            <p class="title">
+			                <a class="go_boards" data-navi="todoreception" data-bypass="">
+			                    <ins class="ic"></ins><span class="txt" title="결재 수신 문서">결재 수신 문서</span> <span class="num"></span>
+			                </a>
+			            </p>
+			        </li>    
+			        <li class="appr_cc" data-writable="true">
+			            <p class="title">
+			                <a class="go_boards" data-navi="todoviewer" data-bypass="">
+			                    <ins class="ic"></ins><span class="txt" title="참조/열람 대기 문서">참조/열람 대기 문서</span> <span class="num"></span>
+			                </a>
+			            </p>
+			        </li>               
+			        <li class="appr_expected" data-writable="true">
+			            <p class="title">
+			                <a class="go_boards" data-navi="upcoming" data-bypass="">
+			                    <ins class="ic"></ins><span class="txt" title="결재 예정 문서">결재 예정 문서</span> <span class="num">1</span>
+			                </a>
+			            </p>
+			        </li>
+			    </ul>   
+			</section>
+			 
+			 <!-- 개인 문서함 -->
+			<section id="userDocSide" class="lnb">
+			    <h1 class="user ">
+			        <ins class="ic"></ins>
+			        <span class="ic_side ic_hide_up" title="접기" data-slide="true"></span>
+			        <a class="txt" title="개인 문서함" data-role="button" data-bypass="">개인 문서함</a>
+			        <span class="btn_wrap">
+			            <span btn-type="userAdmin" class="ic_side ic_side_setting" title=""></span>
+			        </span>
+			    </h1>
+			    <ul class="side_depth">
+			
+			    	<li class="delimiter">
+						<p class="title">
+						<ins class="ic"></ins><span class="txt" title="기본 문서함">&lt;기본 문서함&gt;</span>
+						</p>
+					</li>
+			        <li class="appr_draft" data-writable="true">
+			            <p class="title">
+			                <a class="go_boards" data-navi="draft" data-bypass="">
+			                    <ins class="ic"></ins><span class="txt" title="기안 문서함">기안 문서함</span>
+			                </a>
+			            </p>
+			        </li>               
+			        <li class="appr_sign" data-writable="true">
+			            <p class="title">
+			                <a class="go_boards" data-navi="approve" data-bypass="">
+			                    <ins class="ic"></ins><span class="txt" title="결재 문서함">결재 문서함</span>
+			                </a>
+			            </p>
+			        </li>
+			        <li class="appr_cc" data-writable="true">
+			            <p class="title">
+			                <a class="go_boards" data-navi="viewer" data-bypass="">
+			                    <ins class="ic"></ins><span class="txt" title="참조/열람 문서함">참조/열람 문서함</span>
+			                </a>
+			            </p>
+			        </li>
+			        <li class="appr_inbox" data-writable="true">
+			            <p class="title">
+			                <a class="go_boards" data-navi="reception" data-bypass="">
+			                    <ins class="ic"></ins><span class="txt" title="수신 문서함">수신 문서함</span>
+			                </a>
+			            </p>
+			        </li>
+			        <li class="appr_send" data-writable="true">
+			            <p class="title">
+			                <a class="go_boards" data-navi="send" data-bypass="">
+			                    <ins class="ic"></ins><span class="txt" title="발송 문서함">발송 문서함</span>
+			                </a>
+			            </p>
+			        </li>
+			        
+					
+			    </ul>   
+			</section>
+			
+			<!-- 부서 문서함  -->
+			<section id="deptDocfolderSide" class="lnb">
+			    <h1 class="org ">
+			        <ins class="ic"></ins>
+			        <span class="ic_side ic_hide_up" title="접기" data-slide="true"></span>
+			        <a class="txt" title="부서 문서함" data-role="button" data-bypass="">부서 문서함</a>
+			    </h1>
+			    <ul class="side_depth"><!--data_display_control-->
+			<li class="org" data-deptid="">
+				<p class="title">
+					<a>
+						<ins class="ic"></ins><span class="txt" title="영업팀">영업팀</span>
+					</a>
+				</p>
+				<span class="btn_wrap" title="">
+					<span btn-type="deptAdmin" data-deptid="130" class="ic_side ic_side_setting" title="부서 문서함 관리"></span>
+				</span>
+				<ul class="data_set" data-deptid="130">
+					<li class="delimiter">
+						<p class="title">
+						<ins class="ic"></ins><span class="txt" title="기본 문서함">&lt;기본 문서함&gt;</span>
+						</p>
+					</li>
+					<li class="appr_compl">
+			            <p class="title">
+			                <a class="go_boards" data-deptid="130" data-navi="deptdraft" data-bypass="">
+			                    <ins class="ic"></ins><span class="txt" title="기안 완료함">기안 완료함</span>
+			                </a>
+			            </p>
+			        </li>
+			        <li class="appr_cc">
+			            <p class="title">
+			                <a class="go_boards" data-deptid="130" data-navi="deptreference" data-bypass="">
+			                    <ins class="ic"></ins><span class="txt" title="부서 참조함">부서 참조함</span>
+			                </a>
+			            </p>
+			        </li>
+					
+				</ul>
+			</li>
+			</ul>
+			</section>
+			<!-- //부서 문서함   -->
+			<div class="bar"></div>
+			<!-- // side : 전자결재 -->
+			
+			</div>
+				    <div class="go_content go_renew" id="content"><header class="content_top"><h1>전자결재 홈</h1>
+			<section class="combine_search">
+				<div class="c_search_wrap"><!--focus되면 "search_focus" multi class로 추가해주세요.-->
+					<select class="search_op" id="searchType">
+						<option value="appSearch">전자결재</option>
+						<option value="totalSearch">통합검색</option>
+					</select>
+					<input class="c_search" type="text" id="search-keyword" name="search_keyword" value="" placeholder="검색">
+					<a class="c_btn_detail" id="btn_DetailSearch" title="상세검색"><span class="txt">상세</span><span class="ic ic_cs_detail_arrow  "></span></a>
+					<input class="btn_c_search" type="button" id="btn-search" value="검색" title="검색">
+				</div>
+			</section>
+			</header>
+			<div class="content_page dashboard_survey">
+			    <div class="dr_wrapper" id="home_approval_waiting_doclist">
+			        <div class="dashboard_box"><p class="desc">결재할 문서가 없습니다.</p></div>
+			    </div>
+			
+			    <div class="dr_wrapper" id="home_reception_waiting_doclist" style="display:none">
+			        <h1 class="s_title">접수 대기 문서
+			            <span class="btn_wrap">
+			                 <span class="ic ic_info btn-toggle-desc">
+			                     <span class="layer_tail tooltip-desc" style="display:none;">
+			                         <i class="ic ic_tail"></i>
+			                         <div>최근에 수신된 시간순서대로, 최대 5개의 목록을 표시합니다.</div>
+			                     </span>
+			                  </span>
+			            </span>
+			        </h1>
+			        <div class="dataTables_wrapper">
+			        <div><table class="type_normal list_approval">
+				<thead>
+					<tr>
+			            <th id="header_received_at" class="sorting_disabled hp date"><span class="title_sort">수신일<ins class="ic"></ins><span class="selected"></span></span></th>
+						<th id="header_form_name" class="sorting_disabled doc"><span class="title_sort">결재양식<ins class="ic"></ins></span></th>
+			            <th id="header_emergency" class="sorting_disabled doc_emergency"><span class="title_sort">긴급<ins class="ic"></ins></span></th>
+						<th id="header_title" class="sorting_disabled subject"><span class="title_sort">제목<ins class="ic"></ins></span></th>
+						<th id="header_attach" class="sorting_disabled attach"><span class="title_sort">첨부</span></th>
+						<th id="header_doc_status" class="sorting_disabled state_wrap"><span class="title_sort">결재상태</span></th>
+					</tr>
+				</thead>
+				<tbody><tr style="display:">
+			    <td colspan="6">
+			        <p class="data_null">
+				       <span class="ic_data_type ic_no_contents"></span>
+				       <span class="txt">문서가 없습니다.</span>
+			        </p>
+			    </td>
+			</tr></tbody>
+			</table>
+			</div></div>
+			    </div>
+			
+			    <div class="dr_wrapper" id="home_drafted_doclist">
+			        <h1 class="s_title">기안 진행 문서
+			            <span class="btn_wrap">
+			                 <span class="ic ic_info btn-toggle-desc">
+			                     <span class="layer_tail tooltip-desc" style="display:none;">
+			                         <i class="ic ic_tail"></i>
+			                         <div>현재 진행중인 기안문서 5개를, 최근 등록 순서대로 표시합니다.</div>
+			                     </span>
+			                  </span>
+			            </span>
+			        </h1>
+			        <div class="dataTables_wrapper">
+			        <div><table class="type_normal list_approval">
+				<thead>
+					<tr>
+						<th id="header_drafted_at" class="sorting_disabled hp date"><span class="title_sort">기안일<ins class="ic"></ins><span class="selected"></span></span></th>
+						<th id="header_form_name" class="sorting_disabled doc"><span class="title_sort">결재양식<ins class="ic"></ins></span></th>
+			            <th id="header_emergency" class="sorting_disabled doc_emergency"><span class="title_sort">긴급<ins class="ic"></ins></span></th>
+						<th id="header_title" class="sorting_disabled subject"><span class="title_sort">제목<ins class="ic"></ins></span></th>
+						<th id="header_attach" class="sorting_disabled attach"><span class="title_sort">첨부</span></th>
+						<th id="header_doc_status" class="sorting_disabled state_wrap"><span class="title_sort">결재상태</span></th>
+					</tr>
+				</thead>
+				<tbody><tr>
+			<td class="date first"><span class="txt">2021-03-30</span></td>
+			
+			
+			
+			
+			
+			<td class="division"><span class="txt">해외출장신청</span></td>
+			<td class="doc_emergency">
+			</td>
+			<td class="subject">
+			    <a><span class="txt">해외출장신청</span></a>
+			    <span class="btn_wrap">
+			        <a class="popup"><span class="ic_classic ic_blank" title="팝업보기"></span></a>
+			        <a><span class="wrap_ic" title="댓글">
+			            <span class="ic_classic ic_reply"></span>
+			            <span class="num">0</span>
+			        </span></a>
+			        <span class="space"></span>
+			        <a><span class="wrap_ic" title="의견">
+			            <span class="ic_classic ic_opinion"></span>
+			            <span class="num">1</span>
+			        </span></a>
+			    </span>
+			</td>
+			<td class="attach">
+			</td>
+			
+			
+			
+			
+			<td class="state_wrap"><a><span class="state read">진행중</span></a></td>
+			</tr><tr>
+			<td class="date first"><span class="txt">2021-03-11</span></td>
+			
+			
+			
+			
+			
+			<td class="division"><span class="txt">업무기안</span></td>
+			<td class="doc_emergency">
+			</td>
+			<td class="subject">
+			    <a><span class="txt">12313</span></a>
+			    <span class="btn_wrap">
+			        <a class="popup"><span class="ic_classic ic_blank" title="팝업보기"></span></a>
+			    </span>
+			</td>
+			<td class="attach">
+			</td>
+			
+			
+			
+			
+			<td class="state_wrap"><a><span class="state read">진행중</span></a></td>
+			</tr><tr>
+			<td class="date first"><span class="txt">2021-02-26</span></td>
+			
+			
+			
+			
+			
+			<td class="division"><span class="txt">(신규)연장근무신청-근태관리연동</span></td>
+			<td class="doc_emergency">
+			    <span class="state emergency">긴급</span>
+			</td>
+			<td class="subject">
+			    <a><span class="txt">(신규)연장근무신청-근태관리연동</span></a>
+			    <span class="btn_wrap">
+			        <a class="popup"><span class="ic_classic ic_blank" title="팝업보기"></span></a>
+			        <a><span class="wrap_ic" title="댓글">
+			            <span class="ic_classic ic_reply"></span>
+			            <span class="num">0</span>
+			        </span></a>
+			        <span class="space"></span>
+			        <a><span class="wrap_ic" title="의견">
+			            <span class="ic_classic ic_opinion"></span>
+			            <span class="num">1</span>
+			        </span></a>
+			    </span>
+			</td>
+			<td class="attach">
+			</td>
+			
+			
+			
+			
+			<td class="state_wrap"><a><span class="state read">진행중</span></a></td>
+			</tr></tbody>
+			</table>
+			</div></div>
+			    </div>
+			
+			    <div class="dr_wrapper" id="home_completed_doclist">
+			        <h1 class="s_title">완료 문서
+			            <span class="btn_wrap">
+			                 <span class="ic ic_info btn-toggle-desc">
+			                     <span class="layer_tail tooltip-desc" style="display:none;">
+			                         <i class="ic ic_tail"></i>
+			                         <div>최근에 결재 완료된 순서대로, 최대 5개의 목록을 표시합니다.</div>
+			                     </span>
+			                  </span>
+			            </span>
+			        </h1>
+			        <div class="dataTables_wrapper">
+			        <div><table class="type_normal list_approval">
+				<thead>
+					<tr>
+						<th id="header_drafted_at" class="sorting_disabled hp date"><span class="title_sort">기안일<ins class="ic"></ins><span class="selected"></span></span></th>
+						<th id="header_form_name" class="sorting_disabled doc"><span class="title_sort">결재양식<ins class="ic"></ins></span></th>
+			            <th id="header_emergency" class="sorting_disabled doc_emergency"><span class="title_sort">긴급<ins class="ic"></ins></span></th>
+						<th id="header_title" class="sorting_disabled subject"><span class="title_sort">제목<ins class="ic"></ins></span></th>
+						<th id="header_attach" class="sorting_disabled attach"><span class="title_sort">첨부</span></th>
+						<th id="header_doc_no" class="sorting_disabled doc_num"><span class="title_sort">문서번호<ins class="ic"></ins></span></th>
+						<th id="header_doc_status" class="sorting_disabled state_wrap"><span class="title_sort">결재상태</span></th>
+					</tr>
+				</thead>
+				<tbody><tr>
+			<td class="date first"><span class="txt">2021-02-26</span></td>
+			
+			
+			
+			
+			
+			<td class="division"><span class="txt">(신규)연장근무신청-근태관리연동</span></td>
+			<td class="doc_emergency">
+			</td>
+			<td class="subject">
+			    <a><span class="txt">(신규)연장근무신청-근태관리연동</span></a>
+			    <span class="btn_wrap">
+			        <a class="popup"><span class="ic_classic ic_blank" title="팝업보기"></span></a>
+			        <a><span class="wrap_ic" title="댓글">
+			            <span class="ic_classic ic_reply"></span>
+			            <span class="num">0</span>
+			        </span></a>
+			        <span class="space"></span>
+			        <a><span class="wrap_ic" title="의견">
+			            <span class="ic_classic ic_opinion"></span>
+			            <span class="num">1</span>
+			        </span></a>
+			    </span>
+			</td>
+			<td class="attach">
+			</td>
+			
+			
+			
+			
+			<td class="doc_num"><span class="txt">다우그룹-2021-00008</span></td>
+			<td class="state_wrap"><a><span class="state finish">완료</span></a></td>
+			</tr><tr>
+			<td class="date first"><span class="txt">2021-01-10</span></td>
+			
+			
+			
+			
+			
+			<td class="division"><span class="txt">자율 출퇴근 신청서</span></td>
+			<td class="doc_emergency">
+			</td>
+			<td class="subject">
+			    <a><span class="txt">자율 출퇴근 신청서</span></a>
+			    <span class="btn_wrap">
+			        <a class="popup"><span class="ic_classic ic_blank" title="팝업보기"></span></a>
+			    </span>
+			</td>
+			<td class="attach">
+			</td>
+			
+			
+			
+			
+			<td class="doc_num"><span class="txt">다우그룹-2021-00001</span></td>
+			<td class="state_wrap"><a><span class="state finish">완료</span></a></td>
+			</tr><tr>
+			<td class="date first"><span class="txt">2020-11-04</span></td>
+			
+			
+			
+			
+			
+			<td class="division"><span class="txt">일반품의서</span></td>
+			<td class="doc_emergency">
+			</td>
+			<td class="subject">
+			    <a><span class="txt">일반품의서</span></a>
+			    <span class="btn_wrap">
+			        <a class="popup"><span class="ic_classic ic_blank" title="팝업보기"></span></a>
+			        <a><span class="wrap_ic" title="댓글">
+			            <span class="ic_classic ic_reply"></span>
+			            <span class="num">0</span>
+			        </span></a>
+			        <span class="space"></span>
+			        <a><span class="wrap_ic" title="의견">
+			            <span class="ic_classic ic_opinion"></span>
+			            <span class="num">2</span>
+			        </span></a>
+			    </span>
+			</td>
+			<td class="attach">
+			</td>
+			
+			
+			
+			
+			<td class="doc_num"><span class="txt">다우그룹-2020-00026</span></td>
+			<td class="state_wrap"><a><span class="state finish">완료</span></a></td>
+			</tr><tr>
+			<td class="date first"><span class="txt">2020-11-03</span></td>
+			
+			
+			
+			
+			
+			<td class="division"><span class="txt">업무기안</span></td>
+			<td class="doc_emergency">
+			</td>
+			<td class="subject">
+			    <a><span class="txt">111</span></a>
+			    <span class="btn_wrap">
+			        <a class="popup"><span class="ic_classic ic_blank" title="팝업보기"></span></a>
+			        <a><span class="wrap_ic" title="댓글">
+			            <span class="ic_classic ic_reply"></span>
+			            <span class="num">0</span>
+			        </span></a>
+			        <span class="space"></span>
+			        <a><span class="wrap_ic" title="의견">
+			            <span class="ic_classic ic_opinion"></span>
+			            <span class="num">1</span>
+			        </span></a>
+			    </span>
+			</td>
+			<td class="attach">
+			</td>
+			
+			
+			
+			
+			<td class="doc_num"><span class="txt">다우그룹-2020-00025</span></td>
+			<td class="state_wrap"><a><span class="state finish">완료</span></a></td>
+			</tr><tr>
+			<td class="date first"><span class="txt">2020-11-03</span></td>
+			
+			
+			
+			
+			
+			<td class="division"><span class="txt">(신규)휴가신청-연차관리연동</span></td>
+			<td class="doc_emergency">
+			</td>
+			<td class="subject">
+			    <a><span class="txt">(신규)휴가신청-연차관리연동</span></a>
+			    <span class="btn_wrap">
+			        <a class="popup"><span class="ic_classic ic_blank" title="팝업보기"></span></a>
+			    </span>
+			</td>
+			<td class="attach">
+			</td>
+			
+			
+			
+			
+			<td class="doc_num"><span class="txt">다우그룹-2020-00023</span></td>
+			<td class="state_wrap"><a><span class="state finish">완료</span></a></td>
+			</tr></tbody>
+			</table>
+			</div></div>
+			    </div>
+			</div>
+			</div>
+				</div>
+			
+			<!-- 04/07 aside 주석 -->
+			<!-- <aside class="go_organogram" id="organogram" style="height: 30px; top: 658px;"><h1><ins class="ic"></ins><span class="txt">조직도</span><span class="btn_wrap" id="orgToggleWrap"><span id="orgToggle" class="ic_gnb ic_hide_up2" data-slide="true" title="열기"></span></span></h1><div class="search_wrap"><form name="orgSearch" onsubmit="return false;"><input class="search" type="text" placeholder="이름/아이디/부서/직위/직책/전화" title="이름/아이디/부서/직위/직책/전화"><input class="btn_search" type="submit" value="검색" title="검색"></form></div><div class="tab_wrap"></div></aside> -->
+			<footer class="go_footer">
+			    <section class="setting"></section>
+			    <section class="meta">
+			        <small class="copyright"></small>
+			    </section>
+			</footer>
+			<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" style="display: none;"></div>
 		
-    </ul>   
-</section>
-
-<!-- 부서 문서함  -->
-<section id="deptDocfolderSide" class="lnb">
-    <h1 class="org ">
-        <ins class="ic"></ins>
-        <span class="ic_side ic_hide_up" title="접기" data-slide="true"></span>
-        <a class="txt" title="부서 문서함" data-role="button" data-bypass="">부서 문서함</a>
-    </h1>
-    <ul class="side_depth"><!--data_display_control-->
-<li class="org" data-deptid="">
-	<p class="title">
-		<a>
-			<ins class="ic"></ins><span class="txt" title="영업팀">영업팀</span>
-		</a>
-	</p>
-	<span class="btn_wrap" title="">
-		<span btn-type="deptAdmin" data-deptid="130" class="ic_side ic_side_setting" title="부서 문서함 관리"></span>
-	</span>
-	<ul class="data_set" data-deptid="130">
-		<li class="delimiter">
-			<p class="title">
-			<ins class="ic"></ins><span class="txt" title="기본 문서함">&lt;기본 문서함&gt;</span>
-			</p>
-		</li>
-		<li class="appr_compl">
-            <p class="title">
-                <a class="go_boards" data-deptid="130" data-navi="deptdraft" data-bypass="">
-                    <ins class="ic"></ins><span class="txt" title="기안 완료함">기안 완료함</span>
-                </a>
-            </p>
-        </li>
-        <li class="appr_cc">
-            <p class="title">
-                <a class="go_boards" data-deptid="130" data-navi="deptreference" data-bypass="">
-                    <ins class="ic"></ins><span class="txt" title="부서 참조함">부서 참조함</span>
-                </a>
-            </p>
-        </li>
+			</div>
+			<!-- /Page Content -->
 		
-	</ul>
-</li>
-</ul>
-</section>
-<!-- //부서 문서함   -->
-<!--  결재 환경 설정 -->
-<section id="configSide" class="lnb">
-    <ul class="side_depth">
-        <li class="setting" data-writable="true">
-            <p class="title">
-                <a class="go_boards" data-navi="usersetting" data-bypass="">
-                    <ins class="ic"></ins><span class="txt" title="전자결재 환경설정">전자결재 환경설정</span>
-                </a>
-            </p>
-        </li>   
-    </ul>   
-</section>
-<!-- //결재 환경 설정 -->
-<!-- 결재문서 관리 -->
-<section id="docAdminSide" class="lnb">
-    <h1 class="setting">
-        <ins class="ic"></ins>
-        <span class="ic_side ic_hide_up" title="접기" data-slide="true"></span>
-        <a class="txt" data-role="button" data-bypass="" title="전자결재 문서관리">전자결재 문서관리</a>
-    </h1>
-    <ul class="side_depth">
-        <li class="appr_inquiry">
-            <p class="title">
-                <a class="go_boards" data-navi="manage" data-bypass="">
-                    <ins class="ic"></ins><span class="txt" title="양식별 문서 조회">양식별 문서 조회</span>
-                </a>
-            </p>
-        </li>
-        <li class="appr_record">
-            <p class="title">
-                <a class="go_boards" data-navi="managelog" data-bypass="">
-                    <ins class="ic"></ins><span class="txt" title="관리자 작업기록">관리자 작업기록</span>
-                </a>
-            </p>
-        </li>
-    </ul>
-</section>
-<!-- //결재문서 관리 -->
-<div class="bar"></div>
-<!-- // side : 전자결재 -->
-
-</div>
-	    <div class="go_content go_renew" id="content"><header class="content_top"><h1>전자결재 홈</h1>
-<section class="combine_search">
-	<div class="c_search_wrap"><!--focus되면 "search_focus" multi class로 추가해주세요.-->
-		<select class="search_op" id="searchType">
-			<option value="appSearch">전자결재</option>
-			<option value="totalSearch">통합검색</option>
-		</select>
-		<input class="c_search" type="text" id="search-keyword" name="search_keyword" value="" placeholder="검색">
-		<a class="c_btn_detail" id="btn_DetailSearch" title="상세검색"><span class="txt">상세</span><span class="ic ic_cs_detail_arrow  "></span></a>
-		<input class="btn_c_search" type="button" id="btn-search" value="검색" title="검색">
-	</div>
-</section>
-</header>
-<div class="content_page dashboard_survey">
-    <div class="dr_wrapper" id="home_approval_waiting_doclist">
-        <div class="dashboard_box"><p class="desc">결재할 문서가 없습니다.</p></div>
-    </div>
-
-    <div class="dr_wrapper" id="home_reception_waiting_doclist" style="display:none">
-        <h1 class="s_title">접수 대기 문서
-            <span class="btn_wrap">
-                 <span class="ic ic_info btn-toggle-desc">
-                     <span class="layer_tail tooltip-desc" style="display:none;">
-                         <i class="ic ic_tail"></i>
-                         <div>최근에 수신된 시간순서대로, 최대 5개의 목록을 표시합니다.</div>
-                     </span>
-                  </span>
-            </span>
-        </h1>
-        <div class="dataTables_wrapper">
-        <div><table class="type_normal list_approval">
-	<thead>
-		<tr>
-            <th id="header_received_at" class="sorting_disabled hp date"><span class="title_sort">수신일<ins class="ic"></ins><span class="selected"></span></span></th>
-			<th id="header_form_name" class="sorting_disabled doc"><span class="title_sort">결재양식<ins class="ic"></ins></span></th>
-            <th id="header_emergency" class="sorting_disabled doc_emergency"><span class="title_sort">긴급<ins class="ic"></ins></span></th>
-			<th id="header_title" class="sorting_disabled subject"><span class="title_sort">제목<ins class="ic"></ins></span></th>
-			<th id="header_attach" class="sorting_disabled attach"><span class="title_sort">첨부</span></th>
-			<th id="header_doc_status" class="sorting_disabled state_wrap"><span class="title_sort">결재상태</span></th>
-		</tr>
-	</thead>
-	<tbody><tr style="display:">
-    <td colspan="6">
-        <p class="data_null">
-	       <span class="ic_data_type ic_no_contents"></span>
-	       <span class="txt">문서가 없습니다.</span>
-        </p>
-    </td>
-</tr></tbody>
-</table>
-</div></div>
-    </div>
-
-    <div class="dr_wrapper" id="home_drafted_doclist">
-        <h1 class="s_title">기안 진행 문서
-            <span class="btn_wrap">
-                 <span class="ic ic_info btn-toggle-desc">
-                     <span class="layer_tail tooltip-desc" style="display:none;">
-                         <i class="ic ic_tail"></i>
-                         <div>현재 진행중인 기안문서 5개를, 최근 등록 순서대로 표시합니다.</div>
-                     </span>
-                  </span>
-            </span>
-        </h1>
-        <div class="dataTables_wrapper">
-        <div><table class="type_normal list_approval">
-	<thead>
-		<tr>
-			<th id="header_drafted_at" class="sorting_disabled hp date"><span class="title_sort">기안일<ins class="ic"></ins><span class="selected"></span></span></th>
-			<th id="header_form_name" class="sorting_disabled doc"><span class="title_sort">결재양식<ins class="ic"></ins></span></th>
-            <th id="header_emergency" class="sorting_disabled doc_emergency"><span class="title_sort">긴급<ins class="ic"></ins></span></th>
-			<th id="header_title" class="sorting_disabled subject"><span class="title_sort">제목<ins class="ic"></ins></span></th>
-			<th id="header_attach" class="sorting_disabled attach"><span class="title_sort">첨부</span></th>
-			<th id="header_doc_status" class="sorting_disabled state_wrap"><span class="title_sort">결재상태</span></th>
-		</tr>
-	</thead>
-	<tbody><tr>
-<td class="date first"><span class="txt">2021-03-30</span></td>
-
-
-
-
-
-<td class="division"><span class="txt">해외출장신청</span></td>
-<td class="doc_emergency">
-</td>
-<td class="subject">
-    <a><span class="txt">해외출장신청</span></a>
-    <span class="btn_wrap">
-        <a class="popup"><span class="ic_classic ic_blank" title="팝업보기"></span></a>
-        <a><span class="wrap_ic" title="댓글">
-            <span class="ic_classic ic_reply"></span>
-            <span class="num">0</span>
-        </span></a>
-        <span class="space"></span>
-        <a><span class="wrap_ic" title="의견">
-            <span class="ic_classic ic_opinion"></span>
-            <span class="num">1</span>
-        </span></a>
-    </span>
-</td>
-<td class="attach">
-</td>
-
-
-
-
-<td class="state_wrap"><a><span class="state read">진행중</span></a></td>
-</tr><tr>
-<td class="date first"><span class="txt">2021-03-11</span></td>
-
-
-
-
-
-<td class="division"><span class="txt">업무기안</span></td>
-<td class="doc_emergency">
-</td>
-<td class="subject">
-    <a><span class="txt">12313</span></a>
-    <span class="btn_wrap">
-        <a class="popup"><span class="ic_classic ic_blank" title="팝업보기"></span></a>
-    </span>
-</td>
-<td class="attach">
-</td>
-
-
-
-
-<td class="state_wrap"><a><span class="state read">진행중</span></a></td>
-</tr><tr>
-<td class="date first"><span class="txt">2021-02-26</span></td>
-
-
-
-
-
-<td class="division"><span class="txt">(신규)연장근무신청-근태관리연동</span></td>
-<td class="doc_emergency">
-    <span class="state emergency">긴급</span>
-</td>
-<td class="subject">
-    <a><span class="txt">(신규)연장근무신청-근태관리연동</span></a>
-    <span class="btn_wrap">
-        <a class="popup"><span class="ic_classic ic_blank" title="팝업보기"></span></a>
-        <a><span class="wrap_ic" title="댓글">
-            <span class="ic_classic ic_reply"></span>
-            <span class="num">0</span>
-        </span></a>
-        <span class="space"></span>
-        <a><span class="wrap_ic" title="의견">
-            <span class="ic_classic ic_opinion"></span>
-            <span class="num">1</span>
-        </span></a>
-    </span>
-</td>
-<td class="attach">
-</td>
-
-
-
-
-<td class="state_wrap"><a><span class="state read">진행중</span></a></td>
-</tr></tbody>
-</table>
-</div></div>
-    </div>
-
-    <div class="dr_wrapper" id="home_completed_doclist">
-        <h1 class="s_title">완료 문서
-            <span class="btn_wrap">
-                 <span class="ic ic_info btn-toggle-desc">
-                     <span class="layer_tail tooltip-desc" style="display:none;">
-                         <i class="ic ic_tail"></i>
-                         <div>최근에 결재 완료된 순서대로, 최대 5개의 목록을 표시합니다.</div>
-                     </span>
-                  </span>
-            </span>
-        </h1>
-        <div class="dataTables_wrapper">
-        <div><table class="type_normal list_approval">
-	<thead>
-		<tr>
-			<th id="header_drafted_at" class="sorting_disabled hp date"><span class="title_sort">기안일<ins class="ic"></ins><span class="selected"></span></span></th>
-			<th id="header_form_name" class="sorting_disabled doc"><span class="title_sort">결재양식<ins class="ic"></ins></span></th>
-            <th id="header_emergency" class="sorting_disabled doc_emergency"><span class="title_sort">긴급<ins class="ic"></ins></span></th>
-			<th id="header_title" class="sorting_disabled subject"><span class="title_sort">제목<ins class="ic"></ins></span></th>
-			<th id="header_attach" class="sorting_disabled attach"><span class="title_sort">첨부</span></th>
-			<th id="header_doc_no" class="sorting_disabled doc_num"><span class="title_sort">문서번호<ins class="ic"></ins></span></th>
-			<th id="header_doc_status" class="sorting_disabled state_wrap"><span class="title_sort">결재상태</span></th>
-		</tr>
-	</thead>
-	<tbody><tr>
-<td class="date first"><span class="txt">2021-02-26</span></td>
-
-
-
-
-
-<td class="division"><span class="txt">(신규)연장근무신청-근태관리연동</span></td>
-<td class="doc_emergency">
-</td>
-<td class="subject">
-    <a><span class="txt">(신규)연장근무신청-근태관리연동</span></a>
-    <span class="btn_wrap">
-        <a class="popup"><span class="ic_classic ic_blank" title="팝업보기"></span></a>
-        <a><span class="wrap_ic" title="댓글">
-            <span class="ic_classic ic_reply"></span>
-            <span class="num">0</span>
-        </span></a>
-        <span class="space"></span>
-        <a><span class="wrap_ic" title="의견">
-            <span class="ic_classic ic_opinion"></span>
-            <span class="num">1</span>
-        </span></a>
-    </span>
-</td>
-<td class="attach">
-</td>
-
-
-
-
-<td class="doc_num"><span class="txt">다우그룹-2021-00008</span></td>
-<td class="state_wrap"><a><span class="state finish">완료</span></a></td>
-</tr><tr>
-<td class="date first"><span class="txt">2021-01-10</span></td>
-
-
-
-
-
-<td class="division"><span class="txt">자율 출퇴근 신청서</span></td>
-<td class="doc_emergency">
-</td>
-<td class="subject">
-    <a><span class="txt">자율 출퇴근 신청서</span></a>
-    <span class="btn_wrap">
-        <a class="popup"><span class="ic_classic ic_blank" title="팝업보기"></span></a>
-    </span>
-</td>
-<td class="attach">
-</td>
-
-
-
-
-<td class="doc_num"><span class="txt">다우그룹-2021-00001</span></td>
-<td class="state_wrap"><a><span class="state finish">완료</span></a></td>
-</tr><tr>
-<td class="date first"><span class="txt">2020-11-04</span></td>
-
-
-
-
-
-<td class="division"><span class="txt">일반품의서</span></td>
-<td class="doc_emergency">
-</td>
-<td class="subject">
-    <a><span class="txt">일반품의서</span></a>
-    <span class="btn_wrap">
-        <a class="popup"><span class="ic_classic ic_blank" title="팝업보기"></span></a>
-        <a><span class="wrap_ic" title="댓글">
-            <span class="ic_classic ic_reply"></span>
-            <span class="num">0</span>
-        </span></a>
-        <span class="space"></span>
-        <a><span class="wrap_ic" title="의견">
-            <span class="ic_classic ic_opinion"></span>
-            <span class="num">2</span>
-        </span></a>
-    </span>
-</td>
-<td class="attach">
-</td>
-
-
-
-
-<td class="doc_num"><span class="txt">다우그룹-2020-00026</span></td>
-<td class="state_wrap"><a><span class="state finish">완료</span></a></td>
-</tr><tr>
-<td class="date first"><span class="txt">2020-11-03</span></td>
-
-
-
-
-
-<td class="division"><span class="txt">업무기안</span></td>
-<td class="doc_emergency">
-</td>
-<td class="subject">
-    <a><span class="txt">111</span></a>
-    <span class="btn_wrap">
-        <a class="popup"><span class="ic_classic ic_blank" title="팝업보기"></span></a>
-        <a><span class="wrap_ic" title="댓글">
-            <span class="ic_classic ic_reply"></span>
-            <span class="num">0</span>
-        </span></a>
-        <span class="space"></span>
-        <a><span class="wrap_ic" title="의견">
-            <span class="ic_classic ic_opinion"></span>
-            <span class="num">1</span>
-        </span></a>
-    </span>
-</td>
-<td class="attach">
-</td>
-
-
-
-
-<td class="doc_num"><span class="txt">다우그룹-2020-00025</span></td>
-<td class="state_wrap"><a><span class="state finish">완료</span></a></td>
-</tr><tr>
-<td class="date first"><span class="txt">2020-11-03</span></td>
-
-
-
-
-
-<td class="division"><span class="txt">(신규)휴가신청-연차관리연동</span></td>
-<td class="doc_emergency">
-</td>
-<td class="subject">
-    <a><span class="txt">(신규)휴가신청-연차관리연동</span></a>
-    <span class="btn_wrap">
-        <a class="popup"><span class="ic_classic ic_blank" title="팝업보기"></span></a>
-    </span>
-</td>
-<td class="attach">
-</td>
-
-
-
-
-<td class="doc_num"><span class="txt">다우그룹-2020-00023</span></td>
-<td class="state_wrap"><a><span class="state finish">완료</span></a></td>
-</tr></tbody>
-</table>
-</div></div>
-    </div>
-</div>
-</div>
-	</div>
-</div>
-<aside class="go_organogram" id="organogram" style="height: 30px; top: 658px;"><h1><ins class="ic"></ins><span class="txt">조직도</span><span class="btn_wrap" id="orgToggleWrap"><span id="orgToggle" class="ic_gnb ic_hide_up2" data-slide="true" title="열기"></span></span></h1><div class="search_wrap"><form name="orgSearch" onsubmit="return false;"><input class="search" type="text" placeholder="이름/아이디/부서/직위/직책/전화" title="이름/아이디/부서/직위/직책/전화"><input class="btn_search" type="submit" value="검색" title="검색"></form></div><div class="tab_wrap"></div></aside>
-<footer class="go_footer">
-    <section class="setting"></section>
-    <section class="meta">
-        <small class="copyright"></small>
-    </section>
-</footer>
-<div id="ui-datepicker-div" class="ui-datepicker ui-widget ui-widget-content ui-helper-clearfix ui-corner-all" style="display: none;"></div>
-		
+		</div>
 		<!-- /Page Wrapper -->
 
 	</div>
