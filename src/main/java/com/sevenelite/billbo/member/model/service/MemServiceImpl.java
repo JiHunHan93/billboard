@@ -14,7 +14,7 @@ import com.sevenelite.billbo.member.model.dto.RoleDTO;
 public class MemServiceImpl implements MemService {
 
 	private MemberMapper mapper;
-
+ 
 	@Autowired
 	public MemServiceImpl(MemberMapper mapper) {
 		this.mapper = mapper;
