@@ -11,8 +11,6 @@
         <meta name="author" content="Dreamguys - Bootstrap Admin Template">
         <meta name="robots" content="noindex, nofollow">
         <title>Leaves - HRMS admin template</title>
-
-
 		<!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="./resources/hrtemp/img/favicon.png">
 		
@@ -646,31 +644,31 @@
 						</div>
 					</div>
 					<!-- /Page Header -->
-					
+					<form>
 					<!-- Leave Statistics -->
 					<div class="row">
 						<div class="col-md-3">
 							<div class="stats-info">
 								<h5 style="font-weight: bold;">이번주 누적</h5>
-								<h4 style="color:darkorange;">1h 00m 25s</h4>
+								<h4 style="color:darkorange;"><a href="#"></a></h4>
 							</div>
 						</div>
 						<div class="col-md-3">
 							<div class="stats-info">
 								<h6 style="font-weight: bold;">이번주 초과</h6>
-								<h4 style="color: darkorange;">1h 33m 25s</h4>
+								<h4 style="color: darkorange;"></h4>
 							</div>
 						</div>
 						<div class="col-md-3">
 							<div class="stats-info">
 								<h6 style="font-weight: bold;">이번달 연장</h6>
-								<h4 style="color: gray;">5h 27m 23s</h4>
+								<h4 style="color: gray;"></h4>
 							</div>
 						</div>
 						<div class="col-md-3">
 							<div class="stats-info">
 								<h6 style="font-weight: bold;">이번달 누적</h6>
-								<h4 style="color: gray;">0m 0m 0m</h4>
+								<h4 style="color: gray;"></h4>
 							</div>
 						</div>
 					</div>
@@ -696,13 +694,13 @@
 										</tr>
 											<tr>
 												<td style="font-weight: bold; font-size: 26px;">1주</td>
-												<td>누적 근무 시간 : 40h 20m 50s</td>
+												<td>누적 근무 시간 : </td>
 												<td class="text-center">
 													<div class="action-label">
 													</div>
 												</td>
 												<td class="text-danger">
-														<a href="leaves.html">지각 3회 수정 0회</a>
+														<a href="leaves.html">지각0회 수정 0회</a>
 													</h2>
 												</td>
 												<td class="text-right">
@@ -716,13 +714,13 @@
 											</tr>
 											<tr class="table-danger">
 												<td style="font-weight: bold; font-size: 26px;">2주</td>
-												<td class="text-danger">누적 근무시간 : 50h 30m 25s</td>
+												<td class="text-danger">누적 근무 시간:</td>
 												<td class="text-center"></td>
 												<div class="action-label"></div>
 												</td>
 												<td>
 													<h2 class="table-avatar">
-														<a href="#">지각 2회 수정 0회</a>
+														<a href="#"></a>
 													</h2>
 												</td>
 												<td class="text-right">
@@ -738,14 +736,14 @@
 											</tr>
 										<tr>
 											<td style="font-weight: bold; font-size: 26px;">3주</td>
-											<td style="">누적 근무시간 : 20h 20m 22s</td>
+											<td style="">누적 근무시간 : </td>
 											<td class="text-center">
 												<div class="action-label">
 												</div>
 											</td>
 											<td>
 												<h2 class="table-avatar">
-													<a href="#" class="text-danger">지각 5회 수정 0회</a>
+													<a href="#" class="text-danger"></a>
 												</h2>
 											</td>
 											<td class="text-right">
@@ -759,14 +757,14 @@
 									</tr>
 									<tr>
 											<td style="font-weight: bold; font-size: 26px;">4주</td>
-											<td>누적 근무 시간 : 00h 00m 00s</td>
+											<td>누적 근무 시간 : </td>
 											<td class="text-center">
 												<div class="action-label">
 												</div>
 											</td>
 											<td>
 												<h2 class="table-avatar">
-													<a href="#">지각 0회 수정 0회</a>
+													<a href="#"></a>
 												</h2>
 											</td>
 											<td class="text-right">
@@ -780,14 +778,14 @@
 									</tr>
 									<tr>
 										<td style="font-weight: bold; font-size: 26px;">5주</td>
-										<td>누적 근무 시간 : 00h 00m 00s</td>
+										<td>누적 근무 시간 : </td>
 										<td class="text-center">
 											<div class="action-label">
 											</div>
 										</td>
 										<td>
 											<h2 class="table-avatar">
-												<a href="#">지각 0회 수정 0회</a>
+												<a href="#"></a>
 											</h2>
 										</td>
 										<td class="text-right">
@@ -801,6 +799,7 @@
 									</tr>
 								</tbody>
 							</table>
+					</form>
 						</div>
 					</div>
 				</div>
@@ -819,7 +818,7 @@
 								</button>
 							</div>
 							<div class="modal-body">
-								<form>
+								<form action="${pageContext.servletContext.contextPath }/work/list" method="get">
 									<div class="form-group">
 										<label>Leave Type <span class="text-danger">*</span></label>
 										<select class="select">
