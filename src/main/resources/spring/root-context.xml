@@ -68,7 +68,6 @@
 	</aop:config>
 	
 	<mybatis-spring:scan base-package="com.sevenelite.billbo.member.model.dao,
-									   com.sevenelite.billbo.workhour.work.model.dao,
 									   com.sevenlite.billbo.noticeboard.model.dao"/>
 
 

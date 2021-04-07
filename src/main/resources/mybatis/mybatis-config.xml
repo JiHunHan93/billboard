@@ -8,11 +8,8 @@
  		<typeAlias alias="MemBbDTO" type="com.sevenelite.billbo.member.model.dto.MemBbDTO"/>
  		<typeAlias alias="RoleDTO" type="com.sevenelite.billbo.member.model.dto.RoleDTO"/>
  		<typeAlias alias="WorkDTO" type="com.sevenelite.billbo.workhour.work.model.dto.WorkDTO"/>
-<<<<<<< HEAD
  		<!-- <typeAlias alias="NoticeBoardDTO" type="com.sevenlite.bilbo.noticeboard.model.dto.NoticeBoardDTO"/> -->
-=======
- 		<typeAlias alias="BoardDTO" type="com.sevenelite.billbo.board.model.dto.BoardDTO"/>
->>>>>>> e9e25f51afdff3d459ea15b6f7887fa94e58b6f0
+ 		<!-- <typeAlias alias="BoardDTO" type="com.sevenelite.billbo.board.model.dto.BoardDTO"/> -->
  	</typeAliases>
  	
  </configuration>
