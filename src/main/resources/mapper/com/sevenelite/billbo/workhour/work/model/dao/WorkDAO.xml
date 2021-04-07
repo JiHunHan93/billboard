@@ -13,13 +13,10 @@
 	<result column="MEMBER_NO" property="MemNo"/>
 	</resultMap>
 	
-	<select id="selectWork" resultMap="workResult" parameterType="MemberDTO">
+  	<select id="selectWorkList" resultMap="workResult" parameterType="workDTO">
 		SELECT
-		         A.STATISTIC_DATE
-		       , A.TOTAL_WORK_HOURS
-		       , A.TOTAL_EXTRA_WORK_HOURS
-		       , A.WORK_LATE_COUNT
-		       , A.WORK_COUNT
-		       , A.MEMBER_NO
-		   FROM BB_WEEK_WORK_STATISTIC A;    		        
+		       A.TOTAL_WORK_HOURS
+		   FROM BB_WEEK_WORK_STATISTIC A  		        
 	</select>
+
+</mapper> 

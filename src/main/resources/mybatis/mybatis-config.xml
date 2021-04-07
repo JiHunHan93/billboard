@@ -7,6 +7,7 @@
  		<typeAlias alias="MemberDTO" type="com.sevenelite.billbo.member.model.dto.MemDTO"/>
  		<typeAlias alias="MemBbDTO" type="com.sevenelite.billbo.member.model.dto.MemBbDTO"/>
  		<typeAlias alias="RoleDTO" type="com.sevenelite.billbo.member.model.dto.RoleDTO"/>
+ 		<typeAlias alias="WorkDTO" type="com.sevenelite.billbo.workhour.work.model.dto.WorkDTO"/>
  	</typeAliases>
  	
  </configuration>
