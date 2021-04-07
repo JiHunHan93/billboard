@@ -729,7 +729,7 @@
 									<li class="nav-item"><a href="#emp_bonus" data-toggle="tab" class="nav-link">상벌내역</a></li>
 									<li class="nav-item"><a href="#emp_jobtest" data-toggle="tab" class="nav-link">인사평가</a></li>
 									<li class="nav-item"><a href="#emp_qualification" data-toggle="tab" class="nav-link">자격</a></li>
-									<li class="nav-item"><a href="#emp_army" data-toggle="tab" class="nav-link">병역</a></li>
+									<li class="nav-item"><a href="#armyInfo" data-toggle="tab" class="nav-link">병역</a></li>
 									<li class="nav-item"><a href="#emp_education" data-toggle="tab" class="nav-link">학력</a></li>
 									<li class="nav-item"><a href="#emp_family" data-toggle="tab" class="nav-link">가족사항</a></li>
 									<li class="nav-item"><a href="#emp_license" data-toggle="tab" class="nav-link">면허</a></li>
@@ -1439,66 +1439,71 @@
 						<!-- /일곱번째 탭 끝 -->
 
 						<!-- 여덟번째탭  -->
-						<div class="tab-pane fade" id="emp_army">
+						<div class="tab-pane fade" id="armyInfo">
 							<div class="card">
 								<div class="ehr_con_wrap"><div><h3 class="tab_title" >병역</h3>
 									<!--탭 전체 펼치기시 타이틀 나옴-->
 									<div class="ehr_military viewForm">
+											<form action="${ pageContext.servletContext.contextPath }/profile/mainProfile" method="post" enctype="multipart/form-data">
 										<table class="type_list_box">
 											<tbody><tr>
 												<th class="num"><span class="title_txt">사번</span></th>
 												<th class="class"><span class="title_txt">군벌</span></th>
 												<th class="level"><span class="title_txt">계급</span></th>
 												<th class="number"><span class="title_txt">군번</span></th>
-												<th class="division"><span class="title_txt">전역구분</span></th>
+												<th class="discharge"><span class="title_txt">전역구분</span></th>
 												<th class="date"><span class="title_txt">입대일</span></th>
 												<th class="date"><span class="title_txt">제대일</span></th>
 												<th class="etc"><span class="title_txt">기타 사유</span></th>
 												<th class="modify"><span class="title_txt">수정</span></th>
 											</tr>
-											<tr class="dataRow" data-id="">
-												<td class="num">
+											<tr>
+											<!-- class="dataRow" data-id=""-->	
+											<td class="num">
 													<span>1</span>
 												</td>
 												<td class="class">
 													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="militaryType" value="" style="display:none;">
-												</td><td class="level">
+													<input class="txt w_max" type="text" name="militaryType" id="branch" value="" >
+												</td>
+												<td class="level">
 													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="rank" value="" style="display:none;">
+													<input class="txt w_max" type="text" name="rank" id="class"value="" >
 												</td>
 												<td class="number">
 													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="serialNumber" value="" style="display:none;">
+													<input class="txt w_max" type="text" name="serialNumber" id="service_num"value="" >
 												</td>
-												<td class="division">
+												<td class="discharge">
 													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="discharge" value="" style="display:none;">
+													<input class="txt w_max" type="text" name="discharge" id="discharge"value="" >
 												</td>
 												<td class="date">
 													<span class="wrap_date">
-													<input class="txt wfix_small hasDatepicker" type="text" name="joinDate" value="" id="dp1617006090880">
+													<input class="txt wfix_small hasDatepicker" type="text" name="joinDate" id="start"value="" >
 													<span class="ic ic_calendar"></span>
 													</span>
 												</td>
 												<td class="date">
 													<span class="wrap_date">
-													<input class="txt wfix_small hasDatepicker" type="text" name="dischargeDate" value="" id="dp1617006090881">
+													<input class="txt wfix_small hasDatepicker" type="text" name="dischargeDate" id="end"value="" id="dp1617006090881">
 													<span class="ic ic_calendar"></span>
 													</span>
 												</td>
 												<td class="etc">
 													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="reason" value="" style="display:none;">
+													<input class="txt w_max" type="text" name="reason" id="reason"value="" >
 												</td>
 												<td class="modify">
 													 <span class="ic_con ic_remove" title="삭제"></span>
 													 <span class="ic_con ic_add" title="추가"></span>
 												</td>
 											</tr>
-										</tbody></table>
+										</tbody>
+										</table>
+										</form>
 									</div></div><div class="page_action_wrap" style="display: block;">
-										<span class="btn_major" data-role="button" id="hrcard_btn_submit"><span class="txt">저장</span></span>
+										<button type="submit">1231131</button><span class="btn_major" data-role="button" id="submit"><span class="txt">저장</span></span>
 										<span class="btn_minor" data-role="button" id="hrcard_btn_cancel"><span class="txt">취소</span></span>
 								</div>
 								<section class="aside_wrapper article_reply" id="hrcardActivity"><div><div class="reply_wrap">

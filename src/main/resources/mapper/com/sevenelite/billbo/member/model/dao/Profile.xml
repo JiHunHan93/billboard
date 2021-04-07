@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sevenelite.billbo.member.model.dao.Profile">
+
+<resultMap type="com.sevenelite.billbo.member.profile.dto.ArmyDTO" id="ArmyDTO">
+	<id property="no" column="ARMY_NO" />
+	<result property="branch" column="ARMY_BRANCH"/>
+	<result property="class" column="ARMY_CLASS"/>
+	<result property="service_num" column="ARMY_SERVICE_NUM"/>
+	<result property="discharge" column="ARMY_DISCHARGE"/>
+	<result property="start" column="ARMY_START"/>
+	<result property="end" column="ARMY_END"/>
+	<result property="reason" column="ARMY_REASON"/>
+	<result property="memberno" column="MEMBER_NO"/>	
+</resultMap>
+
+<insert id="armyInfo" parameterType="ArmyDTO">
+	INTO BB_ARMY(
+         ARMY_NO
+       , ARMY_BRANCH
+       , ARMY_CLASS
+       , ARMY_SERVICE_NUM
+       , ARMY_DISCHARGE
+       , ARMY_START
+       , ARMY_END
+       , ARMY_REASON
+       , MEMBER_NO
+    )
+    VALUES
+    (
+    SEQ_MEMBER_NO.NEXTVAL
+    , #{ no }
+    , #{ class }
+    , #{ service_num }
+    , #{ discharge } 
+    , #{ start }
+    , #{ end }
+    , #{ reason }
+    )
+</insert>
+
+</mapper>
