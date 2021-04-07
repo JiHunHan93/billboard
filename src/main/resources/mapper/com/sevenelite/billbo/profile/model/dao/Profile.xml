@@ -13,7 +13,7 @@
 	<result property="start" column="ARMY_START"/>
 	<result property="end" column="ARMY_END"/>
 	<result property="reason" column="ARMY_REASON"/>
-	<result property="memberno" column="MEMBER_NO"/>	
+	<result property="member_no" column="MEMBER_NO"/>	
 </resultMap>
 
 <insert id="armyInfo" parameterType="ArmyDTO">
