@@ -15,7 +15,10 @@
 	
   	<select id="selectWorkList" resultMap="workResult" parameterType="workDTO">
 		SELECT
-		       A.TOTAL_WORK_HOURS
+		       A.TOTAL_WORK_HOURS  
+		     , A.WORK_LATE_COUNT
+		     , A.WORK_COUNT  
+		     , A.TOTAL_EXTRA_WORK_HOURS
 		   FROM BB_WEEK_WORK_STATISTIC A  		        
 	</select>
 

@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -646,34 +649,35 @@
 					<!-- /Page Header -->
 					<form>
 					<!-- Leave Statistics -->
-					<div class="row">
-						<div class="col-md-3">
-							<div class="stats-info">
-								<h5 style="font-weight: bold;">이번주 누적</h5>
-								<h4 style="color:darkorange;"><a href="#"></a></h4>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="stats-info">
-								<h6 style="font-weight: bold;">이번주 초과</h6>
-								<h4 style="color: darkorange;"></h4>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="stats-info">
-								<h6 style="font-weight: bold;">이번달 연장</h6>
-								<h4 style="color: gray;"></h4>
-							</div>
-						</div>
-						<div class="col-md-3">
-							<div class="stats-info">
-								<h6 style="font-weight: bold;">이번달 누적</h6>
-								<h4 style="color: gray;"></h4>
-							</div>
-						</div>
-					</div>
-					<!-- /Leave Statistics -->
 					
+					<c:forEach var="workList" items="${ requestScope.workList }">
+						<div class="row">
+							<div class="col-md-3">
+								<div class="stats-info">
+									<h5 style="font-weight: bold;">이번주 누적</h5>
+										<h4 style="color:darkorange;"><c:out value="${ workList.totalWork }시간"/></h4>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="stats-info">
+									<h6 style="font-weight: bold;">이번주 초과</h6>
+									<h4 style="color: darkorange;"><c:out value="${ workList.extraWork }시간"/></h4>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="stats-info">
+									<h6 style="font-weight: bold;">이번달 연장</h6>
+									<h4 style="color: gray;"><c:out value="${ workList.totalWork }"/></h4>
+								</div>
+							</div>
+							<div class="col-md-3">
+								<div class="stats-info">
+									<h6 style="font-weight: bold;">이번달 누적</h6>
+									<h4 style="color: gray;"><c:out value="${ workList.totalWork }"/></h4>
+								</div>
+							</div>
+						</div>
+					<!-- /Leave Statistics -->
 					<div class="row">
 						<div class="col-md-12">
 							<div class="table-responsive">
@@ -694,13 +698,13 @@
 										</tr>
 											<tr>
 												<td style="font-weight: bold; font-size: 26px;">1주</td>
-												<td>누적 근무 시간 : </td>
+												<td>누적 근무 시간  : <c:out value="${workList.totalWork } 시간"></c:out> </td>
 												<td class="text-center">
 													<div class="action-label">
 													</div>
 												</td>
 												<td class="text-danger">
-														<a href="leaves.html">지각0회 수정 0회</a>
+														<a href="${pageContext.servletContext.contextPath }/work/detail"><c:out value="지각 ${workList.lateCount }"></c:out></a>
 													</h2>
 												</td>
 												<td class="text-right">
@@ -799,6 +803,7 @@
 									</tr>
 								</tbody>
 							</table>
+					</c:forEach>
 					</form>
 						</div>
 					</div>
