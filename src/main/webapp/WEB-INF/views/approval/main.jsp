@@ -635,7 +635,8 @@
 			</div>
 		</div>
 		<!-- /Sidebar -->
-
+		
+		<!-- 사이드 메뉴 안으로 들어감 -->
 		<!-- Page Wrapper -->
 		
 			<div class="gnb"><header class="go_header go_header_2row go_header_advanced">
