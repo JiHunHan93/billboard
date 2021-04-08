@@ -2176,6 +2176,13 @@ table.dataTable thead > tr > td.sorting {
 .tab-content {
 	padding-top: 20px;
 }
+<<<<<<< HEAD
+=======
+.tab-content.dashboard-content {
+	padding-top: 55px;
+	width: 90%;
+}
+>>>>>>> e07f14b9d63e91a1e13a88f3390261c237afbab6
 
 /*-----------------
 	16. Holidays

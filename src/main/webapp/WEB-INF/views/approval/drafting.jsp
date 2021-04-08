@@ -13,21 +13,14 @@
 <!-- 모달 끝 -->
 </head>
 <body>
-	
-	<!-- Modal HTML embedded directly into document -->
-<!-- <div id="ex1" class="modal">
-  <p>Thanks for clicking. That felt good.</p>
-  <a href="#" rel="modal:close">Close</a>
-</div>
+<!-- header --> <div class="modal-header"> 
 
-Link to open the modal
-<div class="modal">
-<p><a href="#ex1" rel="modal:open">Open Modal</a></p>
-</div>
-	 -->
-	 
-	<div class="modal">
-  <p>Second AJAX Example!</p>
-</div>
+<!-- 닫기(x) 버튼 --> <div><a rel="modal:close"><button type="button" class="close" data-dismiss="modal">×</button></a> </div>
+
+<!-- header title --> <h4 class="modal-title">Header</h4> </div> 
+
+<!-- body --> <div class="modal-body"> Body </div> 
+
+<!-- Footer --> <div class="modal-footer"> Footer <a href="#" rel="modal:close"><button type="button" class="btn btn-default" data-dismiss="modal">닫기</button></a> </div>
 </body>
 </html>
