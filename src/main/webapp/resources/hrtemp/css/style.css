@@ -74,6 +74,10 @@ Version      : 3.6
 
 ========================================*/
 
+.fas.fa-circle.status-n {
+	color: red;
+}
+
 @font-face {
 	font-family: 'Material Icons';
 	font-style: normal;

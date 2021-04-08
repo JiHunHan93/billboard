@@ -14,6 +14,7 @@
  	<result property="fileAttachment" column="BOARD_FILEATTACHMENT"/>
  	<result property="count" column="BOARD_COUNT"/>
  	<result property="enrollDate" column="BOARD_ENROLL_DATE"/>
+ 	<result property="endDate" column="BOARD_END_DATE"/>
  	<result property="memberNo" column="MEMBER_NO"/>
  </resultMap>
  
@@ -24,6 +25,7 @@
       , A.BOARD_WRITER
       , A.BOARD_COUNT
       , A.BOARD_ENROLL_DATE
+      , A.BOARD_END_DATE
       , A.MEMBER_NO  
   FROM BB_BOARD A
   WHERE A.BOARD_TYPE = '자유'
@@ -34,25 +36,35 @@
 	  INTO BB_BOARD A
 	 (
 	  A.BOARD_NO, A.BOARD_TYPE, A.BOARD_TITLE, A.BOARD_BODY, A.BOARD_WRITER, A.BOARD_STATUS,
-	   A.BOARD_COUNT, A.BOARD_FILEATTACHMENT, A.BOARD_ENROLL_DATE, A.MEMBER_NO 
+	   A.BOARD_COUNT, A.BOARD_FILEATTACHMENT, A.BOARD_ENROLL_DATE, A.BOARD_END_DATE, A.MEMBER_NO 
 	 )
 	 VALUES
 	 (SEQ_BOARD_NO.NEXTVAL, #{boardType}, #{title}, #{body}, #{writer}, 'Y',
-	 10, NULL, SYSDATE, 3)
+	 DEFAULT, NULL, SYSDATE, SYSDATE, 3)
 	 
 </insert> 
 
-<!-- <select id="detailBoard" resultMap="boardResultMap" parameterType="BoardDTO">
+<select id="detailBoard" resultMap="boardResultMap" parameterType="BoardDTO">
  SELECT
         A.BOARD_NO
       , A.BOARD_TITLE
       , A.BOARD_WRITER
       , A.BOARD_COUNT
       , A.BOARD_ENROLL_DATE
+      , A.BOARD_END_DATE
+      , A.BOARD_TYPE
+      , A.BOARD_STATUS
+      , A.BOARD_BODY
       , A.MEMBER_NO  
   FROM BB_BOARD A
   WHERE A.BOARD_TYPE = '자유'
+    AND A.BOARD_STATUS = 'Y'
     AND A.BOARD_NO = #{no}
+</select> 
 
-</select> -->
+<update id="updateCount" parameterType="_int">
+   UPDATE BB_BOARD A
+   SET A.BOARD_COUNT = A.BOARD_COUNT + 1
+   WHERE A.BOARD_NO = #{no}
+</update>
 </mapper>
