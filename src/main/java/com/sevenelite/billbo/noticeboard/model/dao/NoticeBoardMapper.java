@@ -8,5 +8,7 @@ public interface NoticeBoardMapper {
 	
 	List<NoticeBoardDTO> selectNotice();
 
-	boolean insertNotice();
+	int insertNotice(NoticeBoardDTO noticeBoardDTO);
+
+	
 }

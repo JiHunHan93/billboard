@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sevenelite.billbo.workhour.work.model.dao.StatusDAO">
+ 	<resultMap id="statusResult" type="WorkStatusDTO">
+ 	<id column="MEMBMER_NO" property="memNo"/>
+ 	<result column="WORKDATE" property="date"/>
+ 	<result column="COMMUTE" property="commute"/>
+ 	<result column="LEAVE_WORK" property="lDate"/>
+ 	<result column="WORKTYPE_CODE" property="type"/>
+ 	</resultMap>
+ 	
+	<resultMap id="typeResult" type="WorkTypeDTO">
+		<id property="WORKTYPE_CODE" column="code"/>
+		<result property="WORKTYPE_TYPE" column="type"/>
+	</resultMap>
+	
+	<select id="selectAllStatus" resultMap="statusResult" parameterType="WorkStatusDTO">
+        SELECT	
+		       A.WORKDATE
+		     , A.COMMUTE
+		     , A.LEAVE_WORK
+		     , A.MEMBER_NO
+		     , A.WORKTYPE_CODE
+             , B.WORKTYPE_CODE
+             , B.WORKTYPE_TYPE
+	FROM BB_WORKSTATUS A
+    JOIN BB_WORKTYPE B ON (A.WORKTYPE_CODE = b.WORKTYPE_CODE)
+	
+	</select>
+ </mapper>   
