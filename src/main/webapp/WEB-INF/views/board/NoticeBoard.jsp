@@ -19,19 +19,19 @@
 	href="assets/img/favicon.png">
 
 <!-- Bootstrap CSS -->
-<link rel="stylesheet" href="./resources/hrtemp/css/bootstrap.min.css">
+<link rel="stylesheet" href="../resources/hrtemp/css/bootstrap.min.css">
 
 <!-- Fontawesome CSS -->
-<link rel="stylesheet" href="./resources/hrtemp/css/font-awesome.min.css">
+<link rel="stylesheet" href="../resources/hrtemp/css/font-awesome.min.css">
 
 <!-- Lineawesome CSS -->
-<link rel="stylesheet" href="./resources/hrtemp/css/line-awesome.min.css">
+<link rel="stylesheet" href="../resources/hrtemp/css/line-awesome.min.css">
 
 <!-- Datatable CSS -->
-<link rel="stylesheet" href="./resources/hrtemp/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="../resources/hrtemp/css/dataTables.bootstrap4.min.css">
 
 <!-- Main CSS -->
-<link rel="stylesheet" href="./resources/hrtemp/css/style.css">
+<link rel="stylesheet" href="../resources/hrtemp/css/style.css">
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -653,7 +653,7 @@
 
 				<div class="file-sidebar dashboard-sub-sidebar">
 					<div class="file-header justify-content-center">
-						<span><button type="button" class="btn btn-write">글쓰기</button></span>
+						<span><button type="button" class="btn btn-write"><a href="${pageContext.servletContext.contextPath}/noticeBoard/insert">글쓰기</button></span>
 						<a href="javascript:void(0);" class="file-side-close"><i class="fa fa-times"></i></a>
 					</div>
 					<br>
@@ -760,21 +760,21 @@
 	<!-- /Main Wrapper -->
 
 	<!-- jQuery -->
-	<script src="./resources/hrtemp/js/jquery-3.5.1.min.js"></script>
+	<script src="../resources/hrtemp/js/jquery-3.5.1.min.js"></script>
 
 	<!-- Bootstrap Core JS -->
-	<script src="./resources/hrtemp/js/popper.min.js"></script>
-	<script src="./resources/hrtemp/js/bootstrap.min.js"></script>
+	<script src="../resources/hrtemp/js/popper.min.js"></script>
+	<script src="../resources/hrtemp/js/bootstrap.min.js"></script>
 
 	<!-- Slimscroll JS -->
-	<script src="./resources/hrtemp/js/jquery.slimscroll.min.js"></script>
+	<script src="../resources/hrtemp/js/jquery.slimscroll.min.js"></script>
 
 	<!-- Datatable JS -->
-	<script src="./resources/hrtemp/js/jquery.dataTables.min.js"></script>
-	<script src="./resources/hrtemp/js/dataTables.bootstrap4.min.js"></script>
+	<script src="../resources/hrtemp/js/jquery.dataTables.min.js"></script>
+	<script src="../resources/hrtemp/js/dataTables.bootstrap4.min.js"></script>
 
 	<!-- Custom JS -->
-	<script src="./resources/hrtemp/js/app.js"></script>
+	<script src="../resources/hrtemp/js/app.js"></script>
 
 </body>
 </html>

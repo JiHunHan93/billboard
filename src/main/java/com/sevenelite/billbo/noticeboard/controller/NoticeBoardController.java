@@ -41,7 +41,7 @@ public class NoticeBoardController {
     @GetMapping("insert")
     public String insertNoticeBoard() {
     	
-    	return "board/insertNoticeBoard";
+    	return "board/NoticeBoardInsert";
     }
     
     public String registNoticeBoard(@ModelAttribute NoticeBoardDTO noticeBoardDTO,

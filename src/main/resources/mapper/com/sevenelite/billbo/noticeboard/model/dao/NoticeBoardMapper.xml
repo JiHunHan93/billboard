@@ -28,6 +28,26 @@
   FROM BB_BOARD A
   WHERE A.BOARD_TYPE = '공지'
  </select>
- 
+<insert id="insertNotice" parameterType="NoticeBoardDTO">
+  INSERT 
+  	INTO BB_BOARD A
+  	(   
+  		A.BOARD_NO
+  	 ,	A.BOARD_TITLE
+  	 ,	A.BOARD_TYPE
+  	 ,	A.BOARD_BODY
+  	 ,	A.BOARD_WRITER
+  	 ,  A.BOARD_STATUS
+  	 ,  A.BOARD_FILEATTACHMENT
+  	 ,  A.BOARD_COUNT
+  	 ,  A.BOARD_ENROLL_DATE
+  	 ,  A.MEMBER_NO
+  	);
+  	VALUES
+  	(
+  		SEQ_BOARD_NO.NEXTVAL, #{BOARD_TYPE}, #{BOARD_TITLE}, #{BOARD_BODY}, #{BOARD_WRITER}, 'Y',
+  		NULL, 1, SYSDATE, 5
+  	)
+ </insert> 
  
  </mapper>

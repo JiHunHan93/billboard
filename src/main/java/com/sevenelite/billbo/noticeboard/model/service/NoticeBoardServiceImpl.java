@@ -27,8 +27,9 @@ public class NoticeBoardServiceImpl implements NoticeBoardService {
 	@Override
 	public boolean registNoticeBoard(NoticeBoardDTO noticeBoardDTO) {
 		
+		int result = noticeBoardMapper.insertNotice(noticeBoardDTO);
 		
-		return  noticeBoardMapper.insertNotice();
+		return result >= 1 ? true : false;
 	}
 
 }
