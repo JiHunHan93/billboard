@@ -1447,30 +1447,35 @@
 											<form action="${ pageContext.servletContext.contextPath }/profile/mainProfile" method="post">
 										<table class="type_list_box">
 											<tbody><tr>
-												<th class="num"><span class="title_txt">사번</span></th>
-												<th class="class"><span class="title_txt">군벌</span></th>
-												<th class="level"><span class="title_txt">계급</span></th>
-												<th class="number"><span class="title_txt">군번</span></th>
+												<th class="member_no"><span class="title_txt">사번</span></th>
+												<th class="army_no"><span class="title_txt">군번</span></th>
+												<th class="branch"><span class="title_txt">직위</span></th>
+												<th class="army_class"><span class="title_txt">계급</span></th>
+												<th class="service_num"><span class="title_txt">군번</span></th>
 												<th class="discharge"><span class="title_txt">전역구분</span></th>
-												<th class="date"><span class="title_txt">입대일</span></th>
+												<th class="start"><span class="title_txt">입대일</span></th>
 												<th class="date"><span class="title_txt">제대일</span></th>
-												<th class="etc"><span class="title_txt">기타 사유</span></th>
+												<th class="reason"><span class="title_txt">기타 사유</span></th>
 												<th class="modify"><span class="title_txt">수정</span></th>
 											</tr>
 											<tr>
 											<!-- class="dataRow" data-id=""-->	
-											<td class="num">
-													<span>1</span>
+											<td class="member_no">
+													<input class="txt w_max" type="text" name="member_no" id="member_no">
 												</td>
-												<td class="class">
+											<td class="army_no">
+													<input class="txt w_max" type="text" name="no" id="no">
+												</td>
+												
+												<td class="branch">
 													<span class="txt"></span>
 													<input class="txt w_max" type="text" name="branch" id="branch">
 												</td>
-												<td class="level">
+												<td class="army_class">
 													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="army_class" id="class"value="" >
+													<input class="txt w_max" type="text" name="army_class" id="army_class"value="" >
 												</td>
-												<td class="number">
+												<td class="service_num">
 													<span class="txt"></span>
 													<input class="txt w_max" type="text" name="service_num" id="service_num"value="" >
 												</td>
@@ -1478,19 +1483,19 @@
 													<span class="txt"></span>
 													<input class="txt w_max" type="text" name="discharge" id="discharge"value="" >
 												</td> 
-												<td class="date">
+												<td class="start">
 													<span class="wrap_date">
 													<input class="txt wfix_small hasDatepicker" type="date" name="start" id="start"value="" >
 													<span class="ic ic_calendar"></span>
 													</span>
 												</td>
-												<td class="date">
+												<td class="end">
 													<span class="wrap_date">
 													<input class="txt wfix_small hasDatepicker" type="date" name="end" id="end"value="" id="dp1617006090881">
 													<span class="ic ic_calendar"></span>
 													</span>
 												</td>
-												<td class="etc">
+												<td class="reason">
 													<span class="txt"></span>
 													<input class="txt w_max" type="text" name="reason" id="reason"value="" >
 												</td>

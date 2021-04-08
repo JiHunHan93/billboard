@@ -8,7 +8,7 @@ import com.sevenelite.billbo.profile.model.dto.ArmyDTO;
 
 public interface ProfileMapper {
 
-	List<ArmyDTO> armyInfo(SqlSessionTemplate sqlSession);
+	ArmyDTO armyInfo(ArmyDTO army);
 
-	List<ArmyDTO> armyInfo();
+	ArmyDTO armyInfo();
 }

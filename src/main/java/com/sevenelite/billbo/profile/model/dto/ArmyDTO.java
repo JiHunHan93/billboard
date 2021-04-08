@@ -1,6 +1,7 @@
 package com.sevenelite.billbo.profile.model.dto;
 
-import java.util.Date;
+import java.sql.Date;
+
 
 public class ArmyDTO {
 	
@@ -9,8 +10,8 @@ public class ArmyDTO {
 	private String army_class;
 	private String service_num;
 	private String discharge;
-	private java.util.Date start;
-	private java.util.Date end;
+	private java.sql.Date start;
+	private java.sql.Date end;
 	private int reason;
 	private int member_no;
 	
@@ -109,4 +110,7 @@ public class ArmyDTO {
 		this.member_no = member_no;
 	}
 
+
+
+	
 	}

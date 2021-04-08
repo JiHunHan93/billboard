@@ -4,7 +4,6 @@ import java.util.Date;
 
 public class BoardDTO {
 
-	
 	private int no;
 	private String boardType;
 	private String title;

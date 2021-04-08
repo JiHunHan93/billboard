@@ -4,11 +4,16 @@ import java.util.List;
 
 import com.sevenelite.billbo.board.model.dto.BoardDTO;
 
+
 public interface BoardService {
 
 	List<BoardDTO> selectBoard();
+	/*
+	 * int insertBoard(BoardDTO boardDTO);
+	 */
 
-	int insertBoard(BoardDTO boardDTO);
+	boolean registBoard(BoardDTO board);
 
+	/* BoardDTO detailBoard(int no); */
 
 }

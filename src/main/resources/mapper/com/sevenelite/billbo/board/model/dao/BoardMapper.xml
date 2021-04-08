@@ -29,7 +29,7 @@
   WHERE A.BOARD_TYPE = '자유'
  </select>
 
-<insert id="insertBoard" parameterType="BoardDTO">
+<insert id="registBoard" parameterType="BoardDTO">
 	INSERT
 	  INTO BB_BOARD A
 	 (
@@ -37,8 +37,22 @@
 	   A.BOARD_COUNT, A.BOARD_FILEATTACHMENT, A.BOARD_ENROLL_DATE, A.MEMBER_NO 
 	 )
 	 VALUES
-	 (SEQ_BOARD_NO.NEXTVAL, '자유', #{title}, #{content}, '최지환', 'Y',
-	 10, NULL, SYSDATE, 4)
+	 (SEQ_BOARD_NO.NEXTVAL, #{boardType}, #{title}, #{body}, #{writer}, 'Y',
+	 10, NULL, SYSDATE, 3)
 	 
-</insert>
+</insert> 
+
+<!-- <select id="detailBoard" resultMap="boardResultMap" parameterType="BoardDTO">
+ SELECT
+        A.BOARD_NO
+      , A.BOARD_TITLE
+      , A.BOARD_WRITER
+      , A.BOARD_COUNT
+      , A.BOARD_ENROLL_DATE
+      , A.MEMBER_NO  
+  FROM BB_BOARD A
+  WHERE A.BOARD_TYPE = '자유'
+    AND A.BOARD_NO = #{no}
+
+</select> -->
 </mapper>
