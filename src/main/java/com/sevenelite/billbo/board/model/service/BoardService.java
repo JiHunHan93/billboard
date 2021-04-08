@@ -14,6 +14,10 @@ public interface BoardService {
 
 	boolean registBoard(BoardDTO board);
 
+	List<BoardDTO> detailBoard(int no);
+
+	int updateCount(int no);
+
 	/* BoardDTO detailBoard(int no); */
 
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -639,6 +640,7 @@
 							</div>
 							<div class="col-auto float-right ml-auto">
 								<a href="#" class="btn add-btn" data-toggle="modal" data-target="#edit_project"><i class="fa fa-plus"></i> 게시글 수정</a>
+								<a href="#" class="btn add-btn" data-toggle="modal" data-target="#edit_project1"><i class="fa fa-minus"></i> 게시글 삭제</a>
 							</div>
 						</div>
 					</div>
@@ -647,14 +649,16 @@
 					<div class="row">
 						<div class="col-lg-8 col-xl-9">
 							<div class="card">
+							<c:forEach var="detailInfo" items="${requestScope.detailInfo }">
 								<div class="card-body">
 									<div class="project-title">
-										<h5 class="card-title">제목</h5>
-										<small class="block text-ellipsis m-b-15"><span class="text-xs">2021 / </span><span class="text-xs">04 </span> <span class="text-muted">월 </span><span class="text-xs">05 </span> <span class="text-muted">일</span></small>
+										<h5 class="card-title"><c:out value="${ detailInfo.title} "/></h5>
+										<small class="block text-ellipsis m-b-15"><span class="text-xs"><c:out value="${ detailInfo.enrollDate} "/></span></small>
 									</div>
-									<p>내용</p>
-									<p>내용</p>
+									<div><c:out value="${ detailInfo.body}"/></div>
+									
 								</div>
+								</c:forEach>
 							</div>
 							<div class="card">
 								<div class="card-body">
@@ -761,9 +765,10 @@
 									<h6 class="card-title m-b-15">업로드 정보</h6>
 									<table class="table table-striped table-border">
 										<tbody>
+										<c:forEach var="detailInfo" items="${requestScope.detailInfo }">
 											<tr>
 												<td>작성자</td>
-												<td class="text-right">직원명</td>
+												<td class="text-right"><c:out value="${ detailInfo.writer }"/></td>
 											</tr>
 											<tr>
 												<td>부서</td>
@@ -793,12 +798,13 @@
 											</tr>
 											<tr>
 												<td>만료일</td>
-												<td class="text-right"><a href="profile.html">년-월-일/ 무기한</a></td>
+												<td class="text-right"><a href="profile.html"><c:out value="${detailInfo.endDate}"/></a></td>
 											</tr>
 											<tr>
 												<td>유효 여부</td>
 												<td class="text-right">유효/만료</td>
 											</tr>
+											</c:forEach>
 										</tbody>
 									</table>
 									<p class="m-b-5">상태바 <span class="text-success float-right">40%</span></p>
@@ -891,6 +897,28 @@
 				</div>
 				<!-- /Edit Board Modal -->
 				
+				
+				<!-- delete modal-->
+				<div id="edit_project1" class="modal custom-modal fade" role="dialog">
+					<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">게시물 삭제</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<form>
+								
+									<div class="submit-section">
+										<button class="btn btn-primary submit-btn">삭제하기</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
             </div>
 			<!-- /Page Wrapper -->
 
