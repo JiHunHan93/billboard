@@ -640,7 +640,7 @@
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title" font>님의 근태 현황</h3>
+								<h3 class="page-title" font>${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }님의 근태 현황</h3>
 								<ul class="breadcrumb">
 								</ul>
 							</div>
@@ -667,13 +667,13 @@
 							<div class="col-md-3">
 								<div class="stats-info">
 									<h6 style="font-weight: bold;">이번달 연장</h6>
-									<h4 style="color: gray;"><c:out value="${ workList.totalWork }"/></h4>
+									<h4 style="color: gray;"><c:out value=""/></h4>
 								</div>
 							</div>
 							<div class="col-md-3">
 								<div class="stats-info">
 									<h6 style="font-weight: bold;">이번달 누적</h6>
-									<h4 style="color: gray;"><c:out value="${ workList.totalWork }"/></h4>
+									<h4 style="color: gray;"><c:out value=""/></h4>
 								</div>
 							</div>
 						</div>
