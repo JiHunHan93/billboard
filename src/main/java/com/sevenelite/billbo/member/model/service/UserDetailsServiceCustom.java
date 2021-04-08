@@ -38,6 +38,7 @@ public class UserDetailsServiceCustom implements UserDetailsService {
 			userDetails.setUsername(userInfo.getEmail());
 			userDetails.setPassword(userInfo.getPwd());
 			userDetails.setMembername(userInfo.getName());
+			userDetails.setMemberno(userInfo.getNo());
 			
 			/* 사용자 권한 select해서 받아온 뒤 VO setter에 List<String> 객체 주입 */
 			userDetails.setAuthorities(mapper.selectUserAuthone(username));

@@ -15,6 +15,7 @@ public class UserDetailsVO implements UserDetails {
 	private String username;	 //ID
 	private String password; 	 //PW
 	private String membername;	 //MEMBER_NAME
+	private int memberno;		 //MEMBER_NO
 	private List<GrantedAuthority> authorities;
 	
 	// Setter
@@ -33,6 +34,12 @@ public class UserDetailsVO implements UserDetails {
 	public void setMembername(String membername) {
 		
 		this.membername = membername;
+	}
+	
+	// Setter
+	public void setMemberno(int memberno) {
+		
+		this.memberno = memberno;
 	}
 	
 	// Setter
@@ -63,6 +70,11 @@ public class UserDetailsVO implements UserDetails {
 	public String getMembername() {
 		
 		return membername;
+	}
+	
+	public int getMemberno() {
+		
+		return memberno;
 	}
 	
 	@Override	//권한
