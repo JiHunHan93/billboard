@@ -17,6 +17,9 @@
  		
  		<!-- <typeAlias alias="NoticeBoardDTO" type="com.sevenlite.bilbo.noticeboard.model.dto.NoticeBoardDTO"/> -->
  		<!-- <typeAlias alias="BoardDTO" type="com.sevenelite.billbo.board.model.dto.BoardDTO"/> -->
+ 		
+ 		<typeAlias alias="NoticeBoardDTO" type="com.sevenelite.billbo.noticeboard.model.dto.NoticeBoardDTO"/>
+ 		 <typeAlias alias="BoardDTO" type="com.sevenelite.billbo.board.model.dto.BoardDTO"/>
  	</typeAliases>
  	
  </configuration>

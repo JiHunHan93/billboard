@@ -1,9 +1,10 @@
-package com.sevenelite.billbo.board.model.dto;
+package com.sevenelite.billbo.noticeboard.model.dto;
 
 import java.util.Date;
 
-public class BoardDTO {
+public class NoticeBoardDTO {
 
+	
 	private int no;
 	private String boardType;
 	private String title;
@@ -15,9 +16,9 @@ public class BoardDTO {
 	private java.util.Date enrollDate;
 	private int memberNo;
 	
-	public BoardDTO() {}
+	public NoticeBoardDTO() {}
 
-	public BoardDTO(int no, String boardType, String title, String body, String writer, String status,
+	public NoticeBoardDTO(int no, String boardType, String title, String body, String writer, String status,
 			String fileAttachment, int count, Date enrollDate, int memberNo) {
 		super();
 		this.no = no;

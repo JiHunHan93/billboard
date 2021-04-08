@@ -644,7 +644,13 @@
                            <h4 class="card-title mb-0">글 작성</h4>
                         </div>
                         <div class="card-body">
-                           <form name="writeForm"  method="post" id="writeForm">
+                           <form action="freeboard" name="writeForm"  method="post" id="writeForm" >
+                           	<div  class="form-group row">
+                           		<label class="col-form-label col-md-2">작성자 : ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }</label><br>
+                           		 <div class="col-md-10">
+                                    <input type="text" class="form-control" name="writer">
+                                 </div>
+                           	</div>
                               <div class="form-group row">
                                  <label class="col-form-label col-md-2">제목</label>
                                  <div class="col-md-10">
@@ -654,7 +660,7 @@
                               <div class="form-group row">
                                             <label class="col-form-label col-md-2">게시판 타입</label>
                                  <div class="col-md-10">
-                                      <select class="form-control">
+                                      <select class="form-control" name="boardType">
                                        <option>-- Select --</option>
                                        <option value="자유">자유 게시판</option>
                                        <option value="인사">인사 게시판</option>
@@ -665,7 +671,7 @@
                               <div class="form-group row">
                                             <label class="col-form-label col-md-2">내용</label>
                                  <div class="col-md-10">
-                                                <textarea rows="5" cols="5" class="autosize" id="ta" placeholder="Enter text here" name="content"></textarea>
+                                                <textarea rows="5" cols="5" class="autosize" id="ta" placeholder="Enter text here" name="body"></textarea>
                                                 <textarea id="xt" style="width:100%; height:455px; overflow-y:hidden; position:absolute; top:-1000px"></textarea>
                                             </div>
                               </div>
@@ -676,7 +682,7 @@
                                             </div>
                                         </div>
                                         <div style="text-align: center; padding: 30px;">
-                                            <a class="btn btn-success write-btn" href="#" onClick="fn_addtoBoard()">글등록</a>
+                                            <input type="submit" class="btn btn-success write-btn" value="글등록">
                                             <a class="btn btn-secondary write-btn">취소</a>
                                             <a class="btn btn-secondary write-btn">목록</a>
                                             
@@ -694,15 +700,15 @@
         
        
         //글쓰기
-        function fn_addtoBoard(){
+   /*      function fn_addtoBoard(){
         	
         	const $form = document.getElmentById("writeForm");
         	
-        	form.action = "<c:url value='/board/insert'/>";
+        	form.action = "<c:url value='/board/regist'/>";
         	
         	form.submit();
         }
-        
+         */
             function xSize(e)
             {
                 var xe = document.getElementById('xt'),
