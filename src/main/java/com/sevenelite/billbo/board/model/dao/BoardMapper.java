@@ -9,7 +9,11 @@
   
   List<BoardDTO> selectBoard();
 
-int registBoard(BoardDTO board);
+  int registBoard(BoardDTO board);
+
+List<BoardDTO> detailBoard(int no);
+
+int updateCount(int no);
 
 /* BoardDTO detailBoard(int no); */
   

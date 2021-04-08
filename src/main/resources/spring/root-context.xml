@@ -69,9 +69,12 @@
 	
 	<mybatis-spring:scan base-package="com.sevenelite.billbo.member.model.dao,
 									   com.sevenelite.billbo.noticeboard.model.dao,
-									   com.sevenelite.billbo.profile.model.dao
-									   com.sevenelite.billbo.workhour.work.model.dao"/>
-									   
+
+									   com.sevenelite.billbo.profile.model.dao,
+									   com.sevenelite.billbo.workhour.work.model.dao,
+									   com.sevenelite.billbo.board.model.dao"/>
+
+
 
 	<!-- Spring Security 설정 -->
 	<s:http auto-config="true" use-expressions="true">

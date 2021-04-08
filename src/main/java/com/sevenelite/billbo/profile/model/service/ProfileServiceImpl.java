@@ -9,22 +9,30 @@ import org.springframework.stereotype.Service;
 
 import com.sevenelite.billbo.profile.model.dao.ProfileMapper;
 import com.sevenelite.billbo.profile.model.dto.ArmyDTO;
+import com.sevenelite.billbo.profile.model.dto.MemberInfoDTO;
 @Service
 public class ProfileServiceImpl implements ProfileService{
 
 	private final ProfileMapper mapper;
 	
 	@Autowired
-	public ProfileServiceImpl(ProfileMapper army) {
-		this.mapper = army;
+	public ProfileServiceImpl(ProfileMapper mapper) {
+		this.mapper = mapper;
+		
 	}
 
 	@Override
-	public ArmyDTO armyInfo(ArmyDTO army) {
+	public boolean armyInfo(ArmyDTO army) {
 		// TODO Auto-generated method stub
-		return mapper.armyInfo(army);
+		return mapper.armyInfo(army) > 0? true : false;
 	}
 
+//	@Override
+//	public boolean memberInfo(MemberInfoDTO member) {
+//		// TODO Auto-generated method stub
+//		return mapper.memberInfo(member) > 0? true : false;
+//	}
+	
 	}
 
 	
