@@ -67,20 +67,9 @@
 		<aop:advisor id="transactionAdvisor" pointcut-ref="serviceMethod" advice-ref="txAdvice"/>
 	</aop:config>
 	
-<<<<<<< HEAD
-	<mybatis-spring:scan base-package="com.sevenelite.billbo.member.model.dao"/>
-=======
 	<mybatis-spring:scan base-package="com.sevenelite.billbo.member.model.dao,
-<<<<<<< HEAD
 									   com.sevenelite.billbo.noticeboard.model.dao,
-									   com.sevenelite.billbo.profile.model.dao
-									   "/>
->>>>>>> e07f14b9d63e91a1e13a88f3390261c237afbab6
-=======
-										com.sevenelite.billbo.profile.model.dao,
-									   com.sevenelite.billbo.noticeboard.model.dao"/>
-									
->>>>>>> 464119898f2780e1554a74124b50ef5faf5b5fa0
+									   com.sevenelite.billbo.profile.model.dao"/>
 
 
 	<!-- Spring Security 설정 -->
