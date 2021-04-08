@@ -686,7 +686,6 @@
 								<table class="table table-striped custom-table mb-0 datatable">
 									<thead>
 										<tr>
-											<th>일</th>
 											<th>요일</th>
 											<th>상태</th>
 											<th>업무시작</th>
@@ -699,13 +698,13 @@
 									</thead>
 									<tbody>
 										<tr>
-										<td>01</td>
-										<td>월요일</td>
-										<td style="color: red;"><i class="fas fa-circle"></i></td>
+										<td></td>
+										<td><i class="fas fa-circle status-n"></i></td>
 										<td></td>
 										<td></td>
 										<td></td>
-											<td>비고: </td>
+										<td></td>
+											<td></td>
 											<div class="dropdown action-label">
 												<div class="dropdown-menu dropdown-menu-right">
 													<a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-purple"></i> New</a>
@@ -719,26 +718,8 @@
 									<tr>
 										
 										<td></td>
+										<td><i class="fas fa-circle"></i></td>
 										<td></td>
-										<td style="color: red;"><i class="fas fa-circle"></i></td>
-										<td></td>
-										<td></td>
-										<td></td>
-											<td>비고 : </td>
-											<div class="dropdown action-label">
-												<div class="dropdown-menu dropdown-menu-right">
-													<a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-purple"></i> New</a>
-													<a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-info"></i> Pending</a>
-													<a class="dropdown-item" href="#" data-toggle="modal" data-target="#approve_leave"><i class="fa fa-dot-circle-o text-success"></i> Approved</a>
-													<a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Declined</a>
-												</div>
-											</div>
-										</td>
-									</tr><tr>
-										
-										<td></td>
-										<td></td>
-										<td style="color: grey;"><i class="fas fa-circle"></i></td>
 										<td></td>
 										<td></td>
 										<td></td>
@@ -755,12 +736,30 @@
 									</tr><tr>
 										
 										<td></td>
-										<td></td>
-										<td style="color: grey;"><i class="fas fa-circle"></i></td>
-										<td></td>
+										<td><i class="fas fa-circle"></i></td>
 										<td></td>
 										<td></td>
-											<td>비고 : </td>
+										<td></td>
+										<td></td>
+											<td> </td>
+											<div class="dropdown action-label">
+												<div class="dropdown-menu dropdown-menu-right">
+													<a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-purple"></i> New</a>
+													<a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-info"></i> Pending</a>
+													<a class="dropdown-item" href="#" data-toggle="modal" data-target="#approve_leave"><i class="fa fa-dot-circle-o text-success"></i> Approved</a>
+													<a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-danger"></i> Declined</a>
+												</div>
+											</div>
+										</td>
+									</tr><tr>
+										
+										<td></td>
+										<td><i class="fas fa-circle"></i></td>
+										<td></td>
+										<td></td>
+										<td></td>
+										<td></td>
+											<td> </td>
 											<div class="dropdown action-label">
 												<div class="dropdown-menu dropdown-menu-right">
 													<a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-purple"></i> New</a>
@@ -773,12 +772,12 @@
 									</tr><tr>
 									
 										<td></td>
-										<td></td>
-										<td style="color: grey;"><i class="fas fa-circle"></i></td>
-										<td></td>
+										<td><i class="fas fa-circle"></i></td>
 										<td></td>
 										<td></td>
-											<td>비고 : </td>
+										<td></td>
+										<td></td>
+											<td> </td>
 											<div class="dropdown action-label">
 												<div class="dropdown-menu dropdown-menu-right">
 													<a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-purple"></i> New</a>
@@ -987,4 +986,8 @@
 		<script src="../resources/hrtemp/js/app.js"></script>
 		
     </body>
+    
+    <script type="text/javascript">
+    	
+    </script>
 </html>
