@@ -68,8 +68,8 @@
 	</aop:config>
 	
 	<mybatis-spring:scan base-package="com.sevenelite.billbo.member.model.dao,
-									   com.sevenlite.billbo.noticeboard.model.dao"/>
-
+									   com.sevenelite.billbo.noticeboard.model.dao"/>
+									
 
 	<!-- Spring Security 설정 -->
 	<s:http auto-config="true" use-expressions="true">
