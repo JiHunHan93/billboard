@@ -685,8 +685,8 @@
 												<!-- Employee 조직도 -->
 												<p class="category-text">전자결재</p>
 												<i class="las la-inbox category-icon"></i>
-												<i class="fas fa-circle category-dot"><div class="category-sub-text">전자결재 등록</div></i>
-												<i class="fas fa-circle category-dot"><div class="category-sub-text">전자결재 조회</div></i>
+												<i class="fas fa-circle category-dot"><a href="approval/main"><div class="category-sub-text">전자결재 등록</div></a></i>
+												<i class="fas fa-circle category-dot"><a href="approval/main"><div class="category-sub-text">전자결재 조회</div></a></i>
 												<!-- Admin 전자결재 -->
 												<!-- <p class="category-text">전자결재</p> -->
 												<!-- <i class="las la-inbox category-icon"></i> -->

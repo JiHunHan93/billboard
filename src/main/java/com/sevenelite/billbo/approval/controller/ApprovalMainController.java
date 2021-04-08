@@ -7,9 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequestMapping("/approval/*")
-public class ApprovalDocumentController {
-	
-	
+public class ApprovalMainController {
 	
 	@GetMapping(value={"main", "/"})
 	public String registPage() {
@@ -32,6 +30,15 @@ public class ApprovalDocumentController {
 		System.out.println("가즈아 ajax");
 		
 		return "approval/ajax";
+	}
+	
+	
+	@GetMapping("test")
+	public String modalTest() {
+		
+		System.out.println("성공하고싶다");
+		
+		return "approval/test";
 	}
 	
 }
