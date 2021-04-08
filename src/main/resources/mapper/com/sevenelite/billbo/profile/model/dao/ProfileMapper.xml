@@ -2,12 +2,12 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.sevenelite.billbo.member.model.dao.Profile">
+<mapper namespace="com.sevenelite.billbo.profile.model.dao.ProfileMapper">
 
-<resultMap type="com.sevenelite.billbo.member.profile.dto.ArmyDTO" id="ArmyDTO">
+<resultMap type="com.sevenelite.billbo.profile.model.dto.ArmyDTO" id="rmyDTO">
 	<id property="no" column="ARMY_NO" />
 	<result property="branch" column="ARMY_BRANCH"/>
-	<result property="class" column="ARMY_CLASS"/>
+	<result property="army_class" column="ARMY_CLASS"/>
 	<result property="service_num" column="ARMY_SERVICE_NUM"/>
 	<result property="discharge" column="ARMY_DISCHARGE"/>
 	<result property="start" column="ARMY_START"/>
@@ -17,8 +17,10 @@
 </resultMap>
 
 <insert id="armyInfo" parameterType="ArmyDTO">
+	INSERT
 	INTO BB_ARMY(
          ARMY_NO
+       , MEMBER_NO
        , ARMY_BRANCH
        , ARMY_CLASS
        , ARMY_SERVICE_NUM
@@ -26,18 +28,18 @@
        , ARMY_START
        , ARMY_END
        , ARMY_REASON
-       , MEMBER_NO
     )
     VALUES
     (
-    SEQ_MEMBER_NO.NEXTVAL
-    , #{ no }
-    , #{ class }
-    , #{ service_num }
-    , #{ discharge } 
-    , #{ start }
-    , #{ end }
-    , #{ reason }
+    SEQ_ARMY_NO.NEXTVAL
+    , #{member_no}
+    , #{branch}
+    , #{army_class}
+    , #{service_num}
+    , #{discharge} 
+    , SYSDATE
+    , SYSDATE
+    , #{reason}
     )
 </insert>
 

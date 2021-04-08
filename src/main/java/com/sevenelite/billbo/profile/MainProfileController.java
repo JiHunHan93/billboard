@@ -1,20 +1,28 @@
 package com.sevenelite.billbo.profile;
 
-import javax.servlet.http.HttpServletRequest;
+import java.text.SimpleDateFormat;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sevenelite.billbo.profile.model.dto.ArmyDTO;
+import com.sevenelite.billbo.profile.model.service.ProfileService;
 
 @Controller
 @RequestMapping("/profile/*")
 public class MainProfileController {
 
+	private final ProfileService profileService;
+	@Autowired
+	public MainProfileController(ProfileService profileService) {
+	
+		this.profileService = profileService;
+	}
+	
 	@GetMapping(value= {"mainProfile","/"})
 	public String page() {
 		System.out.println("오나?");
@@ -28,8 +36,13 @@ public class MainProfileController {
 			System.out.println("branch : " +army);
 			
 			System.out.println("오나!!!!!!!!!!!!!");
-		
+			
+			profileService.armyInfo(army);
+			
+			SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+			
 			return "profile/mainProfile";
 	}
-
+		
+		
 }

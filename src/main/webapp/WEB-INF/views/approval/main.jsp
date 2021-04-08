@@ -656,61 +656,15 @@
 			    <section class="gnb_title">
 			        <h1><a id="apprHome">전자결재</a></h1>
 			    </section>
-			<!-- 글 쓰기 -->
+			<!-- 결재 진행을 위한 양식 선택 -->
 			<section class="function">
-			    <a href="drafting.html" class="btn_function" id="writeBtn" data-bypass=""><span class="ic_side ic_app_appr"></span><span class="txt">새 결재 진행</span></a>
+			    <a href="drafting" rel="modal:open" class="btn_function" id="writeBtn" data-bypass=""><span class="ic_side ic_app_appr"></span><span class="txt">새 결재 진행</span></a>
 			</section>
-<button class="btn btn-default" id="popbutton">모달출력버튼</button><br/> <div class="modal fade"> <div class="modal-dialog"> <div class="modal-content"> <!-- remote ajax call이 되는영역 --> </div> </div> </div>
-
-			<!-- 글 쓰기 -->
-			<script>
-			$("#popbutton").click(function(){
-				
-				$('div.modal').modal({href : 'ajax.html'}); 
 			
-			});
-
+			<div>
+			<a href="ajax.html" rel="modal:open">Click me!</a>
+			</div>
 			
-			
-			
-			
-				$("#writeBtn").click(function(event) {
-					console.log("안녕");
-					/* location.href="${ pageContext.servletContext.contextPath }/approval/drafting"; */
-					event.preventDefault();
-					  this.blur(); // Manually remove focus from clicked link.
-					  $.get(this.href, function(html) {
-					    $(html).appendTo('body').modal();
-					});
-				});
-			</script>
-			<a href="ajax.html" id="manual-ajax">second example</a><br>
-			<a href="ajax.html" rel="modal:open">example</a><br>
-			<script>
-			/* $('#manual-ajax').click(function() {
-				
-				var url = "ajax";
-				
-				  $.this.load(url, function() {
-					  $('#manual-ajax').modal("show"); 
-				  });
-				}); */
-			
-			$('#manual-ajax').click(function(event) {
-					event.preventDefault();
-				    console.log(this.href);
-				    $('div.modal').modal({href : 'ajax.html'});
-				   /*  $('div.modal').modal({remote : 'layer.html'}); */
-				    
-				    /* (this.href).appendTo('body').modal(); */
-				  /* event.preventDefault();
-				  this.blur(); // Manually remove focus from clicked link.
-				  $.get(this.href, function(html) {
-				    $(html).appendTo('body').modal();
-				    console.log(this.href);
-				  }); */
-				});
-			</script>
 			<!-- side : 전자결재 -->
 			<!-- <section class="function"> -->
 			<!--    <a class="btn_function" href="#"><span class="ic_side ic_app_bbs"></span><span class="txt">새 결재 등록</span></a> -->

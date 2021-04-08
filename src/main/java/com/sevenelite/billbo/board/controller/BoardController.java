@@ -30,4 +30,3 @@
  * model.addAttribute("boardList", boardList);
  * 
  * return "board/Board"; } }
- */
