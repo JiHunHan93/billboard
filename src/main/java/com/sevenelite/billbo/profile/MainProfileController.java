@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sevenelite.billbo.profile.model.dto.ArmyDTO;
+import com.sevenelite.billbo.profile.model.dto.MemberInfoDTO;
 import com.sevenelite.billbo.profile.model.service.ProfileService;
 
 @Controller
@@ -43,6 +44,12 @@ public class MainProfileController {
 			
 			return "profile/mainProfile";
 	}
-		
+//	 @PostMapping("mainProfile")
+//	 public String memberInfo(@ModelAttribute MemberInfoDTO member) {
+//		 profileService.memberInfo(member);
+//		 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+//			
+//			return "profile/mainProfile";
+//	 }
 		
 }
