@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -9,7 +10,7 @@
 		<meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
         <meta name="author" content="Dreamguys - Bootstrap Admin Template">
         <meta name="robots" content="noindex, nofollow">
-        <title>2조BB-게시판/문서함</title>
+        <title>Project View - HRMS admin template</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="../resources/hrtemp/img/favicon.png">
@@ -23,8 +24,11 @@
 		<!-- Lineawesome CSS -->
         <link rel="stylesheet" href="../resources/hrtemp/css/line-awesome.min.css">
 		
-		<!-- Datatable CSS -->
-		<link rel="stylesheet" href="../resources/hrtemp/css/dataTables.bootstrap4.min.css">
+		<!-- Select2 CSS -->
+		<link rel="stylesheet" href="../resources/hrtemp/css/select2.min.css">
+		
+		<!-- Datetimepicker CSS -->
+		<link rel="stylesheet" href="../resources/hrtemp/css/bootstrap-datetimepicker.min.css">
 		
 		<!-- Main CSS -->
         <link rel="stylesheet" href="../resources/hrtemp/css/style.css">
@@ -617,122 +621,332 @@
 			</div>
 			<!-- /Sidebar -->
 			
-			
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
-			
+				
+				<!-- Page Content -->
                 <div class="content container-fluid">
-
+				
 					<!-- Page Header -->
 					<div class="page-header">
-						<div class="row">
+						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title">게시판</h3>
+								<h3 class="page-title">게시판 상세</h3>
 								<ul class="breadcrumb">
-									<!-- <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li> -->
-									<li class="breadcrumb-item active">NoticeBoard</li>
+									<li class="breadcrumb-item"><a href="index.html">Apps</a></li>
+									<li class="breadcrumb-item"><a href="index.html">DashBoard</a></li>
+									<li class="breadcrumb-item active">Detail</li>
 								</ul>
+							</div>
+							<div class="col-auto float-right ml-auto">
+								<a href="#" class="btn add-btn" data-toggle="modal" data-target="#edit_project"><i class="fa fa-plus"></i> 게시글 수정</a>
+								<a href="#" class="btn add-btn" data-toggle="modal" data-target="#edit_project1"><i class="fa fa-minus"></i> 게시글 삭제</a>
 							</div>
 						</div>
 					</div>
 					<!-- /Page Header -->
-                    <div class="row">
-						<div class="col-lg-12">
+					
+					<div class="row">
+						<div class="col-lg-8 col-xl-9">
 							<div class="card">
-								<div class="card-header">
-									<h4 class="card-title mb-0">글 작성</h4>
-								</div>
+							<c:forEach var="noticeDetailInfo" items="${requestScope.noticeDetailInfo }">
 								<div class="card-body">
-									<form action="main" name="writeForm" method="post" id="wrtieForm">
-										<div  class="form-group row">
-                           					<label class="col-form-label col-md-2">작성자 : ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }</label><br>
-                           					 <div class="col-md-10">
-                                  			  <input type="text" class="form-control" name="writer">
-                                		 </div>
-                          			 	</div>
-										<div class="form-group row">
-											<label class="col-form-label col-md-2">제목</label>
-											<div class="col-md-10">
-												<input type="text" class="form-control" name="title">
+									<div class="project-title">
+										<h5 class="card-title"><c:out value="${ noticeDetailInfo.title} "/></h5>
+										<small class="block text-ellipsis m-b-15"><span class="text-xs"><c:out value="${ noticeDetailInfo.enrollDate} "/></span></small>
+									</div>
+									<div><c:out value="${ noticeDetailInfo.body}"/></div>
+									
+								</div>
+								</c:forEach>
+							</div>
+							<div class="card">
+								<div class="card-body">
+				                    <h5 class="card-title m-b-20">첨부한 이미지</h5>
+									<div class="row">
+										<div class="col-md-3 col-sm-4 col-lg-4 col-xl-3">
+											<div class="uploaded-box">
+												<div class="uploaded-img">
+													<img src="../resources/hrtemp/img/placeholder.jpg" class="img-fluid" alt="">
+												</div>
+												<div class="uploaded-img-name">
+													 demo.png
+												</div>
 											</div>
 										</div>
-										<div class="form-group row">
-                                            <label class="col-form-label col-md-2">게시판 타입</label>
-											<div class="col-md-10">
-                                                <select class="form-control" name="boardType">
-                                                    <option>-- Select --</option>
-													<option value="자유">자유 게시판</option>
-													<option value="인사">인사 게시판</option>
-													<option value="공지">사내 공지 게시판</option>
-												</select>
+										<div class="col-md-3 col-sm-4 col-lg-4 col-xl-3">
+											<div class="uploaded-box">
+												<div class="uploaded-img">
+													<img src="../resources/hrtemp/img/placeholder.jpg" class="img-fluid" alt="">
+												</div>
+												<div class="uploaded-img-name">
+													 demo.png
+												</div>
 											</div>
 										</div>
-										<div class="form-group row">
-                                            <label class="col-form-label col-md-2">본문</label>
-											<div class="col-md-10">
-                                                <textarea rows="5" cols="5" class="autosize" id="ta" placeholder="Enter text here" name="body"></textarea>
-                                                <textarea id="xt" style="width:100%; height:455px; overflow-y:hidden; position:absolute; top:-1000px"></textarea>
-                                            </div>
+										<div class="col-md-3 col-sm-4 col-lg-4 col-xl-3">
+											<div class="uploaded-box">
+												<div class="uploaded-img">
+													<img src="../resources/hrtemp/img/placeholder.jpg" class="img-fluid" alt="">
+												</div>
+												<div class="uploaded-img-name">
+													 demo.png
+												</div>
+											</div>
 										</div>
-                                        <div class="form-group row">
-                                            <label class="col-form-label col-md-2">파일 첨부</label>
-                                            <div class="col-md-10">
-                                                <input class="form-control" type="file">
-                                            </div>
-                                        </div>
-                                        <div style="text-align: center; padding: 30px;">
-                                        	<input type="submit" class="btn btn-success write-btn" value="글등록">
-                                            <a class="btn btn-secondary write-btn" href="${pageContext.servletContext.contextPath}/noticeBoard/main">작성취소</a>
-                                        </div>
-									</form>
+										<div class="col-md-3 col-sm-4 col-lg-4 col-xl-3">
+											<div class="uploaded-box">
+												<div class="uploaded-img">
+													<img src="../resources/hrtemp/img/placeholder.jpg" class="img-fluid" alt="">
+												</div>
+												<div class="uploaded-img-name">
+													 demo.png
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card">
+								<div class="card-body">
+									<h5 class="card-title m-b-20">업로드한 파일</h5>
+									<ul class="files-list">
+										<li>
+											<div class="files-cont">
+												<div class="file-type">
+													<span class="files-icon"><i class="fa fa-file-pdf-o"></i></span>
+												</div>
+												<div class="files-info">
+													<span class="file-name text-ellipsis"><a href="#">AHA Selfcare Mobile Application Test-Cases.xls</a></span>
+													<span class="file-author"><a href="#">최종 수정자</a></span> <span class="file-date">04/04/ 15:01</span>
+													<div class="file-size">Size: 14.8Mb</div>
+												</div>
+												<ul class="files-action">
+													<li class="dropdown dropdown-action">
+														<a href="" class="dropdown-toggle btn btn-link" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_horiz</i></a>
+														<div class="dropdown-menu dropdown-menu-right">
+															<a class="dropdown-item" href="javascript:void(0)">다운로드</a>
+															<a class="dropdown-item" href="#" data-toggle="modal" data-target="#share_files">공유</a>
+															<a class="dropdown-item" href="javascript:void(0)">삭제</a>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</li>
+										<li>
+											<div class="files-cont">
+												<div class="file-type">
+													<span class="files-icon"><i class="fa fa-file-pdf-o"></i></span>
+												</div>
+												<div class="files-info">
+													<span class="file-name text-ellipsis"><a href="#">AHA Selfcare Mobile Application Test-Cases.xls</a></span>
+													<span class="file-author"><a href="#">최종 수정자</a></span> <span class="file-date">월/일/시:분</span>
+													<div class="file-size">Size: 14.8Mb</div>
+												</div>
+												<ul class="files-action">
+													<li class="dropdown dropdown-action">
+														<a href="" class="dropdown-toggle btn btn-link" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_horiz</i></a>
+														<div class="dropdown-menu dropdown-menu-right">
+															<a class="dropdown-item" href="javascript:void(0)">다운로드</a>
+															<a class="dropdown-item" href="#" data-toggle="modal" data-target="#share_files">공유</a>
+															<a class="dropdown-item" href="javascript:void(0)">삭제</a>
+														</div>
+													</li>
+												</ul>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+						<div class="col-lg-4 col-xl-3">
+							<div class="card">
+								<div class="card-body">
+									<h6 class="card-title m-b-15">업로드 정보</h6>
+									<table class="table table-striped table-border">
+										<tbody>
+										<c:forEach var="noticeDetailInfo" items="${requestScope.noticeDetailInfo }">
+											<tr>
+												<td>작성자</td>
+												<td class="text-right"><c:out value="${ noticeDetailInfo.writer }"/></td>
+											</tr>
+											<tr>
+												<td>부서</td>
+												<td class="text-right">부서명</td>
+											</tr>
+											<tr>
+												<td>직급</td>
+												<td class="text-right">직급</td>
+											</tr>
+											<tr>
+												<td>전화번호</td>
+												<td class="text-right">전화번호</td>
+											</tr>
+											<tr>
+												<td>분류</td>
+												<td class="text-right">
+													<div class="btn-group">
+														<a href="#" class="badge badge-danger dropdown-toggle" data-toggle="dropdown"> 공지</a>
+														<div class="dropdown-menu dropdown-menu-right">
+															<a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-danger"></i> 공지</a>
+															<a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-info"></i> 교육</a>
+															<a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-primary"></i> 알림</a>
+															<a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-success"></i> 자유</a>
+														</div>
+													</div>
+												</td>
+											</tr>
+											<tr>
+												<td>만료일</td>
+												<td class="text-right"><a href="profile.html"><c:out value="${noticeDetailInfo.endDate}"/></a></td>
+											</tr>
+											<tr>
+												<td>유효 여부</td>
+												<td class="text-right">유효/만료</td>
+											</tr>
+											</c:forEach>
+										</tbody>
+									</table>
+									<p class="m-b-5">상태바 <span class="text-success float-right">40%</span></p>
+									<div class="progress progress-xs mb-0">
+										<div class="progress-bar bg-success" role="progressbar" data-toggle="tooltip" title="70%" style="width: 40%"></div>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+                </div>
+				<!-- /Page Content -->
+				
+				<!-- Edit Board Modal -->
+				<div id="edit_project" class="modal custom-modal fade" role="dialog">
+					<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">게시글 수정인데 안쓸지도 모르는 모달</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<form>
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label>제목</label>
+												<input class="form-control" value="기존 글제목" type="text">
+											</div>
+										</div>
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label>작성자</label>
+                                                <input class="form-control" value="기존 작성자" type="text">
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label>게시일</label>
+												<div class="cal-icon">
+													<input class="form-control datetimepicker" type="text">
+												</div>
+											</div>
+										</div>
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label>만료일</label>
+												<div class="cal-icon">
+													<input class="form-control datetimepicker" type="text">
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-sm-3">
+											<div class="form-group">
+                                                <label>분류</label>
+												<select class="select">
+													<option selected>공지</option>
+													<option>교육</option>
+													<option>알림</option>
+													<option>자유</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-sm-6">
+											<div class="form-group">
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label>내용</label>
+										<textarea rows="4" class="form-control" placeholder="Enter your message here"></textarea>
+									</div>
+									<div class="form-group">
+										<label>업로드한 파일</label>
+										<input class="form-control" type="file">
+									</div>
+									<div class="submit-section">
+										<button class="btn btn-primary submit-btn">수정 완료</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /Edit Board Modal -->
+				
+				
+				<!-- delete modal-->
+				<div id="edit_project1" class="modal custom-modal fade" role="dialog">
+					<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">게시물 삭제</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<form>
+								
+									<div class="submit-section">
+										<button class="btn btn-primary submit-btn">삭제하기</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+            </div>
 			<!-- /Page Wrapper -->
+
         </div>
 		<!-- /Main Wrapper -->
-		
-        <script>
-            function xSize(e)
-            {
-                var xe = document.getElementById('xt'),
-                    t;
-
-                e.onfocus = function()
-                {
-                    t = setInterval(
-                        function()
-                        {
-                            xe.value = e.value;
-                            e.style.height = (xe.scrollHeight + 50) + 'px';
-                        }, 100);
-                }
-
-                e.onblur = function()
-                {
-                    clearInterval(t);
-                }
-            }
-            xSize(document.getElementById('ta'));
-        </script>
 
 		<!-- jQuery -->
         <script src="../resources/hrtemp/js/jquery-3.5.1.min.js"></script>
-		
+
 		<!-- Bootstrap Core JS -->
         <script src="../resources/hrtemp/js/popper.min.js"></script>
         <script src="../resources/hrtemp/js/bootstrap.min.js"></script>
-		
+
 		<!-- Slimscroll JS -->
 		<script src="../resources/hrtemp/js/jquery.slimscroll.min.js"></script>
 		
-		<!-- Datatable JS -->
-		<script src="../resources/hrtemp/js/jquery.dataTables.min.js"></script>
-		<script src="../resources/hrtemp/js/dataTables.bootstrap4.min.js"></script>
+		<!-- Select2 JS -->
+		<script src="../resources/hrtemp/js/select2.min.js"></script>
 		
+		<!-- Datetimepicker JS -->
+		<script src="../resources/hrtemp/js/moment.min.js"></script>
+		<script src="../resources/hrtemp/js/bootstrap-datetimepicker.min.js"></script>
+		
+		<!-- Task JS -->
+		<script src="../resources/hrtemp/js/task.js"></script>
+
 		<!-- Custom JS -->
-		<script  src="../resources/hrtemp/js/app.js"></script>
-		
+		<script src="../resources/hrtemp/js/app.js"></script>
+
     </body>
 </html>

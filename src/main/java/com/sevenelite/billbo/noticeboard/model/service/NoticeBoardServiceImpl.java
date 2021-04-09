@@ -32,4 +32,16 @@ public class NoticeBoardServiceImpl implements NoticeBoardService {
 		return result >= 1 ? true : false;
 	}
 
+	@Override
+	public int updateCount(int no) {
+		
+		return noticeBoardMapper.updateCount(no);
+	}
+
+	@Override
+	public List<NoticeBoardDTO> detailNoticeBoard(int no) {
+		
+		return noticeBoardMapper.detailNoticeBoard(no);
+	}
+
 }
