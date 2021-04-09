@@ -93,21 +93,7 @@
                role="button"> <img
                   src="/billbo/resources/hrtemp/img/flags/us.png" alt="" height="20">
                   <span>English</span>
-            </a>
-               <div class="dropdown-menu dropdown-menu-right">
-                  <a href="javascript:void(0);" class="dropdown-item"> <img
-                     src="/billbo/resources/hrtemp/img/flags/us.png" alt=""
-                     height="16"> English
-                  </a> <a href="javascript:void(0);" class="dropdown-item"> <img
-                     src="/billbo/resources/hrtemp/img/flags/fr.png" alt=""
-                     height="16"> French
-                  </a> <a href="javascript:void(0);" class="dropdown-item"> <img
-                     src="/billbo/resources/hrtemp/img/flags/es.png" alt=""
-                     height="16"> Spanish
-                  </a> <a href="javascript:void(0);" class="dropdown-item"> <img
-                     src="/billbo/resources/hrtemp/img/flags/de.png" alt=""
-                     height="16"> German
-                  </a>
+
                </div></li>
             <!-- /Flag -->
 

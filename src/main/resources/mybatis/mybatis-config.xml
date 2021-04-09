@@ -12,6 +12,15 @@
  		<typeAlias alias="WorkTypeDTO" type="com.sevenelite.billbo.workhour.work.model.dto.WorkTypeDTO"/> 
 
  		<typeAlias alias="ArmyDTO" type="com.sevenelite.billbo.profile.model.dto.ArmyDTO"/>
+ 		<typeAlias alias="MemberInfoDTO" type="com.sevenelite.billbo.profile.model.dto.MemberInfoDTO"/>
+ 		<typeAlias alias="SpotDTO" type="com.sevenelite.billbo.profile.model.dto.SpotDTO"/>
+ 		<typeAlias alias="DeptDTO" type="com.sevenelite.billbo.profile.model.dto.DeptDTO"/>
+ 		<typeAlias alias="CareerDTO" type="com.sevenelite.billbo.profile.model.dto.CareerDTO"/>
+ 		<typeAlias alias="BonusDTO" type="com.sevenelite.billbo.profile.model.dto.BonusDTO"/>
+ 		<typeAlias alias="CertificateDTO" type="com.sevenelite.billbo.profile.model.dto.CertificateDTO"/>
+ 		<typeAlias alias="FinalAcademicDTO" type="com.sevenelite.billbo.profile.model.dto.FinalAcademicDTO"/>
+ 		<typeAlias alias="FamilyDTO" type="com.sevenelite.billbo.profile.model.dto.FamilyDTO"/>
+ 		<typeAlias alias="LicenseDTO" type="com.sevenelite.billbo.profile.model.dto.LicenseDTO"/>
  		
  		<!-- <typeAlias alias="NoticeBoardDTO" type="com.sevenlite.bilbo.noticeboard.model.dto.NoticeBoardDTO"/> -->
  		<!-- <typeAlias alias="BoardDTO" type="com.sevenelite.billbo.board.model.dto.BoardDTO"/> -->

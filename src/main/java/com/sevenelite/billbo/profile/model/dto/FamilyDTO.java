@@ -8,7 +8,7 @@ public class FamilyDTO {
 		private String name;
 		private String relation;
 		private String gender;
-		private Date birthday;
+		private java.util.Date birthday;
 		private String study;
 		private String job;
 		private int no;
@@ -66,11 +66,11 @@ public class FamilyDTO {
 			this.gender = gender;
 		}
 
-		public Date getBirthday() {
+		public java.util.Date getBirthday() {
 			return birthday;
 		}
 
-		public void setBirthday(Date birthday) {
+		public void setBirthday(java.sql.Date birthday) {
 			this.birthday = birthday;
 		}
 
@@ -96,6 +96,8 @@ public class FamilyDTO {
 
 		public void setNo(int no) {
 			this.no = no;
-		};
+		}
+
+	
 		
 }

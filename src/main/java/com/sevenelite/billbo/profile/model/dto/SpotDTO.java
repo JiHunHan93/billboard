@@ -1,13 +1,15 @@
 package com.sevenelite.billbo.profile.model.dto;
 
-public class LicenceCodeDTO {
-	
+import java.util.Date;
+
+public class SpotDTO {
+
 	private String code;
 	private String name;
 	
-	public LicenceCodeDTO() {}
+	public SpotDTO() {}
 
-	public LicenceCodeDTO(String code, String name) {
+	public SpotDTO(String code, String name) {
 		super();
 		this.code = code;
 		this.name = name;
@@ -15,7 +17,7 @@ public class LicenceCodeDTO {
 
 	@Override
 	public String toString() {
-		return "LicenceCodeDTO [code=" + code + ", name=" + name + "]";
+		return "SpotDTO [code=" + code + ", name=" + name + "]";
 	}
 
 	public String getCode() {
@@ -35,3 +37,6 @@ public class LicenceCodeDTO {
 	}
 	
 }
+
+	
+		

@@ -10,5 +10,9 @@ public interface NoticeBoardMapper {
 
 	int insertNotice(NoticeBoardDTO noticeBoardDTO);
 
+	int updateCount(int no);
+
+	List<NoticeBoardDTO> detailNoticeBoard(int no);
+
 	
 }

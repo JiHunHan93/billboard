@@ -10,4 +10,7 @@ public interface NoticeBoardService {
 
 	boolean registNoticeBoard(NoticeBoardDTO noticeBoardDTO);
 	
+	int updateCount(int no);
+
+	List<NoticeBoardDTO> detailNoticeBoard(int no);
 }
