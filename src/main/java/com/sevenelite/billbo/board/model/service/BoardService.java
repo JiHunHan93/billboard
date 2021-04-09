@@ -8,9 +8,7 @@ import com.sevenelite.billbo.board.model.dto.BoardDTO;
 public interface BoardService {
 
 	List<BoardDTO> selectBoard();
-	/*
-	 * int insertBoard(BoardDTO boardDTO);
-	 */
+
 
 	boolean registBoard(BoardDTO board);
 
@@ -18,6 +16,7 @@ public interface BoardService {
 
 	int updateCount(int no);
 
-	/* BoardDTO detailBoard(int no); */
+	int deleteBoard(int no);
 
+	
 }
