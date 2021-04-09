@@ -371,7 +371,7 @@ table.dataTable thead > tr > td.sorting {
 
 /* board css*/
 .card-board-style{
-	width: 1418px;
+	width: 100%;
 }
 .btn-write{
 	font-weight: bold;
@@ -383,7 +383,7 @@ table.dataTable thead > tr > td.sorting {
 	padding:16px
 }
 .notice-body{
-	width: 670px;
+	width: 100%;
 }
 .autosize {
 	min-height: 455px;
@@ -396,6 +396,9 @@ table.dataTable thead > tr > td.sorting {
 .board-icon {
 	font-size: 20px;
     padding: 11px 0 0 11px;
+}
+.board-table-sort {
+	text-align: left;
 }
 
 /*-----------------

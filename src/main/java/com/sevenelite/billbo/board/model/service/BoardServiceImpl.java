@@ -9,9 +9,9 @@ import com.sevenelite.billbo.board.model.dto.BoardDTO;
 
 @Service("boardService")
 public class BoardServiceImpl implements BoardService {
-	
+
 	private BoardMapper boardMapper;
-	
+
 	@Autowired
 	public BoardServiceImpl(BoardMapper boardMapper) {
 		this.boardMapper = boardMapper;
@@ -19,15 +19,15 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public List<BoardDTO> selectBoard() {
-		
+
 		return boardMapper.selectBoard();
 	}
 
 	@Override
 	public boolean registBoard(BoardDTO board) {
-	 
+
 		int result = boardMapper.registBoard(board);
-		
+
 		return result >= 1 ? true : false;
 	}
 
@@ -43,15 +43,18 @@ public class BoardServiceImpl implements BoardService {
 		return boardMapper.updateCount(no);
 	}
 
-	/*
-	 * @Override public BoardDTO detailBoard(int no) { // TODO Auto-generated method
-	 * stub return boardMapper.detailBoard(no); }
-	 */
+	@Override
+	public int deleteBoard(int no) {
+		// TODO Auto-generated method stub
+		return boardMapper.deleteBoard(no);
+	}
 
+	
 
 
 	
-		
 	
+	
+
 
 }
