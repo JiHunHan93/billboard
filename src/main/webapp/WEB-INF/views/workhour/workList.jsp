@@ -640,17 +640,17 @@
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title" font>${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }님의 근태 현황</h3>
 								<ul class="breadcrumb">
 								</ul>
 							</div>
 						</div>
 					</div>
 					<!-- /Page Header -->
+								<h3 class="page-title" font>${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }님의 근태 현황</h3>
 					<form>
+					<c:forEach var="workList" items="${ requestScope.workList }">
 					<!-- Leave Statistics -->
 					
-					<c:forEach var="workList" items="${ requestScope.workList }">
 						<div class="row">
 							<div class="col-md-3">
 								<div class="stats-info">
@@ -661,7 +661,7 @@
 							<div class="col-md-3">
 								<div class="stats-info">
 									<h6 style="font-weight: bold;">이번주 초과</h6>
-									<h4 style="color: darkorange;"><c:out value="${ workList.extraWork }시간"/></h4>
+									<%-- <h4 style="color: darkorange;"><c:out value="${ workList.extraWork }시간"/></h4> --%>
 								</div>
 							</div>
 							<div class="col-md-3">

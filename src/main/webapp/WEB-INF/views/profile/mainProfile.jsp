@@ -723,8 +723,8 @@
 							<div class="col-lg-12 col-md-12 col-sm-12 line-tabs">
 								<ul class="nav nav-tabs nav-tabs-bottom">
 									<li class="nav-item"><a href="#emp_profile" data-toggle="tab" class="nav-link active">신상</a></li>
-									<li class="nav-item"><a href="#emp_job" data-toggle="tab" class="nav-link">직무/담당</a></li>
-									<li class="nav-item"><a href="#emp_movejob" data-toggle="tab" class="nav-link">인사발령</a></li>
+									<li class="nav-item"><a href="#emp_job" data-toggle="tab" class="nav-link">직위</a></li>
+									<li class="nav-item"><a href="#emp_part" data-toggle="tab" class="nav-link">부서</a></li>
 									<li class="nav-item"><a href="#emp_career" data-toggle="tab" class="nav-link">경력</a></li>
 									<li class="nav-item"><a href="#emp_bonus" data-toggle="tab" class="nav-link">상벌내역</a></li>
 									<li class="nav-item"><a href="#emp_jobtest" data-toggle="tab" class="nav-link">인사평가</a></li>
@@ -748,36 +748,37 @@
 							<div class="tab-content">
 								<div class="ehr_con_wrap"><div><h3 class="tab_title" >신상정보</h3>
 									<div class="ehr_detail viewForm">
-										<form id="data_form">
+										
+										<form action="${ pageContext.servletContext.contextPath }/profile/mainProfile" method="post">
 										<table class="type_list_box">
 											<tbody><tr>
 												<th class="col1">
-													<span class="title_txt">사번</span>
+													<span class="title_txt">신상번호</span>
 												</th>
 												<td class="col2">
 													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="hobby" value="" >
+													<input class="txt w_max" type="text" name="info_no" value="" >
 												</td>
 												<th class="col3">
-													<span class="title_txt">취미</span>
+													<span class="title_txt">사번</span>
 												</th>
 												<td class="col4">
 													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="speciality" value="" style="display:none;">
+													<input class="txt w_max" type="text" name="member_no" value="" >
 												</td>
 												<th class="col5">
-													<span class="title_txt">특기</span>
+													<span class="title_txt">입사일</span>
 												</th>
 												<td class="col6">
 													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="faxNo" value="" style="display:none;">
+													<input class="txt w_max" type="date" name="enroll_date" value="" >
 												</td>            
 												<th class="col7">
-													<span class="title_txt">연락처</span>
+													<span class="title_txt">계좌은행</span>
 												</th>
 												<td class="col8">
 													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="way" value="" style="display:none;">
+													<input class="txt w_max" type="text" name="account_bank" value="" >
 												</td>
 											</tr>
 											<tr>
@@ -787,131 +788,45 @@
 												
 												<td colspan="5">
 													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="address" value="" style="display:none;">
+													<input class="txt w_max" type="text" name="address" value="" >
 												</td>
 												<th class="col7">
 													<span class="title_txt">계좌번호</span>
 												</th>
 												<td class="col8">
 													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="homeNo" value="" style="display:none;">
+													<input class="txt w_max" type="text" name="account_no" value="" >
 												</td>
 											</tr>
 											<tr>
 												<th class="col1">
-													<span class="title_txt">계좌은행</span>
+													<span class="title_txt">근로계약서</span>
 												</th>
 												<td colspan="3">
 													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="veteransNo" value="" style="display:none;">
+													<input class="txt w_max" type="text" name="work_contract" value="">
 												</td>        
 												<th class="col5">
-													<span class="title_txt">예금주</span>
+													<span class="title_txt">파일첨부</span>
 												</th>
 												<td class="col6">
 													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="veteransFamily" value="" style="display:none;">
+													<input class="txt w_max" type="text" name="fileattachment" value="">
 												</td>
 												<th class="col7">
-													<span class="title_txt">비고</span>
+													<span class="title_txt">예금주</span>
 													</th>
 													<td class="col8">
 												<span class="txt"></span>
-												<input class="txt w_max" type="text" name="veteransDiv" value="" style="display:none;">
+												<input class="txt w_max" type="text" name="account_host" value="" >
 											</td>
 										</tr>
-										<!-- 필요없는것들	<tr>
-												<th class="col1">
-													<span class="title_txt">장애등록번호</span>
-												</th>
-												<td class="col2">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="disabilityNo" value="" style="display:none;">
-												</td>
-												<th class="col3">
-													<span class="title_txt">장애구분</span>
-												</th>
-												<td class="col4">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="disabilityDiv" value="" style="display:none;">
-												</td>
-												<th class="col5">
-													<span class="title_txt">장애등급</span>
-												</th>
-												<td class="col6">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="disabilityClass" value="" style="display:none;">
-												</td>
-												<th class="col7">
-													<span class="title_txt">장애인정구분</span>
-												</th>
-												<td class="col8">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="disabilityRecDiv" value="" style="display:none;">
-												</td>
-											</tr>
-											<tr>
-												<th class="col1">
-													<span class="title_txt">계좌유형</span>
-												</th>
-												<td class="col2">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="accountType" value="" style="display:none;">
-												</td>
-												<th class="col3">
-													<span class="title_txt">은행</span>
-												</th>
-												<td class="col4">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="bank" value="" style="display:none;">
-												</td>
-												<th class="col5">
-													<span class="title_txt">예금주</span>
-												</th>
-												<td class="col6">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="depositor" value="" style="display:none;">
-												</td>
-												<th class="col7">
-													<span class="title_txt">비고</span>
-												</th>
-												<td class="col8">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="note" value="" style="display:none;">
-												</td>
-											</tr>
-											<tr>
-												<th class="col1">
-													<span class="title_txt">계좌번호</span>
-												</th>
-												<td colspan="3">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="accountNum" value="" style="display:none;">
-												</td>
-												<th class="col5">
-													<span class="title_txt">시작일자</span>
-												</th>
-												<td class="col6">
-												   <span class="wrap_date">
-												   <input id="startDt" class="txt wfix_small hasDatepicker" type="text" name="startDt" value="">
-												   <span class="ic ic_calendar"></span>
-												   </span>
-												</td>
-												<th class="col7">
-													<span class="title_txt">종료일자</span>
-												</th>
-												<td class="col6">
-												   <span class="wrap_date">
-												   <input id="endDt" class="txt wfix_small hasDatepicker" type="text" name="endDt" value="">
-												   <span class="ic ic_calendar"></span>
-												   </span>
-												</td> -->
-											</tr>
+											
 										</tbody></table>
+										<button class="btn_major" data-role="button"  id="submit">저장</button>
 										</form>
 									</div></div>
 									<div class="page_action_wrap" style="display: block;">
-										<span class="btn_major" data-role="button" id="hrcard_btn_submit"><span class="txt">저장</span></span>
 										<span class="btn_minor" data-role="button" id="hrcard_btn_cancel"><span class="txt">취소</span></span>
 								</div>
 								<section class="aside_wrapper article_reply" id="hrcardActivity"><div><div class="reply_wrap">
@@ -934,69 +849,86 @@
 						<!-- 두번째탭 -->
 						<div class="tab-pane fade" id="emp_job">
 							<div class="tab-content">
-								<div class="ehr_con_wrap"><div><h3 class="tab_title">직무/담당</h3>
+								<div class="ehr_con_wrap"><div><h3 class="tab_title">직위</h3>
 									<!--탭 전체 펼치기시 타이틀 나옴-->
 									<div class="ehr_jop viewForm">
+										<form action="${ pageContext.servletContext.contextPath }/profile/joblevel" method="post">
 										<table class="type_list_box">
 											<tbody><tr>
-												<th class="num"><span class="title_txt">직무seq</span></th>
-												<th class="group"><span class="title_txt">직위</span></th>
-												<th class="category"><span class="title_txt">직책</span></th>
-												<th class="jop"><span class="title_txt">부서</span></th>
-												<th class="date"><span class="title_txt">담당업무</span></th>
-												<th class="date"><span class="title_txt">직원타입</span></th>
-												<th class="percent"><span class="title_txt">사번</span></th>
-												<th class="work"><span class="title_txt">부서코드</span></th>
-												<th class="modify"><span class="title_txt">직위코드</span></th>
-												<th class="jobcode"><span class="title_txt">직책코드</span></th>
-											
+												<th class="code"><span class="title_txt">직위코드</span></th>
+												<th class="name"><span class="title_txt">직위명</span></th>
 											</tr>
 											<tr class="dataRow" data-id="">
-												<td class="num">
-													<span>1</span>
+												<td class="code">
+												<input class="txt w_max" type="text" name="code" value="" >
 												</td>
-												<td class="group">
+												<td class="name">
 													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="jobGroup" value="" style="display:none;">
-												</td>
-												<td class="category">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="jobClass" value="" style="display:none;">
-												</td>
-												<td class="jop">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="jobDuty" value="" style="display:none;">
-												</td>
-												<td class="date">
-													<span class="wrap_date">
-													<input class="txt wfix_small hasDatepicker" type="text" name="beginDate" value="" id="dp1617006090872">
-													<span class="ic ic_calendar"></span>
-													</span>
-												</td>
-												<td class="date">
-													<span class="wrap_date">
-													<input class="txt wfix_small hasDatepicker" type="text" name="endDate" value="" id="dp1617006090873">
-													<span class="ic ic_calendar"></span>
-													</span>
-												</td>
-												<td class="percent">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="jobWeight" value="" style="display:none;">
-												</td>
-												<td class="work">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="chargeDuty" value="" style="display:none;">
-												</td>
-												<td class="modify">
-													<span class="ic_con ic_remove" title="삭제"></span>		        
-													<span class="ic_con ic_add" title="추가"></span>
-												</td>
-												<td class="jobcode">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="chargeDuty" value="" style="display:none;">
+													<input class="txt w_max" type="text" name="name" value="">
 												</td>
 											</tr>
 										</tbody></table>
+										<button class="btn_major" data-role="button" id="submit">저장</button>
+										<button class="btn_major" data-role="button" id="cancel">취소</button>
+										</form>
+									</div></div>
+									<div class="page_action_wrap" style="display: block;">
+											</div>
+								<section class="aside_wrapper article_reply" id="hrcardActivity"><div><div class="reply_wrap">
+									<header class="single_title">
+									   <span class="txt">변경이력</span><span class="num">0</span>
+									</header>
+									<div class="aside_wrapper_body">
+									   <ul class="type_simple_list simple_list_alarm">        
+									
+									
+								 </ul>
+									   <div id="moreLog" class="bottom_action" style="display: none;"><a class="btn_list_reload"><span class="ic"></span><span class="txt">더보기</span></a></div>
+									</div>
+								 </div></div></section>
+							</div>
+						</div>
+						</div>
+						<!-- /두번째 탭-1 끝 -->
+						<!-- 두번째탭 -->
+						<div class="tab-pane fade" id="emp_part">
+							<div class="tab-content">
+								<div class="ehr_con_wrap"><div><h3 class="tab_title">부서</h3>
+									<!--탭 전체 펼치기시 타이틀 나옴-->
+									<div class="ehr_jop viewForm">
+										<form action="${ pageContext.servletContext.contextPath }/profile/part" method="post">
+										
+										<table class="type_list_box">
+											<tbody><tr>
+												<th class="partcode"><span class="title_txt">부서코드</span></th>
+												<th class="partname"><span class="title_txt">부서명</span></th>
+												<th class="upperpart"><span class="title_txt">상위부서</span></th>
+												<th class="partlevel"><span class="title_txt">부서등급</span></th>
+												
+											
+											</tr>
+											<tr class="dataRow" data-id="">
+												<td class="partcode">
+												<input class="txt w_max" type="text" name="code" value="" >
+												</td>
+												<td class="partname">
+													<span class="txt"></span>
+													<input class="txt w_max" type="text" name="name" value="" >
+												</td>
+												<td class="upperpart">
+													<span class="txt"></span>
+													<input class="txt w_max" type="text" name="upper" value="" >
+												</td>
+												<td class="partlevel">
+													<span class="txt"></span>
+													<input class="txt w_max" type="text" name="level" value="" >
+												</td>
+												
+											</tr>
+										</tbody></table>
+										<button class="btn_major" data-role="button" id="submit">저장</button>
+										<button class="btn_major" data-role="button" id="cancel">취소</button>
+										</form>
 									</div></div>
 									<div class="page_action_wrap" style="display: block;">
 										<span class="btn_major" data-role="button" id="hrcard_btn_submit"><span class="txt">저장</span></span>
@@ -1017,164 +949,59 @@
 							</div>
 						</div>
 						</div>
-						<!-- /두번째 탭 끝 -->
+						<!-- /두번째-1 탭 끝 -->
 						
-						<!-- 세번째탭 발령 -->
-						<div class="tab-pane fade" id="emp_movejob">
-							<div class="card">
-								<div class="ehr_con_wrap"><div><h3 class="tab_title">인사발령</h3>
-									<div class="ehr_appoint viewForm">
-										<table class="type_list_box">
-											<tbody>
-											<tr>
-												<th class="num"><span class="title_txt">내역번호</span></th>
-												<th class="date"><span class="title_txt">발령일</span></th>
-												<th class="division"><span class="title_txt">발령명</span></th>
-												<th class="reason"><span class="title_txt">사번</span></th>
-												<th class="state"><span class="title_txt">직원구분</span></th>
-												<th class="team"><span class="title_txt">부서</span></th>
-												<th class="level"><span class="title_txt">직책</span></th>
-												<th class="job"><span class="title_txt">담당업무</span></th>
-												<th class="work"><span class="title_txt">직위</span></th>
-												<th class="partcode"><span class="title_txt">부서코드</span></th>
-												<th class="jobcode"><span class="title_txt">직위코드</span></th>
-												<th class="positioncode"><span class="title_txt">직책코드</span></th>
-											
-											</tr>
-											<tr class="dataRow" data-id="">
-												<td class="num">
-													<span>1</span>
-												</td>
-												<td class="date">
-													<span class="wrap_date">
-														<input id="start-date" class="txt wfix_small hasDatepicker" type="text" name="appointDate" value="">
-														<span class="ic ic_calendar"></span>
-													</span>
-												</td>
-												<td class="division">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="appointDiv" value="" style="display:none;">	
-												</td>
-												<td class="reason">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="content" value="" style="display:none;">	
-												</td>
-												<td class="state">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="employeeType" value="" style="display:none;">	
-												</td>
-												<td class="team">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="position" value="" style="display:none;">	
-												</td>
-												<td class="level">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="salaryStep" value="" style="display:none;">	
-												</td>
-												<td class="job">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="responsibility" value="" style="display:none;">	
-												</td>
-												<td class="work">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="chargeDuty" value="" style="display:none;">	
-												</td>
-												<td class="partcode">
-													<span class="ic_con ic_remove" title="삭제"></span>
-													<span class="ic_con ic_add" title="추가"></span>
-												</td>
-												<td class="jobcode">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="chargeDuty" value="" style="display:none;">	
-												</td>
-												<td class="positioncode">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="chargeDuty" value="" style="display:none;">	
-												</td>
-											</tr>
-										</tbody>
-										</table>
-									</div></div><div class="page_action_wrap" style="display: block;">
-										<span class="btn_major" data-role="button" id="hrcard_btn_submit"><span class="txt">저장</span></span>
-										<span class="btn_minor" data-role="button" id="hrcard_btn_cancel"><span class="txt">취소</span></span>
-								</div>
-								<section class="aside_wrapper article_reply" id="hrcardActivity"><div><div class="reply_wrap">
-									<header class="single_title">
-									   <span class="txt">변경이력</span><span class="num">17</span>
-									</header>
-									<div class="aside_wrapper_body">
-									   <ul class="type_simple_list simple_list_alarm">        
-									  
-								 </ul>
-									   <div id="moreLog" class="bottom_action" style="display: none;"><a class="btn_list_reload"><span class="ic"></span><span class="txt">더보기</span></a></div>
-									</div>
-								 </div></div></section></div>
-							</div>
-						</div>
-						<!-- /세번째 탭 끝 -->
+						
 						
 						<!-- 네번째탭 발령 -->
 						<div class="tab-pane fade" id="emp_career">
 							<div class="card">
 								<div class="ehr_con_wrap"><div><h3 class="tab_title" >경력</h3>
 									<div class="ehr_career viewForm">
+									<form action="${ pageContext.servletContext.contextPath }/profile/career" method="post">
+										
 										<table class="type_list_box">
 											<tbody>
 											<tr>
-												<th class="num"><span class="title_txt">사번</span></th>
-												<th class="date"><span class="title_txt">시작일</span></th>
-												<th class="date"><span class="title_txt">종료일</span></th>
-												<th class="workplace"><span class="title_txt">근무처</span></th>
-												<th class="position"><span class="title_txt">직위</span></th>
-												<th class="jop"><span class="title_txt">담당업무</span></th>
-												<th class="period"><span class="title_txt">근속기간</span></th>
-												<th class="cause"><span class="title_txt">퇴직사유</span></th>
-												<th class="modify"><span class="title_txt">수정</span></th>
+												<th class="no"><span class="title_txt">경력번호</span></th>
+												<th class="start"><span class="title_txt">시작일</span></th>
+												<th class="end"><span class="title_txt">종료일</span></th>
+												<th class="position"><span class="title_txt">근무처</span></th>
+												<th class="member_no"><span class="title_txt">사번</span></th>
+												
 											</tr>
 											<tr class="dataRow" data-id="">
-												<td class="num">
-													<span>1</span>
+												<td class="no">
+												<input class="txt wfix_small hasDatepicker" type="text" name="no" value="" >
 												</td>
-												<td class="date">
+												<td class="start">
 													<span class="wrap_date">
-													<input class="txt wfix_small hasDatepicker" type="text" name="fromDate" value="" id="dp1617006090874">
+													<input class="txt wfix_small hasDatepicker" type="date" name="start" value="" >
 													<span class="ic ic_calendar"></span>
 													</span>
 												</td>
-												<td class="date">
+												<td class="end">
 													<span class="wrap_date">
-													<input class="txt wfix_small hasDatepicker" type="text" name="toDate" value="" id="dp1617006090875">
+													<input class="txt wfix_small hasDatepicker" type="date" name="end" value="" >
 													<span class="ic ic_calendar"></span>
 													</span>
-												</td>
-												<td class="workplace">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="workspace" value="" style="display:none;">
 												</td>
 												<td class="position">
 													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="positionName" value="" style="display:none;">
+													<input class="txt w_max" type="text" name="position" value="" >
 												</td>
-												<td class="jop">
+												<td class="member_no">
 													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="task" value="" style="display:none;">
+													<input class="txt w_max" type="text" name="member_no" value="" >
 												</td>
-												<td class="period">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="continousPeriod" value="" style="display:none;">
-												</td>
-												<td class="cause">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="leaveReason" value="" style="display:none;">
-													
-												</td>
-												<td class="modify">
-													<span class="ic_con ic_remove" title="삭제"></span>
-													<span class="ic_con ic_add" title="추가"></span>
-												</td>
+												
+										
 											</tr>
 											</tbody>
 										</table>
+										<button class="btn_major" data-role="button" id="submit">저장</button>
+										<button class="btn_major" data-role="button" id="cancel">취소</button>
+										</form>
 									</div></div><div class="page_action_wrap" style="display: block;">
 										<span class="btn_major" data-role="button" id="hrcard_btn_submit"><span class="txt">저장</span></span>
 										<span class="btn_minor" data-role="button" id="hrcard_btn_cancel"><span class="txt">취소</span></span>
@@ -1199,46 +1026,56 @@
 							<div class="card">
 								<div class="ehr_con_wrap"><div><h3 class="tab_title" >포상/징계</h3>
 									<div class="ehr_reward viewForm">
+									<form action="${ pageContext.servletContext.contextPath }/profile/bonus" method="post">
+									
 										<table class="type_list_box">
 											<tbody>
 											<tr>
-												<th class="num"><span class="title_txt">사번</span></th>
-												<th class="division"><span class="title_txt">상벌사유</span></th>
-												<th class="date"><span class="title_txt">상벌내용</span></th>
-												<th class="reason"><span class="title_txt">일자</span></th>
-												<th class="cause"><span class="title_txt">상벌구분</span></th>
-												<th class="modify"><span class="title_txt">수정</span></th>
+												<th class="no"><span class="title_txt">상벌내역번호</span></th>
+												<th class="reason"><span class="title_txt">상벌사유</span></th>
+												<th class="date"><span class="title_txt">일자</span></th>
+												<th class="type"><span class="title_txt">상벌구분</span></th>
+												<th class="member_no"><span class="title_txt">사번</span></th>
+												<th class="approve_code"><span class="title_txt">승인여부코드</span></th>
+												<th class="edit"><span class="title_txt">수정</span></th>
+												
 											</tr>
-											<tr class="dataRow" data-id="">
+											<tr class="no" data-id="">
 												<td class="num">
-													<span>1</span>
-												</td>
-												<td class="division">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="type" value="" style="display:none;">
-												</td>
-												<td class="date">
-													<span class="wrap_date">
-													<input class="txt wfix_small hasDatepicker" type="text" name="date" value="" id="dp1617006090876">
-													<span class="ic ic_calendar"></span>
-													</span>
+													<input class="txt w_max" type="text" name="no" value="">
 												</td>
 												<td class="reason">
 													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="content" value="" style="display:none;">
+													<input class="txt w_max" type="text" name="reason" value="" >
 												</td>
-												<td class="cause">
+												<td class="date">
+													<span class="wrap_date">
+													<input class="txt wfix_small hasDatepicker" type="date" name="date" value="" >
+													<span class="ic ic_calendar"></span>
+													</span>
+												</td>
+												<td class="type">
 													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="reason" value="" style="display:none;">
+													<input class="txt w_max" type="text" name="type" value="" >
 												</td>
-												
-												<td class="modify">
+												<td class="member_no">
+													<span class="txt"></span>
+													<input class="txt w_max" type="text" name="member_no" value="" >
+												</td>
+												<td class="approve_code">
+													<span class="txt"></span>
+													<input class="txt w_max" type="text" name="approve_code" value="" >
+												</td>
+												<td class="edit">
 													<span class="ic_con ic_remove" title="삭제"></span>
 													<span class="ic_con ic_add" title="추가"></span>
 												</td>
 											</tr>
 											</tbody>
 										</table>
+												<button class="btn_major" data-role="button" id="submit">저장</button>
+										<button class="btn_major" data-role="button" id="cancel">취소</button>
+								</form>
 									</div></div><div class="page_action_wrap" style="display: block;">
 										<span class="btn_major" data-role="button" id="hrcard_btn_submit"><span class="txt">저장</span></span>
 										<span class="btn_minor" data-role="button" id="hrcard_btn_cancel"><span class="txt">취소</span></span>
@@ -1257,168 +1094,47 @@
 							</div>
 						</div>
 						<!-- /다섯번째 탭 끝 -->
-
-						<!-- 여섯번째탭  -->
-						<div class="tab-pane fade" id="emp_jobtest">
-							<div class="card">
-								<div class="ehr_con_wrap"><div><h3 class="tab_title">인사평가</h3>
-									<!--탭 전체 펼치기시 타이틀 나옴-->
-									<div class="ehr_assessment viewForm">
-										<table class="type_list_box">
-											<tbody><tr>
-												<th class="num"><span class="title_txt"></span></th>
-												<th class="year"><span class="title_txt">평가일자</span></th>
-												<th class="capability"><span class="title_txt">종합점수</span></th>
-												<th class="result"><span class="title_txt">평가자</span></th>
-												<th class="evaluator"><span class="title_txt">부서</span></th>
-												<th class="team"><span class="title_txt">의견</span>
-												</th>
-												<tr class="dataRow" data-id="1">
-												<td class="num">
-													<span>1</span>
-												</td>
-												<td class="year">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="evalYear" value="" style="display:none;">
-												</td>
-												<td class="capability">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="capability" value="" style="display:none;">
-												</td>
-												<td class="result">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="outcome" value="" style="display:none;">
-												</td>
-												<td class="evaluator">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="evaluator" value="" style="display:none;">
-												</td>
-												<td class="team">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="organization" value="" style="display:none;">
-												</td>
-												<!-- <td class="etc">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="etc" value="" style="display:none;">
-												</td>
-												<td class="modify">
-													 <span class="ic_con ic_remove" title="삭제"></span>
-													 <span class="ic_con ic_add" title="추가" style="display: none;"></span>
-												</td> -->
-											</tr>
-											<tr class="dataRow" data-id="2">
-												<td class="num">
-													<span>2</span>
-												</td>
-												<td class="year">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="evalYear" value="" style="display:none;">
-												</td>
-												<td class="capability">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="capability" value="" style="display:none;">
-												</td>
-												<td class="result">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="outcome" value="" style="display:none;">
-												</td>
-												<td class="evaluator">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="evaluator" value="" style="display:none;">
-												</td>
-												<td class="team">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="organization" value="" style="display:none;">
-												</td>
-												<!-- <td class="etc">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="etc" value="" style="display:none;">
-												</td>
-												<td class="modify">
-													 <span class="ic_con ic_remove" title="삭제"></span>
-													 <span class="ic_con ic_add" title="추가"></span>
-												</td> -->
-											</tr>
-										</tbody></table>
-									</div></div><div class="page_action_wrap" style="display: block;">
-										<span class="btn_major" data-role="button" id="hrcard_btn_submit"><span class="txt">저장</span></span>
-										<span class="btn_minor" data-role="button" id="hrcard_btn_cancel"><span class="txt">취소</span></span>
-								</div>
-								<section class="aside_wrapper article_reply" id="hrcardActivity"><div><div class="reply_wrap">
-									<header class="single_title">
-									   <span class="txt">변경이력</span><span class="num">17</span>
-									</header>
-									<div class="aside_wrapper_body">
-									   <ul class="type_simple_list simple_list_alarm">        
-									  
-								 </ul>
-									   <div id="moreLog" class="bottom_action" style="display: none;"><a class="btn_list_reload"><span class="ic"></span><span class="txt">더보기</span></a></div>
-									</div>
-								 </div></div></section></div>
-							</div>
-						</div>
-						<!-- /여섯번째 탭 끝 -->
-
 						<!-- 일곱번째탭  -->
 						<div class="tab-pane fade" id="emp_qualification">
 							<div class="card">
-								<div class="ehr_con_wrap"><div><h3 class="tab_title" >자격평가</h3>
+								<div class="ehr_con_wrap"><div><h3 class="tab_title" >자격</h3>
 									<!--탭 전체 펼치기시 타이틀 나옴-->
 									<div class="ehr_qualification viewForm">
+		                    			<form action="${ pageContext.servletContext.contextPath }/profile/certificate" method="post">
 										<table class="type_list_box">
 											<tbody><tr>
-												<th class="num"><span class="title_txt">사번</span></th>
-												<th class="division"><span class="title_txt">자격증명</span></th>
-												<th class="name"><span class="title_txt">자격명</span></th>
-												<th class="number"><span class="title_txt">자격번호</span></th>
-												<th class="level"><span class="title_txt">자격등급</span></th>
-												<th class="academy"><span class="title_txt">기관명</span></th>
-												<th class="date"><span class="title_txt">취득일</span></th>
-												<th class="date"><span class="title_txt">만료일</span></th>
-												<th class="modify"><span class="title_txt">수정</span></th>
-											</tr>
-											<tr class="dataRow" data-id="">
-												<td class="num">
-													<span>1</span>
+												<th class="no"><span class="title_txt">자격번호</span></th>
+												<th class="start_date"><span class="title_txt">취득일</span></th>
+												<th class="end_date"><span class="title_txt">만료일</span></th>
+												<th class="member_no"><span class="title_txt">사번</span></th>
+												<th class="certificate_code"><span class="title_txt">자격코드명</span></th>
+												</tr>
+											<tr class="num" data-id="">
+												<td class="no">
+													<input class="txt w_max" type="text" name="no" value="">
 												</td>
-												<td class="division">
+												<td class="start_date">
 													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="licenseType" value="" style="display:none;">
+													<input class="txt w_max" type="date" name="start_date" value="" >
 												</td>
-												<td class="name">
+												<td class="end_date">
 													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="licenseNm" value="" style="display:none;">
+													<input class="txt w_max" type="date" name="end_date" value="" >
 												</td>
-												<td class="number">
+												<td class="member_no">
 													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="licenseNo" value="" style="display:none;">
+													<input class="txt w_max" type="text" name="member_no" value="" >
 												</td>
-												<td class="level">
+												<td class="certificate_code">
 													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="licenseClass" value="" style="display:none;">
+													<input class="txt w_max" type="text" name="certificate_code" value="" >
 												</td>
-												<td class="academy">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="institution" value="" style="display:none;">
-												</td>
-												<td class="date">
-													<span class="wrap_date">
-													<input class="txt wfix_small hasDatepicker" type="text" name="receiveDate" value="" id="dp1617006090878">
-													<span class="ic ic_calendar"></span>
-													</span>
-												</td>
-												<td class="date">
-													<span class="wrap_date">
-													<input class="txt wfix_small hasDatepicker" type="text" name="expirationDate" value="" id="dp1617006090879">
-													<span class="ic ic_calendar"></span>
-													</span>
-												</td>
-												<td class="modify">
-													<span class="ic_con ic_remove" title="삭제"></span>
-													<span class="ic_con ic_add" title="추가"></span>
-											   </td>
+												
 											</tr>
 										</tbody></table>
+										<button class="btn_major" data-role="button" id="submit">저장</button>
+										<button class="btn_major" data-role="button" id="cancel">취소</button>
+								</form>
 									</div></div><div class="page_action_wrap" style="display: block;">
 										<span class="btn_major" data-role="button" id="hrcard_btn_submit"><span class="txt">저장</span></span>
 										<span class="btn_minor" data-role="button" id="hrcard_btn_cancel"><span class="txt">취소</span></span>
@@ -1444,7 +1160,7 @@
 								<div class="ehr_con_wrap"><div><h3 class="tab_title" >병역</h3>
 									<!--탭 전체 펼치기시 타이틀 나옴-->
 									<div class="ehr_military viewForm">
-											<form action="${ pageContext.servletContext.contextPath }/profile/mainProfile" method="post">
+											<form action="${ pageContext.servletContext.contextPath }/profile/army" method="post">
 										<table class="type_list_box">
 											<tbody><tr>
 												<th class="member_no"><span class="title_txt">사번</span></th>
@@ -1534,59 +1250,56 @@
 								<div class="ehr_con_wrap"><div><h3 class="tab_title" >학력</h3>
 									<!--탭 전체 펼치기시 타이틀 나옴-->
 									<div class="ehr_academy viewForm">
+										<form action="${ pageContext.servletContext.contextPath }/profile/finalAcademic" method="post">
 										<table class="type_list_box">
 											<tbody><tr>
-												<th class="num"><span class="title_txt">학력사항/span></th>
-												<th class="class"><span class="title_txt">학교명/span></th>
-												<th class="division"><span class="title_txt">전공</span></th>
-												<th class="date"><span class="title_txt">졸업일자</span></th>
-												<th class="date"><span class="title_txt">졸업여부</span></th>
-												<th class="academy"><span class="title_txt">학력</span></th>
-												<th class="modify"><span class="title_txt">직업</span></th>
-												<th class="etc"><span class="title_txt">기타</span></th>
+												<th class="ability_no">최종학력번호</th>
+												<th class="name">학교명</th>
+												<th class="subject">전공</th>
+												<th class="date">졸업일자</th>
+												<th class="status">졸업여부</th>
+												<th class="member_no">사번</th>
+												<th class="code">학력코드명</th>
 											</tr>
-											<tr class="dataRow" data-id="">
+											<tr class="ability_no" data-id="">
 												<td class="num">
-													<span>1</span>
-												</td>
-												<td class="class">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="content" value="" style="display:none;">
+												<input class="txt w_max" type="text" name="ability_no" value="" >
 											   </td>
-												<td class="division">
+												<td class="name">
 													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="category" value="" style="display:none;">   
+													<input class="txt w_max" type="text" name="name" value="" >
+											   </td>
+												<td class="subject">
+													<span class="txt"></span>
+													<input class="txt w_max" type="text" name="subject" value="" >   
 												</td>
 												<td class="date">
 													<span class="wrap_date">
-													<input class="txt wfix_small hasDatepicker" type="text" name="fromDate" value="" id="dp1617006090882">
+													<input class="txt wfix_small hasDatepicker" type="date" name="date" value="" >
 													<span class="ic ic_calendar"></span>
 													</span>
 												</td>
-												<td class="date">
+												<td class="status">
 													<span class="wrap_date">
-													<input class="txt wfix_small hasDatepicker" type="text" name="toDate" value="" id="dp1617006090883">
+													<input class="txt wfix_small hasDatepicker" type="text" name="status" value="" >
 													<span class="ic ic_calendar"></span>
 													</span>
 												</td>
-												<td class="academy">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="institution" value="" style="display:none;">
+												<td class="member_no">
+													<input class="txt w_max" type="text" name="member_no" value="" >
+													 
 												</td>
-												<td class="modify">
-													 <span class="ic_con ic_remove" title="삭제"></span>
-													 <span class="ic_con ic_add" title="추가"></span>
-												</td>
-												<td class="etc">
+												<td class="code">
 													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="institution" value="" style="display:none;">
+													<input class="txt w_max" type="text" name="code" value="" >
 												</td>
 											</tr>
 										</tbody></table>
+										<button class="btn_major" data-role="button" id="submit">저장</button>
+										<button class="btn_major" data-role="button" id="cancel">취소</button>
+										</form>
 									</div></div><div class="page_action_wrap" style="display: block;">
-										<span class="btn_major" data-role="button" id="hrcard_btn_submit"><span class="txt">저장</span></span>
-										<span class="btn_minor" data-role="button" id="hrcard_btn_cancel"><span class="txt">취소</span></span>
-								</div>
+										</div>
 								<section class="aside_wrapper article_reply" id="hrcardActivity"><div><div class="reply_wrap">
 									<header class="single_title">
 									   <span class="txt">변경이력</span><span class="num">17</span>
@@ -1607,22 +1320,23 @@
 							<div class="card">
 								<div class="ehr_con_wrap"><div><h3 class="tab_title" >가족사항</h3>
 									<div class="ehr_family viewForm">
+										<form action="${ pageContext.servletContext.contextPath }/profile/family" method="post">
+										
 										<table class="type_list_box">
 											<tbody>
 											<tr>
-												<th class="num"><span class="title_txt">사번</span></th>
+												<th class="info_no"><span class="title_txt">가족사항번호</span></th>
 												<th class="name"><span class="title_txt">가족성명</span></th>
 												<th class="relation"><span class="title_txt">가족관계</span></th>
-												<th class="sex"><span class="title_txt">성별</span></th>
-												<th class="date"><span class="title_txt">생년월일</span></th>
-												<th class="division"><span class="title_txt">학력</span></th>
-												<th class="jop"><span class="title_txt">직업</span></th>
-												<th class="etc"><span class="title_txt">기타</span></th>
-												<th class="modify"><span class="title_txt">수정</span></th>
-											</tr>
+												<th class="gender"><span class="title_txt">성별</span></th>
+												<th class="birthday"><span class="title_txt">생년월일</span></th>
+												<th class="study"><span class="title_txt">학력</span></th>
+												<th class="job"><span class="title_txt">직업</span></th>
+												<th class="no"><span class="title_txt">사번</span></th>
+												</tr>
 											<tr class="dataRow" data-id="">
-												<td class="num">
-													<span>1</span>
+												<td class="info_no">
+												<input class="txt w_max" type="text" name="info_no" value="" >
 												</td>
 												<td class="name">
 													<span class="txt"></span>
@@ -1630,42 +1344,45 @@
 												</td>
 												<td class="relation">
 													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="relation" value="" style="display:none;">
+													<input class="txt w_max" type="text" name="relation" value="" >
 												</td>
-												<td class="sex">
+												<td class="gender">
 													   <span class="wrap_select">
 														  <select class="wfix_small" name="gender">
 															 <option value="">선택하세요</option>
-															 <option value="MALE">남자</option>
-															 <option value="FEMALE">여자</option>
+															 <option value="남">남자</option>
+															 <option value="녀">여자</option>
 														  </select>
 													   </span>
 												</td>
-												<td class="date">
+												<td class="birthday">
 													<span class="wrap_date">
-													<input class="txt wfix_small hasDatepicker" type="text" name="birthDay" value="" id="dp1617006090884">
+													<input class="txt wfix_small hasDatepicker" type="date" name="birthday" value="">
 													<span class="ic ic_calendar"></span>
 													</span>
 												</td>
-												<td class="division">
+												<td class="study">
 													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="educationLevel" value="" style="display:none;">
+													<input class="txt w_max" type="text" name="study" value="" >
 												</td>
-												<td class="jop">
+												<td class="job">
 													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="job" value="" style="display:none;">
+													<input class="txt w_max" type="text" name="job" value="" >
 												</td>
-												<td class="etc">
+												<td class="no">
 													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="note" value="" style="display:none;">
+													<input class="txt w_max" type="text" name="no" value="" >
 												</td>
-												<td class="modify">
+												<!-- <td class="modify">
 													<span class="ic_con ic_remove" title="삭제"></span>
 													<span class="ic_con ic_add" title="추가"></span>
-												</td>
+												</td> -->
 											</tr>
 											</tbody>
 										</table>
+										<button class="btn_major" data-role="button" id="submit">저장</button>
+										<button class="btn_major" data-role="button" id="cancel">취소</button>
+										</form>
 									</div></div></div>
 									<div class="page_action_wrap" style="display: block;">
 										<span class="btn_major" data-role="button" id="hrcard_btn_submit"><span class="txt">저장</span></span>
@@ -1687,59 +1404,42 @@
 						</div>
 						<!-- /열번째 탭 끝 -->
 
-						<!-- 열한번째탭 발령 -->
+						<!-- 열한번째탭 면허-->
 						<div class="tab-pane fade" id="emp_license">
 							<div class="card">
 								<div class="ehr_con_wrap"><div><h3 class="tab_title" >면허</h3>
 									<!--탭 전체 펼치기시 타이틀 나옴-->
 									<div class="ehr_qualification viewForm">
+										<form action="${ pageContext.servletContext.contextPath }/profile/license" method="post">
+										
 										<table class="type_list_box">
 											<tbody><tr>
-												<th class="num"><span class="title_txt">면허SEQ</span></th>
-												<th class="division"><span class="title_txt">사번</span></th>
-												<th class="name"><span class="title_txt">취득일자</span></th>
-												<th class="number"><span class="title_txt">면허이름</span></th>
-												<th class="level"><span class="title_txt">면허번호</span></th>
-												<th class="academy"><span class="title_txt">발행처</span></th>
-												<th class="date"><span class="title_txt">회사번호</span></th>
-												<th class="modify"><span class="title_txt">수정</span></th>
-											</tr>
+												<th class="no"><span class="title_txt">면허 번호</span></th>
+												<th class="date"><span class="title_txt">취득일</span></th>
+												<th class="member_no"><span class="title_txt">사번</span></th>
+												<th class="code"><span class="title_txt">면허증코드명</span></th>
+												</tr>
 											<tr class="dataRow" data-id="">
-												<td class="num">
-													<span>1</span>
-												</td>
-												<td class="division">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="licenseType" value="" style="display:none;">
-												</td>
-												<td class="name">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="licenseNm" value="" style="display:none;">
-												</td>
-												<td class="number">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="licenseNo" value="" style="display:none;">
-												</td>
-												<td class="level">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="licenseClass" value="" style="display:none;">
-												</td>
-												<td class="academy">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="institution" value="" style="display:none;">
+												<td class="no">
+												<input class="txt w_max" type="text" name="no" value="" >
 												</td>
 												<td class="date">
-													<span class="wrap_date">
-													<input class="txt wfix_small hasDatepicker" type="text" name="receiveDate" value="" id="dp1617006090887">
-													<span class="ic ic_calendar"></span>
-													</span>
+													<span class="txt"></span>
+													<input class="txt w_max" type="date" name="date" value="" >
 												</td>
-												<td class="modify">
-													<span class="ic_con ic_remove" title="삭제"></span>
-													<span class="ic_con ic_add" title="추가"></span>
-											   </td>
-											</tr>
+												<td class="member_no">
+													<span class="txt"></span>
+													<input class="txt w_max" type="text" name="member_no" value="" >
+												</td>
+												<td class="code">
+													<span class="txt"></span>
+													<input class="txt w_max" type="text" name="code" value="">
+												</td>
+												</tr>
 										</tbody></table>
+										<button class="btn_major" data-role="button" id="submit">저장</button>
+										<button class="btn_major" data-role="button" id="cancel">취소</button>
+										</form>
 									</div></div><div class="page_action_wrap" style="display: block;">
 										<span class="btn_major" data-role="button" id="hrcard_btn_submit"><span class="txt">저장</span></span>
 										<span class="btn_minor" data-role="button" id="hrcard_btn_cancel"><span class="txt">취소</span></span>

@@ -16,6 +16,47 @@
 	<result property="member_no" column="MEMBER_NO"/>	
 </resultMap>
 
+<resultMap type="com.sevenelite.billbo.profile.model.dto.MemberInfoDTO" id="memberInfoDTO">
+	<id property="info_no" column="MEMBER_INFO_NO"/>
+	<result property="address" column="MEMBER_ADDRESS"/>
+	<result property="account_no" column="MEMBER_ACCOUNT_NO"/>
+	<result property="account_bank" column="MEMBER_ACCOUNT_BANK"/>
+	<result property="account_host" column="ACCOUNT_HOST"/>
+	<result property="fileattachment" column="MEMBER_FILEATTACHMENT"/>
+	<result property="enroll_date" column="ENROLL_DATE"/>
+	<result property="workcontract" column="MEMBER_WORK_CONTRACT"/>
+	<result property="member_no" column="MEMBER_NO"/>
+</resultMap>
+
+<resultMap type="com.sevenelite.billbo.profile.model.dto.SpotDTO" id="spotDTO">
+	<id property="code" column="SPOT_CODE"/>
+	<result property="name" column="SPOT_NAME"/>
+</resultMap>
+
+<resultMap type="com.sevenelite.billbo.profile.model.dto.DeptDTO" id="deptDTO">
+	<id property="code" column="DEPT_CODE"/>
+	<result property="name" column="DEPT_NAME"/>
+	<result property="upper" column="DEPT_UPPER"/>
+	<result property="level" column="DEPT_LEVEL"/>
+</resultMap>
+
+<resultMap type="com.sevenelite.billbo.profile.model.dto.CareerDTO" id="careerDTO">
+	<id property="no" column="CAREER_NO"/>
+	<result property="start" column="CAREER_START"/>
+	<result property="end" column="CAREER_END"/>
+	<result property="position" column="CAREER_POSITION"/>
+	<result property="member_no" column="MEMBER_NO"/>
+</resultMap>
+
+<resultMap type="com.sevenelite.billbo.profile.model.dto.BonusDTO" id="BonusDTO">
+	<id property="no" column="BONUS_NO"/>
+	<result property="reason" column="BONUS_REASON"/>
+	<result property="type" column="BONUS_TYPE"/>
+	<result property="member_no" column="MEMBER_NO"/>
+	<result property="approve_code" column="APPROVE_CODE"/>
+</resultMap>
+
+
 <insert id="armyInfo" parameterType="ArmyDTO">
 	INSERT
 	INTO BB_ARMY(
@@ -37,14 +78,193 @@
     , #{army_class}
     , #{service_num}
     , #{discharge} 
-    , SYSDATE
-    , SYSDATE
+    , #{start}
+    , #{end}
     , #{reason}
     )
 </insert>
 
-<!-- <insert id="memberInfo" parameterType="MemberInfoDTO">
+ <insert id="memberInfo" parameterType="MemberInfoDTO">
+	INSERT
+	 INTO BB_MEMBER_INFO(
+	      MEMBER_INFO_NO
+	    , MEMBER_ADDRESS
+	    , MEMBER_ACCOUNT_NO
+	    , MEMBER_ACCOUNT_BANK
+	    , ACCOUNT_HOST
+	    , MEMBER_FILEATTACHMENT
+	    , ENROLL_DATE
+	    , MEMBER_WORK_CONTRACT
+	    , MEMBER_NO
+	    )
+	    VALUES
+	    (
+	      SEQ_MEMBER_INFO_NO.NEXTVAL
+	    , #{address}
+	    , #{account_no}
+	    , #{account_bank}
+	    , #{account_host}
+	    , #{fileattachment}
+	    , #{enroll_date}
+	    , #{work_contract}
+	    , #{member_no}
+	    )
+</insert>
 
+<insert id="spot" parameterType="SpotDTO">
+	INSERT
+	  INTO BB_SPOT(
+	       SPOT_CODE
+	     , SPOT_NAME
+	  )
+	  VALUES
+	  (
+	   #{code}
+	  ,#{name}
+	  )
+</insert>
+	
+<insert id="dept" parameterType="DeptDTO">
+	INSERT
+	  INTO BB_DEPT(
+	       DEPT_CODE
+	     , DEPT_NAME
+	     , DEPT_UPPER
+	     , DEPT_LEVEL
+	  )
+	  VALUES
+	  (
+	   #{code}
+	  ,#{name}
+	  ,#{upper}
+	  ,#{level}
+	  
+	  )
+</insert>
 
-</insert> -->
+<insert id="career" parameterType="CareerDTO">
+	INSERT
+	  INTO BB_CAREER(
+	       CAREER_NO
+	     , CAREER_START
+	     , CAREER_END
+	     , CAREER_POSITION
+	  	 , MEMBER_NO
+	  )
+	  VALUES
+	  (
+	  SEQ_CAREER_NO.NEXTVAL
+	  ,#{start}
+	  ,#{end}
+	  ,#{position}
+	  ,#{member_no}
+	  
+	  )
+</insert>
+
+<!-- 승인여부 테이블부터 있어야해서 일단 보류
+ <insert id="bonus" parameterType="BonusDTO">
+	INSERT
+	  INTO BB_BONUS(
+	       BONUS_NO
+	     , BONUS_REASON
+	     , BONUS_DATE
+	     , BONUS_TYPE
+	     , MEMBER_NO
+	     , APPROVE_CODE
+	  )
+	 VALUES
+	 (
+	 SEQ_BONUS_NO.NEXTVAL
+	 ,#{reason}
+	 ,#{date}
+	 ,#{type}
+	 ,#{member_no}
+	 ,#{approve_code}
+	 )
+</insert>
+ -->	
+ <insert id="certificate" parameterType="CertificateDTO">
+ 	INSERT
+ 	  INTO BB_CERTIFICATE(
+ 	       CERTIFICATE_NO
+ 	     , CERTIFICATE_START_DATE
+ 	     , CERTIFICATE_END_DATE
+ 	     , MEMBER_NO
+ 	     , CERTIFICATE_CODE  
+ 	  )
+ 	  VALUES
+ 	  (
+ 	  SEQ_CERTIFICATE_NO.NEXTVAL
+ 	  ,#{start_date}
+ 	  ,#{end_date}
+ 	  ,#{member_no}
+ 	  ,#{certificate_code}
+ 	  )
+ </insert>
+ 
+ <insert id="finalAcademic" parameterType="FinalAcademicDTO">
+  	INSERT
+  	  INTO BB_FINAL_ACADEMIC(
+  	  	   ACADEMIC_ABILITY_NO
+  	  	 , SCHOOL_NAME
+  	  	 , SCHOOL_SUBJECT
+  	  	 , GRADUATE_DATE
+  	  	 , GRADUATE_STATUS
+  	  	 , MEMBER_NO
+  	  	 , ACADEMIC_CODE
+  	  )
+  	  VALUES
+  	  (
+  	  SEQ_ACADEMIC_ABILITY_NO.NEXTVAL
+  	  ,#{name}
+  	  ,#{subject}
+  	  ,#{date}
+  	  ,#{status}
+	  ,#{member_no}
+  	  ,#{code}
+  	  )
+  	  </insert>
+  	  
+ <insert id="family" parameterType="FamilyDTO">
+ 	INSERT
+ 	  INTO BB_FAMILY_INFO(
+ 	       FAMILY_INFO_NO
+ 	     , FAMILY_NAME
+ 	     , FAMILY_RELATION
+ 	     , GENDER
+ 	     , FAMILY_BIRTHDAY
+ 	     , FAMILY_STUDY
+ 	     , FAMILY_JOB
+ 	     , MEMBER_NO  
+ 	    )
+ 	    VALUES
+ 	    (
+ 	    SEQ_FAMILY_INFO_NO.NEXTVAL
+ 	    ,#{name}
+ 	    ,#{relation}
+ 	    ,#{gender}
+ 	    ,#{birthday}
+ 	    ,#{study}
+ 	    ,#{job}
+ 	    ,#{no}
+ 	    )
+ </insert>
+  	  
+<insert id="license" parameterType="LicenseDTO">
+	INSERT
+	  INTO BB_LICENSE(
+	       LICENSE_NO
+	     , LICENSE_DATE
+	     , MEMBER_NO
+	     ,LICENSE_CODE_CODE
+	  )
+	  VALUES
+	  (
+	    #{no} 
+	  , #{date}
+	  , #{member_no}
+	  , #{code}
+	  )
+</insert>
 </mapper>

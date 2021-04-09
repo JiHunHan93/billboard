@@ -6,7 +6,7 @@ public class WorkDTO {
 	
 	private int wSTNo;
 	private java.util.Date sTDate;
-	private String totalWork;
+	private int totalWork;
 	private String extraWork;
 	private int LateCount;
 	private int workCount;
@@ -14,10 +14,16 @@ public class WorkDTO {
 
 	public WorkDTO() {}
 
-	@Override
-	public String toString() {
-		return "WorkDTO [wSTNo=" + wSTNo + ", sTDate=" + sTDate + ", totalWork=" + totalWork + ", extraWork="
-				+ extraWork + ", LateCount=" + LateCount + ", workCount=" + workCount + ", MemNo=" + MemNo + "]";
+	public WorkDTO(int wSTNo, Date sTDate, int totalWork, String extraWork, int lateCount, int workCount,
+			int memNo) {
+		super();
+		this.wSTNo = wSTNo;
+		this.sTDate = sTDate;
+		this.totalWork = totalWork;
+		this.extraWork = extraWork;
+		LateCount = lateCount;
+		this.workCount = workCount;
+		MemNo = memNo;
 	}
 
 	public int getwSTNo() {
@@ -36,11 +42,11 @@ public class WorkDTO {
 		this.sTDate = sTDate;
 	}
 
-	public String getTotalWork() {
+	public int getTotalWork() {
 		return totalWork;
 	}
 
-	public void setTotalWork(String totalWork) {
+	public void setTotalWork(int totalWork) {
 		this.totalWork = totalWork;
 	}
 
@@ -76,15 +82,10 @@ public class WorkDTO {
 		MemNo = memNo;
 	}
 
-	public WorkDTO(int wSTNo, Date sTDate, String totalWork, String extraWork, int lateCount, int workCount,
-			int memNo) {
-		super();
-		this.wSTNo = wSTNo;
-		this.sTDate = sTDate;
-		this.totalWork = totalWork;
-		this.extraWork = extraWork;
-		LateCount = lateCount;
-		this.workCount = workCount;
-		MemNo = memNo;
+	@Override
+	public String toString() {
+		return "WorkDTO [wSTNo=" + wSTNo + ", sTDate=" + sTDate + ", totalWork=" + totalWork + ", extraWork="
+				+ extraWork + ", LateCount=" + LateCount + ", workCount=" + workCount + ", MemNo=" + MemNo + "]";
 	}
+
 }
