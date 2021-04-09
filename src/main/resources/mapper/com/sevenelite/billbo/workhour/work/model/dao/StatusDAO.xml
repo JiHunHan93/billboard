@@ -16,17 +16,32 @@
 		<result property="WORKTYPE_TYPE" column="type"/>
 	</resultMap>
 	
-	<select id="selectAllStatus" resultMap="statusResult" parameterType="WorkStatusDTO">
-        SELECT	
-		       A.WORKDATE
-		     , A.COMMUTE
-		     , A.LEAVE_WORK
-		     , A.MEMBER_NO
-		     , A.WORKTYPE_CODE
-             , B.WORKTYPE_CODE
-             , B.WORKTYPE_TYPE
-	FROM BB_WORKSTATUS A
-    JOIN BB_WORKTYPE B ON (A.WORKTYPE_CODE = b.WORKTYPE_CODE)
+	<resultMap id="workResult" type="WorkDTO">
+	<id column="WEEK_WORK_STATISTIC_NO" property="wSTNo"/>
+	<result column="STATISTIC_DATE" property="sTDate"/>
+	<result column="TOTAL_WORK_HOURS" property="totalWork"/>
+	<result column="TOTAL_EXTRA_WORK_HOURS" property="extraWork"/>
+	<result column="WORK_LATE_COUNT" property = "lateCount"/>
+	<result column="WORK_COUNT" property="workCount"/>
+	<result column="MEMBER_NO" property="MemNo"/>
+	</resultMap>
 	
+	<select id="selectAllStatus" resultMap="statusResult" parameterType="WorkStatusDTO">
+	SELECT
+          WORKSTATUS_NO
+        , WORKDATE
+		, COMMUTE
+		, LEAVE_WORK
+		, MEMBER_NO
+	    , WORKTYPE_CODE
+       		
+   <!--     , C.WORKDATE
+       , C.COMMUTE
+       , C.LEAVE_WORK
+       , C.MEMBER_NO
+       , C.WORKTYPE_CODE -->
+		FROM BB_WORKSTATUS
+		<!-- JOIN BB_MEMBER B ON (A.MEMBER_NO = B.MEMBER_NO)
+        JOIN BB_WORKSTATUS C ON (C.MEMBER_NO = C.MEMBER_NO) -->
 	</select>
  </mapper>   
