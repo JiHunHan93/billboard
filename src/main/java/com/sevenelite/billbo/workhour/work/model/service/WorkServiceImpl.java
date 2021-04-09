@@ -16,5 +16,8 @@ com.sevenelite.billbo.workhour.work.model.dto.WorkDTO;
 	@Autowired public WorkServiceImpl(WorkDAO workdao) { this.dao = workdao; }
 
 	@Override public List<WorkDTO> selectWorkList() 
-   { 
-		return dao.selectWorkList(); } }
+	
+	{ 
+		return dao.selectWorkList(); 
+		} 
+	}
