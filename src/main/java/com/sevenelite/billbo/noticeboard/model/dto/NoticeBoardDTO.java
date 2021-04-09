@@ -13,13 +13,21 @@ public class NoticeBoardDTO {
 	private String status;
 	private String fileAttachment;
 	private int count;
-	private java.util.Date enrollDate;
+	private java.sql.Date enrollDate;
+	private java.sql.Date endDate;
 	private int memberNo;
 	
 	public NoticeBoardDTO() {}
 
+	@Override
+	public String toString() {
+		return "NoticeBoardDTO [no=" + no + ", boardType=" + boardType + ", title=" + title + ", body=" + body
+				+ ", writer=" + writer + ", status=" + status + ", fileAttachment=" + fileAttachment + ", count="
+				+ count + ", enrollDate=" + enrollDate + ", endDate=" + endDate + ", memberNo=" + memberNo + "]";
+	}
+
 	public NoticeBoardDTO(int no, String boardType, String title, String body, String writer, String status,
-			String fileAttachment, int count, Date enrollDate, int memberNo) {
+			String fileAttachment, int count, java.sql.Date enrollDate, java.sql.Date endDate, int memberNo) {
 		super();
 		this.no = no;
 		this.boardType = boardType;
@@ -30,6 +38,7 @@ public class NoticeBoardDTO {
 		this.fileAttachment = fileAttachment;
 		this.count = count;
 		this.enrollDate = enrollDate;
+		this.endDate = endDate;
 		this.memberNo = memberNo;
 	}
 
@@ -97,12 +106,20 @@ public class NoticeBoardDTO {
 		this.count = count;
 	}
 
-	public java.util.Date getEnrollDate() {
+	public java.sql.Date getEnrollDate() {
 		return enrollDate;
 	}
 
-	public void setEnrollDate(java.util.Date enrollDate) {
+	public void setEnrollDate(java.sql.Date enrollDate) {
 		this.enrollDate = enrollDate;
+	}
+
+	public java.sql.Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(java.sql.Date endDate) {
+		this.endDate = endDate;
 	}
 
 	public int getMemberNo() {
@@ -113,12 +130,7 @@ public class NoticeBoardDTO {
 		this.memberNo = memberNo;
 	}
 
-	@Override
-	public String toString() {
-		return "BoardDTO [no=" + no + ", boardType=" + boardType + ", title=" + title + ", body=" + body + ", writer="
-				+ writer + ", status=" + status + ", fileAttachment=" + fileAttachment + ", count=" + count
-				+ ", enrollDate=" + enrollDate + ", memberNo=" + memberNo + "]";
-	}
+	
 	
 	
 }

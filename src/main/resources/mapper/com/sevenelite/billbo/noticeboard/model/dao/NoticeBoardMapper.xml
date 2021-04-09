@@ -42,12 +42,51 @@
   	 ,  A.BOARD_COUNT
   	 ,  A.BOARD_ENROLL_DATE
   	 ,  A.MEMBER_NO
-  	);
+  	)
   	VALUES
   	(
-  		SEQ_BOARD_NO.NEXTVAL, #{BOARD_TYPE}, #{BOARD_TITLE}, #{BOARD_BODY}, #{BOARD_WRITER}, 'Y',
-  		NULL, 1, SYSDATE, 5
+  		SEQ_BOARD_NO.NEXTVAL
+  	,	#{title}
+  	,   #{boardType}
+  	,   #{body}
+  	,   #{writer}
+  	, 	'Y'
+  	,   NULL
+  	,   1
+  	,   SYSDATE
+  	,   5
   	)
  </insert> 
+ 
+ <update id="updateCount" parameterType="_int">
+ 	UPDATE BB_BOARD A
+ 	SET A.BOARD_COUNT = A.BOARD_COUNT + 1
+ 	WHERE A.BOARD_NO = #{no}
+ </update>
+ 
+ <select id="detailNoticeBoard" resultMap="boardResultMap" parameterType="NoticeBoardDTO">
+ 	SELECT
+ 		A.BOARD_NO
+ 	  , A.BOARD_TITLE
+ 	  , A.BOARD_WRITER
+ 	  , A.BOARD_COUNT
+ 	  , A.BOARD_ENROLL_DATE
+ 	  , A.BOARD_TYPE
+ 	  , A.BOARD_STATUS
+ 	  , A.BOARD_BODY
+ 	  , A.MEMBER_NO
+ 	 FROM BB_BOARD A
+ 	 WHERE A.BOARD_TYPE = '공지'
+ 	   AND A.BOARD_STATUS = 'Y'
+ 	   AND A.BOARD_NO = #{no}
+ </select>
+ 
+<!--  <update id="update" parameterType="NoticeBoardDTO">
+  UPDATE BB_BOARD
+  	SET BOARD_TITLE = #{title}
+  	  , BOARD_TYPE = #{boardType}
+  	  , BOARD_BODY = #{body}
+  	WHERE BOARD_NO = #{no} 
+ </update> -->
  
  </mapper>
