@@ -30,7 +30,7 @@ public class NoticeBoardController {
       this.noticeBoardService = noticeBoardService;
    }
    
-   @GetMapping("main")
+   @GetMapping("Bonus")
    public String selectNoticeBoardList(Model model) {
       
       List<NoticeBoardDTO> noticeBoardList = noticeBoardService.selectNoticeBoard();
@@ -38,7 +38,7 @@ public class NoticeBoardController {
       System.out.println("noticeBoardList :" + noticeBoardList);
       model.addAttribute("noticeBoardList", noticeBoardList);
       
-      return "board/NoticeBoard";
+      return "board/Bonus";
       //폴더/파일명
    }
    
