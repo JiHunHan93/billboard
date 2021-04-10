@@ -1,8 +1,6 @@
 package com.sevenelite.billbo.board.controller;
 
 import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,8 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.sevenelite.billbo.board.model.dto.BoardDTO;
 import com.sevenelite.billbo.board.model.service.BoardService;
 
@@ -116,61 +112,40 @@ public class FreeBoardController {
 		return mv;
 	}
 	
-	@PostMapping(value="modify", produces="application/json; charset=UTF-8")
+	@GetMapping(value="modify", produces="application/json; charset=UTF-8")
 	@ResponseBody
-	public ModelAndView modifyBoard(@ModelAttribute BoardDTO boardDTO, Model model, HttpServletRequest request) {
+	public ModelAndView modifyBoard(@ModelAttribute BoardDTO boardDTO, Model model, HttpServletRequest request, RedirectAttributes rttr) {
 	    
-		Gson gson = new GsonBuilder().create();
-		
-		   /* 0. Ajax로 전송받은 key, value 확인 */
-        Map<String,String[]> paymentInfo = new TreeMap<String,String[]>(request.getParameterMap());
-
-		
-		  for(String key : paymentInfo.keySet()) {
-	            String[] value = paymentInfo.get(key);
-
-	            for(int i=0; i<value.length; i++) {
-	               System.out.println((key + " : " + value[i]));
-	            }
-	         }
-		  
-		  String a = ((String[])paymentInfo.get("jihun[3][value]"))[0];
-
-		  System.out.println("변수에 담기 : " + a);
-		  
-		
+//		Gson gson = new GsonBuilder().create();
+//		
+//		   /* 0. Ajax로 전송받은 key, value 확인 */
+//        Map<String,String[]> paymentInfo = new TreeMap<String,String[]>(request.getParameterMap());
+//
+//		
+//		  for(String key : paymentInfo.keySet()) {
+//	            String[] value = paymentInfo.get(key);
+//
+//	            for(int i=0; i<value.length; i++) {
+//	               System.out.println((key + " : " + value[i]));
+//	            }
+//	         }
+//		  
+//		  String a = ((String[])paymentInfo.get("jihun[3][value]"))[0];
+//
+//		  System.out.println("변수에 담기 : " + a);
+//		  
+//		
+		if(boardService.updateBoard(boardDTO)) {
+			rttr.addFlashAttribute("message", "게시글등록성공하였습니다");
+		};
 		ModelAndView mv = new ModelAndView();
 	
-	    mv.setViewName("board/FreeBoard");
+//	    mv.setViewName("redirect:board/detail?no=" + boardDTO.getNo());
 	    List<BoardDTO> boardList = boardService.selectBoard();
 	    model.addAttribute("boardList", boardList);
+	    mv.setViewName("redirect:freeboard");
 	    
-//		System.out.println(request.getParameter("enrollDate"));
-//		System.out.println("!");
-//		System.out.println("!!");
-		/* int no = Integer.parseInt(request.getParameter("no")); */
-	  
-//	    System.out.println("!!!");
-		
-//	    DateFormat date = new SimpleDateFormat("yyyy-MM-dd");
-//	    System.out.println("!!!!");
-//	    java.util.Date modifyEnrollDate;
-//	    System.out.println("!!!!!");
-//		try {
-//			System.out.println("!!!!!!");
-//			modifyEnrollDate = date.parse(request.getParameter("enrollDate"));
-//			System.out.println("!*7");
-//			boardDTO.setEnrollDate((Date) modifyEnrollDate);
-//			System.out.println("!*8");
-//			
-//			System.out.println(modifyEnrollDate);
-//		} catch (ParseException e) {
-//			e.printStackTrace();
-//		}
-		 /* System.out.println("======================================================" +
-		 * ModifyBoard);
-		 */
-	    
+
 	    
 		return mv;
 	}

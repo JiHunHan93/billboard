@@ -3,7 +3,6 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -661,6 +660,7 @@
 					<div class="col-md-3">
 						<div class="stats-info">
 							<h6>초과근무</h6>
+							
 						</div>
 					</div>
 					<div class="col-md-3">
@@ -690,7 +690,6 @@
 										<th>상태</th>
 										<th>업무시작</th>
 										<th>업무종료</th>
-										<th>총 근무 시간</th>
 										<th>수정이력</th>
 									</tr>
 								</thead>
@@ -700,8 +699,7 @@
 											<td><c:out value="${statusList.date }"></c:out></td>
 											<td><i class="fas fa-circle"></i></td>
 											<td><c:out value="${ statusList.commute }"></c:out></td>
-											<td></td>
-											<td></td>
+											<td><c:out value="${ statusList.lwork }"></c:out></td>
 											<td></td>
 								</c:forEach>
 								<div class="dropdown action-label">
@@ -923,8 +921,4 @@
 	<script src="../resources/hrtemp/js/app.js"></script>
 
 </body>
-
-<script type="text/javascript">
-    	
-    </script>
 </html>

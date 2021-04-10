@@ -17,6 +17,8 @@ public interface BoardMapper {
 
 	int deleteBoard(int no);
 
+	boolean updateBoard(BoardDTO boardDTO);
+	
 	
 
 }
