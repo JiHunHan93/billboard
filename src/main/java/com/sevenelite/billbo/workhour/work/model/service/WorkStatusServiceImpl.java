@@ -6,8 +6,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired; import
 org.springframework.stereotype.Service;
 
-import com.sevenelite.billbo.workhour.work.model.dao.StatusDAO; import
-com.sevenelite.billbo.workhour.work.model.dto.WorkStatusDTO;
+import com.sevenelite.billbo.workhour.work.model.dao.StatusDAO;
+import com.sevenelite.billbo.workhour.work.model.dto.StatusAndWorkDTO;
 
 @Service
 public class WorkStatusServiceImpl implements WorkStatusService{
@@ -19,13 +19,11 @@ public class WorkStatusServiceImpl implements WorkStatusService{
 		this.dao = statusDAO; 
 	}
 
-	@Override 
-	public List<WorkStatusDTO> selectListstatus() { 
+	@Override
+	public List<StatusAndWorkDTO> selectListstatus() {
+		return dao.selectAllStatus();
+	}
+
+	}
 
 
-		dao.selectAllStatus();
-
-
-		return dao.selectAllStatus(); }
-
-}

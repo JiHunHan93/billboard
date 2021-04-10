@@ -30,7 +30,7 @@
   FROM BB_BOARD A
   WHERE A.BOARD_TYPE = '자유'
     AND A.BOARD_STATUS = 'Y'
-    AND A.BOARD_ENROLL_DATE &lt;= SYSDATE
+   <!--  AND A.BOARD_ENROLL_DATE &lt;= SYSDATE -->
     ORDER BY A.BOARD_ENROLL_DATE DESC, A.BOARD_NO
      
  </select>
@@ -78,11 +78,16 @@
   WHERE A.BOARD_NO = #{no}
 </update>
 
-<update id="modifyBoard" parameterType="_int">
+<update id="updateBoard" parameterType="BoardDTO">
  UPDATE BB_BOARD A
   SET A.BOARD_TITLE = #{title},
       A.BOARD_TYPE = #{boardType},
-      A.BOARD_BODY = #{body}
+      A.BOARD_BODY = #{body},
+      A.BOARD_ENROLL_DATE = #{enrollDate},
+      A.BOARD_END_DATE = #{endDate},
+      A.BOARD_WRITER = #{writer},
+      A.BOARD_FILEATTACHMENT = #{fileAttachment},
+      A.BOARD_STATUS = #{status}
   WHERE A.BOARD_NO = #{no}    
 </update>
 </mapper>
