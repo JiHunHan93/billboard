@@ -49,6 +49,12 @@ public class BoardServiceImpl implements BoardService {
 		return boardMapper.deleteBoard(no);
 	}
 
+	@Override
+	public boolean updateBoard(BoardDTO boardDTO) {
+		// TODO Auto-generated method stub
+		return boardMapper.updateBoard(boardDTO);
+	}
+
 	
 
 

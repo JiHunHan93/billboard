@@ -861,7 +861,7 @@
 			<div id="edit_project" class="modal custom-modal fade" role="dialog">
 				<div class="modal-dialog modal-dialog-centered modal-lg"
 					role="document">
-					<form name="board5">
+					<form name="board5" action="${pageContext.servletContext.contextPath }/board/modify" method="">
 					<div class="modal-content">
 						<div class="modal-header">
 							<h5 class="modal-title">게시글 수정</h5>
@@ -872,8 +872,14 @@
 						</div>
 						<div class="modal-body">
 							<c:forEach var="detailInfo" items="${requestScope.detailInfo }">
-
+								
 								<div class="row">
+								<div class="col-sm-6">
+										<div class="form-group">
+											<label>글번호</label> <input name="no" class="form-control" id="modifyTitle"
+												value="<c:out value="${detailInfo.no}"/>" type="text" readOnly>
+										</div>
+									</div>
 									<div class="col-sm-6">
 										<div class="form-group">
 											<label>제목</label> <input name="title" class="form-control" id="modifyTitle"
@@ -892,7 +898,8 @@
 										<div class="form-group">
 											<label>게시일</label>
 											<div class="cal-icon">
-												<input class="form-control datetimepicker" type="text"
+												<!-- <input class="form-control datetimepicker"> --> 
+												<input type="date"
 													name="enrollDate" id="modifyEnrollDate"
 													value="<c:out value="${ detailInfo.enrollDate }"/>">
 											</div>
@@ -902,12 +909,17 @@
 										<div class="form-group">
 											<label>만료일</label>
 											<div class="cal-icon">
-												<input class="form-control datetimepicker" type="text"
+												<!-- <input class="form-control datetimepicker"> -->
+												<input type="date"
 													name="endDate" id="modifyEndDate"
 													value="<c:out value="${ detailInfo.endDate }"/>">
 											</div>
 										</div>
 									</div>
+									<div class="form-group">
+											<label>상태</label> <input name="status" class="form-control" id="modifyTitle"
+												value="<c:out value="${detailInfo.status}"/>" type="text" readOnly>
+										</div>
 								</div>
 								<div class="row">
 									<div class="col-sm-3">
@@ -935,7 +947,7 @@
 										name="fileAttachment">
 								</div>
 								<div class="submit-section">
-									<button class="btn btn-primary submit-btn" id="modify-btn" type="button">수정
+									<button class="btn btn-primary submit-btn" id="modify-btn" type="button" onclick="goModify(this.form)">수정
 										완료</button>
 								</div>
 
@@ -1005,6 +1017,20 @@
 </body>
 <script type="text/javascript">
 
+function goModify(frm){
+	 var title = frm.title.value;
+	 var name = frm.name.value;
+	 var enrollDate = frm.enrollDate.value;
+	 var endDate = frm.endDate.value;
+	 var boardType = frm.boardType.value;
+	 var body = frm.body.value;
+	 var fileAttachment = frm.fileAttachment.value;
+	 
+	 frm.submit();
+	 
+	 
+}
+
 
 /* $("#modify-btn").click(function() { */
 			    <%-- var typeSel = document.getElementById("modify-type-sel");
@@ -1059,7 +1085,7 @@
     </script>
 
 <script>
-	$("#modify-btn").click(function() {
+/* 	$("#modify-btn").click(function() {
 	
 		console.log("확인");
 		
@@ -1077,7 +1103,7 @@
 		               alert(data);
 		            },
 		            error : function(xhr, status, error) {}
-		        });
+		        }); */
 
 	
 	});
