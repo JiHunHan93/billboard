@@ -267,4 +267,9 @@
 	  , #{code}
 	  )
 </insert>
+
+<!-- <insert id="name" parameterType="memDTO">
+
+	
+</insert> -->
 </mapper>

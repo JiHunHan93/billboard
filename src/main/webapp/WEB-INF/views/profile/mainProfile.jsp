@@ -660,11 +660,12 @@
 												<a href="#"><img alt="" src="assets/img/profiles/avatar-02.jpg"></a>
 											</div>
 										</div>
+										<!-- 로그인 정보 프로필 select 부분  -->
 										<div class="profile-basic">
 											<div class="row">
 												<div class="col-md-5">
 													<div class="profile-info-left">
-														<h3 class="user-name m-t-0 mb-0">John Doe</h3>
+														<h3 class="user-name m-t-0 mb-0">${model/MemDTO.name}</h3>
 														<h6 class="text-muted">UI/UX Design Team</h6>
 														<small class="text-muted">Web Designer</small>
 														<div class="staff-id">Employee ID : FT-0001</div>
