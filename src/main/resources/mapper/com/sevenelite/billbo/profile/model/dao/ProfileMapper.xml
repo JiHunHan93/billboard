@@ -268,8 +268,21 @@
 	  )
 </insert>
 
-<!-- <insert id="name" parameterType="memDTO">
 
-	
-</insert> -->
+
+
+ <!-- <select id="member_info_phone" resultMap="DeptDTO" parameterType="DeptDTO">
+	SELECT 
+	       DEPT_CODE
+	  FROM BB_DEPT
+	  WHERE MEMBER_NO = '?'
+</select>
+ -->
+ 
+  <select id="member_info_phone" resultMap="memberInfoDTO" parameterType="memberInfoDTO">
+SELECT 
+	       ENROLL_DATE
+	  FROM BB_MEMBER_INFO
+	  WHERE MEMBER_NO = '?';
+</select>
 </mapper>

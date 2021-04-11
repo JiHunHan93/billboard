@@ -1,8 +1,12 @@
 package com.sevenelite.billbo.profile.model.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sevenelite.billbo.board.model.dto.BoardDTO;
+import com.sevenelite.billbo.member.model.dto.MemDTO;
 import com.sevenelite.billbo.profile.model.dao.ProfileMapper;
 import com.sevenelite.billbo.profile.model.dto.ArmyDTO;
 import com.sevenelite.billbo.profile.model.dto.CareerDTO;
@@ -79,6 +83,16 @@ public class ProfileServiceImpl implements ProfileService{
 		return mapper.license(license) > 0? true : false;
 	}
 	
+	@Override
+	public boolean member_info_no(MemDTO member_info_no) {
+		// TODO Auto-generated method stub
+		return mapper.member_info_no(member_info_no) > 0? true : false;
+	}
+	@Override
+	public List<MemDTO>member_info_phone() {
+
+		return mapper.member_info_phone();
+	}
 	}
 
 	
