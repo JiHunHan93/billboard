@@ -24,6 +24,18 @@ public class WorkStatusServiceImpl implements WorkStatusService{
 		return dao.selectAllStatus();
 	}
 
+	@Override
+	public boolean registWork(StatusAndWorkDTO status) {
+		
+		return dao.registWork(status) > 0? true: false;
 	}
+
+	@Override
+	public boolean updateWork(StatusAndWorkDTO status) {
+
+		return dao.updateWork(status);
+	}
+
+}
 
 
