@@ -1,14 +1,18 @@
 package com.sevenelite.billbo.profile;
 
 import java.text.SimpleDateFormat;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.sevenelite.billbo.board.model.dto.BoardDTO;
+import com.sevenelite.billbo.member.model.dto.MemDTO;
 import com.sevenelite.billbo.profile.model.dto.ArmyDTO;
 import com.sevenelite.billbo.profile.model.dto.CareerDTO;
 import com.sevenelite.billbo.profile.model.dto.CertificateDTO;
@@ -165,6 +169,16 @@ public class MainProfileController {
 		/* SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); */
 		profileService.license(license);
 		
+		
+		return "profile/mainProfile";
+	}
+	
+	@GetMapping("member_info_phone")
+	public String member_info_phone(Model model) {
+
+		List<MemDTO> profileList = profileService.member_info_phone();
+		System.out.println(profileList+"33333333333333");
+		model.addAttribute("profileList", profileList);
 		
 		return "profile/mainProfile";
 	}
