@@ -659,18 +659,18 @@
 				<div class="row">
 					<div class="col-md-3">
 						<div class="stats-info">
-							<h6>초과근무</h6>
+							<h3 class="page-title" font>${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }님의 근태 현황</h3>
 							
 						</div>
 					</div>
-					<div class="col-md-3">
-						<div class="stats-info">
-							<h6>지각</h6>
-							<h4 style="color: coral;"></h4>
-						</div>
-					</div>
-					<!-- /Leave Statistics -->
-
+					<br>
+					<form action="${pageContext.servletContext.contextPath}/work/regist" method="post">
+					<button class="btn btn-success btn-lg">출근 등록</button>
+					</form>
+					<form action="${pageContext.servletContext.contextPath}/work/update" method="get">
+					<button class="btn btn-dark btn-lg" style="margin-left: 25px">퇴근 등록</button>
+					</form>
+					
 
 					<!-- Search Filter -->
 					<div class="row filter-row">

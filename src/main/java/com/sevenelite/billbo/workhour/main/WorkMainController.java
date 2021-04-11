@@ -1,8 +1,6 @@
-
    package com.sevenelite.billbo.workhour.main;
-   
-   import java.security.Principal; import java.util.List;
-   
+   import java.security.Principal; 
+   import java.util.List;
    import org.springframework.beans.factory.annotation.Autowired; 
    import org.springframework.stereotype.Controller; 
    import org.springframework.ui.Model; 
@@ -29,8 +27,10 @@
    model.addAttribute("workList", workList); principal.getName();
    System.out.println("관리자 : " + principal);
    System.out.println("===========================================" + workList);
+   		} 
    
-   } 
-   return "workhour/workList"; }
+   return "workhour/workList"; 
+   		
+   	}
  
    }
