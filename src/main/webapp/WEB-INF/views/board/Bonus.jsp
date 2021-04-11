@@ -644,44 +644,19 @@
 				<div class="page-header">
 					<div class="row">
 						<div class="col">
-							<h3 class="page-title">게시판</h3>
+							<h3 class="page-title">상여금 관리</h3>
 							<ul class="breadcrumb">
 								<!-- <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li> -->
-								<li class="breadcrumb-item active">NoticeBoard</li>
+								<li class="breadcrumb-item active">Bonus management</li>
 							</ul>
 						</div>
 					</div>
 				</div>
 				<!-- /Page Header -->
-
-				<div class="file-sidebar dashboard-sub-sidebar">
-					<div class="file-header justify-content-center">
-
-						<span><button type="button" class="btn btn-write"
-								id="insertWrite"
-								onclick="location.href='${pageContext.servletContext.contextPath}/board/insert'">글쓰기</button></span>
-						<a href="${pageContext.servletContext.contextPath}/board/insert"
-							class="file-side-close"><i class="fa fa-times"></i></a>
-
-
-					</div>
-					<br>
-					<form class="file-search">
-						<div class="input-group">
-							<div class="input-group-prepend">
-								<input type="text" class="form-control" placeholder="Search"
-									style="width: 226px;"> <i
-									class="fa fa-search board-icon"></i>
-							</div>
-						</div>
-					</form>
-					
-				</div>
-
 				<div class="row dashboard-sub-container">
 
 					<div class="col-sm-12" style="height: 900px;">
-						<div class="card mb-0">
+						<div class="card mb-0" >
 
 							<div class="card-header">
 								<div class="col-md-6" style="max-width: 100%;">
@@ -755,6 +730,7 @@
 			</div>
 		</div>
 	</div>
+	
 	<!-- /Page Wrapper -->
 
 	</div>
