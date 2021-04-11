@@ -48,19 +48,7 @@ public class FreeBoardController {
 	@PostMapping("freeboard")
 	public String registBoard(@ModelAttribute BoardDTO board, RedirectAttributes redirect, Model model) {
 
-		/*
-		 * String root =
-		 * request.getSession().getServletContext().getRealPath("resources");
-		 * System.out.println("root : " + root ); String filePath = root +
-		 * "\\uploadFiles";
-		 * 
-		 * 
-		 * File mkdir = new File(filePath); if(!mkdir.exists()) { mkdir.mkdirs(); }
-		 * 
-		 * String singleFile = request.getParameter("fileAttachment"); String
-		 * originalName = singleFile.getO
-		 */
-
+	
 		if (!boardService.registBoard(board)) {
 			redirect.addFlashAttribute("message", "게시글등록실패하였습니다");
 		}
