@@ -1,5 +1,8 @@
 package com.sevenelite.billbo.profile.model.dao;
 
+import java.util.List;
+
+import com.sevenelite.billbo.member.model.dto.MemDTO;
 import com.sevenelite.billbo.profile.model.dto.ArmyDTO;
 import com.sevenelite.billbo.profile.model.dto.CareerDTO;
 import com.sevenelite.billbo.profile.model.dto.CertificateDTO;
@@ -43,6 +46,12 @@ public interface ProfileMapper {
 	
 	LicenseDTO license();
 	int license(LicenseDTO license);
+
+	MemDTO member_info_no();
+	int member_info_no(MemDTO member_info_no);
+
+	
+	List<MemDTO> member_info_phone();
 
 	
 }

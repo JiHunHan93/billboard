@@ -665,10 +665,13 @@
 											<div class="row">
 												<div class="col-md-5">
 													<div class="profile-info-left">
-														<h3 class="user-name m-t-0 mb-0">${model/MemDTO.name}</h3>
-														<h6 class="text-muted">UI/UX Design Team</h6>
+														<h3 class="user-name m-t-0 mb-0">${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }님 환영합니다.
+								</h3>
+														
+														<h6 class="text-muted"> 
+														UI/UX Design Team</h6>
 														<small class="text-muted">Web Designer</small>
-														<div class="staff-id">Employee ID : FT-0001</div>
+														<div class="staff-id">Employee ID : ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username}</div>
 														<div class="small doj text-muted">Date of Join : 1st Jan 2013</div>
 														<div class="staff-msg"><a class="btn btn-custom" href="chat.html">Send Message</a></div>
 													</div>
@@ -677,11 +680,11 @@
 													<ul class="personal-info">
 														<li>
 															<div class="title">Phone:</div>
-															<div class="text"><a href="">9876543210</a></div>
+															<div class="text"><c:out value="${ boardList.member_info_phone }"/></div>
 														</li>
 														<li>
 															<div class="title">Email:</div>
-															<div class="text"><a href="">johndoe@example.com</a></div>
+															<div class="text"><a href=""></a></div>
 														</li>
 														<li>
 															<div class="title">Birthday:</div>

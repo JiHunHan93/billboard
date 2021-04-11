@@ -23,7 +23,7 @@
 	</resultMap>
 	
 	<select id="selectAllStatus" resultMap="statusAndWorkResultMap">
-	    SELECT
+	   SELECT
           A.WORKSTATUS_NO
         , A.WORKDATE
 		, A.COMMUTE
@@ -34,5 +34,37 @@
 	    , B.TOTAL_EXTRA_WORK_HOURS
 	 FROM BB_WORKSTATUS A
 	LEFT JOIN BB_WEEK_WORK_STATISTIC B ON (A.MEMBER_NO = B.MEMBER_NO)
+    ORDER BY A.WORKSTATUS_NO
+	
 	</select>
+	
+	<insert id="registWork" parameterType="StatusAndWorkDTO">
+	  INSERT
+	    INTO BB_WORKSTATUS A
+	  (
+	    A.WORKSTATUS_NO
+	  , A.WORKDATE
+	  , A.COMMUTE
+	  , A.LEAVE_WORK
+	  , A.MEMBER_NO
+	  ,	A.WORKTYPE_CODE
+	  )
+	  VALUES
+	  (
+	  SEQ_WORKSTATUS_NO.NEXTVAL
+	  ,  SYSTIMESTAMP
+	  ,  SYSTIMESTAMP
+	  ,  #{ lwork, jdbcType=TIMESTAMP}
+	  , 2
+	  , 'C1'
+	  )	  
+	</insert>
+	
+	<update id="updateWork">
+ 	   UPDATE BB_WORKSTATUS A
+ 	      SET A.LEAVE_WORK = SYSTIMESTAMP
+        WHERE A.WORKSTATUS_NO = #{ no }
+          AND A.WORKDATE = #{ date }
+   	    
+	</update>
  </mapper>   
