@@ -38,7 +38,7 @@ public class NoticeBoardController {
       System.out.println("noticeBoardList :" + noticeBoardList);
       model.addAttribute("noticeBoardList", noticeBoardList);
       
-      return "board/NoticeBoard";
+      return "board/Bonus";
       //폴더/파일명
    }
    

@@ -30,13 +30,13 @@ public class FreeBoardController {
 		this.boardService = boardService;
 	}
 
-	@GetMapping("board")
+	@GetMapping("freeboard")
 	public String selectFreeBoardList(Model model) {
 
 		List<BoardDTO> boardList = boardService.selectBoard();
 		model.addAttribute("boardList", boardList);
 		
-		return "board/Board";
+		return "board/FreeBoard";
 	}
 
 	@GetMapping("insert")
@@ -45,7 +45,7 @@ public class FreeBoardController {
 		return "board/InsertFreeBoard";
 	}
 
-	@PostMapping("board")
+	@PostMapping("freeboard")
 	public String registBoard(@ModelAttribute BoardDTO board, RedirectAttributes redirect, Model model) {
 
 	

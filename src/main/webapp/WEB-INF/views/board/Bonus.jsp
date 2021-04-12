@@ -644,7 +644,7 @@
 				<div class="page-header">
 					<div class="row">
 						<div class="col">
-							<h3 class="page-title">상여금 관리</h3>
+							<h3 class="page-title">상벌 관리</h3>
 							<ul class="breadcrumb">
 								<!-- <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li> -->
 								<li class="breadcrumb-item active">Bonus management</li>
@@ -653,11 +653,10 @@
 					</div>
 				</div>
 				<!-- /Page Header -->
-				<div class="row dashboard-sub-container">
-
+				<div class="row bonus-sub-container">
+				
 					<div class="col-sm-12" style="height: 900px;">
 						<div class="card mb-0" >
-
 							<div class="card-header">
 								<div class="col-md-6" style="max-width: 100%;">
 									<div class="card-board-style">
@@ -666,10 +665,11 @@
 											<ul class="nav nav-tabs nav-tabs-solid nav-justified"
 												style="width: 1255px;">
 												<li class="nav-item"><a class="nav-link active"
-													href="#solid-justified-tab1" data-toggle="tab">상여 리스트</a></li>
+													href="#solid-justified-tab1" data-toggle="tab">상벌 내역 목록</a></li>
 											</ul>
 											<br>
 											<form class="file-search">
+											<button type="button" class="btn btn-primary btn-sm sub-btn">상벌 추가</button>
 												<div class="input-group" style="width: 300px; float: left;">
 													<select>
 														<option>제목</option>
