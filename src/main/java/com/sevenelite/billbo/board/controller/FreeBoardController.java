@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -30,13 +31,13 @@ public class FreeBoardController {
 		this.boardService = boardService;
 	}
 
-	@GetMapping("board")
+	@GetMapping("freeboard")
 	public String selectFreeBoardList(Model model) {
 
 		List<BoardDTO> boardList = boardService.selectBoard();
 		model.addAttribute("boardList", boardList);
 		
-		return "board/Board";
+		return "board/FreeBoard";
 	}
 
 	@GetMapping("insert")
@@ -45,7 +46,7 @@ public class FreeBoardController {
 		return "board/InsertFreeBoard";
 	}
 
-	@PostMapping("board")
+	@PostMapping("freeboard")
 	public String registBoard(@ModelAttribute BoardDTO board, RedirectAttributes redirect, Model model) {
 
 	
