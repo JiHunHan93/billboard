@@ -44,7 +44,16 @@ public interface ProfileService {
 //보류	boolean bonus(BonusDTO bonus);
 
 	
-
+	
 	List<MemDTO> member_info_phone();
+	
+	List<MemDTO> member_address();
+
+	List<MemDTO> member_enrollDate();
+
+	
+
+	List<DeptDTO> member_name();
+
 
 }
