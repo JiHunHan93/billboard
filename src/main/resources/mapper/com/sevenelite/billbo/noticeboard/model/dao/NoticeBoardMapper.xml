@@ -24,9 +24,12 @@
       , A.BOARD_WRITER
       , A.BOARD_COUNT
       , A.BOARD_ENROLL_DATE
+      , A.BOARD_END_DATE
       , A.MEMBER_NO  
   FROM BB_BOARD A
   WHERE A.BOARD_TYPE = '공지'
+  	AND A.BOARD_STATUS = 'Y'
+  ORDER BY A.BOARD_ENROLL_DATE DESC, A.BOARD_NO
  </select>
 <insert id="insertNotice" parameterType="NoticeBoardDTO">
   INSERT 
@@ -41,6 +44,7 @@
   	 ,  A.BOARD_FILEATTACHMENT
   	 ,  A.BOARD_COUNT
   	 ,  A.BOARD_ENROLL_DATE
+  	 ,  A.BOARD_END_DATE
   	 ,  A.MEMBER_NO
   	)
   	VALUES
@@ -53,6 +57,7 @@
   	, 	'Y'
   	,   NULL
   	,   1
+  	,   SYSDATE
   	,   SYSDATE
   	,   5
   	)
@@ -71,6 +76,7 @@
  	  , A.BOARD_WRITER
  	  , A.BOARD_COUNT
  	  , A.BOARD_ENROLL_DATE
+ 	  , A.BOARD_END_DATE
  	  , A.BOARD_TYPE
  	  , A.BOARD_STATUS
  	  , A.BOARD_BODY
@@ -81,12 +87,22 @@
  	   AND A.BOARD_NO = #{no}
  </select>
  
-<!--  <update id="update" parameterType="NoticeBoardDTO">
-  UPDATE BB_BOARD
-  	SET BOARD_TITLE = #{title}
-  	  , BOARD_TYPE = #{boardType}
-  	  , BOARD_BODY = #{body}
-  	WHERE BOARD_NO = #{no} 
- </update> -->
+ <update id="deleteNoticeBoard" parameterType="NoticeBoardDTO">
+ 	UPDATE BB_BOARD A
+ 	   SET A.BOARD_STATUS = 'N'
+ 	   WHERE A.BOARD_NO = #{no}
+ </update>
  
+ <update id="updateNoticeBoard" parameterType="NoticeBoardDTO">
+  	UPDATE BB_BOARD A
+  	   SET A.BOARD_TITLE = #{title}
+       ,   A.BOARD_TYPE = #{boardType}
+       ,   A.BOARD_BODY = #{body}
+       ,   A.BOARD_ENROLL_DATE = #{enrollDate}
+       ,   A.BOARD_END_DATE = #{endDate}
+       ,   A.BOARD_WRITER = #{writer}
+       ,   A.BOARD_FILEATTACHMENT = #{fileAttachment}
+       ,   A.BOARD_STATUS = #{status}
+       WHERE A.BOARD_NO = #{no}  
+ </update>
  </mapper>

@@ -1,5 +1,6 @@
 package com.sevenelite.billbo.profile;
 
+import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
@@ -172,13 +173,43 @@ public class MainProfileController {
 		
 		return "profile/mainProfile";
 	}
-	
+	/*select이긴 한데 ..*/
 	@GetMapping("member_info_phone")
 	public String member_info_phone(Model model) {
 
-		List<MemDTO> profileList = profileService.member_info_phone();
-		System.out.println(profileList+"33333333333333");
-		model.addAttribute("profileList", profileList);
+		//int no = request.getParameter("no");
+		List<MemDTO> member_info_phone = profileService.member_info_phone();
+		System.out.println(member_info_phone);
+		model.addAttribute("profileList", member_info_phone);
+		
+		return "profile/mainProfile";
+	}
+	@GetMapping("member_address")
+	public String member_address(Model model) {
+
+		List<MemDTO> member_address = profileService.member_address();
+		System.out.println(member_address);
+		model.addAttribute("profileList", member_address);
+		
+		return "profile/mainProfile";
+	}
+	
+	@GetMapping("member_enrollDate")
+	public String member_enrollDate(Model model) {
+
+		List<MemDTO> member_enrollDate = profileService.member_enrollDate();
+		System.out.println(member_enrollDate);
+		model.addAttribute("profileList", member_enrollDate);
+		
+		return "profile/mainProfile";
+	}
+	
+	@GetMapping("member_name")
+	public String member_name(Model model) {
+
+		List<DeptDTO> member_name = profileService.member_name();
+		System.out.println(member_name);
+		model.addAttribute("profileList", member_name);
 		
 		return "profile/mainProfile";
 	}

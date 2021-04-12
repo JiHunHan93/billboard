@@ -681,75 +681,72 @@
                    </div>
                 </div>
              </div>
- 
-             <div class="row dashboard-sub-container">
- 
-                <div class="col-sm-12" style="height: 900px;">
-                   <div class="card mb-0">
- 
-                      <div class="card-header">
-                         <div class="col-md-6">
-                            <div class="card-board-style">
-                               <div class="notice-body" align="center">
-                                  <br>
-                                  <h4 class="card-title" style="width: 1255px;">게시판 홈</h4>
-                                  <ul class="nav nav-tabs nav-tabs-solid nav-justified"
-                                     style="width: 1255px;">
-                                     <li class="nav-item"><a class="nav-link active"
-                                        href="#solid-justified-tab1" data-toggle="tab">자유게시판</a></li>
-                                     <li class="nav-item"><a class="nav-link"
-                                        href="#solid-justified-tab2" data-toggle="tab">인사게시판</a></li>
-                                     <li class="nav-item"><a class="nav-link"
-                                        href="#solid-justified-tab3" data-toggle="tab">사내공지사항</a></li>
-                                  </ul>
-                                  <br>
-                                  <form class="file-search">
- 
-                                     <div class="input-group" style="width: 300px; float: left;">
-                                        <select>
-                                           <option>제목</option>
-                                           <option>내용</option>
-                                           <option>통합</option>
-                                        </select> <input type="text" class="form-control"
-                                           placeholder="Search">
-                                        <div class="input-group-prepend">
-                                           <i class="fa fa-search board-icon"></i>
-                                        </div>
-                                     </div>
- 
-                                  </form>
- 
-                               </div>
-                            </div>
-                         </div>
-                      </div>
-                      <div class="card-body">
-                         <div class="table-responsive">
-                            <table class="datatable table table-stripped mb-0">
-                               <thead>
-                                  <tr>
-                                     <th><input type="checkbox"></th>
-                                     <th>번호</th>
-                                     <th>제목</th>
-                                     <th>작성자</th>
-                                     <th>조회수</th>
-                                     <th>등록일</th>
-                                     <th>사원번호</th>
-                                  </tr>
-                               </thead>
-                               <c:forEach var="noticeBoardList" items="${requestScope.noticeBoardList }">
-                                  <tr>
-                                     <td><input type="checkbox" class=""/>
-                                     <td><c:out value="${ noticeBoardList.no }"/>
-                                     <td><c:out value="${ noticeBoardList.title }"/>
-                                     <td><c:out value="${ noticeBoardList.writer }"/>
-                                     <td><c:out value="${ noticeBoardList.count }"/>
-                                     <td><c:out value="${ noticeBoardList.enrollDate }"/>
-                                     <td><c:out value="${ noticeBoardList.endDate}"/>
-                                     <td><c:out value="${ noticeBoardList.memberNo }"/>
-                                  </tr>
-                               </c:forEach>
-                               <!-- <tbody>
+
+				<div class="row dashboard-sub-container">
+
+					<div class="col-sm-12" style="height: 900px;">
+						<div class="card mb-0">
+
+							<div class="card-header">
+								<div class="col-md-6">
+									<div class="card-board-style">
+										<div class="notice-body" align="center">
+											<br>
+											<h4 class="card-title" style="width: 1255px;">게시판 홈</h4>
+											<ul class="nav nav-tabs nav-tabs-solid nav-justified"
+												style="width: 1255px;">
+												<li class="nav-item"><a class="nav-link active"
+													href="#solid-justified-tab1" data-toggle="tab">자유게시판</a></li>
+												<li class="nav-item"><a class="nav-link"
+													href="#solid-justified-tab2" data-toggle="tab">인사게시판</a></li>
+												<li class="nav-item"><a class="nav-link"
+													href="#solid-justified-tab3" data-toggle="tab">사내공지사항</a></li>
+											</ul>
+											<br>
+											<form class="file-search">
+												<div class="input-group" style="width: 300px; float: left;">
+													<select>
+														<option>제목</option>
+														<option>내용</option>
+														<option>통합</option>
+													</select> <input type="text" class="form-control" placeholder="Search">
+													<div class="input-group-prepend">
+														<i class="fa fa-search board-icon"></i>
+													</div>
+												</div>
+											</form>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="card-body">
+								<div class="table-responsive">
+									<table class="datatable table table-stripped mb-0">
+										<thead>
+											<tr>
+												<th><input type="checkbox"></th>
+												<th>번호</th>
+												<th>제목</th>
+												<th>작성자</th>
+												<th>조회수</th>
+												<th>등록일</th>
+												<th>사원번호</th>
+											</tr>
+										</thead>
+										<c:forEach var="noticeBoardList"
+											items="${requestScope.noticeBoardList }">
+											<tr>
+												<td><input type="checkbox" class="" />
+												<td><c:out value="${ noticeBoardList.no }" />
+												<td><c:out value="${ noticeBoardList.title }" />
+												<td><c:out value="${ noticeBoardList.writer }" />
+												<td><c:out value="${ noticeBoardList.count }" />
+												<td><c:out value="${ noticeBoardList.enrollDate }" />
+												<td><c:out value="${ noticeBoardList.endDate}" />
+												<td><c:out value="${ noticeBoardList.memberNo }" />
+											</tr>
+										</c:forEach>
+										<!-- <tbody>
                                   <tr>
                                      <td><input type="checkbox"></td>
                                      <td>Tiger Nixon</td>
@@ -991,13 +988,13 @@
                                      <td>$163,000</td>
                                   </tr>
                                </tbody> -->
-                            </table>
-                         </div>
-                      </div>
-                   </div>
-                </div>
-             </div>
-          </div>
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
  
        </div>
     </div>

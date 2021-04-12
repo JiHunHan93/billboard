@@ -90,8 +90,23 @@ public class ProfileServiceImpl implements ProfileService{
 	}
 	@Override
 	public List<MemDTO>member_info_phone() {
-
+		System.out.println("이게된다?");
 		return mapper.member_info_phone();
+	}
+	@Override
+	public List<MemDTO>member_address() {
+		System.out.println("이게된다고?");
+		return mapper.member_address();
+	}
+	@Override
+	public List<MemDTO>member_enrollDate() {
+		System.out.println("이게된다고?");
+		return mapper.member_enrollDate();
+	}
+	@Override
+	public List<DeptDTO>member_name() {
+		System.out.println("이게된다고????????");
+		return mapper.member_name();
 	}
 	}
 

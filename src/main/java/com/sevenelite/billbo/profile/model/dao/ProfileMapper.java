@@ -52,6 +52,15 @@ public interface ProfileMapper {
 
 	
 	List<MemDTO> member_info_phone();
+	
+	List<MemDTO> member_address();
+
+	List<MemDTO> member_enrollDate();
+
+	List<DeptDTO> member_name();
+
+	
+
 
 	
 }

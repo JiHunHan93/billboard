@@ -667,8 +667,8 @@
 					<form action="${pageContext.servletContext.contextPath}/work/regist" method="post">
 					<button class="btn btn-success btn-lg">출근 등록</button>
 					</form>
-					<form action="${pageContext.servletContext.contextPath}/work/update" method="get">
-					<button class="btn btn-dark btn-lg" style="margin-left: 25px">퇴근 등록</button>
+					<form name="update" action="${pageContext.servletContext.contextPath }/work/update">
+					<button class="btn btn-dark btn-lg" style="margin-left: 25px">퇴근 등록 </button>
 					</form>
 					
 

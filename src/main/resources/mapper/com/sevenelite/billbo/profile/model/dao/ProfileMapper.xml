@@ -56,6 +56,12 @@
 	<result property="approve_code" column="APPROVE_CODE"/>
 </resultMap>
 
+<resultMap type="com.sevenelite.billbo.member.model.dto.MemDTO" id="MemDTO">
+	<id property="no" column="MEMBER_INFO_NO"/>
+	<result property="enrollDate" column="ENROLL_DATE"/>
+	<result property="address" column="MEMBER_ADDRESS"/>
+	</resultMap>
+
 
 <insert id="armyInfo" parameterType="ArmyDTO">
 	INSERT
@@ -271,18 +277,43 @@
 
 
 
- <!-- <select id="member_info_phone" resultMap="DeptDTO" parameterType="DeptDTO">
-	SELECT 
-	       DEPT_CODE
-	  FROM BB_DEPT
-	  WHERE MEMBER_NO = '?'
-</select>
- -->
- 
-  <select id="member_info_phone" resultMap="memberInfoDTO" parameterType="memberInfoDTO">
+ <select id="member_info_phone" resultMap="MemDTO" parameterType="MemDTO">
 SELECT 
+	       PHONE
+	  FROM BB_MEMBER
+	  WHERE MEMBER_NO = #{no}
+</select>
+
+<select id="member_address" resultMap="MemDTO" parameterType="MemDTO">
+SELECT 
+	       MEMBER_ADDRESS
+	  FROM BB_MEMBER_INFO
+	  WHERE MEMBER_NO = '1'
+</select>
+
+ <select id="member_enrollDate" resultMap="MemDTO" parameterType="MemDTO">
+	SELECT 
 	       ENROLL_DATE
 	  FROM BB_MEMBER_INFO
-	  WHERE MEMBER_NO = '?';
+	 WHERE MEMBER_NO = '1'
 </select>
+ 
+ <select id="member_name" resultMap="deptDTO" parameterType="DeptDTO">
+ 	SELECT
+             D.DEPT_NAME
+            
+        FROM BB_MEMBER A
+        JOIN BB_MODIFY_DEPT B ON ( A.MEMBER_NO = B.MEMBER_NO)
+        JOIN BB_DEPT D ON( B.DEPT_CODE = D.DEPT_CODE)
+        WHERE A.MEMBER_NO = 1
+ </select>
+
+
+
+<!-- <select id="member_enroll_date" resultMap="memberInfoDTO" parameterType="MemberInfoDTO">
+SELECT
+	   ENROLL_DATE
+	  FROM BB_MEMBER_INFO
+	  WHERE MEMBER_NO = '1'
+</select> -->
 </mapper>

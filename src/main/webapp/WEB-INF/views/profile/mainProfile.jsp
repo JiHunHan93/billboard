@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -676,11 +677,23 @@
 														<div class="staff-msg"><a class="btn btn-custom" href="chat.html">Send Message</a></div>
 													</div>
 												</div>
+												<table class="datatable table table-stripped mb-0">
+															
+												<c:forEach var="profileList" items="${ requestScope.profileList }">
+																	<tr class="profileList">
+																		<td><c:out value="${ profileList.phone }" />
+																		 <td class="profileList"><c:out value="${ profileList.address }" />
+																		 <td><c:out value="${ profileList.enrollDate }" />
+																		<td><c:out value="${ profileList.name }" />
+																		
+																	</tr>
+																</c:forEach>
+																</table>
 												<div class="col-md-7">
 													<ul class="personal-info">
 														<li>
 															<div class="title">Phone:</div>
-															<div class="text"><c:out value="${ boardList.member_info_phone }"/></div>
+															<div class="text"></div>
 														</li>
 														<li>
 															<div class="title">Email:</div>
