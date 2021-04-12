@@ -821,35 +821,46 @@
 				<!-- Edit Board Modal -->
 				<div id="edit_project" class="modal custom-modal fade" role="dialog">
 					<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+					<form name="board5" action="${pageContext.servletContext.contextPath }/noticeBoard/modifyNotice" method="">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h5 class="modal-title">게시글 수정인데 안쓸지도 모르는 모달</h5>
+								<h5 class="modal-title">게시글 수정</h5>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
 							<div class="modal-body">
-								<form>
+								<c:forEach var="noticeDetailInfo" items="${requestScope.noticeDetailInfo}">
 									<div class="row">
 										<div class="col-sm-6">
 											<div class="form-group">
-												<label>제목</label>
-												<input class="form-control" value="기존 글제목" type="text">
+												<label>글번호</label>
+												<input name="no" class="form-control" id="modifyTitle" type="text"
+												 value="<c:out value="${ noticeDetailInfo.no }"/>" readOnly>
 											</div>
 										</div>
 										<div class="col-sm-6">
 											<div class="form-group">
-												<label>작성자</label>
-                                                <input class="form-control" value="기존 작성자" type="text">
+												<label>제목</label>
+                                                <input name="title" class="form-control" id="modifyTitle"
+                                                value="<c:out value="${ noticeDetailInfo.title}"/>" type="text">
 											</div>
 										</div>
+										<div class="col-sm-6">
+											<div class="form-group">
+											<label>작성자</label> <input name="writer" class="form-control" readOnly
+												value="<c:out value="${ noticeDetailInfo.writer }"/>" type="text">
+											</div>
+									    </div>
 									</div>
 									<div class="row">
 										<div class="col-sm-6">
 											<div class="form-group">
 												<label>게시일</label>
 												<div class="cal-icon">
-													<input class="form-control datetimepicker" type="text">
+													<input type="date"
+													name="enrollDate" id="modifyEnrollDate"
+													value="<c:out value="${ noticeDetailInfo.enrollDate }"/>">
 												</div>
 											</div>
 										</div>
@@ -857,20 +868,26 @@
 											<div class="form-group">
 												<label>만료일</label>
 												<div class="cal-icon">
-													<input class="form-control datetimepicker" type="text">
+													<input type="date"
+													name="endDate" id="modifyEndDate"
+													value="<c:out value="${ noticeDetailInfo.endDate }"/>">
 												</div>
 											</div>
+										</div>
+										<div class="form-group">
+											<label>상태</label> <input name="status" class="form-control" id="modifyTitle"
+												value="<c:out value="${noticeDetailInfo.status}"/>" type="text" readOnly>
 										</div>
 									</div>
 									<div class="row">
 										<div class="col-sm-3">
 											<div class="form-group">
                                                 <label>분류</label>
-												<select class="select">
-													<option selected>공지</option>
-													<option>교육</option>
+												<select class="select" name="boardType" id=modify-type-sel">
+													<option value="공지">공지</option>
+													<option value="인사">교육</option>
 													<option>알림</option>
-													<option>자유</option>
+													<option value="자유">자유</option>
 												</select>
 											</div>
 										</div>
@@ -881,18 +898,22 @@
 									</div>
 									<div class="form-group">
 										<label>내용</label>
-										<textarea rows="4" class="form-control" placeholder="Enter your message here"></textarea>
+										<textarea rows="4" class="form-control"
+										 placeholder="Enter your message here" name="body" id="modifyBody"><c:out
+										 value ="${ noticeDetailInfo.body }"/></textarea>
 									</div>
 									<div class="form-group">
 										<label>업로드한 파일</label>
-										<input class="form-control" type="file">
+										<input class="form-control" type="file"
+											name="fileAttachment">
 									</div>
 									<div class="submit-section">
-										<button class="btn btn-primary submit-btn">수정 완료</button>
+										<button class="btn btn-primary submit-btn" id="modify-btn" type="button" onclick="goModify(this.form)">수정 완료</button>
 									</div>
-								</form>
+									</c:forEach>
 							</div>
 						</div>
+						</form>
 					</div>
 				</div>
 				<!-- /Edit Board Modal -->
@@ -903,18 +924,20 @@
 					<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h5 class="modal-title">게시물 삭제</h5>
+							  <c:forEach var="noticeDetailInfo" items="${ requestScope.noticeDetailInfo }">
+								<h5 class="modal-title">
+									<c:out value="${ noticeDetailInfo.no }"/>
+									번 게시물 삭제
+								</h5>
+						      </c:forEach>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
 							<div class="modal-body">
-								<form>
-								
 									<div class="submit-section">
-										<button class="btn btn-primary submit-btn">삭제하기</button>
+										<button id="delete-btn" class="btn btn-primary submit-btn">삭제하기</button>
 									</div>
-								</form>
 							</div>
 						</div>
 					</div>
@@ -949,4 +972,28 @@
 		<script src="../resources/hrtemp/js/app.js"></script>
 
     </body>
+    <script type="text/javascript">
+    		$(function() {
+    			$("#delete-btn").click(function() {
+    				
+    				var no = <%= request.getParameter("no") %>;
+    				console.log(no);
+    				location.href = "${ pageContext.servletContext.contextPath }/noticeBoard/delete?no=" + no
+    			});	
+    		});
+    </script>
+    
+    <script type="text/javascript">
+    function goModify(frm){
+   	 var title = frm.title.value;
+   	 var name = frm.name.value;
+   	 var enrollDate = frm.enrollDate.value;
+   	 var endDate = frm.endDate.value;
+   	 var boardType = frm.boardType.value;
+   	 var body = frm.body.value;
+   	 var fileAttachment = frm.fileAttachment.value;
+   	 
+   	 frm.submit();
+    	}
+    </script>
 </html>
