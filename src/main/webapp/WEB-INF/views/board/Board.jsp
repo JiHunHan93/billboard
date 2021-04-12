@@ -15,26 +15,24 @@
 <title>2조BB-게시판/문서함</title>
 
 <!-- Favicon -->
-<link rel="shortcut icon" type="image/x-icon"
-	href="assets/img/favicon.png">
+<link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
 
 <!-- Bootstrap CSS -->
-<link rel="stylesheet" href="../resources/hrtemp/css/bootstrap.min.css">
+<link rel="stylesheet" href="./resources/hrtemp/css/bootstrap.min.css">
 
 <!-- Fontawesome CSS -->
-<link rel="stylesheet"
-	href="../resources/hrtemp/css/font-awesome.min.css">
+<link rel="stylesheet" href="./resources/hrtemp/css/font-awesome.min.css">
 
 <!-- Lineawesome CSS -->
 <link rel="stylesheet"
-	href="../resources/hrtemp/css/line-awesome.min.css">
+	href="./resources/hrtemp/css/line-awesome.min.css">
 
 <!-- Datatable CSS -->
 <link rel="stylesheet"
-	href="../resources/hrtemp/css/dataTables.bootstrap4.min.css">
+	href="./resources/hrtemp/css/dataTables.bootstrap4.min.css">
 
 <!-- Main CSS -->
-<link rel="stylesheet" href="../resources/hrtemp/css/style.css">
+<link rel="stylesheet" href="./resources/hrtemp/css/style.css">
 
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
@@ -726,7 +724,7 @@
 											
 											<div class="tab-content">
 											<!-- 1 -->
-												<div class="tab-pane show active" id="solid-justified-tab1">
+												<div class="tab-pane tab-category show active" id="solid-justified-tab1">
 													<div class="card-body">
 														<div class="table-responsive board-table-sort">
 															<table class="datatable table table-stripped mb-0">
@@ -759,11 +757,11 @@
 													</div>
 												</div>
 												<!-- 2 -->
-												<div class="tab-pane" id="solid-justified-tab2">
+												<div class="tab-pane tab-category" id="solid-justified-tab2">
 													
 												</div>
 												<!-- 3 -->
-												<div class="tab-pane" id="solid-justified-tab3">
+												<div class="tab-pane tab-category" id="solid-justified-tab3">
 													<div class="card-body">
 														<div class="table-responsive board-table-sort">
 															<table class="datatable table table-stripped mb-0">
@@ -779,8 +777,7 @@
 																		<th>조회수</th>
 																	</tr>
 																</thead>
-																<c:forEach var="noticeBoardList"
-																	items="${requestScope.noticeBoardList }">
+																<c:forEach var="noticeBoardList" items="${requestScope.noticeBoardList }">
 																	<tr>
 																		<td class="noti-td"><input type="checkbox" class="" />
 																		<td class="noti-td"><c:out value="${ noticeBoardList.no }" />
@@ -812,12 +809,8 @@
 	</div>
 	<!-- /Main Wrapper -->
 	<script>
-	
 	if(document.getElementsByTagName("td")) {
 		const $tds = document.getElementsByTagName("td");
-		const $free = document.getElementsByTagName("free-td");
-		
-		const $noti = document.getElementsByTagName("noti-td");
 		
 		for(let i = 0; i < $tds.length; i++) {
 			$tds[i].onmouseenter = function() {
@@ -828,7 +821,11 @@
 			$tds[i].onmouseout = function() {
 				this.parentNode.style.background = "white";
 			}
-			
+		}
+	}
+	if(document.getElementsByClassName("free-td")) {
+		const $free = document.getElementsByClassName("free-td")
+		for(let i = 0; i < $free.length; i++) {
 			$free[i].onclick = function() {
 				const no = this.parentNode.children[1].innerText;
 				const count = this.parentNode.children[7].innerText;
@@ -836,7 +833,11 @@
 				console.log(no);
 				location.href = "${ pageContext.servletContext.contextPath }/board/detail?no=" + no;
 			}
-			
+		}
+	}
+	if(document.getElementsByClassName("noti-td")) {
+		const $noti = document.getElementsByClassName("noti-td")
+		for(let i = 0; i < $noti.length; i++) {
 			$noti[i].onclick = function() {
 				const no = this.parentNode.children[1].innerText;
 				const count = this.parentNode.children[7].innerText;
@@ -849,21 +850,21 @@
 	</script>
 
 	<!-- jQuery -->
-	<script src="../resources/hrtemp/js/jquery-3.5.1.min.js"></script>
+	<script src="./resources/hrtemp/js/jquery-3.5.1.min.js"></script>
 
 	<!-- Bootstrap Core JS -->
-	<script src="../resources/hrtemp/js/popper.min.js"></script>
-	<script src="../resources/hrtemp/js/bootstrap.min.js"></script>
+	<script src="./resources/hrtemp/js/popper.min.js"></script>
+	<script src="./resources/hrtemp/js/bootstrap.min.js"></script>
 
 	<!-- Slimscroll JS -->
-	<script src="../resources/hrtemp/js/jquery.slimscroll.min.js"></script>
+	<script src="./resources/hrtemp/js/jquery.slimscroll.min.js"></script>
 
 	<!-- Datatable JS -->
-	<script src="../resources/hrtemp/js/jquery.dataTables.min.js"></script>
-	<script src="../resources/hrtemp/js/dataTables.bootstrap4.min.js"></script>
+	<script src="./resources/hrtemp/js/jquery.dataTables.min.js"></script>
+	<script src="./resources/hrtemp/js/dataTables.bootstrap4.min.js"></script>
 
 	<!-- Custom JS -->
-	<script src="../resources/hrtemp/js/app.js"></script>
+	<script src="./resources/hrtemp/js/app.js"></script>
 
 </body>
 </html>

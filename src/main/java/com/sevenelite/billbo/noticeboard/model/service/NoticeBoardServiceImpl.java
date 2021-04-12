@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.sevenelite.billbo.board.model.dto.BoardDTO;
 import com.sevenelite.billbo.noticeboard.model.dao.NoticeBoardMapper;
 import com.sevenelite.billbo.noticeboard.model.dto.NoticeBoardDTO;
 
@@ -51,9 +52,9 @@ public class NoticeBoardServiceImpl implements NoticeBoardService {
 	}
 
 	@Override
-	public boolean updateNoticeBoard(NoticeBoardDTO noticeBoardDTO) {
+	public boolean updateNoticeBoard(BoardDTO boardDTO) {
 		
-		return noticeBoardMapper.updateNoticeBoard(noticeBoardDTO);
+		return noticeBoardMapper.updateNoticeBoard(boardDTO);
 	}
 
 }

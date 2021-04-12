@@ -816,17 +816,19 @@
 												<td>분류</td>
 												<td class="text-right">
 													<div class="btn-group">
-														<a href="#" class="badge badge-danger dropdown-toggle"
-															data-toggle="dropdown"> 공지</a>
+													<c:if test="${ detailInfo.boardType eq '자유' }">
+														<a href="#" class="badge badge-success dropdown-toggle" data-toggle="dropdown">자유</a>
+													</c:if>
+													<c:if test="${ detailInfo.boardType eq '인사' }">
+														<a href="#" class="badge badge-info dropdown-toggle" data-toggle="dropdown">인사</a>
+													</c:if>
+													<c:if test="${ detailInfo.boardType eq '공지' }">
+														<a href="#" class="badge badge-danger dropdown-toggle" data-toggle="dropdown">공지</a>
+													</c:if>
 														<div class="dropdown-menu dropdown-menu-right">
-															<a class="dropdown-item" href="#"><i
-																class="fa fa-dot-circle-o text-danger"></i> 공지</a> <a
-																class="dropdown-item" href="#"><i
-																class="fa fa-dot-circle-o text-info"></i> 교육</a> <a
-																class="dropdown-item" href="#"><i
-																class="fa fa-dot-circle-o text-primary"></i> 알림</a> <a
-																class="dropdown-item" href="#"><i
-																class="fa fa-dot-circle-o text-success"></i> 자유</a>
+															<a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-danger"></i> 공지</a> 
+															<a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-info"></i> 인사</a> 
+															<a class="dropdown-item" href="#"><i class="fa fa-dot-circle-o text-success"></i> 자유</a>
 														</div>
 													</div>
 												</td>
@@ -861,7 +863,7 @@
 			<div id="edit_project" class="modal custom-modal fade" role="dialog">
 				<div class="modal-dialog modal-dialog-centered modal-lg"
 					role="document">
-					<form name="board5" action="${pageContext.servletContext.contextPath }/board/modify" method="">
+					<form name="board5" action="${pageContext.servletContext.contextPath }/board/modify">
 					<div class="modal-content">
 						<div class="modal-header">
 							<h5 class="modal-title">게시글 수정</h5>
@@ -871,19 +873,19 @@
 							</button>
 						</div>
 						<div class="modal-body">
-							<c:forEach var="detailInfo" items="${requestScope.detailInfo }">
+							<c:forEach var="detailInfo" items="${ requestScope.detailInfo }">
 								
 								<div class="row">
 								<div class="col-sm-6">
 										<div class="form-group">
 											<label>글번호</label> <input name="no" class="form-control" id="modifyTitle"
-												value="<c:out value="${detailInfo.no}"/>" type="text" readOnly>
+												value="<c:out value="${ detailInfo.no }"/>" type="text" readOnly>
 										</div>
 									</div>
 									<div class="col-sm-6">
 										<div class="form-group">
 											<label>제목</label> <input name="title" class="form-control" id="modifyTitle"
-												value="<c:out value="${detailInfo.title}"/>" type="text">
+												value="<c:out value="${ detailInfo.title }"/>" type="text">
 										</div>
 									</div>
 									<div class="col-sm-6">
@@ -918,17 +920,16 @@
 									</div>
 									<div class="form-group">
 											<label>상태</label> <input name="status" class="form-control" id="modifyTitle"
-												value="<c:out value="${detailInfo.status}"/>" type="text" readOnly>
+												value="<c:out value="${ detailInfo.status }"/>" type="text" readOnly>
 										</div>
 								</div>
 								<div class="row">
 									<div class="col-sm-3">
 										<div class="form-group">
 											<label>분류</label> <select class="select" name="boardType" id="modify-type-sel">
-												<option value="공지">공지</option>
-												<option value="인사">인사</option>
-												<option>알림</option>
-												<option value="자유">자유</option>
+												<option value="공지" <c:if test="${ detailInfo.boardType eq '공지'}">selected</c:if>>공지</option>
+												<option value="인사" <c:if test="${ detailInfo.boardType eq '인사'}">selected</c:if>>인사</option>
+												<option value="자유" <c:if test="${ detailInfo.boardType eq '자유'}">selected</c:if>>자유</option>
 											</select>
 										</div>
 									</div>
@@ -1016,7 +1017,6 @@
 
 </body>
 <script type="text/javascript">
-
 function goModify(frm){
 	 var title = frm.title.value;
 	 var name = frm.name.value;
@@ -1030,37 +1030,6 @@ function goModify(frm){
 	 
 	 
 }
-
-
-/* $("#modify-btn").click(function() { */
-			    <%-- var typeSel = document.getElementById("modify-type-sel");
-			    const no = <%=request.getParameter("no")%>;
-			    typeSel = typeSel.options[typeSel.selectedIndex].value;
-			    
-				console.log(typeSel);
-				$
-						.ajax({
-							url : "${ pageContext.servletContext.contextPath }/board/detail?no=" + no,
-							type : "get",
-							data : {
-								typeSel : typeSel,
-							},
-							success : function(
-									data,
-									textStatus,
-									xhr) {
-								console.log(typeSel);
-							},
-							error : function(
-									xhr,
-									status,
-									error) {
-								console.log(error);
-							}
-							
-						}); --%>
-		/* 		location.href = '${ pageContext.servletContext.contextPath }/board/modify?no='+no; */
-					
 </script>
 
 <script type="text/javascript">
@@ -1072,42 +1041,8 @@ function goModify(frm){
 				location.href = "${ pageContext.servletContext.contextPath }/board/delete?no=" + no;
 			});
 		});
-		
-	    
-<%-- 	    $(function() {
-			$("#modify-btn").click(function() {
-				var no = <%= request.getParameter("no") %>;
-				console.log(no);
-				location.href = "${ pageContext.servletContext.contextPath }/board/modify?no=" + no;
-			})
-		}) --%>
-		
     </script>
 
-<script>
-/* 	$("#modify-btn").click(function() {
-	
-		console.log("확인");
-		
-		   var jihun = $('form[name="board5"]').serializeArray();
-		      console.table(jihun);
-		   
-		      $.ajax({
-		          url: "${ pageContext.servletContext.contextPath }/board/modify",
-		          type: 'POST',
-		            dataType: 'json',
-		            data: {
-		                jihun : jihun
-		            },
-		            success : function(data, textStatus, xhr) {
-		               alert(data);
-		            },
-		            error : function(xhr, status, error) {}
-		        }); */
-
-	
-	});
-</script>
 
 
 </html>
