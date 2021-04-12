@@ -31,11 +31,18 @@ public class WorkStatusServiceImpl implements WorkStatusService{
 	}
 
 	@Override
-	public boolean updateWork(StatusAndWorkDTO status) {
-
-		return dao.updateWork(status);
+	public boolean updateWork(StatusAndWorkDTO status ) {
+		return dao.updateWork(status) > 0? true: false;
 	}
 
+	@Override
+	public List<StatusAndWorkDTO> sequenceWork(int no) {
+		return dao.detailWork(no);
+	}
+
+
 }
+
+
 
 

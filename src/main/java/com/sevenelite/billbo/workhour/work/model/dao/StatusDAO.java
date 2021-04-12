@@ -11,7 +11,9 @@ import com.sevenelite.billbo.workhour.work.model.dto.StatusAndWorkDTO;
 
    int registWork(StatusAndWorkDTO status);
 
-   boolean updateWork(StatusAndWorkDTO status);
+   List<StatusAndWorkDTO> detailWork(int no);
+
+   int updateWork(StatusAndWorkDTO status);
    
    }
   

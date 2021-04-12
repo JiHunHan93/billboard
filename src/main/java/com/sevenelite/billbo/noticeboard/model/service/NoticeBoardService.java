@@ -13,4 +13,8 @@ public interface NoticeBoardService {
 	int updateCount(int no);
 
 	List<NoticeBoardDTO> detailNoticeBoard(int no);
+
+	int deleteBoard(int no);
+
+	boolean updateNoticeBoard(NoticeBoardDTO noticeBoardDTO);
 }
