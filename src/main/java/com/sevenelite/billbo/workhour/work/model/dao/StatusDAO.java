@@ -3,6 +3,7 @@
    
    import java.util.List;
 
+import com.sevenelite.billbo.member.model.dto.UserDetailsVO;
 import com.sevenelite.billbo.workhour.work.model.dto.StatusAndWorkDTO;
    
    public interface StatusDAO {
@@ -13,7 +14,7 @@ import com.sevenelite.billbo.workhour.work.model.dto.StatusAndWorkDTO;
 
    List<StatusAndWorkDTO> detailWork(int no);
 
-   int updateWork(StatusAndWorkDTO status);
+   boolean updateWork(UserDetailsVO user);
    
    }
   
