@@ -1,10 +1,11 @@
 package com.sevenelite.billbo.workhour.main;
 
 import java.security.Principal;
+import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import
@@ -14,17 +15,19 @@ import
 org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.sevenelite.billbo.member.model.dto.MemDTO;
+import com.sevenelite.billbo.member.model.dto.UserDetailsVO;
 import com.sevenelite.billbo.workhour.work.model.dto.StatusAndWorkDTO;
 import
 com.sevenelite.billbo.workhour.work.model.service.WorkStatusService;
 
-@Controller public class WorkDetailController {
+@Controller 
+@SessionAttributes("memberno")
+public class WorkDetailController {
 
 	private final WorkStatusService workStatusService;
 
@@ -75,14 +78,28 @@ com.sevenelite.billbo.workhour.work.model.service.WorkStatusService;
 		return "redirect:/work/detail";
 	}
 	//퇴근하기
-	@GetMapping("/work/update")
-	public String updateWork(StatusAndWorkDTO status, Model model, RedirectAttributes rttr)  {
-			 model.addAttribute("StatusAndWorkDTO", status);
-			if(workStatusService.updateWork(status)) {
-				rttr.addFlashAttribute("message", "퇴근하자");
+	@PostMapping("/work/update")
+	public String updateWork(@ModelAttribute StatusAndWorkDTO Memno, Model model, RedirectAttributes rttr, Principal principal, HttpServletRequest request)  {
+		
+			System.out.println("!!!!!!!!!" + Memno.getMemNo());
+			HttpSession session = request.getSession();
+			Enumeration<String> attrs = session.getAttributeNames();
+			while(attrs.hasMoreElements()) {
+				String s = attrs.nextElement();
+				System.out.println("attr : " + s);
 			}
-			 
-		return "redirect:/work/detail";
+			UserDetailsVO loginNo = (UserDetailsVO) session.getAttribute("memberno");
+			System.out.println("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM : " + loginNo);
+			if(workStatusService.updateWork(loginNo)) {
+				rttr.addFlashAttribute("message", "퇴근하자");
+			};
+			ModelAndView mv = new ModelAndView();
+			model.addAttribute("StatusAndWorkDTO", Memno);
+			System.out.println("STATUS : " + Memno);
+			mv.setViewName("statusList"); 
+			principal.getName();
+			
+			return "redirect:/work/detail";
 	}
 	//상세보기 
 	

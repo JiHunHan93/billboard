@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sevenelite.billbo.board.model.dto.BoardDTO;
+import com.sevenelite.billbo.member.model.dto.MemBbDTO;
 import com.sevenelite.billbo.member.model.dto.MemDTO;
 import com.sevenelite.billbo.profile.model.dao.ProfileMapper;
 import com.sevenelite.billbo.profile.model.dto.ArmyDTO;
@@ -88,11 +89,11 @@ public class ProfileServiceImpl implements ProfileService{
 		// TODO Auto-generated method stub
 		return mapper.member_info_no(member_info_no) > 0? true : false;
 	}
-	@Override
-	public List<MemDTO>member_info_phone() {
-		System.out.println("이게된다?");
-		return mapper.member_info_phone();
-	}
+//	@Override
+//	public List<MemDTO>member_info_phone(int no) {
+//		System.out.println("이게된다?");
+//		return mapper.member_info_phone(no);
+//	}
 	@Override
 	public List<MemDTO>member_address() {
 		System.out.println("이게된다고?");
@@ -107,6 +108,12 @@ public class ProfileServiceImpl implements ProfileService{
 	public List<DeptDTO>member_name() {
 		System.out.println("이게된다고????????");
 		return mapper.member_name();
+	}
+
+	@Override
+	public List<MemBbDTO> member_info_phone() {
+		// TODO Auto-generated method stub
+		return mapper.member_info_phone();
 	}
 	}
 
