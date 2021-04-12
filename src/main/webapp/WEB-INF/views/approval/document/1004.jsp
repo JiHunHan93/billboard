@@ -18,6 +18,12 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
 </head>
 <body>
+
+${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username }
+${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }
+${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }
+
+
    <div class="go_content go_renew" id="content"><header class="content_top"><h1><span class="txt single_tit" title="휴가신청서">휴가신청서</span><span class="meta"><span id="processMessageWrap" class="num" style="display: none;"><strong id="processMessageContent">자동 저장 하였습니다.(3분)</strong></span></span></h1>
 <section class="combine_search">
    <div class="c_search_wrap"><!--focus되면 "search_focus" multi class로 추가해주세요.-->
