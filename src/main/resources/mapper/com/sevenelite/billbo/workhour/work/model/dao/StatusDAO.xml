@@ -52,19 +52,28 @@
 	  VALUES
 	  (
 	  SEQ_WORKSTATUS_NO.NEXTVAL
-	  ,  SYSTIMESTAMP
-	  ,  SYSTIMESTAMP
+	  ,  SYSDATE 
+	  ,  SYSDATE 
 	  ,  #{ lwork, jdbcType=TIMESTAMP}
 	  , 2
-	  , 'C1'
+	  , #{ type, jdbcType=VARCHAR }
 	  )	  
 	</insert>
 	
-	<update id="updateWork">
- 	   UPDATE BB_WORKSTATUS A
- 	      SET A.LEAVE_WORK = SYSTIMESTAMP
+	<update id="updateWork" parameterType="StatusAndWorkDTO">
+       UPDATE 
+              BB_WORKSTATUS A
+          SET A.LEAVE_WORK = SYSDATE
+			, A.WORKDATE = #{ date, jdbcType=DATE }
+		    , A.COMMUTE	= #{commute, jdbcType=DATE }
+			, A.MEMBER_NO = 2
         WHERE A.WORKSTATUS_NO = #{ no }
-          AND A.WORKDATE = #{ date }
-   	    
 	</update>
+	
+	<select id="detailWork" resultMap="statusAndWorkResultMap" parameterType="StatusAndWorkDTO">
+		SELECT
+		       *
+          FROM BB_WORKSTATUS A
+         WHERE A.WORKSTATUS_NO = #{ no }
+	</select>
  </mapper>   
