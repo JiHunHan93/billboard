@@ -20,7 +20,7 @@ import com.sevenelite.billbo.board.model.dto.BoardDTO;
 import com.sevenelite.billbo.board.model.service.BoardService;
 
 @Controller
-@RequestMapping("/board/*")
+@RequestMapping("/*")
 public class FreeBoardController {
 
 	private final BoardService boardService;
@@ -30,13 +30,13 @@ public class FreeBoardController {
 		this.boardService = boardService;
 	}
 
-	@GetMapping("freeboard")
+	@GetMapping("board")
 	public String selectFreeBoardList(Model model) {
 
 		List<BoardDTO> boardList = boardService.selectBoard();
 		model.addAttribute("boardList", boardList);
 		
-		return "board/FreeBoard";
+		return "board/Board";
 	}
 
 	@GetMapping("insert")
@@ -45,7 +45,7 @@ public class FreeBoardController {
 		return "board/InsertFreeBoard";
 	}
 
-	@PostMapping("freeboard")
+	@PostMapping("board")
 	public String registBoard(@ModelAttribute BoardDTO board, RedirectAttributes redirect, Model model) {
 
 	
@@ -60,7 +60,7 @@ public class FreeBoardController {
 		return "board/FreeBoard";
 	}
 
-	@GetMapping("board/detail")
+	@GetMapping("detail")
 	@ResponseBody
 	public ModelAndView detailBoard(HttpServletRequest request, HttpServletResponse response, Model model) {
 
@@ -84,7 +84,7 @@ public class FreeBoardController {
 		return mv;
 	}
 	
-	@GetMapping("board/delete")
+	@GetMapping("delete")
 	public ModelAndView deleteBoard(@ModelAttribute BoardDTO boardDTO, Model model,  RedirectAttributes redirect, HttpServletRequest request) {
 		
 		ModelAndView mv = new ModelAndView();
@@ -95,7 +95,7 @@ public class FreeBoardController {
 //		List<BoardDTO> deleteInfo = boardService.deleteBoard(no);
 		System.out.println("==================" + deleteInfo);
 		List<BoardDTO> boardList = boardService.selectBoard();
-		mv.setViewName("redirect:freeboard");
+		mv.setViewName("redirect:board");
 		
 		return mv;
 	}
@@ -131,7 +131,7 @@ public class FreeBoardController {
 //	    mv.setViewName("redirect:board/detail?no=" + boardDTO.getNo());
 	    List<BoardDTO> boardList = boardService.selectBoard();
 	    model.addAttribute("boardList", boardList);
-	    mv.setViewName("redirect:freeboard");
+	    mv.setViewName("redirect:board");
 	    
 
 	    
