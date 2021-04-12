@@ -2,6 +2,7 @@ package com.sevenelite.billbo.profile.model.service;
 
 import java.util.List;
 
+import com.sevenelite.billbo.member.model.dto.MemBbDTO;
 import com.sevenelite.billbo.member.model.dto.MemDTO;
 import com.sevenelite.billbo.profile.model.dto.ArmyDTO;
 import com.sevenelite.billbo.profile.model.dto.BonusDTO;
@@ -43,9 +44,9 @@ public interface ProfileService {
 
 //보류	boolean bonus(BonusDTO bonus);
 
+	List<MemBbDTO> member_info_phone();
 	
-	
-	List<MemDTO> member_info_phone();
+//	List<MemDTO> member_info_phone(int no);
 	
 	List<MemDTO> member_address();
 

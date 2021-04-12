@@ -1,8 +1,10 @@
 package com.sevenelite.billbo.profile;
 
-import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,7 +14,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.sevenelite.billbo.board.model.dto.BoardDTO;
+import com.sevenelite.billbo.member.model.dto.MemBbDTO;
 import com.sevenelite.billbo.member.model.dto.MemDTO;
 import com.sevenelite.billbo.profile.model.dto.ArmyDTO;
 import com.sevenelite.billbo.profile.model.dto.CareerDTO;
@@ -47,12 +49,12 @@ public class MainProfileController {
 	  @PostMapping("mainProfile")
 	  public String memberInfo(@ModelAttribute MemberInfoDTO member) { 
 		  profileService.memberInfo(member); 
-	  System.out.println("branch:" + member);
-	  SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-	  
-	  System.out.println("왜 안오는거여 쉬벌?????");
-	  
-	  return "profile/mainProfile";
+		  System.out.println("branch:" + member);
+		  SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+		  System.out.println("왜 안오는거여 쉬벌?????");
+
+		  return "profile/mainProfile";
 	  }
 //	 /*2 직위*/
 	  @PostMapping("joblevel")
@@ -175,21 +177,28 @@ public class MainProfileController {
 	}
 	/*select이긴 한데 ..*/
 	@GetMapping("member_info_phone")
-	public String member_info_phone(Model model) {
-
-		//int no = request.getParameter("no");
-		List<MemDTO> member_info_phone = profileService.member_info_phone();
-		System.out.println(member_info_phone);
-		model.addAttribute("profileList", member_info_phone);
+	public String member_info_phone(Model model,  HttpServletRequest request, @ModelAttribute MemBbDTO memBbDTO,HttpSession session) {
+System.out.println("여기와?");
+//		int no = Integer.parseInt(request.getParameter("no"));
+//		System.out.println("!!!!!!!!!!!!!" + no);
+//		List<MemDTO> profileList1 = profileService.member_info_phone(no);
 		
+		System.out.println(session.hashCode());
+		System.out.println(session.getAttributeNames());
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		System.out.println("!!!!!!!!!!!!!" );
+		List<MemBbDTO> profileList1 = profileService.member_info_phone();
+		System.out.println(profileList1);
+		model.addAttribute("profileList1", profileList1);
+		request.getSession().setAttribute("profileList1", profileList1);
 		return "profile/mainProfile";
 	}
 	@GetMapping("member_address")
 	public String member_address(Model model) {
 
-		List<MemDTO> member_address = profileService.member_address();
-		System.out.println(member_address);
-		model.addAttribute("profileList", member_address);
+		List<MemDTO> profileList2 = profileService.member_address();
+		System.out.println(profileList2);
+		model.addAttribute("profileList2", profileList2);
 		
 		return "profile/mainProfile";
 	}

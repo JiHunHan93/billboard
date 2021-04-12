@@ -34,7 +34,7 @@
 		<link rel="stylesheet" href="/billbo/resources/hrtemp/css/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css">
 		
 		<!-- Main CSS -->
-        <link rel="stylesheet" href="/billbo/resources/hrtemp/css/profile/style.css">
+        <link rel="stylesheet" href="/billbo/resources/hrtemp/css/style.css">
 		<link rel="stylesheet" href="/billbo/resources/hrtemp/css/profile/profile.css">
 		<link rel="stylesheet" href="/billbo/resources/hrtemp/css/profile/profile1.css">
 		<link rel="stylesheet" href="/billbo/resources/hrtemp/css/profile/profile2.css">
@@ -56,7 +56,7 @@
 				<!-- Logo -->
 					<div class="header-left">
 						<a href="employee-dashboard.html" class="logo">
-					  <img src="assets/img/Logo.png" width="40" height="40" alt="">
+					  <img src="/billbo/resources/hrtemp/img/Logo.png" width="40" height="40" alt="">
 				   </a>
 					</div>
 				<!-- /Logo -->
@@ -97,20 +97,20 @@
 				   <!-- Flag -->
 				   <li class="nav-item dropdown has-arrow flag-nav">
 					  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
-						 <img src="assets/img/flags/us.png" alt="" height="20"> <span>English</span>
+						 <img src="/billbo/resources/hrtemp/img/flags/us.png" alt="" height="20"> <span>English</span>
 					  </a>
 					  <div class="dropdown-menu dropdown-menu-right">
 						 <a href="javascript:void(0);" class="dropdown-item">
-							<img src="assets/img/flags/us.png" alt="" height="16"> English
+							<img src="/billbo/resources/hrtemp/img/flags/us.png" alt="" height="16"> English
 						 </a>
 						 <a href="javascript:void(0);" class="dropdown-item">
-							<img src="assets/img/flags/fr.png" alt="" height="16"> French
+							<img src="/billbo/resources/hrtemp/img/flags/fr.png" alt="" height="16"> French
 						 </a>
 						 <a href="javascript:void(0);" class="dropdown-item">
-							<img src="assets/img/flags/es.png" alt="" height="16"> Spanish
+							<img src="/billbo/resources/hrtemp/img/flags/es.png" alt="" height="16"> Spanish
 						 </a>
 						 <a href="javascript:void(0);" class="dropdown-item">
-							<img src="assets/img/flags/de.png" alt="" height="16"> German
+							<img src="/billbo/resources/hrtemp/img/flags/de.png" alt="" height="16"> German
 						 </a>
 					  </div>
 				   </li>
@@ -145,7 +145,7 @@
 								  <a href="activities.html">
 									 <div class="media">
 										<span class="avatar">
-										   <img alt="" src="assets/img/profiles/avatar-03.jpg">
+										   <img alt="" src="/billbo/resources/hrtemp/img/profiles/avatar-03.jpg">
 										</span>
 										<div class="media-body">
 										   <p class="noti-details"><span class="noti-title">Tarah Shropshire</span> changed the task name <span class="noti-title">Appointment booking with payment gateway</span></p>
@@ -158,7 +158,7 @@
 								  <a href="activities.html">
 									 <div class="media">
 										<span class="avatar">
-										   <img alt="" src="assets/img/profiles/avatar-06.jpg">
+										   <img alt="" src="/billbo/resources/hrtemp/img/profiles/avatar-06.jpg">
 										</span>
 										<div class="media-body">
 										   <p class="noti-details"><span class="noti-title">Misty Tison</span> added <span class="noti-title">Domenic Houston</span> and <span class="noti-title">Claire Mapes</span> to project <span class="noti-title">Doctor available module</span></p>
@@ -171,7 +171,7 @@
 								  <a href="activities.html">
 									 <div class="media">
 										<span class="avatar">
-										   <img alt="" src="assets/img/profiles/avatar-17.jpg">
+										   <img alt="" src="/billbo/resources/hrtemp/img/profiles/avatar-17.jpg">
 										</span>
 										<div class="media-body">
 										   <p class="noti-details"><span class="noti-title">Rolland Webber</span> completed task <span class="noti-title">Patient and Doctor video conferencing</span></p>
@@ -184,7 +184,7 @@
 								  <a href="activities.html">
 									 <div class="media">
 										<span class="avatar">
-										   <img alt="" src="assets/img/profiles/avatar-13.jpg">
+										   <img alt="" src="/billbo/resources/hrtemp/img/profiles/avatar-13.jpg">
 										</span>
 										<div class="media-body">
 										   <p class="noti-details"><span class="noti-title">Bernardo Galaviz</span> added new task <span class="noti-title">Private chat module</span></p>
@@ -677,41 +677,35 @@
 														<div class="staff-msg"><a class="btn btn-custom" href="chat.html">Send Message</a></div>
 													</div>
 												</div>
-												<table class="datatable table table-stripped mb-0">
-															
-												<c:forEach var="profileList" items="${ requestScope.profileList }">
-																	<tr class="profileList">
-																		<td><c:out value="${ profileList.phone }" />
-																		 <td class="profileList"><c:out value="${ profileList.address }" />
-																		 <td><c:out value="${ profileList.enrollDate }" />
-																		<td><c:out value="${ profileList.name }" />
-																		
-																	</tr>
-																</c:forEach>
-																</table>
 												<div class="col-md-7">
+
 													<ul class="personal-info">
 														<li>
-															<div class="title">Phone:</div>
+														<c:forEach var="profileList1" items="${ requestScope.profileList1 }">
+															<div class="title">Phone:  <c:out value="${profileList1.phone }"/></div>
 															<div class="text"></div>
+															</c:forEach>
 														</li>
 														<li>
-															<div class="title">Email:</div>
+														<c:forEach var="profileList1" items="${ requestScope.profileList1 }">
+														<li>
+															<div class="title">사번:  <c:out value="${profileList1.no }"/></div>
+															<div class="text"></div>
+															
+														</li>
+														<li>
+															<div class="title">Email: <c:out value="${profileList1.email }"/></div>
 															<div class="text"><a href=""></a></div>
 														</li>
+														</c:forEach>
+												      <c:forEach var="profileList2" items="${ requestScope.profileList2 }">
 														<li>
-															<div class="title">Birthday:</div>
-															<div class="text">24th July</div>
-														</li>
-														<li>
-															<div class="title">Address:</div>
+															<div class="text">Address: <c:out value="${profileList2.address }"/></div>
 															<div class="text">1861 Bayonne Ave, Manchester Township, NJ, 08759</div>
 														</li>
+														</c:forEach>
 														<li>
-															<div class="title">Gender:</div>
-															<div class="text">Male</div>
-														</li>
-														<li>
+														
 															<div class="title">Reports to:</div>
 															<div class="text">
 															   <div class="avatar-box">
@@ -726,6 +720,12 @@
 														</li>
 													</ul>
 												</div>
+												<%-- <c:forEach var="profileList1" items="${ requestScope.profileList1 }">
+												<form action="${ pageContext.servletContext.contextPath }/profile/mainProfile/member_info_phone" method="post">
+												<input class="txt w_max" type="text" name="member_info_phone" value="" <c:out value="${ profileList1.phone }"/>>
+												 <%= request.getParameter("no") %>
+												</form>
+												</c:forEach> --%>
 											</div>
 										</div>
 										<div class="pro-edit"><a data-target="#profile_info" data-toggle="modal" class="edit-icon" href="#"><i class="fa fa-pencil"></i></a></div>
@@ -781,7 +781,7 @@
 												</th>
 												<td class="col4">
 													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="member_no" value="" >
+													<input class="txt w_max" type="text" name="member_no" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }" >
 												</td>
 												<th class="col5">
 													<span class="title_txt">입사일</span>
@@ -795,7 +795,7 @@
 												</th>
 												<td class="col8">
 													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="account_bank" value="" >
+													<input class="txt w_max" type="text" name="account_bank" value="" placeholder="" >
 												</td>
 											</tr>
 											<tr>
