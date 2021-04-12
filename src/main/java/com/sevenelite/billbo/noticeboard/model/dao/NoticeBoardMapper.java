@@ -14,5 +14,9 @@ public interface NoticeBoardMapper {
 
 	List<NoticeBoardDTO> detailNoticeBoard(int no);
 
+	int deleteNoticeBoard(int no);
+
+	boolean updateNoticeBoard(NoticeBoardDTO noticeBoardDTO);
+
 	
 }

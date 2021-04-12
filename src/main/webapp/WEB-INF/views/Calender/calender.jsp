@@ -223,7 +223,7 @@
 				<li class="nav-item dropdown"><a href="#"
 					class="dropdown-toggle nav-link" data-toggle="dropdown"> <i
 						class="fa fa-comment-o"></i> <span class="badge badge-pill">8</span>
-				</a> 
+				</a>
 					<div class="dropdown-menu notifications">
 						<div class="topnav-dropdown-header">
 							<span class="notification-title">Messages</span> <a
@@ -641,194 +641,183 @@
 			<div class="content container-fluid">
 
 				<!-- Page Header -->
-				<div class="page-header">
-					<div class="row">
-						<div class="col">
-							<h3 class="page-title">게시판</h3>
-							<ul class="breadcrumb">
-								<!-- <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li> -->
-								<li class="breadcrumb-item active">NoticeBoard</li>
-							</ul>
-						</div>
-					</div>
-				</div>
-				<!-- /Page Header -->
-
-				<div class="file-sidebar dashboard-sub-sidebar">
-					<div class="file-header justify-content-center">
-
-						<span><button type="button" class="btn btn-write"
-								id="insertWrite"
-								onclick="location.href='${pageContext.servletContext.contextPath}/board/insert'">글쓰기</button></span>
-						<a href="${pageContext.servletContext.contextPath}/board/insert"
-							class="file-side-close"><i class="fa fa-times"></i></a>
-
-
-					</div>
-					<br>
-					<form class="file-search">
-						<div class="input-group">
-							<div class="input-group-prepend">
-								<input type="text" class="form-control" placeholder="Search"
-									style="width: 226px;"> <i
-									class="fa fa-search board-icon"></i>
+					<!-- Page Header -->
+					<div class="page-header">
+						<div class="row align-items-center">
+							<div class="col">
+								<h3 class="page-title">Events</h3>
+								<ul class="breadcrumb">
+									<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+									<li class="breadcrumb-item active">Events</li>
+								</ul>
+							</div>
+							<div class="col-auto float-right ml-auto">
+								<a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_event"><i class="fa fa-plus"></i> Add Event</a>
 							</div>
 						</div>
-					</form>
-					<div class="file-pro-list">
-						<div class="file-scroll">
-							<br>
-							<ul class="file-menu">
-								<li class="active"><a href="#">자유게시판</a></li>
-								<li><a href="#">인사게시판</a></li>
-								<li><a href="#">사내공지사항</a></li>
-								<!-- <li><a href="#">Hospital Administration</a></li>
-                         <li><a href="#">Virtual Host</a></li> -->
-							</ul>
-						</div>
 					</div>
-				</div>
-
-				<div class="row dashboard-sub-container">
-
-					<div class="col-sm-12" style="height: 900px;">
-						<div class="card mb-0">
-
-							<div class="card-header">
-								<div class="col-md-6" style="max-width: 100%;">
-									<div class="card-board-style">
-										<div class="notice-body" align="center">
-											<br>
-											<h4 class="card-title" style="width: 1255px;">게시판 홈</h4>
-											<ul class="nav nav-tabs nav-tabs-solid nav-justified"
-												style="width: 1255px;">
-												<li class="nav-item"><a class="nav-link active"
-													href="#solid-justified-tab1" data-toggle="tab">자유게시판</a></li>
-												<li class="nav-item"><a class="nav-link"
-													href="#solid-justified-tab2" data-toggle="tab">인사게시판</a></li>
-												<li class="nav-item"><a class="nav-link"
-													href="#solid-justified-tab3" data-toggle="tab">사내공지사항</a></li>
-											</ul>
-											<br>
-											<form class="file-search">
-												<div class="input-group" style="width: 300px; float: left;">
-													<select>
-														<option>제목</option>
-														<option>내용</option>
-														<option>통합</option>
-													</select> <input type="text" class="form-control"
-														placeholder="Search">
-													<div class="input-group-prepend">
-														<i class="fa fa-search board-icon"></i>
-													</div>
-												</div>
-											</form>
+					<!-- /Page Header -->
+					
+					<div class="row">
+						<div class="col-lg-12">
+							<div class="card mb-0">
+								<div class="card-body">
+									<div class="row">
+										<div class="col-md-12">
+										
+											<!-- Calendar -->
+											<div id="calendar"></div>
+											<!-- /Calendar -->
 											
-											<div class="tab-content">
-												<div class="tab-pane show active" id="solid-justified-tab1">
-													<div class="card-body">
-														<div class="table-responsive board-table-sort">
-															<table class="datatable table table-stripped mb-0">
-																<thead>
-																	<tr>
-																		<th><input type="checkbox"></th>
-																		<th>번호</th>
-																		<th>제목</th>
-																		<th>작성자</th>
-																		<th>사원번호</th>
-																		<th>등록일</th>
-																		<th>만료일</th>
-																		<th>조회수</th>
-																	</tr>
-																</thead>
-																<c:forEach var="boardList" items="${requestScope.boardList }">
-																	<tr class="rowClick">
-																		<td><input type="checkbox" class="" />
-																		<td><c:out value="${ boardList.no }" />
-																		<td><c:out value="${ boardList.title }" />
-																		<td><c:out value="${ boardList.writer }" />
-																		<td><c:out value="${ boardList.memberNo }" />
-																		<td><c:out value="${ boardList.enrollDate }" />
-																		<td><c:out value="${ boardList.endDate }" />
-																		<td><c:out value="${ boardList.count }" />
-																	</tr>
-																</c:forEach>
-															</table>
-														</div>
-													</div>
-												</div>
-												<div class="tab-pane" id="solid-justified-tab2">Tab
-													content 2</div>
-												<div class="tab-pane" id="solid-justified-tab3">Tab
-													content 3</div>
-											</div>
 										</div>
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
+                </div>
+				<!-- /Page Content -->
+			
+				<!-- Add Event Modal -->
+				<div id="add_event" class="modal custom-modal fade" role="dialog">
+					<div class="modal-dialog modal-dialog-centered" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">Add Event</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<form>
+									<div class="form-group">
+										<label>Event Name <span class="text-danger">*</span></label>
+										<input class="form-control" type="text">
+									</div>
+									<div class="form-group">
+										<label>Event Date <span class="text-danger">*</span></label>
+										<div class="cal-icon">
+											<input class="form-control datetimepicker" type="text">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label">Category</label>
+										<select class="select form-control">
+											<option>Danger</option>
+											<option>Success</option>
+											<option>Purple</option>
+											<option>Primary</option>
+											<option>Pink</option>
+											<option>Info</option>
+											<option>Inverse</option>
+											<option>Orange</option>
+											<option>Brown</option>
+											<option>Teal</option>
+											<option>Warning</option>
+										</select>
+									</div>
+									<div class="submit-section">
+										<button class="btn btn-primary submit-btn">Submit</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
 				</div>
-			</div>
-		</div>
-	</div>
-	<!-- /Page Wrapper -->
-
-	</div>
-	<!-- /Main Wrapper -->
-	<script>
-	
-	if(document.getElementsByTagName("td")) {
-		const $tds = document.getElementsByTagName("td");
+				<!-- /Add Event Modal -->
+				
+				<!-- Event Modal -->
+				<div class="modal custom-modal fade" id="event-modal">
+					<div class="modal-dialog modal-dialog-centered" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">Event</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body"></div>
+							<div class="modal-footer text-center">
+								<button type="button" class="btn btn-success submit-btn save-event">Create event</button>
+								<button type="button" class="btn btn-danger submit-btn delete-event" data-dismiss="modal">Delete</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /Event Modal -->
+				
+				<!-- Add Category Modal-->
+				<div class="modal custom-modal fade" id="add-category">
+					<div class="modal-dialog">
+						<div class="modal-content">
+							<div class="modal-header">
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+								<h4 class="modal-title">Add a category</h4>
+							</div>
+							<div class="modal-body p-20">
+								<form>
+									<div class="row">
+										<div class="col-md-6">
+											<label class="col-form-label">Category Name</label>
+											<input class="form-control" placeholder="Enter name" type="text" name="category-name">
+										</div>
+										<div class="col-md-6">
+											<label class="col-form-label">Choose Category Color</label>
+											<select class="form-control" data-placeholder="Choose a color..." name="category-color">
+												<option value="success">Success</option>
+												<option value="danger">Danger</option>
+												<option value="info">Info</option>
+												<option value="pink">Pink</option>
+												<option value="primary">Primary</option>
+												<option value="warning">Warning</option>
+												<option value="orange">Orange</option>
+												<option value="brown">Brown</option>
+												<option value="teal">Teal</option>
+											</select>
+										</div>
+									</div>
+								</form>
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
+								<button type="button" class="btn btn-danger save-category" data-dismiss="modal">Save</button>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /Add Category Modal-->
+				
+            </div>
+			<!-- /Page Wrapper -->
+			
+        </div>
+		<!-- /Main Wrapper -->
 		
-		for(let i = 0; i < $tds.length; i++) {
-			
-			$tds[i].onmouseenter = function() {
-				this.parentNode.style.backgroundColor = "yellow";
-				this.parentNode.style.cursor = "pointer";
-			}
-			
-			$tds[i].onmouseout = function() {
-				this.parentNode.style.background = "white";
-			}
-		//여기서부터 스타트야 지금 작성한다..
-			$tds[i].onclick = function() {
-				const no = this.parentNode.children[1].innerText;
-				const count = this.parentNode.children[7].innerText;
-				console.log(count);
-				console.log(no);
-				location.href = "${ pageContext.servletContext.contextPath }/board/detail?no=" + no;
-			} 
-			
-		}
-	}
-	</script>
-
-	<!-- <script>
-		$(function(){
-			$(".rowClick").click(function(){
-				var no = $(this).children().eq(1).text();
-				console.log(no);
-				location.href="${ pageContext.servletContext.contextPath }/board/detail?no=" + no;
-			});
-		});
-	</script> -->
-	<!-- jQuery -->
+		<!-- jQuery -->
+       <!-- jQuery -->
 	<script src="../resources/hrtemp/js/jquery-3.5.1.min.js"></script>
-
-	<!-- Bootstrap Core JS -->
+		
+		<!-- Bootstrap Core JS -->
 	<script src="../resources/hrtemp/js/popper.min.js"></script>
 	<script src="../resources/hrtemp/js/bootstrap.min.js"></script>
-
-	<!-- Slimscroll JS -->
+		
+		<!-- Slimscroll JS -->
 	<script src="../resources/hrtemp/js/jquery.slimscroll.min.js"></script>
-
-	<!-- Datatable JS -->
-	<script src="../resources/hrtemp/js/jquery.dataTables.min.js"></script>
-	<script src="../resources/hrtemp/js/dataTables.bootstrap4.min.js"></script>
-
-	<!-- Custom JS -->
-	<script src="../resources/hrtemp/js/app.js"></script>
-
-</body>
+		
+		<!-- Select2 JS -->
+		<script src="../resources/hrtemp/js/select2.min.js"></script>
+		
+		<!-- Datetimepicker JS -->
+		<script src="../resources/hrtemp/moment.min.js"></script>
+		<script src="../resources/hrtemp/bootstrap-datetimepicker.min.js"></script>
+		
+		<!-- Calendar JS -->
+		<script src="../resources/hrtemp/js/jquery-ui.min.js"></script>
+        <script src="../resources/hrtemp/js/fullcalendar.min.js"></script>
+        <script src="../resources/hrtemp/js/jquery.fullcalendar.js"></script>
+		
+		<!-- Custom JS -->
+		<script src="../resources/hrtemp/js/app.js"></script>
+		
+    </body>
 </html>
