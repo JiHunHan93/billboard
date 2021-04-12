@@ -368,6 +368,10 @@ table.dataTable thead > tr > td.sorting_desc,
 table.dataTable thead > tr > td.sorting {
 	padding-right: 30px !important;
 }
+/* bonus css */
+.btn.btn-primary.btn-sm.sub-btn {
+	margin-left : 1050px;
+}
 
 /* board css*/
 .tab-category {
@@ -402,6 +406,9 @@ table.dataTable thead > tr > td.sorting {
 }
 .board-table-sort {
 	text-align: left;
+}
+.bonus-sub-container {
+	width: 100%;
 }
 
 /*-----------------
@@ -8428,6 +8435,7 @@ ul.comment-list li ul.children {
 		font-size: 14px;
 		min-width: inherit;
 	}
+	
 }
 
 /*-----------------

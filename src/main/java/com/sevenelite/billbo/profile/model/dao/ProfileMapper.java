@@ -2,6 +2,7 @@ package com.sevenelite.billbo.profile.model.dao;
 
 import java.util.List;
 
+import com.sevenelite.billbo.member.model.dto.MemBbDTO;
 import com.sevenelite.billbo.member.model.dto.MemDTO;
 import com.sevenelite.billbo.profile.model.dto.ArmyDTO;
 import com.sevenelite.billbo.profile.model.dto.CareerDTO;
@@ -51,13 +52,15 @@ public interface ProfileMapper {
 	int member_info_no(MemDTO member_info_no);
 
 	
-	List<MemDTO> member_info_phone();
+//	List<MemDTO> member_info_phone(int no);
 	
 	List<MemDTO> member_address();
 
 	List<MemDTO> member_enrollDate();
 
 	List<DeptDTO> member_name();
+
+	List<MemBbDTO> member_info_phone();
 
 	
 

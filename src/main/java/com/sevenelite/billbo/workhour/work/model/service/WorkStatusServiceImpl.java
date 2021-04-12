@@ -3,9 +3,12 @@ package com.sevenelite.billbo.workhour.work.model.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired; import
 org.springframework.stereotype.Service;
 
+import com.sevenelite.billbo.member.model.dto.UserDetailsVO;
 import com.sevenelite.billbo.workhour.work.model.dao.StatusDAO;
 import com.sevenelite.billbo.workhour.work.model.dto.StatusAndWorkDTO;
 
@@ -31,17 +34,17 @@ public class WorkStatusServiceImpl implements WorkStatusService{
 	}
 
 	@Override
-	public boolean updateWork(StatusAndWorkDTO status ) {
-		return dao.updateWork(status) > 0? true: false;
-	}
-
-	@Override
 	public List<StatusAndWorkDTO> sequenceWork(int no) {
 		return dao.detailWork(no);
 	}
 
+	@Override
+	public boolean updateWork(UserDetailsVO user) {
+		return dao.updateWork(user);
+	}
 
 }
+
 
 
 

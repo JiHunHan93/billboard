@@ -56,11 +56,13 @@
 	<result property="approve_code" column="APPROVE_CODE"/>
 </resultMap>
 
-<resultMap type="com.sevenelite.billbo.member.model.dto.MemDTO" id="MemDTO">
-	<id property="no" column="MEMBER_INFO_NO"/>
-	<result property="enrollDate" column="ENROLL_DATE"/>
-	<result property="address" column="MEMBER_ADDRESS"/>
-	</resultMap>
+<resultMap type="com.sevenelite.billbo.member.model.dto.MemBbDTO" id="MemBbDTO">
+	<id property="no" column="MEMBER_NO"/>
+	<result property="name" column="MEMBER_NAME"/>
+	<result property="pwd" column="MEMBER_PWD"/>
+	<result property="email" column="EMAIL"/>
+	<result property="phone" column="PHONE"/>
+</resultMap>
 
 
 <insert id="armyInfo" parameterType="ArmyDTO">
@@ -277,14 +279,18 @@
 
 
 
- <select id="member_info_phone" resultMap="MemDTO" parameterType="MemDTO">
+ <select id="member_info_phone" resultMap="MemBbDTO" parameterType="MemBbDTO">
 SELECT 
-	       PHONE
+	  MEMBER_NO
+    , MEMBER_NAME
+    , EMAIL   
+	, PHONE
 	  FROM BB_MEMBER
-	  WHERE MEMBER_NO = #{no}
+	 WHERE MEMBER_NO = 1
+	  <!-- WHERE MEMBER_NO = #{no} -->
 </select>
 
-<select id="member_address" resultMap="MemDTO" parameterType="MemDTO">
+<!-- <select id="member_address" resultMap="MemDTO" parameterType="MemBbDTO">
 SELECT 
 	       MEMBER_ADDRESS
 	  FROM BB_MEMBER_INFO
@@ -296,7 +302,7 @@ SELECT
 	       ENROLL_DATE
 	  FROM BB_MEMBER_INFO
 	 WHERE MEMBER_NO = '1'
-</select>
+</select> -->
  
  <select id="member_name" resultMap="deptDTO" parameterType="DeptDTO">
  	SELECT
