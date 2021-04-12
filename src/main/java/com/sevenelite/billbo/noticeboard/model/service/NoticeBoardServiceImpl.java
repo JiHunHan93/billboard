@@ -44,4 +44,16 @@ public class NoticeBoardServiceImpl implements NoticeBoardService {
 		return noticeBoardMapper.detailNoticeBoard(no);
 	}
 
+	@Override
+	public int deleteBoard(int no) {
+		
+		return noticeBoardMapper.deleteNoticeBoard(no);
+	}
+
+	@Override
+	public boolean updateNoticeBoard(NoticeBoardDTO noticeBoardDTO) {
+		
+		return noticeBoardMapper.updateNoticeBoard(noticeBoardDTO);
+	}
+
 }

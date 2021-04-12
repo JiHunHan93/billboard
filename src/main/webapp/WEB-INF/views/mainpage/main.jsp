@@ -436,7 +436,7 @@
 									<li><a href="task-board.html">Task Board</a></li>	
 								</ul> --></li>
 						<div class="sidebar-line"></div>
-						<li><a href="#" class="sidebar-default"> <i
+						<li><a href="${pageContext.servletContext.contextPath}/calender/main" class="sidebar-default"> <i
 								class="la la-money sidebar-icon"></i> <span class="sidebar-text">Payroll</span>
 						</a></li>
 						<div class="sidebar-line"></div>

@@ -84,16 +84,34 @@ public class NoticeBoardController {
     	
     	return mv;
     }
-    
-	/*
-	 * @PostMapping("update") public String update(NoticeBoardDTO noticeBoardDTO,
-	 * Model model, RedirectAttributes redirect) {
-	 * 
-	 * if(!noticeBoardService.updateNoticeBoard(noticeBoardDTO)) {
-	 * redirect.addFlashAttribute("message", "게시물 수정 성공하였습니다!"); }
-	 * redirect.addFlashAttribute("message", "게시물 수정 실패하였습니다!");
-	 * 
-	 * 
-	 * return "redirect:/board/NoticeBoard"; }
-	 */
+    	
+    @GetMapping("noticeBoard/delete")
+    public ModelAndView deleteBoard(@ModelAttribute NoticeBoardDTO noticeBoardDTO, Model model, RedirectAttributes redirect, HttpServletRequest request) {
+    	
+    	ModelAndView mv = new ModelAndView();
+    	int no = Integer.parseInt(request.getParameter("no"));
+    	
+    	int noticeDeleteInfo = noticeBoardService.deleteBoard(no);
+    	System.out.println("!!!!!" + noticeDeleteInfo );
+    	List<NoticeBoardDTO> noticeBoardList = noticeBoardService.selectNoticeBoard();
+    	mv.setViewName("redirect:main");
+    	
+    	return mv;
+    }
+	@GetMapping(value="modifyNotice", produces="application/json; charset=UTF-8")
+    @ResponseBody
+    public ModelAndView modifyNoticeBoard(@ModelAttribute NoticeBoardDTO noticeBoardDTO, Model model, HttpServletRequest request,
+    		RedirectAttributes rttr) {
+    	
+		if(noticeBoardService.updateNoticeBoard(noticeBoardDTO)) {
+			rttr.addFlashAttribute("message", "게시글 수정 성공하였습니다.");
+		};
+		ModelAndView mv = new ModelAndView();
+		
+		List<NoticeBoardDTO> noticeBoardList = noticeBoardService.selectNoticeBoard();
+		model.addAttribute("noticeBoardList", noticeBoardList);
+		mv.setViewName("redirect:main");
+		
+    	return mv;
+    }
 }
