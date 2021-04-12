@@ -47,7 +47,7 @@ public class ApprovaldocumentController {
 	      System.out.println(((String[])paymentInfo.get("jihun[0][value]"))[0]);
 	      System.out.println(((String[])paymentInfo.get("jihun[10][value]"))[0]);
 	      
-	      /* 04/10(토) , 일요일*/
+	      /* 04/10(토) , 일요일, 월요일 */
 		
 		return gson.toJson("AJA통신 완료");
 	}
