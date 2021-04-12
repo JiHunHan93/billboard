@@ -65,9 +65,12 @@
             var form = $("<form></form>");
             form.append("<div class='row'></div>");
             form.find(".row")
-                .append("<div class='col-md-12'><div class='form-group'><label class='control-label'>Event Name</label><input class='form-control' type='text' name='title'/></div></div>")
-                .append("<div class='col-md-12'><div class='form-group'><label class='control-label'>Category</label><select class='select form-control' name='category'></select></div></div>")
-                .find("select[name='category']")
+                .append("<div class='col-md-12'><div class='form-group'><label class='control-label'>스케줄 이름</label><input class='form-control' type='text' name='scheduleName'/></div></div>")
+                .append("<div class='col-md-12'><div class='form-group'><label class='control-label'>스케줄 종류</label><select class='select form-control' name='scheduleType'></select></div></div>")
+                .append("<div class='col-md-12'><div class='form-group'><label class='control-label'>시작일자</label><input class='form-control' type='date' name='startDate'/></div></div>")
+                .append("<div class='col-md-12'><div class='form-group'><label class='control-label'>종료일자</label><input class='form-control' type='date' name='endDate'/></div></div>")
+                .append("<div class='col-md-12'><div class='form-group'><label class='control-label'>장소</label><select class='select form-control' name='scheduleLocation'></select></div></div>")
+                .find("select[name='scheduleType']")
                 .append("<option value='bg-danger'>Danger</option>")
                 .append("<option value='bg-success'>Success</option>")
                 .append("<option value='bg-purple'>Purple</option>")
@@ -78,18 +81,24 @@
                 .append("<option value='bg-orange'>Orange</option>")
                 .append("<option value='bg-brown'>Brown</option>")
                 .append("<option value='bg-teal'>Teal</option>")
+                .append("<option value='bg-warning'>Warning</option></div></div>")
+                .find("select[name='scheduleLocation']")
+                .append("<option value='bg-danger'>서울</option>")
+                .append("<option value='bg-success'>부산</option>")
+                .append("<option value='bg-purple'>제주도</option>")
                 .append("<option value='bg-warning'>Warning</option></div></div>");
             $this.$modal.find('.delete-event').hide().end().find('.save-event').show().end().find('.modal-body').empty().prepend(form).end().find('.save-event').unbind('click').click(function () {
                 form.submit();
             });
             $this.$modal.find('form').on('submit', function () {
-                var title = form.find("input[name='title']").val();
-                var beginning = form.find("input[name='beginning']").val();
-                var ending = form.find("input[name='ending']").val();
+                var scheduleName = form.find("input[name='scheduleName']").val();
+                var startDate = form.find("input[name='startDate']").val();
+                var endDate = form.find("input[name='endDate']").val();
                 var categoryClass = form.find("select[name='category'] option:checked").val();
-                if (title !== null && title.length != 0) {
+                   var scheduleLocation = form.find("select[name='category'] option:checked").val();
+                if (scheduleName !== null && scheduleName.length != 0) {
                     $this.$calendarObj.fullCalendar('renderEvent', {
-                        title: title,
+                        scheduleName: scheduleName,
                         start:start,
                         end: end,
                         allDay: false,
