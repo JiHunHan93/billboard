@@ -2,6 +2,7 @@ package com.sevenelite.billbo.noticeboard.model.service;
 
 import java.util.List;
 
+import com.sevenelite.billbo.board.model.dto.BoardDTO;
 import com.sevenelite.billbo.noticeboard.model.dto.NoticeBoardDTO;
 
 public interface NoticeBoardService {
@@ -16,5 +17,5 @@ public interface NoticeBoardService {
 
 	int deleteBoard(int no);
 
-	boolean updateNoticeBoard(NoticeBoardDTO noticeBoardDTO);
+	boolean updateNoticeBoard(BoardDTO boardDTO);
 }
