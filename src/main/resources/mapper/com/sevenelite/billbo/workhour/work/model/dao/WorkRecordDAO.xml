@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sevenelite.billbo.workhour.work.model.dao.WorkRecordDAO">
+	<resultMap id="recordResult" type="RecordWorkDTO">
+	<id column="MODIFY_NO" property="no"/>
+	<result column="WORKSTATUS_NO" property="statusNo"/> 
+	<result column="MODIFY_DATE" property="date"/>
+	<result column="MODIFY_COMMUTE" property="commute"/>
+	<result column="MODIFY_LEAVE_WORK" property="lwork"/>
+	<result column="MODIFY_REASON" property="reason"/>
+	</resultMap>
+	
+	<select id="selectRecord" resultMap="recordResult" parameterType="RecordWorkDTO">
+		  SELECT
+		          MODIFY_NO
+              , A.WORKSTATUS_NO
+              , A.MODIFY_DATE
+              , A.MODIFY_COMMUTE
+              , A.MODIFY_LEAVE_WORK
+              , A.MODIFY_REASON
+           FROM BB_MODIFY_WORK_STATUS A      
+	</select>
+
+	
+</mapper>    
+    
+    
