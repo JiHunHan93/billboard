@@ -39,11 +39,14 @@ public class WorkStatusServiceImpl implements WorkStatusService{
 	}
 
 	@Override
-	public boolean updateWork(UserDetailsVO user) {
-		return dao.updateWork(user);
+	public boolean updateWork(int MemberNo, List<StatusAndWorkDTO> workInfo) {
+		return dao.updateWork(MemberNo, workInfo);
 	}
 
-}
+	}
+
+	
+
 
 
 

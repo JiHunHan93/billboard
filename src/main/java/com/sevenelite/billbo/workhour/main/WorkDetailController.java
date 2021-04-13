@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import
 org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -34,7 +35,7 @@ public class WorkDetailController {
 	@Autowired public WorkDetailController(WorkStatusService service) {
 		this.workStatusService = service; }
 	//출근 현황 보기
-	@GetMapping("work/detail") 
+	@GetMapping("work/status") 
 	public String workDetailController(StatusAndWorkDTO workStatusDTO, Principal principal,Model model) {
 
 		List<StatusAndWorkDTO> statusList = workStatusService.selectListstatus();
@@ -63,6 +64,22 @@ public class WorkDetailController {
 
 	} 
 	
+	   /* Controller에서 로그인 정보 가져오기 */
+	   @GetMapping("/work/detail")
+	   public String testMap(Authentication authentication) {
+	      
+	      /* 1. authentication 토큰을 사용하여 로그인 정보를 UserDetailsVO에 담는다. */
+	      UserDetailsVO userDetails = (UserDetailsVO) authentication.getPrincipal();
+	      
+	      /* 2. UserDetailsVO에 있는 getter를 이용하여 ID, NAME, NO를 가져온다. */
+	      System.out.println("1. username : " + userDetails.getUsername());
+	      System.out.println("2. membername : " + userDetails.getMembername());
+	      System.out.println("3. memberno : " + userDetails.getMemberno());
+	      
+	      return "redirect:/";
+	   }
+	   
+	
 	//출근 등록하기
 	@GetMapping("/work/regist")
 	public void registForm() {
@@ -79,25 +96,24 @@ public class WorkDetailController {
 	}
 	//퇴근하기
 	@PostMapping("/work/update")
-	public String updateWork(@ModelAttribute StatusAndWorkDTO Memno, Model model, RedirectAttributes rttr, Principal principal, HttpServletRequest request)  {
+	public String updateWork(@ModelAttribute StatusAndWorkDTO status, Model model, RedirectAttributes rttr, Authentication authentication, HttpServletRequest request)  {
 		
-			System.out.println("!!!!!!!!!" + Memno.getMemNo());
-			HttpSession session = request.getSession();
-			Enumeration<String> attrs = session.getAttributeNames();
-			while(attrs.hasMoreElements()) {
-				String s = attrs.nextElement();
-				System.out.println("attr : " + s);
-			}
-			UserDetailsVO loginNo = (UserDetailsVO) session.getAttribute("memberno");
-			System.out.println("MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM : " + loginNo);
-			if(workStatusService.updateWork(loginNo)) {
+//			HttpSession session = request.getSession();
+//			Enumeration<String> attrs = session.getAttributeNames();
+//			while(attrs.hasMoreElements()) {
+//				String s = attrs.nextElement();
+//				System.out.println("attr : " + s);
+//			}
+		List<StatusAndWorkDTO> workInfo =  workStatusService.selectListstatus();
+		
+			UserDetailsVO userDetails = (UserDetailsVO) authentication.getPrincipal();
+			if(workStatusService.updateWork(userDetails.getMemberno(),workInfo)) {
+				System.out.println(workInfo);
 				rttr.addFlashAttribute("message", "퇴근하자");
 			};
 			ModelAndView mv = new ModelAndView();
-			model.addAttribute("StatusAndWorkDTO", Memno);
-			System.out.println("STATUS : " + Memno);
+			model.addAttribute("StatusAndWorkDTO", status);
 			mv.setViewName("statusList"); 
-			principal.getName();
 			
 			return "redirect:/work/detail";
 	}
