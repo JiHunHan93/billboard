@@ -90,4 +90,38 @@
       A.BOARD_STATUS = #{status}
   WHERE A.BOARD_NO = #{no}    
 </update>
+
+<!-- EmpBoard -->
+<select id="selectEmpBoard" resultMap="boardResultMap" parameterType="BoardDTO">
+    SELECT
+        A.BOARD_NO
+      , A.BOARD_TITLE
+      , A.BOARD_WRITER
+      , A.BOARD_COUNT
+      , A.BOARD_ENROLL_DATE
+      , A.BOARD_END_DATE
+      , A.MEMBER_NO  
+   FROM BB_BOARD A
+  WHERE A.BOARD_TYPE = '인사'
+    AND A.BOARD_STATUS = 'Y'
+  ORDER BY A.BOARD_ENROLL_DATE DESC, A.BOARD_NO
+</select>
+
+<select id="empDetailBoard" resultMap="boardResultMap" parameterType="BoardDTO">
+ SELECT
+        A.BOARD_NO
+      , A.BOARD_TITLE
+      , A.BOARD_WRITER
+      , A.BOARD_COUNT
+      , A.BOARD_ENROLL_DATE
+      , A.BOARD_END_DATE
+      , A.BOARD_TYPE
+      , A.BOARD_STATUS
+      , A.BOARD_BODY
+      , A.MEMBER_NO  
+  FROM BB_BOARD A
+  WHERE A.BOARD_TYPE = '인사'
+    AND A.BOARD_STATUS = 'Y'
+    AND A.BOARD_NO = #{no}
+</select> 
 </mapper>

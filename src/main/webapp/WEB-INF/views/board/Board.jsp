@@ -758,7 +758,36 @@
 												</div>
 												<!-- 2 -->
 												<div class="tab-pane tab-category" id="solid-justified-tab2">
-													
+													<div class="card-body">
+														<div class="table-responsive board-table-sort">
+															<table class="datatable table table-stripped mb-0">
+																<thead>
+																	<tr>
+																		<th><input type="checkbox"></th>
+																		<th>번호</th>
+																		<th>제목</th>
+																		<th>작성자</th>
+																		<th>사원번호</th>
+																		<th>등록일</th>
+																		<th>만료일</th>
+																		<th>조회수</th>
+																	</tr>
+																</thead>
+																<c:forEach var="empBoardList" items="${requestScope.empBoardList }">
+																	<tr>
+																		<td class="emp-td"><input type="checkbox" class="" />
+																		<td class="emp-td"><c:out value="${ empBoardList.no }" />
+																		<td class="emp-td"><c:out value="${ empBoardList.title }" />
+																		<td class="emp-td"><c:out value="${ empBoardList.writer }" />
+																		<td class="emp-td"><c:out value="${ empBoardList.memberNo }" />
+																		<td class="emp-td"><c:out value="${ empBoardList.enrollDate }" />
+																		<td class="emp-td"><c:out value="${ empBoardList.endDate }" />
+																		<td class="emp-td"><c:out value="${ empBoardList.count }" />
+																	</tr>
+																</c:forEach>
+															</table>
+														</div>
+													</div>
 												</div>
 												<!-- 3 -->
 												<div class="tab-pane tab-category" id="solid-justified-tab3">
@@ -783,10 +812,10 @@
 																		<td class="noti-td"><c:out value="${ noticeBoardList.no }" />
 																		<td class="noti-td"><c:out value="${ noticeBoardList.title }" />
 																		<td class="noti-td"><c:out value="${ noticeBoardList.writer }" />
-																		<td class="noti-td"><c:out value="${ noticeBoardList.count }" />
-																		<td class="noti-td"><c:out value="${ noticeBoardList.enrollDate }" />
-																		<td class="noti-td"><c:out value="${ noticeBoardList.endDate}" />
 																		<td class="noti-td"><c:out value="${ noticeBoardList.memberNo }" />
+																		<td class="noti-td"><c:out value="${ noticeBoardList.enrollDate }" />
+																		<td class="noti-td"><c:out value="${ noticeBoardList.endDate }" />
+																		<td class="noti-td"><c:out value="${ noticeBoardList.count }" />
 																	</tr>
 																</c:forEach>
 															</table>
@@ -827,6 +856,18 @@
 		const $free = document.getElementsByClassName("free-td")
 		for(let i = 0; i < $free.length; i++) {
 			$free[i].onclick = function() {
+				const no = this.parentNode.children[1].innerText;
+				const count = this.parentNode.children[7].innerText;
+				console.log(count);
+				console.log(no);
+				location.href = "${ pageContext.servletContext.contextPath }/board/detail?no=" + no;
+			}
+		}
+	}
+	if(document.getElementsByClassName("emp-td")) {
+		const $noti = document.getElementsByClassName("emp-td")
+		for(let i = 0; i < $noti.length; i++) {
+			$noti[i].onclick = function() {
 				const no = this.parentNode.children[1].innerText;
 				const count = this.parentNode.children[7].innerText;
 				console.log(count);

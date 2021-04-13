@@ -33,34 +33,32 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public List<BoardDTO> detailBoard(int no) {
-		// TODO Auto-generated method stub
 		return boardMapper.detailBoard(no);
 	}
 
 	@Override
 	public int updateCount(int no) {
-		// TODO Auto-generated method stub
 		return boardMapper.updateCount(no);
 	}
 
 	@Override
 	public int deleteBoard(int no) {
-		// TODO Auto-generated method stub
 		return boardMapper.deleteBoard(no);
 	}
 
 	@Override
 	public boolean updateBoard(BoardDTO boardDTO) {
-		// TODO Auto-generated method stub
 		return boardMapper.updateBoard(boardDTO);
 	}
 
-	
+	@Override
+	public List<BoardDTO> selectEmpBoard() {
+		return boardMapper.selectEmpBoard();
+	}
 
-
-	
-	
-	
-
+	@Override
+	public List<BoardDTO> detailEmpBoard(int no) {
+		return boardMapper.detailBoard(no);
+	}
 
 }

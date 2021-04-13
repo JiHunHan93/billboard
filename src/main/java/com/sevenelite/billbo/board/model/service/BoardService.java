@@ -20,5 +20,9 @@ public interface BoardService {
 
 	boolean updateBoard(BoardDTO boardDTO);
 
+	List<BoardDTO> selectEmpBoard();
+
+	List<BoardDTO> detailEmpBoard(int no);
+
 	
 }
