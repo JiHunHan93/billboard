@@ -2,44 +2,54 @@ package com.sevenelite.billbo.workhour.work.model.dto;
 
 import java.util.Date;
 
+import com.sevenelite.billbo.member.model.dto.MemBbDTO;
+import com.sevenelite.billbo.member.model.dto.UserDetailsVO;
+import com.sevenelite.billbo.profile.model.dto.MemberInfoDTO;
+
 public class WorkDTO {
 	
-	private int wSTNo;
-	private java.util.Date sTDate;
+	private int weekNo;
+	private java.util.Date date;
 	private int totalWork;
 	private String extraWork;
 	private int LateCount;
 	private int workCount;
 	private int MemNo;
-
+	private StatusAndWorkDTO status;
+	private MemBbDTO member;
+	private WorkTypeDTO type;
+	
 	public WorkDTO() {}
 
-	public WorkDTO(int wSTNo, Date sTDate, int totalWork, String extraWork, int lateCount, int workCount,
-			int memNo) {
+	public WorkDTO(int weekNo, Date date, int totalWork, String extraWork, int lateCount, int workCount, int memNo,
+			StatusAndWorkDTO status, MemBbDTO member, WorkTypeDTO type) {
 		super();
-		this.wSTNo = wSTNo;
-		this.sTDate = sTDate;
+		this.weekNo = weekNo;
+		this.date = date;
 		this.totalWork = totalWork;
 		this.extraWork = extraWork;
 		LateCount = lateCount;
 		this.workCount = workCount;
 		MemNo = memNo;
+		this.status = status;
+		this.member = member;
+		this.type = type;
 	}
 
-	public int getwSTNo() {
-		return wSTNo;
+	public int getWeekNo() {
+		return weekNo;
 	}
 
-	public void setwSTNo(int wSTNo) {
-		this.wSTNo = wSTNo;
+	public void setWeekNo(int weekNo) {
+		this.weekNo = weekNo;
 	}
 
-	public java.util.Date getsTDate() {
-		return sTDate;
+	public java.util.Date getDate() {
+		return date;
 	}
 
-	public void setsTDate(java.util.Date sTDate) {
-		this.sTDate = sTDate;
+	public void setDate(java.util.Date date) {
+		this.date = date;
 	}
 
 	public int getTotalWork() {
@@ -82,10 +92,36 @@ public class WorkDTO {
 		MemNo = memNo;
 	}
 
-	@Override
-	public String toString() {
-		return "WorkDTO [wSTNo=" + wSTNo + ", sTDate=" + sTDate + ", totalWork=" + totalWork + ", extraWork="
-				+ extraWork + ", LateCount=" + LateCount + ", workCount=" + workCount + ", MemNo=" + MemNo + "]";
+	public StatusAndWorkDTO getStatus() {
+		return status;
 	}
 
-}
+	public void setStatus(StatusAndWorkDTO status) {
+		this.status = status;
+	}
+
+	public MemBbDTO getMember() {
+		return member;
+	}
+
+	public void setMember(MemBbDTO member) {
+		this.member = member;
+	}
+
+	public WorkTypeDTO getType() {
+		return type;
+	}
+
+	public void setType(WorkTypeDTO type) {
+		this.type = type;
+	}
+
+	@Override
+	public String toString() {
+		return "WorkDTO [weekNo=" + weekNo + ", date=" + date + ", totalWork=" + totalWork + ", extraWork=" + extraWork
+				+ ", LateCount=" + LateCount + ", workCount=" + workCount + ", MemNo=" + MemNo + ", status=" + status
+				+ ", member=" + member + ", type=" + type + "]";
+	}
+	
+	
+	}

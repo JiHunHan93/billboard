@@ -58,7 +58,7 @@ public class BoardServiceImpl implements BoardService {
 
 	@Override
 	public List<BoardDTO> detailEmpBoard(int no) {
-		return boardMapper.detailBoard(no);
+		return boardMapper.empDetailBoard(no);
 	}
 
 }

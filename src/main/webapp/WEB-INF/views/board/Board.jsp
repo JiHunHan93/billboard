@@ -17,6 +17,9 @@
 <!-- Favicon -->
 <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
 
+<!-- jQuery -->
+<script src="./resources/hrtemp/js/jquery-3.5.1.min.js"></script>
+
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="./resources/hrtemp/css/bootstrap.min.css">
 
@@ -699,7 +702,7 @@
 											<br>
 											<h4 class="card-title" style="width: 1255px;">게시판 홈</h4>
 											<ul class="nav nav-tabs nav-tabs-solid nav-justified"
-												style="width: 1255px;">
+												style="width: 100%;">
 												<li class="nav-item"><a class="nav-link active"
 													href="#solid-justified-tab1" data-toggle="tab">자유게시판</a></li>
 												<li class="nav-item"><a class="nav-link"
@@ -888,6 +891,21 @@
 			}
 		}
 	}
+	</script>
+	<script>
+		$(document).ready (function() {
+			const $tds = document.getElementsByTagName("td");
+			for(let i = 0; i < $tds.length; i++) {
+				const ED = $tds[i].parentNode.children[6].innerText;
+				console.log("if문 안읽음")
+				console.log(ED);
+				console.log(typeof ED)
+				if(ED == "" || ED == null) {
+					console.log("if문 읽음")
+					$tds[i].parentNode.children[6].innerText = "무기한";
+				}
+			}
+		});
 	</script>
 
 	<!-- jQuery -->

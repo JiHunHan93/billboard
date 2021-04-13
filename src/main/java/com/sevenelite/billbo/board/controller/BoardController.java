@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.sevenelite.billbo.board.model.dao.BoardMapper;
 import com.sevenelite.billbo.board.model.dto.BoardDTO;
 import com.sevenelite.billbo.board.model.service.BoardService;
 import com.sevenelite.billbo.noticeboard.model.dto.NoticeBoardDTO;
@@ -111,6 +112,7 @@ public class BoardController {
 	   			List<NoticeBoardDTO> notiDetailInfo = noticeBoardService.detailNoticeBoard(no);  //공지게시판 상세정보를 조회하기 위해 매퍼로 사번을담아 전송
 	   			if(notiDetailInfo.size() != 0) {  // 공지게시판 상세 조회 결과값이 리스트에 담긴경우
 		   			int upCount = boardService.updateCount(no);  // 조회수를 올리기 위한 정수형 변수에 값을담기위해 매퍼로 전송
+		   			System.out.println("notidetail" + notiDetailInfo);
 		   			System.out.println("notidetail" + notiDetailInfo);
 		   			System.out.println("upCount : " + upCount);
 		   			model.addAttribute("detailInfo", notiDetailInfo);  // 받아온 조회 값을 JSP에서 사용가능하게 설정

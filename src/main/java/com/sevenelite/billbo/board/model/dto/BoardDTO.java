@@ -1,6 +1,6 @@
 package com.sevenelite.billbo.board.model.dto;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class BoardDTO {
 
@@ -19,7 +19,7 @@ public class BoardDTO {
 	public BoardDTO() {}
 
 	public BoardDTO(int no, String boardType, String title, String body, String writer, String status,
-			String fileAttachment, int count, java.sql.Date enrollDate, java.sql.Date endDate, int memberNo) {
+			String fileAttachment, int count, Date enrollDate, Date endDate, int memberNo) {
 		super();
 		this.no = no;
 		this.boardType = boardType;
@@ -129,7 +129,5 @@ public class BoardDTO {
 				+ ", enrollDate=" + enrollDate + ", endDate=" + endDate + ", memberNo=" + memberNo + "]";
 	}
 
-	
-	
 }
 

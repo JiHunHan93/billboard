@@ -4,23 +4,41 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sevenelite.billbo.workhour.work.model.dao.WorkDAO">
 	<resultMap id="workResult" type="WorkDTO">
-	<id column="WEEK_WORK_STATISTIC_NO" property="wSTNo"/>
-	<result column="STATISTIC_DATE" property="sTDate"/>
+	<id column="WEEK_WORK_STATISTIC_NO" property="weekNo"/>
+	<result column="STATISTIC_DATE" property="date"/>
 	<result column="TOTAL_WORK_HOURS" property="totalWork"/>
 	<result column="TOTAL_EXTRA_WORK_HOURS" property="extraWork"/>
 	<result column="WORK_LATE_COUNT" property = "lateCount"/>
 	<result column="WORK_COUNT" property="workCount"/>
 	<result column="MEMBER_NO" property="MemNo"/>
+	<collection property="member" resultMap="memberResult"/>
 	</resultMap>
-	
+	<resultMap id="statusAndWorkResultMap" type="com.sevenelite.billbo.workhour.work.model.dto.StatusAndWorkDTO">
+ 	<id column="MEMBMER_NO" property="memNo"/>
+ 	<result column="WORKDATE" property="date"/>
+ 	<result column="COMMUTE" property="commute"/>
+ 	<result column="LEAVE_WORK" property="lwork"/>
+ 	<result column="WORKTYPE_CODE" property="type"/>
+ 	<result column="WORKSTATUS_NO" property="no"/>
+ 	<collection property="member" resultMap="memberResult"/>
+ 	</resultMap>
+ 	<resultMap id="memberResult" type="com.sevenelite.billbo.member.model.dto.MemBbDTO">
+		<id property="no" column="MEMBER_NO" />
+		<result property="name" column="MEMBER_NAME" />
+		<result property="pwd" column="MEMBER_PWD" />
+		<result property="email" column="EMAIL" />
+		<result property="phone" column="PHONE" />
+	</resultMap>
+	<resultMap id="type" type="com.sevenelite.billbo.workhour.work.model.dto.WorkTypeDTO">
+ 		<id column="WORKTYPE_CODE" property="code" />
+ 		<result column="WORKTYPE_TYPE" property="type"/>
+	</resultMap>
   	<select id="selectWorkList" resultMap="workResult" parameterType="workDTO">
-		SELECT
-			   A.TOTAL_WORK_HOURS
-			 , total_extra_work_hours  
-		     ,  A.WORK_LATE_COUNT
-		     , A.WORK_COUNT  
-		     , A.TOTAL_EXTRA_WORK_HOURS
-		   FROM BB_WEEK_WORK_STATISTIC A  		        
+        SELECT 
+              TO_CHAR(A.LEAVE_WORK, 'HH24') - TO_CHAR(COMMUTE, 'HH24')
+            , TO_CHAR(A.LEAVE_WORK, 'MI') - TO_CHAR(COMMUTE, 'MI')
+            , TO_CHAR(A.LEAVE_WORK, 'SS') - TO_CHAR(COMMUTE, 'SS')
+		 FROM BB_WORKSTATUS      
 	</select>
 
 </mapper> 

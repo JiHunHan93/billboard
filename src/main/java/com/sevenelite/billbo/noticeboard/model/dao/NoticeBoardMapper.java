@@ -18,6 +18,5 @@ public interface NoticeBoardMapper {
 	int deleteNoticeBoard(int no);
 
 	boolean updateNoticeBoard(BoardDTO boardDTO);
-
 	
 }

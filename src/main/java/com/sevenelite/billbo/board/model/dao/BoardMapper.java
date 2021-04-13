@@ -20,6 +20,7 @@ public interface BoardMapper {
 	boolean updateBoard(BoardDTO boardDTO);
 
 	List<BoardDTO> selectEmpBoard();
-	
+
+	List<BoardDTO> empDetailBoard(int no);
 
 }

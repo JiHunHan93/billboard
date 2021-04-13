@@ -758,8 +758,13 @@
 								</ul>
 							</div>
 						</div>
-					</div>  
+					</div>
 					
+												<%--필요없는거 <c:forEach var="profileList1" items="${ requestScope.profileList1 }">
+															<div class="title">Phone:  <c:out value="${profileList1.phone }"/></div>
+															<!-- <div class="text"></div> -->
+															</c:forEach>
+												 --%>
 					<div class="tab-content">
 						<!-- 여기 첫번째 탭-->
 						<!--첫번째 신상 탭 -->
@@ -770,13 +775,18 @@
 										
 										<form action="${ pageContext.servletContext.contextPath }/profile/mainProfile" method="post">
 										<table class="type_list_box">
-											<tbody><tr>
+											<tbody>
+											<tr>
 												<th class="col1">
 													<span class="title_txt">신상번호</span>
 												</th>
+												
 												<td class="col2">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="info_no" value=""${ mainProfile.info_no }" >
+													 <c:forEach var="MList" items="${ requestScope.MList }"> 
+													 
+												<!--<input class="txt w_max" type="text" <c:out value="mainProfile.info_no"/>>
+													  --><input class="txt w_max" type="text" name="info_no" value="<c:out value="${MList.info_no }"/>">
+														</c:forEach>
 												</td>
 												<th class="col3">
 													<span class="title_txt">사번</span>

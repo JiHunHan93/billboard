@@ -10,10 +10,10 @@ public class CalenderAndMemberAndDeptDTO {
 	private int scheduleNo;
 	private MemBbDTO memberNo;
 	private MemBbDTO memberName;
-	private String scheduleName;
-	private String scheduleType;
-	private java.sql.Date startDate;
-	private java.sql.Date endDate;
+	private String title;
+	private String category;
+	private java.sql.Date start;
+	private java.sql.Date end;
 	private String scheduleLocation;
 	private String attendenceName;
 	private String scheduleInfo;
@@ -25,17 +25,17 @@ public class CalenderAndMemberAndDeptDTO {
 	public CalenderAndMemberAndDeptDTO() {}
 
 
-	public CalenderAndMemberAndDeptDTO(int scheduleNo, MemBbDTO memberNo, MemBbDTO memberName, String scheduleName,
-			String scheduleType, Date startDate, Date endDate, String scheduleLocation, String attendenceName,
-			String scheduleInfo, String scheduleStatus, DeptDTO deptCode, DeptDTO deptName) {
+	public CalenderAndMemberAndDeptDTO(int scheduleNo, MemBbDTO memberNo, MemBbDTO memberName, String title,
+			String category, Date start, Date end, String scheduleLocation, String attendenceName, String scheduleInfo,
+			String scheduleStatus, DeptDTO deptCode, DeptDTO deptName) {
 		super();
 		this.scheduleNo = scheduleNo;
 		this.memberNo = memberNo;
 		this.memberName = memberName;
-		this.scheduleName = scheduleName;
-		this.scheduleType = scheduleType;
-		this.startDate = startDate;
-		this.endDate = endDate;
+		this.title = title;
+		this.category = category;
+		this.start = start;
+		this.end = end;
 		this.scheduleLocation = scheduleLocation;
 		this.attendenceName = attendenceName;
 		this.scheduleInfo = scheduleInfo;
@@ -75,43 +75,43 @@ public class CalenderAndMemberAndDeptDTO {
 	}
 
 
-	public String getScheduleName() {
-		return scheduleName;
+	public String getTitle() {
+		return title;
 	}
 
 
-	public void setScheduleName(String scheduleName) {
-		this.scheduleName = scheduleName;
+	public void setTitle(String title) {
+		this.title = title;
 	}
 
 
-	public String getScheduleType() {
-		return scheduleType;
+	public String getCategory() {
+		return category;
 	}
 
 
-	public void setScheduleType(String scheduleType) {
-		this.scheduleType = scheduleType;
+	public void setCategory(String category) {
+		this.category = category;
 	}
 
 
-	public java.sql.Date getStartDate() {
-		return startDate;
+	public java.sql.Date getStart() {
+		return start;
 	}
 
 
-	public void setStartDate(java.sql.Date startDate) {
-		this.startDate = startDate;
+	public void setStart(java.sql.Date start) {
+		this.start = start;
 	}
 
 
-	public java.sql.Date getEndDate() {
-		return endDate;
+	public java.sql.Date getEnd() {
+		return end;
 	}
 
 
-	public void setEndDate(java.sql.Date endDate) {
-		this.endDate = endDate;
+	public void setEnd(java.sql.Date end) {
+		this.end = end;
 	}
 
 
@@ -178,13 +178,13 @@ public class CalenderAndMemberAndDeptDTO {
 	@Override
 	public String toString() {
 		return "CalenderAndMemberAndDeptDTO [scheduleNo=" + scheduleNo + ", memberNo=" + memberNo + ", memberName="
-				+ memberName + ", scheduleName=" + scheduleName + ", scheduleType=" + scheduleType + ", startDate="
-				+ startDate + ", endDate=" + endDate + ", scheduleLocation=" + scheduleLocation + ", attendenceName="
-				+ attendenceName + ", scheduleInfo=" + scheduleInfo + ", scheduleStatus=" + scheduleStatus
-				+ ", deptCode=" + deptCode + ", deptName=" + deptName + "]";
+				+ memberName + ", title=" + title + ", category=" + category + ", start=" + start + ", end=" + end
+				+ ", scheduleLocation=" + scheduleLocation + ", attendenceName=" + attendenceName + ", scheduleInfo="
+				+ scheduleInfo + ", scheduleStatus=" + scheduleStatus + ", deptCode=" + deptCode + ", deptName="
+				+ deptName + "]";
 	}
-	
-	
+
+
 
 
 	

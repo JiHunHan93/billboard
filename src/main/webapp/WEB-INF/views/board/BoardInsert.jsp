@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -467,8 +468,7 @@
 										<div class="col-md-10">
 											<textarea rows="5" cols="5" class="autosize" id="ta"
 												placeholder="Enter text here" name="body"></textarea>
-											<textarea id="xt"
-												style="width: 100%; height: 455px; overflow-y: hidden; position: absolute; top: -1000px"></textarea>
+											<textarea id="xt" style="width: 100%; height: 455px; overflow-y: hidden; position: absolute; top: -1000px"></textarea>
 										</div>
 									</div>
 									<div class="form-group row">

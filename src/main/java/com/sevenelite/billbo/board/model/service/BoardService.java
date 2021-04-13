@@ -23,6 +23,5 @@ public interface BoardService {
 	List<BoardDTO> selectEmpBoard();
 
 	List<BoardDTO> detailEmpBoard(int no);
-
 	
 }

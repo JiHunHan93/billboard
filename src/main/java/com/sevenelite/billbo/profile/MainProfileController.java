@@ -48,7 +48,7 @@ public class MainProfileController {
 		/*1 신상*/
 	  @PostMapping("mainProfile")
 	  public String memberInfo(@ModelAttribute MemberInfoDTO member) { 
-		  profileService.memberInfo(member); 
+//		  profileService.memberInfo(member); 
 		  System.out.println("branch:" + member);
 		  SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		  List<MemberInfoDTO> memberInfo = profileService.mainProfile();
@@ -176,6 +176,7 @@ public class MainProfileController {
 		return "profile/mainProfile";
 	}
 	/*select이긴 한데 ..*/
+	
 	@GetMapping("member_info_phone")
 	public String member_info_phone(Model model,  HttpServletRequest request, @ModelAttribute MemBbDTO memBbDTO,HttpSession session) {
 System.out.println("여기와?");
@@ -186,11 +187,19 @@ System.out.println("여기와?");
 		System.out.println(session.hashCode());
 		System.out.println(session.getAttributeNames());
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		System.out.println("!!!!!!!!!!!!!" );
+		
 		List<MemBbDTO> profileList1 = profileService.member_info_phone();
-		System.out.println(profileList1);
+//		int no = profileList1.get(0).getNo();
+//		System.out.println(no);
+		System.out.println("================================" + profileList1);
 		model.addAttribute("profileList1", profileList1);
 		request.getSession().setAttribute("profileList1", profileList1);
+		List<MemberInfoDTO> MList = profileService.memberInfo();/* no 매개변수로  */
+		System.out.println("????????????????????????????????????????");
+		System.out.println(MList);
+		model.addAttribute("MList", MList);
+		
+		
 		return "profile/mainProfile";
 	}
 	@GetMapping("member_address")
@@ -203,7 +212,7 @@ System.out.println("여기와?");
 		return "profile/mainProfile";
 	}
 	
-	@GetMapping("member_enrollDate")
+	@GetMapping("mainProfile")
 	public String member_enrollDate(Model model) {
 
 		List<MemDTO> member_enrollDate = profileService.member_enrollDate();

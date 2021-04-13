@@ -39,8 +39,13 @@ public class WorkStatusServiceImpl implements WorkStatusService{
 	}
 
 	@Override
-	public boolean updateWork(int MemberNo, List<StatusAndWorkDTO> workInfo) {
-		return dao.updateWork(MemberNo, workInfo);
+	public boolean updateWork(int MemberNo, int no) {
+		return dao.updateWork(MemberNo, no);
+	}
+
+	@Override
+	public int seqNo() {
+		return dao.seqNo() ;
 	}
 
 	}

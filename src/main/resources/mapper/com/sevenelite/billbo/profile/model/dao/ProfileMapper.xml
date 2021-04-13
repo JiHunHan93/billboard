@@ -24,7 +24,7 @@
 	<result property="account_host" column="ACCOUNT_HOST"/>
 	<result property="fileattachment" column="MEMBER_FILEATTACHMENT"/>
 	<result property="enroll_date" column="ENROLL_DATE"/>
-	<result property="workcontract" column="MEMBER_WORK_CONTRACT"/>
+	<result property="work_contract" column="MEMBER_WORK_CONTRACT"/>
 	<result property="member_no" column="MEMBER_NO"/>
 </resultMap>
 
@@ -92,7 +92,7 @@
     )
 </insert>
 
- <insert id="memberInfo" parameterType="MemberInfoDTO">
+ <insert id="memberInfoInsert" parameterType="MemberInfoDTO">     <!--  ************  -->
 	INSERT
 	 INTO BB_MEMBER_INFO(
 	      MEMBER_INFO_NO
@@ -118,6 +118,21 @@
 	    , #{member_no}
 	    )
 </insert>
+
+<select id="memberInfo" parameterType="MemberInfoDTO" resultMap="memberInfoDTO">
+    SELECT
+          A.MEMBER_INFO_NO
+	    , A.MEMBER_ADDRESS
+	    , A.MEMBER_ACCOUNT_NO
+	    , A.MEMBER_ACCOUNT_BANK
+	    , A.ACCOUNT_HOST
+	    , A.MEMBER_FILEATTACHMENT
+	    , A.ENROLL_DATE
+	    , A.MEMBER_WORK_CONTRACT
+	    , A.MEMBER_NO
+	FROM BB_MEMBER_INFO A
+    WHERE A.MEMBER_INFO_NO = 1
+</select>
 
 <insert id="spot" parameterType="SpotDTO">
 	INSERT
@@ -283,10 +298,11 @@
 SELECT 
 	  MEMBER_NO
     , MEMBER_NAME
+    , MEMBER_PWD
     , EMAIL   
 	, PHONE
 	  FROM BB_MEMBER
-	 WHERE MEMBER_NO = 1
+	 WHERE MEMBER_NO  = 1
 	  <!-- WHERE MEMBER_NO = #{no} -->
 </select>
 
