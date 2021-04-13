@@ -664,12 +664,6 @@
 						</div>
 					</div>
 					<br>
-					<form action="${pageContext.servletContext.contextPath}/work/regist" method="post">
-					<button class="btn btn-success btn-lg">출근 등록</button>
-					</form>
-					<form name="update" action="${pageContext.servletContext.contextPath }/work/update" method="post">
-					<button class="btn btn-dark btn-lg" style="margin-left: 25px">퇴근 등록 </button>
-					</form>
 					
 
 					<!-- Search Filter -->
@@ -687,7 +681,6 @@
 								<thead>
 									<tr>
 										<th>날짜</th>
-										<th>상태</th>
 										<th>업무시작</th>
 										<th>업무종료</th>
 										<th>수정이력</th>
@@ -697,7 +690,6 @@
 									<tbody>
 										<tr>
 											<td><c:out value="${statusList.date }"></c:out></td>
-											<td><i class="fas fa-circle"></i></td>
 											<td><c:out value="${ statusList.commute }"></c:out></td>
 											<td><c:out value="${ statusList.lwork }"></c:out></td>
 											<td></td>
