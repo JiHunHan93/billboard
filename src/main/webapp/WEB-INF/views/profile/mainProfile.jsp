@@ -657,7 +657,7 @@
 								<div class="col-md-12">
 									<div class="profile-view">
 										<div class="profile-img-wrap">
-											<div class="profile-img">
+											
 												<a href="#"><img alt="" src="assets/img/profiles/avatar-02.jpg"></a>
 											</div>
 										</div>
@@ -683,30 +683,33 @@
 														<li>
 														<c:forEach var="profileList1" items="${ requestScope.profileList1 }">
 															<div class="title">Phone:  <c:out value="${profileList1.phone }"/></div>
-															<div class="text"></div>
+															<!-- <div class="text"></div> -->
 															</c:forEach>
 														</li>
+														<br>
 														<li>
 														<c:forEach var="profileList1" items="${ requestScope.profileList1 }">
 														<li>
 															<div class="title">사번:  <c:out value="${profileList1.no }"/></div>
-															<div class="text"></div>
+															<!-- <div class="text"></div> -->
 															
 														</li>
+														<br>
+														<br>
 														<li>
 															<div class="title">Email: <c:out value="${profileList1.email }"/></div>
-															<div class="text"><a href=""></a></div>
+															<!-- <div class="text"><a href=""></a></div> -->
 														</li>
 														</c:forEach>
-												      <c:forEach var="profileList2" items="${ requestScope.profileList2 }">
+												     <%--  <c:forEach var="profileList2" items="${ requestScope.profileList2 }">
 														<li>
 															<div class="text">Address: <c:out value="${profileList2.address }"/></div>
 															<div class="text">1861 Bayonne Ave, Manchester Township, NJ, 08759</div>
 														</li>
-														</c:forEach>
+														</c:forEach> --%>
 														<li>
 														
-															<div class="title">Reports to:</div>
+															<!-- <div class="title">Reports to:</div>
 															<div class="text">
 															   <div class="avatar-box">
 																  <div class="avatar avatar-xs">
@@ -716,7 +719,7 @@
 															   <a href="profile.html">
 																	Jeffery Lalor
 																</a>
-															</div>
+															</div> -->
 														</li>
 													</ul>
 												</div>
@@ -744,7 +747,6 @@
 									<li class="nav-item"><a href="#emp_part" data-toggle="tab" class="nav-link">부서</a></li>
 									<li class="nav-item"><a href="#emp_career" data-toggle="tab" class="nav-link">경력</a></li>
 									<li class="nav-item"><a href="#emp_bonus" data-toggle="tab" class="nav-link">상벌내역</a></li>
-									<li class="nav-item"><a href="#emp_jobtest" data-toggle="tab" class="nav-link">인사평가</a></li>
 									<li class="nav-item"><a href="#emp_qualification" data-toggle="tab" class="nav-link">자격</a></li>
 									<li class="nav-item"><a href="#armyInfo" data-toggle="tab" class="nav-link">병역</a></li>
 									<li class="nav-item"><a href="#emp_education" data-toggle="tab" class="nav-link">학력</a></li>
@@ -756,7 +758,7 @@
 								</ul>
 							</div>
 						</div>
-					</div>
+					</div>  
 					
 					<div class="tab-content">
 						<!-- 여기 첫번째 탭-->
@@ -774,7 +776,7 @@
 												</th>
 												<td class="col2">
 													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="info_no" value="" >
+													<input class="txt w_max" type="text" name="info_no" value=""${ mainProfile.info_no }" >
 												</td>
 												<th class="col3">
 													<span class="title_txt">사번</span>
@@ -840,16 +842,17 @@
 										</tr>
 											
 										</tbody></table>
+									<div class="page_action_wrap" style="display: block;">
 										<button class="btn_major" data-role="button"  id="submit">저장</button>
+										<button class="btn_minor" data-role="button"  id="hrcard_btn_cancel">취소</button>
+								</div>
 										</form>
 									</div></div>
-									<div class="page_action_wrap" style="display: block;">
-										<span class="btn_minor" data-role="button" id="hrcard_btn_cancel"><span class="txt">취소</span></span>
-								</div>
+										<!-- <span class="btn_minor" data-role="button" id="hrcard_btn_cancel"><span class="txt">취소</span></span> -->
 								<section class="aside_wrapper article_reply" id="hrcardActivity"><div><div class="reply_wrap">
 									<header class="single_title">
-									   <span class="txt">변경이력</span><span class="num">17</span>
-									</header>
+									   <!-- <span class="txt">변경이력</span><span class="num">17</span>
+									 --></header>
 									<div class="aside_wrapper_body">
 									   <ul class="type_simple_list simple_list_alarm">        
 									  
@@ -885,16 +888,18 @@
 												</td>
 											</tr>
 										</tbody></table>
-										<button class="btn_major" data-role="button" id="submit">저장</button>
-										<button class="btn_major" data-role="button" id="cancel">취소</button>
+										<div class="page_action_wrap" style="display: block;">
+										<button class="btn_major" data-role="button"  id="submit">저장</button>
+										<button class="btn_minor" data-role="button"  id="hrcard_btn_cancel">취소</button>
+										</div>
 										</form>
 									</div></div>
 									<div class="page_action_wrap" style="display: block;">
 											</div>
 								<section class="aside_wrapper article_reply" id="hrcardActivity"><div><div class="reply_wrap">
 									<header class="single_title">
-									   <span class="txt">변경이력</span><span class="num">0</span>
-									</header>
+									<!--    <span class="txt">변경이력</span><span class="num">0</span>
+									 --></header>
 									<div class="aside_wrapper_body">
 									   <ul class="type_simple_list simple_list_alarm">        
 									
@@ -907,7 +912,7 @@
 						</div>
 						</div>
 						<!-- /두번째 탭-1 끝 -->
-						<!-- 두번째탭 -->
+						<!-- 세번째탭 -->
 						<div class="tab-pane fade" id="emp_part">
 							<div class="tab-content">
 								<div class="ehr_con_wrap"><div><h3 class="tab_title">부서</h3>
@@ -943,14 +948,13 @@
 												
 											</tr>
 										</tbody></table>
-										<button class="btn_major" data-role="button" id="submit">저장</button>
-										<button class="btn_major" data-role="button" id="cancel">취소</button>
+										<div class="page_action_wrap" style="display: block;">
+										<button class="btn_major" data-role="button"  id="submit">저장</button>
+										<button class="btn_minor" data-role="button"  id="hrcard_btn_cancel">취소</button>
+									</div>
 										</form>
 									</div></div>
-									<div class="page_action_wrap" style="display: block;">
-										<span class="btn_major" data-role="button" id="hrcard_btn_submit"><span class="txt">저장</span></span>
-										<span class="btn_minor" data-role="button" id="hrcard_btn_cancel"><span class="txt">취소</span></span>
-								</div>
+									
 								<section class="aside_wrapper article_reply" id="hrcardActivity"><div><div class="reply_wrap">
 									<header class="single_title">
 									   <span class="txt">변경이력</span><span class="num">0</span>
@@ -966,7 +970,7 @@
 							</div>
 						</div>
 						</div>
-						<!-- /두번째-1 탭 끝 -->
+						<!-- /세번째 탭 끝 -->
 						
 						
 						
@@ -1016,16 +1020,15 @@
 											</tr>
 											</tbody>
 										</table>
-										<button class="btn_major" data-role="button" id="submit">저장</button>
-										<button class="btn_major" data-role="button" id="cancel">취소</button>
-										</form>
-									</div></div><div class="page_action_wrap" style="display: block;">
-										<span class="btn_major" data-role="button" id="hrcard_btn_submit"><span class="txt">저장</span></span>
-										<span class="btn_minor" data-role="button" id="hrcard_btn_cancel"><span class="txt">취소</span></span>
+										<div class="page_action_wrap" style="display: block;">
+										<button class="btn_major" data-role="button"  id="submit">저장</button>
+										<button class="btn_minor" data-role="button"  id="hrcard_btn_cancel">취소</button>
 								</div>
+										</form>
+									</div></div>
 								<section class="aside_wrapper article_reply" id="hrcardActivity"><div><div class="reply_wrap">
 									<header class="single_title">
-									   <span class="txt">변경이력</span><span class="num">17</span>
+									   <!-- <span class="txt">변경이력</span><span class="num">17</span> -->
 									</header>
 									<div class="aside_wrapper_body">
 									   <ul class="type_simple_list simple_list_alarm">        
@@ -1090,16 +1093,15 @@
 											</tr>
 											</tbody>
 										</table>
-												<button class="btn_major" data-role="button" id="submit">저장</button>
-										<button class="btn_major" data-role="button" id="cancel">취소</button>
-								</form>
-									</div></div><div class="page_action_wrap" style="display: block;">
-										<span class="btn_major" data-role="button" id="hrcard_btn_submit"><span class="txt">저장</span></span>
-										<span class="btn_minor" data-role="button" id="hrcard_btn_cancel"><span class="txt">취소</span></span>
+											<div class="page_action_wrap" style="display: block;">
+										<button class="btn_major" data-role="button"  id="submit">저장</button>
+										<button class="btn_minor" data-role="button"  id="hrcard_btn_cancel">취소</button>
 								</div>
+								</form>
+									</div></div>
 								<section class="aside_wrapper article_reply" id="hrcardActivity"><div><div class="reply_wrap">
 									<header class="single_title">
-									   <span class="txt">변경이력</span><span class="num">17</span>
+									
 									</header>
 									<div class="aside_wrapper_body">
 									   <ul class="type_simple_list simple_list_alarm">        
@@ -1239,13 +1241,13 @@
 											</tr>
 										</tbody>
 										</table>
-										<a class="btn_major" data-role="button"  id="submit">저장</a>
-										<button type="submit">가자</button>
+										<div class="page_action_wrap" style="display: block;">
+										<button class="btn_major" data-role="button"  id="submit">저장</button>
+										<button class="btn_minor" data-role="button"  id="hrcard_btn_cancel">취소</button>
+								</div>
 										</form>
 									</div></div>
-									<div class="page_action_wrap" style="display: block;">
-										<span class="btn_minor" data-role="button" id="hrcard_btn_cancel"><span class="txt">취소</span></span>
-								</div>
+									
 								<section class="aside_wrapper article_reply" id="hrcardActivity"><div><div class="reply_wrap">
 									<header class="single_title">
 									   <span class="txt">변경이력</span><span class="num">17</span>
@@ -1274,7 +1276,7 @@
 												<th class="name">학교명</th>
 												<th class="subject">전공</th>
 												<th class="date">졸업일자</th>
-												<th class="status">졸업여부</th>
+												<th class="status_yn">졸업여부</th>
 												<th class="member_no">사번</th>
 												<th class="code">학력코드명</th>
 											</tr>
@@ -1292,17 +1294,16 @@
 												</td>
 												<td class="date">
 													<span class="wrap_date">
+													</span>
 													<input class="txt wfix_small hasDatepicker" type="date" name="date" value="" >
-													<span class="ic ic_calendar"></span>
-													</span>
 												</td>
-												<td class="status">
-													<span class="wrap_date">
-													<input class="txt wfix_small hasDatepicker" type="text" name="status" value="" >
-													<span class="ic ic_calendar"></span>
-													</span>
-												</td>
+												<td class="status_yn">
+													<span class="txt"></span>
+													<input class="txt w_max" type="text" name="status_yn" value="" >  
+													</td> 
 												<td class="member_no">
+													<span class="txt"></span>
+													
 													<input class="txt w_max" type="text" name="member_no" value="" >
 													 
 												</td>
@@ -1312,15 +1313,17 @@
 												</td>
 											</tr>
 										</tbody></table>
-										<button class="btn_major" data-role="button" id="submit">저장</button>
-										<button class="btn_major" data-role="button" id="cancel">취소</button>
+										<div class="page_action_wrap" style="display: block;">
+										<button class="btn_major" data-role="button"  id="submit">저장</button>
+										<button class="btn_minor" data-role="button"  id="hrcard_btn_cancel">취소</button>
+								</div>
 										</form>
 									</div></div><div class="page_action_wrap" style="display: block;">
 										</div>
 								<section class="aside_wrapper article_reply" id="hrcardActivity"><div><div class="reply_wrap">
 									<header class="single_title">
-									   <span class="txt">변경이력</span><span class="num">17</span>
-									</header>
+								<!-- 	   <span class="txt">변경이력</span><span class="num">17</span>
+								 -->	</header>
 									<div class="aside_wrapper_body">
 									   <ul class="type_simple_list simple_list_alarm">        
 									  
@@ -1397,14 +1400,13 @@
 											</tr>
 											</tbody>
 										</table>
-										<button class="btn_major" data-role="button" id="submit">저장</button>
-										<button class="btn_major" data-role="button" id="cancel">취소</button>
-										</form>
-									</div></div></div>
-									<div class="page_action_wrap" style="display: block;">
+										<div class="page_action_wrap" style="display: block;">
 										<span class="btn_major" data-role="button" id="hrcard_btn_submit"><span class="txt">저장</span></span>
 										<span class="btn_minor" data-role="button" id="hrcard_btn_cancel"><span class="txt">취소</span></span>
 								</div>
+										</form>
+									</div></div></div>
+									
 								<section class="aside_wrapper article_reply" id="hrcardActivity"><div><div class="reply_wrap">
 									<header class="single_title">
 									   <span class="txt">변경이력</span><span class="num">0</span>
@@ -1432,13 +1434,17 @@
 										<table class="type_list_box">
 											<tbody><tr>
 												<th class="no"><span class="title_txt">면허 번호</span></th>
+												<th class="code"><span class="title_txt">면허증코드명</span></th>
 												<th class="date"><span class="title_txt">취득일</span></th>
 												<th class="member_no"><span class="title_txt">사번</span></th>
-												<th class="code"><span class="title_txt">면허증코드명</span></th>
 												</tr>
 											<tr class="dataRow" data-id="">
 												<td class="no">
 												<input class="txt w_max" type="text" name="no" value="" >
+												</td>
+												<td class="code">
+													<span class="txt"></span>
+													<input class="txt w_max" type="text" name="code" value="">
 												</td>
 												<td class="date">
 													<span class="txt"></span>
@@ -1448,19 +1454,14 @@
 													<span class="txt"></span>
 													<input class="txt w_max" type="text" name="member_no" value="" >
 												</td>
-												<td class="code">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="code" value="">
-												</td>
 												</tr>
 										</tbody></table>
-										<button class="btn_major" data-role="button" id="submit">저장</button>
-										<button class="btn_major" data-role="button" id="cancel">취소</button>
-										</form>
-									</div></div><div class="page_action_wrap" style="display: block;">
+										<div class="page_action_wrap" style="display: block;">
 										<span class="btn_major" data-role="button" id="hrcard_btn_submit"><span class="txt">저장</span></span>
 										<span class="btn_minor" data-role="button" id="hrcard_btn_cancel"><span class="txt">취소</span></span>
 								</div>
+										</form>
+									</div></div>
 								<section class="aside_wrapper article_reply" id="hrcardActivity"><div><div class="reply_wrap">
 									<header class="single_title">
 									   <span class="txt">변경이력</span><span class="num">17</span>
@@ -1495,7 +1496,7 @@
 									<div class="row">
 										<div class="col-md-12">
 											<div class="profile-img-wrap edit-img">
-												<img class="inline-block" src="assets/img/profiles/avatar-02.jpg" alt="user">
+												<img class="inline-block" src="hrtemp/img/profiles/avatar-02.jpg" alt="user">
 												<div class="fileupload btn">
 													<span class="btn-text">edit</span>
 													<input class="upload" type="file">
