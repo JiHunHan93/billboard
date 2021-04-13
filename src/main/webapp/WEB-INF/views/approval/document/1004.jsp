@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -16,9 +18,12 @@
 <!-- 모달 -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+<!-- JS -->
+<script type="text/javascript" src="/billbo/resources/jihunhan/js/approval/1004.js"></script>
+<script type="text/javascript" src="/billbo/resources/jihunhan/js/approval/100402.js"></script>
+<link rel="stylesheet" href="/billbo/resources/jihunhan/css/approval1004.css">
 </head>
 <body>
-
 ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username }
 ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }
 ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }
@@ -67,18 +72,6 @@ ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }
             </a>
         </span>
         
-        
-        
-        
-        
-        
-        
-           
-        
-        
-        
-        
-    
            <a id="act_edit_apprflow" class="btn_tool" data-role="button">
                 <span class="ic_toolbar info"></span>
                 <span class="txt">결재 정보</span>
@@ -118,7 +111,7 @@ ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }
    <div class="approval_import ie9-scroll-fix">
    
        <!-- 문서 내용 표시 테스트 -->
-       <form id="document_content" name="vacation01" class="form_doc_editor editor_view" onsubmit="return false;"><span style="font-family: &quot;맑은 고딕&quot;; font-size: 10pt; line-height: normal; margin-top: 0px; margin-bottom: 0px;"><span style="font-family: &quot;맑은 고딕&quot;; font-size: 10pt; line-height: normal; margin-top: 0px; margin-bottom: 0px;"><span style="line-height: normal; font-family: 맑은 고딕; font-size: 10pt; margin-top: 0px; margin-bottom: 0px;"></span></span><table class="__se_tbl" style="background: white; border: 0px solid black; border-image: none; width: 800px; color: black; font-family: malgun gothic,dotum,arial,tahoma; font-size: 12px; border-collapse: collapse !important;"><!-- Header --> 
+       <form id="document_content" name="vacation01" action="1004" method="post" class="form_doc_editor editor_view"><span style="font-family: &quot;맑은 고딕&quot;; font-size: 10pt; line-height: normal; margin-top: 0px; margin-bottom: 0px;"><span style="font-family: &quot;맑은 고딕&quot;; font-size: 10pt; line-height: normal; margin-top: 0px; margin-bottom: 0px;"><span style="line-height: normal; font-family: 맑은 고딕; font-size: 10pt; margin-top: 0px; margin-bottom: 0px;"></span></span><table class="__se_tbl" style="background: white; border: 0px solid black; border-image: none; width: 800px; color: black; font-family: malgun gothic,dotum,arial,tahoma; font-size: 12px; border-collapse: collapse !important;"><!-- Header --> 
              
             <tbody><tr><td style="padding: 3px !important; border: 0px solid black; border-image: none; width: 300px; height: 90px !important; text-align: center; font-size: 22px; font-weight: bold; vertical-align: middle;" colspan="2" class="">
             
@@ -128,16 +121,26 @@ ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }
             <tbody><tr><td style="background: rgb(221, 221, 221); padding: 3px !important; border: 1px solid black; border-image: none; width: 100px; height: 22px; text-align: center; font-weight: bold; vertical-align: middle;">
             
             기안자
-            </td><td style="padding: 3px !important; border: 1px solid black; border-image: none; width: 200px; height: 22px; text-align: left; vertical-align: middle;"><input type="text" readonly="" style="vertical-align: middle; width: 200px; text-align: center; border: 0px; box-shadow: rgba(150, 150, 150, 0.2) 0px 0px 0px inset;" data-dsl="{{label:draftUser}}" name="draftUser" id="draftUser" value="김지연" data-id="draftUser" data-name="draftUser" data-require="false" data-maxlength="" data-width="" data-defaultstr="" data-editable="false" data-value="김지연" placeholder=""> 
-            </td></tr><tr><td style="background: rgb(221, 221, 221); padding: 3px !important; border: 1px solid black; border-image: none; width: 100px; height: 22px; text-align: center; font-weight: bold; vertical-align: middle;">
+            </td>
             
+            <!-- 기안자 -->
+            <td style="padding: 3px !important; border: 1px solid black; border-image: none; width: 200px; height: 22px; text-align: left; vertical-align: middle;">
+            <input type="text" readonly="" style="vertical-align: middle; width: 200px; text-align: center; border: 0px; box-shadow: rgba(150, 150, 150, 0.2) 0px 0px 0px inset;" data-dsl="{{label:draftUser}}" name="memberName" id="memberName" value="" data-id="draftUser" data-name="draftUser" data-require="false" data-maxlength="" data-width="" data-defaultstr="" data-editable="false" data-value="김지연" placeholder=""> 
+            </td></tr>
+            
+            <tr><td style="background: rgb(221, 221, 221); padding: 3px !important; border: 1px solid black; border-image: none; width: 100px; height: 22px; text-align: center; font-weight: bold; vertical-align: middle;">
             기안부서
             </td><td style="padding: 3px !important; border: 1px solid black; border-image: none; width: 200px; height: 22px; text-align: left; vertical-align: middle;"><input type="text" readonly="" style="vertical-align: middle; width: 200px; text-align: center; border: 0px; box-shadow: rgba(150, 150, 150, 0.2) 0px 0px 0px inset;" data-dsl="{{label:draftDept}}" name="draftDept" id="draftDept" value="영업팀" data-id="draftDept" data-name="draftDept" data-require="false" data-maxlength="" data-width="" data-defaultstr="" data-editable="false" data-value="영업팀" placeholder=""> 
             </td></tr><tr><td style="background: rgb(221, 221, 221); padding: 3px !important; border: 1px solid black; border-image: none; width: 100px; height: 22px; text-align: center; font-weight: bold; vertical-align: middle;">
             
             기안일
-            </td><td style="padding: 3px !important; border: 1px solid black; border-image: none; width: 200px; height: 22px; text-align: left; vertical-align: middle;"><input type="text" readonly="" style="vertical-align: middle; width: 200px; text-align: center; border: 0px; box-shadow: rgba(150, 150, 150, 0.2) 0px 0px 0px inset;" data-dsl="{{label:draftDate}}" name="draftDate" id="draftDate" value="" data-id="draftDate" data-name="draftDate" data-require="false" data-maxlength="" data-width="" data-defaultstr="" data-editable="false" data-value="2021-04-08(목)" placeholder=""> 
-            </td></tr><tr><td style="background: rgb(221, 221, 221); padding: 3px !important; border: 1px solid black; border-image: none; width: 100px; height: 22px; text-align: center; font-weight: bold; vertical-align: middle;">
+            </td>
+            
+            <td style="padding: 3px !important; border: 1px solid black; border-image: none; width: 200px; height: 22px; text-align: left; vertical-align: middle;">
+            <input type="text" style="vertical-align: middle; width: 200px; text-align: center; border: 0px; box-shadow: rgba(150, 150, 150, 0.2) 0px 0px 0px inset;" data-dsl="{{label:draftDate}}" name="draftDate" id="draftDate" value="" data-id="draftDate" data-name="draftDate" data-require="false" data-maxlength="" data-width="" data-defaultstr="" data-editable="false" data-value="2021-04-08(목)" placeholder=""> 
+            </td></tr>
+            
+            <tr><td style="background: rgb(221, 221, 221); padding: 3px !important; border: 1px solid black; border-image: none; width: 100px; height: 22px; text-align: center; font-weight: bold; vertical-align: middle;">
             
             문서번호
             </td><td style="padding: 3px !important; border: 1px solid black; border-image: none; width: 200px; height: 22px; text-align: left; vertical-align: middle;"><input type="text" readonly="" style="vertical-align: middle; width: 200px; text-align: center; border: 0px; box-shadow: rgba(150, 150, 150, 0.2) 0px 0px 0px inset;" data-dsl="{{label:docNo}}" name="docNo" id="docNo" value="" data-id="docNo" data-name="docNo" data-require="false" data-maxlength="" data-width="" data-defaultstr="" data-editable="false" data-value="" placeholder=""> 
@@ -150,68 +153,64 @@ ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }
              
             </td></tr></tbody></table>
             
-             
             <br>
              
             <table class="__se_tbl" style="background: white; border: 1px solid black; border-image: none; width: 800px; color: black; font-family: malgun gothic,dotum,arial,tahoma; font-size: 12px; margin-top: 0px; border-collapse: collapse !important;"><tbody><tr><td style="background: rgb(221, 221, 221); padding: 5px; border: 1px solid black; border-image: none; height: 25px; text-align: center; color: rgb(0, 0, 0); font-size: 14px; font-weight: bold; vertical-align: middle;">
             
             휴가&nbsp;종류
             </td><td style="background: rgb(255, 255, 255); padding: 5px; border: 1px solid black; border-image: none; height: 25px; text-align: left; color: rgb(0, 0, 0); font-size: 14px; font-weight: normal; vertical-align: middle;"><span id="vacationTypeArea" style="line-height: normal; font-family: malgun gothic, dotum, arial, tahoma; font-size: 11pt; margin-top: 0px; margin-bottom: 0px;" name="select"><!-- SELECT  -->
-            <select class="editor_slt" data-dsl="{{cSel_연차_조퇴_지각_경조_공가_질병휴가}}" name="select_type">
+            <select class="editor_slt" data-dsl="{{cSel_연차_조퇴_지각_경조_공가_질병휴가}}" name="annualType">
                  <option value="연차">연차</option>
                  <option value="조퇴">조퇴</option>
                  <option value="지각">지각</option>
                  <option value="경조">경조</option>
                  <option value="공가">공가</option>
                  <option value="질병휴가">질병휴가</option>
+                 <option value="반차">반차</option>
             </select>
             </span> 
-            </td></tr><tr><td style="background: rgb(221, 221, 221); padding: 5px; border: 1px solid black; border-image: none; height: 25px; text-align: center; color: rgb(0, 0, 0); font-size: 14px; font-weight: bold; vertical-align: middle;">
+            </td></tr>
             
+            <tr><td style="background: rgb(221, 221, 221); padding: 5px; border: 1px solid black; border-image: none; height: 25px; text-align: center; color: rgb(0, 0, 0); font-size: 14px; font-weight: bold; vertical-align: middle;">
             기간&nbsp;및&nbsp;일시
-            </td><td style="background: rgb(255, 255, 255); padding: 3px; border: 1px solid black; border-image: none; width: 700px; height: 22px; text-align: left; color: rgb(0, 0, 0); font-size: 12px; vertical-align: middle;"><input type="text" readonly="" class="ipt_editor ipt_editor_date hasDatepicker" data-dsl="{{calendar:startDate}}" id="startDate" data-id="startDate" data-name="startDate" data-require="false" data-maxlength="" data-width="" data-defaultstr="" data-editable="false" name="startDate" data-value="" placeholder="" value="" style="width: 700px;">&nbsp;~&nbsp; <input type="text" readonly="" class="ipt_editor ipt_editor_date hasDatepicker" data-dsl="{{calendar:endDate}}" id="endDate" data-id="endDate" data-name="endDate" data-require="false" data-maxlength="" data-width="" data-defaultstr="" data-editable="false" name="endDate" data-value="" placeholder="" value="" style="width: 700px;"> <span id="usingPointArea" style="line-height: normal; font-family: malgun gothic,dotum,arial,tahoma; font-size: 9pt; margin-top: 0px; margin-bottom: 0px;"><b>사용일수 : </b>
-            <input type="text" class="ipt_editor ipt_editor_num" data-dsl="{{number:usingPoint}}" name="usingPoint" id="usingPoint" data-require="false" data-editable="true" value="1" readonly="readonly">
-            <b id="usingPoint_Comment" style="font-weight:bold; color:red">신청가능일을 초과하였습니다.</b>
+            </td>
+            <td style="background: rgb(255, 255, 255); padding: 3px; border: 1px solid black; border-image: none; width: 700px; height: 22px; text-align: left; color: rgb(0, 0, 0); font-size: 12px; vertical-align: middle;">
+            <input type="date" class="ipt_editor ipt_editor_date hasDatepicker" id="startDate"  name="startDate" value="" style="width: 200px;">&nbsp;~&nbsp; 
+            <input type="date" class="ipt_editor ipt_editor_date hasDatepicker" id="endDate" name="endDate" value="" style="width: 200px;"> 
+            
+            <span id="usingPointArea" style="line-height: normal; font-family: malgun gothic,dotum,arial,tahoma; font-size: 9pt; margin-top: 0px; margin-bottom: 0px;">
+            <b>사용일수 : </b>
+            <input type="text" class="ipt_editor ipt_editor_num" data-dsl="{{number:usingPoint}}" name="usingPoint" id="usingPoint" data-require="false" data-editable="true" value="1">
+            <!-- <b id="usingPoint_Comment" style="font-weight:bold; color:red">신청가능일을 초과하였습니다.</b> -->
             </span> 
             </td></tr><tr><td style="background: rgb(221, 221, 221); padding: 5px; border: 1px solid black; border-image: none; height: 25px; text-align: center; color: rgb(0, 0, 0); font-size: 14px; font-weight: bold; vertical-align: middle;">
             
-            반차&nbsp;여부
-            </td><td style="background: rgb(255, 255, 255); padding: 5px; border: 1px solid black; border-image: none; height: 25px; text-align: left; color: rgb(0, 0, 0); font-size: 14px; font-weight: normal; vertical-align: middle;"><span id="vacationHalfArea" style="line-height: normal; font-family: malgun gothic, dotum, arial, tahoma; font-size: 11pt; margin-top: 0px; margin-bottom: 0px;"><span class="halfArea">
-                <input type="checkbox" class="editor_opt" data-dsl="{{check_시작일_종료일}}" value="시작일" data-autotype="false" data-require="false" name="check_startHalf" id="startHalf" data-label="시작일">
-                <label class="editor_label" data-type="removeSpan">시작일</label>
-                (
-                <input type="radio" class="editor_opt" data-dsl="{{radio_오전_오후}}" name="radio_startHalf" id="startAMHalf" value="오전" data-autotype="false" data-require="false" data-label="오전" disabled="disabled">
-                <label class="editor_label" data-type="removeSpan">오전</label>
-            
-                <input type="radio" class="editor_opt" data-dsl="{{radio_오전_오후}}" name="radio_startHalf" id="startPMHalf" value="오후" data-autotype="false" data-require="false" data-label="오후" disabled="disabled">
-                <label class="editor_label" data-type="removeSpan">오후</label>
-                )
-            </span>
-            <span class="halfArea">
-                <input type="checkbox" class="editor_opt" data-dsl="{{check_시작일_종료일}}" value="종료일" data-autotype="false" data-require="false" name="check_startHalf" id="endHalf" data-label="종료일" disabled="disabled">
-                <label class="editor_label" data-type="removeSpan">종료일</label>
-                (
-                <input type="radio" class="editor_opt" data-dsl="{{radio_오전_오후}}" name="radio_endHalf" id="endAMHalf" value="오전" data-autotype="false" data-require="false" data-label="오전" disabled="disabled">
-                <label class="editor_label" data-type="removeSpan">오전</label>
-            
-                <input type="radio" class="editor_opt" data-dsl="{{radio_오전_오후}}" name="radio_endHalf" id="endPMHalf" value="오후" data-autotype="false" data-require="false" data-label="오후" disabled="disabled">
-                <label class="editor_label" data-type="removeSpan">오후</label>
-                )
-            </span>
+            반차&nbsp;시점
+            </td><td style="background: rgb(255, 255, 255); padding: 5px; border: 1px solid black; border-image: none; height: 25px; text-align: left; color: rgb(0, 0, 0); font-size: 14px; font-weight: normal; vertical-align: middle;">
+            <span id="vacationHalfArea" style="line-height: normal; font-family: malgun gothic, dotum, arial, tahoma; font-size: 11pt; margin-top: 0px; margin-bottom: 0px;">
+	            <span class="halfArea">
+	                <input type="radio" class="editor_opt" data-dsl="{{radio_오전_오후}}" name="halfDayPoint" id="startAMHalf" value="오전" data-autotype="false" data-require="false" data-label="오전">
+	                <label class="editor_label" data-type="removeSpan">오전</label>
+	            
+	                <input type="radio" class="editor_opt" data-dsl="{{radio_오전_오후}}" name="halfDayPoint" id="startPMHalf" value="오후" data-autotype="false" data-require="false" data-label="오후">
+	                <label class="editor_label" data-type="removeSpan">오후</label>
+	            </span>
             </span> 
             </td></tr><tr><td style="background: rgb(221, 221, 221); padding: 5px; border: 1px solid black; border-image: none; height: 25px; text-align: center; color: rgb(0, 0, 0); font-size: 14px; font-weight: bold; vertical-align: middle;">
             
             연차&nbsp;일수
-            </td><td style="background: rgb(255, 255, 255); padding: 3px; border: 1px solid black; border-image: none; width: 700px; height: 22px; text-align: left; color: rgb(0, 0, 0); font-size: 12px; vertical-align: middle;"><span id="restPointArea" style="line-height: normal; font-family: malgun gothic, dotum, arial, tahoma; font-size: 9pt; margin-top: 0px; margin-bottom: 0px;"><b>잔여연차 : </b>
-            <input type="text" class="ipt_editor ipt_editor_num" data-dsl="{{number:restPoint}}" name="restPoint" id="restPoint" data-require="false" data-editable="true" value="0" readonly="readonly">
-            <b id="restPoint_Comment" style="font-weight:bold; color:red"></b>
-            </span><span id="applyPointArea" style="line-height: normal; font-family: malgun gothic, dotum, arial, tahoma; font-size: 9pt; margin-top: 0px; margin-bottom: 0px;"><b>신청연차 : </b>
-            <input type="text" class="ipt_editor ipt_editor_num" data-dsl="{{number:applyPoint}}" name="applyPoint" id="applyPoint" data-require="false" data-editable="true" value="1" readonly="readonly">
+            </td><td style="background: rgb(255, 255, 255); padding: 3px; border: 1px solid black; border-image: none; width: 700px; height: 22px; text-align: left; color: rgb(0, 0, 0); font-size: 12px; vertical-align: middle;">
+            <span id="applyPointArea" style="line-height: normal; font-family: malgun gothic, dotum, arial, tahoma; font-size: 9pt; margin-top: 0px; margin-bottom: 0px;">
+            <b>신청연차 : </b>
+            <input type="text" class="ipt_editor ipt_editor_num" data-dsl="{{number:applyPoint}}" name="annualCount" id="annualCount" data-require="false" data-editable="true" value="1">
             <b id="applyPoint_Comment" style="font-weight:bold; color:red"></b>
             </span> 
             </td></tr><tr><td style="background: rgb(221, 221, 221); padding: 5px; border: 1px solid black; border-image: none; height: 80px; text-align: center; color: rgb(0, 0, 0); font-size: 14px; font-weight: bold; vertical-align: middle;"><b style="color: rgb(255, 0, 0);">*</b>&nbsp;휴가&nbsp;사유 
-            </td><td style="background: rgb(255, 255, 255); padding: 3px; border: 1px solid black; border-image: none; width: 700px; height: 100px; text-align: left; color: rgb(0, 0, 0); font-size: 12px; vertical-align: top;"><textarea class="txta_editor" data-dsl="{{textarea:description}}" name="description" id="description" value="" data-id="description" data-name="description" data-require="false" data-maxlength="" data-width="" data-defaultstr="" data-editable="false" data-value="" placeholder=""></textarea> 
+            </td><td style="background: rgb(255, 255, 255); padding: 3px; border: 1px solid black; border-image: none; width: 700px; height: 100px; text-align: left; color: rgb(0, 0, 0); font-size: 12px; vertical-align: top;"><textarea class="txta_editor" data-dsl="{{textarea:description}}" name="annualReason" id="annualReason" value="" data-id="description" data-name="description" data-require="false" data-maxlength="" data-width="" data-defaultstr="" data-editable="false" data-value="" placeholder=""></textarea> 
             </td></tr><tr><td style="background: rgb(221, 221, 221); padding: 20px !important; border: 1px solid black; border-image: none; width: 800px; height: 22px; text-align: left; vertical-align: middle;" colspan="2">
+            
+            <span id="hiddenInput"></span>
+            
             
              1. 연차의 사용은 근로기준법에 따라 전년도에 발생한 개인별 잔여 연차에 한하여 사용함을 원칙으로 한다. 단, 최초 입사시에는 근로 기준법에 따라 발생 예정된 연차를 차용하여 월 1회 사용 할 수 있다.<br> 2. 경조사 휴가는 행사일을 증명할 수 있는 가족 관계 증명서 또는 등본, 청첩장 등 제출<br> 3. 공가(예비군/민방위)는 사전에 통지서를, 사후에 참석증을 반드시 제출 
             </td></tr></tbody></table></span>
@@ -284,15 +283,46 @@ ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }
    </div>
    <!-- END 결재 정보 입력 FORM -->
    
+   <!-- 설정 -->
+   <jsp:useBean id="nowday" class="java.util.Date"/>
+   <jsp:useBean id="nowtime" class="java.util.Date"/>
+   <fmt:formatDate value="${nowday}" pattern="yyyy-MM-dd" var="today" />
+   <fmt:formatDate value="${nowtime}" pattern="HH:mm:ss" var="todaytime" />
+   <script>
+   
+	   	console.log('안녕');
+	   	$("#memberName").val('${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }');
+	   	$("#draftDate").val('<c:out value="${today}"/>');
+	   	$("#docNo").val(1004);
+	   	$("#draftDept").val('${ requestScope.dept }');
+        	
+   </script>
+   <!-- 설정 -->
+   
+   
    <!-- 결재 AJAX -->
    <script>
    $("#act_draft").click(function() {
-	  
-	   var jihun = $('form[name="vacation01"]').serializeArray();
-	   console.table(jihun);
+	   console.log($("input[name='startDate']").val());
 	   
+	   if($("input[name='startDate']").val() == "") {
+		   alert("시작 일시를 선택해주세요.");
+	   } else if($("input[name='endDate']").val() == "") {
+		   alert("종료 일시를 선택해주세요.");
+	   } else {
+		   alert("컨트롤러로 이동");
+		   /* 로그인 번호 추가 */
+		   const $span = $("#hiddenInput");
+		   $hiddenInput = $("<input name='memberno' value='${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }'> <input name='time' value='<c:out value="${todaytime}"/>'> <input name='paymentNo' value='1004'>")
+		   $span.append($hiddenInput);
+		   
+		   /* input 확인 및 submit */
+		   var jihun = $('form[name="vacation01"]').serializeArray();
+		   console.table(jihun);
+		   $("form[name='vacation01']").submit();
+	   }
 	   
-	   $.ajax({
+	   /* $.ajax({
 		   url: "${ pageContext.servletContext.contextPath }/approval/document/1004",
 		   type: 'POST',
            dataType: 'json',
@@ -301,9 +331,10 @@ ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }
            },
            success : function(data, textStatus, xhr) {
               alert(data);
+           	console.log("뭐가나오냐?");
            },
            error : function(xhr, status, error) {}
-       });
+       }); */
 
    });
    
