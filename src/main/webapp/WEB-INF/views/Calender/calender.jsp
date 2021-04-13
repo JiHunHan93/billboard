@@ -695,7 +695,7 @@
 									<div class="form-group">
 										<label>일정 기간 <span class="text-danger">*</span></label>
 										<div class="cal-icon">
-											<input class="form-control datetimepicker" type="text">
+											<input class="form-control datetimepicker" type="date">
 										</div>
 									</div>
 									<div class="form-group">

@@ -19,17 +19,13 @@
         var $this = this;
             // retrieve the dropped element's stored Event Object
             var originalEventObject = eventObj.data('eventObject');
-          
-			// scheduleType 선언          
-            var $scheduleType = eventObj.attr('data-class');
+            var $categoryClass = eventObj.attr('data-class');
             // we need to copy it, so that multiple events don't have a reference to the same object
             var copiedEventObject = $.extend({}, originalEventObject);
             // assign it the date that was reported
             copiedEventObject.start = date;
-            
-            //// scheduleType 조건문
-            if ($scheduleType)
-                copiedEventObject['className'] = [$scheduleType];
+            if ($categoryClass)
+                copiedEventObject['className'] = [$categoryClass];
             // render the event on the calendar
             $this.$calendar.fullCalendar('renderEvent', copiedEventObject, true);
             // is the "remove after drop" checkbox checked?
@@ -43,7 +39,7 @@
         var $this = this;
             var form = $("<form class='event-form'></form>");
             form.append("<label>Change event name</label>");
-            form.append("<div class='input-group'><input class='form-control' type=text value='" + calEvent.scheduleName + "' /><span class='input-group-append'><button type='submit' class='btn btn-success btn-md'>Save</button></span></div>");
+            form.append("<div class='input-group'><input class='form-control' type=text value='" + calEvent.title + "' /><span class='input-group-append'><button type='submit' class='btn btn-success btn-md'>Save</button></span></div>");
             $this.$modal.modal({
                 backdrop: 'static'
             });
@@ -54,8 +50,7 @@
                 $this.$modal.modal('hide');
             });
             $this.$modal.find('form').on('submit', function () {
-            	//스케줄이름 선언
-                calEvent.scheduleName = form.find("input[type=text]").val();
+                calEvent.title = form.find("input[type=text]").val();
                 $this.$calendarObj.fullCalendar('updateEvent', calEvent);
                 $this.$modal.modal('hide');
                 return false;
@@ -70,32 +65,28 @@
             var form = $("<form></form>");
             form.append("<div class='row'></div>");
             form.find(".row")
-                .append("<div class='col-md-12'><div class='form-group'><label class='control-label'>스케줄 이름</label><input class='form-control' type='text' name='scheduleName'/></div></div>")
-                .append("<div class='col-md-12'><div class='form-group'><label class='control-label'>scheduleType</label><select class='select form-control' name='scheduleType'></select></div></div>")
-                .find("select[name='scheduleType']")
-                
-                .append("<option value='bg-success'>개인</option>")
-                .append("<option value='bg-orange'>부서</option>")
+                .append("<div class='col-md-12'><div class='form-group'><label class='control-label'>Event Name</label><input class='form-control' type='text' name='title'/></div></div>")
+                .append("<div class='col-md-12'><div class='form-group'><label class='control-label'>스케줄 종류 </label><select class='select form-control' name='category'></select></div></div>")
+                .find("select[name='category']")
+                .append("<option value='bg-danger'>개인 스케줄 </option>")
+                .append("<option value='bg-success'>부서 스케줄 </option>")
                 
                 .append("<option value='bg-warning'>Warning</option></div></div>");
             $this.$modal.find('.delete-event').hide().end().find('.save-event').show().end().find('.modal-body').empty().prepend(form).end().find('.save-event').unbind('click').click(function () {
                 form.submit();
             });
             $this.$modal.find('form').on('submit', function () {
-                // 스케줄네임 변경
-                var scheduleName = form.find("input[name='scheduleName']").val();
+                var title = form.find("input[name='title']").val();
                 var beginning = form.find("input[name='beginning']").val();
                 var ending = form.find("input[name='ending']").val();
-              
-                //스케줄 타입 변경
-                var scheduleType = form.find("select[name='scheduleType'] option:checked").val();
-                if (scheduleName !== null && scheduleName.length != 0) {
+                var categoryClass = form.find("select[name='category'] option:checked").val();
+                if (title !== null && title.length != 0) {
                     $this.$calendarObj.fullCalendar('renderEvent', {
-                        scheduleName: scheduleName,
+                        title: title,
                         start:start,
                         end: end,
                         allDay: false,
-                        className: scheduleType
+                        className: categoryClass
                     }, true);  
                     $this.$modal.modal('hide');
                 }
@@ -113,7 +104,7 @@
             // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
             // it doesn't need to have a start or end
             var eventObject = {
-                scheduleName: $.trim($(this).text()) // use the element's text as the event title
+                title: $.trim($(this).text()) // use the element's text as the event title
             };
             // store the Event Object in the DOM element so we can get to it later
             $(this).data('eventObject', eventObject);
@@ -135,25 +126,41 @@
         var y = date.getFullYear();
         var form = '';
         var today = new Date($.now());
+        
 
         var defaultEvents =  [{
-                scheduleName: 'Event Name 4',
+                title: '감사',
+                start: new Date($.now() + 300000000),
+                end : new Date($.now() + 30050000),
+                className: 'bg-purple'
+            },
+            {
+                title: '거래처 미팅',
+                start: new Date($.now() + 300000000),
+                className: 'bg-purple'
+            },
+            {
+                title: '거래처 미팅',
+                start: new Date($.now() + 300000000),
+                className: 'bg-purple'
+            },
+            {   title: 'Event Name 4',
                 start: new Date($.now() + 148000000),
                 className: 'bg-purple'
             },
             {
-                scheduleName: 'Test Event 1',
+                title: 'Test Event 1',
                 start: today,
                 end: today,
                 className: 'bg-success'
             },
             {
-                scheduleName: 'Test Event 2',
+                title: 'Test Event 2',
                 start: new Date($.now() + 168000000),
                 className: 'bg-info'
             },
             {
-                scheduleName: 'Test Event 3',
+                title: 'Test Event 3',
                 start: new Date($.now() + 338000000),
                 className: 'bg-primary'
             }];
@@ -168,7 +175,7 @@
             height: $(window).height() - 200,   
             header: {
                 left: 'prev,next today',
-                center: 'scheduleName',
+                center: 'title',
                 right: 'month,agendaWeek,agendaDay'
             },
             events: defaultEvents,
@@ -184,7 +191,7 @@
 
         //on new event
         this.$saveCategoryBtn.on('click', function(){
-            var scheduleType = $this.$categoryForm.find("input[name='scheduleType']").val();
+            var categoryName = $this.$categoryForm.find("input[name='category-name']").val();
             var categoryColor = $this.$categoryForm.find("select[name='category-color']").val();
             if (categoryName !== null && categoryName.length != 0) {
                 $this.$extEvents.append('<div class="external-event bg-' + categoryColor + '" data-class="bg-' + categoryColor + '" style="position: relative;"><i class="mdi mdi-checkbox-blank-circle m-r-10 vertical-middle"></i>' + categoryName + '</div>')
