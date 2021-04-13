@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sevenelite.billbo.rnp.model.dao.RnpMapper">
+
+<resultMap type="com.sevenelite.billbo.rnp.model.dto.RnpDTO" id="rnpResultMap">
+ 	<id property="no" column="BONUS_NO"/>
+ 	<result property="reason" column="BONUS_REASON"/>
+ 	<result property="enrollDate" column="BONUS_DATE"/>
+ 	<result property="rnpType" column="BONUS_TYPE"/>
+ 	<result property="memberNo" column="MEMBER_NO"/>
+ </resultMap>
+ 
+ <select id="selectRnp" resultMap="rnpResultMap" parameterType="RnpDTO">
+ SELECT
+        A.BONUS_NO
+      , A.BONUS_REASON
+      , A.BONUS_DATE
+      , A.BONUS_TYPE
+      , A.MEMBER_NO  
+  FROM BB_BONUS A
+ </select>
+ 
+ </mapper>
