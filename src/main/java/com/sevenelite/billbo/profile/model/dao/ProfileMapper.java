@@ -24,7 +24,7 @@ public interface ProfileMapper {
 
 	int memberInfo(MemberInfoDTO member);
 	
-	MemberInfoDTO memberInfo();
+	List<MemberInfoDTO> memberInfo();
 
 	SpotDTO spot();
 	int spot(SpotDTO spot);

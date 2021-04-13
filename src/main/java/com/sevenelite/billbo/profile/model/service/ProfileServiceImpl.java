@@ -36,9 +36,9 @@ public class ProfileServiceImpl implements ProfileService{
 	}
 
 	@Override
-	public boolean memberInfo(MemberInfoDTO member) {
+	public List<MemberInfoDTO> memberInfo() {
 		// TODO Auto-generated method stub
-		return mapper.memberInfo(member) > 0? true : false;
+		return mapper.memberInfo();
 	}
 	@Override
 	public boolean spot(SpotDTO spot) {
