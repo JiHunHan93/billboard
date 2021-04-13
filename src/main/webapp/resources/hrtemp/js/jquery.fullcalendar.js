@@ -19,13 +19,17 @@
         var $this = this;
             // retrieve the dropped element's stored Event Object
             var originalEventObject = eventObj.data('eventObject');
-            var $categoryClass = eventObj.attr('data-class');
+          
+			// scheduleType 선언          
+            var $scheduleType = eventObj.attr('data-class');
             // we need to copy it, so that multiple events don't have a reference to the same object
             var copiedEventObject = $.extend({}, originalEventObject);
             // assign it the date that was reported
             copiedEventObject.start = date;
-            if ($categoryClass)
-                copiedEventObject['className'] = [$categoryClass];
+            
+            //// scheduleType 조건문
+            if ($scheduleType)
+                copiedEventObject['className'] = [$scheduleType];
             // render the event on the calendar
             $this.$calendar.fullCalendar('renderEvent', copiedEventObject, true);
             // is the "remove after drop" checkbox checked?
@@ -39,7 +43,7 @@
         var $this = this;
             var form = $("<form class='event-form'></form>");
             form.append("<label>Change event name</label>");
-            form.append("<div class='input-group'><input class='form-control' type=text value='" + calEvent.title + "' /><span class='input-group-append'><button type='submit' class='btn btn-success btn-md'>Save</button></span></div>");
+            form.append("<div class='input-group'><input class='form-control' type=text value='" + calEvent.scheduleName + "' /><span class='input-group-append'><button type='submit' class='btn btn-success btn-md'>Save</button></span></div>");
             $this.$modal.modal({
                 backdrop: 'static'
             });
@@ -50,7 +54,8 @@
                 $this.$modal.modal('hide');
             });
             $this.$modal.find('form').on('submit', function () {
-                calEvent.title = form.find("input[type=text]").val();
+            	//스케줄이름 선언
+                calEvent.scheduleName = form.find("input[type=text]").val();
                 $this.$calendarObj.fullCalendar('updateEvent', calEvent);
                 $this.$modal.modal('hide');
                 return false;
@@ -66,43 +71,31 @@
             form.append("<div class='row'></div>");
             form.find(".row")
                 .append("<div class='col-md-12'><div class='form-group'><label class='control-label'>스케줄 이름</label><input class='form-control' type='text' name='scheduleName'/></div></div>")
-                .append("<div class='col-md-12'><div class='form-group'><label class='control-label'>스케줄 종류</label><select class='select form-control' name='scheduleType'></select></div></div>")
-                .append("<div class='col-md-12'><div class='form-group'><label class='control-label'>시작일자</label><input class='form-control' type='date' name='startDate'/></div></div>")
-                .append("<div class='col-md-12'><div class='form-group'><label class='control-label'>종료일자</label><input class='form-control' type='date' name='endDate'/></div></div>")
-                .append("<div class='col-md-12'><div class='form-group'><label class='control-label'>장소</label><select class='select form-control' name='scheduleLocation'></select></div></div>")
+                .append("<div class='col-md-12'><div class='form-group'><label class='control-label'>scheduleType</label><select class='select form-control' name='scheduleType'></select></div></div>")
                 .find("select[name='scheduleType']")
-                .append("<option value='bg-danger'>Danger</option>")
-                .append("<option value='bg-success'>Success</option>")
-                .append("<option value='bg-purple'>Purple</option>")
-                .append("<option value='bg-primary'>Primary</option>")
-                .append("<option value='bg-pink'>Pink</option>")
-                .append("<option value='bg-info'>Info</option>")
-                .append("<option value='bg-inverse'>Inverse</option>")
-                .append("<option value='bg-orange'>Orange</option>")
-                .append("<option value='bg-brown'>Brown</option>")
-                .append("<option value='bg-teal'>Teal</option>")
-                .append("<option value='bg-warning'>Warning</option></div></div>")
-                .find("select[name='scheduleLocation']")
-                .append("<option value='bg-danger'>서울</option>")
-                .append("<option value='bg-success'>부산</option>")
-                .append("<option value='bg-purple'>제주도</option>")
+                
+                .append("<option value='bg-success'>개인</option>")
+                .append("<option value='bg-orange'>부서</option>")
+                
                 .append("<option value='bg-warning'>Warning</option></div></div>");
             $this.$modal.find('.delete-event').hide().end().find('.save-event').show().end().find('.modal-body').empty().prepend(form).end().find('.save-event').unbind('click').click(function () {
                 form.submit();
             });
             $this.$modal.find('form').on('submit', function () {
+                // 스케줄네임 변경
                 var scheduleName = form.find("input[name='scheduleName']").val();
-                var startDate = form.find("input[name='startDate']").val();
-                var endDate = form.find("input[name='endDate']").val();
-                var categoryClass = form.find("select[name='category'] option:checked").val();
-                   var scheduleLocation = form.find("select[name='category'] option:checked").val();
+                var beginning = form.find("input[name='beginning']").val();
+                var ending = form.find("input[name='ending']").val();
+              
+                //스케줄 타입 변경
+                var scheduleType = form.find("select[name='scheduleType'] option:checked").val();
                 if (scheduleName !== null && scheduleName.length != 0) {
                     $this.$calendarObj.fullCalendar('renderEvent', {
                         scheduleName: scheduleName,
                         start:start,
                         end: end,
                         allDay: false,
-                        className: categoryClass
+                        className: scheduleType
                     }, true);  
                     $this.$modal.modal('hide');
                 }
@@ -120,7 +113,7 @@
             // create an Event Object (http://arshaw.com/fullcalendar/docs/event_data/Event_Object/)
             // it doesn't need to have a start or end
             var eventObject = {
-                title: $.trim($(this).text()) // use the element's text as the event title
+                scheduleName: $.trim($(this).text()) // use the element's text as the event title
             };
             // store the Event Object in the DOM element so we can get to it later
             $(this).data('eventObject', eventObject);
@@ -144,23 +137,23 @@
         var today = new Date($.now());
 
         var defaultEvents =  [{
-                title: 'Event Name 4',
+                scheduleName: 'Event Name 4',
                 start: new Date($.now() + 148000000),
                 className: 'bg-purple'
             },
             {
-                title: 'Test Event 1',
+                scheduleName: 'Test Event 1',
                 start: today,
                 end: today,
                 className: 'bg-success'
             },
             {
-                title: 'Test Event 2',
+                scheduleName: 'Test Event 2',
                 start: new Date($.now() + 168000000),
                 className: 'bg-info'
             },
             {
-                title: 'Test Event 3',
+                scheduleName: 'Test Event 3',
                 start: new Date($.now() + 338000000),
                 className: 'bg-primary'
             }];
@@ -175,7 +168,7 @@
             height: $(window).height() - 200,   
             header: {
                 left: 'prev,next today',
-                center: 'title',
+                center: 'scheduleName',
                 right: 'month,agendaWeek,agendaDay'
             },
             events: defaultEvents,
@@ -191,7 +184,7 @@
 
         //on new event
         this.$saveCategoryBtn.on('click', function(){
-            var categoryName = $this.$categoryForm.find("input[name='category-name']").val();
+            var scheduleType = $this.$categoryForm.find("input[name='scheduleType']").val();
             var categoryColor = $this.$categoryForm.find("select[name='category-color']").val();
             if (categoryName !== null && categoryName.length != 0) {
                 $this.$extEvents.append('<div class="external-event bg-' + categoryColor + '" data-class="bg-' + categoryColor + '" style="position: relative;"><i class="mdi mdi-checkbox-blank-circle m-r-10 vertical-middle"></i>' + categoryName + '</div>')

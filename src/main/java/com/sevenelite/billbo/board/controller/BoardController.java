@@ -40,6 +40,11 @@ public class BoardController {
 		List<BoardDTO> boardList = boardService.selectBoard();
 		System.out.println("boardList :" + boardList);
 		model.addAttribute("boardList", boardList);
+		
+		List<BoardDTO> empBoardList = boardService.selectEmpBoard();
+		System.out.println("empBoardList :" + empBoardList);
+		model.addAttribute("empBoardList", empBoardList);
+		
 		List<NoticeBoardDTO> noticeBoardList = noticeBoardService.selectNoticeBoard();
 	    System.out.println("noticeBoardList :" + noticeBoardList);
 	    model.addAttribute("noticeBoardList", noticeBoardList);
@@ -64,6 +69,9 @@ public class BoardController {
 		List<BoardDTO> boardList = boardService.selectBoard();
 		model.addAttribute("boardList", boardList);
 		
+		List<BoardDTO> empBoardList = boardService.selectEmpBoard();
+		model.addAttribute("empBoardList", empBoardList);
+		
 		List<NoticeBoardDTO> noticeBoardList = noticeBoardService.selectNoticeBoard();
 	 	model.addAttribute("noticeBoardList", noticeBoardList);
 
@@ -81,25 +89,35 @@ public class BoardController {
 		mv.addObject("no",no);
 		System.out.println("no : " + no);
 
-		List<BoardDTO> detailInfo = boardService.detailBoard(no);
+		List<BoardDTO> detailInfo = boardService.detailBoard(no); //자유게시판의 상세정보를 담기위해 매퍼로 사번을 담아 전송
 		System.out.println("freedetail" + detailInfo);
 		System.out.println("freedetail" + detailInfo.size());
-		if(detailInfo.size() != 0) {
-			int upCount = boardService.updateCount(no);
-	
-			System.out.println("freedetail" + detailInfo);
+		if(detailInfo.size() != 0) { //자유게시판 조회 값을 리스트에 담은 경우
+			int upCount = boardService.updateCount(no); // 조회수를 올리기 위한 정수형 변수에 값을담기위해 매퍼로 전송
+			System.out.println("freedetail" + detailInfo); 
 			System.out.println("upCount : " + upCount);
-			model.addAttribute("detailInfo", detailInfo);
-			model.addAttribute("upCount", upCount);
-		} else if(detailInfo.size() == 0) {
-			List<NoticeBoardDTO> notiDetailInfo = noticeBoardService.detailNoticeBoard(no);
-			
-	    	if(notiDetailInfo.size() != 0) {
-	    	int upCount = noticeBoardService.updateCount(no);
-	    	System.out.println("notidetail" + notiDetailInfo);
-	    	System.out.println("upCount : " + upCount);
-	    	model.addAttribute("detailInfo", notiDetailInfo);
-	    	model.addAttribute("upCount", upCount);
+			model.addAttribute("detailInfo", detailInfo); // 받아온 조회 값을 JSP에서 사용가능하게 설정
+			model.addAttribute("upCount", upCount); // 조회수를 증가 시킨 후 JSP에서 값을 사용할 수 있게 설정
+		} else if(detailInfo.size() == 0) { // 자유게시판 조회 후 리스트에 값을 담지 못한 경우(게시판 타입이 '자유'가 아닌경우)
+			System.out.println("자유게시판 상세 조회값 없음");
+	    	List<BoardDTO> empDetailInfo = boardService.detailEmpBoard(no); //인사게시판 상세정보를 조회하기 위해 매퍼로 사번을담아 전송
+	    	if(empDetailInfo.size() != 0) { // 인사게시판 상세 조회 결과값이 리스트에 담긴경우
+		    	int upCount = boardService.updateCount(no); //조회수를 올리기 위한 정수형 변수에 값을담기위해 매퍼로 전송
+		    	System.out.println("empDetailInfo" + empDetailInfo);
+		    	System.out.println("upCount : " + upCount);
+		   		model.addAttribute("detailInfo", empDetailInfo);  // 받아온 조회 값을 JSP에서 사용가능하게 설정
+		   		model.addAttribute("upCount", upCount);  // 조회수를 증가 시킨 후 JSP에서 값을 사용할 수 있게 설정
+	    	} else if(empDetailInfo.size() == 0) { // 인사게시판 조회 후 리스트에 값을 담지 못한 경우(게시판 타입이 '인사'가 아닌경우)
+	   			List<NoticeBoardDTO> notiDetailInfo = noticeBoardService.detailNoticeBoard(no);  //공지게시판 상세정보를 조회하기 위해 매퍼로 사번을담아 전송
+	   			if(notiDetailInfo.size() != 0) {  // 공지게시판 상세 조회 결과값이 리스트에 담긴경우
+		   			int upCount = boardService.updateCount(no);  // 조회수를 올리기 위한 정수형 변수에 값을담기위해 매퍼로 전송
+		   			System.out.println("notidetail" + notiDetailInfo);
+		   			System.out.println("upCount : " + upCount);
+		   			model.addAttribute("detailInfo", notiDetailInfo);  // 받아온 조회 값을 JSP에서 사용가능하게 설정
+		   			model.addAttribute("upCount", upCount);  // 조회수를 증가 시킨 후 JSP에서 값을 사용할 수 있게 설정
+	   			} else {  // 세가지 타입 모두 값을 담지 못한 경우
+	   				System.out.println("게시물 조회결과를 찾을 수 없음");
+	   			}
 	    	}
 		}
 		return mv;

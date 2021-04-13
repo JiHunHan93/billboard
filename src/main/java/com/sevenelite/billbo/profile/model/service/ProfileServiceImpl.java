@@ -115,6 +115,11 @@ public class ProfileServiceImpl implements ProfileService{
 		// TODO Auto-generated method stub
 		return mapper.member_info_phone();
 	}
+	@Override
+	public List<MemberInfoDTO> mainProfile() {
+		// TODO Auto-generated method stub
+		return mapper.mainProfile();
+	}
 	}
 
 	

@@ -695,20 +695,19 @@
 																		<th>이름</th>
 																		<th>근무부서</th>
 																		<th>상벌구분</th>
-																		<th>금액</th>
+																		<th>상벌일자</th>
 																		<th>지급사유</th>
-																	</tr>
+																	</tr> 
 																</thead>
-																<c:forEach var="boardList" items="${requestScope.boardList }">
+																<c:forEach var="rnpList" items="${ requestScope.rnpList }">
 																	<tr class="rowClick">
 																		<td><input type="checkbox" class="" />
-																		<td><c:out value="${ boardList.no }" />
-																		<td><c:out value="${ boardList.title }" />
-																		<td><c:out value="${ boardList.writer }" />
-																		<td><c:out value="${ boardList.memberNo }" />
-																		<td><c:out value="${ boardList.enrollDate }" />
-																		<td><c:out value="${ boardList.endDate }" />
-																		<td><c:out value="${ boardList.count }" />
+																		<td><c:out value="${ rnpList.no }" />
+																		<td><c:out value="${ rnpList.reason }" />
+																		<td><c:out value="${ rnpList.enrollDate }" />
+																		<td><c:out value="${ rnpList.rnpType }" />
+																		<td><c:out value="${ rnpList.no }" />
+																		<td><c:out value="${ rnpList.memberNo}" />
 																	</tr>
 																</c:forEach>
 															</table>

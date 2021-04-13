@@ -11,30 +11,30 @@
         <meta name="robots" content="noindex, nofollow">
         <title>Attendance - HRMS admin template</title>
         	<!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+        <link rel="shortcut icon" type="image/x-icon" href="./resources/hrtemp/img/favicon.png">
 		
 		<!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./resources/hrtemp/css/bootstrap.min.css">
 		
 		<!-- Fontawesome CSS -->
-        <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+        <link rel="stylesheet" href="./resources/hrtemp/css/font-awesome.min.css">
 		
 		<!-- Lineawesome CSS -->
-		<link rel="stylesheet" href="assets/css/line-awesome.min.css">
+		<link rel="stylesheet" href="./resources/hrtemp/css/line-awesome.min.css">
 		
 		<!-- Select2 CSS -->
-		<link rel="stylesheet" href="assets/css/select2.min.css">
+		<link rel="stylesheet" href="./resources/hrtemp/css/select2.min.css">
 		
 		<!-- Datetimepicker CSS -->
-		<link rel="stylesheet" href="assets/css/bootstrap-datetimepicker.min.css">
+		<link rel="stylesheet" href="./resources/hrtemp/css/bootstrap-datetimepicker.min.css">
 		
 		<!-- Main CSS -->
-        <link rel="stylesheet" href="assets/css/style.css">
+        <link rel="stylesheet" href="./resources/hrtemp/css/style.css">
 		
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
-			<script src="assets/js/html5shiv.min.js"></script>
-			<script src="assets/js/respond.min.js"></script>
+			<script src="./resources/hrtemp/js/html5shiv.min.js"></script>
+			<script src="./resources/hrtemp/js/respond.min.js"></script>
 		<![endif]-->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -53,7 +53,7 @@
 				<!-- Logo -->
 					<div class="header-left">
 						<a href="employee-dashboard.html" class="logo">
-					  <img src="assets/img/Logo.png" width="40" height="40" alt="">
+					  <img src="./resources/hrtemp/img/Logo.png" width="40" height="40" alt="">
 				   </a>
 					</div>
 				<!-- /Logo -->
@@ -94,20 +94,20 @@
 				   <!-- Flag -->
 				   <li class="nav-item dropdown has-arrow flag-nav">
 					  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
-						 <img src="assets/img/flags/us.png" alt="" height="20"> <span>English</span>
+						 <img src="./resources/hrtemp/img/flags/us.png" alt="" height="20"> <span>English</span>
 					  </a>
 					  <div class="dropdown-menu dropdown-menu-right">
 						 <a href="javascript:void(0);" class="dropdown-item">
-							<img src="assets/img/flags/us.png" alt="" height="16"> English
+							<img src="./resources/hrtemp/img/flags/us.png" alt="" height="16"> English
 						 </a>
 						 <a href="javascript:void(0);" class="dropdown-item">
-							<img src="assets/img/flags/fr.png" alt="" height="16"> French
+							<img src="./resources/hrtemp/img/flags/fr.png" alt="" height="16"> French
 						 </a>
 						 <a href="javascript:void(0);" class="dropdown-item">
-							<img src="assets/img/flags/es.png" alt="" height="16"> Spanish
+							<img src="./resources/hrtemp/img/flags/es.png" alt="" height="16"> Spanish
 						 </a>
 						 <a href="javascript:void(0);" class="dropdown-item">
-							<img src="assets/img/flags/de.png" alt="" height="16"> German
+							<img src="./resources/hrtemp/img/flags/de.png" alt="" height="16"> German
 						 </a>
 					  </div>
 				   </li>
@@ -129,7 +129,7 @@
 								  <a href="activities.html">
 									 <div class="media">
 										<span class="avatar">
-										   <img alt="" src="assets/img/profiles/avatar-02.jpg">
+										   <img alt="" src="./resources/hrtemp/img/profiles/avatar-02.jpg">
 										</span>
 										<div class="media-body">
 										   <p class="noti-details"><span class="noti-title">John Doe</span> added new task <span class="noti-title">Patient appointment booking</span></p>
@@ -142,7 +142,7 @@
 								  <a href="activities.html">
 									 <div class="media">
 										<span class="avatar">
-										   <img alt="" src="assets/img/profiles/avatar-03.jpg">
+										   <img alt="" src="./resources/hrtemp/img/profiles/avatar-03.jpg">
 										</span>
 										<div class="media-body">
 										   <p class="noti-details"><span class="noti-title">Tarah Shropshire</span> changed the task name <span class="noti-title">Appointment booking with payment gateway</span></p>
@@ -155,7 +155,7 @@
 								  <a href="activities.html">
 									 <div class="media">
 										<span class="avatar">
-										   <img alt="" src="assets/img/profiles/avatar-06.jpg">
+										   <img alt="" src="./resources/hrtemp/img/profiles/avatar-06.jpg">
 										</span>
 										<div class="media-body">
 										   <p class="noti-details"><span class="noti-title">Misty Tison</span> added <span class="noti-title">Domenic Houston</span> and <span class="noti-title">Claire Mapes</span> to project <span class="noti-title">Doctor available module</span></p>
@@ -168,7 +168,7 @@
 								  <a href="activities.html">
 									 <div class="media">
 										<span class="avatar">
-										   <img alt="" src="assets/img/profiles/avatar-17.jpg">
+										   <img alt="" src="./resources/hrtemp/img/profiles/avatar-17.jpg">
 										</span>
 										<div class="media-body">
 										   <p class="noti-details"><span class="noti-title">Rolland Webber</span> completed task <span class="noti-title">Patient and Doctor video conferencing</span></p>
@@ -181,7 +181,7 @@
 								  <a href="activities.html">
 									 <div class="media">
 										<span class="avatar">
-										   <img alt="" src="assets/img/profiles/avatar-13.jpg">
+										   <img alt="" src="./resources/hrtemp/img/profiles/avatar-13.jpg">
 										</span>
 										<div class="media-body">
 										   <p class="noti-details"><span class="noti-title">Bernardo Galaviz</span> added new task <span class="noti-title">Private chat module</span></p>
@@ -216,7 +216,7 @@
 									 <div class="list-item">
 										<div class="list-left">
 										   <span class="avatar">
-											  <img alt="" src="assets/img/profiles/avatar-09.jpg">
+											  <img alt="" src="./resources/hrtemp/img/profiles/avatar-09.jpg">
 										   </span>
 										</div>
 										<div class="list-body">
@@ -233,7 +233,7 @@
 									 <div class="list-item">
 										<div class="list-left">
 										   <span class="avatar">
-											  <img alt="" src="assets/img/profiles/avatar-02.jpg">
+											  <img alt="" src="./resources/hrtemp/img/profiles/avatar-02.jpg">
 										   </span>
 										</div>
 										<div class="list-body">
@@ -250,7 +250,7 @@
 									 <div class="list-item">
 										<div class="list-left">
 										   <span class="avatar">
-											  <img alt="" src="assets/img/profiles/avatar-03.jpg">
+											  <img alt="" src="./resources/hrtemp/img/profiles/avatar-03.jpg">
 										   </span>
 										</div>
 										<div class="list-body">
@@ -267,7 +267,7 @@
 									 <div class="list-item">
 										<div class="list-left">
 										   <span class="avatar">
-											  <img alt="" src="assets/img/profiles/avatar-05.jpg">
+											  <img alt="" src="./resources/hrtemp/img/profiles/avatar-05.jpg">
 										   </span>
 										</div>
 										<div class="list-body">
@@ -284,7 +284,7 @@
 									 <div class="list-item">
 										<div class="list-left">
 										   <span class="avatar">
-											  <img alt="" src="assets/img/profiles/avatar-08.jpg">
+											  <img alt="" src="./resources/hrtemp/img/profiles/avatar-08.jpg">
 										   </span>
 										</div>
 										<div class="list-body">
@@ -307,7 +307,7 @@
 	   
 				   <li class="nav-item dropdown has-arrow main-drop">
 					  <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-						 <span class="user-img"><img src="assets/img/profiles/avatar-21.jpg" alt="">
+						 <span class="user-img"><img src="./resources/hrtemp/img/profiles/avatar-21.jpg" alt="">
 						 <span class="status online"></span></span>
 						 <span><!-- 해당 사원 명 --></span>
 					  </a>
@@ -451,7 +451,12 @@
 										
  
 									<div class="punch-det">
-						
+										<form name="update" action="${pageContext.servletContext.contextPath }/work/update" method="post">
+										<button class="btn btn-success btn-lg" style="margin-left: 25px">퇴근 등록 </button>
+										</form>
+										<form name="update" action="${pageContext.servletContext.contextPath }/work/regist" method="post">
+										<button class="btn btn-dark btn-lg" style="margin-left: 25px">출근 등록 </button>
+										</form>
 										<h6>출근시간:</h6><p id="time"><!--출근버튼 클릭시 기입-->
 										<h6>퇴근시간:</h6><span id="finish"></span><br/><!--퇴근버튼 클릭시 기입 -->
 										<h6>주간 누적 근무 시간:</h6>									</div>
@@ -710,24 +715,24 @@ document.getElementById("clock").innerHTML = ampm + hours + ":" + minutes + ":" 
     </script>
    
 		<!-- jQuery -->
-        <script src="assets/js/jquery-3.5.1.min.js"></script>
+        <script src="./resources/hrtemp/js/jquery-3.5.1.min.js"></script>
 		
 		<!-- Bootstrap Core JS -->
-        <script src="assets/js/popper.min.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="./resources/hrtemp/js/popper.min.js"></script>
+        <script src="./resources/hrtemp/js/bootstrap.min.js"></script>
 		
 		<!-- Slimscroll JS -->
-		<script src="assets/js/jquery.slimscroll.min.js"></script>
+		<script src="./resources/hrtemp/js/jquery.slimscroll.min.js"></script>
 		
 		<!-- Select2 JS -->
-		<script src="assets/js/select2.min.js"></script>
+		<script src="./resources/hrtemp/js/select2.min.js"></script>
 		
 		<!-- Datetimepicker JS -->
-		<script src="assets/js/moment.min.js"></script>
-		<script src="assets/js/bootstrap-datetimepicker.min.js"></script>
+		<script src="./resources/hrtemp/js/moment.min.js"></script>
+		<script src="./resources/hrtemp/js/bootstrap-datetimepicker.min.js"></script>
 		
 		<!-- Custom JS -->
-		<script src="assets/js/app.js"></script>
+		<script src="./resources/hrtemp/js/app.js"></script>
 	
 <script type="text/javascript">
  

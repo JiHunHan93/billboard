@@ -56,5 +56,7 @@ public interface ProfileService {
 
 	List<DeptDTO> member_name();
 
+	List<MemberInfoDTO> mainProfile();
+
 
 }
