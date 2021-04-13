@@ -359,61 +359,26 @@
 		<div class="sidebar" id="sidebar">
 			<div class="sidebar-inner slimscroll">
 				<div id="sidebar-menu" class="sidebar-menu">
-					<ul>
-						<!-- <li class="menu-title"> 
-                        <span>Main</span>
-                     </li> -->
+					<ul>	
 						<!-- 사이드바 서브메뉴 안쓰는 방향으로 수정 -->
 						<li><a href="${pageContext.servletContext.contextPath}"
 							class="sidebar-default"> <i class="la la-home sidebar-icon"></i>
 								<!-- <span class="menu-arrow"></span> --> <span
 								class="sidebar-text">Home</span>
-						</a> <!-- <ul style="display: none;">
-                           <li><a href="index.html">Admin Dashboard</a></li>
-                           <li><a class="active" href="employee-dashboard.html">Employee Dashboard</a></li>
-                        </ul> --></li>
+						</a> </li>
 						<div class="sidebar-line"></div>
 						<li><a href="${pageContext.servletContext.contextPath}/apps"
 							class="sidebar-default"> <i class="la la-cube sidebar-icon"></i>
 								<span class="sidebar-text"> Apps</span> <!-- <span class="menu-arrow"></span> -->
-						</a> <!-- <ul style="display: none;">
-                           <li><a href="chat.html">Chat</a></li>
-                           <li class="submenu">
-                              <a href="#"><span> Calls</span> <span class="menu-arrow"></span></a>
-                              <ul style="display: none;">
-                                 <li><a href="voice-call.html">Voice Call</a></li>
-                                 <li><a href="video-call.html">Video Call</a></li>
-                                 <li><a href="outgoing-call.html">Outgoing Call</a></li>
-                                 <li><a href="incoming-call.html">Incoming Call</a></li>
-                              </ul>
-                           </li>
-                           <li><a href="events.html">Calendar</a></li>
-                           <li><a href="contacts.html">Contacts</a></li>
-                           <li><a href="inbox.html">Email</a></li>
-                           <li><a href="file-manager.html">File Manager</a></li>
-                        </ul> --></li>
+						</a> </li>
 						<div class="sidebar-line"></div>
-						<!-- <li class="menu-title"> 
-                        <span>Apps</span>
-                     </li> -->
+						
 						<li><a
 							href="${pageContext.servletContext.contextPath}/employee"
 							class="noti-dot sidebar-default"> <i
 								class="la la-user sidebar-icon"></i> <span class="sidebar-text">
 									Employees</span> <!-- <span class="menu-arrow"></span> -->
-						</a> <!-- <ul style="display: none;">
-                           <li><a href="employees.html">All Employees</a></li>
-                           <li><a href="holidays.html">Holidays</a></li>
-                           <li><a href="leaves.html">Leaves (Admin) <span class="badge badge-pill bg-primary float-right">1</span></a></li>
-                           <li><a href="leaves-employee.html">Leaves (Employee)</a></li>
-                           <li><a href="leave-settings.html">Leave Settings</a></li>
-                           <li><a href="attendance.html">Attendance (Admin)</a></li>
-                           <li><a href="attendance-employee.html">Attendance (Employee)</a></li>
-                           <li><a href="departments.html">Departments</a></li>
-                           <li><a href="designations.html">Designations</a></li>
-                           <li><a href="timesheet.html">Timesheet</a></li>
-                           <li><a href="overtime.html">Overtime</a></li>
-                        </ul> --></li>
+						</a> </li>
 						<div class="sidebar-line"></div>
 						<li><a
 							href="${pageContext.servletContext.contextPath}/attendance"
@@ -442,192 +407,6 @@
 								class="sidebar-text">Information</span>
 						</a></li>
 						<div class="sidebar-line"></div>
-						<!-- <li class="menu-title"> 
-                        <span>HR</span>
-                     </li>
-                     <li class="submenu">
-                        <a href="#"><i class="la la-files-o"></i> <span> Accounts </span> <span class="menu-arrow"></span></a>
-                        <ul style="display: none;">
-                           <li><a href="estimates.html">Estimates</a></li>
-                           <li><a href="invoices.html">Invoices</a></li>
-                           <li><a href="payments.html">Payments</a></li>
-                           <li><a href="expenses.html">Expenses</a></li>
-                           <li><a href="provident-fund.html">Provident Fund</a></li>
-                           <li><a href="taxes.html">Taxes</a></li>
-                        </ul>
-                     </li>
-                     <li class="submenu">
-                        <a href="#"><i class="la la-money"></i> <span> Payroll </span> <span class="menu-arrow"></span></a>
-                        <ul style="display: none;">
-                           <li><a href="salary.html"> Employee Salary </a></li>
-                           <li><a href="salary-view.html"> Payslip </a></li>
-                           <li><a href="payroll-items.html"> Payroll Items </a></li>
-                        </ul>
-                     </li>
-                     <li> 
-                        <a href="policies.html"><i class="la la-file-pdf-o"></i> <span>Policies</span></a>
-                     </li>
-                     <li class="submenu">
-                        <a href="#"><i class="la la-pie-chart"></i> <span> Reports </span> <span class="menu-arrow"></span></a>
-                        <ul style="display: none;">
-                           <li><a href="expense-reports.html"> Expense Report </a></li>
-                           <li><a href="invoice-reports.html"> Invoice Report </a></li>
-                        </ul>
-                     </li>
-                     <li class="menu-title"> 
-                        <span>Performance</span>
-                     </li>
-                     <li class="submenu">
-                        <a href="#"><i class="la la-graduation-cap"></i> <span> Performance </span> <span class="menu-arrow"></span></a>
-                        <ul style="display: none;">
-                           <li><a href="performance-indicator.html"> Performance Indicator </a></li>
-                           <li><a href="performance.html"> Performance Review </a></li>
-                           <li><a href="performance-appraisal.html"> Performance Appraisal </a></li>
-                        </ul>
-                     </li>
-                     <li class="submenu">
-                        <a href="#"><i class="la la-crosshairs"></i> <span> Goals </span> <span class="menu-arrow"></span></a>
-                        <ul style="display: none;">
-                           <li><a href="goal-tracking.html"> Goal List </a></li>
-                           <li><a href="goal-type.html"> Goal Type </a></li>
-                        </ul>
-                     </li>
-                     <li class="submenu">
-                        <a href="#"><i class="la la-edit"></i> <span> Training </span> <span class="menu-arrow"></span></a>
-                        <ul style="display: none;">
-                           <li><a href="training.html"> Training List </a></li>
-                           <li><a href="trainers.html"> Trainers</a></li>
-                           <li><a href="training-type.html"> Training Type </a></li>
-                        </ul>
-                     </li>
-                     <li><a href="promotion.html"><i class="la la-bullhorn"></i> <span>Promotion</span></a></li>
-                     <li><a href="resignation.html"><i class="la la-external-link-square"></i> <span>Resignation</span></a></li>
-                     <li><a href="termination.html"><i class="la la-times-circle"></i> <span>Termination</span></a></li>
-                     <li class="menu-title"> 
-                        <span>Administration</span>
-                     </li>
-                     <li> 
-                        <a href="assets.html"><i class="la la-object-ungroup"></i> <span>Assets</span></a>
-                     </li>
-                     <li class="submenu">
-                        <a href="#"><i class="la la-briefcase"></i> <span> Jobs </span> <span class="menu-arrow"></span></a>
-                        <ul style="display: none;">
-                           <li><a href="jobs.html"> Manage Jobs </a></li>
-                           <li><a href="job-applicants.html"> Applied Candidates </a></li>
-                        </ul>
-                     </li>
-                     <li> 
-                        <a href="knowledgebase.html"><i class="la la-question"></i> <span>Knowledgebase</span></a>
-                     </li>
-                     <li> 
-                        <a href="activities.html"><i class="la la-bell"></i> <span>Activities</span></a>
-                     </li>
-                     <li> 
-                        <a href="users.html"><i class="la la-user-plus"></i> <span>Users</span></a>
-                     </li>
-                     <li> 
-                        <a href="settings.html"><i class="la la-cog"></i> <span>Settings</span></a>
-                     </li>
-                     <li class="menu-title"> 
-                        <span>Pages</span>
-                     </li>
-                     <li class="submenu">
-                        <a href="#"><i class="la la-user"></i> <span> Profile </span> <span class="menu-arrow"></span></a>
-                        <ul style="display: none;">
-                           <li><a href="profile.html"> Employee Profile </a></li>
-                           <li><a href="client-profile.html"> Client Profile </a></li>
-                        </ul>
-                     </li>
-                     <li class="submenu">
-                        <a href="#"><i class="la la-key"></i> <span> Authentication </span> <span class="menu-arrow"></span></a>
-                        <ul style="display: none;">
-                           <li><a href="login.html"> Login </a></li>
-                           <li><a href="register.html"> Register </a></li>
-                           <li><a href="forgot-password.html"> Forgot Password </a></li>
-                           <li><a href="otp.html"> OTP </a></li>
-                           <li><a href="lock-screen.html"> Lock Screen </a></li>
-                        </ul>
-                     </li>
-                     <li class="submenu">
-                        <a href="#"><i class="la la-exclamation-triangle"></i> <span> Error Pages </span> <span class="menu-arrow"></span></a>
-                        <ul style="display: none;">
-                           <li><a href="error-404.html">404 Error </a></li>
-                           <li><a href="error-500.html">500 Error </a></li>
-                        </ul>
-                     </li>
-                     <li class="submenu">
-                        <a href="#"><i class="la la-hand-o-up"></i> <span> Subscriptions </span> <span class="menu-arrow"></span></a>
-                        <ul style="display: none;">
-                           <li><a href="subscriptions.html"> Subscriptions (Admin) </a></li>
-                           <li><a href="subscriptions-company.html"> Subscriptions (Company) </a></li>
-                           <li><a href="subscribed-companies.html"> Subscribed Companies</a></li>
-                        </ul>
-                     </li>
-                     <li class="submenu">
-                        <a href="#"><i class="la la-columns"></i> <span> Pages </span> <span class="menu-arrow"></span></a>
-                        <ul style="display: none;">
-                           <li><a href="search.html"> Search </a></li>
-                           <li><a href="faq.html"> FAQ </a></li>
-                           <li><a href="terms.html"> Terms </a></li>
-                           <li><a href="privacy-policy.html"> Privacy Policy </a></li>
-                           <li><a href="blank-page.html"> Blank Page </a></li>
-                        </ul>
-                     </li>
-                     <li class="menu-title"> 
-                         <span>UI Interface</span>
-                      </li>
-                      <li> 
-                         <a href="components.html"><i class="la la-puzzle-piece"></i> <span>Components</span></a>
-                      </li>
-                      <li class="submenu">
-                         <a href="#"><i class="la la-object-group"></i> <span> Forms </span> <span class="menu-arrow"></span></a>
-                         <ul style="display: none;">
-                            <li><a href="form-basic-inputs.html">Basic Inputs </a></li>
-                            <li><a href="form-input-groups.html">Input Groups </a></li>
-                            <li><a href="form-horizontal.html">Horizontal Form </a></li>
-                            <li><a href="form-vertical.html"> Vertical Form </a></li>
-                            <li><a href="form-mask.html"> Form Mask </a></li>
-                            <li><a href="form-validation.html"> Form Validation </a></li>
-                         </ul>
-                      </li>
-                      <li class="submenu">
-                         <a href="#"><i class="la la-table"></i> <span> Tables </span> <span class="menu-arrow"></span></a>
-                         <ul style="display: none;">
-                            <li><a href="tables-basic.html">Basic Tables </a></li>
-                            <li><a href="data-tables.html">Data Table </a></li>
-                         </ul>
-                      </li>
-                      <li class="menu-title"> 
-                         <span>Extras</span>
-                      </li>
-                      <li> 
-                         <a href="#"><i class="la la-file-text"></i> <span>Documentation</span></a>
-                      </li>
-                      <li> 
-                         <a href="javascript:void(0);"><i class="la la-info"></i> <span>Change Log</span> <span class="badge badge-primary ml-auto">v3.4</span></a>
-                      </li>
-                      <li class="submenu">
-                         <a href="javascript:void(0);"><i class="la la-share-alt"></i> <span>Multi Level</span> <span class="menu-arrow"></span></a>
-                         <ul style="display: none;">
-                            <li class="submenu">
-                               <a href="javascript:void(0);"> <span>Level 1</span> <span class="menu-arrow"></span></a>
-                               <ul style="display: none;">
-                                  <li><a href="javascript:void(0);"><span>Level 2</span></a></li>
-                                  <li class="submenu">
-                                     <a href="javascript:void(0);"> <span> Level 2</span> <span class="menu-arrow"></span></a>
-                                     <ul style="display: none;">
-                                        <li><a href="javascript:void(0);">Level 3</a></li>
-                                        <li><a href="javascript:void(0);">Level 3</a></li>
-                                     </ul>
-                                  </li>
-                                  <li><a href="javascript:void(0);"> <span>Level 2</span></a></li>
-                               </ul>
-                            </li>
-                            <li>
-                               <a href="javascript:void(0);"> <span>Level 1</span></a>
-                            </li>
-                         </ul>
-                      </li> -->
 					</ul>
 				</div>
 			</div>
@@ -669,7 +448,9 @@
 											</ul>
 											<br>
 											<form class="file-search">
-											<button type="button" class="btn btn-primary btn-sm sub-btn">상벌 추가</button>
+											<div class="col-auto float-right ml-auto">
+											<a href="#" class="btn btn-primary btn-sm sub-btn" data-toggle="modal" data-target="#edit_project"><i class="fa fa-plus"></i> 상벌 추가</a>
+											</div>
 												<div class="input-group" style="width: 300px; float: left;">
 													<select>
 														<option>제목</option>
@@ -696,28 +477,24 @@
 																		<th>근무부서</th>
 																		<th>상벌구분</th>
 																		<th>상벌일자</th>
-																		<th>지급사유</th>
+																		<th>상벌사유</th>
 																	</tr> 
 																</thead>
 																<c:forEach var="rnpList" items="${ requestScope.rnpList }">
 																	<tr class="rowClick">
 																		<td><input type="checkbox" class="" />
 																		<td><c:out value="${ rnpList.no }" />
-																		<td><c:out value="${ rnpList.reason }" />
-																		<td><c:out value="${ rnpList.enrollDate }" />
-																		<td><c:out value="${ rnpList.rnpType }" />
 																		<td><c:out value="${ rnpList.no }" />
-																		<td><c:out value="${ rnpList.memberNo}" />
+																		<td><c:out value="${ rnpList.no }" />
+																		<td><c:out value="${ rnpList.rnpType }" />
+																		<td><c:out value="${ rnpList.enrollDate }" />
+																		<td><c:out value="${ rnpList.reason}" />
 																	</tr>
 																</c:forEach>
 															</table>
 														</div>
 													</div>
 												</div>
-												<div class="tab-pane" id="solid-justified-tab2">Tab
-													content 2</div>
-												<div class="tab-pane" id="solid-justified-tab3">Tab
-													content 3</div>
 											</div>
 										</div>
 									</div>
@@ -728,6 +505,86 @@
 				</div>
 			</div>
 		</div>
+		<!-- Edit Board Modal -->
+				<div id="edit_project" class="modal custom-modal fade" role="dialog">
+					<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+					<form name="board5" action="${pageContext.servletContext.contextPath }/noticeBoard/modifyNotice" method="">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">상벌 추가</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label>사번</label>
+												<input name="no" class="form-control" id="modifyTitle" type="text"
+												 value="<c:out value="${ noticeDetailInfo.no }"/>" >
+											</div>
+										</div>
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label>제목</label>
+                                                <input name="title" class="form-control" id="modifyTitle"
+                                                value="<c:out value="${ noticeDetailInfo.title}"/>" type="text">
+											</div>
+										</div>
+										<div class="col-sm-6">
+											<div class="form-group">
+											<label>이름</label> <input name="writer" class="form-control" 
+												value="<c:out value="${ noticeDetailInfo.writer }"/>" type="text">
+											</div>
+									    </div>
+									</div>
+									
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label>게시일</label>
+												<div class="cal-icon">
+													<input type="date"
+													name="enrollDate" id="modifyEnrollDate"
+													value="<c:out value="${ noticeDetailInfo.enrollDate }"/>">
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label>근무 부서</label> <input name="status" class="form-control" id="modifyTitle"
+												value="<c:out value="${noticeDetailInfo.status}"/>" type="text" >
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-sm-3">
+											<div class="form-group">
+                                                <label>상벌 구분</label>
+												<select class="select" name="" id="">
+													<option value="포상">포상</option>
+													<option value="인사">징계</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-sm-6">
+											<div class="form-group">
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+										<label>상벌 사유</label>
+										<textarea rows="4" class="form-control"
+										 placeholder="Enter your message here" name="body" id="modifyBody"><c:out
+										 value ="${ noticeDetailInfo.body }"/></textarea>
+									</div>
+									<div class="submit-section">
+										<button class="btn btn-primary submit-btn" id="modify-btn" type="button" onclick="goModify(this.form)">상벌 추가</button>
+									</div>
+							</div>
+						</div>
+						</form>
+					</div>
+				</div>
 	</div>
 	
 	<!-- /Page Wrapper -->
@@ -761,16 +618,20 @@
 		}
 	}
 	</script>
-
-	<!-- <script>
-		$(function(){
-			$(".rowClick").click(function(){
-				var no = $(this).children().eq(1).text();
-				console.log(no);
-				location.href="${ pageContext.servletContext.contextPath }/board/detail?no=" + no;
-			});
-		});
-	</script> -->
+    <script type="text/javascript">
+     function goModify(frm){
+   	 var title = frm.title.value;
+   	 var name = frm.name.value;
+   	 var enrollDate = frm.enrollDate.value;
+   	 var endDate = frm.endDate.value;
+   	 var boardType = frm.boardType.value;
+   	 var body = frm.body.value;
+   	 var fileAttachment = frm.fileAttachment.value;
+   	 
+   	 frm.submit();
+    	}
+    </script>
+	
 	<!-- jQuery -->
 	<script src="../resources/hrtemp/js/jquery-3.5.1.min.js"></script>
 
