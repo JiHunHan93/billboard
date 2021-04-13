@@ -15,7 +15,9 @@ import com.sevenelite.billbo.workhour.work.model.dto.StatusAndWorkDTO;
 
    List<StatusAndWorkDTO> sequenceWork(int no);
 
-   boolean updateWork(int MemberNo, List<StatusAndWorkDTO> workInfo);
+   boolean updateWork(int MemberNo, int no);
+
+int seqNo();
 
    
    }

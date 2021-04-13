@@ -680,6 +680,7 @@
 							<table class="table table-striped custom-table mb-0 datatable">
 								<thead>
 									<tr>
+										<th>행 번호</th>
 										<th>날짜</th>
 										<th>업무시작</th>
 										<th>업무종료</th>
@@ -689,7 +690,8 @@
 								<c:forEach var="statusList" items="${requestScope.statusList }">
 									<tbody>
 										<tr>
-											<td><c:out value="${statusList.date }"></c:out></td>
+											<td><c:out value="${ statusList.no }"></c:out></td>
+											<td><c:out value="${ statusList.date }"></c:out></td>
 											<td><c:out value="${ statusList.commute }"></c:out></td>
 											<td><c:out value="${ statusList.lwork }"></c:out></td>
 											<td></td>
