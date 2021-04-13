@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<% pageContext.setAttribute("replaceChar", "\n"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -679,8 +681,8 @@
 											class="text-xs"><c:out
 													value="${ detailInfo.enrollDate} " /></span></small>
 									</div>
-									<div>
-										<c:out value="${ detailInfo.body}" />
+									<div style="white-space: pre-line;">
+										<c:out escapeXml="false" value="${ fn:replace( detailInfo.body, replaceChar, '<br>' ) }"/>
 									</div>
 
 								</div>
@@ -939,9 +941,9 @@
 								</div>
 								<div class="form-group">
 									<label>내용</label>
-									<textarea rows="4" class="form-control"
-										placeholder="Enter your message here" name="body" id="modifyBody"><c:out
-											value="${ detailInfo.body }" /></textarea>
+									<textarea rows="4" class="form-control"	placeholder="Enter your message here" name="body" id="modifyBody" style="white-space: pre-line;">
+									<c:out escapeXml="false" value="${ detailInfo.body }"/>
+									</textarea>
 								</div>
 								<div class="form-group">
 									<label>업로드한 파일</label> <input class="form-control" type="file"

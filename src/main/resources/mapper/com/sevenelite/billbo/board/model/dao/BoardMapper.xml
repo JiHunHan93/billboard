@@ -32,7 +32,6 @@
     AND A.BOARD_STATUS = 'Y'
    <!--  AND A.BOARD_ENROLL_DATE &lt;= SYSDATE -->
     ORDER BY A.BOARD_ENROLL_DATE DESC, A.BOARD_NO
-     
  </select>
 
 <insert id="registBoard" parameterType="BoardDTO">

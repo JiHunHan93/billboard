@@ -30,4 +30,9 @@
  		 <typeAlias alias="BoardDTO" type="com.sevenelite.billbo.board.model.dto.BoardDTO"/>
  	</typeAliases>
  	
+ 	<!-- 
+ 	<settings>
+    	<setting name="callSettersOnNulls" value="true"/>
+ 	</settings> 
+ 	-->
  </configuration>
