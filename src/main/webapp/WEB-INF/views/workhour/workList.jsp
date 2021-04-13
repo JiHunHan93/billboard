@@ -691,7 +691,7 @@
 											</td>
 										</tr>
 											<tr>
-												<td style="font-weight: bold; font-size: 26px;">1주</td>
+												<td style="font-weight: bold; font-size: 26px;">주 차</td>
 												<td>누적 근무 시간  : <c:out value="${workList.totalWork } 시간"></c:out> </td>
 												<td class="text-center">
 													<div class="action-label">

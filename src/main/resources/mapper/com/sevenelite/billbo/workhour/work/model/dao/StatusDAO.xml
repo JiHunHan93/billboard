@@ -13,8 +13,8 @@
  	<collection property="workList" resultMap="workResult"/>
  	</resultMap>	
 	<resultMap id="workResult" type="com.sevenelite.billbo.workhour.work.model.dto.WorkDTO">
-	<id column="WEEK_WORK_STATISTIC_NO" property="wSTNo"/>
-	<result column="STATISTIC_DATE" property="sTDate"/>
+	<id column="WEEK_WORK_STATISTIC_NO" property="weekNo"/>
+	<result column="STATISTIC_DATE" property="date"/>
 	<result column="TOTAL_WORK_HOURS" property="totalWork"/>
 	<result column="TOTAL_EXTRA_WORK_HOURS" property="extraWork"/>
 	<result column="WORK_LATE_COUNT" property = "lateCount"/>
@@ -61,10 +61,11 @@
 	</insert>
 	
 	<update id="updateWork" parameterType="StatusAndWorkDTO">
-       UPDATE 
+       UPDATE
               BB_WORKSTATUS A
           SET A.LEAVE_WORK = SYSDATE
-        WHERE A.WORKSTATUS_NO = #{no }
+        WHERE A.WORKSTATUS_NO = #{ no, jdbcType=INTEGER }
+          AND A.MEMBER_NO = { memberno }
 	</update>
 	
 	<select id="detailWork" resultMap="statusAndWorkResultMap" parameterType="StatusAndWorkDTO">
@@ -72,5 +73,10 @@
 		       *
           FROM BB_WORKSTATUS A
          WHERE A.WORKSTATUS_NO = #{ no }
+	</select>
+	<select id="seqNo" resultMap="statusAndWorkResultMap" parameterType="_int">
+		SELECT 
+    		SEQ_WORKSTATUS_NO.CURRVAL
+       FROM DUAL;
 	</select>
  </mapper>   

@@ -19,7 +19,7 @@ public interface ProfileService {
 
 	boolean armyInfo(ArmyDTO army);
 
-	boolean memberInfo(MemberInfoDTO member);
+	List<MemberInfoDTO> memberInfo();
 //
 //	void memberInfo(MemberInfoDTO member);
 
