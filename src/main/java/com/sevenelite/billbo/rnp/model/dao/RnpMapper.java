@@ -1,5 +1,11 @@
-package com.sevenelite.billbo.bonus.model.dao;
+package com.sevenelite.billbo.rnp.model.dao;
 
-public interface BonusMapper {
+import java.util.List;
+
+import com.sevenelite.billbo.rnp.model.dto.RnpDTO;
+
+public interface RnpMapper {
+
+	List<RnpDTO> selectRnp();
 
 }

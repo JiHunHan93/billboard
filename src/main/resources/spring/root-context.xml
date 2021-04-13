@@ -72,7 +72,8 @@
 
 									   com.sevenelite.billbo.profile.model.dao,
 									   com.sevenelite.billbo.workhour.work.model.dao,
-									   com.sevenelite.billbo.board.model.dao"/>
+									   com.sevenelite.billbo.board.model.dao,
+									   com.sevenelite.billbo.rnp.model.dao"/>
 
 
 

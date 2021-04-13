@@ -1,5 +1,11 @@
-package com.sevenelite.billbo.bonus.model.service;
+package com.sevenelite.billbo.rnp.model.service;
 
-public interface BonusService {
+import java.util.List;
+
+import com.sevenelite.billbo.rnp.model.dto.RnpDTO;
+
+public interface RnpService {
+
+	List<RnpDTO> selectRnp();
 
 }

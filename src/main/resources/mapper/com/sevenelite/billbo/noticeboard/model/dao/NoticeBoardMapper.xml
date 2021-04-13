@@ -14,6 +14,7 @@
  	<result property="fileAttachment" column="BOARD_FILEATTACHMENT"/>
  	<result property="count" column="BOARD_COUNT"/>
  	<result property="enrollDate" column="BOARD_ENROLL_DATE"/>
+ 	<result property="endDate" column="BOARD_END_DATE"/>
  	<result property="memberNo" column="MEMBER_NO"/>
  </resultMap>
  
@@ -56,7 +57,7 @@
   	,   #{writer}
   	, 	'Y'
   	,   NULL
-  	,   1
+  	,   DEFAULT
   	,   SYSDATE
   	,   SYSDATE
   	,   5
