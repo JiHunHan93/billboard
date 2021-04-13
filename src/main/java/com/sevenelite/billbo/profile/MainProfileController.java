@@ -51,7 +51,7 @@ public class MainProfileController {
 		  profileService.memberInfo(member); 
 		  System.out.println("branch:" + member);
 		  SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-
+		  List<MemberInfoDTO> memberInfo = profileService.mainProfile();
 		  System.out.println("왜 안오는거여 쉬벌?????");
 
 		  return "profile/mainProfile";

@@ -62,6 +62,8 @@ public interface ProfileMapper {
 
 	List<MemBbDTO> member_info_phone();
 
+	List<MemberInfoDTO> mainProfile();
+
 	
 
 
