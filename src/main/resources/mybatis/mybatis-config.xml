@@ -23,6 +23,7 @@
  		<typeAlias alias="LicenseDTO" type="com.sevenelite.billbo.profile.model.dto.LicenseDTO"/>
 		<typeAlias alias="StatusAndWorkDTO" type="com.sevenelite.billbo.workhour.work.model.dto.StatusAndWorkDTO"/>
  		<typeAlias alias="RnpDTO" type="com.sevenelite.billbo.rnp.model.dto.RnpDTO"/>
+ 		<typeAlias alias="ModifyDeptDTO" type="com.sevenelite.billbo.rnp.model.dto.ModifyDeptDTO"/>
  		<!-- <typeAlias alias="NoticeBoardDTO" type="com.sevenlite.bilbo.noticeboard.model.dto.NoticeBoardDTO"/> -->
  		<!-- <typeAlias alias="BoardDTO" type="com.sevenelite.billbo.board.model.dto.BoardDTO"/> -->
  		

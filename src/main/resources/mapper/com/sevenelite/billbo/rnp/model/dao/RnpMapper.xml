@@ -10,16 +10,41 @@
  	<result property="enrollDate" column="BONUS_DATE"/>
  	<result property="rnpType" column="BONUS_TYPE"/>
  	<result property="memberNo" column="MEMBER_NO"/>
- </resultMap>
+</resultMap>
+<resultMap type="com.sevenelite.billbo.member.model.dto.MemBbDTO" id="memberResultMap">
+		<id property="no" column="MEMBER_NO" />
+		<result property="name" column="MEMBER_NAME" />
+		<result property="pwd" column="MEMBER_PWD" />
+		<result property="email" column="EMAIL" />
+		<result property="phone" column="PHONE" />
+</resultMap>
+<resultMap type="com.sevenelite.billbo.rnp.model.dto.ModifyDeptDTO" id="modifyDeptResultMap">
+		<id property="no" column="MEMBER_NO" />
+		<result property="name" column="MEMBER_NAME" />
+		<result property="pwd" column="MEMBER_PWD" />
+		<result property="email" column="EMAIL" />
+		<result property="phone" column="PHONE" />
+</resultMap>
+<resultMap type="com.sevenelite.billbo.profile.model.dto.DeptDTO" id="DeptResultMap">
+		<id property="no" column="MEMBER_NO" />
+		<result property="name" column="MEMBER_NAME" />
+		<result property="pwd" column="MEMBER_PWD" />
+		<result property="email" column="EMAIL" />
+		<result property="phone" column="PHONE" />
+</resultMap>
  
  <select id="selectRnp" resultMap="rnpResultMap" parameterType="RnpDTO">
  SELECT
-        A.BONUS_NO
-      , A.BONUS_REASON
-      , A.BONUS_DATE
+        A.MEMBER_NO
+      , B.MEMBER_NAME
+      , D.DEPT_NAME
       , A.BONUS_TYPE
-      , A.MEMBER_NO  
-  FROM BB_BONUS A
+      , A.BONUS_DATE
+      , A.BONUS_REASON
+      FROM BB_BONUS A
+      JOIN BB_MEMBER B ON ( A.MEMBER_NO = B.MEMBER_NO)
+      JOIN BB_MODIFY_DEPT C ON ( B.MEMBER_NO = C.MEMBER_NO)
+      JOIN BB_DEPT D ON ( C.DEPT_CODE = D.DEPT_CODE)
  </select>
  
  </mapper>

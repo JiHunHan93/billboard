@@ -104,13 +104,19 @@ public class WorkDetailController {
 //				String s = attrs.nextElement();
 //				System.out.println("attr : " + s);
 //			}
-		List<StatusAndWorkDTO> workInfo =  workStatusService.selectListstatus();
+			List<StatusAndWorkDTO> workInfo =  workStatusService.selectListstatus();
 		
 			UserDetailsVO userDetails = (UserDetailsVO) authentication.getPrincipal();
-			if(workStatusService.updateWork(userDetails.getMemberno(),workInfo)) {
+			int no = workStatusService.seqNo();
+			System.out.println("================================" + no);
+			System.out.println("================================" + no);
+			System.out.println("================================" + no);
+			if(workStatusService.updateWork(userDetails.getMemberno(),no)) {
 				System.out.println(workInfo);
+				System.out.println(userDetails);
 				rttr.addFlashAttribute("message", "퇴근하자");
 			};
+			
 			ModelAndView mv = new ModelAndView();
 			model.addAttribute("StatusAndWorkDTO", status);
 			mv.setViewName("statusList"); 
