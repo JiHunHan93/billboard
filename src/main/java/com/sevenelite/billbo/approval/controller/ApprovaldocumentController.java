@@ -28,34 +28,20 @@ public class ApprovaldocumentController {
 	}
 	
 	
-	/* 휴가신청서 */
+	/* Controller에서 로그인 정보 가져오기 */
 	@GetMapping("1008")
-//	public String testMap(@AuthenticationPrincipal UserDetailsVO userDetailsVO) {
 	public String testMap(Authentication authentication) {
-		UserDetailsVO userDetails = (UserDetailsVO) authentication;
-		System.out.println(userDetails.getUsername());
-		System.out.println(userDetails.getMembername());
-		System.out.println(userDetails.getMemberno());
-//		System.out.println("1. username : " + userDetailsVO.getUsername());
-//		System.out.println("2. password : " + userDetailsVO.getPassword());
-//		System.out.println("3. membername : " + userDetailsVO.getMembername());
-//		System.out.println("4. memberno : " + userDetailsVO.getMemberno());
+		
+		/* 1. authentication 토큰을 사용하여 로그인 정보를 UserDetailsVO에 담는다. */
+		UserDetailsVO userDetails = (UserDetailsVO) authentication.getPrincipal();
+		
+		/* 2. UserDetailsVO에 있는 getter를 이용하여 ID, NAME, NO를 가져온다. */
+		System.out.println("1. username : " + userDetails.getUsername());
+		System.out.println("2. membername : " + userDetails.getMembername());
+		System.out.println("3. memberno : " + userDetails.getMemberno());
 		
 		return "approval/document/1004";
 	}
-	
-	/* 휴가신청서 */
-//	@GetMapping("1008")
-//	public String testMap(@AuthenticationPrincipal User userDetails) {
-//		System.out.println(userDetails);
-//		System.out.println(userDetails.getUsername());
-////		System.out.println("1. username : " + userDetailsVO.getUsername());
-////		System.out.println("2. password : " + userDetailsVO.getPassword());
-////		System.out.println("3. membername : " + userDetailsVO.getMembername());
-////		System.out.println("4. memberno : " + userDetailsVO.getMemberno());
-//		
-//		return "approval/document/1004";
-//	}
 	
 	@PostMapping(value="1004", produces="application/json; charset=UTF-8")
 	@ResponseBody
