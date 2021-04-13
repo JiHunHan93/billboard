@@ -64,10 +64,7 @@
        UPDATE 
               BB_WORKSTATUS A
           SET A.LEAVE_WORK = SYSDATE
-			, A.WORKDATE = #{ date, jdbcType=DATE }
-		    , A.COMMUTE	= #{commute, jdbcType=DATE }
-			, A.MEMBER_NO = 2
-        WHERE A.WORKSTATUS_NO = #{ no }
+        WHERE A.WORKSTATUS_NO = #{no }
 	</update>
 	
 	<select id="detailWork" resultMap="statusAndWorkResultMap" parameterType="StatusAndWorkDTO">
