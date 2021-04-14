@@ -24,4 +24,10 @@ public class RnpServiceImpl implements RnpService{
 		return rnpMapper.selectRnp();
 	}
 
+	@Override
+	public List<RnpDTO> detailRnp(int no) {
+		
+		return rnpMapper.detailRnp(no);
+	}
+
 }

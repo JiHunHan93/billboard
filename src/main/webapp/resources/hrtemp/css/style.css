@@ -411,6 +411,10 @@ table.dataTable thead > tr > td.sorting {
 	width: 100%;
 }
 
+table.dataTable thead > tr > th.sorting_asc.not-sort{
+	display: block !important;
+}
+
 /*-----------------
 	3. Helper Class
 -----------------------*/
@@ -613,7 +617,6 @@ table.dataTable thead > tr > td.sorting {
 .btn-primary.active:hover,
 .btn-primary.focus:active,
 .btn-primary:active:focus,
-.btn-primary:active:hover,
 .open > .dropdown-toggle.btn-primary.focus,
 .open > .dropdown-toggle.btn-primary:focus,
 .open > .dropdown-toggle.btn-primary:hover {
