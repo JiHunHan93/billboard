@@ -95,12 +95,12 @@ public class ProfileServiceImpl implements ProfileService{
 //		return mapper.member_info_phone(no);
 //	}
 	@Override
-	public List<MemDTO>member_address() {
+	public List<MemBbDTO>member_address() {
 		System.out.println("이게된다고?");
 		return mapper.member_address();
 	}
 	@Override
-	public List<MemDTO>member_enrollDate() {
+	public List<MemBbDTO>member_enrollDate() {
 		System.out.println("이게된다고?");
 		return mapper.member_enrollDate();
 	}
@@ -119,6 +119,22 @@ public class ProfileServiceImpl implements ProfileService{
 	public List<MemberInfoDTO> mainProfile() {
 		// TODO Auto-generated method stub
 		return mapper.mainProfile();
+	}
+
+	/*
+	 * @Override public List<CareerDTO> career() { // TODO Auto-generated method
+	 * stub return mapper.career(); }
+	 */
+	@Override
+	public boolean memberInfoInsert(MemberInfoDTO memberInfoInsert) {
+		// TODO Auto-generated method stub
+		return mapper.memberInfoInsert(memberInfoInsert) > 0? true : false;
+	}
+
+	@Override
+	public List<CareerDTO> career() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	}
 

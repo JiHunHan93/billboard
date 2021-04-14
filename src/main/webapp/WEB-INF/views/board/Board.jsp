@@ -849,40 +849,10 @@
 				this.parentNode.style.backgroundColor = "yellow";
 				this.parentNode.style.cursor = "pointer";
 			}
-			
 			$tds[i].onmouseout = function() {
 				this.parentNode.style.background = "white";
 			}
-		}
-	}
-	if(document.getElementsByClassName("free-td")) {
-		const $free = document.getElementsByClassName("free-td")
-		for(let i = 0; i < $free.length; i++) {
-			$free[i].onclick = function() {
-				const no = this.parentNode.children[1].innerText;
-				const count = this.parentNode.children[7].innerText;
-				console.log(count);
-				console.log(no);
-				location.href = "${ pageContext.servletContext.contextPath }/board/detail?no=" + no;
-			}
-		}
-	}
-	if(document.getElementsByClassName("emp-td")) {
-		const $noti = document.getElementsByClassName("emp-td")
-		for(let i = 0; i < $noti.length; i++) {
-			$noti[i].onclick = function() {
-				const no = this.parentNode.children[1].innerText;
-				const count = this.parentNode.children[7].innerText;
-				console.log(count);
-				console.log(no);
-				location.href = "${ pageContext.servletContext.contextPath }/board/detail?no=" + no;
-			}
-		}
-	}
-	if(document.getElementsByClassName("noti-td")) {
-		const $noti = document.getElementsByClassName("noti-td")
-		for(let i = 0; i < $noti.length; i++) {
-			$noti[i].onclick = function() {
+			$tds[i].onclick = function() {
 				const no = this.parentNode.children[1].innerText;
 				const count = this.parentNode.children[7].innerText;
 				console.log(count);
@@ -897,11 +867,12 @@
 			const $tds = document.getElementsByTagName("td");
 			for(let i = 0; i < $tds.length; i++) {
 				const ED = $tds[i].parentNode.children[6].innerText;
-				console.log("if문 안읽음")
-				console.log(ED);
-				console.log(typeof ED)
-				if(ED == "" || ED == null) {
-					console.log("if문 읽음")
+				var str = $tds[i].parentNode.children[6].innerText.substring(0,1);
+				console.log("if문 안읽음");
+				console.log(str);
+				console.log(typeof str);
+				if(str == "" || str == null || str != 2) {
+					console.log("if문 읽음");
 					$tds[i].parentNode.children[6].innerText = "무기한";
 				}
 			}
