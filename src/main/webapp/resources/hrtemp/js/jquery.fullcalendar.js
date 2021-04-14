@@ -126,6 +126,7 @@
         var form = '';
         var today = new Date($.now());
         
+        
 
         var defaultEvents =  [{
                 title: '감사',
@@ -140,11 +141,11 @@
             },
             {
                 title: '거래처 미팅',
-                start: new Date($.now() + 300000000),
+                start: new Date($.now()),
                 className: 'bg-purple'
             },
             {   title: 'Event Name 4',
-                start: new Date($.now() + 148000000),
+                start: new Date($.now()),
                 className: 'bg-purple'
             },
             {
@@ -155,12 +156,12 @@
             },
             {
                 title: 'Test Event 2',
-                start: new Date($.now() + 168000000),
+                start: new Date($.now()),
                 className: 'bg-info'
             },
             {
                 title: 'Test Event 3',
-                start: new Date($.now() + 338000000),
+                start: new Date($.now()),
                 className: 'bg-primary'
             }];
 
