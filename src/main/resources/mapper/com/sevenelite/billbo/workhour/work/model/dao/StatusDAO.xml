@@ -64,7 +64,7 @@
        UPDATE
               BB_WORKSTATUS A
           SET A.LEAVE_WORK = SYSDATE
-        WHERE A.WORKSTATUS_NO = #{ no, jdbcType=INTEGER }
+        WHERE A.WORKSTATUS_NO = #{ no }
           AND A.MEMBER_NO = { memberno }
 	</update>
 	
@@ -77,6 +77,6 @@
 	<select id="seqNo" resultMap="statusAndWorkResultMap" parameterType="_int">
 		SELECT 
     		SEQ_WORKSTATUS_NO.CURRVAL
-       FROM DUAL;
+       FROM DUAL
 	</select>
  </mapper>   
