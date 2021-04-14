@@ -1,17 +1,16 @@
 
    package com.sevenelite.billbo.workhour.work.model.service;
    
-   import java.util.List;
+   import java.util.Date;
+import java.util.List;
 
-import com.sevenelite.billbo.member.model.dto.MemDTO;
-import com.sevenelite.billbo.member.model.dto.UserDetailsVO;
 import com.sevenelite.billbo.workhour.work.model.dto.StatusAndWorkDTO;
    
    public interface WorkStatusService {
    
    List<StatusAndWorkDTO> selectListstatus();
 
-   boolean registWork(StatusAndWorkDTO status);
+   boolean registWork(StatusAndWorkDTO status, Date today);
 
    List<StatusAndWorkDTO> sequenceWork(int no);
 

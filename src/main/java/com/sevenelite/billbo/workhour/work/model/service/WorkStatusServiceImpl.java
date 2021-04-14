@@ -1,6 +1,7 @@
 
 package com.sevenelite.billbo.workhour.work.model.service;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -28,7 +29,7 @@ public class WorkStatusServiceImpl implements WorkStatusService{
 	}
 
 	@Override
-	public boolean registWork(StatusAndWorkDTO status) {
+	public boolean registWork(StatusAndWorkDTO status, Date tody) {
 		
 		return dao.registWork(status) > 0? true: false;
 	}
