@@ -70,8 +70,7 @@
                 .find("select[name='category']")
                 .append("<option value='bg-danger'>개인 스케줄 </option>")
                 .append("<option value='bg-success'>부서 스케줄 </option>")
-                
-                .append("<option value='bg-warning'>Warning</option></div></div>");
+                .append("<option value='bg-warning'>기타</option></div></div>");
             $this.$modal.find('.delete-event').hide().end().find('.save-event').show().end().find('.modal-body').empty().prepend(form).end().find('.save-event').unbind('click').click(function () {
                 form.submit();
             });

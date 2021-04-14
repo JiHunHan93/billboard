@@ -30,7 +30,7 @@ public interface ProfileMapper {
 	int spot(SpotDTO spot);
 
 	int dept(DeptDTO dept);
-	CareerDTO career();
+	//List<CareerDTO> career();
 	int career(CareerDTO career);
 //보류	
 //	BonusDTO bonus();
@@ -52,17 +52,23 @@ public interface ProfileMapper {
 	int member_info_no(MemDTO member_info_no);
 
 	
-//	List<MemDTO> member_info_phone(int no);
-	
-	List<MemDTO> member_address();
 
-	List<MemDTO> member_enrollDate();
+	
+//	List<MemDTO> member_address();
+//
+//	List<MemDTO> member_enrollDate();
 
 	List<DeptDTO> member_name();
-
 	List<MemBbDTO> member_info_phone();
 
 	List<MemberInfoDTO> mainProfile();
+ 
+
+	int memberInfoInsert(MemberInfoDTO memberInfoInsert);
+
+	List<MemBbDTO> member_address();
+
+	List<MemBbDTO> member_enrollDate();
 
 	
 
