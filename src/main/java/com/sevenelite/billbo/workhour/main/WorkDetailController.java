@@ -2,7 +2,8 @@ package com.sevenelite.billbo.workhour.main;
 
 import java.security.Principal;
 import java.text.SimpleDateFormat;
-import java.util.Enumeration;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -86,7 +87,7 @@ public class WorkDetailController {
 	}
 	
 	@PostMapping("/work/regist")
-	public String registWork(@ModelAttribute StatusAndWorkDTO status, RedirectAttributes rttr, HttpServletRequest request) {
+	public String registWork(@ModelAttribute StatusAndWorkDTO status, RedirectAttributes rttr, HttpServletRequest request,Authentication authentication) {
 		
 		System.out.println(System.currentTimeMillis());
 		java.util.Date today = new java.util.Date(System.currentTimeMillis());
@@ -95,10 +96,29 @@ public class WorkDetailController {
 		
 		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
 		String formatDate = format.format(today);
-
+		UserDetailsVO userDetails = (UserDetailsVO) authentication.getPrincipal();
+		int userno = userDetails.getMemberno();
 		System.out.println(formatDate);
 		
-		if(workStatusService.registWork(status,today)) {
+		
+		StatusAndWorkDTO workList =  new StatusAndWorkDTO();
+	    workList.setDate(formatDate);
+	    workList.setMemNo(userno);
+	    
+	    Calendar calendar = new GregorianCalendar();
+	    
+	    int hours = calendar.get(Calendar.HOUR_OF_DAY);
+	    int miniutes = calendar.get(Calendar.MINUTE);
+	    int seconds = calendar.get(Calendar.SECOND);
+	    
+	    if(hours > 10) {
+	    	System.out.println("지각");
+	    } else {
+	    	System.out.println("정상출근");
+	    }
+	     
+	    
+		if(workStatusService.registWork(workList)) {
 			rttr.addFlashAttribute("message" , "출근이 등록 되었습니다.");
 			
 		}
@@ -117,11 +137,10 @@ public class WorkDetailController {
 			List<StatusAndWorkDTO> workInfo =  workStatusService.selectListstatus();
 		
 			UserDetailsVO userDetails = (UserDetailsVO) authentication.getPrincipal();
-			int no = workStatusService.seqNo();
-			System.out.println("================================" + no);
-			System.out.println("================================" + no);
-			System.out.println("================================" + no);
-			if(workStatusService.updateWork(userDetails.getMemberno(),no)) {
+			int userno = userDetails.getMemberno();
+			StatusAndWorkDTO workList = new StatusAndWorkDTO();
+			
+			if(workStatusService.updateWork(userno)) {
 				System.out.println(workInfo);
 				System.out.println(userDetails);
 				rttr.addFlashAttribute("message", "퇴근하자");

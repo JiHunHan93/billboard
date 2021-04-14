@@ -28,25 +28,21 @@ public class WorkStatusServiceImpl implements WorkStatusService{
 		return dao.selectAllStatus();
 	}
 
-	@Override
-	public boolean registWork(StatusAndWorkDTO status, Date tody) {
-		
-		return dao.registWork(status) > 0? true: false;
-	}
 
 	@Override
 	public List<StatusAndWorkDTO> sequenceWork(int no) {
 		return dao.detailWork(no);
 	}
 
+
 	@Override
-	public boolean updateWork(int MemberNo, int no) {
-		return dao.updateWork(MemberNo, no);
+	public boolean registWork(StatusAndWorkDTO workList) {
+		return dao.registWork(workList) > 0? true: false;
 	}
 
 	@Override
-	public int seqNo() {
-		return dao.seqNo() ;
+	public boolean updateWork(int userno) {
+		return dao.updateWork(userno);
 	}
 
 	}

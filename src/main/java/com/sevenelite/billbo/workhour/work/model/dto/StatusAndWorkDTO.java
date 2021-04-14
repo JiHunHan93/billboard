@@ -8,12 +8,12 @@ public class StatusAndWorkDTO {
 	private int no;
 	private int MemNo;
 	private WorkDTO workList;
-	private java.sql.Date date;
+	private String date;
 	private String commute;
 	private String lwork;
 	private String type;
 	public StatusAndWorkDTO() {}
-	public StatusAndWorkDTO(int no, int memNo, WorkDTO workList, java.sql.Date date, String commute, String lwork,
+	public StatusAndWorkDTO(int no, int memNo, WorkDTO workList, String date, String commute, String lwork,
 			String type) {
 		super();
 		this.no = no;
@@ -42,10 +42,10 @@ public class StatusAndWorkDTO {
 	public void setWorkList(WorkDTO workList) {
 		this.workList = workList;
 	}
-	public java.sql.Date getDate() {
+	public String getDate() {
 		return date;
 	}
-	public void setDate(java.sql.Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
 	public String getCommute() {
@@ -72,6 +72,4 @@ public class StatusAndWorkDTO {
 				+ ", commute=" + commute + ", lwork=" + lwork + ", type=" + type + "]";
 	}
 	
-	
-	
-		}
+}

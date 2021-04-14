@@ -36,6 +36,12 @@
 <!-- Main CSS -->
 <link rel="stylesheet" href="../resources/hrtemp/css/style.css">
 
+<!-- Custom JS -->
+<script src="../resources/hrtemp/js/app.js"></script>
+
+<!-- jQuery -->
+<script src="../resources/hrtemp/js/jquery-3.5.1.min.js"></script>
+
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
          <script src="assets/js/html5shiv.min.js"></script>
@@ -471,7 +477,7 @@
 															<table class="datatable table table-stripped mb-0">
 																<thead>
 																	<tr>
-																		<th><input type="checkbox"></th>
+																		<td class="not-sort"><input type="checkbox"></td>
 																		<th>사번</th>
 																		<th>이름</th>
 																		<th>근무부서</th>
@@ -482,13 +488,13 @@
 																</thead>
 																<c:forEach var="rnpList" items="${ requestScope.rnpList }">
 																	<tr class="rowClick">
-																		<td><input type="checkbox" class="" />
-																		<td><c:out value="${ rnpList.no }" />
-																		<td><c:out value="${ rnpList.no }" />
-																		<td><c:out value="${ rnpList.no }" />
-																		<td><c:out value="${ rnpList.rnpType }" />
-																		<td><c:out value="${ rnpList.enrollDate }" />
-																		<td><c:out value="${ rnpList.reason}" />
+																		<td class="rnp-td"><input type="checkbox" />
+																		<td class="rnp-td"><c:out value="${ rnpList.memNo }" />
+																		<td class="rnp-td"><c:out value="${ rnpList.memName }" />
+																		<td class="rnp-td"><c:out value="${ rnpList.deptName }" />
+																		<td class="rnp-td"><c:out value="${ rnpList.rnpType }" />
+																		<td class="rnp-td"><c:out value="${ rnpList.enrollDate }" />
+																		<td class="rnp-td"><c:out value="${ rnpList.reason}" />
 																	</tr>
 																</c:forEach>
 															</table>
@@ -560,7 +566,7 @@
 										<div class="col-sm-3">
 											<div class="form-group">
                                                 <label>상벌 구분</label>
-												<select class="select" name="" id="">
+												<select class="select1" name="" id="">
 													<option value="포상">포상</option>
 													<option value="인사">징계</option>
 												</select>
@@ -606,13 +612,11 @@
 			$tds[i].onmouseout = function() {
 				this.parentNode.style.background = "white";
 			}
-		//여기서부터 스타트야 지금 작성한다..
+			
 			$tds[i].onclick = function() {
 				const no = this.parentNode.children[1].innerText;
-				const count = this.parentNode.children[7].innerText;
-				console.log(count);
 				console.log(no);
-				location.href = "${ pageContext.servletContext.contextPath }/board/detail?no=" + no;
+				location.href = "${ pageContext.servletContext.contextPath }/Rnp/detail?no=" + no;
 			} 
 			
 		}

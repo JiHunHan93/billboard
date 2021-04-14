@@ -1946,7 +1946,7 @@ pre code {
   .table-responsive-sm {
     display: block;
     width: 100%;
-    overflow-x: auto;
+
     -webkit-overflow-scrolling: touch;
   }
   .table-responsive-sm > .table-bordered {

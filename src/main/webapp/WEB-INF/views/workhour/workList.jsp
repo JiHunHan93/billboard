@@ -648,26 +648,26 @@
 					<!-- /Page Header -->
 								<h3 class="page-title" font>${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }님의 근태 현황</h3>
 					<form>
-					<c:forEach var="workList" items="${ requestScope.workList }">
+					<c:forEach var="workInfo" items="${ requestScope.workInfo }">
 					<!-- Leave Statistics -->
 					
 						<div class="row">
 							<div class="col-md-3">
 								<div class="stats-info">
 									<h5 style="font-weight: bold;">근무시간</h5>
-										<h4 style="color:darkorange;"><c:out value="${ workList.totalWork }시간"/></h4>
+										<h4 style="color:darkorange;"><c:out value="${ workInfo.totalWork }시간"/></h4>
 								</div>
 							</div>
 							<div class="col-md-3">
 								<div class="stats-info">
 									<h6 style="font-weight: bold;">초과시간</h6>
-									<h4 style="color: darkorange;"><c:out value="${ workList.extraWork }시간"/></h4> 
+									<h4 style="color: darkorange;"><c:out value="${ workInfo.extraWork }시간"/></h4> 
 								</div>
 							</div>
 							<div class="col-md-3">
 								<div class="stats-info">
 									<h6 style="font-weight: bold;">근무일</h6>
-									<h4 style="color: gray;"><c:out value="${workList.workCount }"/></h4>
+									<h4 style="color: gray;"><c:out value="${workInfo.workCount }"/></h4>
 								</div>
 							</div>
 						</div>
@@ -692,13 +692,13 @@
 										</tr>
 											<tr>
 												<td style="font-weight: bold; font-size: 26px;">주 차</td>
-												<td>누적 근무 시간  : <c:out value="${workList.totalWork } 시간"></c:out> </td>
+												<td>누적 근무 시간  : <c:out value="${workInfo.totalWork } 시간"></c:out> </td>
 												<td class="text-center">
 													<div class="action-label">
 													</div>
 												</td>
 												<td class="text-danger">
-														<a href="${pageContext.servletContext.contextPath }/work/detail"><c:out value="지각 ${workList.lateCount }"></c:out></a>
+														<a href="${pageContext.servletContext.contextPath }/work/detail"><c:out value="지각 ${workInfo.lateCount }"></c:out></a>
 													</h2>
 												</td>
 												<td class="text-right">

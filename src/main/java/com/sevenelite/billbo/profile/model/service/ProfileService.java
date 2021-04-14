@@ -41,8 +41,7 @@ public interface ProfileService {
 
 	boolean license(LicenseDTO license);
 
-	boolean member_info_no(MemDTO member_info_no);
-   
+
 	boolean memberInfoInsert(MemberInfoDTO memberInfoInsert);
 //보류	boolean bonus(BonusDTO bonus);
 
@@ -58,7 +57,17 @@ public interface ProfileService {
 
 	List<DeptDTO> member_name();
 
-	List<MemberInfoDTO> mainProfile();
+	List<MemBbDTO> mainProfile();
+
+	List<MemberInfoDTO> memberInfo(int no);
+
+	List<MemberInfoDTO> main();
+
+	boolean member_info_no(MemberInfoDTO member_info_no);
+
+	List<MemberInfoDTO> selectMemberInfo(int memberno);
+
+	List<DeptDTO> selectMemberDept(int memberno);
 
 
 }
