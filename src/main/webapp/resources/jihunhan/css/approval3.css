@@ -1226,14 +1226,14 @@ span.state.notyet  {background-color:#ff616b; border:1px solid #ff616b}
 span.state.temp    {background-color:#F6B3B3; border:1px solid #F6B3B3}
 span.state.pause,
 span.state.finish,
-span.state.finished		{background-color:#A3A3A3; border:1px solid #A3A3A3}
+span.state.finished		{background-color:#A3A3A3; border:1px solid #A3A3A3; height:20px !important;}
 span.state.etc 			 {background-color:#78a2e4; border:1px solid #78a2e4}
-span.state.read			{background-color:#a6c76c; border:1px solid #a6c76c}
+span.state.read			{background-color:#a6c76c; border:1px solid #a6c76c; height:20px !important;}
 span.state.ongoing		{background-color:#a6c76c; border:1px solid #a6c76c}
 span.state.ghost		{background: none; border:1px solid #ccc; color: #888;}
 span.state.delay    	{background-color:#fb4c49; border:1px solid #fb4c49}
 span.state.cancel, .state.return {background-color:#fb4c49; border:1px solid #fb4c49}
-.state.emergency {background: none ; border: 1px solid #ff9f9d; color: #fb4c49}
+.state.emergency {background: none ; border: 1px solid #ff9f9d; color: #fb4c49; height:20px !important;}
 span.state.wait,
 span.state.standby		{background-color:#78a2e4; border:1px solid #78a2e4}
 span.state.defer  {background-color:#6b849c; border:1px solid #6b849c}

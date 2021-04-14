@@ -137,7 +137,7 @@ ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }
             </td>
             
             <td style="padding: 3px !important; border: 1px solid black; border-image: none; width: 200px; height: 22px; text-align: left; vertical-align: middle;">
-            <input type="text" style="vertical-align: middle; width: 200px; text-align: center; border: 0px; box-shadow: rgba(150, 150, 150, 0.2) 0px 0px 0px inset;" data-dsl="{{label:draftDate}}" name="draftDate" id="draftDate" value="" data-id="draftDate" data-name="draftDate" data-require="false" data-maxlength="" data-width="" data-defaultstr="" data-editable="false" data-value="2021-04-08(목)" placeholder=""> 
+            <input type="text" style="vertical-align: middle; width: 200px; text-align: center; border: 0px; box-shadow: rgba(150, 150, 150, 0.2) 0px 0px 0px inset;" data-dsl="{{label:draftDate}}" readonly="" name="draftDate" id="draftDate" value="" data-id="draftDate" data-name="draftDate" data-require="false" data-maxlength="" data-width="" data-defaultstr="" data-editable="false" data-value="2021-04-08(목)" placeholder=""> 
             </td></tr>
             
             <tr><td style="background: rgb(221, 221, 221); padding: 3px !important; border: 1px solid black; border-image: none; width: 100px; height: 22px; text-align: center; font-weight: bold; vertical-align: middle;">
@@ -294,7 +294,7 @@ ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }
 	   	$("#memberName").val('${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }');
 	   	$("#draftDate").val('<c:out value="${today}"/>');
 	   	$("#docNo").val(1004);
-	   	$("#draftDept").val('${ requestScope.dept }');
+	   	$("#draftDept").val('${ requestScope.dept.deptName }');
         	
    </script>
    <!-- 설정 -->
@@ -314,7 +314,11 @@ ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }
 		   /* 로그인 번호 추가 */
 		   const $span = $("#hiddenInput");
 		   $hiddenInput = $("<input name='memberno' value='${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }'> <input name='time' value='<c:out value="${todaytime}"/>'> <input name='paymentNo' value='1004'>")
+		   $hiddenInputDeptDTO = $("<input name='deptRnum' value='${ requestScope.dept.deptRnum }'> <input name='deptCode' value='${ requestScope.dept.deptCode }'> <input name='deptName' value='${ requestScope.dept.deptName }'> <input name='upper' value='${ requestScope.dept.upper }'> <input name='level' value='${ requestScope.dept.level }'> <input name='modifyDeptDate' value='${ requestScope.dept.modifyDeptDate }'>")
+		   $hiddenInputSpotDTO = $("<input name='spotRnum' value='${ requestScope.spot.spotRnum }'> <input name='spotCode' value='${ requestScope.spot.spotCode }'> <input name='spotName' value='${ requestScope.spot.spotName }'> <input name='modifySpotDate' value='${ requestScope.spot.modifySpotDate }'>")
 		   $span.append($hiddenInput);
+		   $span.append($hiddenInputDeptDTO);
+		   $span.append($hiddenInputSpotDTO);
 		   
 		   /* input 확인 및 submit */
 		   var jihun = $('form[name="vacation01"]').serializeArray();
@@ -392,9 +396,9 @@ ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }
              <span class="photo"><a data-userid="234"><img alt="초상화" src="/thumb/user/small/3493-17799"></a></span>
             <div class="msg_wrap">
                 <div class="info" data-userid="234" data-username="김지연" data-userposition="부장" data-userdeptid="130" data-userdeptname="영업팀" data-useractivitytype="DRAFT" data-useractivityname="기안">
-                   <a data-userid="234"><span class="name">김지연 부장</span></a>
+                   <a data-userid="234"><span class="name">${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername } ${ requestScope.spot.spotName }</span></a>
                    
-                   <span class="department">영업팀</span>
+                   <span class="department">${ requestScope.dept.deptName }</span>
                    <div class="doc"><span class="status ">기안</span></div>
                 </div>
                 

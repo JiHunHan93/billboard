@@ -42,6 +42,8 @@ public class MainProfileController {
 	@GetMapping(value= {"mainProfile","/"})
 	public String page() {
 		System.out.println("오나?");
+		
+		
 		return "profile/main";
 
 	}

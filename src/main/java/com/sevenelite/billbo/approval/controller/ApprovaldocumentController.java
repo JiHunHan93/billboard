@@ -1,5 +1,7 @@
 package com.sevenelite.billbo.approval.controller;
 
+import java.text.SimpleDateFormat;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -9,8 +11,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sevenelite.billbo.approval.model.dto.ApproDeptDTO;
+import com.sevenelite.billbo.approval.model.dto.ApproDraftingDTO;
+import com.sevenelite.billbo.approval.model.dto.ApproSpotDTO;
 import com.sevenelite.billbo.approval.model.dto.FormVacationDTO;
 import com.sevenelite.billbo.approval.model.service.ApprovalService;
 import com.sevenelite.billbo.member.model.dto.UserDetailsVO;
@@ -33,10 +37,20 @@ public class ApprovaldocumentController {
 		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
 		System.out.println("로그인한 회원 번호 : " + user.getMemberno());
 		
-		/* 부서 정보 추가하기 */
-		model.addAttribute("dept", "소속부서");
+		/* 부서 정보 조회 */
+		ApproDeptDTO dept = appro.selectLoginDept(user.getMemberno());
 		
 		/* 직위도 필요할듯 */
+		ApproSpotDTO spot = appro.selectLoginSpot(user.getMemberno());
+		
+		/* 결과 */
+		System.out.println("조회해온 소속 부서 : " + dept);
+		System.out.println("조회해온 해당 직위 : " + spot);
+
+		/* 부서 정보 추가하기 */
+		model.addAttribute("dept", dept);
+		
+		model.addAttribute("spot", spot);
 		
 		return "approval/document/1004";
 	}
@@ -58,13 +72,15 @@ public class ApprovaldocumentController {
 	}
 	
 	@PostMapping(value="1004")
-	public String vacationInsert(@RequestParam(required=false) String memberno, @RequestParam(required=false) String docNo, @RequestParam(required=false) String time, @RequestParam(required=false) String draftDate, @RequestParam(required=false) String draftDept, @ModelAttribute("vacation") FormVacationDTO vacation) {
-		
+	public String vacationInsert(@ModelAttribute("spotDTO") ApproSpotDTO spotDTO, @ModelAttribute("deptDTO") ApproDeptDTO deptDTO, @RequestParam(required=false) String memberno, @RequestParam(required=false) String docNo, @RequestParam(required=false) String time, @RequestParam(required=false) String draftDate, @RequestParam(required=false) String draftDept, @ModelAttribute("vacation") FormVacationDTO vacation) {
+			
 		System.out.println("연차신청서 : " + vacation);
-		System.out.println("소속부서 : " + draftDept);
 		System.out.println("로그인 회원번호 : " + memberno);
 		System.out.println("작성 년월일 : " + draftDate);
 		System.out.println("작성 시분초 : " + time);
+		
+		System.out.println("추가된 정보 deptDTO : " + deptDTO);
+		System.out.println("추가된 정보 spotDTO : " + spotDTO);
 		
 		/* 반차가 아닐시 처리 */
 		if(vacation.getHalfDayPoint() == null) {
@@ -75,10 +91,17 @@ public class ApprovaldocumentController {
 		vacation.setMemberno(Integer.parseInt(memberno));
 		vacation.setPaymentNo(Integer.parseInt(docNo));
 		
-		/* 연차신청서 Insert 완료 */
+		/* 01. 연차신청서 Insert  */
 		int result = appro.insertVacation(vacation);
 		
-		/* DB에 넣고 기안문서 가공해서 Insert  */
+		/* 02. 기안문서  Insert */
+//		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyMMdd");
+//		SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm:ss");
+		
+		
+//		new ApproDraftingDTO(vacation.getStartDate(), "대기", "", "", "", 1, 1);
+//		int result2 = appro.insertDrafting(new ApproDraftingDTO(draftDate, "대기", "연차신청서", vacation.getAnnualReason(), "N", memberno, 1004));
+		
 		
 		return "approval/main";
 	}
