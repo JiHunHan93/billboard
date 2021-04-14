@@ -52,10 +52,10 @@
 	  VALUES
 	  (
 	  SEQ_WORKSTATUS_NO.NEXTVAL
+	  ,  #{ date }
 	  ,  SYSDATE 
-	  ,  SYSDATE 
-	  ,  #{ lwork, jdbcType=TIMESTAMP}
-	  , 2
+	  ,  null
+	  , #{ MemNo }
 	  , #{ type, jdbcType=VARCHAR }
 	  )	  
 	</insert>
@@ -64,8 +64,8 @@
        UPDATE
               BB_WORKSTATUS A
           SET A.LEAVE_WORK = SYSDATE
-        WHERE A.WORKSTATUS_NO = #{ no }
-          AND A.MEMBER_NO = { memberno }
+        WHERE A.WORKDATE = A.WORKDATE
+          AND A.MEMBER_NO =#{ MemNo }
 	</update>
 	
 	<select id="detailWork" resultMap="statusAndWorkResultMap" parameterType="StatusAndWorkDTO">
