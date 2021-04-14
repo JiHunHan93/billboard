@@ -33,12 +33,21 @@
  		<id column="WORKTYPE_CODE" property="code" />
  		<result column="WORKTYPE_TYPE" property="type"/>
 	</resultMap>
-  	<select id="selectWorkList" resultMap="workResult" parameterType="workDTO">
-        SELECT 
-              TO_CHAR(A.LEAVE_WORK, 'HH24') - TO_CHAR(COMMUTE, 'HH24')
-            , TO_CHAR(A.LEAVE_WORK, 'MI') - TO_CHAR(COMMUTE, 'MI')
-            , TO_CHAR(A.LEAVE_WORK, 'SS') - TO_CHAR(COMMUTE, 'SS')
-		 FROM BB_WORKSTATUS      
+	<resultMap id="Voresult" type="com.sevenelite.billbo.member.model.dto.UserDetailsVO">
+		<id property="memberno" column="MEMBER_NO" />
+	</resultMap>
+  	<select id="selectWorkList" resultMap="workResult" parameterType="WorkDTO">
+		SELECT
+			   A.TOTAL_WORK_HOURS
+		     , A.WORK_LATE_COUNT
+		     , A.WORK_COUNT  
+		     , A.TOTAL_EXTRA_WORK_HOURS
+		     , B.COMMUTE
+		     , B.LEAVE_WORK
+		     , B.MEMBER_NO
+		  FROM BB_WEEK_WORK_STATISTIC A 
+          JOIN BB_WORKSTATUS B ON (A.MEMBER_NO = B.MEMBER_NO)
+		   WHERE A.MEMBER_NO = #{ MemNo }
 	</select>
 
 </mapper> 
