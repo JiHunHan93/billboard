@@ -12,11 +12,12 @@ public class FormVacationDTO {
 	private int annualCount;			//사용연차
 	private String annualReason;		//연차사유
 	private int paymentNo;				//결재양식번호
+	private int memberno;				//사번
 	
 	public FormVacationDTO() {}
 
 	public FormVacationDTO(int no, String annualType, Date startDate, Date endDate, String halfDayPoint,
-			int annualCount, String annualReason, int paymentNo) {
+			int annualCount, String annualReason, int paymentNo, int memberno) {
 		super();
 		this.no = no;
 		this.annualType = annualType;
@@ -26,6 +27,7 @@ public class FormVacationDTO {
 		this.annualCount = annualCount;
 		this.annualReason = annualReason;
 		this.paymentNo = paymentNo;
+		this.memberno = memberno;
 	}
 
 	public int getNo() {
@@ -92,11 +94,19 @@ public class FormVacationDTO {
 		this.paymentNo = paymentNo;
 	}
 
+	public int getMemberno() {
+		return memberno;
+	}
+
+	public void setMemberno(int memberno) {
+		this.memberno = memberno;
+	}
+
 	@Override
 	public String toString() {
 		return "FormVacationDTO [no=" + no + ", annualType=" + annualType + ", startDate=" + startDate + ", endDate="
 				+ endDate + ", halfDayPoint=" + halfDayPoint + ", annualCount=" + annualCount + ", annualReason="
-				+ annualReason + ", paymentNo=" + paymentNo + "]";
+				+ annualReason + ", paymentNo=" + paymentNo + ", memberno=" + memberno + "]";
 	}
 	
 }

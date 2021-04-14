@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sevenelite.billbo.approval.model.dao.ApprovalMapper">
+
+	<resultMap type="com.sevenelite.billbo.approval.model.dto.FormVacationDTO" id="vacation">
+		<id property="no" column="FORM_VACATION_NO"/>
+		<result property="annualType" column="ANNUAL_TYPE"/>
+		<result property="startDate" column="VACATION_START"/>
+		<result property="endDate" column="VACATION_END"/>
+		<result property="halfDayPoint" column="HALF_DAY_POINT"/>
+		<result property="annualCount" column="USED_ANNUAL_COUNT"/>
+		<result property="annualReason" column="USED_ANNUAL_REASON"/>
+		<result property="paymentNo" column="PAYMENT_NO"/>
+		<result property="memberno" column="MEMBER_NO"/>
+	</resultMap>
+	
+	<insert id="insertVacation" parameterType="FormVacationDTO">
+        INSERT 
+          INTO BB_FORM_VACATION A
+        (
+          A.FORM_VACATION_NO, A.ANNUAL_TYPE, A.VACATION_START, A.VACATION_END, A.HALF_DAY_POINT, A.USED_ANNUAL_COUNT, A.USED_ANNUAL_REASON, A.PAYMENT_NO, A.MEMBER_NO
+        ) 
+		VALUES
+		(
+		  SEQ_VACATION_NO.NEXTVAL, #{ annualType }, #{ startDate }, #{ endDate }, #{ halfDayPoint }, #{ annualCount }, #{ annualReason }, #{ paymentNo }, #{ memberno }
+		)
+	</insert> 
+
+</mapper>

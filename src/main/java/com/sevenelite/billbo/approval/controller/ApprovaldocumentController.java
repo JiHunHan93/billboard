@@ -1,5 +1,6 @@
 package com.sevenelite.billbo.approval.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,11 +12,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sevenelite.billbo.approval.model.dto.FormVacationDTO;
+import com.sevenelite.billbo.approval.model.service.ApprovalService;
 import com.sevenelite.billbo.member.model.dto.UserDetailsVO;
 
 @Controller
 @RequestMapping("/approval/document/*")
 public class ApprovaldocumentController {
+	
+	private final ApprovalService appro;
+	
+	@Autowired
+	public ApprovaldocumentController(ApprovalService appro) {
+		this.appro = appro;
+	}
 	
 	/* 휴가신청서 */
 	@GetMapping("1004")
@@ -49,8 +58,7 @@ public class ApprovaldocumentController {
 	}
 	
 	@PostMapping(value="1004")
-	@ResponseBody
-	public String vacationInsert(@RequestParam(required=false) String memberno, @RequestParam(required=false) String time, @RequestParam(required=false) String draftDate, @RequestParam(required=false) String draftDept, @ModelAttribute("vacation") FormVacationDTO vacation) {
+	public String vacationInsert(@RequestParam(required=false) String memberno, @RequestParam(required=false) String docNo, @RequestParam(required=false) String time, @RequestParam(required=false) String draftDate, @RequestParam(required=false) String draftDept, @ModelAttribute("vacation") FormVacationDTO vacation) {
 		
 		System.out.println("연차신청서 : " + vacation);
 		System.out.println("소속부서 : " + draftDept);
@@ -58,9 +66,21 @@ public class ApprovaldocumentController {
 		System.out.println("작성 년월일 : " + draftDate);
 		System.out.println("작성 시분초 : " + time);
 		
+		/* 반차가 아닐시 처리 */
+		if(vacation.getHalfDayPoint() == null) {
+			vacation.setHalfDayPoint("");
+		} 
+		
+		/* 사번, 문서번호 */
+		vacation.setMemberno(Integer.parseInt(memberno));
+		vacation.setPaymentNo(Integer.parseInt(docNo));
+		
+		/* 연차신청서 Insert 완료 */
+		int result = appro.insertVacation(vacation);
+		
 		/* DB에 넣고 기안문서 가공해서 Insert  */
 		
-		return "";
+		return "approval/main";
 	}
 	
 //	@PostMapping(value="1004", produces="application/json; charset=UTF-8")

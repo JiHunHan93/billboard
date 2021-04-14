@@ -37,6 +37,8 @@
 
 <!-- 지훈 CSS -->
 <link rel="stylesheet" href="/billbo/resources/jihunhan/css/approval.css">
+<link rel="stylesheet" href="/billbo/resources/jihunhan/css/approval0.css">
+<link rel="stylesheet" href="/billbo/resources/jihunhan/css/approval1.css">
 <link rel="stylesheet" href="/billbo/resources/jihunhan/css/approval2.css">
 <link rel="stylesheet" href="/billbo/resources/jihunhan/css/approval3.css">
 
