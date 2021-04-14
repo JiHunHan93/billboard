@@ -1,11 +1,11 @@
 package com.sevenelite.billbo.workhour.main;
 
 import java.security.Principal;
+import java.text.SimpleDateFormat;
 import java.util.Enumeration;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.sevenelite.billbo.member.model.dto.MemDTO;
 import com.sevenelite.billbo.member.model.dto.UserDetailsVO;
 import com.sevenelite.billbo.workhour.work.model.dto.StatusAndWorkDTO;
 import
@@ -89,8 +88,19 @@ public class WorkDetailController {
 	@PostMapping("/work/regist")
 	public String registWork(@ModelAttribute StatusAndWorkDTO status, RedirectAttributes rttr, HttpServletRequest request) {
 		
-		if(workStatusService.registWork(status)) {
+		System.out.println(System.currentTimeMillis());
+		java.util.Date today = new java.util.Date(System.currentTimeMillis());
+		
+		System.out.println(today);
+		
+		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+		String formatDate = format.format(today);
+
+		System.out.println(formatDate);
+		
+		if(workStatusService.registWork(status,today)) {
 			rttr.addFlashAttribute("message" , "출근이 등록 되었습니다.");
+			
 		}
 		return "redirect:/work/detail";
 	}
