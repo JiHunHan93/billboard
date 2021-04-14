@@ -10,13 +10,11 @@ import com.sevenelite.billbo.workhour.work.model.dto.StatusAndWorkDTO;
    
    List<StatusAndWorkDTO> selectListstatus();
 
-   boolean registWork(StatusAndWorkDTO status, Date today);
-
    List<StatusAndWorkDTO> sequenceWork(int no);
 
-   boolean updateWork(int MemberNo, int no);
+    boolean registWork(StatusAndWorkDTO workList);
 
-int seqNo();
+	boolean updateWork(int userno);
 
    
    }
