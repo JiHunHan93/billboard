@@ -670,10 +670,12 @@
 								</h3>
 														
 														<h6 class="text-muted"> 
-														UI/UX Design Team</h6>
-														<small class="text-muted">Web Designer</small>
+														직위 직책 들어가는 칸</h6>
+														
 														<div class="staff-id">Employee ID : ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username}</div>
-														<div class="small doj text-muted">Date of Join : 1st Jan 2013</div>
+														<c:forEach var="MList" items="${ requestScope.MList }">
+														<div class="small doj text-muted">Date of Join :"${ MList.enroll_date }"</div>
+														</c:forEach>
 														<div class="staff-msg"><a class="btn btn-custom" href="chat.html">Send Message</a></div>
 													</div>
 												</div>
@@ -690,7 +692,7 @@
 														<li>
 														<c:forEach var="profileList1" items="${ requestScope.profileList1 }">
 														<li>
-															<div class="title">사번:  <c:out value="${profileList1.no }"/></div>
+															<div class="title">사번:  <c:out value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }"/></div>
 															<!-- <div class="text"></div> -->
 															
 														</li>
@@ -784,30 +786,34 @@
 												<td class="col2">
 													 <c:forEach var="MList" items="${ requestScope.MList }"> 
 													 
-												<!--<input class="txt w_max" type="text" <c:out value="mainProfile.info_no"/>>
-													  --><input class="txt w_max" type="text" name="info_no" value="<c:out value="${MList.info_no }"/>">
+												<!--<input class="txt w_max" type="text" <c:out value="mainProfile.info_no"/>> -->
+												<input class="txt w_max" type="text" name="info_no" value="<c:out value="${MList.info_no }"/>">
 														</c:forEach>
 												</td>
 												<th class="col3">
 													<span class="title_txt">사번</span>
 												</th>
 												<td class="col4">
-													<span class="txt"></span>
+													
 													<input class="txt w_max" type="text" name="member_no" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }" >
 												</td>
 												<th class="col5">
 													<span class="title_txt">입사일</span>
+													
 												</th>
 												<td class="col6">
-													<span class="txt"></span>
-													<input class="txt w_max" type="date" name="enroll_date" value="" >
+														<c:forEach var="MList" items="${ requestScope.MList }"> 
+												<input class="txt w_max" type="text" name="info_no" value="<c:out value="${MList.enroll_date }"/>">
+														</c:forEach>
 												</td>            
 												<th class="col7">
 													<span class="title_txt">계좌은행</span>
 												</th>
 												<td class="col8">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="account_bank" value="" placeholder="" >
+														<c:forEach var="MList" items="${ requestScope.MList }"> 
+												<input class="txt w_max" type="text" name="info_no" value="<c:out value="${ MList.account_bank }"/>">
+														</c:forEach>
+												
 												</td>
 											</tr>
 											<tr>
@@ -816,15 +822,19 @@
 												</th>
 												
 												<td colspan="5">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="address" value="" >
+														<c:forEach var="MList" items="${ requestScope.MList }"> 
+												<input class="txt w_max" type="text" name="info_no" value="<c:out value="${MList.address }"/>">
+														</c:forEach>
+												
 												</td>
 												<th class="col7">
 													<span class="title_txt">계좌번호</span>
 												</th>
 												<td class="col8">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="account_no" value="" >
+														<c:forEach var="MList" items="${ requestScope.MList }"> 
+												<input class="txt w_max" type="text" name="info_no" value="<c:out value="${MList.account_no }"/>">
+														</c:forEach>
+												
 												</td>
 											</tr>
 											<tr>
@@ -832,22 +842,28 @@
 													<span class="title_txt">근로계약서</span>
 												</th>
 												<td colspan="3">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="work_contract" value="">
+														<c:forEach var="MList" items="${ requestScope.MList }"> 
+												<input class="txt w_max" type="text" name="info_no" value="<c:out value="${MList.work_contract }"/>">
+														</c:forEach>
+												
 												</td>        
 												<th class="col5">
 													<span class="title_txt">파일첨부</span>
 												</th>
 												<td class="col6">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="fileattachment" value="">
+														<c:forEach var="MList" items="${ requestScope.MList }"> 
+												<input class="txt w_max" type="text" name="info_no" value="<c:out value="${MList.fileattachment }"/>">
+														</c:forEach>
+												
 												</td>
 												<th class="col7">
 													<span class="title_txt">예금주</span>
 													</th>
 													<td class="col8">
-												<span class="txt"></span>
-												<input class="txt w_max" type="text" name="account_host" value="" >
+													<c:forEach var="MList" items="${ requestScope.MList }"> 
+												<input class="txt w_max" type="text" name="info_no" value="<c:out value="${MList.account_host }"/>">
+														</c:forEach>
+												
 											</td>
 										</tr>
 											
@@ -1002,8 +1018,11 @@
 												
 											</tr>
 											<tr class="dataRow" data-id="">
+												
 												<td class="no">
+												<c:forEach var="CList" items="${ requestScope.CList }"> 
 												<input class="txt wfix_small hasDatepicker" type="text" name="no" value="" >
+												</c:forEach>
 												</td>
 												<td class="start">
 													<span class="wrap_date">
@@ -1022,8 +1041,8 @@
 													<input class="txt w_max" type="text" name="position" value="" >
 												</td>
 												<td class="member_no">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="member_no" value="" >
+													
+													<input class="txt w_max" type="text" name="member_no" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }" >
 												</td>
 												
 										
@@ -1090,7 +1109,7 @@
 												</td>
 												<td class="member_no">
 													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="member_no" value="" >
+													<input class="txt w_max" type="text" name="member_no" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }" >
 												</td>
 												<td class="approve_code">
 													<span class="txt"></span>
@@ -1152,7 +1171,7 @@
 												</td>
 												<td class="member_no">
 													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="member_no" value="" >
+													<input class="txt w_max" type="text" name="member_no" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }" >
 												</td>
 												<td class="certificate_code">
 													<span class="txt"></span>
@@ -1206,7 +1225,7 @@
 											<tr>
 											<!-- class="dataRow" data-id=""-->	
 											<td class="member_no">
-													<input class="txt w_max" type="text" name="member_no" id="member_no">
+													<input class="txt w_max" type="text" name="member_no" id="member_no" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }">
 												</td>
 											<td class="army_no">
 													<input class="txt w_max" type="text" name="no" id="no">
@@ -1314,7 +1333,7 @@
 												<td class="member_no">
 													<span class="txt"></span>
 													
-													<input class="txt w_max" type="text" name="member_no" value="" >
+													<input class="txt w_max" type="text" name="member_no" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }" >
 													 
 												</td>
 												<td class="code">
@@ -1400,8 +1419,7 @@
 													<input class="txt w_max" type="text" name="job" value="" >
 												</td>
 												<td class="no">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="no" value="" >
+													<input class="txt w_max" type="text" name="no" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }" >
 												</td>
 												<!-- <td class="modify">
 													<span class="ic_con ic_remove" title="삭제"></span>
@@ -1462,7 +1480,7 @@
 												</td>
 												<td class="member_no">
 													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="member_no" value="" >
+													<input class="txt w_max" type="text" name="member_no" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }" >
 												</td>
 												</tr>
 										</tbody></table>

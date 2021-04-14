@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sevenelite.billbo.member.model.dto.MemBbDTO;
-import com.sevenelite.billbo.member.model.dto.MemDTO;
+
 import com.sevenelite.billbo.profile.model.dto.ArmyDTO;
 import com.sevenelite.billbo.profile.model.dto.CareerDTO;
 import com.sevenelite.billbo.profile.model.dto.CertificateDTO;
@@ -42,7 +42,7 @@ public class MainProfileController {
 	@GetMapping(value= {"mainProfile","/"})
 	public String page() {
 		System.out.println("오나?");
-		return "profile/mainProfile";
+		return "profile/main";
 
 	}
 		/*1 신상*/
@@ -54,7 +54,7 @@ public class MainProfileController {
 		  List<MemberInfoDTO> memberInfo = profileService.mainProfile();
 		  System.out.println("왜 안오는거여 쉬벌?????");
 
-		  return "profile/mainProfile";
+		  return "profile/main";
 	  }
 //	 /*2 직위*/
 	  @PostMapping("joblevel")
@@ -195,6 +195,7 @@ System.out.println("여기와?");
 		model.addAttribute("profileList1", profileList1);
 		request.getSession().setAttribute("profileList1", profileList1);
 		List<MemberInfoDTO> MList = profileService.memberInfo();/* no 매개변수로  */
+//??		List<CareerDTO> CList = profileService.career();
 		System.out.println("????????????????????????????????????????");
 		System.out.println(MList);
 		model.addAttribute("MList", MList);
@@ -205,7 +206,7 @@ System.out.println("여기와?");
 	@GetMapping("member_address")
 	public String member_address(Model model) {
 
-		List<MemDTO> profileList2 = profileService.member_address();
+		List<MemBbDTO> profileList2 = profileService.member_address();
 		System.out.println(profileList2);
 		model.addAttribute("profileList2", profileList2);
 		
@@ -215,7 +216,7 @@ System.out.println("여기와?");
 	@GetMapping("mainProfile")
 	public String member_enrollDate(Model model) {
 
-		List<MemDTO> member_enrollDate = profileService.member_enrollDate();
+		List<MemBbDTO> member_enrollDate = profileService.member_enrollDate();
 		System.out.println(member_enrollDate);
 		model.addAttribute("profileList", member_enrollDate);
 		

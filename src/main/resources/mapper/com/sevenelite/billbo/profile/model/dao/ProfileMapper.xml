@@ -131,7 +131,7 @@
 	    , A.MEMBER_WORK_CONTRACT
 	    , A.MEMBER_NO
 	FROM BB_MEMBER_INFO A
-    WHERE A.MEMBER_INFO_NO = 1
+    WHERE A.MEMBER_INFO_NO = 2
 </select>
 
 <insert id="spot" parameterType="SpotDTO">
@@ -330,7 +330,12 @@ SELECT
         WHERE A.MEMBER_NO = 1
  </select>
 
-
+<select id="mainProfile" resultMap="deptDTO" parameterType="DeptDTO">
+SELECT
+             D.DEPT_NAME
+            
+        FROM BB_MEMBER A
+</select>
 
 <!-- <select id="member_enroll_date" resultMap="memberInfoDTO" parameterType="MemberInfoDTO">
 SELECT

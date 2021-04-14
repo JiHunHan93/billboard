@@ -20,6 +20,7 @@ public interface ProfileService {
 	boolean armyInfo(ArmyDTO army);
 
 	List<MemberInfoDTO> memberInfo();
+	List<CareerDTO> career();
 //
 //	void memberInfo(MemberInfoDTO member);
 
@@ -41,16 +42,17 @@ public interface ProfileService {
 	boolean license(LicenseDTO license);
 
 	boolean member_info_no(MemDTO member_info_no);
-
+   
+	boolean memberInfoInsert(MemberInfoDTO memberInfoInsert);
 //보류	boolean bonus(BonusDTO bonus);
 
 	List<MemBbDTO> member_info_phone();
 	
 //	List<MemDTO> member_info_phone(int no);
 	
-	List<MemDTO> member_address();
+	List<MemBbDTO> member_address();
 
-	List<MemDTO> member_enrollDate();
+	List<MemBbDTO> member_enrollDate();
 
 	
 
