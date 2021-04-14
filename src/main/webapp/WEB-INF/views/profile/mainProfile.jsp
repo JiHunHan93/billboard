@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -703,12 +703,12 @@
 															<!-- <div class="text"><a href=""></a></div> -->
 														</li>
 														</c:forEach>
-												     <%--  <c:forEach var="profileList2" items="${ requestScope.profileList2 }">
+												      <c:forEach var="profileList2" items="${ requestScope.profileList2 }">
 														<li>
 															<div class="text">Address: <c:out value="${profileList2.address }"/></div>
 															<div class="text">1861 Bayonne Ave, Manchester Township, NJ, 08759</div>
 														</li>
-														</c:forEach> --%>
+														</c:forEach>
 														<li>
 														
 															<!-- <div class="title">Reports to:</div>
@@ -725,12 +725,12 @@
 														</li>
 													</ul>
 												</div>
-												<%-- <c:forEach var="profileList1" items="${ requestScope.profileList1 }">
+												<c:forEach var="profileList1" items="${ requestScope.profileList1 }">
 												<form action="${ pageContext.servletContext.contextPath }/profile/mainProfile/member_info_phone" method="post">
 												<input class="txt w_max" type="text" name="member_info_phone" value="" <c:out value="${ profileList1.phone }"/>>
 												 <%= request.getParameter("no") %>
 												</form>
-												</c:forEach> --%>
+												</c:forEach>
 											</div>
 										</div>
 										<div class="pro-edit"><a data-target="#profile_info" data-toggle="modal" class="edit-icon" href="#"><i class="fa fa-pencil"></i></a></div>
@@ -762,11 +762,11 @@
 						</div>
 					</div>
 					
-												<%--필요없는거 <c:forEach var="profileList1" items="${ requestScope.profileList1 }">
+												필요없는거 <c:forEach var="profileList1" items="${ requestScope.profileList1 }">
 															<div class="title">Phone:  <c:out value="${profileList1.phone }"/></div>
 															<!-- <div class="text"></div> -->
 															</c:forEach>
-												 --%>
+												
 					<div class="tab-content">
 						<!-- 여기 첫번째 탭-->
 						<!--첫번째 신상 탭 -->
@@ -2155,4 +2155,4 @@
 		<script src="/billbo/resources/hrtemp/js/app.js"></script>
 		
     </body>
-</html>
+</html> --%>

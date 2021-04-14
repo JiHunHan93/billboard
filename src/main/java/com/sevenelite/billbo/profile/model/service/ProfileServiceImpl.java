@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.sevenelite.billbo.board.model.dto.BoardDTO;
 import com.sevenelite.billbo.member.model.dto.MemBbDTO;
-import com.sevenelite.billbo.member.model.dto.MemDTO;
+
 import com.sevenelite.billbo.profile.model.dao.ProfileMapper;
 import com.sevenelite.billbo.profile.model.dto.ArmyDTO;
 import com.sevenelite.billbo.profile.model.dto.CareerDTO;
@@ -85,7 +85,7 @@ public class ProfileServiceImpl implements ProfileService{
 	}
 	
 	@Override
-	public boolean member_info_no(MemDTO member_info_no) {
+	public boolean member_info_no(MemberInfoDTO member_info_no) {
 		// TODO Auto-generated method stub
 		return mapper.member_info_no(member_info_no) > 0? true : false;
 	}
@@ -116,9 +116,9 @@ public class ProfileServiceImpl implements ProfileService{
 		return mapper.member_info_phone();
 	}
 	@Override
-	public List<MemberInfoDTO> mainProfile() {
+	public List<MemberInfoDTO> main() {
 		// TODO Auto-generated method stub
-		return mapper.mainProfile();
+		return mapper.main();
 	}
 
 	/*
@@ -126,15 +126,39 @@ public class ProfileServiceImpl implements ProfileService{
 	 * stub return mapper.career(); }
 	 */
 	@Override
-	public boolean memberInfoInsert(MemberInfoDTO memberInfoInsert) {
+	public boolean memberInfoInsert(MemberInfoDTO memberInfo) {
 		// TODO Auto-generated method stub
-		return mapper.memberInfoInsert(memberInfoInsert) > 0? true : false;
+		return mapper.memberInfoInsert(memberInfo) > 0? true : false;
 	}
 
 	@Override
 	public List<CareerDTO> career() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public List<MemberInfoDTO> memberInfo(int no) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<MemBbDTO> mainProfile() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<MemberInfoDTO> selectMemberInfo(int memberno) {
+		// TODO Auto-generated method stub
+		return mapper.selectMemberInfo(memberno);
+	}
+
+	@Override
+	public List<DeptDTO> selectMemberDept(int memberno) {
+		// TODO Auto-generated method stub
+		return mapper.selectMemberDept(memberno);
 	}
 	}
 
