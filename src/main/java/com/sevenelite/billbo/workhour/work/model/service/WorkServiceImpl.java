@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired; import
 org.springframework.stereotype.Service;
 
+import com.sevenelite.billbo.member.model.dto.UserDetailsVO;
 import com.sevenelite.billbo.workhour.work.model.dao.WorkDAO; import
 com.sevenelite.billbo.workhour.work.model.dto.WorkDTO;
 
@@ -13,11 +14,13 @@ com.sevenelite.billbo.workhour.work.model.dto.WorkDTO;
 
 	private WorkDAO dao;
 
-	@Autowired public WorkServiceImpl(WorkDAO workdao) { this.dao = workdao; }
+	@Autowired public WorkServiceImpl(WorkDAO workdao) 
+	{ this.dao = workdao; 
+}
 
-	@Override public List<WorkDTO> selectWorkList() 
-	
-	{ 
-		return dao.selectWorkList(); 
-		} 
+	@Override
+	public List<WorkDTO> selectWorkList(int no) {
+		return dao.selectWorkList(no);
 	}
+
+}

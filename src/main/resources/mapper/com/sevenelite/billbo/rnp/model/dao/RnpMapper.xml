@@ -32,10 +32,20 @@
 		<result property="email" column="EMAIL" />
 		<result property="phone" column="PHONE" />
 </resultMap>
+<resultMap type="com.sevenelite.billbo.rnp.model.dto.ModifyDeptAndMemAndRnpDTO" id="DeptAndMemResultMap">
+		<id property="no" column="BONUS_NO" />
+		<result property="memNo" column="MEMBER_NO" />
+		<result property="memName" column="MEMBER_NAME" />
+		<result property="deptName" column="DEPT_NAME" />
+		<result property="rnpType" column="BONUS_TYPE" />
+		<result property="enrollDate" column="BONUS_DATE" />
+		<result property="reason" column="BONUS_REASON" />
+</resultMap>
  
- <select id="selectRnp" resultMap="rnpResultMap" parameterType="RnpDTO">
+ <select id="selectRnp" resultMap="DeptAndMemResultMap" >
  SELECT
-        A.MEMBER_NO
+ 		A.BONUS_NO
+      , A.MEMBER_NO
       , B.MEMBER_NAME
       , D.DEPT_NAME
       , A.BONUS_TYPE
@@ -47,4 +57,19 @@
       JOIN BB_DEPT D ON ( C.DEPT_CODE = D.DEPT_CODE)
  </select>
  
+ <select id="detailRnp" resultMap="DeptAndMemResultMap" parameterType="ModifyDeptAndMemAndRnpDTO">
+ 	SELECT
+ 	    A.BONUS_NO
+ 	  ,	A.MEMBER_NO
+      , B.MEMBER_NAME
+      , D.DEPT_NAME
+      , A.BONUS_TYPE
+      , A.BONUS_DATE
+      , A.BONUS_REASON
+    FROM BB_BONUS A
+    JOIN BB_MEMBER B ON ( A.MEMBER_NO = B.MEMBER_NO)
+    JOIN BB_MODIFY_DEPT C ON ( B.MEMBER_NO = C.MEMBER_NO)
+    JOIN BB_DEPT D ON ( C.DEPT_CODE = D.DEPT_CODE)
+    WHERE A.BONUS_NO = #{no}
+ </select>
  </mapper>

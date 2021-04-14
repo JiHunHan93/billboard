@@ -8,4 +8,6 @@ public interface RnpMapper {
 
 	List<RnpDTO> selectRnp();
 
+	List<RnpDTO> detailRnp(int no);
+
 }

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<% pageContext.setAttribute("replaceChar", "\n"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,11 +14,11 @@
 	content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
 <meta name="author" content="Dreamguys - Bootstrap Admin Template">
 <meta name="robots" content="noindex, nofollow">
-<title>2조BB-게시판/문서함</title>
+<title>Project View - HRMS admin template</title>
 
 <!-- Favicon -->
 <link rel="shortcut icon" type="image/x-icon"
-	href="assets/img/favicon.png">
+	href="../resources/hrtemp/img/favicon.png">
 
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="../resources/hrtemp/css/bootstrap.min.css">
@@ -29,24 +31,22 @@
 <link rel="stylesheet"
 	href="../resources/hrtemp/css/line-awesome.min.css">
 
-<!-- Datatable CSS -->
+<!-- Select2 CSS -->
+<link rel="stylesheet" href="../resources/hrtemp/css/select2.min.css">
+
+<!-- Datetimepicker CSS -->
 <link rel="stylesheet"
-	href="../resources/hrtemp/css/dataTables.bootstrap4.min.css">
+	href="../resources/hrtemp/css/bootstrap-datetimepicker.min.css">
 
 <!-- Main CSS -->
 <link rel="stylesheet" href="../resources/hrtemp/css/style.css">
 
-<!-- Custom JS -->
-<script src="../resources/hrtemp/js/app.js"></script>
-
-<!-- jQuery -->
-<script src="../resources/hrtemp/js/jquery-3.5.1.min.js"></script>
-
 <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 <!--[if lt IE 9]>
-         <script src="assets/js/html5shiv.min.js"></script>
-         <script src="assets/js/respond.min.js"></script>
-      <![endif]-->
+			<script src="assets/js/html5shiv.min.js"></script>
+			<script src="assets/js/respond.min.js"></script>
+		<![endif]-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 	<!-- Main Wrapper -->
@@ -365,7 +365,8 @@
 		<div class="sidebar" id="sidebar">
 			<div class="sidebar-inner slimscroll">
 				<div id="sidebar-menu" class="sidebar-menu">
-					<ul>	
+					<ul>
+						
 						<!-- 사이드바 서브메뉴 안쓰는 방향으로 수정 -->
 						<li><a href="${pageContext.servletContext.contextPath}"
 							class="sidebar-default"> <i class="la la-home sidebar-icon"></i>
@@ -376,7 +377,7 @@
 						<li><a href="${pageContext.servletContext.contextPath}/apps"
 							class="sidebar-default"> <i class="la la-cube sidebar-icon"></i>
 								<span class="sidebar-text"> Apps</span> <!-- <span class="menu-arrow"></span> -->
-						</a> </li>
+						</a></li>
 						<div class="sidebar-line"></div>
 						
 						<li><a
@@ -396,11 +397,7 @@
 						<li><a href="${pageContext.servletContext.contextPath}/admin"
 							class="sidebar-default"> <i class="la la-key sidebar-icon"></i>
 								<span class="sidebar-text">Admin</span> <!-- <span class="menu-arrow"></span> -->
-						</a> <!-- <ul style="display: none;">
-                           <li><a href="projects.html">Projects</a></li>
-                           <li><a href="tasks.html">Tasks</a></li>
-                           <li><a href="task-board.html">Task Board</a></li>   
-                        </ul> --></li>
+						</a> </li>
 						<div class="sidebar-line"></div>
 						<li><a href="#" class="sidebar-default"> <i
 								class="la la-money sidebar-icon"></i> <span class="sidebar-text">Payroll</span>
@@ -413,229 +410,241 @@
 								class="sidebar-text">Information</span>
 						</a></li>
 						<div class="sidebar-line"></div>
+						
 					</ul>
 				</div>
 			</div>
 		</div>
 		<!-- /Sidebar -->
 
-
 		<!-- Page Wrapper -->
 		<div class="page-wrapper">
 
+			<!-- Page Content -->
 			<div class="content container-fluid">
 
 				<!-- Page Header -->
 				<div class="page-header">
-					<div class="row">
+					<div class="row align-items-center">
 						<div class="col">
-							<h3 class="page-title">상벌 관리</h3>
+							<h3 class="page-title">상벌내역 상세</h3>
 							<ul class="breadcrumb">
-								<!-- <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li> -->
-								<li class="breadcrumb-item active">Bonus management</li>
+								<li class="breadcrumb-item"><a href="index.html">Bonus management</a></li>
+								<li class="breadcrumb-item"><a href="index.html">Detail</a></li>
 							</ul>
+						</div>
+						<div class="col-auto float-right ml-auto">
+							<a href="#" class="btn add-btn" data-toggle="modal"
+								data-target="#edit_project"><i class="fa fa-plus"></i> 게시글
+								수정</a> <a href="#" class="btn add-btn" data-toggle="modal"
+								data-target="#edit_project1"><i class="fa fa-minus"></i> 게시글
+								삭제</a>
 						</div>
 					</div>
 				</div>
 				<!-- /Page Header -->
-				<div class="row bonus-sub-container">
-				
-					<div class="col-sm-12" style="height: 900px;">
-						<div class="card mb-0" >
-							<div class="card-header">
-								<div class="col-md-6" style="max-width: 100%;">
-									<div class="card-board-style">
-										<div class="notice-body" align="center">
-											<br>
-											<ul class="nav nav-tabs nav-tabs-solid nav-justified"
-												style="width: 1255px;">
-												<li class="nav-item"><a class="nav-link active"
-													href="#solid-justified-tab1" data-toggle="tab">상벌 내역 목록</a></li>
-											</ul>
-											<br>
-											<form class="file-search">
-											<div class="col-auto float-right ml-auto">
-											<a href="#" class="btn btn-primary btn-sm sub-btn" data-toggle="modal" data-target="#edit_project"><i class="fa fa-plus"></i> 상벌 추가</a>
-											</div>
-												<div class="input-group" style="width: 300px; float: left;">
-													<select>
-														<option>제목</option>
-														<option>내용</option>
-														<option>통합</option>
-													</select> <input type="text" class="form-control"
-														placeholder="Search">
-													<div class="input-group-prepend">
-														<i class="fa fa-search board-icon"></i>
-													</div>
-												</div>
-											</form>
-											
-											<div class="tab-content">
-												<div class="tab-pane show active" id="solid-justified-tab1">
-													<div class="card-body">
-														<div class="table-responsive board-table-sort">
-															<table class="datatable table table-stripped mb-0">
-																<thead>
-																	<tr>
-																		<td class="not-sort"><input type="checkbox"></td>
-																		<th>사번</th>
-																		<th>이름</th>
-																		<th>근무부서</th>
-																		<th>상벌구분</th>
-																		<th>상벌일자</th>
-																		<th>상벌사유</th>
-																	</tr> 
-																</thead>
-																<c:forEach var="rnpList" items="${ requestScope.rnpList }">
-																	<tr class="rowClick">
-																		<td class="rnp-td"><input type="checkbox" />
-																		<td class="rnp-td"><c:out value="${ rnpList.memNo }" />
-																		<td class="rnp-td"><c:out value="${ rnpList.memName }" />
-																		<td class="rnp-td"><c:out value="${ rnpList.deptName }" />
-																		<td class="rnp-td"><c:out value="${ rnpList.rnpType }" />
-																		<td class="rnp-td"><c:out value="${ rnpList.enrollDate }" />
-																		<td class="rnp-td"><c:out value="${ rnpList.reason}" />
-																	</tr>
-																</c:forEach>
-															</table>
-														</div>
-													</div>
-												</div>
-											</div>
+
+				<div class="row">
+					<div class="col-lg-8 col-xl-9">
+						<div class="card">
+							<c:forEach var="detailRnp" items="${requestScope.detailRnp }">
+								<div class="card-body">
+									<div class="project-title">
+										<h5 class="card-title">
+											<c:out value="${ detailRnp.reason} " />
+										</h5>
+										<small class="block text-ellipsis m-b-15"><span
+											class="text-xs"><c:out
+													value="${ detailRnp.enrollDate} " /></span></small>
+									</div>
+									<div style="white-space: pre-line;">
+										<c:out escapeXml="false" value="${ fn:replace( detailInfo.body, replaceChar, '<br>' ) }"/>
+									</div>
+
+								</div>
+							</c:forEach>
+						</div>
+					</div>
+					<div class="col-lg-4 col-xl-3">
+						<div class="card">
+							<div class="card-body">
+								<h6 class="card-title m-b-15">업로드 정보</h6>
+								<table class="table table-striped table-border">
+									<tbody>
+										<c:forEach var="rnpDetailInfo"
+											items="${requestScope.rnpDetailInfo }">
+											<tr>
+												<td>작성자</td>
+												<td class="text-right">
+												<c:out value="${ rnpDetailInfo.memName }" /></td>
+											</tr>
+											<tr>
+												<td>부서명</td>
+												<td class="text-right">
+												<c:out value="${ rnpDetailInfo.deptName }" /></td>
+											</tr>
+											<tr>
+												<td>상벌 구분</td>
+												<td class="text-right">
+												<c:out value="${ rnpDetailInfo.rnpType }" /></td>
+											</tr>
+											<tr>
+												<td>상벌 일자</td>
+												<td class="text-right">
+												<c:out value="${ rnpDetailInfo.enrollDate }" /></td>
+											</tr>
+											<tr>
+												<td>상벌 사유</td>
+												<td class="text-right">
+												<c:out value="${ rnpDetailInfo.reason }" /></td>
+											</tr>
+											<tr>
+												<td>유효 여부</td>
+												<td class="text-right">유효/만료</td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Page Content -->
+
+			<!-- Edit Board Modal -->
+			<div id="edit_project" class="modal custom-modal fade" role="dialog">
+				<div class="modal-dialog modal-dialog-centered modal-lg"
+					role="document">
+					<form name="board5" action="${pageContext.servletContext.contextPath }/board/modify">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">게시글 수정</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<c:forEach var="detailInfo" items="${ requestScope.detailInfo }">
+								
+								<div class="row">
+								<div class="col-sm-6">
+										<div class="form-group">
+											<label>글번호</label> <input name="no" class="form-control" id="modifyTitle"
+												value="<c:out value="${ detailInfo.no }"/>" type="text" readOnly>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label>제목</label> <input name="title" class="form-control" id="modifyTitle"
+												value="<c:out value="${ detailInfo.title }"/>" type="text">
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label>작성자</label> <input name="writer" class="form-control" readOnly
+												value="<c:out value="${ detailInfo.writer }"/>" type="text">
 										</div>
 									</div>
 								</div>
+								<div class="row">
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label>게시일</label>
+											<div class="cal-icon">
+												<!-- <input class="form-control datetimepicker"> --> 
+												<input type="date"
+													name="enrollDate" id="modifyEnrollDate"
+													value="<c:out value="${ detailInfo.enrollDate }"/>">
+											</div>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group">
+											<label>만료일</label>
+											<div class="cal-icon">
+												<!-- <input class="form-control datetimepicker"> -->
+												<input type="date"
+													name="endDate" id="modifyEndDate"
+													value="<c:out value="${ detailInfo.endDate }"/>">
+											</div>
+										</div>
+									</div>
+									<div class="form-group">
+											<label>상태</label> <input name="status" class="form-control" id="modifyTitle"
+												value="<c:out value="${ detailInfo.status }"/>" type="text" readOnly>
+										</div>
+								</div>
+								<div class="row">
+									<div class="col-sm-3">
+										<div class="form-group">
+											<label>분류</label> <select class="select" name="boardType" id="modify-type-sel">
+												<option value="공지" <c:if test="${ detailInfo.boardType eq '공지'}">selected</c:if>>공지</option>
+												<option value="인사" <c:if test="${ detailInfo.boardType eq '인사'}">selected</c:if>>인사</option>
+												<option value="자유" <c:if test="${ detailInfo.boardType eq '자유'}">selected</c:if>>자유</option>
+											</select>
+										</div>
+									</div>
+									<div class="col-sm-6">
+										<div class="form-group"></div>
+									</div>
+								</div>
+								<div class="form-group">
+									<label>내용</label>
+									<textarea rows="4" class="form-control"	placeholder="Enter your message here" name="body" id="modifyBody" style="white-space: pre-line;">
+									<c:out escapeXml="false" value="${ detailInfo.body }"/>
+									</textarea>
+								</div>
+								<div class="form-group">
+									<label>업로드한 파일</label> <input class="form-control" type="file"
+										name="fileAttachment">
+								</div>
+								<div class="submit-section">
+									<button class="btn btn-primary submit-btn" id="modify-btn" type="button" onclick="goModify(this.form)">수정
+										완료</button>
+								</div>
+
+							</c:forEach>
+						</div>
+					</div>
+					</form>
+				</div>
+			</div>
+			<!-- /Edit Board Modal -->
+
+
+			<!-- delete modal-->
+			<div id="edit_project1" class="modal custom-modal fade" role="dialog">
+				<div class="modal-dialog modal-dialog-centered modal-lg"
+					role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<c:forEach var="detailInfo" items="${requestScope.detailInfo }">
+								<h5 class="modal-title">
+									<c:out value="${ detailInfo.no }" />
+									번 게시물 삭제
+								</h5>
+							</c:forEach>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<div class="submit-section">
+								<button id="delete-btn" class="btn btn-primary submit-btn">삭제하기</button>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-		<!-- Edit Board Modal -->
-				<div id="edit_project" class="modal custom-modal fade" role="dialog">
-					<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-					<form name="board5" action="${pageContext.servletContext.contextPath }/noticeBoard/modifyNotice" method="">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title">상벌 추가</h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-									<div class="row">
-										<div class="col-sm-6">
-											<div class="form-group">
-												<label>사번</label>
-												<input name="no" class="form-control" id="modifyTitle" type="text"
-												 value="<c:out value="${ noticeDetailInfo.no }"/>" >
-											</div>
-										</div>
-										<div class="col-sm-6">
-											<div class="form-group">
-												<label>제목</label>
-                                                <input name="title" class="form-control" id="modifyTitle"
-                                                value="<c:out value="${ noticeDetailInfo.title}"/>" type="text">
-											</div>
-										</div>
-										<div class="col-sm-6">
-											<div class="form-group">
-											<label>이름</label> <input name="writer" class="form-control" 
-												value="<c:out value="${ noticeDetailInfo.writer }"/>" type="text">
-											</div>
-									    </div>
-									</div>
-									
-									<div class="row">
-										<div class="col-sm-6">
-											<div class="form-group">
-												<label>게시일</label>
-												<div class="cal-icon">
-													<input type="date"
-													name="enrollDate" id="modifyEnrollDate"
-													value="<c:out value="${ noticeDetailInfo.enrollDate }"/>">
-												</div>
-											</div>
-										</div>
-										<div class="form-group">
-											<label>근무 부서</label> <input name="status" class="form-control" id="modifyTitle"
-												value="<c:out value="${noticeDetailInfo.status}"/>" type="text" >
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-sm-3">
-											<div class="form-group">
-                                                <label>상벌 구분</label>
-												<select class="select1" name="" id="">
-													<option value="포상">포상</option>
-													<option value="인사">징계</option>
-												</select>
-											</div>
-										</div>
-										<div class="col-sm-6">
-											<div class="form-group">
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<label>상벌 사유</label>
-										<textarea rows="4" class="form-control"
-										 placeholder="Enter your message here" name="body" id="modifyBody"><c:out
-										 value ="${ noticeDetailInfo.body }"/></textarea>
-									</div>
-									<div class="submit-section">
-										<button class="btn btn-primary submit-btn" id="modify-btn" type="button" onclick="goModify(this.form)">상벌 추가</button>
-									</div>
-							</div>
-						</div>
-						</form>
-					</div>
-				</div>
-	</div>
-	
-	<!-- /Page Wrapper -->
+		<!-- /Page Wrapper -->
 
 	</div>
 	<!-- /Main Wrapper -->
-	<script>
-	
-	if(document.getElementsByTagName("td")) {
-		const $tds = document.getElementsByTagName("td");
-		
-		for(let i = 0; i < $tds.length; i++) {
-			
-			$tds[i].onmouseenter = function() {
-				this.parentNode.style.backgroundColor = "yellow";
-				this.parentNode.style.cursor = "pointer";
-			}
-			
-			$tds[i].onmouseout = function() {
-				this.parentNode.style.background = "white";
-			}
-			
-			$tds[i].onclick = function() {
-				const no = this.parentNode.children[1].innerText;
-				console.log(no);
-				location.href = "${ pageContext.servletContext.contextPath }/Rnp/detail?no=" + no;
-			} 
-			
-		}
-	}
-	</script>
-    <script type="text/javascript">
-     function goModify(frm){
-   	 var title = frm.title.value;
-   	 var name = frm.name.value;
-   	 var enrollDate = frm.enrollDate.value;
-   	 var endDate = frm.endDate.value;
-   	 var boardType = frm.boardType.value;
-   	 var body = frm.body.value;
-   	 var fileAttachment = frm.fileAttachment.value;
-   	 
-   	 frm.submit();
-    	}
-    </script>
-	
+
 	<!-- jQuery -->
 	<script src="../resources/hrtemp/js/jquery-3.5.1.min.js"></script>
 
@@ -646,12 +655,47 @@
 	<!-- Slimscroll JS -->
 	<script src="../resources/hrtemp/js/jquery.slimscroll.min.js"></script>
 
-	<!-- Datatable JS -->
-	<script src="../resources/hrtemp/js/jquery.dataTables.min.js"></script>
-	<script src="../resources/hrtemp/js/dataTables.bootstrap4.min.js"></script>
+	<!-- Select2 JS -->
+	<script src="../resources/hrtemp/js/select2.min.js"></script>
+
+	<!-- Datetimepicker JS -->
+	<script src="../resources/hrtemp/js/moment.min.js"></script>
+	<script src="../resources/hrtemp/js/bootstrap-datetimepicker.min.js"></script>
+
+	<!-- Task JS -->
+	<script src="../resources/hrtemp/js/task.js"></script>
 
 	<!-- Custom JS -->
 	<script src="../resources/hrtemp/js/app.js"></script>
 
 </body>
+<script type="text/javascript">
+function goModify(frm){
+	 var title = frm.title.value;
+	 var name = frm.name.value;
+	 var enrollDate = frm.enrollDate.value;
+	 var endDate = frm.endDate.value;
+	 var boardType = frm.boardType.value;
+	 var body = frm.body.value;
+	 var fileAttachment = frm.fileAttachment.value;
+	 
+	 frm.submit();
+	 
+	 
+}
+</script>
+
+<script type="text/javascript">
+	    $(function() {
+			$("#delete-btn").click(function() {
+	
+				var no = <%= request.getParameter("no") %>;
+				console.log(no);
+				location.href = "${ pageContext.servletContext.contextPath }/board/delete?no=" + no;
+			});
+		});
+    </script>
+
+
+
 </html>

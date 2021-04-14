@@ -110,5 +110,10 @@ public class MemberInfoDTO {
 		this.member_no = member_no;
 	}
 
+	public MemberInfoDTO selectMemberInfo(int memberno) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }
