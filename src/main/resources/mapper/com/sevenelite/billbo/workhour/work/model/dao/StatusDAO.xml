@@ -53,19 +53,19 @@
 	  (
 	  SEQ_WORKSTATUS_NO.NEXTVAL
 	  ,  #{ date }
-	  ,  SYSDATE 
-	  ,  null
+	  ,  #{ commute }
+	  ,  #{ date , jdbcType=DATE}
 	  , #{ MemNo }
 	  , #{ type, jdbcType=VARCHAR }
 	  )	  
 	</insert>
 	
-	<update id="updateWork" parameterType="StatusAndWorkDTO">
+	<update id="updateWork" parameterType="StatusAndWorkDTO" >
        UPDATE
              BB_WORKSTATUS A
           SET A.LEAVE_WORK = SYSDATE
         WHERE A.MEMBER_NO = #{ memNo }
-		  AND A.WORKDATE = SYSDATE
+          AND A.COMMUTE = #{ commute }
 	</update>
 	
 	<select id="detailWork" resultMap="statusAndWorkResultMap" parameterType="StatusAndWorkDTO">
@@ -78,5 +78,11 @@
 		SELECT 
     		SEQ_WORKSTATUS_NO.CURRVAL
        FROM DUAL
+	</select>
+	<select id="selectWorkDate" parameterType="StatusAndWorkDTO" resultType="date">
+		SELECT
+		    A.COMMUTE
+		 FROM BB_WORKSTATUS A
+		 WHERE A.MEMBER_NO = #{ memNo }
 	</select>
  </mapper>   

@@ -8,13 +8,15 @@ import com.sevenelite.billbo.workhour.work.model.dto.StatusAndWorkDTO;
    
    public interface WorkStatusService {
    
-   List<StatusAndWorkDTO> selectListstatus();
+   List<StatusAndWorkDTO> selectAllStatus();
 
    List<StatusAndWorkDTO> sequenceWork(int no);
 
     boolean registWork(StatusAndWorkDTO workList);
 
 	boolean updateWork(StatusAndWorkDTO status1);
+
+	Date selectDate(int userno);
 
 
    
