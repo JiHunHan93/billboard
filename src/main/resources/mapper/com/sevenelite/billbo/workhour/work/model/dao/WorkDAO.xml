@@ -11,7 +11,6 @@
 	<result column="WORK_LATE_COUNT" property = "lateCount"/>
 	<result column="WORK_COUNT" property="workCount"/>
 	<result column="MEMBER_NO" property="MemNo"/>
-	<collection property="member" resultMap="memberResult"/>
 	</resultMap>
 	<resultMap id="statusAndWorkResultMap" type="com.sevenelite.billbo.workhour.work.model.dto.StatusAndWorkDTO">
  	<id column="MEMBMER_NO" property="memNo"/>
@@ -20,7 +19,6 @@
  	<result column="LEAVE_WORK" property="lwork"/>
  	<result column="WORKTYPE_CODE" property="type"/>
  	<result column="WORKSTATUS_NO" property="no"/>
- 	<collection property="member" resultMap="memberResult"/>
  	</resultMap>
  	<resultMap id="memberResult" type="com.sevenelite.billbo.member.model.dto.MemBbDTO">
 		<id property="no" column="MEMBER_NO" />
@@ -36,7 +34,7 @@
 	<resultMap id="Voresult" type="com.sevenelite.billbo.member.model.dto.UserDetailsVO">
 		<id property="memberno" column="MEMBER_NO" />
 	</resultMap>
-  	<select id="selectWorkList" resultMap="workResult" parameterType="WorkDTO">
+  	<select id="selectWorkList" resultMap="workResult" parameterType="WorkDTO" resultType="date">
 		SELECT
 			   A.TOTAL_WORK_HOURS
 		     , A.WORK_LATE_COUNT
@@ -47,7 +45,19 @@
 		     , B.MEMBER_NO
 		  FROM BB_WEEK_WORK_STATISTIC A 
           JOIN BB_WORKSTATUS B ON (A.MEMBER_NO = B.MEMBER_NO)
-		   WHERE A.MEMBER_NO = #{ MemNo }
+		 WHERE A.MEMBER_NO = #{ MemNo }
+	</select>
+	<select id="selectCommute" parameterType="StatusAndWorkDTO" resultType="date" >
+		  SELECT
+          A.COMMUTE
+       FROM BB_WORKSTATUS A
+        WHERE MEMBER_NO = #{ memNo }
+         AND A.WORKDATE = SYSDATE
+	</select>
+	<select id="selectlwork" parameterType="StatusAndWorkDTO" resultType="date">
+       SELECT
+          A.lwork
+       FROM BB_WORKSTATUS A     
 	</select>
 
 </mapper> 
