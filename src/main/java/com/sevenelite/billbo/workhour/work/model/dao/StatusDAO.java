@@ -1,7 +1,8 @@
 
    package com.sevenelite.billbo.workhour.work.model.dao;
    
-   import java.util.List;
+   import java.util.Date;
+import java.util.List;
 
 import com.sevenelite.billbo.member.model.dto.UserDetailsVO;
 import com.sevenelite.billbo.workhour.work.model.dto.StatusAndWorkDTO;
@@ -15,6 +16,8 @@ import com.sevenelite.billbo.workhour.work.model.dto.StatusAndWorkDTO;
    List<StatusAndWorkDTO> detailWork(int no);
    
    boolean updateWork(StatusAndWorkDTO status1);
+
+   Date selectWorkDate(int userno);
    
    }
   

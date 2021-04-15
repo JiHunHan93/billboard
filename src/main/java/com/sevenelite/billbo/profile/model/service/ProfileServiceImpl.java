@@ -16,6 +16,7 @@ import com.sevenelite.billbo.profile.model.dto.FinalAcademicDTO;
 import com.sevenelite.billbo.profile.model.dto.LicenseDTO;
 import com.sevenelite.billbo.profile.model.dto.MemberInfoDTO;
 import com.sevenelite.billbo.profile.model.dto.ModifyDeptDTO1;
+import com.sevenelite.billbo.profile.model.dto.ModifySpotDTO;
 import com.sevenelite.billbo.profile.model.dto.SpotDTO;
 import com.sevenelite.billbo.rnp.model.dto.ModifyDeptDTO;
 @Service("profileService")
@@ -35,15 +36,14 @@ public class ProfileServiceImpl implements ProfileService{
 		return mapper.armyInfo(army) > 0? true : false;
 	}
 
+	/*
+	 * @Override public List<MemberInfoDTO> memberInfo() { // TODO Auto-generated
+	 * method stub return mapper.memberInfo(); }
+	 */
 	@Override
-	public List<MemberInfoDTO> memberInfo() {
+	public boolean modifyspot(ModifySpotDTO modifyspot) {
 		// TODO Auto-generated method stub
-		return mapper.memberInfo();
-	}
-	@Override
-	public boolean spot(SpotDTO spot) {
-		// TODO Auto-generated method stub
-		return mapper.spot(spot) > 0? true : false;
+		return mapper.modifyspot(modifyspot) > 0? true : false;
 	}
 
 	/*
@@ -171,7 +171,7 @@ public class ProfileServiceImpl implements ProfileService{
 	@Override
 	public boolean dept(ModifyDeptDTO1 modifydept) {
 		// TODO Auto-generated method stub
-		return false;
+		return mapper.modifydept(modifydept) > 0? true:false;
 	}
 
 
@@ -192,6 +192,14 @@ public class ProfileServiceImpl implements ProfileService{
 	public boolean modifydept(ModifyDeptDTO1 dept) {
 		return mapper.modifydept(dept) > 0? true : false;
 	}
+
+	@Override
+	public List<MemberInfoDTO> memberInfo() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
 }
 
 

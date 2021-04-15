@@ -26,6 +26,7 @@ import com.sevenelite.billbo.profile.model.dto.FinalAcademicDTO;
 import com.sevenelite.billbo.profile.model.dto.LicenseDTO;
 import com.sevenelite.billbo.profile.model.dto.MemberInfoDTO;
 import com.sevenelite.billbo.profile.model.dto.ModifyDeptDTO1;
+import com.sevenelite.billbo.profile.model.dto.ModifySpotDTO;
 import com.sevenelite.billbo.profile.model.dto.SpotDTO;
 import com.sevenelite.billbo.profile.model.service.ProfileService;
 
@@ -79,12 +80,12 @@ public class MainProfileController {
 	  }
 //	 /*2 직위*/
 	  @PostMapping("joblevel")
-	  public String spot(@ModelAttribute SpotDTO spot) { 
-		  profileService.spot(spot); 
+	  public String modifyspot(@ModelAttribute ModifySpotDTO modifyspot) { 
+		  profileService.modifyspot(modifyspot); 
 	  
-	  System.out.println("왜 안오는거여 쉬벌?????");
+	  System.out.println(modifyspot+"왜 안오는거여 쉬벌?????");
 	  
-	  return "profile/main";
+	  return "redirect:http://127.0.0.1:8001/billbo/profile/mainProfile";
 	  }
 	  
 	  /*3 부서*/

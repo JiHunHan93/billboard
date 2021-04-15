@@ -28,10 +28,10 @@
 	<result property="member_no" column="MEMBER_NO"/>
 </resultMap>
 
-<resultMap type="com.sevenelite.billbo.profile.model.dto.SpotDTO" id="spotDTO">
+<!-- <resultMap type="com.sevenelite.billbo.profile.model.dto.SpotDTO" id="spotDTO">
 	<id property="code" column="SPOT_CODE"/>
 	<result property="name" column="SPOT_NAME"/>
-</resultMap>
+</resultMap> -->
 
 <resultMap type="com.sevenelite.billbo.profile.model.dto.DeptDTO" id="deptDTO">
 	<id property="code" column="DEPT_CODE"/>
@@ -70,6 +70,14 @@
 	<result property="deptCode" column="DEPT_CODE"/>
 	<result property="memberNo" column="MEMBER_NO"/>
 </resultMap>
+
+<resultMap type="com.sevenelite.billbo.profile.model.dto.ModifySpotDTO" id="modifySpotDTO">
+	<id property="spot_no" column= "MODIFY_SPOT_NO" />
+	<result property="spot_date" column= "MODIFY_SPOT_DATE"/>
+	<result property="spot_code" column= "SPOT_CODE"/>
+	<result property="member_no" column= "MEMBER_NO"/>
+</resultMap>
+
 
 <insert id="armyInfo" parameterType="ArmyDTO">
 	INSERT
@@ -127,8 +135,9 @@
 
 
 <select id="selectMemberInfo" parameterType="MemberInfoDTO" resultMap="memberInfoDTO">
-    SELECT
-          A.MEMBER_INFO_NO
+   SELECT
+    	  A.RNUM 
+        , A.MEMBER_INFO_NO
 	    , A.MEMBER_ADDRESS
 	    , A.MEMBER_ACCOUNT_NO
 	    , A.MEMBER_ACCOUNT_BANK
@@ -137,9 +146,35 @@
 	    , A.ENROLL_DATE
 	    , A.MEMBER_WORK_CONTRACT
 	    , A.MEMBER_NO
-	FROM BB_MEMBER_INFO A
-    WHERE A.MEMBER_INFO_NO = #{ member_no }
+	FROM (SELECT ROWNUM RNUM
+		        , B.MEMBER_INFO_NO
+		        , B.MEMBER_ADDRESS
+	            , B.MEMBER_ACCOUNT_NO
+	            , B.MEMBER_ACCOUNT_BANK
+	            , B.ACCOUNT_HOST
+	            , B.MEMBER_FILEATTACHMENT
+	            , B.ENROLL_DATE
+	            , B.MEMBER_WORK_CONTRACT
+	            , B.MEMBER_NO
+	        FROM (SELECT  C.MEMBER_INFO_NO
+		                 , C.MEMBER_ADDRESS
+	                     , C.MEMBER_ACCOUNT_NO
+	                     , C.MEMBER_ACCOUNT_BANK
+	                     , C.ACCOUNT_HOST
+	                     , C.MEMBER_FILEATTACHMENT
+	                     , C.ENROLL_DATE
+	                     , C.MEMBER_WORK_CONTRACT
+	                     , D.MEMBER_NO 
+	                  FROM BB_MEMBER_INFO C
+	                  JOIN BB_MEMBER D ON(C.MEMBER_NO = D.MEMBER_NO)
+	                  WHERE D.MEMBER_NO = #{ member_no }
+	                  ORDER BY MEMBER_NO DESC
+	                  ) B
+	                  ) A
+	                  WHERE RNUM = 1
 </select>
+	<!-- BB_MEMBER_INFO A
+    WHERE A.MEMBER_INFO_NO = #{ member_no } -->
 <select id="member" parameterType="MemberInfoDTO" resultMap="memberInfoDTO">
     SELECT
           A.MEMBER_INFO_NO
@@ -154,18 +189,23 @@
 	FROM BB_MEMBER_INFO A
     
 </select>
-<insert id="spot" parameterType="SpotDTO">
+<insert id="modifyspot" parameterType="ModifySpotDTO">
 	INSERT
-	  INTO BB_SPOT(
-	       SPOT_CODE
-	     , SPOT_NAME
+	  INTO BB_MODIFY_SPOT(
+	       MODIFY_SPOT_NO
+	     , MODIFY_SPOT_DATE
+	     , SPOT_CODE
+	     , MEMBER_NO
 	  )
 	  VALUES
 	  (
-	   #{code}
-	  ,#{name}
+	   SEQ_MODIFY_SPOT_NO.NEXTVAL
+	  , #{spot_date}
+	  , #{spot_code}
+	  , #{member_no}
 	  )
 </insert>
+	
 	
 <insert id="dept" parameterType="DeptDTO">
 	INSERT
@@ -384,12 +424,29 @@ SELECT
 </select>
 <select id="selectMemberDetail" resultMap="MemBbDTO" parameterType="MemBbDTO">
 SELECT
-       MEMBER_NO
-     , MEMBER_NAME
-     , MEMBER_PWD
-     , EMAIL
-     , PHONE
-  FROM BB_MEMBER    
+	   A.RNUM
+     , A.MEMBER_NO
+     , A.MEMBER_NAME
+     , A.MEMBER_PWD
+     , A.EMAIL
+     , A.PHONE
+  FROM (SELECT ROWNUM RNUM
+             , B.MEMBER_NO
+             , B.MEMBER_NAME
+             , B.MEMBER_PWD
+             , B.EMAIL
+             , B.PHONE   
+          FROM (SELECT  C.MEMBER_NO
+                      , C.MEMBER_NAME
+                      , C.MEMBER_PWD
+                      , C.EMAIL
+                      , C.PHONE     
+                   FROM BB_MEMBER C
+                  WHERE C.MEMBER_NO = #{ member_no } 
+                  ORDER BY PHONE DESC
+     )B
+  ) A
+  WHERE RNUM = 1 
 </select>
 <!-- <select id="member_enroll_date" resultMap="memberInfoDTO" parameterType="MemberInfoDTO">
 SELECT

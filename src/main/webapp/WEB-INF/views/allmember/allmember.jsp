@@ -695,29 +695,38 @@
 						</div>     
                     </div>
 					<!-- /Search Filter -->
-					
-					<div class="row">
-						<div class="col-md-12">
-							<div class="table-responsive">
-								<table class="table table-striped custom-table datatable">
-									<thead>
-										<tr>
-											<th>사원번호</th>
-											<th>이름</th>
-											<th>이메일주소</th>
-											<th>핸드폰번호</th>
-											<th class="text-nowrap">입사일</th>
-											<th>부서명</th>
-											<th class="text-right no-sort">Action</th>
-										</tr>
-									</thead>
-									<tbody>
+
+				<div class="row">
+					<div class="col-md-12">
+						<div class="table-responsive">
+							<table class="table table-striped custom-table datatable">
+								<thead>
+									<tr>
+										<th>사원번호</th>
+										<th>이름</th>
+										<th>이메일주소</th>
+										<th>핸드폰번호</th>
+										<th class="text-nowrap">입사일</th>
+										<th>부서명</th>
+									</tr>
+								</thead>
+								<c:forEach var="allMemberList" items="${requestScope.allMemberList }">
+									<tr class="">
+										<td class="free-td"><c:out value="${ allMemberList.no }" />
+										<td class="free-td"><c:out value="${ allMemberList.memberName }" />
+										<td class="free-td"><c:out value="${ allMemberList.email }" />
+										<td class="free-td"><c:out value="${ allMemberList.phone }" />
+										<td class="free-td"><c:out value="${ allMemberList.enrollDate }" />
+										<td class="free-td"><c:out value="${ allMemberList.deptName }" />
+									</tr>
+								</c:forEach>
+								<!-- <tbody>
 										<tr>
 											<td>
 												<h2 class="table-avatar">
 													<a href="profile.html" class="avatar"><img alt="" src="../resources/hrtemp/img/profiles/avatar-02.jpg"></a>
 													<a href="profile.html">John Doe <span>Web Designer</span></a>
-												</h2>
+												</h2>0
 											</td>
 											<td>FT-0001</td>
 											<td>johndoe@example.com</td>
@@ -936,12 +945,12 @@
 												</div>
 											</td>
 										</tr>
-									</tbody>
-								</table>
-							</div>
+									</tbody> -->
+							</table>
 						</div>
 					</div>
-                </div>
+				</div>
+			</div>
 				<!-- /Page Content -->
 				
 				<!-- Add Employee Modal -->
@@ -1564,6 +1573,7 @@
         </div>
 		<!-- /Main Wrapper -->
 		
+
 		<!-- jQuery -->
         <script src="../resources/hrtemp/js/jquery-3.5.1.min.js"></script>
 		
