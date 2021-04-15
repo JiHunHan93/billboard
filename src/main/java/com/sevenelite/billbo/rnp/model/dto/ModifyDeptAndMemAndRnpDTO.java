@@ -14,11 +14,12 @@ public class ModifyDeptAndMemAndRnpDTO {
 	private String rnpType;
 	private java.sql.Date enrollDate;
 	private String reason;
+	private String body;
 	
 	public ModifyDeptAndMemAndRnpDTO() {}
 
 	public ModifyDeptAndMemAndRnpDTO(int no, int memNo, String memName, String deptName, String rnpType,
-			Date enrollDate, String reason) {
+			Date enrollDate, String reason, String body) {
 		super();
 		this.no = no;
 		this.memNo = memNo;
@@ -27,6 +28,14 @@ public class ModifyDeptAndMemAndRnpDTO {
 		this.rnpType = rnpType;
 		this.enrollDate = enrollDate;
 		this.reason = reason;
+		this.body = body;
+	}
+
+	@Override
+	public String toString() {
+		return "ModifyDeptAndMemAndRnpDTO [no=" + no + ", memNo=" + memNo + ", memName=" + memName + ", deptName="
+				+ deptName + ", rnpType=" + rnpType + ", enrollDate=" + enrollDate + ", reason=" + reason + ", body="
+				+ body + "]";
 	}
 
 	public int getNo() {
@@ -85,12 +94,15 @@ public class ModifyDeptAndMemAndRnpDTO {
 		this.reason = reason;
 	}
 
-	@Override
-	public String toString() {
-		return "ModifyDeptAndMemAndRnpDTO [no=" + no + ", memNo=" + memNo + ", memName=" + memName + ", deptName="
-				+ deptName + ", rnpType=" + rnpType + ", enrollDate=" + enrollDate + ", reason=" + reason + "]";
+	public String getBody() {
+		return body;
 	}
 
+	public void setBody(String body) {
+		this.body = body;
+	}
+
+	
 	
 	
 }

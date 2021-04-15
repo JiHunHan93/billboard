@@ -62,10 +62,10 @@
 	
 	<update id="updateWork" parameterType="StatusAndWorkDTO">
        UPDATE
-              BB_WORKSTATUS A
+             BB_WORKSTATUS A
           SET A.LEAVE_WORK = SYSDATE
-        WHERE A.WORKDATE = A.WORKDATE
-          AND A.MEMBER_NO =#{ MemNo }
+        WHERE A.MEMBER_NO = #{ memNo }
+		  AND A.WORKDATE = SYSDATE
 	</update>
 	
 	<select id="detailWork" resultMap="statusAndWorkResultMap" parameterType="StatusAndWorkDTO">

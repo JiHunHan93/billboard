@@ -10,6 +10,7 @@
  	<result property="enrollDate" column="BONUS_DATE"/>
  	<result property="rnpType" column="BONUS_TYPE"/>
  	<result property="memberNo" column="MEMBER_NO"/>
+ 	<result property="body" column="BONUS_BODY"/>
 </resultMap>
 <resultMap type="com.sevenelite.billbo.member.model.dto.MemBbDTO" id="memberResultMap">
 		<id property="no" column="MEMBER_NO" />
@@ -35,6 +36,7 @@
 <resultMap type="com.sevenelite.billbo.rnp.model.dto.ModifyDeptAndMemAndRnpDTO" id="DeptAndMemResultMap">
 		<id property="no" column="BONUS_NO" />
 		<result property="memNo" column="MEMBER_NO" />
+		<result property="body" column="BONUS_BODY" />
 		<result property="memName" column="MEMBER_NAME" />
 		<result property="deptName" column="DEPT_NAME" />
 		<result property="rnpType" column="BONUS_TYPE" />
@@ -60,6 +62,7 @@
  <select id="detailRnp" resultMap="DeptAndMemResultMap" parameterType="ModifyDeptAndMemAndRnpDTO">
  	SELECT
  	    A.BONUS_NO
+ 	  , A.BONUS_BODY
  	  ,	A.MEMBER_NO
       , B.MEMBER_NAME
       , D.DEPT_NAME
@@ -72,4 +75,27 @@
     JOIN BB_DEPT D ON ( C.DEPT_CODE = D.DEPT_CODE)
     WHERE A.BONUS_NO = #{no}
  </select>
+ 
+<insert id="registRnp"  parameterType="RnpDTO">
+ INSERT
+  INTO BB_BONUS A
+  (
+  	A.BONUS_NO,
+  	A.BONUS_REASON,
+  	A.BONUS_DATE,
+  	A.BONUS_TYPE,
+  	A.BONUS_BODY,
+  	A.MEMBER_NO
+  )
+  VALUES
+  (
+    SEQ_BONUS_NO.NEXTVAL,
+    #{reason},
+    SYSDATE,
+    #{rnpType},
+    #{body},
+    3
+  )
+</insert>
+
  </mapper>
