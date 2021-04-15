@@ -670,7 +670,6 @@
 								</h3>
 														
 														<h6 class="text-muted"> 
-														직위 직책 들어가는 칸</h6>
 														
 														<div class="staff-id">Employee ID : ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username}</div>
 														<c:forEach var="MList" items="${ requestScope.MList }">
@@ -683,23 +682,23 @@
 
 													<ul class="personal-info">
 														<li>
-														<c:forEach var="profileList1" items="${ requestScope.profileList }">
-															<div class="title">Phone:  <c:out value="${profileList.phone }"/></div>
+														<c:forEach var="detailMem" items="${ requestScope.detailMem }">
+															<div class="title">Phone:  <c:out value="${detailMem.phone}"/></div>
 															<!-- <div class="text"></div> -->
 															</c:forEach>
 														</li>
 														<br>
 														<li>
-														<c:forEach var="profileList1" items="${ requestScope.profileList1 }">
 														<li>
 															<div class="title">사번:  <c:out value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }"/></div>
 															<!-- <div class="text"></div> -->
 															
 														</li>
+														<c:forEach var="detailMem" items="${ requestScope.detailMem }">
 														<br>
 														<br>
 														<li>
-															<div class="title">Email: <c:out value="${profileList1.email }"/></div>
+															<div class="title">Email: <c:out value="${detailMem.email }"/></div>
 															<!-- <div class="text"><a href=""></a></div> -->
 														</li>
 														</c:forEach>
@@ -948,28 +947,28 @@
 										
 										<table class="type_list_box">
 											<tbody><tr>
-												<th class="partcode"><span class="title_txt">부서코드</span></th>
-												<th class="partname"><span class="title_txt">부서명</span></th>
-												<th class="upperpart"><span class="title_txt">상위부서</span></th>
-												<th class="partlevel"><span class="title_txt">부서등급</span></th>
+												<th class="modifyDeptNo"><span class="title_txt">부서변경이력번호</span></th>
+												<th class="modifydate"><span class="title_txt">변경날짜</span></th>
+												<th class="deptCode"><span class="title_txt">부서코드</span></th>
+												<th class="memberNo"><span class="title_txt">사번</span></th>
 												
 											
 											</tr>
 											<tr class="dataRow" data-id="">
-												<td class="partcode">
-												<input class="txt w_max" type="text" name="code" value="" >
+												<td class="modifyDeptNo">
+												<input class="txt w_max" type="text" name="modifyDeptNo" value="" >
 												</td>
-												<td class="partname">
+												<td class="modifydate">
 													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="name" value="" >
+													<input class="txt w_max" type="date" name="modifydate" value="" >
 												</td>
-												<td class="upperpart">
+												<td class="deptCode">
 													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="upper" value="" >
+													<input class="txt w_max" type="text" name="deptCode" value="" >
 												</td>
-												<td class="partlevel">
+												<td class="memberNo">
 													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="level" value="" >
+													<input class="txt w_max" type="text" name="memberNo" value="" >
 												</td>
 												
 											</tr>

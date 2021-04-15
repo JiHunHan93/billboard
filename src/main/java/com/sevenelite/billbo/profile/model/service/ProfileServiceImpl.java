@@ -5,9 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.sevenelite.billbo.board.model.dto.BoardDTO;
 import com.sevenelite.billbo.member.model.dto.MemBbDTO;
-
 import com.sevenelite.billbo.profile.model.dao.ProfileMapper;
 import com.sevenelite.billbo.profile.model.dto.ArmyDTO;
 import com.sevenelite.billbo.profile.model.dto.CareerDTO;
@@ -17,16 +15,18 @@ import com.sevenelite.billbo.profile.model.dto.FamilyDTO;
 import com.sevenelite.billbo.profile.model.dto.FinalAcademicDTO;
 import com.sevenelite.billbo.profile.model.dto.LicenseDTO;
 import com.sevenelite.billbo.profile.model.dto.MemberInfoDTO;
+import com.sevenelite.billbo.profile.model.dto.ModifyDeptDTO1;
 import com.sevenelite.billbo.profile.model.dto.SpotDTO;
+import com.sevenelite.billbo.rnp.model.dto.ModifyDeptDTO;
 @Service("profileService")
 public class ProfileServiceImpl implements ProfileService{
 
 	private final ProfileMapper mapper;
-	
+
 	@Autowired
 	public ProfileServiceImpl(ProfileMapper mapper) {
 		this.mapper = mapper;
-		
+
 	}
 
 	@Override
@@ -45,28 +45,29 @@ public class ProfileServiceImpl implements ProfileService{
 		// TODO Auto-generated method stub
 		return mapper.spot(spot) > 0? true : false;
 	}
-	@Override
-	public boolean dept(DeptDTO dept) {
-		// TODO Auto-generated method stub
-		return mapper.dept(dept) > 0? true : false;
-	}
+
+	/*
+	 * @Override public boolean modifydept(ModifyDeptDTO1 modifydept) { // TODO
+	 * Auto-generated method stub return mapper.dept(modifydept) > 0? true : false;
+	 * }
+	 */
 	@Override
 	public boolean career(CareerDTO career) {
 		// TODO Auto-generated method stub
 		return mapper.career(career) > 0? true : false;
 	}
-//	@Override
-//	보류	
-//	public boolean bonus(BonusDTO bonus) {
-//		// TODO Auto-generated method stub
-//		return mapper.bonus(bonus) > 0? true : false;
-//	}
+	//	@Override
+	//	보류	
+	//	public boolean bonus(BonusDTO bonus) {
+	//		// TODO Auto-generated method stub
+	//		return mapper.bonus(bonus) > 0? true : false;
+	//	}
 	@Override
 	public boolean certificate(CertificateDTO certificate) {
 		// TODO Auto-generated method stub
 		return mapper.certificate(certificate) > 0? true : false;
 	}
-	
+
 	@Override
 	public boolean finalAcademic(FinalAcademicDTO finalAcademic) {
 		// TODO Auto-generated method stub
@@ -77,23 +78,23 @@ public class ProfileServiceImpl implements ProfileService{
 		// TODO Auto-generated method stub
 		return mapper.family(family) > 0? true : false;
 	}
-	
+
 	@Override
 	public boolean license(LicenseDTO license) {
 		// TODO Auto-generated method stub
 		return mapper.license(license) > 0? true : false;
 	}
-	
+
 	@Override
 	public boolean member_info_no(MemberInfoDTO member_info_no) {
 		// TODO Auto-generated method stub
 		return mapper.member_info_no(member_info_no) > 0? true : false;
 	}
-//	@Override
-//	public List<MemDTO>member_info_phone(int no) {
-//		System.out.println("이게된다?");
-//		return mapper.member_info_phone(no);
-//	}
+	//	@Override
+	//	public List<MemDTO>member_info_phone(int no) {
+	//		System.out.println("이게된다?");
+	//		return mapper.member_info_phone(no);
+	//	}
 	@Override
 	public List<MemBbDTO>member_address() {
 		System.out.println("이게된다고?");
@@ -160,11 +161,42 @@ public class ProfileServiceImpl implements ProfileService{
 		// TODO Auto-generated method stub
 		return mapper.selectMemberDept(memberno);
 	}
+
+	@Override
+	public List<MemBbDTO> selectMemberDetail(int memberno) {
+		// TODO Auto-generated method stub
+		return mapper.selectMemberDetail(memberno);
 	}
 
-	
-	
-	
-	
+	@Override
+	public boolean dept(ModifyDeptDTO1 modifydept) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
-		
+
+
+	@Override
+	public List<ModifyDeptDTO> member_name(int memberno) {
+		// TODO Auto-generated method stub
+		return member_name(memberno);
+	}
+
+	@Override
+	public List<ModifyDeptDTO> member_dept(int memberno) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean modifydept(ModifyDeptDTO1 dept) {
+		return mapper.modifydept(dept) > 0? true : false;
+	}
+}
+
+
+
+
+
+
+

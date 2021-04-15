@@ -19,6 +19,7 @@
  		<typeAlias alias="MemberInfoDTO" type="com.sevenelite.billbo.profile.model.dto.MemberInfoDTO"/>
  		<typeAlias alias="SpotDTO" type="com.sevenelite.billbo.profile.model.dto.SpotDTO"/>
  		<typeAlias alias="DeptDTO" type="com.sevenelite.billbo.profile.model.dto.DeptDTO"/>
+ 		<typeAlias alias="ModifyDeptDTO1" type="com.sevenelite.billbo.profile.model.dto.ModifyDeptDTO1"/>
  		<typeAlias alias="CareerDTO" type="com.sevenelite.billbo.profile.model.dto.CareerDTO"/>
  		<typeAlias alias="BonusDTO" type="com.sevenelite.billbo.profile.model.dto.BonusDTO"/>
  		<typeAlias alias="CertificateDTO" type="com.sevenelite.billbo.profile.model.dto.CertificateDTO"/>

@@ -9,22 +9,24 @@ public class RnpDTO {
 	private java.sql.Date enrollDate;
 	private String rnpType;
 	private int memberNo;
+	private String body;
 	
 	public RnpDTO() {}
 
-	@Override
-	public String toString() {
-		return "RnpDTO [no=" + no + ", reason=" + reason + ", enrollDate=" + enrollDate + ", rnpType=" + rnpType
-				+ ", memberNo=" + memberNo + "]";
-	}
-
-	public RnpDTO(int no, String reason, java.sql.Date enrollDate, String rnpType, int memberNo) {
+	public RnpDTO(int no, String reason, java.sql.Date enrollDate, String rnpType, int memberNo, String body) {
 		super();
 		this.no = no;
 		this.reason = reason;
 		this.enrollDate = enrollDate;
 		this.rnpType = rnpType;
 		this.memberNo = memberNo;
+		this.body = body;
+	}
+
+	@Override
+	public String toString() {
+		return "RnpDTO [no=" + no + ", reason=" + reason + ", enrollDate=" + enrollDate + ", rnpType=" + rnpType
+				+ ", memberNo=" + memberNo + ", body=" + body + "]";
 	}
 
 	public int getNo() {
@@ -67,6 +69,14 @@ public class RnpDTO {
 		this.memberNo = memberNo;
 	}
 
-	
+	public String getBody() {
+		return body;
+	}
+
+	public void setBody(String body) {
+		this.body = body;
+	}
+
+
 	
 }

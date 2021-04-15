@@ -41,51 +41,165 @@
 <script src="../resources/hrtemp/lib/locales/ko.js"></script>
 
 <script>
-import allLocales from '@../resources/hrtemp/resources/hrtemp/lib/locales-all';
-document.addEventListener('DOMContentLoaded', function() {
-	  var Calendar = FullCalendar.Calendar;
-	  var Draggable = FullCalendar.Draggable;
+	document.addEventListener('DOMContentLoaded', function() {
+		var Calendar = FullCalendar.Calendar;
+		var Draggable = FullCalendar.Draggable;
 
-	  var containerEl = document.getElementById('external-events');
-	  var calendarEl = document.getElementById('calendar');
-	  var checkbox = document.getElementById('drop-remove');
+		var containerEl = document.getElementById('external-events');
+		var calendarEl = document.getElementById('calendar');
+		var checkbox = document.getElementById('drop-remove');
 
-	  // initialize the external events
-	  // -----------------------------------------------------------------
+		// initialize the external events
+		// -----------------------------------------------------------------
 
-	  new Draggable(containerEl, {
-	    itemSelector: '.fc-event',
-	    eventData: function(eventEl) {
-	      return {
-	        title: eventEl.innerText
-	      };
-	    }
-	  });
+		new Draggable(containerEl, {
+			itemSelector : '.fc-event',
+			eventData : function(eventEl) {
+				return {
+					title : eventEl.innerText
+				};
+			}
+		});
 
-	  // initialize the calendar
-	  // -----------------------------------------------------------------
+		// initialize the calendar
+		// -----------------------------------------------------------------
 
-	  var calendar = new Calendar(calendarEl, {
-		  locales: allLocales;
-	  	  locale: 'ko';
-		  headerToolbar: {
-	      left: 'prev,next today',
-	      center: 'title',
-	      right: 'dayGridMonth,timeGridWeek,timeGridDay'
-	    },
-	    editable: true,
-	    droppable: true, // this allows things to be dropped onto the calendar
-	    drop: function(info) {
-	      // is the "remove after drop" checkbox checked?
-	      if (checkbox.checked) {
-	        // if so, remove the element from the "Draggable Events" list
-	        info.draggedEl.parentNode.removeChild(info.draggedEl);
-	      }
-	    }
-	  });
+		var calendar = new Calendar(calendarEl, {
+			headerToolbar : {
+				left : 'prev,next today',
+				center : 'title',
+				right : 'dayGridMonth,timeGridWeek,timeGridDay'
+			},
+			dateClick : function(info) {
+				alert(info.dateStr + '날짜 클릭');
+			},
+			eventClick : function() {
+				alert('일정 클릭');
+			},
+			editable : true,
+			droppable : true, // this allows things to be dropped onto the calendar
+			drop : function(info) {
+				// is the "remove after drop" checkbox checked?
+				if (checkbox.checked) {
+					// if so, remove the element from the "Draggable Events" list
+					info.draggedEl.parentNode.removeChild(info.draggedEl);
+				}
+			},
+			locale : 'ko'
+		});
 
-	  calendar.render();
+		calendar.on('dateClick', function(info) {
+			calendar.addEvent({
+				'title' : '이벤트 추가',
+				'start' : info.dateStr,
+				'end' : info.dateStr
+			});
+			alert('날짜 정보 콘솔에 출력됨');
+			console.log('clicked on ' + info.dateStr);
+		});
+
+		calendar.addEvent({
+			'title' : '임의의 이벤트',
+			'start' : '2021-04-04',
+			'end' : '2021-04-07'
+		});
+
+		var arr = [ {
+			'title' : '임의의 받아온 이벤트',
+			'start' : '2021-04-11',
+			'end' : '2021-04-16'
+		} ];
+
+		calendar.addEvent(arr[0]);
+
+		var arr1 = {
+			'title' : '이벤트',
+			'start' : '2021-04-11',
+			'end' : '2021-04-16'
+		};
+
+		calendar.addEvent(arr1);
+
+		calendar.render();
+		var arrCal = calendar.getEvents();
+		$.each(arrCal, function(index, item) {
+			for (let i = 0; i < arrCal.length; i++) {
+				alert(arrCal[i].title + "이벤트 조회됨");
+				alert("일정정보 콘솔에 출력됨");
+				console.log(arrCal[i].title);
+			}
+		});
+
+		var arrTest = getCalendarDataInDB();
+		$.each(arrTest, function(index, item) {
+			console.log('outer loop_in_cal' + index + ' : ' + item);
+			$.each(item, function(iii, ttt) {
+				console.log('inner loop_in_cal => ' + iii + ' : ' + ttt);
+			});
+
+		});
+
+		$("#btnAddTest").click(
+				function() {
+					alert('버튼입력');
+					var arr = getCalendarDataInDB();
+					$.each(arr, function(index, item) {
+						calendar.addEvent(item);
+						console.log('click evt loop_in_cal' + index + ' : '
+								+ item);
+						$.each(item, function(iii, ttt) {
+							console.log('click evt inner loop_in_cal => ' + iii
+									+ ' : ' + ttt);
+						});
+					});
+
+					calendar.render();
+				});
 	});
+
+	function getCalendarEvent() {
+		var arr = [{
+			'title' : '임의의 이벤트',
+			'start' : '2021-04-04',
+			'end' : '2021-04-07'
+		}];
+		return arr;
+	}
+	
+	function getCalendarDataInDB(){
+	    var arr = [{title: 'evt1', start:'ssssss'}, {title: 'evt2', start:'123123123'}];
+	    
+	    //배열 초기화
+	    var viewData = {};
+	    //data[키] = 밸류
+	    viewData["id"] = $("#currId").text().trim();
+	    viewData["title"] = $("#title").val();
+	    viewData["content"] = $("#content").val();
+	    
+	    $.ajax({
+	        contentType:'application/json',
+	        dataType:'json',
+	        url:'calendar/getall',
+	        type:'post',
+	        async: false,
+	        data:JSON.stringify(viewData),
+	        success:function(resp){
+	            //alert(resp.f.id + ' ggg');     
+	            $.each(resp, function(index, item){
+	                console.log(index + ' : ' + item);
+	                $.each(item, function(iii, ttt){
+	                    console.log('inner loop => ' + iii + ' : ' + ttt);
+	                });
+	            });
+	            arr = resp;
+	        },
+	        error:function(){
+	            alert('저장 중 에러가 발생했습니다. 다시 시도해 주세요.');
+	        }
+	    });
+	    
+	    return arr;
+	}
 </script>
 <style type="text/css">
 #external-events {
@@ -770,6 +884,7 @@ document.addEventListener('DOMContentLoaded', function() {
 										<div id='calendar-container'>
 											<div id='calendar'></div>
 										</div>
+											<input type="button" id="btnAddTest" value="추가">
 										<!-- /Calendar -->
 
 									</div>
