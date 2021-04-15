@@ -3,6 +3,7 @@ package com.sevenelite.billbo.workhour.main;
 import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.List;
 
@@ -108,14 +109,6 @@ public class WorkDetailController {
 	    Calendar calendar = new GregorianCalendar();
 	    
 	    int hours = calendar.get(Calendar.HOUR_OF_DAY);
-	    int miniutes = calendar.get(Calendar.MINUTE);
-	    int seconds = calendar.get(Calendar.SECOND);
-	    
-	    if(hours > 10) {
-	    	System.out.println("지각");
-	    } else {
-	    	System.out.println("정상출근");
-	    }
 	     
 	    
 		if(workStatusService.registWork(workList)) {
@@ -134,20 +127,28 @@ public class WorkDetailController {
 //				String s = attrs.nextElement();
 //				System.out.println("attr : " + s);
 //			}
-			List<StatusAndWorkDTO> workInfo =  workStatusService.selectListstatus();
+			
 		
 			UserDetailsVO userDetails = (UserDetailsVO) authentication.getPrincipal();
 			int userno = userDetails.getMemberno();
-			StatusAndWorkDTO workList = new StatusAndWorkDTO();
 			
-			if(workStatusService.updateWork(userno)) {
-				System.out.println(workInfo);
+			
+			StatusAndWorkDTO status1 = new StatusAndWorkDTO();
+			String date = new String();
+			
+			
+			status1.setDate(date);
+			status1.setMemNo(userno);
+			
+			
+			
+			if(workStatusService.updateWork(status1)) {
 				System.out.println(userDetails);
 				rttr.addFlashAttribute("message", "퇴근하자");
 			};
 			
 			ModelAndView mv = new ModelAndView();
-			model.addAttribute("StatusAndWorkDTO", status);
+			model.addAttribute("StatusAndWorkDTO", status1);
 			mv.setViewName("statusList"); 
 			
 			return "redirect:/work/detail";
