@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.sevenelite.billbo.rnp.model.dao.RnpMapper;
+import com.sevenelite.billbo.rnp.model.dto.ModifyDeptAndMemAndRnpDTO;
 import com.sevenelite.billbo.rnp.model.dto.RnpDTO;
 
 @Service("rnpService")
@@ -28,6 +29,14 @@ public class RnpServiceImpl implements RnpService{
 	public List<RnpDTO> detailRnp(int no) {
 		
 		return rnpMapper.detailRnp(no);
+	}
+
+	@Override
+	public boolean registRnp(RnpDTO rnpBody) {
+		
+		int result = rnpMapper.registRnp(rnpBody);
+		
+		return result >= 1 ? true : false;
 	}
 
 }

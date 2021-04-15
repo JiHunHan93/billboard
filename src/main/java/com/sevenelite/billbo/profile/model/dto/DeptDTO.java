@@ -7,11 +7,11 @@ public class DeptDTO {
 	private String code;
 	private String name;
 	private String upper;
-	private String level;
+	private int level;
 	
 	public DeptDTO() {}
 
-	public DeptDTO(String code, String name, String upper, String level) {
+	public DeptDTO(String code, String name, String upper, int level) {
 		super();
 		this.code = code;
 		this.name = name;
@@ -48,12 +48,12 @@ public class DeptDTO {
 		this.upper = upper;
 	}
 
-	public String getLevel() {
+	public int getLevel() {
 		return level;
 	}
 
-	public void setLevel(String level) {
+	public void setLevel(int level) {
 		this.level = level;
 	}
-			
+
 }

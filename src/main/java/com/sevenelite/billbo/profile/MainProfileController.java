@@ -25,6 +25,7 @@ import com.sevenelite.billbo.profile.model.dto.FamilyDTO;
 import com.sevenelite.billbo.profile.model.dto.FinalAcademicDTO;
 import com.sevenelite.billbo.profile.model.dto.LicenseDTO;
 import com.sevenelite.billbo.profile.model.dto.MemberInfoDTO;
+import com.sevenelite.billbo.profile.model.dto.ModifyDeptDTO1;
 import com.sevenelite.billbo.profile.model.dto.SpotDTO;
 import com.sevenelite.billbo.profile.model.service.ProfileService;
 
@@ -49,18 +50,23 @@ public class MainProfileController {
 		List<MemberInfoDTO> member = profileService.selectMemberInfo(user.getMemberno());
 		/*부서조회*/
 		List<DeptDTO> dept = profileService.selectMemberDept(user.getMemberno());
+		/*이메일조회*/
+		List<MemBbDTO> detailMem=  profileService.selectMemberDetail(user.getMemberno());
 		
 		System.out.println(member+"오나???!?");
 		System.out.println(dept+"이것도 오나???!?");
-		
+		System.out.println(detailMem+"이거도 제발");
 		model.addAttribute("member", member);
 		model.addAttribute("dept", dept);
+		model.addAttribute("detailMem", detailMem);
 		
 		
 		return "profile/main";
 
 	}
-		/*1 신상*/
+	
+	
+	/*1 신상*/
 	  @PostMapping("mainProfile")
 	  public String memberInfo(@ModelAttribute MemberInfoDTO member) { 
 //		  profileService.memberInfo(member); 
@@ -83,12 +89,13 @@ public class MainProfileController {
 	  
 	  /*3 부서*/
 	  @PostMapping("part")
-	  public String dept(@ModelAttribute DeptDTO dept) { 
-		  profileService.dept(dept); 
+	  public String dept(@ModelAttribute ModifyDeptDTO1 modifydept) { 
+		  System.out.println(modifydept);
+		  
+		  profileService.dept(modifydept);
 	  
 	  System.out.println("왜 안오는거여 쉬벌?????");
-	  
-	  return "profile/main";
+	  return "redirect:http://127.0.0.1:8001/billbo/profile/mainProfile";
 	  }
 	  
 	  /*4.경력*/

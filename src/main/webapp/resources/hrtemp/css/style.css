@@ -1981,6 +1981,13 @@ table.dataTable thead > tr > th.sorting_asc.not-sort{
     padding: 5px 15px;
 }
 
+.card-body1 {
+	height:325px;
+	flex: 1 1 auto;
+    min-height: 1px;
+    padding: 1.25rem;
+}
+
 /*-----------------
 	13. Activity
 -----------------------*/

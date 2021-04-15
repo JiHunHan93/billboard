@@ -3,7 +3,7 @@ package com.sevenelite.billbo.profile.model.dao;
 import java.util.List;
 
 import com.sevenelite.billbo.member.model.dto.MemBbDTO;
-
+import com.sevenelite.billbo.member.model.dto.UserDetailsVO;
 import com.sevenelite.billbo.profile.model.dto.ArmyDTO;
 import com.sevenelite.billbo.profile.model.dto.CareerDTO;
 import com.sevenelite.billbo.profile.model.dto.CertificateDTO;
@@ -12,11 +12,15 @@ import com.sevenelite.billbo.profile.model.dto.FamilyDTO;
 import com.sevenelite.billbo.profile.model.dto.FinalAcademicDTO;
 import com.sevenelite.billbo.profile.model.dto.LicenseDTO;
 import com.sevenelite.billbo.profile.model.dto.MemberInfoDTO;
+import com.sevenelite.billbo.profile.model.dto.ModifyDeptDTO1;
 import com.sevenelite.billbo.profile.model.dto.SpotDTO;
+import com.sevenelite.billbo.rnp.model.dto.ModifyDeptDTO;
 
 public interface ProfileMapper {
 
 	
+
+
 
 	ArmyDTO armyInfo();
 	
@@ -29,7 +33,7 @@ public interface ProfileMapper {
 	SpotDTO spot();
 	int spot(SpotDTO spot);
 
-	int dept(DeptDTO dept);
+	int dept(ModifyDeptDTO dept);
 	//List<CareerDTO> career();
 	int career(CareerDTO career);
 //보류	
@@ -56,7 +60,7 @@ public interface ProfileMapper {
 //
 //	List<MemDTO> member_enrollDate();
 
-	List<DeptDTO> member_name();
+//	List<DeptDTO> member_name();
 	List<MemBbDTO> member_info_phone();
 
 	List<MemberInfoDTO> mainProfile();
@@ -75,6 +79,21 @@ public interface ProfileMapper {
 	List<MemberInfoDTO> selectMemberInfo(int memberno);
 
 	List<DeptDTO> selectMemberDept(int memberno);
+
+
+
+	List<UserDetailsVO> selectUserDetail(int memberno);
+
+
+
+	List<MemBbDTO> selectMemberDetail(int memberno);
+
+	List<ModifyDeptDTO1> selectMemberName(int memberno);
+
+	List<DeptDTO> member_name();
+
+	int modifydept(ModifyDeptDTO1 dept);
+
 
 	
 
