@@ -39,7 +39,7 @@
 	<result property="upper" column="DEPT_UPPER"/>
 	<result property="level" column="DEPT_LEVEL"/>
 </resultMap>
-
+ 
 <resultMap type="com.sevenelite.billbo.profile.model.dto.CareerDTO" id="careerDTO">
 	<id property="no" column="CAREER_NO"/>
 	<result property="start" column="CAREER_START"/>
@@ -64,6 +64,12 @@
 	<result property="phone" column="PHONE"/>
 </resultMap>
 
+<resultMap type="com.sevenelite.billbo.profile.model.dto.ModifyDeptDTO1" id="modifydeptDTO1">
+	<id property="modifyDeptNo" column="MODIFY_DEPT_NO"/>
+	<result property="modifydate" column="MODIFY_DEPT_DATE"/>
+	<result property="deptCode" column="DEPT_CODE"/>
+	<result property="memberNo" column="MEMBER_NO"/>
+</resultMap>
 
 <insert id="armyInfo" parameterType="ArmyDTO">
 	INSERT
@@ -178,7 +184,22 @@
 	  
 	  )
 </insert>
-
+<insert id="modifydept" parameterType="ModifyDeptDTO1">
+	INSERT
+	  INTO BB_MODIFY_DEPT (
+	       MODIFY_DEPT_NO
+	     , MODIFY_DEPT_DATE
+	     , DEPT_CODE
+	     , MEMBER_NO
+	     )
+	     VALUES
+	     (
+	     SEQ_MODIFY_DEPT_NO.NEXTVAL,
+	     #{modifydate},
+	     #{deptCode},
+	     #{memberNo}
+	     )
+</insert>
 <insert id="career" parameterType="CareerDTO">
 	INSERT
 	  INTO BB_CAREER(
@@ -350,7 +371,26 @@ SELECT
             
         FROM BB_MEMBER A
 </select>
-
+<select id="selectMemberDept" resultMap="deptDTO" parameterType="DeptDTO">
+SELECT
+             D.DEPT_CODE
+            , D.DEPT_NAME
+            , D.DEPT_UPPER
+            , D.DEPT_LEVEL
+        
+        FROM BB_MEMBER A
+        JOIN BB_MODIFY_DEPT B ON ( A.MEMBER_NO = B.MEMBER_NO)
+        JOIN BB_DEPT D ON( B.DEPT_CODE = D.DEPT_CODE)
+</select>
+<select id="selectMemberDetail" resultMap="MemBbDTO" parameterType="MemBbDTO">
+SELECT
+       MEMBER_NO
+     , MEMBER_NAME
+     , MEMBER_PWD
+     , EMAIL
+     , PHONE
+  FROM BB_MEMBER    
+</select>
 <!-- <select id="member_enroll_date" resultMap="memberInfoDTO" parameterType="MemberInfoDTO">
 SELECT
 	   ENROLL_DATE
