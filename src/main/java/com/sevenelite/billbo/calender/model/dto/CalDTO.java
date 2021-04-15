@@ -2,9 +2,6 @@ package com.sevenelite.billbo.calender.model.dto;
 
 import java.sql.Date;
 
-import com.sevenelite.billbo.member.model.dto.MemBbDTO;
-import com.sevenelite.billbo.profile.model.dto.DeptDTO;
-
 public class CalDTO {
 
 	private String title;

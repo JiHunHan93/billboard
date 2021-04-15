@@ -85,6 +85,7 @@
 					info.draggedEl.parentNode.removeChild(info.draggedEl);
 				}
 			},
+			
 			locale : 'ko'
 		});
 
@@ -121,14 +122,14 @@
 		calendar.addEvent(arr1);
 
 		calendar.render();
-		var arrCal = calendar.getEvents();
-		$.each(arrCal, function(index, item) {
+ 		var arrCal = calendar.getEvents();
+		/*$.each(arrCal, function(index, item) {
 			for (let i = 0; i < arrCal.length; i++) {
 				alert(arrCal[i].title + "이벤트 조회됨");
 				alert("일정정보 콘솔에 출력됨");
 				console.log(arrCal[i].title);
 			}
-		});
+		}); */
 
 		var arrTest = getCalendarDataInDB();
 		$.each(arrTest, function(index, item) {
@@ -167,7 +168,7 @@
 	}
 	
 	function getCalendarDataInDB(){
-	    var arr = [{title: 'evt1', start:'ssssss'}, {title: 'evt2', start:'123123123'}];
+	    var arr = [{title: 'evt1', start:'2021-04-11', end:'2021-04-14', allDay: 'true'}, {title: 'evt2', start:'2021-04-09'}, {title: 'evt1', start:'2021-04-11', end:'2021-04-14', allDay: 'true'}];
 	    
 	    //배열 초기화
 	    var viewData = {};
@@ -179,7 +180,7 @@
 	    $.ajax({
 	        contentType:'application/json',
 	        dataType:'json',
-	        url:'calendar/getall',
+	        url:'getMain',
 	        type:'post',
 	        async: false,
 	        data:JSON.stringify(viewData),
