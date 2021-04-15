@@ -2,9 +2,8 @@ package com.sevenelite.billbo.workhour.main;
 import java.security.Principal;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Formatter;
+import java.util.Date;
 import java.util.GregorianCalendar;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -14,8 +13,6 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sevenelite.billbo.member.model.dto.UserDetailsVO;
-import com.sevenelite.billbo.workhour.work.model.dto.StatusAndWorkDTO;
-import com.sevenelite.billbo.workhour.work.model.dto.WorkDTO;
 import com.sevenelite.billbo.workhour.work.model.service.WorkService;
 
 @Controller
@@ -40,22 +37,29 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkService;
 			int no = userDetails.getMemberno();
 			System.out.println(no);
 			
-			List<WorkDTO> workInfo = workService.selectWorkList(no);
-			System.out.println(workInfo);
-			model.addAttribute("workInfo", workInfo);
 			
 			System.out.println("관리자 : " + principal);
 			System.out.println("===========================================" + no);
 			
-			System.out.println(System.currentTimeMillis());
+			java.util.Date commute = workService.selectCommute(no);
+			Date lwork = workService.selectlwork(no);
 			
-			java.util.Date commute = new java.util.Date();
+			System.out.println("commute : " + commute);
+			System.out.println("lwork : " + lwork);
+			/*
+			 * SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd"); String formatDate
+			 * = format.format(commute);
+			 * 
+			 * System.out.println("출근날짜 나와라~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + commute);
+			 * 
+			 * 
+			 * 
+			 * // List<WorkDTO> workInfo = workService.selectWorkList(no); //
+			 * System.out.println(workInfo); // model.addAttribute("workInfo", workInfo);
+			 */			
 			
-			commute.getTime();
-			System.out.println(commute);
-			System.out.println("ㅊㄺㄴ하잖ㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱㄱ: " + commute);
 			
-		return "workhour/workList"; 
+			return "workhour/workList";
 
 	}
 
