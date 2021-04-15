@@ -672,8 +672,8 @@
 														<h6 class="text-muted"> 
 														
 														<div class="staff-id">Employee ID : ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username}</div>
-														<c:forEach var="MList" items="${ requestScope.MList }">
-														<div class="small doj text-muted">Date of Join :"${ MList.enroll_date }"</div>
+														<c:forEach var="member" items="${ requestScope.member }">
+														<div class="small doj text-muted">Date of Join :"${ member.enroll_date }"</div>
 														</c:forEach>
 														<div class="staff-msg"><a class="btn btn-custom" href="chat.html">Send Message</a></div>
 													</div>
@@ -698,7 +698,7 @@
 														<br>
 														<br>
 														<li>
-															<div class="title">Email: <c:out value="${detailMem.email }"/></div>
+															<div class="title">Email: <c:out value="${ detailMem.email }"/></div>
 															<!-- <div class="text"><a href=""></a></div> -->
 														</li>
 														</c:forEach>
@@ -894,22 +894,32 @@
 						<!-- 두번째탭 -->
 						<div class="tab-pane fade" id="emp_job">
 							<div class="tab-content">
-								<div class="ehr_con_wrap"><div><h3 class="tab_title">직위</h3>
+								<div class="ehr_con_wrap"><div><h3 class="tab_title">직위변경</h3>
 									<!--탭 전체 펼치기시 타이틀 나옴-->
 									<div class="ehr_jop viewForm">
 										<form action="${ pageContext.servletContext.contextPath }/profile/joblevel" method="post">
 										<table class="type_list_box">
 											<tbody><tr>
-												<th class="code"><span class="title_txt">직위코드</span></th>
-												<th class="name"><span class="title_txt">직위명</span></th>
+												<th class="spot_no"><span class="title_txt" hidden='true'>직위변경이력번호</span></th>
+												<th class="spot_date"><span class="title_txt">변경날짜</span></th>
+												<th class="spot_code"><span class="title_txt">직위코드</span></th>
+												<th class="member_no"><span class="title_txt">사번</span></th>
 											</tr>
 											<tr class="dataRow" data-id="">
-												<td class="code">
-												<input class="txt w_max" type="text" name="code" value="" >
+												<td class="spot_no">
+												<input class="txt w_max" type="text" name="spot_no" value="16" hidden='true' >
 												</td>
-												<td class="name">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="name" value="">
+												<td class="spot_date">
+													
+													<input class="txt w_max" type="date" name="spot_date" value="">
+												</td>
+												<td class="spot_code">
+													
+													<input class="txt w_max" type="text" name="spot_code" value="">
+												</td>
+												<td class="member_no">
+													
+													<input class="txt w_max" type="text" name="member_no" value="">
 												</td>
 											</tr>
 										</tbody></table>

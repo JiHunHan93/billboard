@@ -12,9 +12,11 @@ public interface WorkDAO {
 
 	List<WorkDTO> selectWorkList(int no);
 
-	Date selectCommute(int no);
+	Date selectWorkDate(int no);
 
 	Date selectlwork(int no);
+
+	Date selectCommute(int no);
 
 
   }

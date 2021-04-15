@@ -12,6 +12,7 @@ import com.sevenelite.billbo.profile.model.dto.FinalAcademicDTO;
 import com.sevenelite.billbo.profile.model.dto.LicenseDTO;
 import com.sevenelite.billbo.profile.model.dto.MemberInfoDTO;
 import com.sevenelite.billbo.profile.model.dto.ModifyDeptDTO1;
+import com.sevenelite.billbo.profile.model.dto.ModifySpotDTO;
 import com.sevenelite.billbo.profile.model.dto.SpotDTO;
 import com.sevenelite.billbo.rnp.model.dto.ModifyDeptDTO;
 
@@ -24,7 +25,7 @@ public interface ProfileService {
 //
 //	void memberInfo(MemberInfoDTO member);
 
-	boolean spot(SpotDTO spot);
+//	boolean spot(ModifySpotDTO modifyspot);
 
 
 	//void career(CareerDTO career);
@@ -81,6 +82,8 @@ public interface ProfileService {
 	List<ModifyDeptDTO> member_dept(int memberno);
 
 	boolean dept(ModifyDeptDTO1 modifydept);
+
+	boolean modifyspot(ModifySpotDTO modifyspot);
 
 
 }
