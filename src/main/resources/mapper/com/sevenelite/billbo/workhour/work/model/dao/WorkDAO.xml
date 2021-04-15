@@ -52,11 +52,10 @@
           A.COMMUTE
        FROM BB_WORKSTATUS A
         WHERE MEMBER_NO = #{ memNo }
-         AND A.WORKDATE = SYSDATE
 	</select>
 	<select id="selectlwork" parameterType="StatusAndWorkDTO" resultType="date">
        SELECT
-          A.lwork
+          A.LEAVE_WORK
        FROM BB_WORKSTATUS A     
 	</select>
 

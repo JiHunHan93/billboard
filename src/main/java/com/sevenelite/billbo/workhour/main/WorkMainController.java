@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sevenelite.billbo.member.model.dto.UserDetailsVO;
+import com.sevenelite.billbo.workhour.work.model.dto.WorkDTO;
 import com.sevenelite.billbo.workhour.work.model.service.WorkService;
 
 @Controller
@@ -41,22 +43,23 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkService;
 			System.out.println("관리자 : " + principal);
 			System.out.println("===========================================" + no);
 			
-			java.util.Date commute = workService.selectCommute(no);
+			Date commute = workService.selectCommute(no);
 			Date lwork = workService.selectlwork(no);
 			
-			System.out.println("commute : " + commute);
-			System.out.println("lwork : " + lwork);
-			/*
-			 * SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd"); String formatDate
-			 * = format.format(commute);
-			 * 
-			 * System.out.println("출근날짜 나와라~~~~~~~~~~~~~~~~~~~~~~~~~~~~~" + commute);
-			 * 
-			 * 
-			 * 
-			 * // List<WorkDTO> workInfo = workService.selectWorkList(no); //
-			 * System.out.println(workInfo); // model.addAttribute("workInfo", workInfo);
-			 */			
+			/////////////////////////////////////////////////////
+			SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
+			String commuteTime = format.format(commute);
+			String leaveTime = format.format(lwork);
+			////////////////////////////////////////////////////
+			
+			System.out.println("commute : " + commuteTime);
+			System.out.println("lwork : " + leaveTime);
+
+			  
+			  List<WorkDTO> workInfo = workService.selectWorkList(no); //
+			  System.out.println(workInfo);  
+			  model.addAttribute("workInfo", workInfo);
+			 		
 			
 			
 			return "workhour/workList";
