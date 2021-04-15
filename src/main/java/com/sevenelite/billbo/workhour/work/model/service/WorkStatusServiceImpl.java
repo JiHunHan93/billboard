@@ -1,6 +1,7 @@
 
 package com.sevenelite.billbo.workhour.work.model.service;
 
+import java.util.Date;
 import java.util.List;
 
 
@@ -20,11 +21,6 @@ public class WorkStatusServiceImpl implements WorkStatusService{
 		this.dao = statusDAO; 
 	}
 
-	@Override
-	public List<StatusAndWorkDTO> selectListstatus() {
-		return dao.selectAllStatus();
-	}
-
 
 	@Override
 	public List<StatusAndWorkDTO> sequenceWork(int no) {
@@ -41,8 +37,19 @@ public class WorkStatusServiceImpl implements WorkStatusService{
 	public boolean updateWork(StatusAndWorkDTO status1) {
 		return dao.updateWork(status1);
 	}
+
+
+	@Override
+	public List<StatusAndWorkDTO> selectAllStatus() {
+		return dao.selectAllStatus();
 	}
 
+	@Override
+	public Date selectDate(int userno) {
+		return dao.selectWorkDate(userno);
+	}
+
+	}
 
 	
 
