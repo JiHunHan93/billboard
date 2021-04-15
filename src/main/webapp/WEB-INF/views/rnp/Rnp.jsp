@@ -450,7 +450,7 @@
 											<ul class="nav nav-tabs nav-tabs-solid nav-justified"
 												style="width: 1255px;">
 												<li class="nav-item"><a class="nav-link active"
-													href="#solid-justified-tab1" data-toggle="tab">상벌 내역 목록</a></li>
+													href="#solid-justified-tab1" data-toggle="tab">상벌 내역</a></li>
 											</ul>
 											<br>
 											<form class="file-search">
@@ -514,7 +514,7 @@
 		<!-- Edit Board Modal -->
 				<div id="edit_project" class="modal custom-modal fade" role="dialog">
 					<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-					<form name="board5" action="${pageContext.servletContext.contextPath }/noticeBoard/modifyNotice" method="">
+					<form name="board5" action="${pageContext.servletContext.contextPath }/Rnp/insert" >
 						<div class="modal-content">
 							<div class="modal-header">
 								<h5 class="modal-title">상벌 추가</h5>
@@ -527,39 +527,26 @@
 										<div class="col-sm-6">
 											<div class="form-group">
 												<label>사번</label>
-												<input name="no" class="form-control" id="modifyTitle" type="text"
-												 value="<c:out value="${ noticeDetailInfo.no }"/>" >
+												<input name="no" class="form-control" id="modifyTitle" type="text">
 											</div>
 										</div>
 										<div class="col-sm-6">
 											<div class="form-group">
 												<label>제목</label>
                                                 <input name="title" class="form-control" id="modifyTitle"
-                                                value="<c:out value="${ noticeDetailInfo.title}"/>" type="text">
+                                                type="text">
 											</div>
 										</div>
-										<div class="col-sm-6">
-											<div class="form-group">
-											<label>이름</label> <input name="writer" class="form-control" 
-												value="<c:out value="${ noticeDetailInfo.writer }"/>" type="text">
-											</div>
-									    </div>
 									</div>
-									
 									<div class="row">
 										<div class="col-sm-6">
 											<div class="form-group">
 												<label>게시일</label>
 												<div class="cal-icon">
 													<input type="date"
-													name="enrollDate" id="modifyEnrollDate"
-													value="<c:out value="${ noticeDetailInfo.enrollDate }"/>">
+													name="enrollDate" id="modifyEnrollDate">
 												</div>
 											</div>
-										</div>
-										<div class="form-group">
-											<label>근무 부서</label> <input name="status" class="form-control" id="modifyTitle"
-												value="<c:out value="${noticeDetailInfo.status}"/>" type="text" >
 										</div>
 									</div>
 									<div class="row">
@@ -580,8 +567,12 @@
 									<div class="form-group">
 										<label>상벌 사유</label>
 										<textarea rows="4" class="form-control"
-										 placeholder="Enter your message here" name="body" id="modifyBody"><c:out
-										 value ="${ noticeDetailInfo.body }"/></textarea>
+										 placeholder="Enter your message here" name="body" id="modifyBody"></textarea>
+									</div>
+									<div class="form-group">
+										<label>상벌 내용</label>
+										<textarea rows="4" class="form-control"
+										 placeholder="Enter your message here" name="body" id="modifyBody"></textarea>
 									</div>
 									<div class="submit-section">
 										<button class="btn btn-primary submit-btn" id="modify-btn" type="button" onclick="goModify(this.form)">상벌 추가</button>

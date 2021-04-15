@@ -435,9 +435,9 @@
 						</div>
 						<div class="col-auto float-right ml-auto">
 							<a href="#" class="btn add-btn" data-toggle="modal"
-								data-target="#edit_project"><i class="fa fa-plus"></i> 게시글
+								data-target="#edit_project"><i class="fa fa-plus"></i> 내역
 								수정</a> <a href="#" class="btn add-btn" data-toggle="modal"
-								data-target="#edit_project1"><i class="fa fa-minus"></i> 게시글
+								data-target="#edit_project1"><i class="fa fa-minus"></i> 내역
 								삭제</a>
 						</div>
 					</div>
@@ -447,18 +447,18 @@
 				<div class="row">
 					<div class="col-lg-8 col-xl-9">
 						<div class="card">
-							<c:forEach var="detailRnp" items="${requestScope.detailRnp }">
-								<div class="card-body">
+							<c:forEach var="rnpDetailInfo" items="${requestScope.rnpDetailInfo}">
+								<div class="card-body1">
 									<div class="project-title">
 										<h5 class="card-title">
-											<c:out value="${ detailRnp.reason} " />
+											<c:out value="${ rnpDetailInfo.reason} " />
 										</h5>
 										<small class="block text-ellipsis m-b-15"><span
 											class="text-xs"><c:out
-													value="${ detailRnp.enrollDate} " /></span></small>
+													value="${ rnpDetailInfo.enrollDate} " /></span></small>
 									</div>
 									<div style="white-space: pre-line;">
-										<c:out escapeXml="false" value="${ fn:replace( detailInfo.body, replaceChar, '<br>' ) }"/>
+										<c:out escapeXml="false" value="${ fn:replace( rnpDetailInfo.body, replaceChar, '<br>' ) }"/>
 									</div>
 
 								</div>
@@ -498,10 +498,7 @@
 												<td class="text-right">
 												<c:out value="${ rnpDetailInfo.reason }" /></td>
 											</tr>
-											<tr>
-												<td>유효 여부</td>
-												<td class="text-right">유효/만료</td>
-											</tr>
+										
 										</c:forEach>
 									</tbody>
 								</table>
@@ -510,6 +507,7 @@
 					</div>
 				</div>
 			</div>
+		   
 			<!-- /Page Content -->
 
 			<!-- Edit Board Modal -->
