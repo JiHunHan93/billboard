@@ -117,5 +117,22 @@
 		  SEQ_DRAFTING_NO.NEXTVAL, #{ draftDateStart }, #{ completeStatus }, #{ docuName }, #{ docuContents }, #{ emergency }, #{ memberNo }, #{ paymentNo }
 		)
 	</insert>
+	
+	<insert id="insertLineMem" parameterType="ApproLineMemDTO">
+		<selectKey keyProperty="draftNo" order="BEFORE" resultType="_int">
+            SELECT
+                   SEQ_DRAFTING_NO.CURRVAL
+              FROM DUAL    
+		</selectKey>
+        INSERT 
+          INTO BB_LINE_MEM A
+        (
+          A.LINE_NO, A.DRAFTING_NO, A.LINE_BODY, A.LINE_PKINDS, A.LINE_THUMBNAIL, A.LINE_KINDS, A.DEPT_CODE, A.SPOT_CODE
+        ) 
+		VALUES
+		(
+		  SEQ_LINE_NO.NEXTVAL, #{ draftNo }, #{ lineBody }, #{ pKinds }, #{ thumbnail }, #{ lineKinds }, #{ deptCode }, #{ spotCode }
+		)
+	</insert>
 
 </mapper>

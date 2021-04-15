@@ -72,7 +72,7 @@ public class ApprovaldocumentController {
 	
 	@PostMapping(value="1004")
 	public String vacationInsert(@ModelAttribute("spotDTO") ApproSpotDTO spotDTO, @ModelAttribute("deptDTO") ApproDeptDTO deptDTO, @RequestParam(required=false) String memberno, @RequestParam(required=false) String docNo, @RequestParam(required=false) String time, @RequestParam(required=false) String draftDate, @RequestParam(required=false) String draftDept, @ModelAttribute("vacation") FormVacationDTO vacation) {
-			
+		
 		System.out.println("연차신청서 : " + vacation);
 		System.out.println("로그인 회원번호 : " + memberno);
 		System.out.println("작성 년월일 : " + draftDate);
@@ -98,15 +98,23 @@ public class ApprovaldocumentController {
 		
 		if(result > 0) {
 			
-			/* 1) 기안문서 DTO, 2) 결재선사원 DTO */
+			/* 1) 기안문서 DTO */
 			ApproDraftingDTO one = new ApproDraftingDTO(java.sql.Date.valueOf(draftDate), "대기", "연차신청서", vacation.getAnnualReason(), "N", Integer.parseInt(memberno), 1004);
-			ApproLineMemDTO two = new ApproLineMemDTO();
+			
+			/* 2) 결재선사원 DTO */
+			/* 2-1) 썸네일 주입 처리 */
+			
+			/* View에서 받아야될 정보 : 동일 name일 경우 List로 담기는지? 해당 결재인의 lineKinds(근무형태), deptCode, spotCode */
+			/* draftNo(기안번호) 시퀀스 조회해서 넣기 */
+			ApproLineMemDTO two = new ApproLineMemDTO(vacation.getAnnualReason(), "대기", "", "휴가", "A1", "R5");
 			
 			/* 1) 기안문서 Insert와 함께 필요한 하위 테이블 정보 파라미터로 전달하기 */
-			result2 = appro.insertDrafting(new ApproDraftingDTO(java.sql.Date.valueOf(draftDate), "대기", "연차신청서", vacation.getAnnualReason(), "N", Integer.parseInt(memberno), 1004));
+			result2 = appro.insertDrafting(one, two);
 		}
 		
-		return "approval/main";
+		System.out.println("테이블 2개 Insert 결과 : " + result2);
+		
+		return "redirect:/approval/main";
 	}
 	
 //	@PostMapping(value="1004", produces="application/json; charset=UTF-8")

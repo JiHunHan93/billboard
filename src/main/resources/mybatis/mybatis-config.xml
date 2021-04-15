@@ -10,6 +10,7 @@
  		<typeAlias alias="MemDTO" type="com.sevenelite.billbo.member.model.dto.MemDTO"/>
  		<typeAlias alias="FormVacationDTO" type="com.sevenelite.billbo.approval.model.dto.FormVacationDTO"/>
  		<typeAlias alias="ApproDraftingDTO" type="com.sevenelite.billbo.approval.model.dto.ApproDraftingDTO"/>
+ 		<typeAlias alias="ApproLineMemDTO" type="com.sevenelite.billbo.approval.model.dto.ApproLineMemDTO"/>
  		<typeAlias alias="RoleDTO" type="com.sevenelite.billbo.member.model.dto.RoleDTO"/>
  		<!-- End 지훈 -->
  		<typeAlias alias="WorkDTO" type="com.sevenelite.billbo.workhour.work.model.dto.WorkDTO"/> 

@@ -2,6 +2,7 @@ package com.sevenelite.billbo.approval.model.service;
 
 import com.sevenelite.billbo.approval.model.dto.ApproDeptDTO;
 import com.sevenelite.billbo.approval.model.dto.ApproDraftingDTO;
+import com.sevenelite.billbo.approval.model.dto.ApproLineMemDTO;
 import com.sevenelite.billbo.approval.model.dto.ApproSpotDTO;
 import com.sevenelite.billbo.approval.model.dto.FormVacationDTO;
 
@@ -17,6 +18,6 @@ public interface ApprovalService {
 	int insertVacation(FormVacationDTO vacation);
 	
 	/* 기안문서 입력 */
-	int insertDrafting(ApproDraftingDTO approDraftingDTO);
+	int insertDrafting(ApproDraftingDTO approDraftingDTO, ApproLineMemDTO approLineMemDTO);
 	
 }

@@ -2,6 +2,7 @@ package com.sevenelite.billbo.approval.model.dao;
 
 import com.sevenelite.billbo.approval.model.dto.ApproDeptDTO;
 import com.sevenelite.billbo.approval.model.dto.ApproDraftingDTO;
+import com.sevenelite.billbo.approval.model.dto.ApproLineMemDTO;
 import com.sevenelite.billbo.approval.model.dto.ApproSpotDTO;
 import com.sevenelite.billbo.approval.model.dto.FormVacationDTO;
 
@@ -18,5 +19,8 @@ public interface ApprovalMapper {
 	
 	/* 기안문서 입력 */
 	int insertDrafting(ApproDraftingDTO approDraftingDTO);
+	
+	/* 결재선사원 입력 */
+	int insertLineMem(ApproLineMemDTO approLineMemDTO);
 	
 }

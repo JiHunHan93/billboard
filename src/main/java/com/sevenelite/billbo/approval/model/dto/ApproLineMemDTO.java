@@ -17,7 +17,18 @@ public class ApproLineMemDTO {
 	private String spotCode;				//Fk 직위코드
 	
 	public ApproLineMemDTO() {}
-
+	
+	public ApproLineMemDTO(String lineBody, String pKinds, String thumbnail,
+			String lineKinds, String deptCode, String spotCode) {
+		super();
+		this.lineBody = lineBody;
+		this.pKinds = pKinds;
+		this.thumbnail = thumbnail;
+		this.lineKinds = lineKinds;
+		this.deptCode = deptCode;
+		this.spotCode = spotCode;
+	}
+	
 	public ApproLineMemDTO(int lineNo, int draftNo, Date processDate, String lineBody, String pKinds, String thumbnail,
 			String lineKinds, String deptCode, String spotCode) {
 		super();

@@ -211,11 +211,11 @@ ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }
             <input type="date" class="ipt_editor ipt_editor_date hasDatepicker" id="startDate"  name="startDate" value="" style="width: 200px;">&nbsp;~&nbsp; 
             <input type="date" class="ipt_editor ipt_editor_date hasDatepicker" id="endDate" name="endDate" value="" style="width: 200px;"> 
             
-            <span id="usingPointArea" style="line-height: normal; font-family: malgun gothic,dotum,arial,tahoma; font-size: 9pt; margin-top: 0px; margin-bottom: 0px;">
+            <!-- <span id="usingPointArea" style="line-height: normal; font-family: malgun gothic,dotum,arial,tahoma; font-size: 9pt; margin-top: 0px; margin-bottom: 0px;">
             <b>사용일수 : </b>
             <input type="text" class="ipt_editor ipt_editor_num" data-dsl="{{number:usingPoint}}" name="usingPoint" id="usingPoint" data-require="false" data-editable="true" value="1">
-            <!-- <b id="usingPoint_Comment" style="font-weight:bold; color:red">신청가능일을 초과하였습니다.</b> -->
-            </span> 
+            <b id="usingPoint_Comment" style="font-weight:bold; color:red">신청가능일을 초과하였습니다.</b>
+            </span>  -->
             </td></tr><tr><td style="background: rgb(221, 221, 221); padding: 5px; border: 1px solid black; border-image: none; height: 25px; text-align: center; color: rgb(0, 0, 0); font-size: 14px; font-weight: bold; vertical-align: middle;">
             
             반차&nbsp;시점
@@ -346,11 +346,16 @@ ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }
 		   alert("종료 일시를 선택해주세요.");
 	   } else {
 		   alert("컨트롤러로 이동");
-		   /* 로그인 번호 추가 */
+		   /* Hidden 추가 */
 		   const $span = $("#hiddenInput");
+		   /* memberno, time, paymentNo */
 		   $hiddenInput = $("<input name='memberno' value='${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }'> <input name='time' value='<c:out value="${todaytime}"/>'> <input name='paymentNo' value='1004'>")
+		   /* Login DeptDTO */
 		   $hiddenInputDeptDTO = $("<input name='deptRnum' value='${ requestScope.dept.deptRnum }'> <input name='deptCode' value='${ requestScope.dept.deptCode }'> <input name='deptName' value='${ requestScope.dept.deptName }'> <input name='upper' value='${ requestScope.dept.upper }'> <input name='level' value='${ requestScope.dept.level }'> <input name='modifyDeptDate' value='${ requestScope.dept.modifyDeptDate }'>")
+		   /* Login SpotDTO */
 		   $hiddenInputSpotDTO = $("<input name='spotRnum' value='${ requestScope.spot.spotRnum }'> <input name='spotCode' value='${ requestScope.spot.spotCode }'> <input name='spotName' value='${ requestScope.spot.spotName }'> <input name='modifySpotDate' value='${ requestScope.spot.modifySpotDate }'>")
+		   
+		   /* 담기 */
 		   $span.append($hiddenInput);
 		   $span.append($hiddenInputDeptDTO);
 		   $span.append($hiddenInputSpotDTO);
