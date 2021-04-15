@@ -13,6 +13,7 @@ import com.sevenelite.billbo.profile.model.dto.FinalAcademicDTO;
 import com.sevenelite.billbo.profile.model.dto.LicenseDTO;
 import com.sevenelite.billbo.profile.model.dto.MemberInfoDTO;
 import com.sevenelite.billbo.profile.model.dto.ModifyDeptDTO1;
+import com.sevenelite.billbo.profile.model.dto.ModifySpotDTO;
 import com.sevenelite.billbo.profile.model.dto.SpotDTO;
 import com.sevenelite.billbo.rnp.model.dto.ModifyDeptDTO;
 
@@ -93,6 +94,8 @@ public interface ProfileMapper {
 	List<DeptDTO> member_name();
 
 	int modifydept(ModifyDeptDTO1 dept);
+
+	int modifyspot(ModifySpotDTO modifyspot);
 
 
 	
