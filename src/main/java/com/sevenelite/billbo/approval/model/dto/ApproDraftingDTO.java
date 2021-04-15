@@ -4,15 +4,17 @@ import java.sql.Date;
 
 public class ApproDraftingDTO {
 	
-	private int draftNo;
-	private java.sql.Date draftDateStart;
-	private java.sql.Date draftDateComplete;
-	private String completeStatus;
-	private String docuName;
-	private String docuContents;
-	private String emergency;
-	private int memberNo;
-	private int paymentNo;
+	/* 결재선사원(BB_LINE_MEM) */
+	
+	private int draftNo;						//Pk 기안번호
+	private java.sql.Date draftDateStart;		//기안일
+	private java.sql.Date draftDateComplete;	//결재완료일
+	private String completeStatus;				//승인여부 check(승인, 대기, 반려, 대결)
+	private String docuName;					//문서제목
+	private String docuContents;				//문서내용
+	private String emergency;					//긴급여부
+	private int memberNo;						//Fk 사번
+	private int paymentNo;						//Fk 결재양식번호
 	
 	public ApproDraftingDTO() {}
 	

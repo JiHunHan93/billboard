@@ -4,6 +4,8 @@ import java.sql.Date;
 
 public class FormVacationDTO {
 	
+	/* 연차신청서(BB_FORM_VACATION) */
+	
 	private int no;						//연차신청서번호
 	private String annualType;			//연차종류
 	private java.sql.Date startDate;	//시작일

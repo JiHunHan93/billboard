@@ -2,15 +2,17 @@ package com.sevenelite.billbo.approval.model.dto;
 
 import java.sql.Date;
 
-/* 전자결재를 위한 로그인 회원의 부서 정보 */
 public class ApproDeptDTO {
 	
-	private int deptRnum;
-	private String deptCode;
-	private String deptName;
-	private String upper;
-	private int level;
-	private java.sql.Date modifyDeptDate;
+	/* Customizing : ROWNUM + BB_DEPT + BB_MODIFY_DEPT */
+	/* 전자결재를 위한 로그인 회원의 부서 정보 */
+	
+	private int deptRnum;						//순번
+	private String deptCode;					//부서코드
+	private String deptName;					//부서명
+	private String upper;						//상위부서
+	private int level;							//부서등급
+	private java.sql.Date modifyDeptDate;		//변경날짜
 	
 	public ApproDeptDTO() {}
 

@@ -2,13 +2,15 @@ package com.sevenelite.billbo.approval.model.dto;
 
 import java.sql.Date;
 
-/* 전자결재를 위한 로그인 회원의 직위 정보 */
 public class ApproSpotDTO {
 
-	private int spotRnum;
-	private String spotCode;
-	private String spotName;
-	private java.sql.Date modifySpotDate;
+	/* Customizing : ROWNUM + BB_SPOT + BB_MODIFY_SPOT */
+	/* 전자결재를 위한 로그인 회원의 직위 정보 */
+	
+	private int spotRnum;					//순번
+	private String spotCode;				//직위코드
+	private String spotName;				//직위명
+	private java.sql.Date modifySpotDate;	//변경날짜
 	
 	public ApproSpotDTO() {}
 

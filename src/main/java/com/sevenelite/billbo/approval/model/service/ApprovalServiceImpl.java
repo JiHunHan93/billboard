@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 
 import com.sevenelite.billbo.approval.model.dao.ApprovalMapper;
 import com.sevenelite.billbo.approval.model.dto.ApproDeptDTO;
+import com.sevenelite.billbo.approval.model.dto.ApproDraftingDTO;
 import com.sevenelite.billbo.approval.model.dto.ApproSpotDTO;
 import com.sevenelite.billbo.approval.model.dto.FormVacationDTO;
 
@@ -18,22 +19,32 @@ public class ApprovalServiceImpl implements ApprovalService {
 		this.mapper = mapper;
 	}
 	
+	/* 부서 조회 */
 	@Override
 	public ApproDeptDTO selectLoginDept(int memberno) {
 		
 		return mapper.selectLoginDept(memberno);
 	}
 	
+	/* 직위 조회 */
 	@Override
 	public ApproSpotDTO selectLoginSpot(int memberno) {
 		
 		return mapper.selectLoginSpot(memberno);
 	}
 	
+	/* 연차 신청서(1004) 입력 */
 	@Override
 	public int insertVacation(FormVacationDTO vacation) {
 		
 		return mapper.insertVacation(vacation);
+	}
+	
+	/* 기안문서 입력 : 하위(결재선사원, 승인여부, 참조/열람, 부재/위임)*/
+	@Override
+	public int insertDrafting(ApproDraftingDTO approDraftingDTO) {
+		
+		return mapper.insertDrafting(approDraftingDTO);
 	}
 
 }

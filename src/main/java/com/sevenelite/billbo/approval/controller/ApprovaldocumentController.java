@@ -1,7 +1,5 @@
 package com.sevenelite.billbo.approval.controller;
 
-import java.text.SimpleDateFormat;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -14,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sevenelite.billbo.approval.model.dto.ApproDeptDTO;
 import com.sevenelite.billbo.approval.model.dto.ApproDraftingDTO;
+import com.sevenelite.billbo.approval.model.dto.ApproLineMemDTO;
 import com.sevenelite.billbo.approval.model.dto.ApproSpotDTO;
 import com.sevenelite.billbo.approval.model.dto.FormVacationDTO;
 import com.sevenelite.billbo.approval.model.service.ApprovalService;
@@ -94,14 +93,18 @@ public class ApprovaldocumentController {
 		/* 01. 연차신청서 Insert  */
 		int result = appro.insertVacation(vacation);
 		
-		/* 02. 기안문서  Insert */
-//		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyMMdd");
-//		SimpleDateFormat timeFormat = new SimpleDateFormat("hh:mm:ss");
+		/* 02. 기안문서  Insert And 하위 테이블(1. 결재선사원, 2.승인여부, 3.참조/열람, 4.부재/위임)*/
+		int result2 = 0;
 		
-		
-//		new ApproDraftingDTO(vacation.getStartDate(), "대기", "", "", "", 1, 1);
-//		int result2 = appro.insertDrafting(new ApproDraftingDTO(draftDate, "대기", "연차신청서", vacation.getAnnualReason(), "N", memberno, 1004));
-		
+		if(result > 0) {
+			
+			/* 1) 기안문서 DTO, 2) 결재선사원 DTO */
+			ApproDraftingDTO one = new ApproDraftingDTO(java.sql.Date.valueOf(draftDate), "대기", "연차신청서", vacation.getAnnualReason(), "N", Integer.parseInt(memberno), 1004);
+			ApproLineMemDTO two = new ApproLineMemDTO();
+			
+			/* 1) 기안문서 Insert와 함께 필요한 하위 테이블 정보 파라미터로 전달하기 */
+			result2 = appro.insertDrafting(new ApproDraftingDTO(java.sql.Date.valueOf(draftDate), "대기", "연차신청서", vacation.getAnnualReason(), "N", Integer.parseInt(memberno), 1004));
+		}
 		
 		return "approval/main";
 	}
