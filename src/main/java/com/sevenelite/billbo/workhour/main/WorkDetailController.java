@@ -1,6 +1,7 @@
 package com.sevenelite.billbo.workhour.main;
 
 import java.security.Principal;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -9,6 +10,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.lang.time.DateFormatUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import
@@ -39,10 +41,10 @@ public class WorkDetailController {
 	@GetMapping("work/status") 
 	public String workDetailController(StatusAndWorkDTO workStatusDTO, Principal principal,Model model) {
 
-		List<StatusAndWorkDTO> statusList = workStatusService.selectListstatus();
+		List<StatusAndWorkDTO> statusList = workStatusService.selectAllStatus();
 		
 		for(StatusAndWorkDTO testList : statusList) {
-			System.out.println(testList);
+			System.out.println(statusList);
 		}
 //		System.out.println(statusList.get(0).getCommute());
 //		SimpleDateFormat dateF = new SimpleDateFormat("hh:mm");
@@ -91,11 +93,11 @@ public class WorkDetailController {
 	public String registWork(@ModelAttribute StatusAndWorkDTO status, RedirectAttributes rttr, HttpServletRequest request,Authentication authentication) {
 		
 		System.out.println(System.currentTimeMillis());
-		java.util.Date today = new java.util.Date(System.currentTimeMillis());
+		Date today = new java.util.Date(System.currentTimeMillis());
 		
 		System.out.println(today);
 		
-		SimpleDateFormat format = new SimpleDateFormat("yyyyMMdd");
+		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		String formatDate = format.format(today);
 		UserDetailsVO userDetails = (UserDetailsVO) authentication.getPrincipal();
 		int userno = userDetails.getMemberno();
@@ -106,11 +108,6 @@ public class WorkDetailController {
 	    workList.setDate(formatDate);
 	    workList.setMemNo(userno);
 	    
-	    Calendar calendar = new GregorianCalendar();
-	    
-	    int hours = calendar.get(Calendar.HOUR_OF_DAY);
-	     
-	    
 		if(workStatusService.registWork(workList)) {
 			rttr.addFlashAttribute("message" , "출근이 등록 되었습니다.");
 			
@@ -119,7 +116,7 @@ public class WorkDetailController {
 	}
 	//퇴근하기
 	@PostMapping("/work/update")
-	public String updateWork(@ModelAttribute StatusAndWorkDTO status, Model model, RedirectAttributes rttr, Authentication authentication, HttpServletRequest request)  {
+	public String updateWork(@ModelAttribute StatusAndWorkDTO status, Model model, RedirectAttributes rttr, Authentication authentication, HttpServletRequest request) throws ParseException  {
 		
 //			HttpSession session = request.getSession();
 //			Enumeration<String> attrs = session.getAttributeNames();
@@ -127,20 +124,33 @@ public class WorkDetailController {
 //				String s = attrs.nextElement();
 //				System.out.println("attr : " + s);
 //			}
-			
 		
 			UserDetailsVO userDetails = (UserDetailsVO) authentication.getPrincipal();
 			int userno = userDetails.getMemberno();
 			
 			
+			Date dateType = workStatusService.selectDate(userno);
+			
+			System.out.println(dateType);
+			
+			String dateStr = DateFormatUtils.format(dateType, "yyyy-MM-dd HH:mm:ss");
+			
+			System.out.println(dateStr);
+			
+			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+			
+			Date date = format.parse(dateStr);
+			
+			System.out.println(date);
+			
 			StatusAndWorkDTO status1 = new StatusAndWorkDTO();
-			String date = new String();
 			
-			
-			status1.setDate(date);
+			System.out.println("근무날짜 : "  + date);
+
+			status1.setDate(dateStr);
 			status1.setMemNo(userno);
 			
-			
+			System.out.println(status1);
 			
 			if(workStatusService.updateWork(status1)) {
 				System.out.println(userDetails);
@@ -151,7 +161,7 @@ public class WorkDetailController {
 			model.addAttribute("StatusAndWorkDTO", status1);
 			mv.setViewName("statusList"); 
 			
-			return "redirect:/work/detail";
+			return "redirect:http://127.0.0.1:8001/billbo/work/status";
 	}
 	//상세보기 
 	
