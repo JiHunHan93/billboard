@@ -36,12 +36,10 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkService;
 			
 			
 			UserDetailsVO userDetails = (UserDetailsVO) authentication.getPrincipal();
-			int no = userDetails.getMemberno();
-			System.out.println(no);
+			int userno = userDetails.getMemberno();
 			
 			
 			System.out.println("관리자 : " + principal);
-			System.out.println("===========================================" + no);
 			
 			Date commute = new Date(System.currentTimeMillis());
 			Date lwork = new Date(System.currentTimeMillis());
@@ -55,9 +53,6 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkService;
 			System.out.println("commute : " + commuteTime);
 			System.out.println("lwork : " + leaveTime);
 			
-			List<WorkDTO> workInfo = workService.selectWorkList(no); //
-			System.out.println(workInfo);  
-			model.addAttribute("workInfo", workInfo);
 			
 			//출근시간 
 	         String commuteTimeFormat = format.format(commute);
@@ -72,9 +67,9 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkService;
 	         //퇴근시간
 	         String leaveTimeFormat = format.format(lwork);
 	         String[] splitLeave = leaveTimeFormat.split(":");
-	         String lhour = splitLeave[0];
-	         String lminute = splitLeave[1];
-	         String lsecond = splitLeave[2];
+	         int lhour = Integer.parseInt(splitLeave[0]);
+	         int lminute = Integer.parseInt(splitLeave[1]);
+	         int lsecond = Integer.parseInt(splitLeave[2]);
 	         
 	         if(hour > 8) {
 	        	 int overH = hour - 8;
@@ -86,14 +81,52 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkService;
 	        	 System.out.println("정상 근무");
 	         }
 	         
-	         String timestr = hour + ":" + minute + ":" + second;
-	         System.out.println(timestr);
+	         
+	         
+	         String timeStr = hour + ":" + minute + ":" + second;
+	         System.out.println(timeStr);
 	         	
+	         
+	         
 	         //근무시간 
-	         int workH = hour;
-	         int workM = minute;
-	         int workS = second;
-	         String workResult = workH + ":" + workM + ":" +workS;
+	         int workH = lhour - hour;         
+	         int workM = lminute - minute;
+	         int workS = lsecond - second;
+	         
+	         String workStr = workH + ":" + workM + ":" + workS;
+	         System.out.println("근무시간 : " + workStr);
+	         
+	         //지각 횟수 
+	         int lateCount = 0;
+	         
+	         if(10 <= hour) {
+	        	 if(hour > 10) {
+	        		 System.out.println("지각");	        		 
+	        	 } else if(hour == 10 && minute > 0) {
+	        		 System.out.println("지각");	        		 
+	        	 } else if(minute == 0 && second > 0) {
+	        		 System.out.println("지각");	        		 
+	        	 } else {
+	        		 System.out.println("정상");
+	        	 }
+	         } else if(hour < 10) {
+	        	 System.out.println("정상");
+	         }
+	         
+	         
+	         WorkDTO workInfo = new WorkDTO();
+	         workInfo.setExtraWork(timeStr);
+	         workInfo.setMemNo(userno);
+	         workInfo.setTotalWork(workStr);
+	         workInfo.setLateCount(lateCount);
+	         System.out.println(workInfo);
+	         model.addAttribute("workInfo", workInfo);
+	         
+	        if(workService.insertWorkInfo(workInfo)) {
+	        	
+	        }
+	         
+	         System.out.println("workInfo : " + workInfo);
 	         
 			return "workhour/workList";
 

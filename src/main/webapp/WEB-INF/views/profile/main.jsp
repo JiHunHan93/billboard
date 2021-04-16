@@ -1022,7 +1022,7 @@
 						
 						
 						
-						<!-- 네번째탭 발령 -->
+						<!-- 네번째탭  -->
 						<div class="tab-pane fade" id="emp_career">
 							<div class="card">
 								<div class="ehr_con_wrap"><div><h3 class="tab_title" >경력</h3>
@@ -1108,39 +1108,40 @@
 												<th class="type"><span class="title_txt">상벌구분</span></th>
 												<th class="member_no"><span class="title_txt">사번</span></th>
 												<th class="approve_code"><span class="title_txt">승인여부코드</span></th>
-												<th class="edit"><span class="title_txt">수정</span></th>
+												
 												
 											</tr>
 											<tr class="no" data-id="">
-												<td class="num">
-													<input class="txt w_max" type="text" name="no" value="">
+												<td class="no">
+													<c:forEach var="bonusDto" items="${ requestScope.bonusDto }"> 
+												<input class="txt w_max" type="text" name="no" value="<c:out value="${ bonusDto.no }"/>">
+														</c:forEach>
 												</td>
 												<td class="reason">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="reason" value="" >
+													<c:forEach var="bonusDto" items="${ requestScope.bonusDto }"> 
+												<input class="txt w_max" type="text" name="reason" value="<c:out value="${ bonusDto.reason }"/>">
+														</c:forEach>
 												</td>
 												<td class="date">
-													<span class="wrap_date">
-													<input class="txt wfix_small hasDatepicker" type="date" name="date" value="" >
-													<span class="ic ic_calendar"></span>
-													</span>
+													<c:forEach var="bonusDto" items="${ requestScope.bonusDto }"> 
+												<input class="txt w_max" type="date" name="date" value="<c:out value="${ bonusDto.date }"/>">
+														</c:forEach>
 												</td>
 												<td class="type">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="type" value="" >
+													<c:forEach var="bonusDto" items="${ requestScope.bonusDto }"> 
+												<input class="txt w_max" type="text" name="type" value="<c:out value="${ bonusDto.type }"/>">
+														</c:forEach>
 												</td>
 												<td class="member_no">
 													<span class="txt"></span>
 													<input class="txt w_max" type="text" name="member_no" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }" >
 												</td>
 												<td class="approve_code">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="approve_code" value="" >
+													<c:forEach var="bonusDto" items="${ requestScope.bonusDto }"> 
+												<input class="txt w_max" type="text" name="approve_code" value="<c:out value="${ bonusDto.approve_code }"/>">
+														</c:forEach>
 												</td>
-												<td class="edit">
-													<span class="ic_con ic_remove" title="삭제"></span>
-													<span class="ic_con ic_add" title="추가"></span>
-												</td>
+											
 											</tr>
 											</tbody>
 										</table>
@@ -1180,35 +1181,31 @@
 												<th class="certificate_code"><span class="title_txt">자격코드명</span></th>
 												</tr>
 											<tr class="num" data-id="">
-												<td class="no">
-													<input class="txt w_max" type="text" name="no" value="">
-												</td>
-												<td class="start_date">
-													<span class="txt"></span>
-													<input class="txt w_max" type="date" name="start_date" value="" >
-												</td>
-												<td class="end_date">
-													<span class="txt"></span>
-													<input class="txt w_max" type="date" name="end_date" value="" >
-												</td>
-												<td class="member_no">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="member_no" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }" >
-												</td>
-												<td class="certificate_code">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="certificate_code" value="" >
-												</td>
+												<c:forEach var="certificateInsert" items="${ requestScope.certificateInsert }"> 
 												
+												<td class="no">
+												 <input class="txt w_max" type="text" name="no" value="<c:out value="${ certificateInsert.no }"/>">
+														</td>
+												<td class="start_date">
+													<input class="txt w_max" type="date" name="start_date" value="<c:out value="${ certificateInsert.start_date }"/>">
+													</td>
+												<td class="member_no">
+													<input class="txt w_max" type="date" name="end_date" value="<c:out value="${ certificateInsert.end_date }"/>">				
+														</td>
+												<td class="certificate_code">
+													 <input class="txt w_max" type="text" name="member_no" value="<c:out value="${ certificateInsert.member_no }"/>">
+													</td>
+												<td class="certificate_code">
+													 <input class="txt w_max" type="text" name="certificate_code" value="<c:out value="${ certificateInsert.certificate_code }"/>">
+													</td>
+												
+											</c:forEach>
 											</tr>
 										</tbody></table>
 										<button class="btn_major" data-role="button" id="submit">저장</button>
 										<button class="btn_major" data-role="button" id="cancel">취소</button>
 								</form>
-									</div></div><div class="page_action_wrap" style="display: block;">
-										<span class="btn_major" data-role="button" id="hrcard_btn_submit"><span class="txt">저장</span></span>
-										<span class="btn_minor" data-role="button" id="hrcard_btn_cancel"><span class="txt">취소</span></span>
-								</div>
+									</div></div>
 								<section class="aside_wrapper article_reply" id="hrcardActivity"><div><div class="reply_wrap">
 									<header class="single_title">
 									   <span class="txt">변경이력</span><span class="num">17</span>
@@ -1488,23 +1485,28 @@
 												<th class="date"><span class="title_txt">취득일</span></th>
 												<th class="member_no"><span class="title_txt">사번</span></th>
 												</tr>
+											<c:forEach var="LicenseDto" items="${ requestScope.LicenseDto }"> 
 											<tr class="dataRow" data-id="">
 												<td class="no">
-												<input class="txt w_max" type="text" name="no" value="" >
+													<input class="txt w_max" type="text" name="no" value="<c:out value="${ LicenseDto.no }"/>">
+												
 												</td>
 												<td class="code">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="code" value="">
+														<input class="txt w_max" type="text" name="no" value="<c:out value="${ LicenseDto.code }"/>">
+												
+													
 												</td>
 												<td class="date">
-													<span class="txt"></span>
-													<input class="txt w_max" type="date" name="date" value="" >
+														<input class="txt w_max" type="date" name="no" value="<c:out value="${ LicenseDto.date }"/>">
+												
+													
 												</td>
 												<td class="member_no">
 													<span class="txt"></span>
 													<input class="txt w_max" type="text" name="member_no" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }" >
 												</td>
 												</tr>
+												</c:forEach>
 										</tbody></table>
 										<div class="page_action_wrap" style="display: block;">
 										<span class="btn_major" data-role="button" id="hrcard_btn_submit"><span class="txt">저장</span></span>

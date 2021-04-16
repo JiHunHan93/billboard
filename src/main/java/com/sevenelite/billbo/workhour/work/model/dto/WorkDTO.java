@@ -10,7 +10,7 @@ public class WorkDTO {
 	
 	private int weekNo;
 	private java.util.Date date;
-	private int totalWork;
+	private String totalWork;
 	private String extraWork;
 	private int LateCount;
 	private int workCount;
@@ -21,7 +21,7 @@ public class WorkDTO {
 	
 	public WorkDTO() {}
 
-	public WorkDTO(int weekNo, Date date, int totalWork, String extraWork, int lateCount, int workCount, int memNo,
+	public WorkDTO(int weekNo, Date date, String totalWork, String extraWork, int lateCount, int workCount, int memNo,
 			StatusAndWorkDTO status, MemBbDTO member, WorkTypeDTO type) {
 		super();
 		this.weekNo = weekNo;
@@ -52,11 +52,11 @@ public class WorkDTO {
 		this.date = date;
 	}
 
-	public int getTotalWork() {
+	public String getTotalWork() {
 		return totalWork;
 	}
 
-	public void setTotalWork(int totalWork) {
+	public void setTotalWork(String totalWork) {
 		this.totalWork = totalWork;
 	}
 
@@ -122,6 +122,6 @@ public class WorkDTO {
 				+ ", LateCount=" + LateCount + ", workCount=" + workCount + ", MemNo=" + MemNo + ", status=" + status
 				+ ", member=" + member + ", type=" + type + "]";
 	}
-	
+
 	
 	}

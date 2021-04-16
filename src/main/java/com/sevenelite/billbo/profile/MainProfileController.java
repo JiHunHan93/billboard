@@ -60,6 +60,14 @@ public class MainProfileController {
 		List<ModifySpotDTO> modispotDto = profileService.selectspot(user.getMemberno());
 		/*경력*/
 		List<CareerDTO> careerDto = profileService.career(user.getMemberno());
+		/*상벌*/
+		List<BonusDTO> bonusDto = profileService.bonus(user.getMemberno());
+		/*자격인줄 알았던 면허*/
+		List<LicenseDTO> LicenseDto = profileService.licenseSelect(user.getMemberno());
+		/*이게 자격*/
+		List<CertificateDTO>certificateInsert = profileService.certificateInsert(user.getMemberno());
+		/*병역*/
+		List<ArmyDTO>armyInsert = profileService.armyInsert(user.getMemberno());
 		
 		System.out.println(member+"오나???!?");
 		System.out.println(dept+"이것도 오나???!?");
@@ -67,7 +75,10 @@ public class MainProfileController {
 		System.out.println(modidept+"이거도 제발Q");
 		System.out.println(modispotDto+"이거도 제발시발");
 		System.out.println(careerDto+"이거도 제발시발");
-		
+		System.out.println(bonusDto+"이거도 제발시발");
+		System.out.println(LicenseDto + "젭알 되주세요");
+		System.out.println(certificateInsert + "젭알 되주세요");
+		System.out.println(armyInsert + "이거 안되면 재입대한다");
 		
 		model.addAttribute("member", member);
 		model.addAttribute("dept", dept);
@@ -75,6 +86,10 @@ public class MainProfileController {
 		model.addAttribute("modidept", modidept);
 		model.addAttribute("modispotDto", modispotDto);
 		model.addAttribute("careerDto", careerDto);
+		model.addAttribute("bonusDto", bonusDto);
+		model.addAttribute("LicenseDto", LicenseDto);
+		model.addAttribute("certificateInsert", certificateInsert);
+		model.addAttribute("armyInsert", armyInsert);
 		
 		return "profile/main";
 
@@ -131,7 +146,7 @@ public class MainProfileController {
 		
 		System.out.println("오나!!!!!!!!!!!!!");
 		
-		profileService.bonus(bonus);
+		profileService.bonusInsert(bonus);
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		

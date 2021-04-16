@@ -9,14 +9,14 @@ public class MemberAndArmyDTO {
 	private String armyBranch;
 	private String armyClass;
 	private String armyDischarge;
-	private java.util.Date stratDate;
-	private java.util.Date endDate;
+	private java.sql.Date stratDate;
+	private java.sql.Date endDate;
 	private String armyReason;
 	
 	public MemberAndArmyDTO() {}
 
 	public MemberAndArmyDTO(int memberNo, String name, String armyBranch, String armyClass, String armyDischarge,
-			Date stratDate, Date endDate, String armyReason) {
+			java.sql.Date stratDate, java.sql.Date endDate, String armyReason) {
 		super();
 		this.memberNo = memberNo;
 		this.name = name;
@@ -68,19 +68,19 @@ public class MemberAndArmyDTO {
 		this.armyDischarge = armyDischarge;
 	}
 
-	public java.util.Date getStratDate() {
+	public java.sql.Date getStratDate() {
 		return stratDate;
 	}
 
-	public void setStratDate(java.util.Date stratDate) {
+	public void setStratDate(java.sql.Date stratDate) {
 		this.stratDate = stratDate;
 	}
 
-	public java.util.Date getEndDate() {
+	public java.sql.Date getEndDate() {
 		return endDate;
 	}
 
-	public void setEndDate(java.util.Date endDate) {
+	public void setEndDate(java.sql.Date endDate) {
 		this.endDate = endDate;
 	}
 
@@ -99,7 +99,7 @@ public class MemberAndArmyDTO {
 				+ ", endDate=" + endDate + ", armyReason=" + armyReason + "]";
 	}
 
-	
+
 	
 	
 }
