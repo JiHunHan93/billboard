@@ -643,8 +643,8 @@
 												<!-- Employee 조직도 -->
 												<p class="category-text">조직도</p>
 												<i class="las la-sitemap category-icon"></i>
-												<i class="fas fa-circle category-dot"><div class="category-sub-text">전체 조직도</div></i>
-												<i class="fas fa-circle category-dot"><div class="category-sub-text">부서별 조직도</div></i>
+												<i class="fas fa-circle category-dot"><a href="department/department"><div class="category-sub-text">전체 조직도</div></a></i>
+												<i class="fas fa-circle category-dot"><a href="department/department"><div class="category-sub-text">부서별 조직도</div></a></i>
 												<!-- Admin 인사고과 -->
 												<!-- <p class="category-text">인사고과</p> -->
 												<!-- <i class="las la-graduation-cap category-icon"></i> -->

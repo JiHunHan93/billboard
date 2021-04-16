@@ -37,6 +37,8 @@
 
  		<typeAlias alias="MemberAndMemberInfoAndDeptAndModifyDeptDTO" type="com.sevenelite.billbo.allmember.model.dto.MemberAndMemberInfoAndDeptAndModifyDeptDTO"/>
 		<typeAlias alias="MemberAndArmyDTO" type="com.sevenelite.billbo.allmember.model.dto.MemberAndArmyDTO"/>
+ 		<typeAlias alias="MemberAndFamilyDTO" type="com.sevenelite.billbo.allmember.model.dto.MemberAndFamilyDTO"/>
+ 		<typeAlias alias="CertificateListDTO" type="com.sevenelite.billbo.allmember.model.dto.CertificateListDTO"/>
  	</typeAliases>
  	
  	<!-- 

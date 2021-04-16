@@ -93,9 +93,14 @@ public interface ProfileService {
 
 	List<CareerDTO> career(int memberno);
 
-	List<BonusDTO> bonus(BonusDTO bonus);
-
 	List<BonusDTO> bonus(int memberno);
 
+	boolean bonusInsert(BonusDTO bonus);
+
+	List<LicenseDTO> licenseSelect(int memberno);
+
+	List<CertificateDTO> certificateInsert(int memberno);
+
+	List<ArmyDTO> armyInsert(int memberno);
 
 }

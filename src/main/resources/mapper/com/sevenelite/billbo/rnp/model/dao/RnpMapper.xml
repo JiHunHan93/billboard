@@ -139,7 +139,7 @@ WHERE D.BONUS_NO = #{no}
   (
     SEQ_BONUS_NO.NEXTVAL,
     #{reason},
-    SYSDATE,
+    #{enrollDate},
     #{rnpType},
     #{body},
     #{memberNo}

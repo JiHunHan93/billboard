@@ -47,5 +47,27 @@
           JOIN BB_WORKSTATUS B ON (A.MEMBER_NO = B.MEMBER_NO)
 		 WHERE A.MEMBER_NO = #{ MemNo }
 	</select>
+	
+	<insert id="insertWorkInfo" parameterType="WorkDTO">
+		 INSERT
+		   INTO BB_WEEK_WORK_STATISTIC A
+		  (
+            STATISTIC_DATE 
+		 ,  WEEK_WORK_STATISTIC_NO
+		 ,  TOTAL_WORK_HOURS
+         ,  TOTAL_EXTRA_WORK_HOURS
+		 ,  WORK_LATE_COUNT
+         ,  WORK_COUNT
+		 )
+		VALUES
+		(
+           SYSDATE
+        ,  SEQ_WEEK_WORK_STATISTIC_NO.NEXTVAL
+        ,  #{ totalWork }
+        ,  #{ extraWork }
+        ,  #{ LateCount }
+        , 22
+		) 
+	</insert>
 
 </mapper> 
