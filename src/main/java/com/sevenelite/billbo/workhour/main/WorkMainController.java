@@ -43,8 +43,8 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkService;
 			System.out.println("관리자 : " + principal);
 			System.out.println("===========================================" + no);
 			
-			Date commute = workService.selectCommute(no);
-			Date lwork = workService.selectlwork(no);
+			Date commute = new Date(System.currentTimeMillis());
+			Date lwork = new Date(System.currentTimeMillis());
 			
 			/////////////////////////////////////////////////////
 			SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
@@ -54,17 +54,49 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkService;
 			
 			System.out.println("commute : " + commuteTime);
 			System.out.println("lwork : " + leaveTime);
-
-			  
-			  List<WorkDTO> workInfo = workService.selectWorkList(no); //
-			  System.out.println(workInfo);  
-			  model.addAttribute("workInfo", workInfo);
-			 		
 			
+			List<WorkDTO> workInfo = workService.selectWorkList(no); //
+			System.out.println(workInfo);  
+			model.addAttribute("workInfo", workInfo);
 			
+			//출근시간 
+	         String commuteTimeFormat = format.format(commute);
+	         String[] splitCommute = commuteTimeFormat.split(":");
+	         int hour = Integer.parseInt(splitCommute[0]);
+	         int minute = Integer.parseInt(splitCommute[1]);
+	         int second = Integer.parseInt(splitCommute[2]);
+	         //출근시간 스플릿
+	         System.out.println("시간::::: " + hour);
+	         System.out.println("분:::::::" + minute);
+	         System.out.println("초 ::::::" + second);
+	         //퇴근시간
+	         String leaveTimeFormat = format.format(lwork);
+	         String[] splitLeave = leaveTimeFormat.split(":");
+	         String lhour = splitLeave[0];
+	         String lminute = splitLeave[1];
+	         String lsecond = splitLeave[2];
+	         
+	         if(hour > 8) {
+	        	 int overH = hour - 8;
+	        	 int overM = minute;
+	        	 int overS = second;
+	        	 String overResult = overH + ":" + overM + ":" + overS;
+	        	 System.out.println(overResult + " 시간 초과");
+	         } else {
+	        	 System.out.println("정상 근무");
+	         }
+	         
+	         String timestr = hour + ":" + minute + ":" + second;
+	         System.out.println(timestr);
+	         	
+	         //근무시간 
+	         int workH = hour;
+	         int workM = minute;
+	         int workS = second;
+	         String workResult = workH + ":" + workM + ":" +workS;
+	         
 			return "workhour/workList";
 
 	}
-
-
+	
 }
