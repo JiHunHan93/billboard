@@ -4,7 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sevenelite.billbo.profile.model.dao.ProfileMapper">
 
-<resultMap type="com.sevenelite.billbo.profile.model.dto.ArmyDTO" id="rmyDTO">
+<resultMap type="com.sevenelite.billbo.profile.model.dto.ArmyDTO" id="armyDTO">
 	<id property="no" column="ARMY_NO" />
 	<result property="branch" column="ARMY_BRANCH"/>
 	<result property="army_class" column="ARMY_CLASS"/>
@@ -633,7 +633,7 @@ SELECT
 	                  WHERE RNUM = 1
 	              </select>
 	              
-	      <!--여기부터 ㄱ <select id="certificateInsert" resultMap="certificateDTO" parameterType="CertificateDTO">
+	      <select id="armyInsert" resultMap="armyDTO" parameterType="ArmyDTO">
   
 	       SELECT
     	  A.ARMY_NO
@@ -666,12 +666,12 @@ SELECT
                          , D.MEMBER_NO
 	                    FROM BB_ARMY C
 	                  JOIN BB_MEMBER D ON(C.MEMBER_NO = D.MEMBER_NO)
-                      WHERE D.MEMBER_NO = 1
+                      WHERE D.MEMBER_NO = #{ member.no }
 	                  ORDER BY MEMBER_NO DESC
 	                  ) B
 	                  ) A
-	                  WHERE RNUM = 1; 
-          -->        
+	                  WHERE RNUM = 1 
+          </select>  
          
 <!-- <select id="member_enroll_date" resultMap="memberInfoDTO" parameterType="MemberInfoDTO">
 SELECT
