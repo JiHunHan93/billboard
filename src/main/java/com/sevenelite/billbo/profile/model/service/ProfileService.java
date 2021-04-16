@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.sevenelite.billbo.member.model.dto.MemBbDTO;
 import com.sevenelite.billbo.profile.model.dto.ArmyDTO;
+import com.sevenelite.billbo.profile.model.dto.BonusDTO;
 import com.sevenelite.billbo.profile.model.dto.CareerDTO;
 import com.sevenelite.billbo.profile.model.dto.CertificateDTO;
 import com.sevenelite.billbo.profile.model.dto.DeptDTO;
@@ -69,7 +70,7 @@ public interface ProfileService {
 //?
 	List<DeptDTO> selectMemberDept(int memberno);
 
-;
+
 
 	List<MemBbDTO> selectMemberDetail(int memberno);
 
@@ -81,9 +82,20 @@ public interface ProfileService {
 
 	List<ModifyDeptDTO> member_dept(int memberno);
 
-	boolean dept(ModifyDeptDTO1 modifydept);
 
 	boolean modifyspot(ModifySpotDTO modifyspot);
+
+	boolean dept(ModifyDeptDTO1 modifydept);
+
+	List<ModifyDeptDTO1> selectModifyDept(int memberno);
+
+	List<ModifySpotDTO> selectspot(int memberno);
+
+	List<CareerDTO> career(int memberno);
+
+	List<BonusDTO> bonus(BonusDTO bonus);
+
+	List<BonusDTO> bonus(int memberno);
 
 
 }

@@ -5,6 +5,7 @@ import java.util.List;
 import com.sevenelite.billbo.member.model.dto.MemBbDTO;
 import com.sevenelite.billbo.member.model.dto.UserDetailsVO;
 import com.sevenelite.billbo.profile.model.dto.ArmyDTO;
+import com.sevenelite.billbo.profile.model.dto.BonusDTO;
 import com.sevenelite.billbo.profile.model.dto.CareerDTO;
 import com.sevenelite.billbo.profile.model.dto.CertificateDTO;
 import com.sevenelite.billbo.profile.model.dto.DeptDTO;
@@ -89,13 +90,23 @@ public interface ProfileMapper {
 
 	List<MemBbDTO> selectMemberDetail(int memberno);
 
-	List<ModifyDeptDTO1> selectMemberName(int memberno);
 
 	List<DeptDTO> member_name();
 
-	int modifydept(ModifyDeptDTO1 dept);
-
+	
 	int modifyspot(ModifySpotDTO modifyspot);
+	
+	int modifydept1(ModifyDeptDTO1 modifydept1);
+
+	int dept(ModifyDeptDTO1 dept);
+
+	List<ModifyDeptDTO1> selectModifyDept(int memberno);
+
+	List<ModifySpotDTO> selectspot(int memberno);
+
+	List<CareerDTO> careerSelect(int memberno);
+
+	List<BonusDTO> bonus(int memberno);
 
 
 	
