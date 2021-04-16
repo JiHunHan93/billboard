@@ -794,40 +794,42 @@
 								</div>
 								<div class="col-md-6 d-flex">
 									<div class="card profile-box flex-fill">
+									<c:forEach var="certificateInfo" items="${requestScope.certificateInfo }">
 										<div class="card-body">
-											<h3 class="card-title">Emergency Contact <a href="#" class="edit-icon" data-toggle="modal" data-target="#emergency_contact_modal"><i class="fa fa-pencil"></i></a></h3>
-											<h5 class="section-title">Primary</h5>
+											<h3 class="card-title">자격증 및 면허증 <a href="#" class="edit-icon" data-toggle="modal" data-target="#emergency_contact_modal"><i class="fa fa-pencil"></i></a></h3>
+											<h5 class="section-title"></h5>
 											<ul class="personal-info">
 												<li>
-													<div class="title">Name</div>
-													<div class="text">John Doe</div>
+													<div class="title">자격증</div>
+													<div class="text"><c:out value="${certificateInfo.licenseName }"/></div>
 												</li>
 												<li>
-													<div class="title">Relationship</div>
-													<div class="text">Father</div>
+													<div class="title">자격증 취득일자</div>
+													<div class="text"><c:out value="${certificateInfo.licenseDate }"/></div>
 												</li>
 												<li>
-													<div class="title">Phone </div>
-													<div class="text">9876543210, 9876543210</div>
+													<div class="title">자격증  </div>
+													<div class="text"><c:out value="${certificateInfo.certificateName }"/></div>
 												</li>
 											</ul>
-											<hr>
-											<h5 class="section-title">Secondary</h5>
+											
+											<!-- <h5 class="section-title">자격증 취득일자</h5> -->
 											<ul class="personal-info">
 												<li>
-													<div class="title">Name</div>
-													<div class="text">Karen Wills</div>
+													<div class="title">자격증 취득일자</div>
+													<div class="text"><c:out value="${certificateInfo.certificateStartDate }"/></div>
 												</li>
-												<li>
+												<!-- <li>
 													<div class="title">Relationship</div>
 													<div class="text">Brother</div>
 												</li>
 												<li>
 													<div class="title">Phone </div>
 													<div class="text">9876543210, 9876543210</div>
-												</li>
+												</li> -->
 											</ul>
 										</div>
+										</c:forEach>
 									</div>
 								</div>
 							</div>
