@@ -2,9 +2,9 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.sevenelite.billbo.approval.model.dao.ApprovalMapper">
+<mapper namespace="com.sevenelite.billbo.department.model.dao.DepartmentMapper">
 
-	<resultMap type="com.sevenelite.billbo.approval.model.dto.ApproDeptDTO" id="approDept">
+	<resultMap type="com.sevenelite.billbo.department.model.dto.DepartmentDTO" id="dept">
 		<id property="deptRnum" column="RNUM"/>
 		<result property="deptCode" column="DEPT_CODE"/>
 		<result property="deptName" column="DEPT_NAME"/>
@@ -13,7 +13,7 @@
 		<result property="modifyDeptDate" column="MODIFY_DEPT_DATE"/>
 	</resultMap>
 	
-	<resultMap type="com.sevenelite.billbo.approval.model.dto.ApproSpotDTO" id="approSpot">
+	<resultMap type="com.sevenelite.billbo.department.model.dto.DepartmentSpotDTO" id="deptSpot">
 		<id property="spotRnum" column="RNUM"/>
 		<result property="spotCode" column="SPOT_CODE"/>
 		<result property="spotName" column="SPOT_NAME"/>
@@ -21,7 +21,8 @@
 	</resultMap>
 	
 	
-	<select id="selectLoginDept" resultMap="approDept" parameterType="_int">
+	
+	<select id="selectLoginDept" resultMap="dept" parameterType="_int">
         SELECT
                A.RNUM
              , A.DEPT_CODE
@@ -49,7 +50,7 @@
          WHERE RNUM = 1
 	</select>
 	
-	<select id="selectLoginSpot" resultMap="approSpot" parameterType="_int">
+	<select id="selectLoginSpot" resultMap="deptSpot" parameterType="_int">
         SELECT
                A.RNUM
              , A.SPOT_CODE
@@ -72,4 +73,5 @@
 	</select>
 	
 	
+
 </mapper>
