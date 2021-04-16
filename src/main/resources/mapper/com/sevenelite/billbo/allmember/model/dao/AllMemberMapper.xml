@@ -29,48 +29,94 @@
 </resultMap>
 
 <resultMap type="com.sevenelite.billbo.allmember.model.dto.MemberAndArmyDTO" id="MemberAndArmyResultMap">
-    <id property="MemberNo" column="MEMBER_NO"/>
+    <id property="memberNo" column="MEMBER_NO"/>
     <result property="name" column="MEMBER_NAME"/>
     <result property="armyClass" column="ARMY_CLASS"/>
-    <result property="armyDisCharge" column="ARMY_DISCHARGE"/>
-    <result property="startDate" column="ARMY_START"/>
+    <result property="armyBranch" column="ARMY_BRANCH"/>
+    <result property="armyDischarge" column="ARMY_DISCHARGE"/>
+    <result property="stratDate" column="ARMY_START"/>
     <result property="endDate" column="ARMY_END"/>
     <result property="armyReason" column="ARMY_REASON"/>
-
 </resultMap>
 
+<resultMap type="com.sevenelite.billbo.allmember.model.dto.MemberAndFamilyDTO" id="MemberAndFamilyResultMap">
+    <id property="familyInfoNo" column="FAMILY_INFO_NO"/>
+    <result property="familyName" column="FAMILY_NAME"/>
+    <result property="familyRelation" column="FAMILY_RELATION"/>
+    <result property="familyStudy" column="FAMILY_STUDY"/>
+    <result property="familyJob" column="FAMILY_JOB"/>
+    <result property="familyGender" column="GENDER"/>
+    <result property="memberNo" column="MEMBER_NO"/>
+    <result property="email" column="EMAIL"/>
+    <result property="phone" column="PHONE"/>
+    <result property="familyBirthDay" column="FAMILY_BIRTHDAY"/>
+</resultMap>
+
+<resultMap type="com.sevenelite.billbo.allmember.model.dto.CertificateListDTO" id="CertificateListResultMap">
+	<id property="memberNo" column="MEMBER_NO"/>
+	<result property="memberName" column="MEMBER_NAME"/>
+	<result property="emali" column="EMAIL"/>
+	<result property="phone" column="PHONE"/>
+	<result property="licenseCode" column="LICENSE_CODE_CODE"/>
+	<result property="licenseName" column="LICENSE_CODE_NAME"/>
+	<result property="licenseDate" column="LICENSE_DATE"/>
+	<result property="certificateStartDate" column="CERTIFICATE_START_DATE"/>
+	<result property="certificateEndDate" column="CERTIFICATE_END_DATE"/>
+	<result property="certificateName" column="CERTIFICATE_NAME"/>
+</resultMap>
 
 <select id="selectAllEmployeeList" resultMap="ALlmemberResultMap" parameterType="MemberAndMemberInfoAndDeptAndModifyDeptDTO">
-        SELECT
-               A.MEMBER_NO
-             , A.MEMBER_NAME
-             , A.EMAIL
-             , A.PHONE
-             , B.ENROLL_DATE
-             , C.DEPT_CODE
-             , D.DEPT_NAME
-         FROM BB_MEMBER A
-         LEFT JOIN BB_MEMBER_INFO B ON (A.MEMBER_NO = B.MEMBER_NO)
-         LEFT JOIN BB_MODIFY_DEPT C ON (A.MEMBER_NO = C.MEMBER_NO)
-         LEFT JOIN BB_DEPT D ON (C.DEPT_CODE = D.DEPT_CODE)  
-
+         
+          SELECT
+         *
+         FROM
+         (
+         SELECT * FROM
+         (
+         SELECT
+       A.MODIFY_DEPT_NO
+     , A.MODIFY_DEPT_DATE
+     , A.MEMBER_NO
+     , B.DEPT_CODE
+     , ROW_NUMBER() OVER(PARTITION BY A.MEMBER_NO ORDER BY A.MODIFY_DEPT_DATE DESC) 순번
+     , B.DEPT_NAME
+	FROM BB_MODIFY_DEPT A
+    JOIN BB_DEPT B ON (A.DEPT_CODE = B.DEPT_CODE)
+    )
+    WHERE 순번 =1 ) C
+    JOIN BB_MEMBER_INFO D ON (C.MEMBER_NO = D.MEMBER_NO)
+    JOIN BB_MEMBER E ON( C.MEMBER_NO = E.MEMBER_NO)
 </select>
 
 <select id="detailEmployeeList" resultMap="ALlmemberResultMap" parameterType="MemberAndMemberInfoAndDeptAndModifyDeptDTO">
-     SELECT
-               A.MEMBER_NO
-             , A.MEMBER_NAME
-             , A.EMAIL
-             , A.PHONE
-             , B.ENROLL_DATE
-             , C.DEPT_CODE
-             , D.DEPT_NAME
-             , B.MEMBER_ADDRESS
-         FROM BB_MEMBER A
-         JOIN BB_MEMBER_INFO B ON (A.MEMBER_NO = B.MEMBER_NO)
-         JOIN BB_MODIFY_DEPT C ON (A.MEMBER_NO = C.MEMBER_NO)
-         JOIN BB_DEPT D ON (C.DEPT_CODE = D.DEPT_CODE)  
-         WHERE A.MEMBER_NO = #{no}
+      SELECT 
+        E.MEMBER_NO,
+        E.MEMBER_NAME,
+        E.EMAIL,
+        E.PHONE,
+        D.ENROLL_DATE,
+        D.MEMBER_ADDRESS,
+        C.DEPT_NAME
+        FROM(               
+             SELECT
+                  *
+                FROM
+           
+         (
+         SELECT
+       A.MODIFY_DEPT_NO
+     , A.MODIFY_DEPT_DATE
+     , A.MEMBER_NO
+     , B.DEPT_CODE
+     , ROW_NUMBER() OVER(PARTITION BY A.MEMBER_NO ORDER BY A.MODIFY_DEPT_DATE DESC) 순번
+     , B.DEPT_NAME
+	FROM BB_MODIFY_DEPT A
+    JOIN BB_DEPT B ON (A.DEPT_CODE = B.DEPT_CODE)
+    )
+    WHERE 순번 =1 ) C
+    JOIN BB_MEMBER_INFO D ON (C.MEMBER_NO = D.MEMBER_NO)
+    JOIN BB_MEMBER E ON( C.MEMBER_NO = E.MEMBER_NO)
+    WHERE E.MEMBER_NO = #{no}
 </select>
 
 <select id="selectBankInfo" resultMap="memberInfoDTO" parameterType="MemberInfoDTO">
@@ -88,6 +134,7 @@
        SELECT
               A.MEMBER_NO
             , A.MEMBER_NAME
+            , B.ARMY_BRANCH
             , B.ARMY_CLASS
             , B.ARMY_DISCHARGE
             , B.ARMY_START
@@ -97,5 +144,43 @@
          JOIN BB_ARMY B ON (A.MEMBER_NO = B.MEMBER_NO)
         WHERE A.MEMBER_NO = #{no}     
 
+</select>
+
+<select id="selectFamilyInfo" resultMap="MemberAndFamilyResultMap" parameterType="MemberAndFamilyDTO">
+      SELECT
+             A.MEMBER_NO
+           , A.MEMBER_NAME
+           , A.EMAIL
+           , A.PHONE
+           , B.FAMILY_INFO_NO
+           , B.FAMILY_NAME
+           , B.FAMILY_RELATION
+           , B.FAMILY_BIRTHDAY
+           , B.FAMILY_JOB
+           , B.FAMILY_STUDY
+       FROM BB_MEMBER A
+       FULL JOIN BB_FAMILY_INFO B ON (A.MEMBER_NO = B.MEMBER_NO)
+      WHERE A.MEMBER_NO = #{no}     
+</select>
+
+<select id="selectCertiInfo" resultMap="CertificateListResultMap" parameterType="CertificateListDTO">
+      SELECT
+              A.MEMBER_NO
+            , A.MEMBER_NAME
+            , A.EMAIL
+            , A.PHONE
+            , B.LICENSE_CODE_CODE
+            , C.LICENSE_CODE_NAME
+            , B.LICENSE_DATE
+            , D.CERTIFICATE_CODE
+            , E.CERTIFICATE_NAME
+            , D.CERTIFICATE_START_DATE
+            , D.CERTIFICATE_END_DATE
+       FROM BB_MEMBER A
+       FULL JOIN BB_LICENSE B ON (A.MEMBER_NO = B.MEMBER_NO)
+       FULL JOIN BB_LICENSE_CODE C ON (B.LICENSE_CODE_CODE = C.LICENSE_CODE_CODE)
+       FULL JOIN BB_CERTIFICATE D ON (A.MEMBER_NO = D.MEMBER_NO)
+       FULL JOIN BB_CERTIFICATE_CODE E ON (E.CERTIFICATE_CODE = D.CERTIFICATE_CODE)
+      WHERE A.MEMBER_NO = #{no}        
 </select>
 </mapper>

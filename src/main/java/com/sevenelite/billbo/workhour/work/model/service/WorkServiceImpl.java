@@ -24,5 +24,9 @@ com.sevenelite.billbo.workhour.work.model.dto.WorkDTO;
 	public List<WorkDTO> selectWorkList(int no) {
 		return dao.selectWorkList(no);
 	}
+	@Override
+	public boolean insertWorkInfo(WorkDTO workInfo) {
+		return dao.insertWorkInfo(workInfo);
+	}
 }
 
