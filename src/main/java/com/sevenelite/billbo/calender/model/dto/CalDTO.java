@@ -5,13 +5,13 @@ import java.sql.Date;
 public class CalDTO {
 
 	private String title;
-	private java.sql.Date start;
-	private java.sql.Date end;
+	private String start;
+	private String end;
 	private boolean status;
 
 	public CalDTO() {}
 
-	public CalDTO(String title, Date start, Date end, boolean status) {
+	public CalDTO(String title, String start, String end, boolean status) {
 		super();
 		this.title = title;
 		this.start = start;
@@ -27,19 +27,19 @@ public class CalDTO {
 		this.title = title;
 	}
 
-	public java.sql.Date getStart() {
+	public String getStart() {
 		return start;
 	}
 
-	public void setStart(java.sql.Date start) {
+	public void setStart(String start) {
 		this.start = start;
 	}
 
-	public java.sql.Date getEnd() {
+	public String getEnd() {
 		return end;
 	}
 
-	public void setEnd(java.sql.Date end) {
+	public void setEnd(String end) {
 		this.end = end;
 	}
 
@@ -55,5 +55,5 @@ public class CalDTO {
 	public String toString() {
 		return "CalDTO [title=" + title + ", start=" + start + ", end=" + end + ", status=" + status + "]";
 	}
-	
+
 }

@@ -65,6 +65,18 @@
 		// -----------------------------------------------------------------
 
 		var calendar = new Calendar(calendarEl, {
+			events : function(start, end, callback) { 
+		   		$.ajax({
+		   			url: '/getEvent', 
+		   			dataType: 'json', 
+		   			success: function(javaMap) {
+		   				var events = [];
+		   				console.log(javaMap);
+		   				console.log(javaMap[0].title);
+		   				callback(events);
+		   				} 
+		   		}); 
+	   		}, 
 			headerToolbar : {
 				left : 'prev,next today',
 				center : 'title',
@@ -77,11 +89,9 @@
 				alert('일정 클릭');
 			},
 			editable : true,
-			droppable : true, // this allows things to be dropped onto the calendar
+			droppable : true,
 			drop : function(info) {
-				// is the "remove after drop" checkbox checked?
 				if (checkbox.checked) {
-					// if so, remove the element from the "Draggable Events" list
 					info.draggedEl.parentNode.removeChild(info.draggedEl);
 				}
 			},
@@ -99,27 +109,17 @@
 			console.log('clicked on ' + info.dateStr);
 		});
 
-		calendar.addEvent({
-			'title' : '임의의 이벤트',
-			'start' : '2021-04-04',
-			'end' : '2021-04-07'
-		});
-
 		var arr = [ {
 			'title' : '임의의 받아온 이벤트',
 			'start' : '2021-04-11',
 			'end' : '2021-04-16'
 		} ];
 
-		calendar.addEvent(arr[0]);
-
 		var arr1 = {
 			'title' : '이벤트',
 			'start' : '2021-04-11',
 			'end' : '2021-04-16'
 		};
-
-		calendar.addEvent(arr1);
 
 		calendar.render();
  		var arrCal = calendar.getEvents();
@@ -146,14 +146,11 @@
 					var arr = getCalendarDataInDB();
 					$.each(arr, function(index, item) {
 						calendar.addEvent(item);
-						console.log('click evt loop_in_cal' + index + ' : '
-								+ item);
+						console.log('click evt loop_in_cal' + index + ' : '	+ item);
 						$.each(item, function(iii, ttt) {
-							console.log('click evt inner loop_in_cal => ' + iii
-									+ ' : ' + ttt);
+							console.log('click evt inner loop_in_cal => ' + iii + ' : ' + ttt);
 						});
 					});
-
 					calendar.render();
 				});
 	});
@@ -168,7 +165,7 @@
 	}
 	
 	function getCalendarDataInDB(){
-	    var arr = [{title: 'evt1', start:'2021-04-11', end:'2021-04-14', allDay: 'true'}, {title: 'evt2', start:'2021-04-09'}, {title: 'evt1', start:'2021-04-11', end:'2021-04-14', allDay: 'true'}];
+	    var arr = [];
 	    
 	    //배열 초기화
 	    var viewData = {};
@@ -185,11 +182,12 @@
 	        async: false,
 	        data:JSON.stringify(viewData),
 	        success:function(resp){
-	            //alert(resp.f.id + ' ggg');     
 	            $.each(resp, function(index, item){
 	                console.log(index + ' : ' + item);
 	                $.each(item, function(iii, ttt){
 	                    console.log('inner loop => ' + iii + ' : ' + ttt);
+	                    arr.push(ttt);
+	                    console.log(arr);
 	                });
 	            });
 	            arr = resp;
