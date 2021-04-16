@@ -747,46 +747,49 @@
 					
 						<!-- Profile Info Tab -->
 						<div id="emp_profile" class="pro-overview tab-pane fade show active">
+						
 							<div class="row">
 								<div class="col-md-6 d-flex">
 									<div class="card profile-box flex-fill">
+									<c:forEach var="armyInfo" items="${requestScope.armyInfo }">
 										<div class="card-body">
 											<h3 class="card-title">병역 현황 <a href="#" class="edit-icon" data-toggle="modal" data-target="#personal_info_modal"><i class="fa fa-pencil"></i></a></h3>
 											<ul class="personal-info">
 												<li>
-													<div class="title">Passport No.</div>
-													<div class="text">987123132</div>
+													<div class="title">병역구분</div>
+													<div class="text"><c:out value="${armyInfo.armyBranch }"/></div>
 												</li>
 												<li>
-													<div class="title">Passport Exp Date.</div>
-													<div class="text">9876543210</div>
+													<div class="title">전역계급</div>
+													<div class="text"><c:out value="${armyInfo.armyClass }"/></div>
 												</li>
 												<li>
-													<div class="title">Tel</div>
-													<div class="text"><a href="">9876543210</a></div>
+													<div class="title">전역구분</div>
+													<div class="text"><c:out value="${armyInfo.armyDischarge }"/></div>
 												</li>
 												<li>
-													<div class="title">Nationality</div>
-													<div class="text">Indian</div>
+													<div class="title">입대일</div>
+													<div class="text"><c:out value="${armyInfo.stratDate }"/></div>
 												</li>
 												<li>
-													<div class="title">Religion</div>
-													<div class="text">Christian</div>
+													<div class="title">전역일</div>
+													<div class="text"><c:out value="${armyInfo.endDate }"/></div>
 												</li>
 												<li>
-													<div class="title">Marital status</div>
-													<div class="text">Married</div>
+													<div class="title">상태</div>
+													<div class="text"><c:out value="${armyInfo.armyReason }"/></div>
 												</li>
-												<li>
+												<!-- <li>
 													<div class="title">Employment of spouse</div>
 													<div class="text">No</div>
 												</li>
 												<li>
 													<div class="title">No. of children</div>
 													<div class="text">2</div>
-												</li>
+												</li> -->
 											</ul>
 										</div>
+										</c:forEach>
 									</div>
 								</div>
 								<div class="col-md-6 d-flex">
@@ -855,25 +858,26 @@
 								</div>
 								<div class="col-md-6 d-flex">
 									<div class="card profile-box flex-fill">
+									<c:forEach var="familyInfo" items="${requestScope.familyInfo }">
 										<div class="card-body">
-											<h3 class="card-title">Family Informations <a href="#" class="edit-icon" data-toggle="modal" data-target="#family_info_modal"><i class="fa fa-pencil"></i></a></h3>
+											<h3 class="card-title">가족정보 <a href="#" class="edit-icon" data-toggle="modal" data-target="#family_info_modal"><i class="fa fa-pencil"></i></a></h3>
 											<div class="table-responsive">
 												<table class="table table-nowrap">
 													<thead>
 														<tr>
-															<th>Name</th>
-															<th>Relationship</th>
-															<th>Date of Birth</th>
-															<th>Phone</th>
+															<th>이름</th>
+															<th>관계</th>
+															<th>출생날짜</th>
+															<th>직업</th>
 															<th></th>
 														</tr>
 													</thead>
 													<tbody>
 														<tr>
-															<td>Leo</td>
-															<td>Brother</td>
-															<td>Feb 16th, 2019</td>
-															<td>9876543210</td>
+															<td><c:out value="${ familyInfo.familyName }"/></td>
+															<td><c:out value="${ familyInfo.familyRelation }"/></td>
+															<td><c:out value="${ familyInfo.familyBirthDay }"/></td>
+															<td><c:out value="${ familyInfo.familyJob}"/></td>
 															<td class="text-right">
 																<div class="dropdown dropdown-action">
 																	<a aria-expanded="false" data-toggle="dropdown" class="action-icon dropdown-toggle" href="#"><i class="material-icons">more_vert</i></a>
@@ -888,6 +892,7 @@
 												</table>
 											</div>
 										</div>
+										</c:forEach>
 									</div>
 								</div>
 							</div>

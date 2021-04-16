@@ -648,8 +648,8 @@
 					<!-- /Page Header -->
 								<h3 class="page-title" font>${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }님의 근태 현황</h3>
 					<form>
-					<c:forEach var="workInfo" items="${ requestScope.workInfo }">
-					<!-- Leave Statistics -->
+<%-- 					<c:forEach var="workInfo" items="${ requestScope.workInfo }">
+ --%>					<!-- Leave Statistics -->
 					
 						<div class="row">
 							<div class="col-md-3">
@@ -667,7 +667,7 @@
 							<div class="col-md-3">
 								<div class="stats-info">
 									<h6 style="font-weight: bold;">근무일</h6>
-									<h4 style="color: gray;"><c:out value="${workInfo.workCount }"/></h4>
+									<h4 style="color: gray;"><c:out value="${ workInfo.workCount }"/></h4>
 								</div>
 							</div>
 						</div>
@@ -725,7 +725,7 @@
 							
 								</tbody>
 							</table>
-					</c:forEach>
+				<%-- 	</c:forEach> --%>
 					</form>
 						</div>
 					</div>

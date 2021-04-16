@@ -136,7 +136,7 @@ public class WorkDetailController {
 			UserDetailsVO userDetails = (UserDetailsVO) authentication.getPrincipal();
 			int userno = userDetails.getMemberno();
 			Date date = new java.util.Date(System.currentTimeMillis());
-			
+			int workdate = 0;
 			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			
 			String dateFormat = format.format(date);
