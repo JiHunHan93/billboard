@@ -15,6 +15,7 @@ import com.sevenelite.billbo.approval.model.dto.ApproDraftingDTO;
 import com.sevenelite.billbo.approval.model.dto.ApproLineMemDTO;
 import com.sevenelite.billbo.approval.model.dto.ApproSpotDTO;
 import com.sevenelite.billbo.approval.model.dto.FormVacationDTO;
+import com.sevenelite.billbo.approval.model.dto.multitudeLineMemDTO;
 import com.sevenelite.billbo.approval.model.service.ApprovalService;
 import com.sevenelite.billbo.member.model.dto.UserDetailsVO;
 
@@ -71,7 +72,7 @@ public class ApprovaldocumentController {
 	}
 	
 	@PostMapping(value="1004")
-	public String vacationInsert(@ModelAttribute("spotDTO") ApproSpotDTO spotDTO, @ModelAttribute("deptDTO") ApproDeptDTO deptDTO, @RequestParam(required=false) String memberno, @RequestParam(required=false) String docNo, @RequestParam(required=false) String time, @RequestParam(required=false) String draftDate, @RequestParam(required=false) String draftDept, @ModelAttribute("vacation") FormVacationDTO vacation) {
+	public String vacationInsert(@ModelAttribute("lineMemDTO") multitudeLineMemDTO lineMemDTO, @ModelAttribute("spotDTO") ApproSpotDTO spotDTO, @ModelAttribute("deptDTO") ApproDeptDTO deptDTO, @RequestParam(required=false) String memberno, @RequestParam(required=false) String docNo, @RequestParam(required=false) String time, @RequestParam(required=false) String draftDate, @RequestParam(required=false) String draftDept, @ModelAttribute("vacation") FormVacationDTO vacation) {
 		
 		System.out.println("연차신청서 : " + vacation);
 		System.out.println("로그인 회원번호 : " + memberno);
@@ -80,6 +81,13 @@ public class ApprovaldocumentController {
 		
 		System.out.println("추가된 정보 deptDTO : " + deptDTO);
 		System.out.println("추가된 정보 spotDTO : " + spotDTO);
+//		System.out.println("추가된 정보 lineMemDTO : " + lineMemDTO);
+		/* 동일한 name의 값을 담을 List, List 사이즈로 접근. JSP에서는 추가한 for문 i에 맞춰서 카운트 계산을하여 보내줘도 됨 */
+		System.out.println("추가된 정보 lineMemDTO List : " + lineMemDTO);
+		System.out.println("추가된 정보 lineMemDTO List의 사이즈 : " + lineMemDTO.getLineMem().size());
+		for(int i = 0; i < lineMemDTO.getLineMem().size(); i++) {
+			System.out.println("가져온 값 :" + i+ "번째 값은? : " + lineMemDTO.getLineMem().get(i));
+		}
 		
 		/* 반차가 아닐시 처리 */
 		if(vacation.getHalfDayPoint() == null) {
