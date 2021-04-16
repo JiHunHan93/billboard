@@ -99,6 +99,8 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkService;
 	         //지각 횟수 
 	         int lateCount = 0;
 	         
+	         int workCount = 22;
+	         
 	         if(10 <= hour) {
 	        	 if(hour > 10) {
 	        		 System.out.println("지각");	        		 
@@ -119,6 +121,7 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkService;
 	         workInfo.setMemNo(userno);
 	         workInfo.setTotalWork(workStr);
 	         workInfo.setLateCount(lateCount);
+	         workInfo.setWorkCount(workCount);
 	         System.out.println(workInfo);
 	         model.addAttribute("workInfo", workInfo);
 	         

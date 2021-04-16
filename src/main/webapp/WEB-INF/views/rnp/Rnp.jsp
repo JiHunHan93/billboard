@@ -477,7 +477,7 @@
 															<table class="datatable table table-stripped mb-0">
 																<thead>
 																	<tr>
-																		<td class="not-sort"><input type="checkbox"></td>
+																		<th><input type="checkbox"></th>
 																		<th>사번</th>
 																		<th>이름</th>
 																		<th>근무부서</th>
@@ -489,7 +489,7 @@
 																</thead>
 																<c:forEach var="rnpList" items="${ requestScope.rnpList }">
 																	<tr class="rowClick">
-																		<td class="rnp-td"><input type="checkbox" />
+																		<td><input type="checkbox" />
 																		<td class="rnp-td"><c:out value="${ rnpList.memNo }" />
 																		<td class="rnp-td"><c:out value="${ rnpList.memName }" />
 																		<td class="rnp-td"><c:out value="${ rnpList.deptName }" />
@@ -552,7 +552,7 @@
                                                 <label>상벌 구분</label>
 												<select class="select1" name="rnpType" id="insertType" value="">
 													<option value="포상">포상</option>
-													<option value="인사">징계</option>
+													<option value="징계">징계</option>
 												</select>
 											</div>
 										</div>
@@ -619,6 +619,7 @@
 	
 	if(document.getElementsByTagName("td")) {
 		const $tds = document.getElementsByTagName("td");
+		const $rnp = document.getElementsByClassName("rnp-td");
 		
 		for(let i = 0; i < $tds.length; i++) {
 			
@@ -631,7 +632,7 @@
 				this.parentNode.style.background = "white";
 			}
 			
-			$tds[i].onclick = function() {
+			$rnp[i].onclick = function() {
 				const no = this.parentNode.children[7].innerText;
 				console.log(no);
 				location.href = "${ pageContext.servletContext.contextPath }/Rnp/detail?no=" + no;
