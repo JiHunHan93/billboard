@@ -20,15 +20,21 @@ public class CalenderController2 {
 	
 	@GetMapping("/main")
 	public String CalenderMain() {
+		return "Calender/calender2";
+	}
+	
+	@RequestMapping("calender2/getMain")
+	@ResponseBody
+	public Map<String, CalDTO> AjaxCalenderMain() {
 
 		Map<String, CalDTO> javaMap = new HashMap<String, CalDTO>();
 		
-		javaMap.put("evt1", new CalDTO("db이벤트1", new Date(2021-04-04), new Date(2021-04-06), false) );
-		javaMap.put("evt2", new CalDTO("db이벤트2", new Date(2021-04-23), new Date(2021-04-26), false) );
+		javaMap.put("evt1", new CalDTO("db이벤트1", "2021-04-04", "2021-04-06", false) );
+//		javaMap.put("evt2", new CalDTO("db이벤트2", "2021-04-23", "2021-04-26", false) );
 		
-		System.out.println(javaMap);
+		System.out.println("아직 컨트롤러" + javaMap);
 		
-		return "Calender/calender2";
+		return javaMap;
 	}
 	
 	@PostMapping(value="main/post")

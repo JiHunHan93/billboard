@@ -32,7 +32,13 @@
 	<id property="code" column="SPOT_CODE"/>
 	<result property="name" column="SPOT_NAME"/>
 </resultMap> -->
-
+<resultMap type="com.sevenelite.billbo.profile.model.dto.ModifySpotDTO" id="modifySpotDTO">
+	<id property="spot_no" column="MODIFY_SPOT_NO"/>
+	<result property="spot_date" column="MODIFY_SPOT_DATE"/>
+	<result property="spot_code" column="SPOT_CODE"/>
+	<result property="member_no" column="MEMBER_NO"/>
+	
+</resultMap>
 <resultMap type="com.sevenelite.billbo.profile.model.dto.DeptDTO" id="deptDTO">
 	<id property="code" column="DEPT_CODE"/>
 	<result property="name" column="DEPT_NAME"/>
@@ -71,13 +77,13 @@
 	<result property="memberNo" column="MEMBER_NO"/>
 </resultMap>
 
-<resultMap type="com.sevenelite.billbo.profile.model.dto.ModifySpotDTO" id="modifySpotDTO">
+<!-- <resultMap type="com.sevenelite.billbo.profile.model.dto.ModifySpotDTO" id="modifySpotDTO">
 	<id property="spot_no" column= "MODIFY_SPOT_NO" />
 	<result property="spot_date" column= "MODIFY_SPOT_DATE"/>
 	<result property="spot_code" column= "SPOT_CODE"/>
 	<result property="member_no" column= "MEMBER_NO"/>
 </resultMap>
-
+ -->
 
 <insert id="armyInfo" parameterType="ArmyDTO">
 	INSERT
@@ -448,6 +454,91 @@ SELECT
   ) A
   WHERE RNUM = 1 
 </select>
+
+ <select id="selectModifyDept" resultMap="modifydeptDTO1" parameterType="com.sevenelite.billbo.profile.model.dto.ModifyDeptDTO1">
+	SELECT
+                A.RNUM
+              , A.MODIFY_DEPT_NO
+              , A.MODIFY_DEPT_DATE
+              , A.DEPT_CODE
+              , A.MEMBER_NO
+        FROM (SELECT ROWNUM RNUM
+              , B.MODIFY_DEPT_NO
+              , B.MODIFY_DEPT_DATE
+              , B.DEPT_CODE
+              , B.MEMBER_NO
+         FROM (SELECT C.MODIFY_DEPT_NO
+                    , C.MODIFY_DEPT_DATE
+                    , D.DEPT_CODE
+                    , E.MEMBER_NO
+                 FROM BB_MODIFY_DEPT C
+                 JOIN BB_MEMBER E ON (C.MEMBER_NO = E.MEMBER_NO)
+                 JOIN BB_DEPT D ON (C.DEPT_CODE = D.DEPT_CODE)
+                WHERE E.MEMBER_NO = #{ member_no }
+                ORDER BY MEMBER_NO DESC
+         )B
+         )A
+         WHERE RNUM = 1
+
+</select>
+<select id="selectspot" resultMap="modifySpotDTO" parameterType="ModifySpotDTO">
+   SELECT
+   			
+               A.MODIFY_SPOT_NO
+              , A.MODIFY_SPOT_DATE
+              , A.SPOT_CODE
+              , A.MEMBER_NO
+        FROM (SELECT ROWNUM RNUM
+              , B.MODIFY_SPOT_NO
+              , B.MODIFY_SPOT_DATE
+              , B.SPOT_CODE
+              , B.MEMBER_NO
+         FROM (SELECT C.MODIFY_SPOT_NO
+                    , C.MODIFY_SPOT_DATE
+                    , D.SPOT_CODE
+                    , E.MEMBER_NO
+                 FROM BB_MODIFY_SPOT C
+                 JOIN BB_MEMBER E ON (C.MEMBER_NO = E.MEMBER_NO)
+                 JOIN BB_SPOT D ON (C.SPOT_CODE = D.SPOT_CODE)
+                WHERE E.MEMBER_NO = #{ member_no }
+                ORDER BY MEMBER_NO DESC
+         )B
+         )A
+         WHERE RNUM = 1
+</select>
+
+<select id="careerSelect" resultMap="careerDTO" parameterType="CareerDTO">
+  
+   SELECT
+    	  A.RNUM 
+        , A.CAREER_NO
+	    , A.CAREER_START
+	    , A.CAREER_END
+	    , A.CAREER_POSITION
+	    , A.MEMBER_NO
+	FROM (SELECT ROWNUM RNUM
+		        , B.CAREER_NO
+		        , B.CAREER_START
+	            , B.CAREER_END
+	            , B.CAREER_POSITION
+	            , B.MEMBER_NO
+             FROM (SELECT  C.CAREER_NO
+		                 , C.CAREER_START
+                         , C.CAREER_END
+	                     , C.CAREER_POSITION
+	                     , D.MEMBER_NO
+	                  FROM BB_CAREER C
+	                  JOIN BB_MEMBER D ON(C.MEMBER_NO = D.MEMBER_NO)
+	                  WHERE D.MEMBER_NO = #{ member_no }
+	                  ORDER BY MEMBER_NO DESC
+	                  ) B
+	                  ) A
+	                  WHERE RNUM = 1
+         
+
+
+</select>
+
 <!-- <select id="member_enroll_date" resultMap="memberInfoDTO" parameterType="MemberInfoDTO">
 SELECT
 	   ENROLL_DATE

@@ -2,14 +2,20 @@ package com.sevenelite.billbo.allmember.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
+import com.sevenelite.billbo.allmember.model.dto.MemberAndArmyDTO;
 import com.sevenelite.billbo.allmember.model.dto.MemberAndMemberInfoAndDeptAndModifyDeptDTO;
 import com.sevenelite.billbo.allmember.model.service.AllMemberService;
+import com.sevenelite.billbo.profile.model.dto.MemberInfoDTO;
 
 @Controller
 @RequestMapping("/allEmployee")
@@ -37,4 +43,32 @@ public class AllmemberController {
 		
 		return "allmember/allmember";
 	}
+
+	
+	  @GetMapping("/detail") 
+	  public ModelAndView detailMemberList(HttpServletRequest request, HttpServletResponse response , Model model) {
+		  
+		  ModelAndView mv = new ModelAndView();
+		  int no = Integer.parseInt(request.getParameter("no"));
+		  //신상정보 기본
+		  System.out.println("no : " + no);
+		  mv.addObject("no",no);
+		  System.out.println("no : " + no);
+		  mv.setViewName("allmember/detail");
+		  List<MemberAndMemberInfoAndDeptAndModifyDeptDTO> memberDetail = allMemberService.memberDetail(no);
+		  model.addAttribute("memberDetail", memberDetail);
+		  //은행정보
+		  List<MemberInfoDTO> bankInfo = allMemberService.selectBankInfo(no);
+		  model.addAttribute("bankInfo", bankInfo);
+		  System.out.println(bankInfo);
+		 
+		  List<MemberAndArmyDTO> armyInfo = allMemberService.selectArmyInfo(no);
+		  model.addAttribute("armyInfo", armyInfo);
+		  System.out.println(armyInfo);
+		  
+		  return mv;
+		  
+		 
+	  }
+	 
 }

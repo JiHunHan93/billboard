@@ -53,8 +53,8 @@
 	  (
 	  SEQ_WORKSTATUS_NO.NEXTVAL
 	  ,  #{ date }
-	  ,  #{ commute }
-	  ,  #{ date , jdbcType=DATE}
+	  ,  TO_DATE(#{ commute, jdbcType=VARCHAR }, 'RRRRMMDD HH24:MI:SS')
+	  ,  null
 	  , #{ MemNo }
 	  , #{ type, jdbcType=VARCHAR }
 	  )	  
@@ -63,9 +63,9 @@
 	<update id="updateWork" parameterType="StatusAndWorkDTO" >
        UPDATE
              BB_WORKSTATUS A
-          SET A.LEAVE_WORK = SYSDATE
+          SET A.LEAVE_WORK = TO_DATE(#{ lwork, jdbcType=VARCHAR}, 'RRRRMMDD HH24:MI:SS')
         WHERE A.MEMBER_NO = #{ memNo }
-          AND A.COMMUTE = #{ commute }
+          AND A.LEAVE_WORK IS NULL 
 	</update>
 	
 	<select id="detailWork" resultMap="statusAndWorkResultMap" parameterType="StatusAndWorkDTO">
@@ -79,10 +79,9 @@
     		SEQ_WORKSTATUS_NO.CURRVAL
        FROM DUAL
 	</select>
-	<select id="selectWorkDate" parameterType="StatusAndWorkDTO" resultType="date">
-		SELECT
-		    A.COMMUTE
-		 FROM BB_WORKSTATUS A
-		 WHERE A.MEMBER_NO = #{ memNo }
+		<select id="selectlwork" parameterType="StatusAndWorkDTO" resultType="date">
+       SELECT
+          A.LEAVE_WORK
+       FROM BB_WORKSTATUS A     
 	</select>
  </mapper>   

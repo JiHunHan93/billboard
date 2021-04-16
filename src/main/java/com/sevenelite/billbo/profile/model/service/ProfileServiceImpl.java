@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import com.sevenelite.billbo.member.model.dto.MemBbDTO;
 import com.sevenelite.billbo.profile.model.dao.ProfileMapper;
 import com.sevenelite.billbo.profile.model.dto.ArmyDTO;
+import com.sevenelite.billbo.profile.model.dto.BonusDTO;
 import com.sevenelite.billbo.profile.model.dto.CareerDTO;
 import com.sevenelite.billbo.profile.model.dto.CertificateDTO;
 import com.sevenelite.billbo.profile.model.dto.DeptDTO;
@@ -168,11 +169,6 @@ public class ProfileServiceImpl implements ProfileService{
 		return mapper.selectMemberDetail(memberno);
 	}
 
-	@Override
-	public boolean dept(ModifyDeptDTO1 modifydept) {
-		// TODO Auto-generated method stub
-		return mapper.modifydept(modifydept) > 0? true:false;
-	}
 
 
 
@@ -189,15 +185,54 @@ public class ProfileServiceImpl implements ProfileService{
 	}
 
 	@Override
-	public boolean modifydept(ModifyDeptDTO1 dept) {
-		return mapper.modifydept(dept) > 0? true : false;
-	}
-
-	@Override
 	public List<MemberInfoDTO> memberInfo() {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	
+	@Override
+	public boolean modifydept(ModifyDeptDTO1 dept) {
+		return mapper.dept(dept) > 0? true : false;
+	}
+	@Override
+	public boolean dept(ModifyDeptDTO1 modifydept1) {
+		// TODO Auto-generated method stub
+		return mapper.modifydept1(modifydept1) > 0? true:false;
+	}
+	@Override
+	public List<ModifyDeptDTO1> selectModifyDept(int memberno) {
+		// TODO Auto-generated method stub
+		return mapper.selectModifyDept(memberno);
+	}
+
+	@Override
+	public List<ModifySpotDTO> selectspot(int memberno) {
+		// TODO Auto-generated method stub
+		return mapper.selectspot(memberno);
+	}
+
+	@Override
+	public List<CareerDTO> career(int memberno) {
+		// TODO Auto-generated method stub
+		return mapper.careerSelect(memberno);
+	}
+
+	@Override
+	public List<BonusDTO> bonus(int memberno) {
+		// TODO Auto-generated method stub
+		return mapper.bonus(memberno);
+	}
+
+	@Override
+	public List<BonusDTO> bonus(BonusDTO bonus) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+
+
 
 	
 }

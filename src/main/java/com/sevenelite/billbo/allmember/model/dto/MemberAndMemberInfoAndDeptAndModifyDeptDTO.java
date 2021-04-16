@@ -12,11 +12,12 @@ public class MemberAndMemberInfoAndDeptAndModifyDeptDTO {
     private java.sql.Date enrollDate;
     private String deptCode;
     private String deptName;
+    private String address;
     
     public MemberAndMemberInfoAndDeptAndModifyDeptDTO() {}
 
 	public MemberAndMemberInfoAndDeptAndModifyDeptDTO(int no, String memberName, String memberpwd, String email,
-			String phone, Date enrollDate, String deptCode, String deptName) {
+			String phone, Date enrollDate, String deptCode, String deptName, String address) {
 		super();
 		this.no = no;
 		this.memberName = memberName;
@@ -26,13 +27,7 @@ public class MemberAndMemberInfoAndDeptAndModifyDeptDTO {
 		this.enrollDate = enrollDate;
 		this.deptCode = deptCode;
 		this.deptName = deptName;
-	}
-
-	@Override
-	public String toString() {
-		return "MemberAndMemberInfoAndDeptAndModifyDeptDTO [no=" + no + ", memberName=" + memberName + ", memberpwd="
-				+ memberpwd + ", email=" + email + ", phone=" + phone + ", enrollDate=" + enrollDate + ", deptCode="
-				+ deptCode + ", deptName=" + deptName + "]";
+		this.address = address;
 	}
 
 	public int getNo() {
@@ -98,8 +93,22 @@ public class MemberAndMemberInfoAndDeptAndModifyDeptDTO {
 	public void setDeptName(String deptName) {
 		this.deptName = deptName;
 	}
-    
-    
-    
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	@Override
+	public String toString() {
+		return "MemberAndMemberInfoAndDeptAndModifyDeptDTO [no=" + no + ", memberName=" + memberName + ", memberpwd="
+				+ memberpwd + ", email=" + email + ", phone=" + phone + ", enrollDate=" + enrollDate + ", deptCode="
+				+ deptCode + ", deptName=" + deptName + ", address=" + address + "]";
+	}
+
+	
 	
 }

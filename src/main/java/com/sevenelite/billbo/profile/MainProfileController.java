@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.sevenelite.billbo.member.model.dto.MemBbDTO;
 import com.sevenelite.billbo.member.model.dto.UserDetailsVO;
 import com.sevenelite.billbo.profile.model.dto.ArmyDTO;
+import com.sevenelite.billbo.profile.model.dto.BonusDTO;
 import com.sevenelite.billbo.profile.model.dto.CareerDTO;
 import com.sevenelite.billbo.profile.model.dto.CertificateDTO;
 import com.sevenelite.billbo.profile.model.dto.DeptDTO;
@@ -53,14 +54,27 @@ public class MainProfileController {
 		List<DeptDTO> dept = profileService.selectMemberDept(user.getMemberno());
 		/*이메일조회*/
 		List<MemBbDTO> detailMem=  profileService.selectMemberDetail(user.getMemberno());
+		/*부서변경이력 조회*/
+		List<ModifyDeptDTO1> modidept = profileService.selectModifyDept(user.getMemberno());
+		/*직위변경이력 조회*/
+		List<ModifySpotDTO> modispotDto = profileService.selectspot(user.getMemberno());
+		/*경력*/
+		List<CareerDTO> careerDto = profileService.career(user.getMemberno());
 		
 		System.out.println(member+"오나???!?");
 		System.out.println(dept+"이것도 오나???!?");
 		System.out.println(detailMem+"이거도 제발");
+		System.out.println(modidept+"이거도 제발Q");
+		System.out.println(modispotDto+"이거도 제발시발");
+		System.out.println(careerDto+"이거도 제발시발");
+		
+		
 		model.addAttribute("member", member);
 		model.addAttribute("dept", dept);
 		model.addAttribute("detailMem", detailMem);
-		
+		model.addAttribute("modidept", modidept);
+		model.addAttribute("modispotDto", modispotDto);
+		model.addAttribute("careerDto", careerDto);
 		
 		return "profile/main";
 
@@ -97,7 +111,7 @@ public class MainProfileController {
 	  
 	  System.out.println("왜 안오는거여 쉬벌?????");
 	  return "redirect:http://127.0.0.1:8001/billbo/profile/mainProfile";
-	  }
+  }
 	  
 	  /*4.경력*/
 	@PostMapping("career")
@@ -110,19 +124,19 @@ public class MainProfileController {
 	  return "profile/main";
 	  }
 	/*4상벌내역 보류*/
-//	@PostMapping("bonus")
-//	public String bonus(@ModelAttribute BonusDTO bonus) {
-//		
-//		System.out.println("branch : " +bonus);
-//		
-//		System.out.println("오나!!!!!!!!!!!!!");
-//		
-//		profileService.bonus(bonus);
-//		
-//		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-//		
-//		return "profile/mainProfile";
-//	}
+	@PostMapping("bonus")
+	public String bonus(@ModelAttribute BonusDTO bonus) {
+		
+		System.out.println("branch : " +bonus);
+		
+		System.out.println("오나!!!!!!!!!!!!!");
+		
+		profileService.bonus(bonus);
+		
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		
+		return "profile/mainProfile";
+	}
 	/*5.인사평가*/
 	/*없음*/
 	/*6.자격*/

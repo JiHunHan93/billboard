@@ -45,6 +45,8 @@
 			<script src="assets/js/html5shiv.min.js"></script>
 			<script src="assets/js/respond.min.js"></script>
 		<![endif]-->
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     </head>
     <body>
 		<!-- Main Wrapper -->
@@ -783,10 +785,8 @@
 												</th>
 												
 												<td class="col2">
-													 <c:forEach var="MList" items="${ requestScope.MList }"> 
-													 
-												<!--<input class="txt w_max" type="text" <c:out value="mainProfile.info_no"/>> -->
-												<input class="txt w_max" type="text" name="info_no" value="<c:out value="${ MList.info_no }"/>">
+													 <c:forEach var="member" items="${ requestScope.member }"> 
+												<input class="txt w_max" type="text" name="info_no" value="<c:out value="${ member.info_no }"/>">
 														</c:forEach>
 												</td>
 												<th class="col3">
@@ -801,16 +801,16 @@
 													
 												</th>
 												<td class="col6">
-														<c:forEach var="MList" items="${ requestScope.MList }"> 
-												<input class="txt w_max" type="text" name="info_no" value="<c:out value="${MList.enroll_date }"/>">
+														<c:forEach var="member" items="${ requestScope.member }"> 
+												<input class="txt w_max" type="text" name="enroll_date" value="<c:out value="${member.enroll_date }"/>">
 														</c:forEach>
 												</td>            
 												<th class="col7">
 													<span class="title_txt">계좌은행</span>
 												</th>
 												<td class="col8">
-														<c:forEach var="MList" items="${ requestScope.MList }"> 
-												<input class="txt w_max" type="text" name="info_no" value="<c:out value="${ MList.account_bank }"/>">
+														<c:forEach var="member" items="${ requestScope.member }"> 
+												<input class="txt w_max" type="text" name="account_bank" value="<c:out value="${ member.account_bank }"/>">
 														</c:forEach>
 												
 												</td>
@@ -821,8 +821,8 @@
 												</th>
 												
 												<td colspan="5">
-														<c:forEach var="MList" items="${ requestScope.MList }"> 
-												<input class="txt w_max" type="text" name="info_no" value="<c:out value="${MList.address }"/>">
+														<c:forEach var="member" items="${ requestScope.member }"> 
+												<input class="txt w_max" type="text" name="address" value="<c:out value="${member.address }"/>">
 														</c:forEach>
 												
 												</td>
@@ -830,8 +830,8 @@
 													<span class="title_txt">계좌번호</span>
 												</th>
 												<td class="col8">
-														<c:forEach var="MList" items="${ requestScope.MList }"> 
-												<input class="txt w_max" type="text" name="info_no" value="<c:out value="${MList.account_no }"/>">
+														<c:forEach var="member" items="${ requestScope.member }"> 
+												<input class="txt w_max" type="text" name="account_no" value="<c:out value="${member.account_no }"/>">
 														</c:forEach>
 												
 												</td>
@@ -841,8 +841,8 @@
 													<span class="title_txt">근로계약서</span>
 												</th>
 												<td colspan="3">
-														<c:forEach var="MList" items="${ requestScope.MList }"> 
-												<input class="txt w_max" type="text" name="info_no" value="<c:out value="${MList.work_contract }"/>">
+														<c:forEach var="member" items="${ requestScope.member }"> 
+												<input class="txt w_max" type="text" name="work_contract" value="<c:out value="${member.work_contract }"/>">
 														</c:forEach>
 												
 												</td>        
@@ -850,8 +850,8 @@
 													<span class="title_txt">파일첨부</span>
 												</th>
 												<td class="col6">
-														<c:forEach var="MList" items="${ requestScope.MList }"> 
-												<input class="txt w_max" type="text" name="info_no" value="<c:out value="${MList.fileattachment }"/>">
+														<c:forEach var="member" items="${ requestScope.member }"> 
+												<input class="txt w_max" type="text" name="fileattachment" value="<c:out value="${member.fileattachment }"/>">
 														</c:forEach>
 												
 												</td>
@@ -859,8 +859,8 @@
 													<span class="title_txt">예금주</span>
 													</th>
 													<td class="col8">
-													<c:forEach var="MList" items="${ requestScope.MList }"> 
-												<input class="txt w_max" type="text" name="info_no" value="<c:out value="${MList.account_host }"/>">
+													<c:forEach var="member" items="${ requestScope.member }"> 
+												<input class="txt w_max" type="text" name="account_host" value="<c:out value="${member.account_host }"/>">
 														</c:forEach>
 												
 											</td>
@@ -911,15 +911,20 @@
 												</td>
 												<td class="spot_date">
 													
-													<input class="txt w_max" type="date" name="spot_date" value="">
+													<c:forEach var="modispotDto" items="${ requestScope.modispotDto }"> 
+												<input class="txt w_max" type="text" name="spot_date" value="<c:out value="${ modispotDto.spot_date }"/>">
+												</c:forEach>
 												</td>
 												<td class="spot_code">
 													
-													<input class="txt w_max" type="text" name="spot_code" value="">
+													<c:forEach var="modispotDto" items="${ requestScope.modispotDto }"> 
+												<input class="txt w_max" type="text" name="spot_code" value="<c:out value="${ modispotDto.spot_code }"/>">
+												</c:forEach>
 												</td>
 												<td class="member_no">
-													
-													<input class="txt w_max" type="text" name="member_no" value="">
+														<c:forEach var="modispotDto" items="${ requestScope.modispotDto }"> 
+												<input class="txt w_max" type="text" name="member_no" value="<c:out value="${ modispotDto.member_no }"/>">
+												</c:forEach>
 												</td>
 											</tr>
 										</tbody></table>
@@ -966,19 +971,27 @@
 											</tr>
 											<tr class="dataRow" data-id="">
 												<td class="modifyDeptNo">
-												<input class="txt w_max" type="text" name="modifyDeptNo" value="" >
+												
+												<c:forEach var="modidept" items="${ requestScope.modidept }"> 
+												<input class="txt w_max" type="text" name="modifyDeptNo" value="<c:out value="${ modidept.modifyDeptNo }"/>">
+												</c:forEach>
 												</td>
 												<td class="modifydate">
-													<span class="txt"></span>
-													<input class="txt w_max" type="date" name="modifydate" value="" >
+													
+													 <c:forEach var="modidept" items="${ requestScope.modidept }"> 
+												<input class="txt w_max" type="text" name="deptCode" value="<c:out value="${ modidept.modifydate }"/>">
+														</c:forEach>
+													
 												</td>
 												<td class="deptCode">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="deptCode" value="" >
+														<c:forEach var="modidept" items="${ requestScope.modidept }"> 
+												<input class="txt w_max" type="text" name="memberNo" value="<c:out value="${ modidept.deptCode }"/>">
+														</c:forEach>
 												</td>
 												<td class="memberNo">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="memberNo" value="" >
+													<c:forEach var="modidept" items="${ requestScope.modidept }"> 
+												<input class="txt w_max" type="text" name="memberNo" value="<c:out value="${ modidept.memberNo }"/>">
+														</c:forEach>
 												</td>
 												
 											</tr>
@@ -1029,30 +1042,30 @@
 											<tr class="dataRow" data-id="">
 												
 												<td class="no">
-												<c:forEach var="CList" items="${ requestScope.CList }"> 
-												<input class="txt wfix_small hasDatepicker" type="text" name="no" value="" >
-												</c:forEach>
+												<c:forEach var="careerDto" items="${ requestScope.careerDto }"> 
+												<input class="txt w_max" type="text" name="no" value="<c:out value="${ careerDto.no }"/>">
+														</c:forEach>
 												</td>
 												<td class="start">
-													<span class="wrap_date">
-													<input class="txt wfix_small hasDatepicker" type="date" name="start" value="" >
-													<span class="ic ic_calendar"></span>
-													</span>
+													<c:forEach var="careerDto" items="${ requestScope.careerDto }"> 
+												<input class="txt w_max" type="date" name="start" value="<c:out value="${ careerDto.start }"/>">
+														</c:forEach>
 												</td>
 												<td class="end">
-													<span class="wrap_date">
-													<input class="txt wfix_small hasDatepicker" type="date" name="end" value="" >
-													<span class="ic ic_calendar"></span>
-													</span>
+													<c:forEach var="careerDto" items="${ requestScope.careerDto }"> 
+												<input class="txt w_max" type="date" name="end" value="<c:out value="${ careerDto.end }"/>">
+														</c:forEach>
 												</td>
 												<td class="position">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="position" value="" >
+													<c:forEach var="careerDto" items="${ requestScope.careerDto }"> 
+												<input class="txt w_max" type="text" name="position" value="<c:out value="${ careerDto.position }"/>">
+														</c:forEach>
 												</td>
 												<td class="member_no">
-													
-													<input class="txt w_max" type="text" name="member_no" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }" >
-												</td>
+												<c:forEach var="careerDto" items="${ requestScope.careerDto }"> 
+												<input class="txt w_max" type="text" name="member_no" value="<c:out value="${ careerDto.member_no }"/>">
+														</c:forEach>
+														</td>
 												
 										
 											</tr>

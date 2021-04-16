@@ -47,16 +47,5 @@
           JOIN BB_WORKSTATUS B ON (A.MEMBER_NO = B.MEMBER_NO)
 		 WHERE A.MEMBER_NO = #{ MemNo }
 	</select>
-	<select id="selectCommute" parameterType="StatusAndWorkDTO" resultType="date" >
-		  SELECT
-          A.COMMUTE
-       FROM BB_WORKSTATUS A
-        WHERE MEMBER_NO = #{ memNo }
-	</select>
-	<select id="selectlwork" parameterType="StatusAndWorkDTO" resultType="date">
-       SELECT
-          A.LEAVE_WORK
-       FROM BB_WORKSTATUS A     
-	</select>
 
 </mapper> 

@@ -863,10 +863,10 @@
 
 			<!-- Edit Board Modal -->
 			<div id="edit_project" class="modal custom-modal fade" role="dialog">
-				<div class="modal-dialog modal-dialog-centered modal-lg"
+				<div class="modal-dialog modal-dialog-centered modal-lg sub-modal"
 					role="document">
 					<form name="board5" action="${pageContext.servletContext.contextPath }/board/modify">
-					<div class="modal-content">
+					<div class="modal-content sub-modal">
 						<div class="modal-header">
 							<h5 class="modal-title">게시글 수정</h5>
 							<button type="button" class="close" data-dismiss="modal"
@@ -874,7 +874,7 @@
 								<span aria-hidden="true">&times;</span>
 							</button>
 						</div>
-						<div class="modal-body">
+						<div class="modal-body1">
 							<c:forEach var="detailInfo" items="${ requestScope.detailInfo }">
 								
 								<div class="row">

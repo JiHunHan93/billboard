@@ -372,6 +372,9 @@ table.dataTable thead > tr > td.sorting {
 .btn.btn-primary.btn-sm.sub-btn {
 	margin-left : 1050px;
 }
+.tb-hidden {
+	    display: none;
+}
 
 /* board css*/
 .tab-category {
@@ -1249,7 +1252,9 @@ table.dataTable thead > tr > th.sorting_asc.not-sort{
 .modal-sub-submit-btn {
 	margin: 15px auto;
 }
-
+.sub-modal {
+	width: 500px;
+}
 /*-----------------
 	8. Header
 -----------------------*/
