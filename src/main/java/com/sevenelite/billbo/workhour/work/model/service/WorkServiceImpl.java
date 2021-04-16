@@ -24,13 +24,5 @@ com.sevenelite.billbo.workhour.work.model.dto.WorkDTO;
 	public List<WorkDTO> selectWorkList(int no) {
 		return dao.selectWorkList(no);
 	}
-	@Override
-	public Date selectCommute(int no) {
-		return dao.selectCommute(no);
-	}
-	@Override
-	public Date selectlwork(int no) {
-		return dao.selectlwork(no);
-	}
 }
 
