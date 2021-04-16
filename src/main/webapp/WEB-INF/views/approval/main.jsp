@@ -674,7 +674,7 @@
 				  <span class="txt">새 결재 진행</span>
 				</button>
 			</section>
-			
+			  
 			<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			  <div class="modal-dialog modal-dialog-scrollable" role="document">
 			    <div class="modal-content">
