@@ -12,9 +12,7 @@ import com.sevenelite.billbo.workhour.work.model.dto.WorkDTO;
 
 	List<WorkDTO> selectWorkList(int no);
 
-	Date selectCommute(int no);
-
-	Date selectlwork(int no);
+	boolean overTime(String timestr);
 
 
 

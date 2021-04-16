@@ -13,7 +13,32 @@
 	<result property="enrollDate" column="ENROLL_DATE"/>
 	<result property="deptCode" column="DEPT_CODE"/>
 	<result property="deptName" column="DEPT_NAME"/>
+	<result property="address" column="MEMBER_ADDRESS"/>
 </resultMap>
+
+<resultMap type="com.sevenelite.billbo.profile.model.dto.MemberInfoDTO" id="memberInfoDTO">
+	<id property="info_no" column="MEMBER_INFO_NO"/>
+	<result property="address" column="MEMBER_ADDRESS"/>
+	<result property="account_no" column="MEMBER_ACCOUNT_NO"/>
+	<result property="account_bank" column="MEMBER_ACCOUNT_BANK"/>
+	<result property="account_host" column="ACCOUNT_HOST"/>
+	<result property="fileattachment" column="MEMBER_FILEATTACHMENT"/>
+	<result property="enroll_date" column="ENROLL_DATE"/>
+	<result property="work_contract" column="MEMBER_WORK_CONTRACT"/>
+	<result property="member_no" column="MEMBER_NO"/>
+</resultMap>
+
+<resultMap type="com.sevenelite.billbo.allmember.model.dto.MemberAndArmyDTO" id="MemberAndArmyResultMap">
+    <id property="MemberNo" column="MEMBER_NO"/>
+    <result property="name" column="MEMBER_NAME"/>
+    <result property="armyClass" column="ARMY_CLASS"/>
+    <result property="armyDisCharge" column="ARMY_DISCHARGE"/>
+    <result property="startDate" column="ARMY_START"/>
+    <result property="endDate" column="ARMY_END"/>
+    <result property="armyReason" column="ARMY_REASON"/>
+
+</resultMap>
+
 
 <select id="selectAllEmployeeList" resultMap="ALlmemberResultMap" parameterType="MemberAndMemberInfoAndDeptAndModifyDeptDTO">
         SELECT
@@ -25,9 +50,52 @@
              , C.DEPT_CODE
              , D.DEPT_NAME
          FROM BB_MEMBER A
+         LEFT JOIN BB_MEMBER_INFO B ON (A.MEMBER_NO = B.MEMBER_NO)
+         LEFT JOIN BB_MODIFY_DEPT C ON (A.MEMBER_NO = C.MEMBER_NO)
+         LEFT JOIN BB_DEPT D ON (C.DEPT_CODE = D.DEPT_CODE)  
+
+</select>
+
+<select id="detailEmployeeList" resultMap="ALlmemberResultMap" parameterType="MemberAndMemberInfoAndDeptAndModifyDeptDTO">
+     SELECT
+               A.MEMBER_NO
+             , A.MEMBER_NAME
+             , A.EMAIL
+             , A.PHONE
+             , B.ENROLL_DATE
+             , C.DEPT_CODE
+             , D.DEPT_NAME
+             , B.MEMBER_ADDRESS
+         FROM BB_MEMBER A
          JOIN BB_MEMBER_INFO B ON (A.MEMBER_NO = B.MEMBER_NO)
          JOIN BB_MODIFY_DEPT C ON (A.MEMBER_NO = C.MEMBER_NO)
          JOIN BB_DEPT D ON (C.DEPT_CODE = D.DEPT_CODE)  
+         WHERE A.MEMBER_NO = #{no}
+</select>
+
+<select id="selectBankInfo" resultMap="memberInfoDTO" parameterType="MemberInfoDTO">
+       SELECT
+              A.MEMBER_NO
+            , A.MEMBER_ADDRESS
+            , A.MEMBER_ACCOUNT_NO
+            , A.MEMBER_ACCOUNT_BANK
+            , A.ACCOUNT_HOST
+        FROM BB_MEMBER_INFO A
+       WHERE A.MEMBER_NO = #{no}     
+</select>
+
+<select id="selectArmyInfo" resultMap="MemberAndArmyResultMap" parameterType="MemberAndArmyDTO">
+       SELECT
+              A.MEMBER_NO
+            , A.MEMBER_NAME
+            , B.ARMY_CLASS
+            , B.ARMY_DISCHARGE
+            , B.ARMY_START
+            , B.ARMY_END
+            , B.ARMY_REASON
+         FROM BB_MEMBER A
+         JOIN BB_ARMY B ON (A.MEMBER_NO = B.MEMBER_NO)
+        WHERE A.MEMBER_NO = #{no}     
 
 </select>
 </mapper>

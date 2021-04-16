@@ -15,9 +15,11 @@ import com.sevenelite.billbo.workhour.work.model.dto.StatusAndWorkDTO;
 
    List<StatusAndWorkDTO> detailWork(int no);
    
-   boolean updateWork(StatusAndWorkDTO status1);
-
    Date selectWorkDate(int userno);
+
+   Date selectlwork();
+
+   int updateWork(StatusAndWorkDTO workList);
    
    }
   
