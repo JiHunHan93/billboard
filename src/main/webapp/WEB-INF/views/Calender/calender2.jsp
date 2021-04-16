@@ -36,10 +36,12 @@
 <link rel="stylesheet" href="../resources/hrtemp/lib/main.min.css">
 
 <!-- Calendal JS  -->
-<script src="../resources/hrtemp/resources/hrtemp/lib/main.js"></script>
 <script src="../resources/hrtemp/lib/main.min.js"></script>
+<script src="../resources/hrtemp/lib/main.js"></script>
 <script src="../resources/hrtemp/lib/locales/ko.js"></script>
-
+	
+<!-- jQuery -->
+<script src="../resources/hrtemp/js/jquery-3.5.1.min.js"></script>
 <script>
 	document.addEventListener('DOMContentLoaded', function() {
 		var Calendar = FullCalendar.Calendar;
@@ -65,18 +67,6 @@
 		// -----------------------------------------------------------------
 
 		var calendar = new Calendar(calendarEl, {
-			events : function(start, end, callback) { 
-		   		$.ajax({
-		   			url: '/getEvent', 
-		   			dataType: 'json', 
-		   			success: function(javaMap) {
-		   				var events = [];
-		   				console.log(javaMap);
-		   				console.log(javaMap[0].title);
-		   				callback(events);
-		   				} 
-		   		}); 
-	   		}, 
 			headerToolbar : {
 				left : 'prev,next today',
 				center : 'title',
@@ -108,18 +98,6 @@
 			alert('날짜 정보 콘솔에 출력됨');
 			console.log('clicked on ' + info.dateStr);
 		});
-
-		var arr = [ {
-			'title' : '임의의 받아온 이벤트',
-			'start' : '2021-04-11',
-			'end' : '2021-04-16'
-		} ];
-
-		var arr1 = {
-			'title' : '이벤트',
-			'start' : '2021-04-11',
-			'end' : '2021-04-16'
-		};
 
 		calendar.render();
  		var arrCal = calendar.getEvents();
@@ -153,14 +131,44 @@
 					});
 					calendar.render();
 				});
+		$(".asdfasdf").click(
+				function() {
+/* 					var arr2 = [];
+					var arr = [];
+					var arr1 = [['title', $('.modal-sub-text').val()], ['start', $('.start-date').val()], ['end', $('.end-date').val()]]; */
+					var events_array = [
+				        {
+				        title: $('.modal-sub-text').val(),
+				        start: $('.start-date').val(),
+				        end: $('.end-date').val()
+				        }
+				    ];
+/* 					
+					console.log($('.modal-sub-text').val());
+					arr1.push( $('.modal-sub-text').val());
+					
+					console.log($('.start-date').val());
+					arr1.push($('.start-date').val());
+					
+					console.log($('.end-date').val());
+					arr1.push($('.end-date').val()); */
+/* 					arr.push(arr1);
+					console.log(arr1); */
+					$.each(events_array, function(index, item) {
+						console.log("이거아이템" + item);
+						calendar.addEvent(item);
+						console.log('click evt loop_in_cal' + index + ' : '	+ item);
+						$.each(item, function(iii, ttt) {
+							console.log(iii + ' : ' + ttt);
+							console.log('click evt inner loop_in_cal => ' + iii + ' : ' + ttt);
+						});
+					});
+					calendar.render();
+				});
 	});
 
 	function getCalendarEvent() {
-		var arr = [{
-			'title' : '임의의 이벤트',
-			'start' : '2021-04-04',
-			'end' : '2021-04-07'
-		}];
+		var arr = [];
 		return arr;
 	}
 	
@@ -183,7 +191,7 @@
 	        data:JSON.stringify(viewData),
 	        success:function(resp){
 	            $.each(resp, function(index, item){
-	                console.log(index + ' : ' + item);
+	                console.log('맵??' + index + ' : ' + item);
 	                $.each(item, function(iii, ttt){
 	                    console.log('inner loop => ' + iii + ' : ' + ttt);
 	                    arr.push(ttt);
@@ -196,7 +204,7 @@
 	            alert('저장 중 에러가 발생했습니다. 다시 시도해 주세요.');
 	        }
 	    });
-	    
+	    console.log('arrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr' + arr);
 	    return arr;
 	}
 </script>
@@ -545,60 +553,23 @@
 			<div class="sidebar-inner slimscroll">
 				<div id="sidebar-menu" class="sidebar-menu">
 					<ul>
-						<!-- <li class="menu-title"> 
-                        <span>Main</span>
-                     </li> -->
-						<!-- 사이드바 서브메뉴 안쓰는 방향으로 수정 -->
 						<li><a href="${pageContext.servletContext.contextPath}"
 							class="sidebar-default"> <i class="la la-home sidebar-icon"></i>
 								<!-- <span class="menu-arrow"></span> --> <span
 								class="sidebar-text">Home</span>
-						</a> <!-- <ul style="display: none;">
-                           <li><a href="index.html">Admin Dashboard</a></li>
-                           <li><a class="active" href="employee-dashboard.html">Employee Dashboard</a></li>
-                        </ul> --></li>
+						</a></li>
 						<div class="sidebar-line"></div>
 						<li><a href="${pageContext.servletContext.contextPath}/apps"
 							class="sidebar-default"> <i class="la la-cube sidebar-icon"></i>
 								<span class="sidebar-text"> Apps</span> <!-- <span class="menu-arrow"></span> -->
-						</a> <!-- <ul style="display: none;">
-                           <li><a href="chat.html">Chat</a></li>
-                           <li class="submenu">
-                              <a href="#"><span> Calls</span> <span class="menu-arrow"></span></a>
-                              <ul style="display: none;">
-                                 <li><a href="voice-call.html">Voice Call</a></li>
-                                 <li><a href="video-call.html">Video Call</a></li>
-                                 <li><a href="outgoing-call.html">Outgoing Call</a></li>
-                                 <li><a href="incoming-call.html">Incoming Call</a></li>
-                              </ul>
-                           </li>
-                           <li><a href="events.html">Calendar</a></li>
-                           <li><a href="contacts.html">Contacts</a></li>
-                           <li><a href="inbox.html">Email</a></li>
-                           <li><a href="file-manager.html">File Manager</a></li>
-                        </ul> --></li>
+						</a></li>
 						<div class="sidebar-line"></div>
-						<!-- <li class="menu-title"> 
-                        <span>Apps</span>
-                     </li> -->
 						<li><a
 							href="${pageContext.servletContext.contextPath}/employee"
 							class="noti-dot sidebar-default"> <i
 								class="la la-user sidebar-icon"></i> <span class="sidebar-text">
 									Employees</span> <!-- <span class="menu-arrow"></span> -->
-						</a> <!-- <ul style="display: none;">
-                           <li><a href="employees.html">All Employees</a></li>
-                           <li><a href="holidays.html">Holidays</a></li>
-                           <li><a href="leaves.html">Leaves (Admin) <span class="badge badge-pill bg-primary float-right">1</span></a></li>
-                           <li><a href="leaves-employee.html">Leaves (Employee)</a></li>
-                           <li><a href="leave-settings.html">Leave Settings</a></li>
-                           <li><a href="attendance.html">Attendance (Admin)</a></li>
-                           <li><a href="attendance-employee.html">Attendance (Employee)</a></li>
-                           <li><a href="departments.html">Departments</a></li>
-                           <li><a href="designations.html">Designations</a></li>
-                           <li><a href="timesheet.html">Timesheet</a></li>
-                           <li><a href="overtime.html">Overtime</a></li>
-                        </ul> --></li>
+						</a></li>
 						<div class="sidebar-line"></div>
 						<li><a
 							href="${pageContext.servletContext.contextPath}/attendance"
@@ -610,11 +581,7 @@
 						<li><a href="${pageContext.servletContext.contextPath}/admin"
 							class="sidebar-default"> <i class="la la-key sidebar-icon"></i>
 								<span class="sidebar-text">Admin</span> <!-- <span class="menu-arrow"></span> -->
-						</a> <!-- <ul style="display: none;">
-                           <li><a href="projects.html">Projects</a></li>
-                           <li><a href="tasks.html">Tasks</a></li>
-                           <li><a href="task-board.html">Task Board</a></li>   
-                        </ul> --></li>
+						</a></li>
 						<div class="sidebar-line"></div>
 						<li><a href="#" class="sidebar-default"> <i
 								class="la la-money sidebar-icon"></i> <span class="sidebar-text">Payroll</span>
@@ -627,192 +594,6 @@
 								class="sidebar-text">Information</span>
 						</a></li>
 						<div class="sidebar-line"></div>
-						<!-- <li class="menu-title"> 
-                        <span>HR</span>
-                     </li>
-                     <li class="submenu">
-                        <a href="#"><i class="la la-files-o"></i> <span> Accounts </span> <span class="menu-arrow"></span></a>
-                        <ul style="display: none;">
-                           <li><a href="estimates.html">Estimates</a></li>
-                           <li><a href="invoices.html">Invoices</a></li>
-                           <li><a href="payments.html">Payments</a></li>
-                           <li><a href="expenses.html">Expenses</a></li>
-                           <li><a href="provident-fund.html">Provident Fund</a></li>
-                           <li><a href="taxes.html">Taxes</a></li>
-                        </ul>
-                     </li>
-                     <li class="submenu">
-                        <a href="#"><i class="la la-money"></i> <span> Payroll </span> <span class="menu-arrow"></span></a>
-                        <ul style="display: none;">
-                           <li><a href="salary.html"> Employee Salary </a></li>
-                           <li><a href="salary-view.html"> Payslip </a></li>
-                           <li><a href="payroll-items.html"> Payroll Items </a></li>
-                        </ul>
-                     </li>
-                     <li> 
-                        <a href="policies.html"><i class="la la-file-pdf-o"></i> <span>Policies</span></a>
-                     </li>
-                     <li class="submenu">
-                        <a href="#"><i class="la la-pie-chart"></i> <span> Reports </span> <span class="menu-arrow"></span></a>
-                        <ul style="display: none;">
-                           <li><a href="expense-reports.html"> Expense Report </a></li>
-                           <li><a href="invoice-reports.html"> Invoice Report </a></li>
-                        </ul>
-                     </li>
-                     <li class="menu-title"> 
-                        <span>Performance</span>
-                     </li>
-                     <li class="submenu">
-                        <a href="#"><i class="la la-graduation-cap"></i> <span> Performance </span> <span class="menu-arrow"></span></a>
-                        <ul style="display: none;">
-                           <li><a href="performance-indicator.html"> Performance Indicator </a></li>
-                           <li><a href="performance.html"> Performance Review </a></li>
-                           <li><a href="performance-appraisal.html"> Performance Appraisal </a></li>
-                        </ul>
-                     </li>
-                     <li class="submenu">
-                        <a href="#"><i class="la la-crosshairs"></i> <span> Goals </span> <span class="menu-arrow"></span></a>
-                        <ul style="display: none;">
-                           <li><a href="goal-tracking.html"> Goal List </a></li>
-                           <li><a href="goal-type.html"> Goal Type </a></li>
-                        </ul>
-                     </li>
-                     <li class="submenu">
-                        <a href="#"><i class="la la-edit"></i> <span> Training </span> <span class="menu-arrow"></span></a>
-                        <ul style="display: none;">
-                           <li><a href="training.html"> Training List </a></li>
-                           <li><a href="trainers.html"> Trainers</a></li>
-                           <li><a href="training-type.html"> Training Type </a></li>
-                        </ul>
-                     </li>
-                     <li><a href="promotion.html"><i class="la la-bullhorn"></i> <span>Promotion</span></a></li>
-                     <li><a href="resignation.html"><i class="la la-external-link-square"></i> <span>Resignation</span></a></li>
-                     <li><a href="termination.html"><i class="la la-times-circle"></i> <span>Termination</span></a></li>
-                     <li class="menu-title"> 
-                        <span>Administration</span>
-                     </li>
-                     <li> 
-                        <a href="assets.html"><i class="la la-object-ungroup"></i> <span>Assets</span></a>
-                     </li>
-                     <li class="submenu">
-                        <a href="#"><i class="la la-briefcase"></i> <span> Jobs </span> <span class="menu-arrow"></span></a>
-                        <ul style="display: none;">
-                           <li><a href="jobs.html"> Manage Jobs </a></li>
-                           <li><a href="job-applicants.html"> Applied Candidates </a></li>
-                        </ul>
-                     </li>
-                     <li> 
-                        <a href="knowledgebase.html"><i class="la la-question"></i> <span>Knowledgebase</span></a>
-                     </li>
-                     <li> 
-                        <a href="activities.html"><i class="la la-bell"></i> <span>Activities</span></a>
-                     </li>
-                     <li> 
-                        <a href="users.html"><i class="la la-user-plus"></i> <span>Users</span></a>
-                     </li>
-                     <li> 
-                        <a href="settings.html"><i class="la la-cog"></i> <span>Settings</span></a>
-                     </li>
-                     <li class="menu-title"> 
-                        <span>Pages</span>
-                     </li>
-                     <li class="submenu">
-                        <a href="#"><i class="la la-user"></i> <span> Profile </span> <span class="menu-arrow"></span></a>
-                        <ul style="display: none;">
-                           <li><a href="profile.html"> Employee Profile </a></li>
-                           <li><a href="client-profile.html"> Client Profile </a></li>
-                        </ul>
-                     </li>
-                     <li class="submenu">
-                        <a href="#"><i class="la la-key"></i> <span> Authentication </span> <span class="menu-arrow"></span></a>
-                        <ul style="display: none;">
-                           <li><a href="login.html"> Login </a></li>
-                           <li><a href="register.html"> Register </a></li>
-                           <li><a href="forgot-password.html"> Forgot Password </a></li>
-                           <li><a href="otp.html"> OTP </a></li>
-                           <li><a href="lock-screen.html"> Lock Screen </a></li>
-                        </ul>
-                     </li>
-                     <li class="submenu">
-                        <a href="#"><i class="la la-exclamation-triangle"></i> <span> Error Pages </span> <span class="menu-arrow"></span></a>
-                        <ul style="display: none;">
-                           <li><a href="error-404.html">404 Error </a></li>
-                           <li><a href="error-500.html">500 Error </a></li>
-                        </ul>
-                     </li>
-                     <li class="submenu">
-                        <a href="#"><i class="la la-hand-o-up"></i> <span> Subscriptions </span> <span class="menu-arrow"></span></a>
-                        <ul style="display: none;">
-                           <li><a href="subscriptions.html"> Subscriptions (Admin) </a></li>
-                           <li><a href="subscriptions-company.html"> Subscriptions (Company) </a></li>
-                           <li><a href="subscribed-companies.html"> Subscribed Companies</a></li>
-                        </ul>
-                     </li>
-                     <li class="submenu">
-                        <a href="#"><i class="la la-columns"></i> <span> Pages </span> <span class="menu-arrow"></span></a>
-                        <ul style="display: none;">
-                           <li><a href="search.html"> Search </a></li>
-                           <li><a href="faq.html"> FAQ </a></li>
-                           <li><a href="terms.html"> Terms </a></li>
-                           <li><a href="privacy-policy.html"> Privacy Policy </a></li>
-                           <li><a href="blank-page.html"> Blank Page </a></li>
-                        </ul>
-                     </li>
-                     <li class="menu-title"> 
-                         <span>UI Interface</span>
-                      </li>
-                      <li> 
-                         <a href="components.html"><i class="la la-puzzle-piece"></i> <span>Components</span></a>
-                      </li>
-                      <li class="submenu">
-                         <a href="#"><i class="la la-object-group"></i> <span> Forms </span> <span class="menu-arrow"></span></a>
-                         <ul style="display: none;">
-                            <li><a href="form-basic-inputs.html">Basic Inputs </a></li>
-                            <li><a href="form-input-groups.html">Input Groups </a></li>
-                            <li><a href="form-horizontal.html">Horizontal Form </a></li>
-                            <li><a href="form-vertical.html"> Vertical Form </a></li>
-                            <li><a href="form-mask.html"> Form Mask </a></li>
-                            <li><a href="form-validation.html"> Form Validation </a></li>
-                         </ul>
-                      </li>
-                      <li class="submenu">
-                         <a href="#"><i class="la la-table"></i> <span> Tables </span> <span class="menu-arrow"></span></a>
-                         <ul style="display: none;">
-                            <li><a href="tables-basic.html">Basic Tables </a></li>
-                            <li><a href="data-tables.html">Data Table </a></li>
-                         </ul>
-                      </li>
-                      <li class="menu-title"> 
-                         <span>Extras</span>
-                      </li>
-                      <li> 
-                         <a href="#"><i class="la la-file-text"></i> <span>Documentation</span></a>
-                      </li>
-                      <li> 
-                         <a href="javascript:void(0);"><i class="la la-info"></i> <span>Change Log</span> <span class="badge badge-primary ml-auto">v3.4</span></a>
-                      </li>
-                      <li class="submenu">
-                         <a href="javascript:void(0);"><i class="la la-share-alt"></i> <span>Multi Level</span> <span class="menu-arrow"></span></a>
-                         <ul style="display: none;">
-                            <li class="submenu">
-                               <a href="javascript:void(0);"> <span>Level 1</span> <span class="menu-arrow"></span></a>
-                               <ul style="display: none;">
-                                  <li><a href="javascript:void(0);"><span>Level 2</span></a></li>
-                                  <li class="submenu">
-                                     <a href="javascript:void(0);"> <span> Level 2</span> <span class="menu-arrow"></span></a>
-                                     <ul style="display: none;">
-                                        <li><a href="javascript:void(0);">Level 3</a></li>
-                                        <li><a href="javascript:void(0);">Level 3</a></li>
-                                     </ul>
-                                  </li>
-                                  <li><a href="javascript:void(0);"> <span>Level 2</span></a></li>
-                               </ul>
-                            </li>
-                            <li>
-                               <a href="javascript:void(0);"> <span>Level 1</span></a>
-                            </li>
-                         </ul>
-                      </li> -->
 					</ul>
 				</div>
 			</div>
@@ -858,32 +639,37 @@
 												<strong>Draggable Events</strong>
 											</p>
 
-											<div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+											<div
+												class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
 												<div class='fc-event-main'>My Event 1</div>
 											</div>
-											<div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+											<div
+												class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
 												<div class='fc-event-main'>My Event 2</div>
 											</div>
-											<div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+											<div
+												class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
 												<div class='fc-event-main'>My Event 3</div>
 											</div>
-											<div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+											<div
+												class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
 												<div class='fc-event-main'>My Event 4</div>
 											</div>
-											<div class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
+											<div
+												class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
 												<div class='fc-event-main'>My Event 5</div>
 											</div>
 
 											<p>
-												<input type='checkbox' id='drop-remove' />
-												<label for='drop-remove'>remove after drop</label>
+												<input type='checkbox' id='drop-remove' /> <label
+													for='drop-remove'>remove after drop</label>
 											</p>
 										</div>
 
 										<div id='calendar-container'>
 											<div id='calendar'></div>
 										</div>
-											<input type="button" id="btnAddTest" value="추가">
+										<input type="button" id="btnAddTest" value="추가">
 										<!-- /Calendar -->
 
 									</div>
@@ -910,12 +696,16 @@
 							<form>
 								<div class="form-group">
 									<label>일정 이름 <span class="text-danger">*</span></label> <input
-										class="form-control" type="text">
+										class="form-control modal-sub-text" type="text">
 								</div>
 								<div class="form-group">
 									<label>일정 기간 <span class="text-danger">*</span></label>
-									<div class="cal-icon">
-										<input class="form-control datetimepicker" type="date">
+									<div>
+										<input class="form-control datetimepicker start-date" type="date">
+									</div>
+									<label>종료 기간 <span class="text-danger">*</span></label>
+									<div>
+										<input class="form-control datetimepicker end-date" type="date">
 									</div>
 								</div>
 								<div class="form-group">
@@ -936,6 +726,7 @@
 								</div>
 								<div class="submit-section">
 									<button class="btn btn-primary submit-btn">Submit</button>
+									<button type="button" class="asdfasdf">textBtn</button>
 								</div>
 							</form>
 						</div>
@@ -1035,11 +826,11 @@
 	<script src="../resources/hrtemp/js/dataTables.bootstrap4.min.js"></script>
 
 	<!-- Custom JS -->
-<!-- 	<script src="../resources/hrtemp/js/app.js"></script> -->
+	<!-- 	<script src="../resources/hrtemp/js/app.js"></script> -->
 
 	<!-- Datetimepicker JS -->
 	<script src="../resources/hrtemp/js/moment.min.js"></script>
 	<script src="../resources/hrtemp/js/bootstrap-datetimepicker.min.js"></script>
-	
+
 </body>
 </html>
