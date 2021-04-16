@@ -220,19 +220,31 @@ public class ProfileServiceImpl implements ProfileService{
 
 	@Override
 	public List<BonusDTO> bonus(int memberno) {
-		// TODO Auto-generated method stub
 		return mapper.bonus(memberno);
 	}
 
 	@Override
-	public List<BonusDTO> bonus(BonusDTO bonus) {
-		// TODO Auto-generated method stub
-		return null;
+	public boolean bonusInsert(BonusDTO bonus) {
+		return mapper.bonusInsert(bonus) > 0? true : false;
 	}
 
-	
+	@Override
+	public List<LicenseDTO> licenseSelect(int memberno) {
+		// TODO Auto-generated method stub
+		return mapper.licenseSelect(memberno);
+	}
 
+	@Override
+	public List<CertificateDTO> certificateInsert(int memberno) {
+		// TODO Auto-generated method stub
+		return mapper.certificateInsert(memberno);
+	}
 
+	@Override
+	public List<ArmyDTO> armyInsert(int memberno) {
+		// TODO Auto-generated method stub
+		return mapper.armyInsert(memberno);
+	}
 
 	
 }

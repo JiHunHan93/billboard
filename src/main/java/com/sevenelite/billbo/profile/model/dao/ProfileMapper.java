@@ -20,10 +20,6 @@ import com.sevenelite.billbo.rnp.model.dto.ModifyDeptDTO;
 
 public interface ProfileMapper {
 
-	
-
-
-
 	ArmyDTO armyInfo();
 	
 	int armyInfo(ArmyDTO army);
@@ -108,9 +104,12 @@ public interface ProfileMapper {
 
 	List<BonusDTO> bonus(int memberno);
 
+	int bonusInsert(BonusDTO bonus);
 
-	
+	List<LicenseDTO> licenseSelect(int memberno);
 
+	List<CertificateDTO> certificateInsert(int memberno);
 
-	
+	List<ArmyDTO> armyInsert(int memberno);
+
 }

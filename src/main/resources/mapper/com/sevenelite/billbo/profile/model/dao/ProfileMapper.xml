@@ -54,7 +54,7 @@
 	<result property="member_no" column="MEMBER_NO"/>
 </resultMap>
 
-<resultMap type="com.sevenelite.billbo.profile.model.dto.BonusDTO" id="BonusDTO">
+<resultMap type="com.sevenelite.billbo.profile.model.dto.BonusDTO" id="bonusDTO">
 	<id property="no" column="BONUS_NO"/>
 	<result property="reason" column="BONUS_REASON"/>
 	<result property="type" column="BONUS_TYPE"/>
@@ -76,14 +76,21 @@
 	<result property="deptCode" column="DEPT_CODE"/>
 	<result property="memberNo" column="MEMBER_NO"/>
 </resultMap>
-
-<!-- <resultMap type="com.sevenelite.billbo.profile.model.dto.ModifySpotDTO" id="modifySpotDTO">
-	<id property="spot_no" column= "MODIFY_SPOT_NO" />
-	<result property="spot_date" column= "MODIFY_SPOT_DATE"/>
-	<result property="spot_code" column= "SPOT_CODE"/>
+<resultMap type="com.sevenelite.billbo.profile.model.dto.LicenseDTO" id="licenseDTO">
+	<id property="no" column="LICENSE_NO"/>
+	<result property="date" column="LICENSE_DATE"/>
+	<result property="member_no" column="MEMBER_NO"/>
+	<result property="code" column="LICENSE_CODE_CODE"/>
+	</resultMap>
+ <resultMap type="com.sevenelite.billbo.profile.model.dto.CertificateDTO" id="certificateDTO">
+	<id property="no" column= "CERTIFICATE_NO" />
+	<result property="start_date" column= "CERTIFICATE_START_DATE"/>
+	<result property="end_date" column= "CERTIFICATE_END_DATE"/>
 	<result property="member_no" column= "MEMBER_NO"/>
+	<result property="certificate_code" column= "CERTIFICATE_CODE"/>
+	
 </resultMap>
- -->
+ 
 
 <insert id="armyInfo" parameterType="ArmyDTO">
 	INSERT
@@ -266,8 +273,7 @@
 	  )
 </insert>
 
-<!-- 승인여부 테이블부터 있어야해서 일단 보류
- <insert id="bonus" parameterType="BonusDTO">
+ <insert id="bonusInsert" parameterType="bonusDTO">
 	INSERT
 	  INTO BB_BONUS(
 	       BONUS_NO
@@ -287,7 +293,7 @@
 	 ,#{approve_code}
 	 )
 </insert>
- -->	
+	
  <insert id="certificate" parameterType="CertificateDTO">
  	INSERT
  	  INTO BB_CERTIFICATE(
@@ -539,6 +545,134 @@ SELECT
 
 </select>
 
+<select id="bonus" resultMap="bonusDTO" parameterType="BonusDTO">
+   SELECT
+    	  A.BONUS_NO
+        , A.BONUS_REASON
+	    , A.BONUS_DATE
+        , A.BONUS_TYPE
+        , A.BONUS_BODY
+        , A.MEMBER_NO
+        , A.APPROVE_CODE
+	    FROM (SELECT ROWNUM RNUM
+		        , B.BONUS_NO
+		        , B.BONUS_REASON
+	            , B.BONUS_DATE
+                , B.BONUS_TYPE
+	            , B.BONUS_BODY
+	            , B.MEMBER_NO
+                , B.APPROVE_CODE
+             FROM (SELECT  C.BONUS_NO
+		                 , C.BONUS_REASON
+                         , C.BONUS_DATE
+	                     , C.BONUS_TYPE
+	                     , C.BONUS_BODY
+                         , D.MEMBER_NO
+                         , E.APPROVE_CODE
+	                  FROM BB_BONUS C
+	                  JOIN BB_MEMBER D ON(C.MEMBER_NO = D.MEMBER_NO)
+                      LEFT JOIN BB_APPROVE E ON(C.APPROVE_CODE = E.APPROVE_CODE)
+	                  WHERE D.MEMBER_NO = #{  member_no }
+	                  ORDER BY MEMBER_NO DESC
+	                  ) B
+	                  ) A
+	                  WHERE RNUM = 1
+         
+</select>
+ <select id="licenseSelect" resultMap="licenseDTO" parameterType="LicenseDTO">
+    SELECT
+    	  A.LICENSE_NO
+        , A.LICENSE_DATE
+	    , A.MEMBER_NO
+        , A.LICENSE_CODE_CODE
+        FROM (SELECT ROWNUM RNUM
+		        , B.LICENSE_NO
+	            , B.LICENSE_DATE
+                , B.MEMBER_NO
+	            , B.LICENSE_CODE_CODE
+             FROM (SELECT  C.LICENSE_NO
+		                 , C.LICENSE_DATE
+                         , D.MEMBER_NO
+	                     , E.LICENSE_CODE_CODE
+	                    FROM BB_LICENSE C
+	                  JOIN BB_MEMBER D ON(C.MEMBER_NO = D.MEMBER_NO)
+                      LEFT JOIN BB_LICENSE_CODE E ON(C.LICENSE_CODE_CODE = E.LICENSE_CODE_CODE)
+	                  WHERE D.MEMBER_NO = #{ member_no }
+	                  ORDER BY MEMBER_NO DESC
+	                  ) B
+	                  ) A
+	                  WHERE RNUM = 1 
+         
+ </select>
+ 
+  <select id="certificateInsert" resultMap="certificateDTO" parameterType="CertificateDTO">
+   SELECT
+    	  A.CERTIFICATE_NO
+        , A.CERTIFICATE_START_DATE
+	    , A.CERTIFICATE_END_DATE
+        , A.MEMBER_NO
+        , A.CERTIFICATE_CODE
+        FROM (SELECT ROWNUM RNUM
+		        , B.CERTIFICATE_NO
+	            , B.CERTIFICATE_START_DATE
+                , B.CERTIFICATE_END_DATE
+	            , B.MEMBER_NO
+                , B.CERTIFICATE_CODE
+             FROM (SELECT  C.CERTIFICATE_NO
+		                 , C.CERTIFICATE_START_DATE
+                         , C.CERTIFICATE_END_DATE
+	                     , D.MEMBER_NO
+                         , E.CERTIFICATE_CODE
+	                    FROM BB_CERTIFICATE C
+	                  JOIN BB_MEMBER D ON(C.MEMBER_NO = D.MEMBER_NO)
+                      LEFT JOIN BB_CERTIFICATE_CODE E ON(C.CERTIFICATE_CODE = E.CERTIFICATE_CODE)
+	                  WHERE D.MEMBER_NO = #{ memberno }
+	                  ORDER BY MEMBER_NO DESC
+	                  ) B
+	                  ) A
+	                  WHERE RNUM = 1
+	              </select>
+	              
+	      <!--여기부터 ㄱ <select id="certificateInsert" resultMap="certificateDTO" parameterType="CertificateDTO">
+  
+	       SELECT
+    	  A.ARMY_NO
+        , A.ARMY_BRANCH
+	    , A.ARMY_CLASS
+        , A.ARMY_SERVICE_NUM
+	    , A.ARMY_DISCHARGE
+        , A.ARMY_START
+	    , A.ARMY_END
+        , A.ARMY_REASON
+        , A.MEMBER_NO
+        FROM (SELECT ROWNUM RNUM
+		       , B.ARMY_NO
+               , B.ARMY_BRANCH
+	           , B.ARMY_CLASS
+               , B.ARMY_SERVICE_NUM
+	           , B.ARMY_DISCHARGE
+               , B.ARMY_START
+	           , B.ARMY_END
+               , B.ARMY_REASON
+               , B.MEMBER_NO
+             FROM (SELECT  C.ARMY_NO
+                         , C.ARMY_BRANCH
+	                     , C.ARMY_CLASS
+                         , C.ARMY_SERVICE_NUM
+                         , C.ARMY_DISCHARGE
+                         , C.ARMY_START
+	                     , C.ARMY_END
+                         , C.ARMY_REASON
+                         , D.MEMBER_NO
+	                    FROM BB_ARMY C
+	                  JOIN BB_MEMBER D ON(C.MEMBER_NO = D.MEMBER_NO)
+                      WHERE D.MEMBER_NO = 1
+	                  ORDER BY MEMBER_NO DESC
+	                  ) B
+	                  ) A
+	                  WHERE RNUM = 1; 
+          -->        
+         
 <!-- <select id="member_enroll_date" resultMap="memberInfoDTO" parameterType="MemberInfoDTO">
 SELECT
 	   ENROLL_DATE
