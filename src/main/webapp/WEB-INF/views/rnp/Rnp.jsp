@@ -484,6 +484,7 @@
 																		<th>상벌구분</th>
 																		<th>상벌일자</th>
 																		<th>상벌사유</th>
+																		<th class="tb-hidden">상벌내역번호</th>
 																	</tr> 
 																</thead>
 																<c:forEach var="rnpList" items="${ requestScope.rnpList }">
@@ -495,6 +496,7 @@
 																		<td class="rnp-td"><c:out value="${ rnpList.rnpType }" />
 																		<td class="rnp-td"><c:out value="${ rnpList.enrollDate }" />
 																		<td class="rnp-td"><c:out value="${ rnpList.reason}" />
+																		<td class="rnp-td tb-hidden"><c:out value="${ rnpList.no }"/></td>
 																	</tr>
 																</c:forEach>
 															</table>
@@ -511,11 +513,11 @@
 				</div>
 			</div>
 		</div>
-		<!-- Edit Board Modal -->
+		<!-- insert Board Modal -->
 				<div id="edit_project" class="modal custom-modal fade" role="dialog">
-					<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-					<form name="board5" action="${pageContext.servletContext.contextPath }/Rnp/insert" >
-						<div class="modal-content">
+					<div class="modal-dialog modal-dialog-centered modal-lg sub-modal" role="document">
+					<form name="rnpInsert" action="http://127.0.0.1:8001/billbo/Rnp/main" method="post">
+						<div class="modal-content sub-modal">
 							<div class="modal-header">
 								<h5 class="modal-title">상벌 추가</h5>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -523,22 +525,17 @@
 								</button>
 							</div>
 							<div class="modal-body">
+							<%-- <c:forEach var="rnpDetailInfo" items="${ requestScope.rnpDetailInfo }">  --%>
 									<div class="row">
 										<div class="col-sm-6">
 											<div class="form-group">
 												<label>사번</label>
-												<input name="no" class="form-control" id="modifyTitle" type="text">
-											</div>
-										</div>
-										<div class="col-sm-6">
-											<div class="form-group">
-												<label>제목</label>
-                                                <input name="title" class="form-control" id="modifyTitle"
-                                                type="text">
+												<input name="memeberNo" class="form-control" id="modifyTitle" type="text"/>
 											</div>
 										</div>
 									</div>
-									<div class="row">
+								<%--  </c:forEach>  --%>
+									<div class="row">	
 										<div class="col-sm-6">
 											<div class="form-group">
 												<label>게시일</label>
@@ -553,7 +550,7 @@
 										<div class="col-sm-3">
 											<div class="form-group">
                                                 <label>상벌 구분</label>
-												<select class="select1" name="" id="">
+												<select class="select1" name="rnpType" id="insertType">
 													<option value="포상">포상</option>
 													<option value="인사">징계</option>
 												</select>
@@ -567,7 +564,7 @@
 									<div class="form-group">
 										<label>상벌 사유</label>
 										<textarea rows="4" class="form-control"
-										 placeholder="Enter your message here" name="body" id="modifyBody"></textarea>
+										 placeholder="Enter your message here" name="reason" id="modifyBody"></textarea>
 									</div>
 									<div class="form-group">
 										<label>상벌 내용</label>
@@ -575,7 +572,7 @@
 										 placeholder="Enter your message here" name="body" id="modifyBody"></textarea>
 									</div>
 									<div class="submit-section">
-										<button class="btn btn-primary submit-btn" id="modify-btn" type="button" onclick="goModify(this.form)">상벌 추가</button>
+										<button class="btn btn-primary submit-btn" id="modify-btn" type="button" onclick="goInsert(this.form)">상벌 추가</button>
 									</div>
 							</div>
 						</div>
@@ -605,7 +602,7 @@
 			}
 			
 			$tds[i].onclick = function() {
-				const no = this.parentNode.children[1].innerText;
+				const no = this.parentNode.children[7].innerText;
 				console.log(no);
 				location.href = "${ pageContext.servletContext.contextPath }/Rnp/detail?no=" + no;
 			} 
@@ -614,14 +611,12 @@
 	}
 	</script>
     <script type="text/javascript">
-     function goModify(frm){
-   	 var title = frm.title.value;
-   	 var name = frm.name.value;
+     function goInsert(frm){
+   	 var memberNo = frm.memberNo.value;
    	 var enrollDate = frm.enrollDate.value;
-   	 var endDate = frm.endDate.value;
-   	 var boardType = frm.boardType.value;
+   	 var rnpType = frm.rnpType.value;
+   	 var reason = frm.reason.value;
    	 var body = frm.body.value;
-   	 var fileAttachment = frm.fileAttachment.value;
    	 
    	 frm.submit();
     	}

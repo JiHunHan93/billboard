@@ -34,12 +34,6 @@ public class WorkStatusServiceImpl implements WorkStatusService{
 	}
 
 	@Override
-	public boolean updateWork(StatusAndWorkDTO status1) {
-		return dao.updateWork(status1);
-	}
-
-
-	@Override
 	public List<StatusAndWorkDTO> selectAllStatus() {
 		return dao.selectAllStatus();
 	}
@@ -48,6 +42,20 @@ public class WorkStatusServiceImpl implements WorkStatusService{
 	public Date selectDate(int userno) {
 		return dao.selectWorkDate(userno);
 	}
+
+
+	@Override
+	public Date selectlwrok() {
+		return dao.selectlwork();
+	}
+
+
+	@Override
+	public boolean updateWork(StatusAndWorkDTO workList) {
+		return dao.updateWork(workList) > 0? true: false;
+	}
+
+
 
 	}
 

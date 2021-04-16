@@ -142,7 +142,7 @@ WHERE D.BONUS_NO = #{no}
     SYSDATE,
     #{rnpType},
     #{body},
-    3
+    #{memberNo}
   )
 </insert>
 

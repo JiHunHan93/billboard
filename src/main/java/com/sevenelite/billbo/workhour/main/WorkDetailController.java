@@ -97,15 +97,20 @@ public class WorkDetailController {
 		
 		System.out.println(today);
 		
-		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-		String formatDate = format.format(today);
+		SimpleDateFormat workDateformat = new SimpleDateFormat("yyyyMMdd");
+		SimpleDateFormat commutFormat = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
+		
+		String workDate = workDateformat.format(today);
+		String commute = commutFormat.format(today);
+		
 		UserDetailsVO userDetails = (UserDetailsVO) authentication.getPrincipal();
 		int userno = userDetails.getMemberno();
-		System.out.println(formatDate);
-		
+		System.out.println("workDate : " + workDate);
+		System.out.println("commute : " + commute);
 		
 		StatusAndWorkDTO workList =  new StatusAndWorkDTO();
-	    workList.setDate(formatDate);
+	    workList.setDate(workDate);
+	    workList.setCommute(commute);
 	    workList.setMemNo(userno);
 	    
 		if(workStatusService.registWork(workList)) {
@@ -125,40 +130,28 @@ public class WorkDetailController {
 //				System.out.println("attr : " + s);
 //			}
 		
+			Date leaveTime = new java.util.Date(System.currentTimeMillis());
+			SimpleDateFormat lworkFormat = new SimpleDateFormat("yyyyMMdd HH:mm:ss");
+			String leaveWork = lworkFormat.format(leaveTime);
 			UserDetailsVO userDetails = (UserDetailsVO) authentication.getPrincipal();
 			int userno = userDetails.getMemberno();
-			
-			
-			Date dateType = workStatusService.selectDate(userno);
-			
-			System.out.println(dateType);
-			
-			String dateStr = DateFormatUtils.format(dateType, "yyyy-MM-dd HH:mm:ss");
-			
-			System.out.println(dateStr);
+			Date date = new java.util.Date(System.currentTimeMillis());
 			
 			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			
-			Date date = format.parse(dateStr);
+			String dateFormat = format.format(date);
+			StatusAndWorkDTO workList =  new StatusAndWorkDTO();
 			
-			System.out.println(date);
-			
-			StatusAndWorkDTO status1 = new StatusAndWorkDTO();
-			
-			System.out.println("근무날짜 : "  + date);
-
-			status1.setDate(dateStr);
-			status1.setMemNo(userno);
-			
-			System.out.println(status1);
-			
-			if(workStatusService.updateWork(status1)) {
+			workList.setLwork(leaveWork);
+			workList.setMemNo(userno);
+			workList.setDate(dateFormat);
+			if(workStatusService.updateWork(workList)) {
 				System.out.println(userDetails);
 				rttr.addFlashAttribute("message", "퇴근하자");
 			};
 			
 			ModelAndView mv = new ModelAndView();
-			model.addAttribute("StatusAndWorkDTO", status1);
+			model.addAttribute("StatusAndWorkDTO", status);
 			mv.setViewName("statusList"); 
 			
 			return "redirect:http://127.0.0.1:8001/billbo/work/status";
