@@ -711,7 +711,7 @@
 									</tr>
 								</thead>
 								<c:forEach var="allMemberList" items="${requestScope.allMemberList }">
-									<tr class="">
+									<tr>
 										<td class="free-td"><c:out value="${ allMemberList.no }" />
 										<td class="free-td"><c:out value="${ allMemberList.memberName }" />
 										<td class="free-td"><c:out value="${ allMemberList.email }" />
@@ -720,6 +720,8 @@
 										<td class="free-td"><c:out value="${ allMemberList.deptName }" />
 									</tr>
 								</c:forEach>
+								
+								
 								<!-- <tbody>
 										<tr>
 											<td>
@@ -952,6 +954,29 @@
 				</div>
 			</div>
 				<!-- /Page Content -->
+					
+<script>
+	if(document.getElementsByTagName("td")) {
+		const $tds = document.getElementsByTagName("td");
+		
+		for(let i = 0; i < $tds.length; i++) {
+			$tds[i].onmouseenter = function() {
+				this.parentNode.style.backgroundColor = "yellow";
+				this.parentNode.style.cursor = "pointer";
+			}
+			$tds[i].onmouseout = function() {
+				this.parentNode.style.background = "white";
+			}
+			$tds[i].onclick = function() {
+				const no = this.parentNode.children[0].innerText;
+				/* const count = this.parentNode.children[7].innerText; */
+				/* console.log(count); */
+				console.log(no);
+				location.href = "${ pageContext.servletContext.contextPath }/allEmployee/detail?no=" + no;
+			}
+		}
+	}
+	</script>
 				
 				<!-- Add Employee Modal -->
 				<div id="add_employee" class="modal custom-modal fade" role="dialog">
@@ -1572,8 +1597,7 @@
 			
         </div>
 		<!-- /Main Wrapper -->
-		
-
+	
 		<!-- jQuery -->
         <script src="../resources/hrtemp/js/jquery-3.5.1.min.js"></script>
 		
