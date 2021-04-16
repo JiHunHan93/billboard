@@ -67,6 +67,13 @@ public class RnpController {
 	 
 	 @PostMapping("main")
 	 public String registRnp(@ModelAttribute RnpDTO rnpBody, RedirectAttributes redirect, Model model ) {
+		 System.out.println(rnpBody);
+		 System.out.println(rnpBody);
+		 System.out.println(rnpBody);
+		 System.out.println(rnpBody);
+		 System.out.println(rnpBody);
+		 System.out.println(rnpBody);
+		 System.out.println(rnpBody);
 		 
 		 if (!rnpService.registRnp(rnpBody)) {
 			 redirect.addFlashAttribute("message", "상벌 등록 실패하였습니다");
@@ -76,8 +83,7 @@ public class RnpController {
 		 
 		 List<RnpDTO> rnpList = rnpService.selectRnp();
 		 model.addAttribute("rnpList", rnpList);
-		 
-		 return "rnp/main";
+		 return "rnp/Rnp";
 	 }
 	
 }

@@ -530,7 +530,7 @@
 										<div class="col-sm-6">
 											<div class="form-group">
 												<label>사번</label>
-												<input name="memeberNo" class="form-control" id="modifyTitle" type="text"/>
+												<input name="memberNo" class="form-control" id="modifyTitle" type="text"/>
 											</div>
 										</div>
 									</div>
@@ -550,7 +550,7 @@
 										<div class="col-sm-3">
 											<div class="form-group">
                                                 <label>상벌 구분</label>
-												<select class="select1" name="rnpType" id="insertType">
+												<select class="select1" name="rnpType" id="insertType" value="">
 													<option value="포상">포상</option>
 													<option value="인사">징계</option>
 												</select>
@@ -572,7 +572,8 @@
 										 placeholder="Enter your message here" name="body" id="modifyBody"></textarea>
 									</div>
 									<div class="submit-section">
-										<button class="btn btn-primary submit-btn" id="modify-btn" type="button" onclick="goInsert(this.form)">상벌 추가</button>
+										<!-- <button class="btn btn-primary submit-btn" id="modify-btn" type="button" onclick="goInsert(this.form)">상벌 추가</button> -->
+										<button class="btn btn-primary submit-btn" id="modify-btn" type="button">상벌 추가</button>
 									</div>
 							</div>
 						</div>
@@ -585,6 +586,35 @@
 
 	</div>
 	<!-- /Main Wrapper -->
+	<script type="text/javascript">
+     $("#modify-btn").click(function() {
+    	var memberNo = $("input[name='memberNo']").val();
+    	var enrollDate = $("input[name='enrollDate']").val();
+    	var rnpType = $("select[name='rnpType']").val();
+    	var reason = $("textarea[name='reason']").val();
+    	var body = $("textarea[name='body']").val();
+    	
+    	
+    	var jihwan = $('form[name="rnpInsert"]').serializeArray();
+    	console.table(jihwan);
+    	$("form[name='rnpInsert']").submit();	
+    	
+     });
+	
+	
+    </script>
+    
+<!-- 	<script type="text/javascript">
+     function goInsert(frm){
+   	 var memberNo = frm.memberNo.value;
+   	 var enrollDate = frm.enrollDate.value;
+   	 var rnpType = frm.rnpType.value;
+   	 var reason = frm.reason.value;
+   	 var body = frm.body.value;
+   	 
+   	 frm.submit();
+    	}
+    </script> -->
 	<script>
 	
 	if(document.getElementsByTagName("td")) {
@@ -610,7 +640,7 @@
 		}
 	}
 	</script>
-    <script type="text/javascript">
+    <!--\\\ <script type="text/javascript">
      function goInsert(frm){
    	 var memberNo = frm.memberNo.value;
    	 var enrollDate = frm.enrollDate.value;
@@ -620,10 +650,10 @@
    	 
    	 frm.submit();
     	}
-    </script>
+    </script> -->
 	
 	<!-- jQuery -->
-	<script src="../resources/hrtemp/js/jquery-3.5.1.min.js"></script>
+	<script src="/resources/hrtemp/js/jquery-3.5.1.min.js"></script>
 
 	<!-- Bootstrap Core JS -->
 	<script src="../resources/hrtemp/js/popper.min.js"></script>
