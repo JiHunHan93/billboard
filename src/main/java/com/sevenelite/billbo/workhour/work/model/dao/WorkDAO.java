@@ -12,6 +12,8 @@ public interface WorkDAO {
 
 	List<WorkDTO> selectWorkList(int no);
 
+	boolean insertWorkInfo(WorkDTO workInfo);
+
 
   }
  
