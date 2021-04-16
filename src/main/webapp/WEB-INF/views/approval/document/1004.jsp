@@ -349,16 +349,18 @@ ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }
 		   /* Hidden 추가 */
 		   const $span = $("#hiddenInput");
 		   /* memberno, time, paymentNo */
-		   $hiddenInput = $("<input name='memberno' value='${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }'> <input name='time' value='<c:out value="${todaytime}"/>'> <input name='paymentNo' value='1004'>")
+		   $hiddenInput = $("<input name='memberno' type='hidden' value='${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }'> <input name='time' type='hidden' value='<c:out value="${todaytime}"/>'> <input name='paymentNo' type='hidden' value='1004'>")
 		   /* Login DeptDTO */
-		   $hiddenInputDeptDTO = $("<input name='deptRnum' value='${ requestScope.dept.deptRnum }'> <input name='deptCode' value='${ requestScope.dept.deptCode }'> <input name='deptName' value='${ requestScope.dept.deptName }'> <input name='upper' value='${ requestScope.dept.upper }'> <input name='level' value='${ requestScope.dept.level }'> <input name='modifyDeptDate' value='${ requestScope.dept.modifyDeptDate }'>")
+		   $hiddenInputDeptDTO = $("<input name='deptRnum' type='hidden' value='${ requestScope.dept.deptRnum }'> <input name='deptCode' type='hidden' value='${ requestScope.dept.deptCode }'> <input name='deptName' type='hidden' value='${ requestScope.dept.deptName }'> <input name='upper' type='hidden' value='${ requestScope.dept.upper }'> <input name='level' type='hidden' value='${ requestScope.dept.level }'> <input name='modifyDeptDate' type='hidden' value='${ requestScope.dept.modifyDeptDate }'>")
 		   /* Login SpotDTO */
-		   $hiddenInputSpotDTO = $("<input name='spotRnum' value='${ requestScope.spot.spotRnum }'> <input name='spotCode' value='${ requestScope.spot.spotCode }'> <input name='spotName' value='${ requestScope.spot.spotName }'> <input name='modifySpotDate' value='${ requestScope.spot.modifySpotDate }'>")
+		   $hiddenInputSpotDTO = $("<input name='spotRnum' type='hidden' value='${ requestScope.spot.spotRnum }'> <input name='spotCode' type='hidden' value='${ requestScope.spot.spotCode }'> <input name='spotName' type='hidden' value='${ requestScope.spot.spotName }'> <input name='modifySpotDate' type='hidden' value='${ requestScope.spot.modifySpotDate }'>")
+		   $hiddenInputlineMemDTO = $("<input name='lineMem[0].lineKinds' type='hidden' value='첫 번째 휴가휴가'> <input name='lineMem[1].lineKinds' type='hidden' value='두 번째 근무근무'> <input name='lineMem[0].deptCode' type='hidden' value='부서코드부서코드'> <input name='lineMem[1].deptCode' type='hidden' value='두번째에에에에부서코드부서코드'> <input name='lineMem[0].spotCode' type='hidden' value='직위는직급과직책과뭐가 다른가?'> <input name='lineMem[1].spotCode' type='hidden' value='피곤하다아아아아아아 피곤해ㅐ해해해해'>")
 		   
 		   /* 담기 */
 		   $span.append($hiddenInput);
 		   $span.append($hiddenInputDeptDTO);
 		   $span.append($hiddenInputSpotDTO);
+		   $span.append($hiddenInputlineMemDTO);
 		   
 		   /* input 확인 및 submit */
 		   var jihun = $('form[name="vacation01"]').serializeArray();
