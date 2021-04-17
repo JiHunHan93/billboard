@@ -14,5 +14,9 @@ import com.sevenelite.billbo.workhour.work.model.dto.WorkDTO;
 
 	boolean insertWorkInfo(WorkDTO workInfo);
 
+	java.sql.Date selectCommute();
+
+	Date selectlWork();
+
    } 
   

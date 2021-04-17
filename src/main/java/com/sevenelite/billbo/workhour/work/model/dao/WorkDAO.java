@@ -14,6 +14,10 @@ public interface WorkDAO {
 
 	boolean insertWorkInfo(WorkDTO workInfo);
 
+	Date selectlwork();
+
+	java.sql.Date selectCommute();
+
 
   }
  
