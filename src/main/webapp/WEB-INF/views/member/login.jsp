@@ -70,8 +70,8 @@
 									<div class="col">
 										<label>Password</label>
 									</div>
-									<div class="col-auto">
-										<a class="text-muted" href="forgot-password.html"> Forgot
+									<div tabindex=”-1” class="col-auto">
+										<a tabindex=”-1”  class="text-muted" href="forgot-password.html"> Forgot
 											password? </a>
 									</div>
 								</div>
