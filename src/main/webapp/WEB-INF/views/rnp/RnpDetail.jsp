@@ -427,7 +427,7 @@
 				<div class="page-header">
 					<div class="row align-items-center">
 						<div class="col">
-							<h3 class="page-title">상벌내역 상세</h3>
+							<h3 class="page-title">상벌내역</h3>
 							<ul class="breadcrumb">
 								<li class="breadcrumb-item"><a href="index.html">Bonus management</a></li>
 								<li class="breadcrumb-item"><a href="index.html">Detail</a></li>
@@ -451,7 +451,7 @@
 								<div class="card-body1">
 									<div class="project-title">
 										<h5 class="card-title">
-											<c:out value="${ rnpDetailInfo.reason} " />
+											<c:out value="상벌내용" />
 										</h5>
 										<small class="block text-ellipsis m-b-15"><span
 											class="text-xs"><c:out
@@ -618,9 +618,9 @@
 					role="document">
 					<div class="modal-content">
 						<div class="modal-header">
-							<c:forEach var="detailInfo" items="${requestScope.detailInfo }">
+							<c:forEach var="rnpDetailInfo" items="${requestScope.rnpDetailInfo }">
 								<h5 class="modal-title">
-									<c:out value="${ detailInfo.no }" />
+									<c:out value="${ rnpDetailInfo.no }" />
 									번 게시물 삭제
 								</h5>
 							</c:forEach>
@@ -631,7 +631,7 @@
 						</div>
 						<div class="modal-body">
 							<div class="submit-section">
-								<button id="delete-btn" class="btn btn-primary submit-btn">삭제하기</button>
+								<button id="rnpDelete-btn" class="btn btn-primary submit-btn">삭제하기</button>
 							</div>
 						</div>
 					</div>
@@ -685,11 +685,11 @@ function goModify(frm){
 
 <script type="text/javascript">
 	    $(function() {
-			$("#delete-btn").click(function() {
+			$("#rnpDelete-btn").click(function() {
 	
 				var no = <%= request.getParameter("no") %>;
 				console.log(no);
-				location.href = "${ pageContext.servletContext.contextPath }/board/delete?no=" + no;
+				location.href = "${ pageContext.servletContext.contextPath }/Rnp/delete?no=" + no;
 			});
 		});
     </script>

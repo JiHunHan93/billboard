@@ -93,7 +93,8 @@
     JOIN BB_MODIFY_DEPT C ON ( B.MEMBER_NO = C.MEMBER_NO)
     JOIN BB_DEPT D ON ( C.DEPT_CODE = D.DEPT_CODE)
     WHERE A.BONUS_NO = #{no} -->
-    SELECT 
+    SELECT
+D.BONUS_NO, 
 C.MEMBER_NO,
 D.BONUS_BODY,
 C.DEPT_NAME,
@@ -145,5 +146,10 @@ WHERE D.BONUS_NO = #{no}
     #{memberNo}
   )
 </insert>
+
+<delete id="deleteRnp" parameterType="RnpDTO">
+	DELETE FROM BB_BONUS A
+	WHERE A.BONUS_NO = #{no}
+</delete>
 
  </mapper>
