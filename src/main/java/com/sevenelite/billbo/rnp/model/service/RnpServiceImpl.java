@@ -39,4 +39,9 @@ public class RnpServiceImpl implements RnpService{
 		return result >= 1 ? true : false;
 	}
 
+	@Override
+	public int deleteRnp(int no) {
+		return rnpMapper.deleteRnp(no);
+	}
+
 }

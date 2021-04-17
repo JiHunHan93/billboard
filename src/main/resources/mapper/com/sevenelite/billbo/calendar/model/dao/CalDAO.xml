@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sevenelite.billbo.calendar.model.dao.CalDAO">
+
+<resultMap type="map" id="calendarResultMap">
+		<id property="no" column="SCHEDULE_NO" />
+		<result property="memberNo" column="MEMBER_NO" />
+		<result property="title" column="SCHEDULE_NAME" />
+		<result property="calType" column="SCHEDULE_TYPE" />
+		<result property="start" column="START_DATE" />
+		<result property="end" column="END_DATE" />
+		<result property="location" column="SCHEDULE_LOCATION" />
+		<result property="attendance" column="ATTENDANCE_NAME" />
+		<result property="body" column="SCHEDULE_INFO" />
+		<result property="deleteStatus" column="SCHEDULE_DELETE_STATUS" />
+		<result property="status" column="SCHEDULE_STATUS" />
+		<result property="code" column="DEPT_CODE" />
+	</resultMap>
+	<select id="selectCal" resultMap="calendarResultMap">
+		SELECT
+		       A.SCHEDULE_NAME
+		     , A.START_DATE
+		     , A.END_DATE
+		  FROM BB_WORK_SCHEDULE A
+	</select>
+
+</mapper>

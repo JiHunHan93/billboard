@@ -5,22 +5,22 @@ import java.sql.Date;
 
 public class ArmyDTO {
 	
-	private int no;
+	private int army_no;
 	private String branch;
 	private String army_class;
 	private String service_num;
 	private String discharge;
 	private java.sql.Date start;
 	private java.sql.Date end;
-	private int reason;
+	private String reason;
 	private int member_no;
 	
 	public ArmyDTO() {}
 
-	public ArmyDTO(int no, String branch, String army_class, String service_num, String discharge, Date start, Date end,
-			int reason, int member_no) {
+	public ArmyDTO(int army_no, String branch, String army_class, String service_num, String discharge, Date start,
+			Date end, String reason, int member_no) {
 		super();
-		this.no = no;
+		this.army_no = army_no;
 		this.branch = branch;
 		this.army_class = army_class;
 		this.service_num = service_num;
@@ -33,17 +33,17 @@ public class ArmyDTO {
 
 	@Override
 	public String toString() {
-		return "ArmyDTO [no=" + no + ", branch=" + branch + ", army_class=" + army_class + ", service_num="
+		return "ArmyDTO [army_no=" + army_no + ", branch=" + branch + ", army_class=" + army_class + ", service_num="
 				+ service_num + ", discharge=" + discharge + ", start=" + start + ", end=" + end + ", reason=" + reason
 				+ ", member_no=" + member_no + "]";
 	}
 
-	public int getNo() {
-		return no;
+	public int getArmy_no() {
+		return army_no;
 	}
 
-	public void setNo(int no) {
-		this.no = no;
+	public void setArmy_no(int army_no) {
+		this.army_no = army_no;
 	}
 
 	public String getBranch() {
@@ -78,27 +78,27 @@ public class ArmyDTO {
 		this.discharge = discharge;
 	}
 
-	public Date getStart() {
+	public java.sql.Date getStart() {
 		return start;
 	}
 
-	public void setStart(Date start) {
+	public void setStart(java.sql.Date start) {
 		this.start = start;
 	}
 
-	public Date getEnd() {
+	public java.sql.Date getEnd() {
 		return end;
 	}
 
-	public void setEnd(Date end) {
+	public void setEnd(java.sql.Date end) {
 		this.end = end;
 	}
 
-	public int getReason() {
+	public String getReason() {
 		return reason;
 	}
 
-	public void setReason(int reason) {
+	public void setReason(String reason) {
 		this.reason = reason;
 	}
 
@@ -110,7 +110,6 @@ public class ArmyDTO {
 		this.member_no = member_no;
 	}
 
-
-
+	
 	
 	}

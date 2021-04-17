@@ -112,4 +112,10 @@ public interface ProfileMapper {
 
 	List<ArmyDTO> armyInsert(int memberno);
 
+	List<FinalAcademicDTO> academic(int memberno);
+
+	List<FamilyDTO> familyDto(int memberno);
+
+	List<MemberInfoDTO> modifyMember();
+
 }

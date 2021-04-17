@@ -194,6 +194,7 @@
 	                console.log('맵??' + index + ' : ' + item);
 	                $.each(item, function(iii, ttt){
 	                    console.log('inner loop => ' + iii + ' : ' + ttt);
+	                    console.log(ttt.start);
 	                    arr.push(ttt);
 	                    console.log(arr);
 	                });

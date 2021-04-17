@@ -651,7 +651,7 @@
 												<i class="fas fa-circle category-dot"><div class="category-sub-text">업무평가</div></i>
 												<i class="fas fa-circle category-dot"><div class="category-sub-text">업무평가 내역</div></i>
 												<i class="fas fa-circle category-dot"><div class="category-sub-text">승진 심사</div></i>
-												<i class="fas fa-circle category-dot"><div class="category-sub-text">상여 관리</div></i>
+												<i class="fas fa-circle category-dot"><a href="Rnp/main"><div class="category-sub-text">상벌 관리</div></i>
 												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">연봉 협상</div></i> -->
 												<!-- Attendance 출근스케줄관리 -->
 												<!-- <p class="category-text">출근스케줄관리</p> -->
