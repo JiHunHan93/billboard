@@ -1,10 +1,17 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-    
     <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%
+	Date nowTime = new Date();
+	SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm:ss");
+%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
-<!DOCTYPE html>
 <html lang="ko">
     <head>
         <meta charset="utf-8">
@@ -646,7 +653,7 @@
 						</div>
 					</div>
 					<!-- /Page Header -->
-								<h3 class="page-title" font>${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }님의 근태 현황</h3>
+							</a><h3 class="page-title" font>${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }님의 근태 현황</h3>
 					<form>
 <%-- 					<c:forEach var="workInfo" items="${ requestScope.workInfo }">
  --%>					<!-- Leave Statistics -->
@@ -669,177 +676,87 @@
 									<h6 style="font-weight: bold;">근무일</h6>
 									<h4 style="color: gray;"><c:out value="${ workInfo.workCount }"/></h4>
 								</div>
+									
 							</div>
 						</div>
 					<!-- /Leave Statistics -->
-					<div class="row">
-						<div class="col-md-12">
-							<div class="table-responsive">
-								<table class="table table-striped custom-table mb-0 datatable" style=" border:2px solid">
-									<thead>
-										<tr>
-									    </tr>
-									</thead>
-									<tbody>
-												<div class="dropdown dropdown-action">
-												
-													<div class="dropdown-menu dropdown-menu-right">
-														<a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_leave"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-														<a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_approve"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-													</div>
-												</div>
-											</td>
-										</tr>
-											<tr>
-												<td style="font-weight: bold; font-size: 26px;">주 차</td>
-												<td>누적 근무 시간  : <c:out value="${workInfo.totalWork } 시간"></c:out> </td>
-												<td class="text-center">
-													<div class="action-label">
-													</div>
-												</td>
-												<td class="text-danger">
-														<a href="${pageContext.servletContext.contextPath }/work/detail"><c:out value="지각 ${workInfo.lateCount }"></c:out></a>
-													</h2>
-												</td>
-												<td class="text-right">
-													<div class="dropdown dropdown-action">
-														<div class="dropdown-menu dropdown-menu-right">
-															<a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_leave"><i class="fa fa-pencil m-r-5"></i> Edit</a>
-															<a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_approve"><i class="fa fa-trash-o m-r-5"></i> Delete</a>
-														</div>
-													</div>
-												</td>
-											</tr>
-													<div class="dropdown dropdown-action">
-														<div class="dropdown-menu dropdown-menu-right">
-															<a class="dropdown-item" href="#" data-toggle="modal" data-target="#edit_leave"><i
-																	class="fa fa-pencil m-r-5"></i> Edit</a>
-															<a class="dropdown-item" href="#" data-toggle="modal" data-target="#delete_approve"><i
-																	class="fa fa-trash-o m-r-5"></i> Delete</a>
-														</div>
-													</div>
-										<tr>
-									</tr>
+						<!-- Page Content -->
+			<div class="content container-fluid">
+				<!-- Page Header -->
+				<div class="page-header">
+					<div class="row align-items-center">
+					</div>
+				</div>
+				<!-- /Page Header -->
+				<!-- Leave Statistics -->
+					
+
+					<!-- Search Filter -->
+					<div class="row filter-row">
+						<div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12"></div>
+						<div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12"></div>
+						<div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12"></div>
+					</div>
+				</div>
+				<!-- /Search Filter -->
+				<div class="row">
+					<div class="col-md-12">
+						<div class="table-responsive">
+							<table class="table table-striped custom-table mb-0 datatable">
+								<thead>
 									<tr>
+										<th>날짜</th>
+										<th>업무시작</th>
+										<th>업무종료</th>
+										<th>수정이력</th>
 									</tr>
-							
+								</thead>
+								<c:forEach var="statusList" items="${requestScope.statusList }">
+									<tbody>
+										<tr>
+											<td><c:out value="${ statusList.date }"></c:out></td>
+											<td><c:out value="${ statusList.commute }"></c:out></td>
+											<td><c:out value="${ statusList.lwork }"></c:out></td>
+											<td></td>
+								</c:forEach>`
+								<div class="dropdown action-label">
+									<div class="dropdown-menu dropdown-menu-right">
+										<a class="dropdown-item" href="#"><i
+											class="fa fa-dot-circle-o text-purple"></i> New</a> <a
+											class="dropdown-item" href="#"><i
+											class="fa fa-dot-circle-o text-info"></i> Pending</a> <a
+											class="dropdown-item" href="#" data-toggle="modal"
+											data-target="#approve_leave"><i
+											class="fa fa-dot-circle-o text-success"></i> Approved</a> <a
+											class="dropdown-item" href="#"><i
+											class="fa fa-dot-circle-o text-danger"></i> Declined</a>
+									</div>
+								</div>
 								</tbody>
 							</table>
-				<%-- 	</c:forEach> --%>
-					</form>
 						</div>
 					</div>
 				</div>
 			</div>
-		</div>
 			<!-- /Page Content -->
-			
+
 			<!-- Add Leave Modal -->
 			<div id="add_leave" class="modal custom-modal fade" role="dialog">
 				<div class="modal-dialog modal-dialog-centered" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
 							<h5 class="modal-title">Add Leave</h5>
-							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-								<form action="${pageContext.servletContext.contextPath }/work/list" method="get">
-									<div class="form-group">
-										<label>Leave Type <span class="text-danger">*</span></label>
-										<select class="select">
-											<option>Select Leave Type</option>
-											<option>Casual Leave 12 Days</option>
-											<option>Medical Leave</option>
-											<option>Loss of Pay</option>
-										</select>
-									</div>
-									<div class="form-group">
-										<label>From <span class="text-danger">*</span></label>
-										<div class="cal-icon">
-											<input class="form-control datetimepicker" type="text">
-										</div>
-									</div>
-									<div class="form-group">
-										<label>To <span class="text-danger">*</span></label>
-										<div class="cal-icon">
-											<input class="form-control datetimepicker" type="text">
-										</div>
-									</div>
-									<div class="form-group">
-										<label>Number of days <span class="text-danger">*</span></label>
-										<input class="form-control" readonly type="text">
-									</div>
-									<div class="form-group">
-										<label>Remaining Leaves <span class="text-danger">*</span></label>
-										<input class="form-control" readonly value="12" type="text">
-									</div>
-									<div class="form-group">
-										<label>Leave Reason <span class="text-danger">*</span></label>
-										<textarea rows="4" class="form-control"></textarea>
-									</div>
-									<div class="submit-section">
-										<button class="btn btn-primary submit-btn">Submit</button>
-									</div>
-								</form>
-							</div>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
 						</div>
-					</div>
-				</div>
-				<!-- /Add Leave Modal -->
+				<!-- /Mobile Menu -->
 				
-				<!-- Edit Leave Modal -->
-				<div id="edit_leave" class="modal custom-modal fade" role="dialog">
-					<div class="modal-dialog modal-dialog-centered" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title">Edit Leave</h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-								<form>
-									<div class="form-group">
-										<label>Leave Type <span class="text-danger">*</span></label>
-										<select class="select">
-											<option>Select Leave Type</option>
-											<option>Casual Leave 12 Days</option>
-										</select>
-									</div>
-									<div class="form-group">
-										<label>From <span class="text-danger">*</span></label>
-										<div class="cal-icon">
-											<input class="form-control datetimepicker" value="01-01-2019" type="text">
-										</div>
-									</div>
-									<div class="form-group">
-										<label>To <span class="text-danger">*</span></label>
-										<div class="cal-icon">
-											<input class="form-control datetimepicker" value="01-01-2019" type="text">
-										</div>
-									</div>
-									<div class="form-group">
-										<label>Number of days <span class="text-danger">*</span></label>
-										<input class="form-control" readonly type="text" value="2">
-									</div>
-									<div class="form-group">
-										<label>Remaining Leaves <span class="text-danger">*</span></label>
-										<input class="form-control" readonly value="12" type="text">
-									</div>
-									<div class="form-group">
-										<label>Leave Reason <span class="text-danger">*</span></label>
-										<textarea rows="4" class="form-control">Going to hospital</textarea>
-									</div>
-									<div class="submit-section">
-										<button class="btn btn-primary submit-btn">Save</button>
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
+            </div>
+			<!-- /Header -->
+			
+
 				<!-- /Edit Leave Modal -->
 				
 				<!-- Delete Leave Modal -->

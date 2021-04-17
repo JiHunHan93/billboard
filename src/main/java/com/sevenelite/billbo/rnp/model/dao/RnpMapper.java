@@ -13,4 +13,6 @@ public interface RnpMapper {
 
 	int registRnp(RnpDTO rnpBody);
 
+	int deleteRnp(int no);
+
 }

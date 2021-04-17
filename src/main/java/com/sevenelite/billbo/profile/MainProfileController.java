@@ -28,7 +28,6 @@ import com.sevenelite.billbo.profile.model.dto.LicenseDTO;
 import com.sevenelite.billbo.profile.model.dto.MemberInfoDTO;
 import com.sevenelite.billbo.profile.model.dto.ModifyDeptDTO1;
 import com.sevenelite.billbo.profile.model.dto.ModifySpotDTO;
-import com.sevenelite.billbo.profile.model.dto.SpotDTO;
 import com.sevenelite.billbo.profile.model.service.ProfileService;
 
 @Controller
@@ -68,6 +67,10 @@ public class MainProfileController {
 		List<CertificateDTO>certificateInsert = profileService.certificateInsert(user.getMemberno());
 		/*병역*/
 		List<ArmyDTO>armyInsert = profileService.armyInsert(user.getMemberno());
+		/*학력*/
+		List<FinalAcademicDTO>academic = profileService.academic(user.getMemberno());
+		/*정말 가 족같은 가족사항 */
+		List<FamilyDTO>familyDto = profileService.familyDto(user.getMemberno());
 		
 		System.out.println(member+"오나???!?");
 		System.out.println(dept+"이것도 오나???!?");
@@ -79,6 +82,8 @@ public class MainProfileController {
 		System.out.println(LicenseDto + "젭알 되주세요");
 		System.out.println(certificateInsert + "젭알 되주세요");
 		System.out.println(armyInsert + "이거 안되면 재입대한다");
+		System.out.println(academic + "이쯤되면 그냥 되겠지..");
+		System.out.println(familyDto + "마지막");
 		
 		model.addAttribute("member", member);
 		model.addAttribute("dept", dept);
@@ -90,6 +95,8 @@ public class MainProfileController {
 		model.addAttribute("LicenseDto", LicenseDto);
 		model.addAttribute("certificateInsert", certificateInsert);
 		model.addAttribute("armyInsert", armyInsert);
+		model.addAttribute("academic", academic);
+		model.addAttribute("familyDto", familyDto);
 		
 		return "profile/main";
 
@@ -103,6 +110,25 @@ public class MainProfileController {
 		  System.out.println("branch:" + member);
 		  SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		  List<MemberInfoDTO> memberInfo = profileService.main();
+		  System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		  System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		  System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		  System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		  System.out.println(memberInfo);
+		  System.out.println(memberInfo);
+		  System.out.println(memberInfo);
+		  System.out.println(memberInfo);
+		  System.out.println(memberInfo);
+		  System.out.println(memberInfo);
+		  System.out.println(memberInfo);
+		  System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		  System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		  System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		  System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		  System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		  System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		  System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!");
+				  
 		  System.out.println("왜 안오는거여 쉬벌?????");
 
 		  return "profile/main";
@@ -155,6 +181,12 @@ public class MainProfileController {
 	/*5.인사평가*/
 	/*없음*/
 	/*6.자격*/
+//	@GetMapping("certificate")
+//	public String certificate() {
+//		
+//		return "profile/main";
+//	}
+//	
 	@PostMapping("certificate")
 	public String certificate(@ModelAttribute CertificateDTO certificate) {
 		
@@ -166,7 +198,8 @@ public class MainProfileController {
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		
-		return "profile/mainProfile";
+		
+		 return "redirect:http://127.0.0.1:8001/billbo/profile/mainProfile";
 	}
 	/*7.병역*/
 	@PostMapping("army")
@@ -282,5 +315,17 @@ public class MainProfileController {
 		
 		return "profile/main";
 	}
+	
+	/*
+	 * @PostMapping("modify") public String mainModify(Model model, @ModelAttribute
+	 * MemberInfoDTO memberInfo, Authentication authentication) {
+	 * 
+	 * UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
+	 * 
+	 * List<MemberInfoDTO> modifyMember =
+	 * profileService.modifyMember(user.getMemberno());
+	 * 
+	 * return "profile/main"; }
+	 */
 }
 

@@ -1,6 +1,6 @@
 package com.sevenelite.billbo.profile.model.dto;
 
-import java.util.Date;
+import java.sql.Date;
 
 public class FamilyDTO {
 
@@ -8,7 +8,7 @@ public class FamilyDTO {
 		private String name;
 		private String relation;
 		private String gender;
-		private java.util.Date birthday;
+		private java.sql.Date birthday;
 		private String study;
 		private String job;
 		private int no;
@@ -66,7 +66,7 @@ public class FamilyDTO {
 			this.gender = gender;
 		}
 
-		public java.util.Date getBirthday() {
+		public java.sql.Date getBirthday() {
 			return birthday;
 		}
 
@@ -98,6 +98,4 @@ public class FamilyDTO {
 			this.no = no;
 		}
 
-	
-		
-}
+		}

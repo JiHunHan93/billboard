@@ -65,6 +65,31 @@
 	<result property="certificateName" column="CERTIFICATE_NAME"/>
 </resultMap>
 
+<resultMap type="com.sevenelite.billbo.allmember.model.dto.MemberAndFinalDTO" id="selectStudyInfoResultMap">
+	<id property="memberNo" column="MEMBER_NO"/>
+	<result property="memberName" column="MEMBER_NAME"/>
+	<result property="pwd" column="MEMBER_PWD"/>	
+	<result property="emali" column="EMAIL"/>
+	<result property="phone" column="PHONE"/>
+	<result property="abilityNo" column="ACADEMIC_ABILITY_NO"/>
+	<result property="schoolName" column="SCHOOL_NAME"/>
+	<result property="schoolSubject" column="SCHOOL_SUBJECT"/>
+	<result property="graduateDate" column="GRADUATE_DATE"/>
+	<result property="graduateStatus" column="GRADUATE_STATUS"/>
+	<result property="graduateName" column="FINAL_GRADUATE_NAME"/>
+	<result property="academicCode" column="ACADEMIC_CODE"/>
+	<result property="academicName" column="ACADEMIC_NAME"/>
+</resultMap>
+
+<resultMap type="com.sevenelite.billbo.allmember.model.dto.MemberAndCareerDTO" id="MemberAndCareerDTO">
+	<id property="carrerNo" column="CAREER_NO"/>
+	<result property="careerStart" column="CAREER_START"/>
+	<result property="careerEnd" column="CAREER_END"/>
+	<result property="carrerPosition" column="CAREER_POSITION"/>
+	<result property="memberNo" column="MEMBER_NO"/>
+	<result property="memberName" column="MEMBER_NAME"/>
+</resultMap>
+
 <select id="selectAllEmployeeList" resultMap="ALlmemberResultMap" parameterType="MemberAndMemberInfoAndDeptAndModifyDeptDTO">
          
           SELECT
@@ -182,5 +207,31 @@
        FULL JOIN BB_CERTIFICATE D ON (A.MEMBER_NO = D.MEMBER_NO)
        FULL JOIN BB_CERTIFICATE_CODE E ON (E.CERTIFICATE_CODE = D.CERTIFICATE_CODE)
       WHERE A.MEMBER_NO = #{no}        
+</select>
+
+<select id="selectStudyInfo" resultMap="selectStudyInfoResultMap" parameterType="MemberAndFinalDTO">
+   SELECT
+       A.MEMBER_NAME
+     , B.SCHOOL_NAME
+     , B.SCHOOL_SUBJECT
+     , B.GRADUATE_DATE
+     , B.GRADUATE_STATUS
+     , C.ACADEMIC_NAME
+   FROM BB_MEMBER A
+   JOIN BB_FINAL_ACADEMIC_ABILITY B ON (A.MEMBER_NO = B.MEMBER_NO)
+   JOIN BB_FINAL_ACADEMIC C ON (B.ACADEMIC_CODE = C.ACADEMIC_CODE)
+  WHERE B.GRADUATE_STATUS = 'Y'
+    AND A.MEMBER_NO = #{no}
+</select>
+
+<select id="selectCarrerInfo" resultMap="MemberAndCareerDTO" parameterType="MemberAndCareerDTO">
+     SELECT
+        A.MEMBER_NAME
+      , B.CAREER_POSITION
+      , B.CAREER_START
+      , B.CAREER_END
+  FROM BB_MEMBER A
+  JOIN BB_CAREER B ON (A.MEMBER_NO = B.MEMBER_NO)
+ WHERE A.MEMBER_NO = #{no} 
 </select>
 </mapper>

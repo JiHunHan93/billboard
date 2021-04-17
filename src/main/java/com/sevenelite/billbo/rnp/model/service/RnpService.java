@@ -13,4 +13,6 @@ public interface RnpService {
 
 	boolean registRnp(RnpDTO rnpBody);
 
+	int deleteRnp(int no);
+
 }

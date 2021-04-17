@@ -16,7 +16,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.sevenelite.billbo.rnp.model.dto.ModifyDeptAndMemAndRnpDTO;
 import com.sevenelite.billbo.rnp.model.dto.RnpDTO;
 import com.sevenelite.billbo.rnp.model.service.RnpService;
 
@@ -25,21 +24,21 @@ import com.sevenelite.billbo.rnp.model.service.RnpService;
 public class RnpController {
 
 	private final RnpService rnpService;
-
+	
 	@Autowired
 	public RnpController(RnpService rnpService) {
 		this.rnpService = rnpService;
 	}
-
+	
 	@GetMapping("main")
 	public String selectRnpList(Model model) {
 
 		List<RnpDTO> rnpList = rnpService.selectRnp();
 		model.addAttribute("rnpList", rnpList);
-
+		
 		return "rnp/Rnp";
 	}
-
+	
 	
 	  @GetMapping("detail")  
 	  @ResponseBody 
@@ -53,7 +52,6 @@ public class RnpController {
 	  mv.addObject("no", no);	
 	  
 	  List<RnpDTO> detailRnp = rnpService.detailRnp(no);
-	  System.out.println("!!!!!!!!" + detailRnp);
 	  model.addAttribute("rnpDetailInfo", detailRnp);
 	  
 	  return mv; 
@@ -67,13 +65,6 @@ public class RnpController {
 	 
 	 @PostMapping("main")
 	 public String registRnp(@ModelAttribute RnpDTO rnpBody, RedirectAttributes redirect, Model model ) {
-		 System.out.println(rnpBody);
-		 System.out.println(rnpBody);
-		 System.out.println(rnpBody);
-		 System.out.println(rnpBody);
-		 System.out.println(rnpBody);
-		 System.out.println(rnpBody);
-		 System.out.println(rnpBody);
 		 
 		 if (!rnpService.registRnp(rnpBody)) {
 			 redirect.addFlashAttribute("message", "상벌 등록 실패하였습니다");
@@ -86,4 +77,15 @@ public class RnpController {
 		 return "rnp/Rnp";
 	 }
 	
+	 @GetMapping("delete")
+	 public ModelAndView deleteBoard(@ModelAttribute RnpDTO rnpBody, Model model, RedirectAttributes redirect, HttpServletRequest reqeust) {
+		 
+		 ModelAndView mv = new ModelAndView();
+		 int no = Integer.parseInt(reqeust.getParameter("no"));
+		 int deleteInfo = rnpService.deleteRnp(no);
+		 System.out.println("!!!!!!!!!!" + deleteInfo);
+		 mv.setViewName("redirect:http://127.0.0.1:8001/billbo/Rnp/main");
+		 
+		 return mv;	
+	 }
 }
