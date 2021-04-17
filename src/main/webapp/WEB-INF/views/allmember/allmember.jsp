@@ -15,33 +15,33 @@
         <title>BB-사원조회 및 부서조회</title>
 		
 		<!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="../resources/hrtemp/img/favicon.png">
+        <link rel="shortcut icon" type="image/x-icon" href="./resources/hrtemp/img/favicon.png">
 		
 		<!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="../resources/hrtemp/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./resources/hrtemp/css/bootstrap.min.css">
 		
 		<!-- Fontawesome CSS -->
-        <link rel="stylesheet" href="../resources/hrtemp/css/font-awesome.min.css">
+        <link rel="stylesheet" href="./resources/hrtemp/css/font-awesome.min.css">
 		
 		<!-- Lineawesome CSS -->
-        <link rel="stylesheet" href="../resources/hrtemp/css/line-awesome.min.css">
+        <link rel="stylesheet" href="./resources/hrtemp/css/line-awesome.min.css">
 		
 		<!-- Datatable CSS -->
-		<link rel="stylesheet" href="../resources/hrtemp/css/dataTables.bootstrap4.min.css">
+		<link rel="stylesheet" href="./resources/hrtemp/css/dataTables.bootstrap4.min.css">
 		
 		<!-- Select2 CSS -->
-		<link rel="stylesheet" href="../resources/hrtemp/css/select2.min.css">
+		<link rel="stylesheet" href="./resources/hrtemp/css/select2.min.css">
 		
 		<!-- Datetimepicker CSS -->
-		<link rel="stylesheet" href="../resources/hrtemp/css/bootstrap-datetimepicker.min.css">
+		<link rel="stylesheet" href="./resources/hrtemp/css/bootstrap-datetimepicker.min.css">
 		
 		<!-- Main CSS -->
-        <link rel="stylesheet" href="../resources/hrtemp/css/style.css">
+        <link rel="stylesheet" href="./resources/hrtemp/css/style.css">
 		
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
-			<script src="../resources/hrtemp/js/html5shiv.min.js"></script>
-			<script src="../resources/hrtemp/js/respond.min.js"></script>
+			<script src="./resources/hrtemp/js/html5shiv.min.js"></script>
+			<script src="./resources/hrtemp/js/respond.min.js"></script>
 		<![endif]-->
     </head>
 <body>
@@ -647,10 +647,10 @@
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title">Employee</h3>
+								<h3 class="page-title">전사정보 조회 </h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-									<li class="breadcrumb-item active">Employee</li>
+									<li class="breadcrumb-item"><a href="index.html">직원</a></li>
+									<li class="breadcrumb-item active">조회</li>
 								</ul>
 							</div>
 							<div class="col-auto float-right ml-auto">
@@ -726,7 +726,7 @@
 										<tr>
 											<td>
 												<h2 class="table-avatar">
-													<a href="profile.html" class="avatar"><img alt="" src="../resources/hrtemp/img/profiles/avatar-02.jpg"></a>
+													<a href="profile.html" class="avatar"><img alt="" src="./resources/hrtemp/img/profiles/avatar-02.jpg"></a>
 													<a href="profile.html">John Doe <span>Web Designer</span></a>
 												</h2>0
 											</td>
@@ -758,7 +758,7 @@
 										<tr>
 											<td>
 												<h2 class="table-avatar">
-													<a href="profile.html" class="avatar"><img alt="" src="../resources/hrtemp/img/profiles/avatar-09.jpg"></a>
+													<a href="profile.html" class="avatar"><img alt="" src="./resources/hrtemp/img/profiles/avatar-09.jpg"></a>
 													<a href="profile.html">Richard Miles <span>Web Developer</span></a>
 												</h2>
 											</td>
@@ -790,7 +790,7 @@
 										<tr>
 											<td>
 												<h2 class="table-avatar">
-													<a href="profile.html" class="avatar"><img alt="" src="../resources/hrtemp/img/profiles/avatar-10.jpg"></a>
+													<a href="profile.html" class="avatar"><img alt="" src="./resources/hrtemp/img/profiles/avatar-10.jpg"></a>
 													<a href="profile.html">John Smith <span>Android Developer</span></a>
 												</h2>
 											</td>
@@ -822,7 +822,7 @@
 										<tr>
 											<td>
 												<h2 class="table-avatar">
-													<a href="profile.html" class="avatar"><img alt="" src="../resources/hrtemp/img/profiles/avatar-05.jpg"></a>
+													<a href="profile.html" class="avatar"><img alt="" src="./resources/hrtemp/img/profiles/avatar-05.jpg"></a>
 													<a href="profile.html">Mike Litorus <span>IOS Developer</span></a>
 												</h2>
 											</td>
@@ -854,7 +854,7 @@
 										<tr>
 											<td>
 												<h2 class="table-avatar">
-													<a href="profile.html" class="avatar"><img alt="" src="../resources/hrtemp/img/profiles/avatar-11.jpg"></a>
+													<a href="profile.html" class="avatar"><img alt="" src="./resources/hrtemp/img/profiles/avatar-11.jpg"></a>
 													<a href="profile.html">Wilmer Deluna <span>Team Leader</span></a>
 												</h2>
 											</td>
@@ -886,7 +886,7 @@
 										<tr>
 											<td>
 												<h2 class="table-avatar">
-													<a href="profile.html" class="avatar"><img alt="" src="../resources/hrtemp/img/profiles/avatar-12.jpg"></a>
+													<a href="profile.html" class="avatar"><img alt="" src="./resources/hrtemp/img/profiles/avatar-12.jpg"></a>
 													<a href="profile.html">Jeffrey Warden <span>Web Developer</span></a>
 												</h2>
 											</td>
@@ -918,7 +918,7 @@
 										<tr>
 											<td>
 												<h2 class="table-avatar">
-													<a href="profile.html" class="avatar"><img alt="" src="../resources/hrtemp/img/profiles/avatar-13.jpg"></a>
+													<a href="profile.html" class="avatar"><img alt="" src="./resources/hrtemp/img/profiles/avatar-13.jpg"></a>
 													<a href="profile.html">Bernardo Galaviz <span>Web Developer</span></a>
 												</h2>
 											</td>
@@ -972,7 +972,7 @@
 				/* const count = this.parentNode.children[7].innerText; */
 				/* console.log(count); */
 				console.log(no);
-				location.href = "${ pageContext.servletContext.contextPath }/allEmployee/detail?no=" + no;
+				location.href = "${ pageContext.servletContext.contextPath }/detail?no=" + no;
 			}
 		}
 	}
@@ -1599,28 +1599,28 @@
 		<!-- /Main Wrapper -->
 	
 		<!-- jQuery -->
-        <script src="../resources/hrtemp/js/jquery-3.5.1.min.js"></script>
+        <script src="./resources/hrtemp/js/jquery-3.5.1.min.js"></script>
 		
 		<!-- Bootstrap Core JS -->
-        <script src="../resources/hrtemp/js/popper.min.js"></script>
-        <script src="../resources/hrtemp/js/bootstrap.min.js"></script>
+        <script src="./resources/hrtemp/js/popper.min.js"></script>
+        <script src="./resources/hrtemp/js/bootstrap.min.js"></script>
 		
 		<!-- Slimscroll JS -->
-		<script src="../resources/hrtemp/js/jquery.slimscroll.min.js"></script>
+		<script src="./resources/hrtemp/js/jquery.slimscroll.min.js"></script>
 		
 		<!-- Select2 JS -->
-		<script src="../resources/hrtemp/js/select2.min.js"></script>
+		<script src="./resources/hrtemp/js/select2.min.js"></script>
 		
 		<!-- Datetimepicker JS -->
-		<script src="../resources/hrtemp/js/moment.min.js"></script>
-		<script src="../resources/hrtemp/js/bootstrap-datetimepicker.min.js"></script>
+		<script src="./resources/hrtemp/js/moment.min.js"></script>
+		<script src="./resources/hrtemp/js/bootstrap-datetimepicker.min.js"></script>
 		
 		<!-- Datatable JS -->
-		<script src="../resources/hrtemp/js/jquery.dataTables.min.js"></script>
-		<script src="../resources/hrtemp/js/dataTables.bootstrap4.min.js"></script>
+		<script src="./resources/hrtemp/js/jquery.dataTables.min.js"></script>
+		<script src="./resources/hrtemp/js/dataTables.bootstrap4.min.js"></script>
 		
 		<!-- Custom JS -->
-		<script src="../resources/hrtemp/js/app.js"></script>
+		<script src="./resources/hrtemp/js/app.js"></script>
 		
     </body>
 </html>

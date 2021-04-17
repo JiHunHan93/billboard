@@ -14,13 +14,15 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.sevenelite.billbo.allmember.model.dto.CertificateListDTO;
 import com.sevenelite.billbo.allmember.model.dto.MemberAndArmyDTO;
+import com.sevenelite.billbo.allmember.model.dto.MemberAndCareerDTO;
 import com.sevenelite.billbo.allmember.model.dto.MemberAndFamilyDTO;
+import com.sevenelite.billbo.allmember.model.dto.MemberAndFinalDTO;
 import com.sevenelite.billbo.allmember.model.dto.MemberAndMemberInfoAndDeptAndModifyDeptDTO;
 import com.sevenelite.billbo.allmember.model.service.AllMemberService;
 import com.sevenelite.billbo.profile.model.dto.MemberInfoDTO;
 
 @Controller
-@RequestMapping("/allEmployee")
+@RequestMapping("/*")
 public class AllmemberController {
 
 	private final AllMemberService allMemberService;
@@ -69,15 +71,24 @@ public class AllmemberController {
 		  List<MemberAndArmyDTO> armyInfo = allMemberService.selectArmyInfo(no);
 		  model.addAttribute("armyInfo", armyInfo);
 		  System.out.println(armyInfo);
-		  
+		  //가족정보
 		  List<MemberAndFamilyDTO> familyInfo = allMemberService.selectFamilyInfo(no);
 		  model.addAttribute("familyInfo", familyInfo);
 		  System.out.println(familyInfo);
-		  
+		  //자격증 정보
 		  List<CertificateListDTO> certificateInfo = allMemberService.selectCertiInfo(no);
 		  model.addAttribute("certificateInfo", certificateInfo);
 		  System.out.println(certificateInfo);
 		  
+		  //최종학력정보
+		  List<MemberAndFinalDTO> studyInfo = allMemberService.selectStudyInfo(no);
+		  model.addAttribute("studyInfo", studyInfo);
+		  System.out.println(studyInfo);
+		  
+		  //경력정보
+		  List<MemberAndCareerDTO> carrerInfo = allMemberService.selectCarrerInfo(no);
+		  model.addAttribute("carrerInfo", carrerInfo);
+		  System.out.println(carrerInfo);
 		  return mv;
 		  
 		 
