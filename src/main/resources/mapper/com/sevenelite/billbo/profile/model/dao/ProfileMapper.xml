@@ -5,7 +5,7 @@
 <mapper namespace="com.sevenelite.billbo.profile.model.dao.ProfileMapper">
 
 <resultMap type="com.sevenelite.billbo.profile.model.dto.ArmyDTO" id="armyDTO">
-	<id property="no" column="ARMY_NO" />
+	<id property="army_no" column="ARMY_NO" />
 	<result property="branch" column="ARMY_BRANCH"/>
 	<result property="army_class" column="ARMY_CLASS"/>
 	<result property="service_num" column="ARMY_SERVICE_NUM"/>
@@ -90,8 +90,28 @@
 	<result property="certificate_code" column= "CERTIFICATE_CODE"/>
 	
 </resultMap>
- 
+ <resultMap type="com.sevenelite.billbo.profile.model.dto.FinalAcademicDTO" id="finalAcademicDTO">
+	<id property="ability_no" column= "ACADEMIC_ABILITY_NO" />
+	<result property="name" column= "SCHOOL_NAME"/>
+	<result property="subject" column= "SCHOOL_SUBJECT"/>
+	<result property="date" column= "GRADUATE_DATE"/>
+	<result property="graduate_status" column= "GRADUATE_STATUS"/>
+	<result property="graduate_name" column= "FINAL_GRADUATE_NAME"/>
+	<result property="member_no" column= "MEMBER_NO"/>
+	<result property="code" column= "ACADEMIC_CODE"/>
+	
+</resultMap>
 
+ <resultMap type="com.sevenelite.billbo.profile.model.dto.FamilyDTO" id="familyDTO">
+	<id property="info_no" column="FAMILY_INFO_NO"/>
+	<result property="name" column="FAMILY_NAME"/>
+	<result property="relation" column="FAMILY_RELATION"/>
+	<result property="gender" column="GENDER"/>
+	<result property="birthday" column="FAMILY_BIRTHDAY"/>
+	<result property="study" column="FAMILY_STUDY"/>
+	<result property="job" column="FAMILY_JOB"/>
+	<result property="no" column="MEMBER_NO"/>
+	</resultMap>
 <insert id="armyInfo" parameterType="ArmyDTO">
 	INSERT
 	INTO BB_ARMY(
@@ -186,6 +206,8 @@
 	                  ) A
 	                  WHERE RNUM = 1
 </select>
+
+
 	<!-- BB_MEMBER_INFO A
     WHERE A.MEMBER_INFO_NO = #{ member_no } -->
 <select id="member" parameterType="MemberInfoDTO" resultMap="memberInfoDTO">
@@ -321,6 +343,7 @@
   	  	 , SCHOOL_SUBJECT
   	  	 , GRADUATE_DATE
   	  	 , GRADUATE_STATUS
+  	  	 , FINAL_GRADUATE_NAME
   	  	 , MEMBER_NO
   	  	 , ACADEMIC_CODE
   	  )
@@ -330,7 +353,8 @@
   	  ,#{name}
   	  ,#{subject}
   	  ,#{date}
-  	  ,#{status}
+  	  ,#{graduate_status}
+  	  ,#{graduate_name}
 	  ,#{member_no}
   	  ,#{code}
   	  )
@@ -379,7 +403,7 @@
 </insert>
 
 
-
+<!-- 
 
  <select id="member_info_phone" resultMap="MemBbDTO" parameterType="MemBbDTO">
 SELECT 
@@ -389,22 +413,15 @@ SELECT
     , EMAIL   
 	, PHONE
 	  FROM BB_MEMBER
-	 WHERE MEMBER_NO  = 1
-	  <!-- WHERE MEMBER_NO = #{no} -->
-</select>
-
-<!-- <select id="member_address" resultMap="MemDTO" parameterType="MemBbDTO">
-SELECT 
-	       MEMBER_ADDRESS
-	  FROM BB_MEMBER_INFO
-	  WHERE MEMBER_NO = '1'
+	 WHERE MEMBER_NO  = #{ member_no }
+	  WHERE MEMBER_NO = #{no}
 </select>
 
  <select id="member_enrollDate" resultMap="MemDTO" parameterType="MemDTO">
 	SELECT 
 	       ENROLL_DATE
 	  FROM BB_MEMBER_INFO
-	 WHERE MEMBER_NO = '1'
+	 WHERE MEMBER_NO = #{ member_no }
 </select> -->
  
  <select id="member_name" resultMap="deptDTO" parameterType="DeptDTO">
@@ -414,7 +431,7 @@ SELECT
         FROM BB_MEMBER A
         JOIN BB_MODIFY_DEPT B ON ( A.MEMBER_NO = B.MEMBER_NO)
         JOIN BB_DEPT D ON( B.DEPT_CODE = D.DEPT_CODE)
-        WHERE A.MEMBER_NO = 1
+        WHERE A.MEMBER_NO = #{ member_no }
  </select>
 
 <select id="mainProfile" resultMap="deptDTO" parameterType="DeptDTO">
@@ -424,8 +441,8 @@ SELECT
         FROM BB_MEMBER A
 </select>
 <select id="selectMemberDept" resultMap="deptDTO" parameterType="DeptDTO">
-SELECT
-             D.DEPT_CODE
+       SELECT
+              D.DEPT_CODE
             , D.DEPT_NAME
             , D.DEPT_UPPER
             , D.DEPT_LEVEL
@@ -572,14 +589,14 @@ SELECT
 	                  FROM BB_BONUS C
 	                  JOIN BB_MEMBER D ON(C.MEMBER_NO = D.MEMBER_NO)
                       LEFT JOIN BB_APPROVE E ON(C.APPROVE_CODE = E.APPROVE_CODE)
-	                  WHERE D.MEMBER_NO = #{  member_no }
+	                  WHERE D.MEMBER_NO = #{ member_no }
 	                  ORDER BY MEMBER_NO DESC
 	                  ) B
 	                  ) A
 	                  WHERE RNUM = 1
          
 </select>
- <select id="licenseSelect" resultMap="licenseDTO" parameterType="LicenseDTO">
+  <select id="licenseSelect" resultMap="licenseDTO" parameterType="LicenseDTO">
     SELECT
     	  A.LICENSE_NO
         , A.LICENSE_DATE
@@ -626,7 +643,7 @@ SELECT
 	                    FROM BB_CERTIFICATE C
 	                  JOIN BB_MEMBER D ON(C.MEMBER_NO = D.MEMBER_NO)
                       LEFT JOIN BB_CERTIFICATE_CODE E ON(C.CERTIFICATE_CODE = E.CERTIFICATE_CODE)
-	                  WHERE D.MEMBER_NO = #{ memberno }
+	                  WHERE D.MEMBER_NO = #{ member_no }
 	                  ORDER BY MEMBER_NO DESC
 	                  ) B
 	                  ) A
@@ -673,10 +690,78 @@ SELECT
 	                  WHERE RNUM = 1 
           </select>  
          
-<!-- <select id="member_enroll_date" resultMap="memberInfoDTO" parameterType="MemberInfoDTO">
-SELECT
-	   ENROLL_DATE
-	  FROM BB_MEMBER_INFO
-	  WHERE MEMBER_NO = '1'
-</select> -->
+         
+      <select id="academic" resultMap="finalAcademicDTO" parameterType="FinalAcademicDTO">
+              SELECT
+    	  A.ACADEMIC_ABILITY_NO
+        , A.SCHOOL_NAME
+	    , A.SCHOOL_SUBJECT
+        , A.GRADUATE_DATE
+	    , A.GRADUATE_STATUS
+        , A.FINAL_GRADUATE_NAME
+	    , A.MEMBER_NO
+        , A.ACADEMIC_CODE
+        FROM (SELECT ROWNUM RNUM
+		       , B.ACADEMIC_ABILITY_NO
+               , B.SCHOOL_NAME
+	           , B.SCHOOL_SUBJECT
+               , B.GRADUATE_DATE
+	           , B.GRADUATE_STATUS
+               , B.FINAL_GRADUATE_NAME
+	           , B.MEMBER_NO
+               , B.ACADEMIC_CODE
+             FROM (SELECT  C.ACADEMIC_ABILITY_NO
+                         , C.SCHOOL_NAME
+	                     , C.SCHOOL_SUBJECT
+                         , C.GRADUATE_DATE
+                         , C.GRADUATE_STATUS
+                         , C.FINAL_GRADUATE_NAME
+	                     , D.MEMBER_NO
+                         , E.ACADEMIC_CODE
+	                    FROM BB_FINAL_ACADEMIC_ABILITY C
+	                  JOIN BB_MEMBER D ON(C.MEMBER_NO = D.MEMBER_NO)
+                      JOIN BB_FINAL_ACADEMIC E ON(C.ACADEMIC_CODE = E.ACADEMIC_CODE)
+                      WHERE D.MEMBER_NO = #{ member_no }
+	                  ORDER BY MEMBER_NO DESC
+	                  ) B
+	                  ) A
+	                  WHERE RNUM = 1 
+         
+        </select> 
+	         
+      <select id="familyDto" resultMap="familyDTO" parameterType="FamilyDTO">
+   SELECT
+    	  A.FAMILY_INFO_NO
+        , A.FAMILY_NAME
+	    , A.FAMILY_RELATION
+        , A.GENDER
+	    , A.FAMILY_BIRTHDAY
+        , A.FAMILY_STUDY
+	    , A.FAMILY_JOB
+        , A.MEMBER_NO
+        FROM (SELECT ROWNUM RNUM
+		       , B.FAMILY_INFO_NO
+               , B.FAMILY_NAME
+	           , B.FAMILY_RELATION
+               , B.GENDER
+	           , B.FAMILY_BIRTHDAY
+               , B.FAMILY_STUDY
+	           , B.FAMILY_JOB
+               , B.MEMBER_NO
+             FROM (SELECT  C.FAMILY_INFO_NO
+                         , C.FAMILY_NAME
+	                     , C.FAMILY_RELATION
+                         , C.GENDER
+                         , C.FAMILY_BIRTHDAY
+                         , C.FAMILY_STUDY
+	                     , C.FAMILY_JOB
+                         , D.MEMBER_NO
+	                    FROM BB_FAMILY_INFO C
+	                  JOIN BB_MEMBER D ON(C.MEMBER_NO = D.MEMBER_NO)
+                      WHERE D.MEMBER_NO = #{ member_no }
+	                  ORDER BY MEMBER_NO DESC
+	                  ) B
+	                  ) A
+	                  WHERE RNUM = 1
+		</select>
 </mapper>

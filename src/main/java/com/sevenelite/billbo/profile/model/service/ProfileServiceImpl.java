@@ -246,6 +246,24 @@ public class ProfileServiceImpl implements ProfileService{
 		return mapper.armyInsert(memberno);
 	}
 
+	@Override
+	public List<FinalAcademicDTO> academic(int memberno) {
+		// TODO Auto-generated method stub
+		return mapper.academic(memberno);
+	}
+
+	@Override
+	public List<FamilyDTO> familyDto(int memberno) {
+		// TODO Auto-generated method stub
+		return mapper.familyDto(memberno);
+	}
+
+	@Override
+	public List<MemberInfoDTO> modifyMember(int no) {
+		// 모달 이용한 멤버 정보 수정
+		return mapper.modifyMember();
+	}
+
 	
 }
 

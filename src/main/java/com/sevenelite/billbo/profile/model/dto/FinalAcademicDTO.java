@@ -8,20 +8,22 @@ public class FinalAcademicDTO {
 	private String name;
 	private String subject;
 	private java.sql.Date date;
-	private String status;
+	private String graduate_status;
+	private String graduate_name;
 	private int member_no;
 	private String code;
 	
 	public FinalAcademicDTO() {}
 
-	public FinalAcademicDTO(int ability_no, String name, String subject, Date date, String status, int member_no,
-			String code) {
+	public FinalAcademicDTO(int ability_no, String name, String subject, Date date, String graduate_status,
+			String graduate_name, int member_no, String code) {
 		super();
 		this.ability_no = ability_no;
 		this.name = name;
 		this.subject = subject;
 		this.date = date;
-		this.status = status;
+		this.graduate_status = graduate_status;
+		this.graduate_name = graduate_name;
 		this.member_no = member_no;
 		this.code = code;
 	}
@@ -29,7 +31,8 @@ public class FinalAcademicDTO {
 	@Override
 	public String toString() {
 		return "FinalAcademicDTO [ability_no=" + ability_no + ", name=" + name + ", subject=" + subject + ", date="
-				+ date + ", status=" + status + ", member_no=" + member_no + ", code=" + code + "]";
+				+ date + ", graduate_status=" + graduate_status + ", graduate_name=" + graduate_name + ", member_no="
+				+ member_no + ", code=" + code + "]";
 	}
 
 	public int getAbility_no() {
@@ -64,12 +67,20 @@ public class FinalAcademicDTO {
 		this.date = date;
 	}
 
-	public String getStatus() {
-		return status;
+	public String getGraduate_status() {
+		return graduate_status;
 	}
 
-	public void setStatus(String status) {
-		this.status = status;
+	public void setGraduate_status(String graduate_status) {
+		this.graduate_status = graduate_status;
+	}
+
+	public String getGraduate_name() {
+		return graduate_name;
+	}
+
+	public void setGraduate_name(String graduate_name) {
+		this.graduate_name = graduate_name;
 	}
 
 	public int getMember_no() {
@@ -87,6 +98,6 @@ public class FinalAcademicDTO {
 	public void setCode(String code) {
 		this.code = code;
 	}
-	
+
 	
 }

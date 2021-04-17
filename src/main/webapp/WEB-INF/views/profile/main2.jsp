@@ -1167,25 +1167,25 @@
 												<th class="certificate_code"><span class="title_txt">자격코드명</span></th>
 												</tr>
 											<tr class="num" data-id="">
-												<%-- <c:forEach var="certificateInsert" items="${ requestScope.certificateInsert }">  --%>
+												<c:forEach var="certificateInsert" items="${ requestScope.certificateInsert }"> 
 												
 												<td class="no">
-												 <input class="txt w_max" type="text" name="no" value="<%-- <c:out value="${ certificateInsert.no }"/> --%>">
+												 <input class="txt w_max" type="text" name="no" value="<c:out value="${ certificateInsert.no }"/>">
 														</td>
 												<td class="start_date">
-													<input class="txt w_max" type="date" name="start_date" value="<%-- <c:out value="${ certificateInsert.start_date }"/> --%>">
+													<input class="txt w_max" type="date" name="start_date" value="<c:out value="${ certificateInsert.start_date }"/>">
 													</td>
 												<td class="member_no">
-													<input class="txt w_max" type="date" name="end_date" value="<%-- <c:out value="${ certificateInsert.end_date }"/> --%>">				
+													<input class="txt w_max" type="date" name="end_date" value="<c:out value="${ certificateInsert.end_date }"/>">				
 														</td>
 												<td class="certificate_code">
-													 <input class="txt w_max" type="text" name="member_no" value="<%-- <c:out value="${ certificateInsert.member_no }"/> --%>">
+													 <input class="txt w_max" type="text" name="member_no" value="<c:out value="${ certificateInsert.member_no }"/>">
 													</td>
 												<td class="certificate_code">
-													 <input class="txt w_max" type="text" name="certificate_code" value="<%-- <c:out value="${ certificateInsert.certificate_code }"/> --%>">
+													 <input class="txt w_max" type="text" name="certificate_code" value="<c:out value="${ certificateInsert.certificate_code }"/>">
 													</td>
 												
-											<%-- </c:forEach> --%>
+											</c:forEach>
 											</tr>
 										</tbody></table>
 										<button class="btn_major" data-role="button" id="submit">저장</button>
