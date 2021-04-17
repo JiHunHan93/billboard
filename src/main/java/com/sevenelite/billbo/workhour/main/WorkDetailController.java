@@ -20,6 +20,7 @@ import
 org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -37,35 +38,7 @@ public class WorkDetailController {
 
 	@Autowired public WorkDetailController(WorkStatusService service) {
 		this.workStatusService = service; }
-	//출근 현황 보기
-	@GetMapping("work/status") 
-	public String workDetailController(StatusAndWorkDTO workStatusDTO, Principal principal,Model model) {
-
-		List<StatusAndWorkDTO> statusList = workStatusService.selectAllStatus();
-		
-		for(StatusAndWorkDTO testList : statusList) {
-			System.out.println(statusList);
-		}
-//		System.out.println(statusList.get(0).getCommute());
-//		SimpleDateFormat dateF = new SimpleDateFormat("hh:mm");
-//		
-//		String date = dateF.format(statusList.get(0).getCommute());
-//		
-//		System.out.println(date);
-//		
-//		String StrDate = 
-		
-//		statusList.get(0).setCommute(date);
-		
-		model.addAttribute("statusList", statusList);
-		principal.getName();
-		System.out.println("관리자 : " + principal);
-		System.out.println("==================================="); 
-																												
-																															
-		return "workhour/workDetail";
-
-	} 
+	
 	
 	   /* Controller에서 로그인 정보 가져오기 */
 	   @GetMapping("/work/detail")

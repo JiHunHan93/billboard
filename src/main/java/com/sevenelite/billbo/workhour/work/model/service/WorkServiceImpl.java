@@ -28,5 +28,13 @@ com.sevenelite.billbo.workhour.work.model.dto.WorkDTO;
 	public boolean insertWorkInfo(WorkDTO workInfo) {
 		return dao.insertWorkInfo(workInfo);
 	}
+	@Override
+	public java.sql.Date selectCommute() {
+		return dao.selectCommute();
+	}
+	@Override
+	public Date selectlWork() {
+		return dao.selectlwork();
+	}
 }
 

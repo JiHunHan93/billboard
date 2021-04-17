@@ -15,33 +15,33 @@
         <title>BB-사원조회 및 부서조회</title>
 		
 		<!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="../resources/hrtemp/img/favicon.png">
+        <link rel="shortcut icon" type="image/x-icon" href="./resources/hrtemp/img/favicon.png">
 		
 		<!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="../resources/hrtemp/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./resources/hrtemp/css/bootstrap.min.css">
 		
 		<!-- Fontawesome CSS -->
-        <link rel="stylesheet" href="../resources/hrtemp/css/font-awesome.min.css">
+        <link rel="stylesheet" href="./resources/hrtemp/css/font-awesome.min.css">
 		
 		<!-- Lineawesome CSS -->
-        <link rel="stylesheet" href="../resources/hrtemp/css/line-awesome.min.css">
+        <link rel="stylesheet" href="./resources/hrtemp/css/line-awesome.min.css">
 		
 		<!-- Datatable CSS -->
-		<link rel="stylesheet" href="../resources/hrtemp/css/dataTables.bootstrap4.min.css">
+		<link rel="stylesheet" href="./resources/hrtemp/css/dataTables.bootstrap4.min.css">
 		
 		<!-- Select2 CSS -->
-		<link rel="stylesheet" href="../resources/hrtemp/css/select2.min.css">
+		<link rel="stylesheet" href="./resources/hrtemp/css/select2.min.css">
 		
 		<!-- Datetimepicker CSS -->
-		<link rel="stylesheet" href="../resources/hrtemp/css/bootstrap-datetimepicker.min.css">
+		<link rel="stylesheet" href="./resources/hrtemp/css/bootstrap-datetimepicker.min.css">
 		
 		<!-- Main CSS -->
-        <link rel="stylesheet" href="../resources/hrtemp/css/style.css">
+        <link rel="stylesheet" href="./resources/hrtemp/css/style.css">
 		
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
-			<script src="../resources/hrtemp/js/html5shiv.min.js"></script>
-			<script src="../resources/hrtemp/js/respond.min.js"></script>
+			<script src="./resources/hrtemp/js/html5shiv.min.js"></script>
+			<script src="./resources/hrtemp/js/respond.min.js"></script>
 		<![endif]-->
     </head>
 <body>
@@ -900,9 +900,10 @@
 							</div>
 							<div class="row">
 								<div class="col-md-6 d-flex">
+									<c:forEach var="studyInfo" items="${requestScope.studyInfo }">
 									<div class="card profile-box flex-fill">
 										<div class="card-body">
-											<h3 class="card-title">Education Informations <a href="#" class="edit-icon" data-toggle="modal" data-target="#education_info"><i class="fa fa-pencil"></i></a></h3>
+											<h3 class="card-title">최종학력 정보 <a href="#" class="edit-icon" data-toggle="modal" data-target="#education_info"><i class="fa fa-pencil"></i></a></h3>
 											<div class="experience-box">
 												<ul class="experience-list">
 													<li>
@@ -911,9 +912,9 @@
 														</div>
 														<div class="experience-content">
 															<div class="timeline-content">
-																<a href="#/" class="name">International College of Arts and Science (UG)</a>
-																<div>Bsc Computer Science</div>
-																<span class="time">2000 - 2003</span>
+																<a href="#/" class="name"><c:out value="${studyInfo.schoolName }"/></a>
+																<div><c:out value="${studyInfo.schoolSubject }"/></div>
+																<span class="time"><c:out value="${studyInfo.graduateDate }"/></span>
 															</div>
 														</div>
 													</li>
@@ -923,9 +924,9 @@
 														</div>
 														<div class="experience-content">
 															<div class="timeline-content">
-																<a href="#/" class="name">International College of Arts and Science (PG)</a>
-																<div>Msc Computer Science</div>
-																<span class="time">2000 - 2003</span>
+																<a href="#/" class="name">한국고등학교</a>
+																<div>이공계열</div>
+																<span class="time">2019 - 2021</span>
 															</div>
 														</div>
 													</li>
@@ -933,11 +934,13 @@
 											</div>
 										</div>
 									</div>
+									</c:forEach>
 								</div>
 								<div class="col-md-6 d-flex">
 									<div class="card profile-box flex-fill">
+										<c:forEach var="carrerInfo" items="${requestScope.carrerInfo }">
 										<div class="card-body">
-											<h3 class="card-title">Experience <a href="#" class="edit-icon" data-toggle="modal" data-target="#experience_info"><i class="fa fa-pencil"></i></a></h3>
+											<h3 class="card-title">경력 <a href="#" class="edit-icon" data-toggle="modal" data-target="#experience_info"><i class="fa fa-pencil"></i></a></h3>
 											<div class="experience-box">
 												<ul class="experience-list">
 													<li>
@@ -946,8 +949,8 @@
 														</div>
 														<div class="experience-content">
 															<div class="timeline-content">
-																<a href="#/" class="name">Web Designer at Zen Corporation</a>
-																<span class="time">Jan 2013 - Present (5 years 2 months)</span>
+																<a href="#/" class="name"><c:out value="${carrerInfo.carrerPosition }"/></a>
+																<span class="time"><c:out value="${carrerInfo.careerStart }"/></span>
 															</div>
 														</div>
 													</li>
@@ -957,8 +960,8 @@
 														</div>
 														<div class="experience-content">
 															<div class="timeline-content">
-																<a href="#/" class="name">Web Designer at Ron-tech</a>
-																<span class="time">Jan 2013 - Present (5 years 2 months)</span>
+																<a href="#/" class="name">더조은아카데미</a>
+																<span class="time">2020-11-05</span>
 															</div>
 														</div>
 													</li>
@@ -968,14 +971,15 @@
 														</div>
 														<div class="experience-content">
 															<div class="timeline-content">
-																<a href="#/" class="name">Web Designer at Dalt Technology</a>
-																<span class="time">Jan 2013 - Present (5 years 2 months)</span>
+																<a href="#/" class="name">학생</a>
+																<span class="time">2020-07-17</span>
 															</div>
 														</div>
 													</li>
 												</ul>
 											</div>
 										</div>
+										</c:forEach>
 									</div>
 								</div>
 							</div>
@@ -2080,28 +2084,28 @@
 		
 
 		<!-- jQuery -->
-        <script src="../resources/hrtemp/js/jquery-3.5.1.min.js"></script>
+        <script src="./resources/hrtemp/js/jquery-3.5.1.min.js"></script>
 		
 		<!-- Bootstrap Core JS -->
-        <script src="../resources/hrtemp/js/popper.min.js"></script>
-        <script src="../resources/hrtemp/js/bootstrap.min.js"></script>
+        <script src="./resources/hrtemp/js/popper.min.js"></script>
+        <script src="./resources/hrtemp/js/bootstrap.min.js"></script>
 		
 		<!-- Slimscroll JS -->
-		<script src="../resources/hrtemp/js/jquery.slimscroll.min.js"></script>
+		<script src="./resources/hrtemp/js/jquery.slimscroll.min.js"></script>
 		
 		<!-- Select2 JS -->
-		<script src="../resources/hrtemp/js/select2.min.js"></script>
+		<script src="./resources/hrtemp/js/select2.min.js"></script>
 		
 		<!-- Datetimepicker JS -->
-		<script src="../resources/hrtemp/js/moment.min.js"></script>
-		<script src="../resources/hrtemp/js/bootstrap-datetimepicker.min.js"></script>
+		<script src="./resources/hrtemp/js/moment.min.js"></script>
+		<script src="./resources/hrtemp/js/bootstrap-datetimepicker.min.js"></script>
 		
 		<!-- Datatable JS -->
-		<script src="../resources/hrtemp/js/jquery.dataTables.min.js"></script>
-		<script src="../resources/hrtemp/js/dataTables.bootstrap4.min.js"></script>
+		<script src="./resources/hrtemp/js/jquery.dataTables.min.js"></script>
+		<script src="./resources/hrtemp/js/dataTables.bootstrap4.min.js"></script>
 		
 		<!-- Custom JS -->
-		<script src="../resources/hrtemp/js/app.js"></script>
+		<script src="./resources/hrtemp/js/app.js"></script>
 		
     </body>
 </html>

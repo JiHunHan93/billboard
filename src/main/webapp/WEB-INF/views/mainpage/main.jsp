@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="s" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri="http://www.springframework.org/security/tags" prefix="s"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -64,9 +64,9 @@
 
 			<!-- Logo -->
 			<div class="header-left">
-				<a href="${pageContext.servletContext.contextPath}" class="logo"> <img
-					src="/billbo/resources/hrtemp/img/Logo.png" width="40" height="40"
-					alt="">
+				<a href="${pageContext.servletContext.contextPath}" class="logo">
+					<img src="/billbo/resources/hrtemp/img/Logo.png" width="40"
+					height="40" alt="">
 				</a>
 			</div>
 			<!-- /Logo -->
@@ -129,6 +129,7 @@
 				<!-- /Flag -->
 
 				<!-- Notifications -->
+
 				<li class="nav-item dropdown"><a href="#"
 					class="dropdown-toggle nav-link" data-toggle="dropdown"> <i
 						class="fa fa-bell-o"></i> <span class="badge badge-pill">3</span>
@@ -228,6 +229,7 @@
 						</div>
 						<div class="topnav-dropdown-footer">
 							<a href="activities.html">View all Notifications</a>
+
 						</div>
 					</div></li>
 				<!-- /Notifications -->
@@ -244,7 +246,8 @@
 						</div>
 						<div class="noti-content">
 							<ul class="notification-list">
-								<li class="notification-message"><a href="${pageContext.servletContext.contextPath}/apps/chat">
+								<li class="notification-message"><a
+									href="${pageContext.servletContext.contextPath}/apps/chat">
 										<div class="list-item">
 											<div class="list-left">
 												<span class="avatar"> <img alt=""
@@ -260,7 +263,8 @@
 											</div>
 										</div>
 								</a></li>
-								<li class="notification-message"><a href="${pageContext.servletContext.contextPath}/apps/chat">
+								<li class="notification-message"><a
+									href="${pageContext.servletContext.contextPath}/apps/chat">
 										<div class="list-item">
 											<div class="list-left">
 												<span class="avatar"> <img alt=""
@@ -276,7 +280,8 @@
 											</div>
 										</div>
 								</a></li>
-								<li class="notification-message"><a href="${pageContext.servletContext.contextPath}/apps/chat">
+								<li class="notification-message"><a
+									href="${pageContext.servletContext.contextPath}/apps/chat">
 										<div class="list-item">
 											<div class="list-left">
 												<span class="avatar"> <img alt=""
@@ -292,7 +297,8 @@
 											</div>
 										</div>
 								</a></li>
-								<li class="notification-message"><a href="${pageContext.servletContext.contextPath}/apps/chat">
+								<li class="notification-message"><a
+									href="${pageContext.servletContext.contextPath}/apps/chat">
 										<div class="list-item">
 											<div class="list-left">
 												<span class="avatar"> <img alt=""
@@ -308,7 +314,8 @@
 											</div>
 										</div>
 								</a></li>
-								<li class="notification-message"><a href="${pageContext.servletContext.contextPath}/apps/chat">
+								<li class="notification-message"><a
+									href="${pageContext.servletContext.contextPath}/apps/chat">
 										<div class="list-item">
 											<div class="list-left">
 												<span class="avatar"> <img alt=""
@@ -372,18 +379,18 @@
 								<span>Main</span>
 							</li> -->
 						<!-- 사이드바 서브메뉴 안쓰는 방향으로 수정 -->
-						<li><a href="${pageContext.servletContext.contextPath}" class="sidebar-default">
-								<i class="la la-home sidebar-icon"></i> <!-- <span class="menu-arrow"></span> -->
-								<span class="sidebar-text">Home</span>
+						<li><a href="${pageContext.servletContext.contextPath}"
+							class="sidebar-default"> <i class="la la-home sidebar-icon"></i>
+								<!-- <span class="menu-arrow"></span> --> <span
+								class="sidebar-text">Home</span>
 						</a> <!-- <ul style="display: none;">
 									<li><a href="index.html">Admin Dashboard</a></li>
 									<li><a class="active" href="employee-dashboard.html">Employee Dashboard</a></li>
 								</ul> --></li>
 						<div class="sidebar-line"></div>
-						<li>
-						<a href="${pageContext.servletContext.contextPath}/apps" class="sidebar-default">
-								<i class="la la-cube sidebar-icon"></i> <span
-								class="sidebar-text"> Apps</span> <!-- <span class="menu-arrow"></span> -->
+						<li><a href="${pageContext.servletContext.contextPath}/apps"
+							class="sidebar-default"> <i class="la la-cube sidebar-icon"></i>
+								<span class="sidebar-text"> Apps</span> <!-- <span class="menu-arrow"></span> -->
 						</a> <!-- <ul style="display: none;">
 									<li><a href="chat.html">Chat</a></li>
 									<li class="submenu">
@@ -404,7 +411,8 @@
 						<!-- <li class="menu-title"> 
 								<span>Apps</span>
 							</li> -->
-						<li><a href="${pageContext.servletContext.contextPath}/employee"
+						<li><a
+							href="${pageContext.servletContext.contextPath}/employee"
 							class="noti-dot sidebar-default"> <i
 								class="la la-user sidebar-icon"></i> <span class="sidebar-text">
 									Employees</span> <!-- <span class="menu-arrow"></span> -->
@@ -422,25 +430,31 @@
 									<li><a href="overtime.html">Overtime</a></li>
 								</ul> --></li>
 						<div class="sidebar-line"></div>
-						<li><a href="${pageContext.servletContext.contextPath}/attendance" class="sidebar-default"> <i
+						<li><a
+							href="${pageContext.servletContext.contextPath}/attendance"
+							class="sidebar-default"> <i
 								class="la la-briefcase sidebar-icon"></i> <span
 								class="sidebar-text">Attendance</span>
 						</a></li>
 						<div class="sidebar-line"></div>
-						<li><a href="${pageContext.servletContext.contextPath}/admin" class="sidebar-default">
-								<i class="la la-key sidebar-icon"></i> <span
-								class="sidebar-text">Admin</span> <!-- <span class="menu-arrow"></span> -->
+						<li><a href="${pageContext.servletContext.contextPath}/admin"
+							class="sidebar-default"> <i class="la la-key sidebar-icon"></i>
+								<span class="sidebar-text">Admin</span> <!-- <span class="menu-arrow"></span> -->
 						</a> <!-- <ul style="display: none;">
 									<li><a href="projects.html">Projects</a></li>
 									<li><a href="tasks.html">Tasks</a></li>
 									<li><a href="task-board.html">Task Board</a></li>	
 								</ul> --></li>
 						<div class="sidebar-line"></div>
-						<li><a href="${pageContext.servletContext.contextPath}/calender/main" class="sidebar-default"> <i
-								class="la la-money sidebar-icon"></i> <span class="sidebar-text">Payroll</span>
+						<li><a
+							href="${pageContext.servletContext.contextPath}/calender/main"
+							class="sidebar-default"> <i class="la la-money sidebar-icon"></i>
+								<span class="sidebar-text">Payroll</span>
 						</a></li>
 						<div class="sidebar-line"></div>
-						<li><a href="${pageContext.servletContext.contextPath}/information" class="sidebar-default"> <i
+						<li><a
+							href="${pageContext.servletContext.contextPath}/information"
+							class="sidebar-default"> <i
 								class="la la-building sidebar-icon"></i> <span
 								class="sidebar-text">Information</span>
 						</a></li>
@@ -641,6 +655,7 @@
 		<div class="page-wrapper">
 
 			<!-- Page Content -->
+
 			<div class="content container-fluid">
 				<div class="row">
 					<div class="col-md-12">
@@ -652,7 +667,8 @@
 							<div class="welcome-det">
 								<h3>
 									<!-- 해당 사원명 -->
-									${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }님 환영합니다.
+									${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }님
+									환영합니다.
 								</h3>
 								<p>
 									<!-- 연월일 -->
@@ -662,7 +678,152 @@
 						</div>
 					</div>
 				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="card punch-status">
+							<div class="card-body">
+								<h5 class="card-title">
+									Timesheet <small class="text-muted">11 Mar 2019</small>
+								</h5>
+								<div class="punch-det">
+									<h6>Punch In at</h6>
+									<p>Wed, 11th Mar 2019 10.00 AM</p>
+								</div>
+								<div class="punch-info">
+									<div class="punch-hours">
+										<span>3.45 hrs</span>
+									</div>
+								</div>
+								<form name="update"
+									action="${pageContext.servletContext.contextPath }/work/regist"
+									method="post">
+									<button class="btn btn-dark btn-lg" style="margin-left: 107px">출근
+										등록</button>
 
+									<form name="update"
+										action="${pageContext.servletContext.contextPath }/work/update"
+										method="post">
+
+										<button class="btn btn-success btn-lg"
+											style="margin-left: 25px">퇴근 등록</button>
+									</form>
+								</form>
+								<div class="statistics">
+									<div class="row">
+										<div class="col-md-6 col-6 text-center">
+										</div>
+										<div class="col-md-6 col-6 text-center">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="card att-statistics">
+							<div class="card-body">
+								<h5 class="card-title">Statistics</h5>
+								<div class="stats-list">
+									<div class="stats-info">
+										<p>
+											Today <strong>3.45 <small>/ 8 hrs</small></strong>
+										</p>
+										<div class="progress">
+											<div class="progress-bar bg-primary" role="progressbar"
+												style="width: 31%" aria-valuenow="31" aria-valuemin="0"
+												aria-valuemax="100"></div>
+										</div>
+									</div>
+									<div class="stats-info">
+										<p>
+											This Week <strong>28 <small>/ 40 hrs</small></strong>
+										</p>
+										<div class="progress">
+											<div class="progress-bar bg-warning" role="progressbar"
+												style="width: 31%" aria-valuenow="31" aria-valuemin="0"
+												aria-valuemax="100"></div>
+										</div>
+									</div>
+									<div class="stats-info">
+										<p>
+											This Month <strong>90 <small>/ 160 hrs</small></strong>
+										</p>
+										<div class="progress">
+											<div class="progress-bar bg-success" role="progressbar"
+												style="width: 62%" aria-valuenow="62" aria-valuemin="0"
+												aria-valuemax="100"></div>
+										</div>
+									</div>
+									<div class="stats-info">
+										<p>
+											Remaining <strong>90 <small>/ 160 hrs</small></strong>
+										</p>
+										<div class="progress">
+											<div class="progress-bar bg-danger" role="progressbar"
+												style="width: 62%" aria-valuenow="62" aria-valuemin="0"
+												aria-valuemax="100"></div>
+										</div>
+									</div>
+									<div class="stats-info">
+										<p>
+											Overtime <strong>4</strong>
+										</p>
+										<div class="progress">
+											<div class="progress-bar bg-info" role="progressbar"
+												style="width: 22%" aria-valuenow="22" aria-valuemin="0"
+												aria-valuemax="100"></div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-4">
+						<div class="card recent-activity">
+							<div class="card-body">
+								<h5 class="card-title">Today Activity</h5>
+								<ul class="res-activity-list">
+									<li>
+										<p class="mb-0">Punch In at</p>
+										<p class="res-activity-time">
+											<i class="fa fa-clock-o"></i> 10.00 AM.
+										</p>
+									</li>
+									<li>
+										<p class="mb-0">Punch Out at</p>
+										<p class="res-activity-time">
+											<i class="fa fa-clock-o"></i> 11.00 AM.
+										</p>
+									</li>
+									<li>
+										<p class="mb-0">Punch In at</p>
+										<p class="res-activity-time">
+											<i class="fa fa-clock-o"></i> 11.15 AM.
+										</p>
+									</li>
+									<li>
+										<p class="mb-0">Punch Out at</p>
+										<p class="res-activity-time">
+											<i class="fa fa-clock-o"></i> 1.30 PM.
+										</p>
+									</li>
+									<li>
+										<p class="mb-0">Punch In at</p>
+										<p class="res-activity-time">
+											<i class="fa fa-clock-o"></i> 2.00 PM.
+										</p>
+									</li>
+									<li>
+										<p class="mb-0">Punch Out at</p>
+										<p class="res-activity-time">
+											<i class="fa fa-clock-o"></i> 7.30 PM.
+										</p>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
 				<div class="row">
 					<div class="col-lg-8 col-md-8">
 						<section class="dash-section">
@@ -1031,5 +1192,7 @@
 			$(".modal-sub-img2").toggleClass("on");
 		})
 	})
+
+	
 </script>
 </html>

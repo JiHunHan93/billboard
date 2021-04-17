@@ -693,10 +693,11 @@
 												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">전자결재 등록</div></i> -->
 												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">전자결재 조회</div></i> -->
 												<!-- Attendance 부서 및 전사관리 -->
-												<p class="category-text">부서 및 전사조회</p>
+												<p class="category-text">전사조회</p>
 												<i class="las la-users category-icon"></i>
-												<i class="fas fa-circle category-dot"><div class="category-sub-text">부서조회</div></i>
-												<i class="fas fa-circle category-dot"><div class="category-sub-text">전사조회</div></i>
+												<!-- <i class="fas fa-circle category-dot"><a class="category-sub-text">부서조회</a></i><br> -->
+												<i class="fas fa-circle category-dot"><a class="category-sub-text" href="${pageContext.servletContext.contextPath}/selectList">전사조회</a></i>
+												<br><br><br>	
 												<!-- Payroll 개인급여 확인 -->
 												<!-- <i class="las la-user-plus category-icon"></i> -->
 												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">급여 명세서 확인</div></i> -->
