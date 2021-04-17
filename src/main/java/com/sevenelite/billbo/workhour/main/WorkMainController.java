@@ -1,9 +1,7 @@
 package com.sevenelite.billbo.workhour.main;
 import java.security.Principal;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,30 +12,67 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.sevenelite.billbo.member.model.dto.UserDetailsVO;
+import com.sevenelite.billbo.workhour.work.model.dto.StatusAndWorkDTO;
 import com.sevenelite.billbo.workhour.work.model.dto.WorkDTO;
 import com.sevenelite.billbo.workhour.work.model.service.WorkService;
+import com.sevenelite.billbo.workhour.work.model.service.WorkStatusService;
 
 @Controller
 @RequestMapping("/") public class WorkMainController {
 
 	private final WorkService workService;
+	private WorkStatusService workStatusService;
+	
+	
 
-	@Autowired public WorkMainController(WorkService workService) {
-		this.workService = workService; }
+	@Autowired WorkMainController(WorkService workService, WorkStatusService workStatusService) {
+		this.workService = workService;
+		this.workStatusService = workStatusService;
+	
+
+	}
 
 	@GetMapping("work")
-	public String workController(Model model,Principal principal,Authentication authentication ) {
+	public String workController(Model model,Principal principal,Authentication authentication) {
+		
+		
+		//출근 현황 보기
+
+			List<StatusAndWorkDTO> statusList = workStatusService.selectAllStatus();
 			
-			Calendar calendar = new GregorianCalendar();
+			for(StatusAndWorkDTO testList : statusList) {
+				System.out.println(statusList);
+			}
 			
-			int hours = calendar.get(Calendar.HOUR_OF_DAY);
-			int miniutes = calendar.get(Calendar.MINUTE);
-			int seconds = calendar.get(Calendar.SECOND);
+			model.addAttribute("statusList", statusList);
+			principal.getName();
+			System.out.println("관리자 : " + principal);
+			System.out.println("==================================="); 
+																													
+																																
+
 			
+		/*
+		 * Calendar workHour = new GregorianCalendar();
+		 * 
+		 * int workHours = workHour.get(Calendar.HOUR_OF_DAY); int workMinutes =
+		 * workHour.get(Calendar.MINUTE); int workSeconds =
+		 * workHour.get(Calendar.SECOND);
+		 * 
+		 * Calendar leaveWork = new GregorianCalendar();
+		 * 
+		 * int leaveHours = leaveWork.get(Calendar.HOUR_OF_DAY); int leaveMinutes =
+		 * leaveWork.get(Calendar.MINUTE); int leaveSeconds =
+		 * leaveWork.get(Calendar.SECOND);
+		 * 
+		 * int workTimeHour = leaveHours - workHours; int workTimeMinute = leaveMinutes
+		 * - workMinutes; int workTimeSecond = leaveSeconds - workSeconds;
+		 */
+			
+//			System.out.println("근무시간 : " + workTimeHour + workTimeMinute + workTimeSecond);
 			
 			UserDetailsVO userDetails = (UserDetailsVO) authentication.getPrincipal();
 			int userno = userDetails.getMemberno();
-			
 			
 			System.out.println("관리자 : " + principal);
 			
@@ -53,17 +88,15 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkService;
 			System.out.println("commute : " + commuteTime);
 			System.out.println("lwork : " + leaveTime);
 			
+			System.out.println("commute");
 			
-			//출근시간 
+			//출근시간 스플릿
 	         String commuteTimeFormat = format.format(commute);
 	         String[] splitCommute = commuteTimeFormat.split(":");
 	         int hour = Integer.parseInt(splitCommute[0]);
 	         int minute = Integer.parseInt(splitCommute[1]);
 	         int second = Integer.parseInt(splitCommute[2]);
-	         //출근시간 스플릿
-	         System.out.println("시간::::: " + hour);
-	         System.out.println("분:::::::" + minute);
-	         System.out.println("초 ::::::" + second);
+
 	         //퇴근시간
 	         String leaveTimeFormat = format.format(lwork);
 	         String[] splitLeave = leaveTimeFormat.split(":");
@@ -71,8 +104,10 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkService;
 	         int lminute = Integer.parseInt(splitLeave[1]);
 	         int lsecond = Integer.parseInt(splitLeave[2]);
 	         
+	         Date curTime = new Date(System.currentTimeMillis());
+	         
 	         if(hour > 8) {
-	        	 int overH = hour - 8;
+	        	 int overH = hour;
 	        	 int overM = minute;
 	        	 int overS = second;
 	        	 String overResult = overH + ":" + overM + ":" + overS;
@@ -85,9 +120,7 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkService;
 	         
 	         String timeStr = hour + ":" + minute + ":" + second;
 	         System.out.println(timeStr);
-	         	
-	         
-	         
+	         	      
 	         //근무시간 
 	         int workH = lhour - hour;         
 	         int workM = lminute - minute;
@@ -98,14 +131,16 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkService;
 	         
 	         //지각 횟수 
 	         int lateCount = 0;
-	         
+	         int tenHour = 10;
 	         int workCount = 22;
 	         
-	         if(10 <= hour) {
+	         if(tenHour <= hour) {
 	        	 if(hour > 10) {
+	        		 lateCount++;
 	        		 System.out.println("지각");	        		 
 	        	 } else if(hour == 10 && minute > 0) {
-	        		 System.out.println("지각");	        		 
+	        		 System.out.println("지각");
+	        		 lateCount++;
 	        	 } else if(minute == 0 && second > 0) {
 	        		 System.out.println("지각");	        		 
 	        	 } else {
@@ -129,10 +164,11 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkService;
 	        	
 	        }
 	         
-	         System.out.println("workInfo : " + workInfo);
-	         
-			return "workhour/workList";
+	     																															
+	        return "workhour/workList";
 
-	}
+		} 
+	 } 
 	
-}
+	     	
+	
