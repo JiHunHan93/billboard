@@ -68,7 +68,7 @@ public class ApprovaldocumentController {
 		System.out.println("2. membername : " + userDetails.getMembername());
 		System.out.println("3. memberno : " + userDetails.getMemberno());
 		
-		return "approval/document/1004";
+		return "approval/test";
 	}
 	
 	@PostMapping(value="1004")
