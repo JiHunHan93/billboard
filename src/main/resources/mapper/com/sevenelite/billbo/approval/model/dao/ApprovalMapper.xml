@@ -20,6 +20,29 @@
 		<result property="modifySpotDate" column="MODIFY_SPOT_DATE"/>
 	</resultMap>
 	
+	<resultMap type="com.sevenelite.billbo.approval.model.dto.FormVacationDTO" id="vacation">
+		<id property="no" column="FORM_VACATION_NO"/>
+		<result property="annualType" column="ANNUAL_TYPE"/>
+		<result property="startDate" column="VACATION_START"/>
+		<result property="endDate" column="VACATION_END"/>
+		<result property="halfDayPoint" column="HALF_DAY_POINT"/>
+		<result property="annualCount" column="USED_ANNUAL_COUNT"/>
+		<result property="annualReason" column="USED_ANNUAL_REASON"/>
+		<result property="paymentNo" column="PAYMENT_NO"/>
+		<result property="memberno" column="MEMBER_NO"/>
+	</resultMap>
+
+	<resultMap type="com.sevenelite.billbo.approval.model.dto.ApproDraftingDTO" id="draft">
+		<id property="draftNo" column="DRAFTING_NO"/>
+		<result property="draftDateStart" column="DRAFTING_DATE"/>
+		<result property="draftDateComplete" column="DRAFTING_COMPLETE_DATE"/>
+		<result property="completeStatus" column="DRAFTING_COMPLETE_STATUS"/>
+		<result property="docuName" column="DRAFTING_DOCUMENTS_NAME"/>
+		<result property="docuContents" column="DRAFTING_DOCUMENTS_CONTENTS"/>
+		<result property="emergency" column="DRAFTING_EMERGENCY"/>
+		<result property="memberNo" column="MEMBER_NO"/>
+		<result property="paymentNo" column="PAYMENT_NO"/>
+	</resultMap>
 	
 	<select id="selectLoginDept" resultMap="approDept" parameterType="_int">
         SELECT
@@ -71,5 +94,45 @@
          WHERE RNUM = 1
 	</select>
 	
-	
+	<insert id="insertVacation" parameterType="FormVacationDTO">
+        INSERT 
+          INTO BB_FORM_VACATION A
+        (
+          A.FORM_VACATION_NO, A.ANNUAL_TYPE, A.VACATION_START, A.VACATION_END, A.HALF_DAY_POINT, A.USED_ANNUAL_COUNT, A.USED_ANNUAL_REASON, A.PAYMENT_NO, A.MEMBER_NO
+        ) 
+		VALUES
+		(
+		  SEQ_VACATION_NO.NEXTVAL, #{ annualType }, #{ startDate }, #{ endDate }, #{ halfDayPoint }, #{ annualCount }, #{ annualReason }, #{ paymentNo }, #{ memberno }
+		)
+	</insert> 
+
+	<insert id="insertDrafting" parameterType="ApproDraftingDTO">
+        INSERT 
+          INTO BB_DRAFTING A
+        (
+          A.DRAFTING_NO, A.DRAFTING_DATE, A.DRAFTING_COMPLETE_STATUS, A.DRAFTING_DOCUMENTS_NAME, A.DRAFTING_DOCUMENTS_CONTENTS, A.DRAFTING_EMERGENCY, A.MEMBER_NO, A.PAYMENT_NO
+        ) 
+		VALUES
+		(
+		  SEQ_DRAFTING_NO.NEXTVAL, #{ draftDateStart }, #{ completeStatus }, #{ docuName }, #{ docuContents }, #{ emergency }, #{ memberNo }, #{ paymentNo }
+		)
+	</insert>
+
+	<insert id="insertLineMem" parameterType="ApproLineMemDTO">
+		<selectKey keyProperty="draftNo" order="BEFORE" resultType="_int">
+            SELECT
+                   SEQ_DRAFTING_NO.CURRVAL
+              FROM DUAL    
+		</selectKey>
+        INSERT 
+          INTO BB_LINE_MEM A
+        (
+          A.LINE_NO, A.DRAFTING_NO, A.LINE_BODY, A.LINE_PKINDS, A.LINE_THUMBNAIL, A.LINE_KINDS, A.DEPT_CODE, A.SPOT_CODE
+        ) 
+		VALUES
+		(
+		  SEQ_LINE_NO.NEXTVAL, #{ draftNo }, #{ lineBody }, #{ pKinds }, #{ thumbnail }, #{ lineKinds }, #{ deptCode }, #{ spotCode }
+		)
+	</insert>
+
 </mapper>

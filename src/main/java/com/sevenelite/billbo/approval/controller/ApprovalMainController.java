@@ -12,6 +12,8 @@ public class ApprovalMainController {
 	@GetMapping(value={"main", "/"})
 	public String registPage() {
 		
+		System.out.println("1004 후 여기로 오나? : ");
+		
 		return "approval/main";
 	}
 	
