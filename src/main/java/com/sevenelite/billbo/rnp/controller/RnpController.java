@@ -36,6 +36,7 @@ public class RnpController {
 		List<RnpDTO> rnpList = rnpService.selectRnp();
 		model.addAttribute("rnpList", rnpList);
 		
+//		return "performance/Performance";
 		return "rnp/Rnp";
 	}
 	

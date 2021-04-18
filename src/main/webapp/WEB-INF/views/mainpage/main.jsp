@@ -2,6 +2,12 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="s"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="java.util.Date" %>
+<%@ page import="java.text.SimpleDateFormat" %>
+<%
+	Date nowTime = new Date();
+	SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm:ss");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -683,31 +689,21 @@
 						<div class="card punch-status">
 							<div class="card-body">
 								<h5 class="card-title">
-									Timesheet <small class="text-muted">11 Mar 2019</small>
 								</h5>
 								<div class="punch-det">
-									<h6>Punch In at</h6>
-									<p>Wed, 11th Mar 2019 10.00 AM</p>
+									<p><%= sf.format(nowTime) %></p>
 								</div>
 								<div class="punch-info">
 									<div class="punch-hours">
-										<span>3.45 hrs</span>
+										<span><strong>근무시간</strong></span>
 									</div>
 								</div>
-								<form name="update"
-									action="${pageContext.servletContext.contextPath }/work/regist"
-									method="post">
-									<button class="btn btn-dark btn-lg" style="margin-left: 107px">출근
-										등록</button>
-
-									<form name="update"
-										action="${pageContext.servletContext.contextPath }/work/update"
-										method="post">
-
-										<button class="btn btn-success btn-lg"
-											style="margin-left: 25px">퇴근 등록</button>
+								<form name="update" action="${pageContext.servletContext.contextPath }/work/regist" method="post">
+									<button class="btn btn-dark btn-lg" style="margin-left: 107px">출근등록</button>
+										</form>
+									<form name="update" action="${pageContext.servletContext.contextPath }/work/update"method="post">
+										<button class="btn btn-success btn-lg" style="margin-left: 250px; margin-top:-71px;">퇴근 등록</button>
 									</form>
-								</form>
 								<div class="statistics">
 									<div class="row">
 										<div class="col-md-6 col-6 text-center">
@@ -726,7 +722,7 @@
 								<div class="stats-list">
 									<div class="stats-info">
 										<p>
-											Today <strong>3.45 <small>/ 8 hrs</small></strong>
+											Today <span id="clock"></span>/ 8 hrs
 										</p>
 										<div class="progress">
 											<div class="progress-bar bg-primary" role="progressbar"
@@ -784,7 +780,6 @@
 								<h5 class="card-title">Today Activity</h5>
 								<ul class="res-activity-list">
 									<li>
-										<p class="mb-0">Punch In at</p>
 										<p class="res-activity-time">
 											<i class="fa fa-clock-o"></i> 10.00 AM.
 										</p>

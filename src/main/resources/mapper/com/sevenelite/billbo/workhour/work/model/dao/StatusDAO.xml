@@ -62,26 +62,10 @@
 	
 	<update id="updateWork" parameterType="StatusAndWorkDTO" >
        UPDATE
-             BB_WORKSTATUS A
+              BB_WORKSTATUS A
           SET A.LEAVE_WORK = TO_DATE(#{ lwork, jdbcType=VARCHAR}, 'RRRRMMDD HH24:MI:SS')
         WHERE A.MEMBER_NO = #{ memNo }
           AND A.LEAVE_WORK IS NULL 
 	</update>
 	
-	<select id="detailWork" resultMap="statusAndWorkResultMap" parameterType="StatusAndWorkDTO">
-		SELECT
-		       *
-          FROM BB_WORKSTATUS A
-         WHERE A.WORKSTATUS_NO = #{ no }
-	</select>
-	<select id="seqNo" resultMap="statusAndWorkResultMap" parameterType="_int">
-		SELECT 
-    		SEQ_WORKSTATUS_NO.CURRVAL
-       FROM DUAL
-	</select>
-		<select id="selectlwork" parameterType="StatusAndWorkDTO" resultType="date">
-       SELECT
-          A.LEAVE_WORK
-       FROM BB_WORKSTATUS A     
-	</select>
  </mapper>   

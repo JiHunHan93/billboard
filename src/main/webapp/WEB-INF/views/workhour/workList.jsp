@@ -662,13 +662,13 @@
 							<div class="col-md-3">
 								<div class="stats-info">
 									<h5 style="font-weight: bold;">근무시간</h5>
-										<h4 style="color:darkorange;"><c:out value="${ workInfo.totalWork }시간"/></h4>
+										<h4 style="color:darkorange;"><c:out value="${ workInfo.totalWork }"/></h4>
 								</div>
 							</div>
 							<div class="col-md-3">
 								<div class="stats-info">
 									<h6 style="font-weight: bold;">초과시간</h6>
-									<h4 style="color: darkorange;"><c:out value="${ workInfo.extraWork }시간"/></h4> 
+									<h4 style="color: darkorange;"><c:out value="${ workInfo.extraWork }"/></h4> 
 								</div>
 							</div>
 							<div class="col-md-3">
@@ -705,7 +705,7 @@
 							<table class="table table-striped custom-table mb-0 datatable">
 								<thead>
 									<tr>
-										<th>날짜</th>
+										<th></th>
 										<th>업무시작</th>
 										<th>업무종료</th>
 										<th>수정이력</th>
@@ -714,7 +714,7 @@
 								<c:forEach var="statusList" items="${requestScope.statusList }">
 									<tbody>
 										<tr>
-											<td><c:out value="${ statusList.date }"></c:out></td>
+											<td><input type="hidden" name="no" value="${statusList.no}"></td>
 											<td><c:out value="${ statusList.commute }"></c:out></td>
 											<td><c:out value="${ statusList.lwork }"></c:out></td>
 											<td></td>
