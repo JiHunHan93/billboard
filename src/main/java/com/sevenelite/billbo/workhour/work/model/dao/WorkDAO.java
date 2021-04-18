@@ -14,9 +14,11 @@ public interface WorkDAO {
 
 	boolean insertWorkInfo(WorkDTO workInfo);
 
-	Date selectlwork();
+	List<StatusAndWorkDTO> selectTime();
 
-	java.sql.Date selectCommute();
+	List<StatusAndWorkDTO> selectCommute();
+
+	List<StatusAndWorkDTO> selectLeave();
 
 
   }
