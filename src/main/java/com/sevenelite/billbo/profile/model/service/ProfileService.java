@@ -21,7 +21,7 @@ public interface ProfileService {
 
 	boolean armyInfo(ArmyDTO army);
 
-	List<MemberInfoDTO> memberInfo();
+	//List<MemberInfoDTO> memberInfo();
 	List<CareerDTO> career();
 //
 //	void memberInfo(MemberInfoDTO member);
@@ -43,7 +43,7 @@ public interface ProfileService {
 	boolean license(LicenseDTO license);
 
 
-	boolean memberInfoInsert(MemberInfoDTO memberInfoInsert);
+	boolean memberInfo(MemberInfoDTO memberInfo);
 //보류	boolean bonus(BonusDTO bonus);
 
 	List<MemBbDTO> member_info_phone();
@@ -62,11 +62,11 @@ public interface ProfileService {
 
 	List<MemberInfoDTO> memberInfo(int no);
 
-	List<MemberInfoDTO> main();
+	//List<MemberInfoDTO> main();
 
-	boolean member_info_no(MemberInfoDTO member_info_no);
+	boolean selectMemberInfo(MemberInfoDTO member_info_no);
 
-	List<MemberInfoDTO> selectMemberInfo(int memberno);
+	//List<MemberInfoDTO> selectMemberInfo(int memberno);
 //?
 	List<DeptDTO> selectMemberDept(int memberno);
 
@@ -85,7 +85,7 @@ public interface ProfileService {
 
 	boolean modifyspot(ModifySpotDTO modifyspot);
 
-	boolean dept(ModifyDeptDTO1 modifydept);
+	//boolean dept(ModifyDeptDTO1 modifydept);
 
 	List<ModifyDeptDTO1> selectModifyDept(int memberno);
 
@@ -107,6 +107,18 @@ public interface ProfileService {
 
 	List<FamilyDTO> familyDto(int memberno);
 
-	List<MemberInfoDTO> modifyMember(int no);
+	//List<MemberInfoDTO> modifyMember(int no);
+	/* ***********************************main2 select 조회 위한************************* */
+	List<CertificateDTO> selectCertificate(int memberno);
+	
+	List<BonusDTO>selectBonus(int memberno);
+
+	List<MemberInfoDTO>selectMemberInfo(int memberno);
+
+	boolean mainProfile(MemberInfoDTO memberInfo);
+
+
+	
+	
 
 }

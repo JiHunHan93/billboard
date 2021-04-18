@@ -26,7 +26,8 @@ public interface ProfileMapper {
 
 	int memberInfo(MemberInfoDTO member);
 	
-	List<MemberInfoDTO> memberInfo();
+	
+	List<MemberInfoDTO> memberInfo(int memberno);
 
 	SpotDTO spot();
 	int spot(SpotDTO spot);
@@ -38,7 +39,7 @@ public interface ProfileMapper {
 //	BonusDTO bonus();
 //	int bonus(BonusDTO bonus);
 //	
-	CertificateDTO certificate();
+	List<CertificateDTO> selectCertificate(int memberno);
 	int certificate(CertificateDTO certificate);
 	
 	FinalAcademicDTO finalAcademic();
@@ -61,18 +62,18 @@ public interface ProfileMapper {
 //	List<DeptDTO> member_name();
 	List<MemBbDTO> member_info_phone();
 
-	List<MemberInfoDTO> mainProfile();
+	//List<MemberInfoDTO> mainProfile();
  
 
-	int memberInfoInsert(MemberInfoDTO memberInfoInsert);
+//	int memberInfoInsert(MemberInfoDTO memberInfoInsert);
 
 	List<MemBbDTO> member_address();
 
 	List<MemBbDTO> member_enrollDate();
 
-	List<MemberInfoDTO> main();
+	//List<MemberInfoDTO> main();
 
-	int member_info_no(MemberInfoDTO member_info_no);
+//	int member_info_no(MemberInfoDTO member_info_no);
 
 	List<MemberInfoDTO> selectMemberInfo(int memberno);
 
@@ -116,6 +117,19 @@ public interface ProfileMapper {
 
 	List<FamilyDTO> familyDto(int memberno);
 
-	List<MemberInfoDTO> modifyMember();
+	//List<MemberInfoDTO> modifyMember();
+
+	List<BonusDTO> selectBonus(int memberno);
+
+	//List<MemberInfoDTO> memberInfoInsert(int memberno);
+
+	//List<MemberInfoDTO> selectMemberInfo(int memberno);
+
+	int selectMemberInfo(MemberInfoDTO selectMemberInfo);
+
+	int modifydept(ModifyDeptDTO1 modifydept);
+
+	int mainProfile(MemberInfoDTO memberInfo);
+
 
 }
