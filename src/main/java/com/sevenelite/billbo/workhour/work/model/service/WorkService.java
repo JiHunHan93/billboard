@@ -13,10 +13,10 @@ import com.sevenelite.billbo.workhour.work.model.dto.WorkDTO;
 	List<WorkDTO> selectWorkList(int no);
 
 	boolean insertWorkInfo(WorkDTO workInfo);
+	
+	List<StatusAndWorkDTO> selectCommute();
 
-	java.sql.Date selectCommute();
-
-	Date selectlWork();
+	List<StatusAndWorkDTO> selectLeave();
 
    } 
   

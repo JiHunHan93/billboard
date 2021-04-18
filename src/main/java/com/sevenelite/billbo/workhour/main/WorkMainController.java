@@ -4,12 +4,16 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import com.sevenelite.billbo.member.model.dto.UserDetailsVO;
 import com.sevenelite.billbo.workhour.work.model.dto.StatusAndWorkDTO;
@@ -20,6 +24,7 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkStatusService;
 @Controller
 @RequestMapping("/") public class WorkMainController {
 
+	private static final String ModelAndView = null;
 	private final WorkService workService;
 	private WorkStatusService workStatusService;
 	
@@ -33,7 +38,7 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkStatusService;
 	}
 
 	@GetMapping("work")
-	public String workController(Model model,Principal principal,Authentication authentication) {
+	public String workController(Model model,Principal principal,Authentication authentication, HttpServletRequest request, ModelAndView mv) {
 		
 		
 		//출근 현황 보기
@@ -73,22 +78,27 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkStatusService;
 			
 			UserDetailsVO userDetails = (UserDetailsVO) authentication.getPrincipal();
 			int userno = userDetails.getMemberno();
-			
+			List<StatusAndWorkDTO> com = workService.selectCommute();
+			List<StatusAndWorkDTO> leave = workService.selectLeave();
 			System.out.println("관리자 : " + principal);
 			
-			Date commute = new Date(System.currentTimeMillis());
-			Date lwork = new Date(System.currentTimeMillis());
 			
-			/////////////////////////////////////////////////////
+			Date commute = new Date();
+			Date lwork = new Date();
+			
+			
+			System.out.println(com);
+			System.out.println(leave);
+			///////////////////////////////////////////////////
 			SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
 			String commuteTime = format.format(commute);
 			String leaveTime = format.format(lwork);
 			////////////////////////////////////////////////////
 			
-			System.out.println("commute : " + commuteTime);
-			System.out.println("lwork : " + leaveTime);
+			System.out.println("퇴근시간 : " +leaveTime);
+			System.out.println("출근시간 : " + commuteTime );
+			////////////////////////////////////////////////////
 			
-			System.out.println("commute");
 			
 			//출근시간 스플릿
 	         String commuteTimeFormat = format.format(commute);
@@ -126,7 +136,7 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkStatusService;
 	         int workM = lminute - minute;
 	         int workS = lsecond - second;
 	         
-	         String workStr = workH + ":" + workM + ":" + workS;
+	         String workStr = workH + ":" + workM + ":" + workS;        
 	         System.out.println("근무시간 : " + workStr);
 	         
 	         //지각 횟수 
@@ -162,9 +172,9 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkStatusService;
 	         
 	        if(workService.insertWorkInfo(workInfo)) {
 	        	
+	        	
 	        }
-	         
-	     																															
+	        
 	        return "workhour/workList";
 
 		} 
