@@ -1,5 +1,7 @@
 package com.sevenelite.billbo.calendar.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -34,13 +36,17 @@ public class CalenderController2 {
 	@RequestMapping("calender2/getMain")
 	@ResponseBody
 	public List<Map<String,CalDTO>> AjaxCalenderMain() {
-		
+
 //		CalMap.put("evt1", new CalDTO("db이벤트1", "2021-04-04", "2021-04-06", false) );
 //		CalMap.put("evt2", new CalDTO("db이벤트2", "2021-04-23", "2021-04-26", false) );
-		
+
 		List<Map<String,CalDTO>> calendarInfo = calService.selectCal();
+		System.out.println(calendarInfo.get(0).get("start"));
+		SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
+		System.out.println(f.format(calendarInfo.get(0).get("start")));
+		f.format(calendarInfo.get(0).get("start"));
 		System.out.println("아직 컨트롤러" + calendarInfo);
-		
+
 		return calendarInfo;
 	}
 	
