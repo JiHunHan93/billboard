@@ -42,6 +42,14 @@
 	
 <!-- jQuery -->
 <script src="../resources/hrtemp/js/jquery-3.5.1.min.js"></script>
+
+<!-- Moment.js -->
+<script src="../resources/hrtemp/js/moment.min.js"></script>
+<script src="../resources/hrtemp/js/moment.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js" integrity="sha512-LGXaggshOkD/at6PFNcp2V2unf9LzFq6LE+sChH7ceMTDP0g2kn6Vxwgg7wkPP7AAtX+lmPqPdxB47A0Nz0cMQ==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/locale/ko.min.js" integrity="sha512-3kMAxw/DoCOkS6yQGfQsRY1FWknTEzdiz8DOwWoqf+eGRN45AmjS2Lggql50nCe9Q6m5su5dDZylflBY2YjABQ==" crossorigin="anonymous"></script>
+
 <script>
 	document.addEventListener('DOMContentLoaded', function() {
 		var Calendar = FullCalendar.Calendar;
@@ -108,7 +116,7 @@
 				console.log(arrCal[i].title);
 			}
 		}); */
-
+		
 		var arrTest = getCalendarDataInDB();
 		$.each(arrTest, function(index, item) {
 			console.log('outer loop_in_cal' + index + ' : ' + item);
@@ -194,7 +202,12 @@
 	                console.log('맵??' + index + ' : ' + item);
 	                $.each(item, function(iii, ttt){
 	                    console.log('inner loop => ' + iii + ' : ' + ttt);
-	                    console.log(ttt.start);
+	                    if(iii == 'start' || iii == 'end') {
+	                    	formatDate(ttt);
+	                    	/* console.log(formatDate(ttt)); */
+	                    	console.log('if 문 통과');
+	                    }
+	                	/* console.log('index_in_arr' + iii == 'start'); */
 	                    arr.push(ttt);
 	                    console.log(arr);
 	                });
@@ -207,6 +220,20 @@
 	    });
 	    console.log('arrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr' + arr);
 	    return arr;
+	}
+	
+	function formatDate(date) {
+	    var d = new Date(date),
+	        month = '' + (d.getMonth() + 1),
+	        day = '' + d.getDate(),
+	        year = d.getFullYear();
+
+	    if (month.length < 2) 
+	        month = '0' + month;
+	    if (day.length < 2) 
+	        day = '0' + day;
+
+	    return [year, month, day].join('-');
 	}
 </script>
 <style type="text/css">
@@ -830,7 +857,6 @@
 	<!-- 	<script src="../resources/hrtemp/js/app.js"></script> -->
 
 	<!-- Datetimepicker JS -->
-	<script src="../resources/hrtemp/js/moment.min.js"></script>
 	<script src="../resources/hrtemp/js/bootstrap-datetimepicker.min.js"></script>
 
 </body>

@@ -8,25 +8,27 @@ public class BonusDTO {
 	private String reason;
 	private java.sql.Date date;
 	private String type;
+	private String body;
 	private int member_no;
 	private String approve_code;
 	
 	public BonusDTO() {}
 
-	public BonusDTO(int no, String reason, Date date, String type, int member_no, String approve_code) {
+	public BonusDTO(int no, String reason, Date date, String type, String body, int member_no, String approve_code) {
 		super();
 		this.no = no;
 		this.reason = reason;
 		this.date = date;
 		this.type = type;
+		this.body = body;
 		this.member_no = member_no;
 		this.approve_code = approve_code;
 	}
 
 	@Override
 	public String toString() {
-		return "BonusDTO [no=" + no + ", reason=" + reason + ", date=" + date + ", type=" + type + ", member_no="
-				+ member_no + ", approve_code=" + approve_code + "]";
+		return "BonusDTO [no=" + no + ", reason=" + reason + ", date=" + date + ", type=" + type + ", body=" + body
+				+ ", member_no=" + member_no + ", approve_code=" + approve_code + "]";
 	}
 
 	public int getNo() {
@@ -61,6 +63,14 @@ public class BonusDTO {
 		this.type = type;
 	}
 
+	public String getBody() {
+		return body;
+	}
+
+	public void setBody(String body) {
+		this.body = body;
+	}
+
 	public int getMember_no() {
 		return member_no;
 	}
@@ -77,8 +87,7 @@ public class BonusDTO {
 		this.approve_code = approve_code;
 	}
 
-	
-	
+		
 		}
 	
 

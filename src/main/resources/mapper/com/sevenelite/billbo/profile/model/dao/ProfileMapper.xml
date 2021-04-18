@@ -139,7 +139,7 @@
     )
 </insert>
 
- <insert id="memberInfoInsert" parameterType="MemberInfoDTO">     <!--  ************  -->
+ <insert id="memberInfo" parameterType="MemberInfoDTO">     <!--  ************  -->
 	INSERT
 	 INTO BB_MEMBER_INFO(
 	      MEMBER_INFO_NO
@@ -201,7 +201,7 @@
 	                  FROM BB_MEMBER_INFO C
 	                  JOIN BB_MEMBER D ON(C.MEMBER_NO = D.MEMBER_NO)
 	                  WHERE D.MEMBER_NO = #{ member_no }
-	                  ORDER BY MEMBER_NO DESC
+	                  ORDER BY MEMBER_INFO_NO DESC
 	                  ) B
 	                  ) A
 	                  WHERE RNUM = 1
@@ -256,8 +256,7 @@
 	  ,#{name}
 	  ,#{upper}
 	  ,#{level}
-	  
-	  )
+	   )
 </insert>
 <insert id="modifydept" parameterType="ModifyDeptDTO1">
 	INSERT
@@ -269,10 +268,10 @@
 	     )
 	     VALUES
 	     (
-	     SEQ_MODIFY_DEPT_NO.NEXTVAL,
-	     #{modifydate},
-	     #{deptCode},
-	     #{memberNo}
+	     SEQ_MODIFY_DEPT_NO.NEXTVAL
+	     ,#{modifydate}
+	     ,#{deptCode}
+	     ,#{memberNo}
 	     )
 </insert>
 <insert id="career" parameterType="CareerDTO">
@@ -302,6 +301,7 @@
 	     , BONUS_REASON
 	     , BONUS_DATE
 	     , BONUS_TYPE
+	     , BONUS_BODY
 	     , MEMBER_NO
 	     , APPROVE_CODE
 	  )
@@ -311,6 +311,7 @@
 	 ,#{reason}
 	 ,#{date}
 	 ,#{type}
+	 ,#{body}
 	 ,#{member_no}
 	 ,#{approve_code}
 	 )
@@ -478,7 +479,7 @@ SELECT
   WHERE RNUM = 1 
 </select>
 
- <select id="selectModifyDept" resultMap="modifydeptDTO1" parameterType="com.sevenelite.billbo.profile.model.dto.ModifyDeptDTO1">
+ <select id="selectModifyDept" resultMap="modifydeptDTO1" parameterType="ModifyDeptDTO1">
 	SELECT
                 A.RNUM
               , A.MODIFY_DEPT_NO
@@ -498,7 +499,7 @@ SELECT
                  JOIN BB_MEMBER E ON (C.MEMBER_NO = E.MEMBER_NO)
                  JOIN BB_DEPT D ON (C.DEPT_CODE = D.DEPT_CODE)
                 WHERE E.MEMBER_NO = #{ member_no }
-                ORDER BY MEMBER_NO DESC
+                ORDER BY MODIFY_DEPT_NO DESC
          )B
          )A
          WHERE RNUM = 1
@@ -524,7 +525,7 @@ SELECT
                  JOIN BB_MEMBER E ON (C.MEMBER_NO = E.MEMBER_NO)
                  JOIN BB_SPOT D ON (C.SPOT_CODE = D.SPOT_CODE)
                 WHERE E.MEMBER_NO = #{ member_no }
-                ORDER BY MEMBER_NO DESC
+                ORDER BY MODIFY_SPOT_NO DESC
          )B
          )A
          WHERE RNUM = 1
@@ -553,7 +554,7 @@ SELECT
 	                  FROM BB_CAREER C
 	                  JOIN BB_MEMBER D ON(C.MEMBER_NO = D.MEMBER_NO)
 	                  WHERE D.MEMBER_NO = #{ member_no }
-	                  ORDER BY MEMBER_NO DESC
+	                  ORDER BY CAREER_NO DESC
 	                  ) B
 	                  ) A
 	                  WHERE RNUM = 1
@@ -649,6 +650,36 @@ SELECT
 	                  ) A
 	                  WHERE RNUM = 1
 	              </select>
+	              <!-- *********************************************88888 -->
+	              <select id="selectCertificate" resultMap="certificateDTO" parameterType="CertificateDTO">
+   SELECT
+    	  A.CERTIFICATE_NO
+        , A.CERTIFICATE_START_DATE
+	    , A.CERTIFICATE_END_DATE
+        , A.MEMBER_NO
+        , A.CERTIFICATE_CODE
+        FROM (SELECT ROWNUM RNUM
+		        , B.CERTIFICATE_NO
+	            , B.CERTIFICATE_START_DATE
+                , B.CERTIFICATE_END_DATE
+	            , B.MEMBER_NO
+                , B.CERTIFICATE_CODE
+             FROM (SELECT  C.CERTIFICATE_NO
+		                 , C.CERTIFICATE_START_DATE
+                         , C.CERTIFICATE_END_DATE
+	                     , D.MEMBER_NO
+                         , E.CERTIFICATE_CODE
+	                    FROM BB_CERTIFICATE C
+	                  JOIN BB_MEMBER D ON(C.MEMBER_NO = D.MEMBER_NO)
+                      LEFT JOIN BB_CERTIFICATE_CODE E ON(C.CERTIFICATE_CODE = E.CERTIFICATE_CODE)
+	                  WHERE D.MEMBER_NO = #{ member_no }
+	                  ORDER BY MEMBER_NO DESC
+	                  ) B
+	                  ) A
+	                  WHERE RNUM = 1
+	              </select>
+	              
+	              
 	              
 	      <select id="armyInsert" resultMap="armyDTO" parameterType="ArmyDTO">
   

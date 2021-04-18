@@ -77,7 +77,8 @@
 									   com.sevenelite.billbo.board.model.dao,
 									   com.sevenelite.billbo.rnp.model.dao,
 									   com.sevenelite.billbo.calendar.model.dao,
-									   com.sevenelite.billbo.allmember.model.dao"/>
+									   com.sevenelite.billbo.allmember.model.dao,
+									   com.sevenelite.billbo.performance.model.dao"/>
 
 
 
