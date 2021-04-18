@@ -10,7 +10,7 @@
 		<meta name="words" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
         <meta name="author" content="Dreamguys - Bootstrap Admin Template">
         <meta name="robots" content="noindex, nofollow">
-        <title>Employee Profile - HRMS admin template</title>
+        <title>Employee Profile - main2</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="/billbo/resources/hrtemp/img/favicon.png">
@@ -984,7 +984,7 @@
 												</td>
 												<td class="deptCode">
 														
-												<input class="txt w_max" type="text" name="memberNo" value="<c:out value="${ modidept.deptCode }"/>">
+												<input class="txt w_max" type="text" name="deptCode" value="<c:out value="${ modidept.deptCode }"/>">
 													
 												</td>
 												<td class="memberNo">

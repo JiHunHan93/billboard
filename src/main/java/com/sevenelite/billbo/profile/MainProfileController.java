@@ -102,73 +102,62 @@ public class MainProfileController {
 
 	}
 	
-	
+
 	/*1 신상*/
-	  @PostMapping("mainProfile")
-	  public String memberInfo(@ModelAttribute MemberInfoDTO member) { 
-//		  profileService.memberInfo(member); 
-		  System.out.println("branch:" + member);
+	  @PostMapping("main")
+	  public String memberInfo(@ModelAttribute MemberInfoDTO memberInfo, Authentication authentication, Model model) {
+			UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
+			System.out.println("아 왜케안대");
+		  profileService.memberInfo(memberInfo); 
 		  SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		  List<MemberInfoDTO> memberInfo = profileService.main();
-		  System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		  System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		  System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		  System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		  System.out.println(memberInfo);
-		  System.out.println(memberInfo);
-		  System.out.println(memberInfo);
-		  System.out.println(memberInfo);
-		  System.out.println(memberInfo);
-		  System.out.println(memberInfo);
-		  System.out.println(memberInfo);
-		  System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		  System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		  System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		  System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		  System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		  System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		  System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		//  List<MemberInfoDTO> memberInfo = profileService.main();
+		  
 				  
 		  System.out.println("왜 안오는거여 쉬벌?????");
 
-		  return "profile/main";
+		  return "redirect:/profile/mainProfile2";
 	  }
 //	 /*2 직위*/
 	  @PostMapping("joblevel")
-	  public String modifyspot(@ModelAttribute ModifySpotDTO modifyspot) { 
+	  public String modifyspot(@ModelAttribute ModifySpotDTO modifyspot, Authentication authentication, Model model) {
+			UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();  
 		  profileService.modifyspot(modifyspot); 
 	  
 	  System.out.println(modifyspot+"왜 안오는거여 쉬벌?????");
 	  
-	  return "redirect:http://127.0.0.1:8001/billbo/profile/mainProfile";
+	  return "redirect:/profile/mainProfile2";
 	  }
 	  
 	  /*3 부서*/
 	  @PostMapping("part")
-	  public String dept(@ModelAttribute ModifyDeptDTO1 modifydept) { 
+	  public String modifydept(@ModelAttribute ModifyDeptDTO1 modifydept, Authentication authentication, Model model) {
+			UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal(); 
 		  System.out.println(modifydept);
 		  
-		  profileService.dept(modifydept);
+		  System.out.println("왜 안오는거여 쉬벌?????");
+		  profileService.modifydept(modifydept);
 	  
-	  System.out.println("왜 안오는거여 쉬벌?????");
-	  return "redirect:http://127.0.0.1:8001/billbo/profile/mainProfile";
+	  return "redirect:/profile/mainProfile2";
   }
 	  
 	  /*4.경력*/
 	@PostMapping("career")
-	  public String career(@ModelAttribute CareerDTO career) { 
-		  profileService.career(career); 
+	  public String career(@ModelAttribute CareerDTO career, Authentication authentication, Model model) {
+			UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
+		 
+			System.out.println("왜 안오는거여 쉬벌?????");
+			profileService.career(career); 
 		  SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 				
-	  System.out.println("왜 안오는거여 쉬벌?????");
 	  
-	  return "profile/main";
+	  return "redirect:/profile/mainProfile2";
 	  }
-	/*4상벌내역 보류*/
+	/*4상벌내역 */
 	@PostMapping("bonus")
-	public String bonus(@ModelAttribute BonusDTO bonus) {
+	public String bonus(@ModelAttribute BonusDTO bonus, Authentication authentication, Model model) {
+		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
 		
-		System.out.println("branch : " +bonus);
+		System.out.println("branch : " + bonus);
 		
 		System.out.println("오나!!!!!!!!!!!!!");
 		
@@ -176,19 +165,15 @@ public class MainProfileController {
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		
-		return "profile/mainProfile";
+		return "redirect:/profile/mainProfile2";
 	}
-	/*5.인사평가*/
-	/*없음*/
-	/*6.자격*/
-//	@GetMapping("certificate")
-//	public String certificate() {
-//		
-//		return "profile/main";
-//	}
-//	
+	
+	
+	
+	/*5.자격?*/
 	@PostMapping("certificate")
-	public String certificate(@ModelAttribute CertificateDTO certificate) {
+	public String certificate(@ModelAttribute CertificateDTO certificate, Authentication authentication, Model model) {
+		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
 		
 		System.out.println("branch : " +certificate);
 		
@@ -197,9 +182,70 @@ public class MainProfileController {
 		profileService.certificate(certificate);
 		
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		System.out.println("131241414q");
+		//List<CertificateDTO> certi = profileService.selectCertificate(user.getMemberno());
+		//model.addAttribute("certi", certi);
+		 return "redirect:/profile/mainProfile2";
+		 
+	}
+	@GetMapping(value= {"mainProfile2"} )
+	public String page2(Model model, Authentication authentication) {
 		
+		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
+		System.out.println("로그인 회원번호");
+		/*멤버정보조회*/
+		List<MemberInfoDTO> member = profileService.selectMemberInfo(user.getMemberno());
+		/*부서조회*/
+		List<DeptDTO> dept = profileService.selectMemberDept(user.getMemberno());
+		/*이메일조회*/
+		List<MemBbDTO> detailMem=  profileService.selectMemberDetail(user.getMemberno());
+		/*부서변경이력 조회*/
+		List<ModifyDeptDTO1> modidept = profileService.selectModifyDept(user.getMemberno());
+		/*직위변경이력 조회*/
+		List<ModifySpotDTO> modispotDto = profileService.selectspot(user.getMemberno());
+		/*경력*/
+		List<CareerDTO> careerDto = profileService.career(user.getMemberno());
+		/*상벌*/
+		List<BonusDTO> bonusDto = profileService.bonus(user.getMemberno());
+		/*자격인줄 알았던 면허*/
+		List<LicenseDTO> LicenseDto = profileService.licenseSelect(user.getMemberno());
+		/*이게 자격*/
+		List<CertificateDTO>certificateInsert = profileService.certificateInsert(user.getMemberno());
+		/*병역*/
+		List<ArmyDTO>armyInsert = profileService.armyInsert(user.getMemberno());
+		/*학력*/
+		List<FinalAcademicDTO>academic = profileService.academic(user.getMemberno());
+		/*정말 가 족같은 가족사항 */
+		List<FamilyDTO>familyDto = profileService.familyDto(user.getMemberno());
 		
-		 return "redirect:http://127.0.0.1:8001/billbo/profile/mainProfile";
+		System.out.println(member+"오나???!?");
+		System.out.println(dept+"이것도 오나???!?");
+		System.out.println(detailMem+"이거도 제발");
+		System.out.println(modidept+"이거도 제발Q");
+		System.out.println(modispotDto+"이거도 제발시발");
+		System.out.println(careerDto+"이거도 제발시발");
+		System.out.println(bonusDto+"이거도 제발시발");
+		System.out.println(LicenseDto + "젭알 되주세요");
+		System.out.println(certificateInsert + "젭알 되주세요");
+		System.out.println(armyInsert + "이거 안되면 재입대한다");
+		System.out.println(academic + "이쯤되면 그냥 되겠지..");
+		System.out.println(familyDto + "마지막");
+		
+		model.addAttribute("member", member);
+		model.addAttribute("dept", dept);
+		model.addAttribute("detailMem", detailMem);
+		model.addAttribute("modidept", modidept);
+		model.addAttribute("modispotDto", modispotDto);
+		model.addAttribute("careerDto", careerDto);
+		model.addAttribute("bonusDto", bonusDto);
+		model.addAttribute("LicenseDto", LicenseDto);
+		model.addAttribute("certificateInsert", certificateInsert);
+		model.addAttribute("armyInsert", armyInsert);
+		model.addAttribute("academic", academic);
+		model.addAttribute("familyDto", familyDto);
+		
+		return "profile/main2";
+
 	}
 	/*7.병역*/
 	@PostMapping("army")
@@ -277,12 +323,12 @@ public class MainProfileController {
 		model.addAttribute("profileList1", profileList1);
 		request.getSession().setAttribute("profileList1", profileList1);
 		
-		List<MemberInfoDTO> MList = profileService.memberInfo();/* no 매개변수로  */
-//??		List<CareerDTO> CList = profileService.career();
-		System.out.println("????????????????????????????????????????");
-		System.out.println(MList);
-		model.addAttribute("MList", MList);
-		
+//		List<MemberInfoDTO> MList = profileService.memberInfo();/* no 매개변수로  */
+////??		List<CareerDTO> CList = profileService.career();
+//		System.out.println("????????????????????????????????????????");
+//		System.out.println(MList);
+//		model.addAttribute("MList", MList);
+//		
 		
 		return "profile/main";
 	}

@@ -86,11 +86,11 @@ public class ProfileServiceImpl implements ProfileService{
 		return mapper.license(license) > 0? true : false;
 	}
 
-	@Override
-	public boolean member_info_no(MemberInfoDTO member_info_no) {
-		// TODO Auto-generated method stub
-		return mapper.member_info_no(member_info_no) > 0? true : false;
-	}
+//	@Override
+//	public boolean selectMemberInfo(MemberInfoDTO selectMemberInfo) {
+//		// TODO Auto-generated method stub
+//		return mapper.selectMemberInfo(selectMemberInfo) > 0? true : false;
+//	}
 	//	@Override
 	//	public List<MemDTO>member_info_phone(int no) {
 	//		System.out.println("이게된다?");
@@ -117,33 +117,33 @@ public class ProfileServiceImpl implements ProfileService{
 		// TODO Auto-generated method stub
 		return mapper.member_info_phone();
 	}
-	@Override
-	public List<MemberInfoDTO> main() {
-		// TODO Auto-generated method stub
-		return mapper.main();
-	}
+//	@Override
+//	public List<MemberInfoDTO> main() {
+//		// TODO Auto-generated method stub
+//		return mapper.main();
+//	}
 
 	/*
 	 * @Override public List<CareerDTO> career() { // TODO Auto-generated method
 	 * stub return mapper.career(); }
 	 */
 	@Override
-	public boolean memberInfoInsert(MemberInfoDTO memberInfo) {
+	public boolean memberInfo(MemberInfoDTO memberInfo) {
 		// TODO Auto-generated method stub
-		return mapper.memberInfoInsert(memberInfo) > 0? true : false;
+		return mapper.memberInfo(memberInfo) > 0? true : false;
 	}
 
+	@Override
+	public List<MemberInfoDTO> memberInfo(int memberno) {
+		// TODO Auto-generated method stub
+		return mapper.memberInfo(memberno);
+	}
 	@Override
 	public List<CareerDTO> career() {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
-	@Override
-	public List<MemberInfoDTO> memberInfo(int no) {
-		// TODO Auto-generated method stub
-		return null;
-	}
 
 	@Override
 	public List<MemBbDTO> mainProfile() {
@@ -151,11 +151,11 @@ public class ProfileServiceImpl implements ProfileService{
 		return null;
 	}
 
-	@Override
-	public List<MemberInfoDTO> selectMemberInfo(int memberno) {
-		// TODO Auto-generated method stub
-		return mapper.selectMemberInfo(memberno);
-	}
+//	@Override
+//	public List<MemberInfoDTO> selectMemberInfo(int memberno) {
+//		// TODO Auto-generated method stub
+//		return mapper.selectMemberInfo(memberno);
+//	}
 
 	@Override
 	public List<DeptDTO> selectMemberDept(int memberno) {
@@ -184,22 +184,22 @@ public class ProfileServiceImpl implements ProfileService{
 		return null;
 	}
 
-	@Override
-	public List<MemberInfoDTO> memberInfo() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+//	@Override
+//	public List<MemberInfoDTO> memberInfo() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
 
 	
 	@Override
-	public boolean modifydept(ModifyDeptDTO1 dept) {
-		return mapper.dept(dept) > 0? true : false;
+	public boolean modifydept(ModifyDeptDTO1 modifydept) {
+		return mapper.modifydept(modifydept) > 0? true : false;
 	}
-	@Override
-	public boolean dept(ModifyDeptDTO1 modifydept1) {
-		// TODO Auto-generated method stub
-		return mapper.modifydept1(modifydept1) > 0? true:false;
-	}
+//	 @Override
+//	public boolean dept(ModifyDeptDTO1 modifydept1) {
+//		// TODO Auto-generated method stub
+//		return mapper.modifydept1(modifydept1) > 0? true:false;
+//	}
 	@Override
 	public List<ModifyDeptDTO1> selectModifyDept(int memberno) {
 		// TODO Auto-generated method stub
@@ -258,11 +258,59 @@ public class ProfileServiceImpl implements ProfileService{
 		return mapper.familyDto(memberno);
 	}
 
-	@Override
-	public List<MemberInfoDTO> modifyMember(int no) {
-		// 모달 이용한 멤버 정보 수정
-		return mapper.modifyMember();
+//	@Override
+//	public List<MemberInfoDTO> modifyMember(int no) {
+//		// 모달 이용한 멤버 정보 수정
+//		return mapper.modifyMember();
+//	}
+
+	
+	
+	
+	/* ***********************************main 2 ******************************************* */
+	
+
+	
+	public List<CertificateDTO> selectCertificate(int memberno) {
+		// TODO Auto-generated method stub
+		return mapper.selectCertificate(memberno);
 	}
+
+	@Override
+	public List<BonusDTO> selectBonus(int memberno) {
+		// TODO Auto-generated method stub
+		return mapper.selectBonus(memberno);
+	}
+
+
+	@Override
+	public boolean selectMemberInfo(MemberInfoDTO member_info_no) {
+		// TODO Auto-generated method stub
+		return mapper.selectMemberInfo(member_info_no) > 0? true : false;
+	}
+
+	@Override
+	public boolean mainProfile(MemberInfoDTO memberInfo) {
+		// TODO Auto-generated method stub
+		return mapper.mainProfile(memberInfo) > 0? true : false;
+	}
+
+	@Override
+	public List<MemberInfoDTO> selectMemberInfo(int memberno) {
+		// TODO Auto-generated method stub
+		return mapper.selectMemberInfo(memberno);
+	}
+
+
+//	@Override
+//	public boolean mainProfile(MemberInfoDTO memberInfo) {
+//		// TODO Auto-generated method stub
+//		return mapper.mainProfile(memberInfo) > 0? true : false;
+//	}
+
+	
+
+
 
 	
 }

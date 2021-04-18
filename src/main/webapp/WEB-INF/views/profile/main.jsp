@@ -787,9 +787,9 @@
 												</th>
 												
 												<td class="col2">
-													 <c:forEach var="member" items="${ requestScope.member }"> 
-												<input class="txt w_max" type="text" name="info_no" value="<c:out value="${ member.info_no }"/>">
-														</c:forEach>
+													 <%-- <c:forEach var="member" items="${ requestScope.member }"> --%> 
+												<input class="txt w_max" type="text" name="info_no" value="<%-- <c:out value="${ member.info_no }"/> --%>">
+														<%-- </c:forEach> --%>
 												</td>
 												<th class="col3">
 													<span class="title_txt">사번</span>
@@ -803,17 +803,17 @@
 													
 												</th>
 												<td class="col6">
-														<c:forEach var="member" items="${ requestScope.member }"> 
-												<input class="txt w_max" type="date" name="enroll_date" value="<c:out value="${member.enroll_date }"/>">
-														</c:forEach>
+														<%-- <c:forEach var="member" items="${ requestScope.member }"> --%> 
+												<input class="txt w_max" type="date" name="enroll_date" value="<%-- <c:out value="${member.enroll_date }"/> --%>">
+														<%-- </c:forEach> --%>
 												</td>            
 												<th class="col7">
 													<span class="title_txt">계좌은행</span>
 												</th>
 												<td class="col8">
-														<c:forEach var="member" items="${ requestScope.member }"> 
-												<input class="txt w_max" type="text" name="account_bank" value="<c:out value="${ member.account_bank }"/>">
-														</c:forEach>
+														<%-- <c:forEach var="member" items="${ requestScope.member }">  --%>
+												<input class="txt w_max" type="text" name="account_bank" value="<%-- <c:out value="${ member.account_bank }"/> --%>">
+														<%-- </c:forEach> --%>
 												
 												</td>
 											</tr>
@@ -823,18 +823,18 @@
 												</th>
 												
 												<td colspan="5">
-														<c:forEach var="member" items="${ requestScope.member }"> 
-												<input class="txt w_max" type="text" name="address" value="<c:out value="${member.address }"/>">
-														</c:forEach>
+														<%-- <c:forEach var="member" items="${ requestScope.member }">  --%>
+												<input class="txt w_max" type="text" name="address" value="<%-- <c:out value="${member.address }"/> --%>">
+														<%-- </c:forEach> --%>
 												
 												</td>
 												<th class="col7">
 													<span class="title_txt">계좌번호</span>
 												</th>
 												<td class="col8">
-														<c:forEach var="member" items="${ requestScope.member }"> 
-												<input class="txt w_max" type="text" name="account_no" value="<c:out value="${member.account_no }"/>">
-														</c:forEach>
+													<%-- 	<c:forEach var="member" items="${ requestScope.member }"> --%> 
+												<input class="txt w_max" type="text" name="account_no" value="<%-- <c:out value="${member.account_no }"/> --%>">
+													<%-- 	</c:forEach> --%>
 												
 												</td>
 											</tr>
@@ -843,27 +843,27 @@
 													<span class="title_txt">근로계약서</span>
 												</th>
 												<td colspan="3">
-														<c:forEach var="member" items="${ requestScope.member }"> 
-												<input class="txt w_max" type="text" name="work_contract" value="<c:out value="${member.work_contract }"/>">
-														</c:forEach>
+														<%-- <c:forEach var="member" items="${ requestScope.member }"> --%> 
+												<input class="txt w_max" type="text" name="work_contract" value="<%-- <c:out value="${member.work_contract }"/> --%>">
+														<%-- </c:forEach> --%>
 												
 												</td>        
 												<th class="col5">
 													<span class="title_txt">파일첨부</span>
 												</th>
 												<td class="col6">
-														<c:forEach var="member" items="${ requestScope.member }"> 
-												<input class="txt w_max" type="text" name="fileattachment" value="<c:out value="${member.fileattachment }"/>">
-														</c:forEach>
+														<%-- <c:forEach var="member" items="${ requestScope.member }"> --%> 
+												<input class="txt w_max" type="text" name="fileattachment" value="<%-- <c:out value="${member.fileattachment }"/> --%>">
+														<%-- </c:forEach> --%>
 												
 												</td>
 												<th class="col7">
 													<span class="title_txt">예금주</span>
 													</th>
 													<td class="col8">
-													<c:forEach var="member" items="${ requestScope.member }"> 
-												<input class="txt w_max" type="text" name="account_host" value="<c:out value="${member.account_host }"/>">
-														</c:forEach>
+													<%-- <c:forEach var="member" items="${ requestScope.member }"> --%> 
+												<input class="txt w_max" type="text" name="account_host" value="<%-- <c:out value="${member.account_host }"/> --%>">
+														<%-- </c:forEach> --%>
 												
 											</td>
 										</tr>
@@ -913,20 +913,20 @@
 												</td>
 												<td class="spot_date">
 													
-													<c:forEach var="modispotDto" items="${ requestScope.modispotDto }"> 
-												<input class="txt w_max" type="date" name="spot_date" value="<c:out value="${ modispotDto.spot_date }"/>">
-												</c:forEach>
+										<%-- 			<c:forEach var="modispotDto" items="${ requestScope.modispotDto }"> 
+										 --%>		<input class="txt w_max" type="date" name="spot_date" value="<%-- <c:out value="${ modispotDto.spot_date }"/> --%>">
+											<%-- 	</c:forEach> --%>
 												</td>
 												<td class="spot_code">
 													
-													<c:forEach var="modispotDto" items="${ requestScope.modispotDto }"> 
-												<input class="txt w_max" type="text" name="spot_code" value="<c:out value="${ modispotDto.spot_code }"/>">
-												</c:forEach>
+													<%-- <c:forEach var="modispotDto" items="${ requestScope.modispotDto }"> --%> 
+												<input class="txt w_max" type="text" name="spot_code" value="<%-- <c:out value="${ modispotDto.spot_code }"/> --%>">
+												<%-- </c:forEach> --%>
 												</td>
-												<td class="member_no">
-														<c:forEach var="modispotDto" items="${ requestScope.modispotDto }"> 
-												<input class="txt w_max" type="text" name="member_no" value="<c:out value="${ modispotDto.member_no }"/>">
-												</c:forEach>
+												 <td class="member_no"> 
+														<%-- <c:forEach var="modispotDto" items="${ requestScope.modispotDto }">  --%>
+												<input class="txt w_max" type="text" name="member_no" value="<%-- <c:out value="${ modispotDto.member_no }"/> --%>">
+												<%-- </c:forEach> --%>
 												</td>
 											</tr>
 										</tbody></table>
@@ -972,27 +972,27 @@
 											
 											</tr>
 											<tr class="dataRow" data-id="">
-												<c:forEach var="modidept" items="${ requestScope.modidept }"> 
+												<%-- <c:forEach var="modidept" items="${ requestScope.modidept }"> --%> 
 												<td class="modifyDeptNo">
 												
-												<input class="txt w_max" type="text" name="modifyDeptNo" value="<c:out value="${ modidept.modifyDeptNo }"/>">
+												<input class="txt w_max" type="text" name="modifyDeptNo" value="<%-- <c:out value="${ modidept.modifyDeptNo }"/ --%>">
 												</td>
 												<td class="modifydate">
 													 
-												<input class="txt w_max" type="date" name="modifydate" value="<c:out value="${ modidept.modifydate }"/>">
+												<input class="txt w_max" type="date" name="modifydate" value="<%-- <c:out value="${ modidept.modifydate }"/> --%>">
 																										
 												</td>
 												<td class="deptCode">
 														
-												<input class="txt w_max" type="text" name="memberNo" value="<c:out value="${ modidept.deptCode }"/>">
+												<input class="txt w_max" type="text" name="deptCode" value="<%-- <c:out value="${ modidept.deptCode }"/> --%>">
 													
 												</td>
 												<td class="memberNo">
 												
-												<input class="txt w_max" type="text" name="memberNo" value="<c:out value="${ modidept.memberNo }"/>">
+												<input class="txt w_max" type="text" name="memberNo" value="<%-- <c:out value="${ modidept.memberNo }"/> --%>">
 														
 												</td>
-												</c:forEach>
+												<%-- </c:forEach> --%>
 												
 											</tr>
 										</tbody></table>
@@ -1041,25 +1041,25 @@
 											</tr>
 											<tr class="dataRow" data-id="">
 												
-												<c:forEach var="careerDto" items="${ requestScope.careerDto }"> 
+												<%-- <c:forEach var="careerDto" items="${ requestScope.careerDto }">  --%>
 												<td class="no">
-												<input class="txt w_max" type="text" name="no" value="<c:out value="${ careerDto.no }"/>">
+												<input class="txt w_max" type="text" name="no" value="<%-- <c:out value="${ careerDto.no }"/> --%>">
 														
 												</td>
 												<td class="start">
-												<input class="txt w_max" type="date" name="start" value="<c:out value="${ careerDto.start }"/>">
+												<input class="txt w_max" type="date" name="start" value="<%-- <c:out value="${ careerDto.start }"/> --%>">
 												</td>
 												<td class="end">
-												<input class="txt w_max" type="date" name="end" value="<c:out value="${ careerDto.end }"/>">
+												<input class="txt w_max" type="date" name="end" value="<%-- <c:out value="${ careerDto.end }"/> --%>">
 												</td>
 												<td class="position">
-												<input class="txt w_max" type="text" name="position" value="<c:out value="${ careerDto.position }"/>">
+												<input class="txt w_max" type="text" name="position" value="<%-- <c:out value="${ careerDto.position }"/> --%>">
 												</td>
-														</c:forEach>
+														<%-- </c:forEach> --%>
 												<td class="member_no">
-												<c:forEach var="careerDto" items="${ requestScope.careerDto }"> 
-												<input class="txt w_max" type="text" name="member_no" value="<c:out value="${ careerDto.member_no }"/>">
-														</c:forEach>
+												<%-- <c:forEach var="careerDto" items="${ requestScope.careerDto }"> --%> 
+												<input class="txt w_max" type="text" name="member_no" value="<%--<c:out value="${ careerDto.member_no }"/> --%>">
+														<%-- </c:forEach> --%>
 														</td>
 												
 										
@@ -1101,32 +1101,37 @@
 												<th class="reason"><span class="title_txt">상벌사유</span></th>
 												<th class="date"><span class="title_txt">일자</span></th>
 												<th class="type"><span class="title_txt">상벌구분</span></th>
+												<th class="body"><span class="title_txt">상벌내용</span></th>
 												<th class="member_no"><span class="title_txt">사번</span></th>
 												<th class="approve_code"><span class="title_txt">승인여부코드</span></th>
 												
 												
 											</tr>
 											<tr class="no" data-id="">
-													<c:forEach var="bonusDto" items="${ requestScope.bonusDto }"> 
+													<%-- <c:forEach var="bonusDto" items="${ requestScope.bonusDto }"> --%> 
 												<td class="no">
-												<input class="txt w_max" type="text" name="no" value="<c:out value="${ bonusDto.no }"/>">
+												<input class="txt w_max" type="text" name="no" value="<%-- <c:out value="${ bonusDto.no }"/> --%>">
 												</td>
 												<td class="reason">
-												<input class="txt w_max" type="text" name="reason" value="<c:out value="${ bonusDto.reason }"/>">
+												<input class="txt w_max" type="text" name="reason" value="<%-- <c:out value="${ bonusDto.reason }"/> --%>">
 												</td>
 												<td class="date">
-												<input class="txt w_max" type="date" name="date" value="<c:out value="${ bonusDto.date }"/>">
+												<input class="txt w_max" type="date" name="date" value="<%-- <c:out value="${ bonusDto.date }"/> --%>">
 												</td>
 												<td class="type">
-												<input class="txt w_max" type="text" name="type" value="<c:out value="${ bonusDto.type }"/>">
+												<input class="txt w_max" type="text" name="type" value="<%-- <c:out value="${ bonusDto.type }"/> --%>">
 												</td>
+												<td class="body">
+												<input class="txt w_max" type="text" name="body" value="<%-- <c:out value="${ bonusDto.body }"/> --%>">
+												</td>
+												
 												<td class="member_no">
 													<input class="txt w_max" type="text" name="member_no" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }" >
 												</td>
 												<td class="approve_code">
-												<input class="txt w_max" type="text" name="approve_code" value="<c:out value="${ bonusDto.approve_code }"/>">
+												<input class="txt w_max" type="text" name="approve_code" value="<%-- <c:out value="${ bonusDto.approve_code }"/> --%>">
 												</td>
-														</c:forEach>
+														<%-- </c:forEach> --%>
 											
 											</tr>
 											</tbody>
