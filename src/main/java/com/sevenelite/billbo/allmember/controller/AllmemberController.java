@@ -62,6 +62,7 @@ public class AllmemberController {
 		  mv.setViewName("allmember/detail");
 		  List<MemberAndMemberInfoAndDeptAndModifyDeptDTO> memberDetail = allMemberService.memberDetail(no);
 		  model.addAttribute("memberDetail", memberDetail);
+		  
 		  //은행정보
 		  List<MemberInfoDTO> bankInfo = allMemberService.selectBankInfo(no);
 		  model.addAttribute("bankInfo", bankInfo);
@@ -71,10 +72,12 @@ public class AllmemberController {
 		  List<MemberAndArmyDTO> armyInfo = allMemberService.selectArmyInfo(no);
 		  model.addAttribute("armyInfo", armyInfo);
 		  System.out.println(armyInfo);
+		  
 		  //가족정보
 		  List<MemberAndFamilyDTO> familyInfo = allMemberService.selectFamilyInfo(no);
 		  model.addAttribute("familyInfo", familyInfo);
 		  System.out.println(familyInfo);
+		  
 		  //자격증 정보
 		  List<CertificateListDTO> certificateInfo = allMemberService.selectCertiInfo(no);
 		  model.addAttribute("certificateInfo", certificateInfo);
@@ -89,6 +92,7 @@ public class AllmemberController {
 		  List<MemberAndCareerDTO> carrerInfo = allMemberService.selectCarrerInfo(no);
 		  model.addAttribute("carrerInfo", carrerInfo);
 		  System.out.println(carrerInfo);
+		  
 		  return mv;
 		  
 		 

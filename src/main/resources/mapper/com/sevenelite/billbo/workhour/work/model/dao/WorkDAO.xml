@@ -69,16 +69,16 @@
         , 22
 		) 
 	</insert>
-	
 	<select id="selectCommute" resultMap="statusAndWorkResultMap" parameterType="StatusAndWorkDTO" resultType="date">
-		  SELECT
-		          TO_CHAR(A.COMMUTE, 'RRRRMMDD') 
-		      FROM BB_WORKSTATUS A    
+        SELECT
+              A.COMMUTE
+      FROM BB_WORKSTATUS A
 	</select>
-	<select id="selectlwork" resultMap="statusAndWorkResultMap" parameterType="StatusAndWorkDTO" resultType="date">
-		  SELECT
-		          TO_CHAR(A.LEAVE_WORK, 'RRRRMMDD') 
-		      FROM BB_WORKSTATUS A    
+
+	    <select id="selectLeave" resultMap="statusAndWorkResultMap" parameterType="StatusAndWorkDTO" resultType="date">
+        SELECT
+              A.LEAVE_WORK
+      FROM BB_WORKSTATUS A
 	</select>
 
 </mapper> 

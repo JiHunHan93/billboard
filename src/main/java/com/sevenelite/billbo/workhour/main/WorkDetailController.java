@@ -1,16 +1,13 @@
 package com.sevenelite.billbo.workhour.main;
 
-import java.security.Principal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
-import org.apache.commons.lang.time.DateFormatUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import
@@ -20,7 +17,7 @@ import
 org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -109,7 +106,6 @@ public class WorkDetailController {
 			UserDetailsVO userDetails = (UserDetailsVO) authentication.getPrincipal();
 			int userno = userDetails.getMemberno();
 			Date date = new java.util.Date(System.currentTimeMillis());
-			int workdate = 0;
 			SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			
 			String dateFormat = format.format(date);
@@ -127,9 +123,10 @@ public class WorkDetailController {
 			model.addAttribute("StatusAndWorkDTO", status);
 			mv.setViewName("statusList"); 
 			
-			return "redirect:http://127.0.0.1:8001/billbo/work/status";
+			return "redirect:http://127.0.0.1:8001/billbo/work";
 	}
 	//상세보기 
+	
 	
 	/*
 	 * @GetMapping("/work/sequence")
@@ -139,12 +136,14 @@ public class WorkDetailController {
 	 * 
 	 * 
 	 * ModelAndView mv = new ModelAndView(); mv.setViewName("work/WorkModify"); int
-	 * no = Integer.parseInt(request.getParameter("no")); mv.addObject("no", no);
-	 * System.out.println(no); List<StatusAndWorkDTO> detailInfo =
-	 * workStatusService.sequenceWork(no); model.addAttribute("detailInfo",
-	 * detailInfo);
-	 * 
-	 * return mv; }
-	 */
+	 * no = Integer.parseInt(request.getParameter("no")); 
+	 * mv.addObject("no", no);
+	 * System.out.println(no); 
+	 * List<StatusAndWorkDTO> detailInfo = workStatusService.sequenceWork(no);
+	 * model.addAttribute("detailInfo",detailInfo);
+	 */ 
+	 /* return mv; 
+	 */ 
+	 }
+	 
 	
-}	
