@@ -15,22 +15,22 @@
         <link rel="shortcut icon" type="image/x-icon" href="./resources/hrtemp/img/favicon.png">
 		
 		<!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="./resources/hrtemp/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../resources/hrtemp/css/bootstrap.min.css">
 		
 		<!-- Fontawesome CSS -->
-        <link rel="stylesheet" href="./resources/hrtemp/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../resources/hrtemp/css/font-awesome.min.css">
 		
 		<!-- Lineawesome CSS -->
-        <link rel="stylesheet" href="./resources/hrtemp/css/line-awesome.min.css">
+        <link rel="stylesheet" href="../resources/hrtemp/css/line-awesome.min.css">
 		
 		<!-- Select2 CSS -->
-		<link rel="stylesheet" href="./resources/hrtemp/css/select2.min.css">
+		<link rel="stylesheet" href="../resources/hrtemp/css/select2.min.css">
 		
 		<!-- Datatable CSS -->
-		<link rel="stylesheet" href="./resources/hrtemp/css/dataTables.bootstrap4.min.css">
+		<link rel="stylesheet" href="../resources/hrtemp/css/dataTables.bootstrap4.min.css">
 		
 		<!-- Main CSS -->
-        <link rel="stylesheet" href="./resources/hrtemp/css/style.css">
+        <link rel="stylesheet" href="../resources/hrtemp/css/style.css">
 		
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
@@ -124,7 +124,7 @@
 										<a href="activities.html">
 											<div class="media">
 												<span class="avatar">
-													<img alt="" src="./resources/hrtemp/img/profiles/avatar-02.jpg">
+													<img alt="" src="../resources/hrtemp/img/profiles/avatar-02.jpg">
 												</span>
 												<div class="media-body">
 													<p class="noti-details"><span class="noti-title">John Doe</span> added new task <span class="noti-title">Patient appointment booking</span></p>
@@ -137,7 +137,7 @@
 										<a href="activities.html">
 											<div class="media">
 												<span class="avatar">
-													<img alt="" src="./resources/hrtemp/img/profiles/avatar-03.jpg">
+													<img alt="" src="../resources/hrtemp/img/profiles/avatar-03.jpg">
 												</span>
 												<div class="media-body">
 													<p class="noti-details"><span class="noti-title">Tarah Shropshire</span> changed the task name <span class="noti-title">Appointment booking with payment gateway</span></p>
@@ -150,7 +150,7 @@
 										<a href="activities.html">
 											<div class="media">
 												<span class="avatar">
-													<img alt="" src="./resources/hrtemp/img/profiles/avatar-06.jpg">
+													<img alt="" src="../resources/hrtemp/img/profiles/avatar-06.jpg">
 												</span>
 												<div class="media-body">
 													<p class="noti-details"><span class="noti-title">Misty Tison</span> added <span class="noti-title">Domenic Houston</span> and <span class="noti-title">Claire Mapes</span> to project <span class="noti-title">Doctor available module</span></p>
@@ -163,7 +163,7 @@
 										<a href="activities.html">
 											<div class="media">
 												<span class="avatar">
-													<img alt="" src="./resources/hrtemp/img/profiles/avatar-17.jpg">
+													<img alt="" src="../resources/hrtemp/img/profiles/avatar-17.jpg">
 												</span>
 												<div class="media-body">
 													<p class="noti-details"><span class="noti-title">Rolland Webber</span> completed task <span class="noti-title">Patient and Doctor video conferencing</span></p>
@@ -176,7 +176,7 @@
 										<a href="activities.html">
 											<div class="media">
 												<span class="avatar">
-													<img alt="" src="./resources/hrtemp/img/profiles/avatar-13.jpg">
+													<img alt="" src="../resources/hrtemp/img/profiles/avatar-13.jpg">
 												</span>
 												<div class="media-body">
 													<p class="noti-details"><span class="noti-title">Bernardo Galaviz</span> added new task <span class="noti-title">Private chat module</span></p>
@@ -634,9 +634,9 @@
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title">ë¶ì</h3>
+								<h3 class="page-title">Business Department</h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.html">ììë¶</a></li>
+									<li class="breadcrumb-item"><a href="index.html">영업부</a></li>
 								</ul>
 							</div>
 							
@@ -650,68 +650,21 @@
 								<table class="table table-striped custom-table mb-0 datatable">
 									<thead>
 										<tr>
-											<th style="width: 30px;">#</th>
-											<th>ë¶ì</th>
-											<th>ì§ì</th>
-											<th>ì§ì</th>
+											<th style="width: 30px;">No</th>
+											<th>Department</th>
+											<th>position</th>
+											<th>employee</th>
 										</tr>
 									</thead>
 									<tbody>
 										<tr>
-											<td>1</td>
-											<td>ììë¶</td>
-											<td>ì¬ì</td>
-											<td><a href="shinProfile.html">Test</a></td>
-											</td>
+										    <td>1</td>
+											<td>영업1팀</td>
+											<td>대리</td>
+											<td>신승록</td>
+					
 										</tr>
-										<tr>
-											<td>2</td>
-											<td>ììë¶</td>
-											<td>ëë¦¬</td>
-											<td>ì´ëë¦¬</td>	
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>3</td>
-											<td>ììë¶</td>
-											<td>ê³¼ì¥</td>
-											<td>ìµìì</td>
-                                           
-											</td>
-										</tr>
-										<tr>
-											<td>4</td>
-											<td>ììë¶</td>
-											<td>ë¶ì¥</td>
-											<td>íë¶ì¥</td>
-                                        
-											</td>
-										</tr>
-										<tr>
-											<td>5</td>
-											<td>ë¬¼ë¥í</td>
-											<td>ê³¼ì¥</td>
-											<td>ì´ë¬¼ë¥</td>
-                                        
-											</td>
-										</tr>
-										<tr>
-											<td>5</td>
-											<td>ë¬¼ë¥í</td>
-											<td>ì¬ì</td>
-											<td>ê¹ë¬¼ë¥</td>
-                                          
-											</td>
-										</tr>
-										<tr>
-											<td>6</td>
-											<td>ë¬¼ë¥í</td>
-											<td>ê³¼ì¥</td>
-											<td>ê¹ë¬¼ë¥</td>
-                                          
-											</td>
-										</tr>
+							
 												</div>
 											</td>
 										</tr>
@@ -825,24 +778,24 @@
 		<!-- /Main Wrapper -->
 		
 		<!-- jQuery -->
-        <script src="./resources/hrtemp/js/jquery-3.5.1.min.js"></script>
+        <script src="../resources/hrtemp/js/jquery-3.5.1.min.js"></script>
 		
 		<!-- Bootstrap Core JS -->
-        <script src="./resources/hrtemp/js/popper.min.js"></script>
-        <script src="./resources/hrtemp/js/bootstrap.min.js"></script>
+        <script src="../resources/hrtemp/js/popper.min.js"></script>
+        <script src="../resources/hrtemp/js/bootstrap.min.js"></script>
 		
 		<!-- Slimscroll JS -->
-		<script src="./resources/hrtemp/js/jquery.slimscroll.min.js"></script>
+		<script src="../resources/hrtemp/js/jquery.slimscroll.min.js"></script>
 		
 		<!-- Select2 JS -->
-		<script src="./resources/hrtemp/js/select2.min.js"></script>
+		<script src="../resources/hrtemp/js/select2.min.js"></script>
 		
 		<!-- Datatable JS -->
-		<script src="./resources/hrtemp/js/jquery.dataTables.min.js"></script>
-		<script src="./resources/hrtemp/js/dataTables.bootstrap4.min.js"></script>
+		<script src="../resources/hrtemp/js/jquery.dataTables.min.js"></script>
+		<script src="../resources/hrtemp/js/dataTables.bootstrap4.min.js"></script>
 		
 		<!-- Custom JS -->
-		<script src="./resources/hrtemp/js/app.js"></script>
+		<script src="../resources/hrtemp/js/app.js"></script>
 
     </body>
 </html>
