@@ -4,7 +4,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
 @Controller
 @RequestMapping("/department/*")
 public class DepartmentMainController {
@@ -15,10 +14,10 @@ public class DepartmentMainController {
 		return "department/department";
 	}
 	
-//	@GetMapping(value={"department-business"})
-//	public String departmentBusiness() {
-//		
-//		return "department/department-business";
-//	}
-//	
+	@GetMapping(value={"department-business", "/"})
+	public String departmentBusiness() {
+		
+		return "department/department-business";
+	}
+	
 }
