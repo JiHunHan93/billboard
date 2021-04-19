@@ -1271,8 +1271,8 @@
 										</tbody>
 										</table>
 										<div class="page_action_wrap" style="display: block;">
-										<button class="btn_major" data-role="button"  id="submit">저장</button>
-										<button class="btn_minor" data-role="button"  id="hrcard_btn_cancel">취소</button>
+										<button class="btn_major" data-role="button" id="submit">저장</button>
+										<button class="btn_major" data-role="button" id="cancel">취소</button>
 								</div>
 										</form>
 									</div></div>
@@ -1350,8 +1350,8 @@
 											
 										</tbody></table>
 										<div class="page_action_wrap" style="display: block;">
-										<button class="btn_major" data-role="button"  id="submit">저장</button>
-										<button class="btn_minor" data-role="button"  id="hrcard_btn_cancel">취소</button>
+										<button class="btn_major" data-role="button" id="submit">저장</button>
+										<button class="btn_major" data-role="button" id="cancel">취소</button>
 								</div>
 										</form>
 									</div></div><div class="page_action_wrap" style="display: block;">
@@ -1391,22 +1391,20 @@
 												<th class="no"><span class="title_txt">사번</span></th>
 												</tr>
 											<tr class="dataRow" data-id="">
-												<c:forEach var="familyDto" items="${ requestScope.familyDto }"> 
-											
+												
 												<td class="info_no">
-												<input class="txt w_max" type="text" name="info_no" value="<c:out value="${ familyDto.info_no }"/>">
+												<input class="txt w_max" type="text" name="info_no" value="">
 												</td>
 												<td class="name">
 													
-													<input class="txt w_max" type="text" name="name" value="<c:out value="${ familyDto.name }"/>">
+													<input class="txt w_max" type="text" name="name" value="">
 												
 												</td>
 												<td class="relation">
 													
-													<input class="txt w_max" type="text" name="relation" value="<c:out value="${ familyDto.relation }"/>">
+													<input class="txt w_max" type="text" name="relation" value="">
 												</td>
 												<td class="gender">
-												 <input class="txt w_max" type="text" name="gender" value="<c:out value="${ familyDto.gender }"/>">
 												 	   <span class="wrap_select">
 														  <select class="wfix_small" name="gender" value="">
 															 <option value="">선택하세요</option>
@@ -1417,29 +1415,29 @@
 												</td>
 												<td class="birthday">
 													<span class="wrap_date">
-													<input class="txt wfix_small hasDatepicker" type="date" name="birthday" value="<c:out value="${ familyDto.birthday }"/>">
+													<input class="txt wfix_small hasDatepicker" type="date" name="birthday" value="">
 													<span class="ic ic_calendar"></span>
 													</span>
 												</td>
 												<td class="study">
 													
-													<input class="txt w_max" type="text" name="study" value="<c:out value="${ familyDto.study }"/>">
+													<input class="txt w_max" type="text" name="study" value="">
 												</td>
 												<td class="job">
 													
-													<input class="txt w_max" type="text" name="job" value="<c:out value="${ familyDto.job }"/>">
+													<input class="txt w_max" type="text" name="job" value="">
 												</td>
 												<td class="no">
 													<input class="txt w_max" type="text" name="no" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }" >
 												</td>
-											</c:forEach>	
+												
 											</tr>
 											</tbody>
 										</table>
 										<div class="page_action_wrap" style="display: block;">
-										<span class="btn_major" data-role="button" id="hrcard_btn_submit"><span class="txt">저장</span></span>
-										<span class="btn_minor" data-role="button" id="hrcard_btn_cancel"><span class="txt">취소</span></span>
-								</div>
+										<button class="btn_major" data-role="button"  id="submit">저장</button>
+										<button class="btn_minor" data-role="button"  id="hrcard_btn_cancel">취소</button>
+							</div>
 										</form>
 									</div></div></div>
 									

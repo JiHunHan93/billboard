@@ -6,10 +6,10 @@ import com.sevenelite.billbo.department.model.dto.DepartmentSpotDTO;
 public interface DepartmentService {
 
 	/* 부서 조회 */
-	DepartmentDTO selectLoginDept(int memberno);
+	DepartmentDTO selectDeptInfo(int deptCode);
 	
 	/* 직위 조회 */
-	DepartmentSpotDTO selectLoginSpot(int memberno);
+	DepartmentSpotDTO selectDeptInpoSpot(int memberName);
 	
 	
 	

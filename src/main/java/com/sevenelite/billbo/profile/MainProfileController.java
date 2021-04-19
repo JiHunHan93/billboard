@@ -42,52 +42,67 @@ public class MainProfileController {
 		this.profileService = profileService;
 	}
 
-	/*
-	 * @GetMapping(value= {"mainProfile","/"} ) public String page(Model model,
-	 * Authentication authentication) {
-	 * 
-	 * UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
-	 * System.out.println("로그인 회원번호"); 멤버정보조회 List<MemberInfoDTO> member =
-	 * profileService.selectMemberInfo(user.getMemberno()); 부서조회 List<DeptDTO> dept
-	 * = profileService.selectMemberDept(user.getMemberno()); 이메일조회 List<MemBbDTO>
-	 * detailMem= profileService.selectMemberDetail(user.getMemberno()); 부서변경이력 조회
-	 * List<ModifyDeptDTO1> modidept =
-	 * profileService.selectModifyDept(user.getMemberno()); 직위변경이력 조회
-	 * List<ModifySpotDTO> modispotDto =
-	 * profileService.selectspot(user.getMemberno()); 경력 List<CareerDTO> careerDto =
-	 * profileService.career(user.getMemberno()); 상벌 List<BonusDTO> bonusDto =
-	 * profileService.bonus(user.getMemberno()); 자격인줄 알았던 면허 List<LicenseDTO>
-	 * LicenseDto = profileService.licenseSelect(user.getMemberno()); 이게 자격
-	 * List<CertificateDTO>certificateInsert =
-	 * profileService.certificateInsert(user.getMemberno()); 병역
-	 * List<ArmyDTO>armySelect = profileService.armyInsert(user.getMemberno()); 학력
-	 * List<FinalAcademicDTO>academic = profileService.academic(user.getMemberno());
-	 * 정말 가 족같은 가족사항 List<FamilyDTO>familyDto =
-	 * profileService.familyDto(user.getMemberno());
-	 * 
-	 * System.out.println(member+"오나???!?"); System.out.println(dept+"이것도 오나???!?");
-	 * System.out.println(detailMem+"이거도 제발");
-	 * System.out.println(modidept+"이거도 제발Q");
-	 * System.out.println(modispotDto+"이거도 제발시발");
-	 * System.out.println(careerDto+"이거도 제발시발");
-	 * System.out.println(bonusDto+"이거도 제발시발"); System.out.println(LicenseDto +
-	 * "젭알 되주세요"); System.out.println(certificateInsert + "젭알 되주세요");
-	 * System.out.println(armySelect + "이거 안되면 재입대한다"); System.out.println(academic
-	 * + "이쯤되면 그냥 되겠지.."); System.out.println(familyDto + "마지막");
-	 * 
-	 * model.addAttribute("member", member); model.addAttribute("dept", dept);
-	 * model.addAttribute("detailMem", detailMem); model.addAttribute("modidept",
-	 * modidept); model.addAttribute("modispotDto", modispotDto);
-	 * model.addAttribute("careerDto", careerDto); model.addAttribute("bonusDto",
-	 * bonusDto); model.addAttribute("LicenseDto", LicenseDto);
-	 * model.addAttribute("certificateInsert", certificateInsert);
-	 * model.addAttribute("armyInsert", armySelect); model.addAttribute("academic",
-	 * academic); model.addAttribute("familyDto", familyDto);
-	 * 
-	 * return "profile/main";
-	 * 
-	 * }
-	 */
+	@GetMapping(value = { "mainProfile" })
+	public String page(Model model, Authentication authentication) {
+
+		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
+		System.out.println("로그인 회원번호");
+		/* 멤버정보조회 */
+		List<MemberInfoDTO> member = profileService.selectMemberInfo(user.getMemberno());
+		/* 부서조회 */
+		List<DeptDTO> dept = profileService.selectMemberDept(user.getMemberno());
+		/* 이메일조회 */
+		List<MemBbDTO> detailMem = profileService.selectMemberDetail(user.getMemberno());
+		/* 부서변경이력 조회 */
+		List<ModifyDeptDTO1> modidept = profileService.selectModifyDept(user.getMemberno());
+		/* 직위변경이력 조회 */
+		List<ModifySpotDTO> modispotDto = profileService.selectspot(user.getMemberno());
+		/* 경력 */
+		List<CareerDTO> careerDto = profileService.career(user.getMemberno());
+		/* 상벌 */
+		List<BonusDTO> bonusDto = profileService.bonus(user.getMemberno());
+		/* 자격인줄 알았던 면허 */
+		List<LicenseDTO> LicenseDto = profileService.licenseSelect(user.getMemberno());
+		/* 이게 자격 */
+		List<CertificateDTO> certificateInsert = profileService.certificateInsert(user.getMemberno());
+		/* 병역 */
+		List<ArmyDTO> armySelect = profileService.armySelect(user.getMemberno());
+		/* 학력 */
+		List<FinalAcademicDTO> academic = profileService.academic(user.getMemberno());
+		/* 정말 가 족같은 가족사항 */
+		List<FamilyDTO> familySelect = profileService.familySelect(user.getMemberno());
+
+		System.out.println(member + "오나???!?");
+		System.out.println(dept + "이것도 오나???!?");
+		System.out.println(detailMem + "이거도 제발");
+		System.out.println(modidept + "이거도 제발Q");
+		System.out.println(modispotDto + "이거도 제발시발");
+		System.out.println(careerDto + "이거도 제발시발");
+		System.out.println(bonusDto + "이거도 제발시발");
+		System.out.println(LicenseDto + "젭알 되주세요");
+		System.out.println(certificateInsert + "젭알 되주세요");
+		System.out.println(armySelect + "이거 안되면 재입대한다");
+		System.out.println(academic + "이쯤되면 그냥 되겠지..");
+		System.out.println(familySelect + "마지막");
+
+		model.addAttribute("member", member);
+		model.addAttribute("dept", dept);
+		model.addAttribute("detailMem", detailMem);
+		model.addAttribute("modidept", modidept);
+		model.addAttribute("modispotDto", modispotDto);
+		model.addAttribute("careerDto", careerDto);
+		model.addAttribute("bonusDto", bonusDto);
+		model.addAttribute("LicenseDto", LicenseDto);
+		model.addAttribute("certificateInsert", certificateInsert);
+		model.addAttribute("armySelect", armySelect);
+		model.addAttribute("academic", academic);
+		model.addAttribute("familySelect", familySelect);
+
+		return "profile/main";
+
+	}
+	 
+	 
 
 	/* 1 신상 */
 	@PostMapping("main")
@@ -208,16 +223,17 @@ public class MainProfileController {
 
 	/* 9.가족사항 */
 	@PostMapping("family")
-	public String family(@ModelAttribute FamilyDTO family) {
+	public String family(@ModelAttribute FamilyDTO family, Authentication authentication, Model model) {
+		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
 
 		System.out.println("branch : " + family);
 
 		System.out.println("하..");
-
-		/* SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); */
 		profileService.family(family);
 
-		return "profile/mainProfile";
+		 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); 
+
+		return "redirect:/profile/mainProfile2";
 	}
 
 	/* 10.면허 */
@@ -262,7 +278,7 @@ public class MainProfileController {
 		/* 학력 */
 		List<FinalAcademicDTO> academic = profileService.academic(user.getMemberno());
 		/* 정말 가 족같은 가족사항 */
-		List<FamilyDTO> familyDto = profileService.familyDto(user.getMemberno());
+		List<FamilyDTO> familySelect = profileService.familySelect(user.getMemberno());
 
 		System.out.println(member + "오나???!?");
 		System.out.println(dept + "이것도 오나???!?");
@@ -275,7 +291,7 @@ public class MainProfileController {
 		System.out.println(certificateInsert + "젭알 되주세요");
 		System.out.println(armySelect + "이거 안되면 재입대한다");
 		System.out.println(academic + "이쯤되면 그냥 되겠지..");
-		System.out.println(familyDto + "마지막");
+		System.out.println(familySelect + "마지막");
 
 		model.addAttribute("member", member);
 		model.addAttribute("dept", dept);
@@ -288,7 +304,7 @@ public class MainProfileController {
 		model.addAttribute("certificateInsert", certificateInsert);
 		model.addAttribute("armySelect", armySelect);
 		model.addAttribute("academic", academic);
-		model.addAttribute("familyDto", familyDto);
+		model.addAttribute("familySelect", familySelect);
 
 		return "profile/main2";
 

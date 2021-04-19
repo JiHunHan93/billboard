@@ -13,7 +13,7 @@
 	<result column="MEMBER_NO" property="MemNo"/>
 	</resultMap>
 	<resultMap id="statusAndWorkResultMap" type="com.sevenelite.billbo.workhour.work.model.dto.StatusAndWorkDTO">
- 	<id column="MEMBMER_NO" property="memNo"/>
+ 	<id column="MEMBER_NO" property="memNo"/>
  	<result column="WORKDATE" property="date"/>
  	<result column="COMMUTE" property="commute"/>
  	<result column="LEAVE_WORK" property="lwork"/>
@@ -31,22 +31,6 @@
  		<id column="WORKTYPE_CODE" property="code" />
  		<result column="WORKTYPE_TYPE" property="type"/>
 	</resultMap>
-	<resultMap id="Voresult" type="com.sevenelite.billbo.member.model.dto.UserDetailsVO">
-		<id property="memberno" column="MEMBER_NO" />
-	</resultMap>
-  	<select id="selectWorkList" resultMap="workResult" parameterType="WorkDTO" resultType="date">
-		SELECT
-			   A.TOTAL_WORK_HOURS
-		     , A.WORK_LATE_COUNT
-		     , A.WORK_COUNT  
-		     , A.TOTAL_EXTRA_WORK_HOURS
-		     , B.COMMUTE
-		     , B.LEAVE_WORK
-		     , B.MEMBER_NO
-		  FROM BB_WEEK_WORK_STATISTIC A 
-          JOIN BB_WORKSTATUS B ON (A.MEMBER_NO = B.MEMBER_NO)
-		 WHERE A.MEMBER_NO = #{ MemNo }
-	</select>
 	
 	<insert id="insertWorkInfo" parameterType="WorkDTO">
 		 INSERT
@@ -69,16 +53,24 @@
         , 22
 		) 
 	</insert>
-	<select id="selectCommute" resultMap="statusAndWorkResultMap" parameterType="StatusAndWorkDTO" resultType="date">
+	<select id="selectCommute" parameterType="StatusAndWorkDTO" resultType="date">
         SELECT
-              A.COMMUTE
+           A.COMMUTE
       FROM BB_WORKSTATUS A
+		
 	</select>
 
-	    <select id="selectLeave" resultMap="statusAndWorkResultMap" parameterType="StatusAndWorkDTO" resultType="date">
+	    <select id="selectLeave" parameterType="StatusAndWorkDTO" resultType="date">
         SELECT
               A.LEAVE_WORK
       FROM BB_WORKSTATUS A
+	</select>
+	
+	<select id="selectWork" resultType="String" parameterType="StatusAndWorkDTO">
+		SELECT
+		       A.WORKDATE
+		 FROM BB_WORKSTATUS A
+<!-- 	    WHERE A.WORKDATE = SYSDATE -->
 	</select>
 
 </mapper> 

@@ -39,7 +39,9 @@ public interface ProfileService {
 	boolean finalAcademic(FinalAcademicDTO finalAcademic);
 
 	boolean family(FamilyDTO family);
-
+	List<FamilyDTO> family(int memberno);
+	List<FamilyDTO> familySelect(int memberno);
+	
 	boolean license(LicenseDTO license);
 
 
@@ -60,8 +62,8 @@ public interface ProfileService {
 
 	List<MemBbDTO> mainProfile();
 
-	List<MemberInfoDTO> memberInfo(int no);
-
+	List<MemberInfoDTO> memberInfo(int memberno);
+	
 	//List<MemberInfoDTO> main();
 
 	boolean selectMemberInfo(MemberInfoDTO member_info_no);
@@ -108,7 +110,7 @@ public interface ProfileService {
 
 	List<FinalAcademicDTO> academic(int memberno);
 
-	List<FamilyDTO> familyDto(int memberno);
+	//List<FamilyDTO> familyDto(int memberno);
 
 	
 	//List<MemberInfoDTO> modifyMember(int no);

@@ -30,10 +30,7 @@ public interface ProfileMapper {
 	List<FinalAcademicDTO> academic(int memberno);
 	int finalAcademic(FinalAcademicDTO finalAcademic);
 
-	/*familyDTO*/
-	FamilyDTO family();
-	List<FamilyDTO> familyDto(int memberno);
-	int family(FamilyDTO family);
+	
 	
 
 	
@@ -105,6 +102,13 @@ public interface ProfileMapper {
 	List<MemberInfoDTO> memberInfo(int memberno);
 	List<MemberInfoDTO> selectMemberInfo(int memberno);
 	int mainProfile(MemberInfoDTO memberInfo);
+
+	/*familyDTO*/
+	FamilyDTO family();
+	//List<FamilyDTO> familyDto(int memberno);
+	int family(FamilyDTO family);
+	List<FamilyDTO> family(int memberno);
+	List<FamilyDTO> familySelect(int memberno);
 }
 
 //List<MemberInfoDTO> modifyMember();
