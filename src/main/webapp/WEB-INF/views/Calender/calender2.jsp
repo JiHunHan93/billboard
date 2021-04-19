@@ -188,6 +188,28 @@
 		return arr;
 	}
 	
+	$(document).on('click', '.asdfasdf', function(e) {
+	    var arr = [];
+	    arr.push(7);
+	    arr.push(8);
+	    
+	    var form = {
+	        arr : JSON.stringify(arr),
+	        title : $('.modal-sub-text').val(),
+	        start : $('.start-date').val(),
+	        end : $('.end-date').val(),
+	        category : $('.calSelect option:selected').val()
+	    };
+
+	    $.ajax({
+	        type: "post", 
+	        url: "postMain", 
+	        dataType: "json", 
+	        contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+	        data: form
+	    });
+	});
+	
 	function getCalendarDataInDB(){
 	    var arr = [];
 	    
@@ -238,10 +260,14 @@
 	    return arr;
 	}
 	
-	$("#dtpicker").on('focus', function($){
-		var date = $('#dtpicker').val();
-		if(!isEmpty(date))
-	})
+/* 	$(".start-date").on('click', function($){
+		var date = $('.start-date').val();
+		console.log('dateeeeeeeeeeeeeeeee' + date);
+		if(!isEmpty(date)) {
+			date = formatDate(date);
+			$('.start-date').val(date);
+		}
+	}) */
 	
 	function formatDate(date) {
 	    var d = new Date(date),
@@ -822,7 +848,7 @@ if($('.select11').length > 0) {
 							<h4 class="modal-title">Add a category</h4>
 						</div>
 						<div class="modal-body p-20">
-							<form>
+							<form action="http://127.0.0.1:8001/billbo/calendar2/main" method="post">
 								<div class="row">
 									<div class="col-md-6">
 										<label class="col-form-label">Category Name</label> <input

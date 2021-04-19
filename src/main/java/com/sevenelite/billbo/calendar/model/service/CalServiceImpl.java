@@ -24,5 +24,10 @@ public class CalServiceImpl implements CalService {
 		return calDAO.selectCal();
 	}
 
+	@Override
+	public boolean insertEvt(CalDTO calDTO) {
+		return calDAO.insertEvt(calDTO) > 0? true : false;
+	}
+
 
 }

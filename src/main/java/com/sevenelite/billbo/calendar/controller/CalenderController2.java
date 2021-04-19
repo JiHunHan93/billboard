@@ -1,17 +1,21 @@
 package com.sevenelite.billbo.calendar.controller;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sevenelite.billbo.calendar.model.dto.CalDTO;
@@ -33,12 +37,9 @@ public class CalenderController2 {
 		return "Calender/calender2";
 	}
 	
-	@RequestMapping("calender2/getMain")
+	@RequestMapping(value = "calender2/getMain", method = RequestMethod.POST)
 	@ResponseBody
 	public List<Map<String,CalDTO>> AjaxCalenderMain() {
-
-//		CalMap.put("evt1", new CalDTO("db이벤트1", "2021-04-04", "2021-04-06", false) );
-//		CalMap.put("evt2", new CalDTO("db이벤트2", "2021-04-23", "2021-04-26", false) );
 
 		List<Map<String,CalDTO>> calendarInfo = calService.selectCal();
 		System.out.println(calendarInfo.get(0).get("start"));
@@ -48,6 +49,22 @@ public class CalenderController2 {
 		System.out.println("아직 컨트롤러" + calendarInfo);
 
 		return calendarInfo;
+	}
+	
+	@RequestMapping(value = "/postMain", method = RequestMethod.POST)
+	@ResponseBody
+	public void asd(@ModelAttribute CalDTO calDTO, HttpServletRequest request) {
+		String title = request.getParameter("title");
+		String start = request.getParameter("start");
+		String end = request.getParameter("end");
+		String category = request.getParameter("category");
+		System.out.println("title : " + title + "start : " + start + "end : " + end + "category : " + category);
+		calDTO.setTitle(title);
+		calDTO.setStart(start);
+		calDTO.setEnd(end);
+		calDTO.setCalType(category);
+		System.out.println(calDTO);
+		calService.insertEvt(calDTO);
 	}
 	
 //	@RequestMapping("calender2/getMain")
@@ -87,8 +104,8 @@ public class CalenderController2 {
 //	    return gson.toJson(calendarInfo.get(0).toString());
 //	}
 	
-	
-	@PostMapping(value="main/post")
+	@PostMapping("/insert")
+	@ResponseBody
 	public String CalenderPostMain(HttpServletRequest request) {
 		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 

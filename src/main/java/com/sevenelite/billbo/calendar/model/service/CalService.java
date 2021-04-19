@@ -9,5 +9,7 @@ public interface CalService {
 
 	List<Map<String, CalDTO>> selectCal();
 
+	boolean insertEvt(CalDTO calDTO);
+
 
 }

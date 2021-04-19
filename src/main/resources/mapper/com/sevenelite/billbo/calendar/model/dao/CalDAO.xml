@@ -25,5 +25,13 @@
 		     , A.END_DATE
 		  FROM BB_WORK_SCHEDULE A
 	</select>
-
+ 	<insert id="insertEvt" parameterType="CalDTO">
+		INSERT
+		       INTO BB_WORK_SCHEDURE A
+			        (
+		   	        )
+	           VALUES
+	                (
+	                )
+</insert>
 </mapper>

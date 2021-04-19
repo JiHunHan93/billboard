@@ -947,10 +947,10 @@
 
     // LOCALES
 
-    var defaultLocaleMonths = 'January_February_March_April_May_June_July_August_September_October_November_December'.split(
+    var defaultLocaleMonths = '1월_2월_3월_4월_5월_6월_7월_8월_9월_10월_11월_12월'.split(
             '_'
         ),
-        defaultLocaleMonthsShort = 'Jan_Feb_Mar_Apr_May_Jun_Jul_Aug_Sep_Oct_Nov_Dec'.split(
+        defaultLocaleMonthsShort = '1_2_3_4_5_6_7_8_9_10_11_12'.split(
             '_'
         ),
         MONTHS_IN_FORMAT = /D[oD]?(\[[^\[\]]*\]|\s)+MMMM?/,
@@ -1526,11 +1526,11 @@
         return ws.slice(n, 7).concat(ws.slice(0, n));
     }
 
-    var defaultLocaleWeekdays = 'Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday'.split(
+    var defaultLocaleWeekdays = '일요일_월요일_화요일_수요일_목요일_금요일_토요일'.split(
             '_'
         ),
-        defaultLocaleWeekdaysShort = 'Sun_Mon_Tue_Wed_Thu_Fri_Sat'.split('_'),
-        defaultLocaleWeekdaysMin = 'Su_Mo_Tu_We_Th_Fr_Sa'.split('_'),
+        defaultLocaleWeekdaysShort = '일_월_화_수_목_금_토'.split('_'),
+        defaultLocaleWeekdaysMin = '일_월_화_수_목_금_토'.split('_'),
         defaultWeekdaysRegex = matchWord,
         defaultWeekdaysShortRegex = matchWord,
         defaultWeekdaysMinRegex = matchWord;
