@@ -757,7 +757,6 @@
 									<li class="nav-item"><a href="#emp_education" data-toggle="tab" class="nav-link">학력</a></li>
 									<li class="nav-item"><a href="#emp_family" data-toggle="tab" class="nav-link">가족사항</a></li>
 									<li class="nav-item"><a href="#emp_license" data-toggle="tab" class="nav-link">면허</a></li>
-									
 									<!-- <li class="nav-item"><a href="#bank_statutory" data-toggle="tab" class="nav-link">Bank & Statutor
 										y <small class="text-danger">(Admin Only)</small></a></li> -->
 								</ul>
@@ -765,13 +764,7 @@
 						</div>
 					</div>
 					
-												<%--필요없는거 <c:forEach var="profileList1" items="${ requestScope.profileList1 }">
-															<div class="title">Phone:  <c:out value="${profileList1.phone }"/></div>
-															<!-- <div class="text"></div> -->
-															</c:forEach>
-												 --%>
 					<div class="tab-content">
-						<!-- 여기 첫번째 탭-->
 						<!--첫번째 신상 탭 -->
 						<div id="emp_profile" class="pro-overview tab-pane fade show active">
 							<div class="tab-content">
@@ -781,15 +774,17 @@
 										<form action="${ pageContext.servletContext.contextPath }/profile/main" method="post">
 										<table class="type_list_box">
 											<tbody>
-											<tr>
+											<c:choose>
+											<c:when test="${ empty requestScope.member}">
+												<tr>
 												<th class="col1">
 													<span class="title_txt">신상번호</span>
 												</th>
 												
 												<td class="col2">
-													 <c:forEach var="member" items="${ requestScope.member }"> 
-												<input class="txt w_max" type="text" name="info_no" value="<c:out value="${ member.info_no }"/>">
-														</c:forEach>
+													 
+												<input class="txt w_max" type="text" name="info_no" value="">
+														
 												</td>
 												<th class="col3">
 													<span class="title_txt">사번</span>
@@ -803,17 +798,17 @@
 													
 												</th>
 												<td class="col6">
-														<c:forEach var="member" items="${ requestScope.member }"> 
-												<input class="txt w_max" type="date" name="enroll_date" value="<c:out value="${member.enroll_date }"/>">
-														</c:forEach>
+														
+												<input class="txt w_max" type="date" name="enroll_date" value="">
+														
 												</td>            
 												<th class="col7">
 													<span class="title_txt">계좌은행</span>
 												</th>
 												<td class="col8">
-														<c:forEach var="member" items="${ requestScope.member }"> 
-												<input class="txt w_max" type="text" name="account_bank" value="<c:out value="${ member.account_bank }"/>">
-														</c:forEach>
+														
+												<input class="txt w_max" type="text" name="account_bank" value="">
+														
 												
 												</td>
 											</tr>
@@ -823,18 +818,18 @@
 												</th>
 												
 												<td colspan="5">
-														<c:forEach var="member" items="${ requestScope.member }"> 
-												<input class="txt w_max" type="text" name="address" value="<c:out value="${member.address }"/>">
-														</c:forEach>
+														
+												<input class="txt w_max" type="text" name="address" value="">
+														
 												
 												</td>
 												<th class="col7">
 													<span class="title_txt">계좌번호</span>
 												</th>
 												<td class="col8">
-														<c:forEach var="member" items="${ requestScope.member }"> 
-												<input class="txt w_max" type="text" name="account_no" value="<c:out value="${member.account_no }"/>">
-														</c:forEach>
+														
+												<input class="txt w_max" type="text" name="account_no" value="">
+														
 												
 												</td>
 											</tr>
@@ -843,31 +838,119 @@
 													<span class="title_txt">근로계약서</span>
 												</th>
 												<td colspan="3">
-														<c:forEach var="member" items="${ requestScope.member }"> 
-												<input class="txt w_max" type="text" name="work_contract" value="<c:out value="${member.work_contract }"/>">
-														</c:forEach>
-												
+													
+												<input class="txt w_max" type="text" name="work_contract" value="">
+							
 												</td>        
 												<th class="col5">
 													<span class="title_txt">파일첨부</span>
 												</th>
 												<td class="col6">
-														<c:forEach var="member" items="${ requestScope.member }"> 
-												<input class="txt w_max" type="text" name="fileattachment" value="<c:out value="${member.fileattachment }"/>">
-														</c:forEach>
+														
+												<input class="txt w_max" type="text" name="fileattachment" value="">
+								
 												
 												</td>
 												<th class="col7">
 													<span class="title_txt">예금주</span>
 													</th>
 													<td class="col8">
-													<c:forEach var="member" items="${ requestScope.member }"> 
-												<input class="txt w_max" type="text" name="account_host" value="<c:out value="${member.account_host }"/>">
-														</c:forEach>
+													 
+												<input class="txt w_max" type="text" name="account_host" value="">
 												
 											</td>
 										</tr>
-											
+											</c:when>
+											<c:otherwise>
+											<c:forEach var="member" items="${requestScope.member}">
+											<tr>
+												<th class="col1">
+													<span class="title_txt">신상번호</span>
+												</th>
+												
+												<td class="col2">
+													 
+												<input class="txt w_max" type="text" name="info_no" value="<c:out value="${ member.info_no }"/>">
+														
+												</td>
+												<th class="col3">
+													<span class="title_txt">사번</span>
+												</th>
+												<td class="col4">
+													
+													<input class="txt w_max" type="text" name="member_no" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }" >
+												</td>
+												<th class="col5">
+													<span class="title_txt">입사일</span>
+													
+												</th>
+												<td class="col6">
+														
+												<input class="txt w_max" type="date" name="enroll_date" value="<c:out value="${ member.enroll_date }"/>">
+														
+												</td>            
+												<th class="col7">
+													<span class="title_txt">계좌은행</span>
+												</th>
+												<td class="col8">
+														
+												<input class="txt w_max" type="text" name="account_bank" value="<c:out value="${ member.account_bank }"/>">
+														
+												
+												</td>
+											</tr>
+											<tr>
+												<th class="col1">
+													<span class="title_txt">주소</span>
+												</th>
+												
+												<td colspan="5">
+														
+												<input class="txt w_max" type="text" name="address" value="<c:out value="${member.address }"/>">
+														
+												
+												</td>
+												<th class="col7">
+													<span class="title_txt">계좌번호</span>
+												</th>
+												<td class="col8">
+														
+												<input class="txt w_max" type="text" name="account_no" value="<c:out value="${member.account_no }"/>">
+														
+												
+												</td>
+											</tr>
+											<tr>
+												<th class="col1">
+													<span class="title_txt">근로계약서</span>
+												</th>
+												<td colspan="3">
+													
+												<input class="txt w_max" type="text" name="work_contract" value="<c:out value="${member.work_contract }"/>">
+							
+												</td>        
+												<th class="col5">
+													<span class="title_txt">파일첨부</span>
+												</th>
+												<td class="col6">
+														
+												<input class="txt w_max" type="text" name="fileattachment" value="<c:out value="${member.fileattachment }"/>">
+								
+												
+												</td>
+												<th class="col7">
+													<span class="title_txt">예금주</span>
+													</th>
+													<td class="col8">
+													 
+												<input class="txt w_max" type="text" name="account_host" value="<c:out value="${member.account_host }"/>">
+													
+												
+											</td>
+										</tr>
+											</c:forEach>
+											</c:otherwise>
+											</c:choose>			
 										</tbody></table>
 									<div class="page_action_wrap" style="display: block;">
 										<button class="btn_major" data-role="button"  id="submit">저장</button>
@@ -908,7 +991,46 @@
 												<th class="member_no"><span class="title_txt">사번</span></th>
 											</tr>
 											<tr class="dataRow" data-id="">
-												<td class="spot_no">
+												 <c:choose>
+                                       <c:when test="${ empty requestScope.modispotDto }">
+                                       
+                                          <td class="no">
+                                          <input class="txt w_max" type="text" name="spot_no" value=""/>">
+                                                
+                                          </td>
+                                          <td class="start">
+                                          <input class="txt w_max" type="date" name="spot_date" value=""/>">
+                                          </td>
+                                          <td class="end">
+                                          <input class="txt w_max" type="text" name="spot_code" value=""/>">
+                                          </td>
+                                          <td class="position">
+                                          <input class="txt w_max" type="text" name="member_no" value=""/>">
+                                          </td>
+                                       
+                                       </c:when>
+                                       <c:otherwise>
+                                          <!-- c:forEach 시작 부분 -->
+                                          <c:forEach var="modispotDto" items="${ requestScope.modispotDto }"> 
+                                             <td class="no">
+                                             <input class="txt w_max" type="text" name="spot_no" value="<c:out value="${ modispotDto.spot_no }"/>">
+                                                   
+                                             </td>
+                                             <td class="start">
+                                             <input class="txt w_max" type="date" name="spot_date" value="<c:out value="${ modispotDto.spot_date }"/>">
+                                             </td>
+                                             <td class="end">
+                                             <input class="txt w_max" type="date" name="spot_code" value="<c:out value="${ modispotDto.spot_code }"/>">
+                                             </td>
+                                             <td class="position">
+                                             <input class="txt w_max" type="text" name="member_no" value="<c:out value="${ modispotDto.member_no }"/>">
+                                             </td>
+                                          </c:forEach>
+                                          <!-- c:forEach 끝 부분 -->
+                                       </c:otherwise>
+                                    </c:choose>
+											</tr>
+												<%-- <td class="spot_no">
 												<input class="txt w_max" type="text" name="spot_no" value="16" hidden='true' >
 												</td>
 												<td class="spot_date">
@@ -927,8 +1049,7 @@
 														<c:forEach var="modispotDto" items="${ requestScope.modispotDto }"> 
 												<input class="txt w_max" type="text" name="member_no" value="<c:out value="${ modispotDto.member_no }"/>">
 												</c:forEach>
-												</td>
-											</tr>
+												</td> --%>
 										</tbody></table>
 										<div class="page_action_wrap" style="display: block;">
 										<button class="btn_major" data-role="button"  id="submit">저장</button>
@@ -972,29 +1093,46 @@
 											
 											</tr>
 											<tr class="dataRow" data-id="">
-												<c:forEach var="modidept" items="${ requestScope.modidept }"> 
-												<td class="modifyDeptNo">
-												
-												<input class="txt w_max" type="text" name="modifyDeptNo" value="<c:out value="${ modidept.modifyDeptNo }"/>">
-												</td>
-												<td class="modifydate">
-													 
-												<input class="txt w_max" type="date" name="modifydate" value="<c:out value="${ modidept.modifydate }"/>">
-																										
-												</td>
-												<td class="deptCode">
-														
-												<input class="txt w_max" type="text" name="deptCode" value="<c:out value="${ modidept.deptCode }"/>">
-													
-												</td>
-												<td class="memberNo">
-												
-												<input class="txt w_max" type="text" name="memberNo" value="<c:out value="${ modidept.memberNo }"/>">
-														
-												</td>
-												</c:forEach>
-												
-											</tr>
+											                                    
+                                    <c:choose>
+                                       <c:when test="${ empty requestScope.modidept }">
+                                       
+                                          <td class="no">
+                                          <input class="txt w_max" type="text" name="modifyDeptNo" value=""/>">
+                                                
+                                          </td>
+                                          <td class="start">
+                                          <input class="txt w_max" type="date" name="modifydate" value=""/>">
+                                          </td>
+                                          <td class="end">
+                                          <input class="txt w_max" type="text" name="deptCode" value=""/>">
+                                          </td>
+                                          <td class="position">
+                                          <input class="txt w_max" type="text" name="memberNo" value=""/>">
+                                          </td>
+                                       
+                                       </c:when>
+                                       <c:otherwise>
+                                          <!-- c:forEach 시작 부분 -->
+                                          <c:forEach var="modidept" items="${ requestScope.modidept }"> 
+                                             <td class="no">
+                                             <input class="txt w_max" type="text" name="modifyDeptNo" value="<c:out value="${ modidept.modifyDeptNo }"/>">
+                                                   
+                                             </td>
+                                             <td class="start">
+                                             <input class="txt w_max" type="date" name="modifydate" value="<c:out value="${ modidept.modifydate }"/>">
+                                             </td>
+                                             <td class="end">
+                                             <input class="txt w_max" type="date" name="deptCode" value="<c:out value="${ modidept.deptCode }"/>">
+                                             </td>
+                                             <td class="position">
+                                             <input class="txt w_max" type="text" name="memberNo" value="<c:out value="${ modidept.memberNo }"/>">
+                                             </td>
+                                          </c:forEach>
+                                          <!-- c:forEach 끝 부분 -->
+                                       </c:otherwise>
+                                    </c:choose>
+                                    		</tr>
 										</tbody></table>
 										<div class="page_action_wrap" style="display: block;">
 										<button class="btn_major" data-role="button"  id="submit">저장</button>
@@ -1040,29 +1178,49 @@
 												
 											</tr>
 											<tr class="dataRow" data-id="">
-												
-												<c:forEach var="careerDto" items="${ requestScope.careerDto }"> 
-												<td class="no">
-												<input class="txt w_max" type="text" name="no" value="<c:out value="${ careerDto.no }"/>">
-														
-												</td>
-												<td class="start">
-												<input class="txt w_max" type="date" name="start" value="<c:out value="${ careerDto.start }"/>">
-												</td>
-												<td class="end">
-												<input class="txt w_max" type="date" name="end" value="<c:out value="${ careerDto.end }"/>">
-												</td>
-												<td class="position">
-												<input class="txt w_max" type="text" name="position" value="<c:out value="${ careerDto.position }"/>">
-												</td>
-														</c:forEach>
-												<td class="member_no">
-												<c:forEach var="careerDto" items="${ requestScope.careerDto }"> 
-												<input class="txt w_max" type="text" name="member_no" value="<c:out value="${ careerDto.member_no }"/>">
-														</c:forEach>
-														</td>
-												
-										
+										<c:choose>
+                                       <c:when test="${ empty requestScope.careerDto }">
+                                       
+                                          <td class="no">
+                                          <input class="txt w_max" type="text" name="no" value=""/>">
+                                          </td>
+                                          <td class="start">
+                                          <input class="txt w_max" type="date" name="start" value=""/>">
+                                          </td>
+                                          <td class="end">
+                                          <input class="txt w_max" type="date" name="end" value=""/>">
+                                          </td>
+                                          <td class="position">
+                                          <input class="txt w_max" type="text" name="position" value=""/>">
+                                          </td>
+                                       	  <td class="member_no">
+                                          <input class="txt w_max" type="text" name="member_no" value=""/>">
+                                          </td>
+                                       </c:when>
+                                       <c:otherwise>
+                                          <!-- c:forEach 시작 부분 -->
+                                          <c:forEach var="careerDto" items="${ requestScope.careerDto }"> 
+                                             <td class="no">
+                                             <input class="txt w_max" type="text" name="no" value="<c:out value="${ careerDto.no }"/>">
+                                                   
+                                             </td>
+                                             <td class="start">
+                                             <input class="txt w_max" type="date" name="start" value="<c:out value="${ careerDto.start }"/>">
+                                             </td>
+                                             <td class="end">
+                                             <input class="txt w_max" type="date" name="end" value="<c:out value="${ careerDto.end }"/>">
+                                             </td>
+                                             <td class="position">
+                                             <input class="txt w_max" type="text" name="position" value="<c:out value="${ careerDto.position }"/>">
+                                             </td>
+                                             <td class="position">
+                                             <input class="txt w_max" type="text" name="member_no" value="<c:out value="${ careerDto.member_no }"/>">
+                                             </td>
+                                          </c:forEach>
+                                          <!-- c:forEach 끝 부분 -->
+                                       </c:otherwise>
+                                    </c:choose>
+
 											</tr>
 											</tbody>
 										</table>
@@ -1107,27 +1265,55 @@
 												
 											</tr>
 											<tr class="no" data-id="">
-													<c:forEach var="bonusDto" items="${ requestScope.bonusDto }"> 
-												<td class="no">
-												<input class="txt w_max" type="text" name="no" value="<c:out value="${ bonusDto.no }"/>">
-												</td>
-												<td class="reason">
-												<input class="txt w_max" type="text" name="reason" value="<c:out value="${ bonusDto.reason }"/>">
-												</td>
-												<td class="date">
-												<input class="txt w_max" type="date" name="date" value="<c:out value="${ bonusDto.date }"/>">
-												</td>
-												<td class="type">
-												<input class="txt w_max" type="text" name="type" value="<c:out value="${ bonusDto.type }"/>">
-												</td>
-												<td class="member_no">
-													<input class="txt w_max" type="text" name="member_no" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }" >
-												</td>
-												<td class="approve_code">
-												<input class="txt w_max" type="text" name="approve_code" value="<c:out value="${ bonusDto.approve_code }"/>">
-												</td>
-														</c:forEach>
-											
+												 <c:choose>
+                                       <c:when test="${ empty requestScope.bonusDto }">
+                                       
+                                          <td class="no">
+                                          <input class="txt w_max" type="text" name="no" value=""/>">
+                                                
+                                          </td>
+                                          <td class="reason">
+                                          <input class="txt w_max" type="text" name="reason" value="">
+                                          </td>
+                                          <td class="date">
+                                          <input class="txt w_max" type="date" name="date" value="">
+                                          </td>
+                                          <td class="type">
+                                          <input class="txt w_max" type="text" name="type" value="">
+                                          </td>
+                                       	  <td class="member_no">
+                                          <input class="txt w_max" type="text" name="member_no" value="">
+                                          </td>
+                                          <td class="approve_code">
+                                          <input class="txt w_max" type="text" name="approve_code" value="">
+                                          </td>
+                                       </c:when>
+                                       <c:otherwise>
+                                          <!-- c:forEach 시작 부분 -->
+                                          <c:forEach var="bonusDto" items="${ requestScope.bonusDto }"> 
+                                             <td class="no">
+                                             <input class="txt w_max" type="text" name="no" value="<c:out value="${ bonusDto.no }"/>">
+                                                   
+                                             </td>
+                                             <td class="start">
+                                             <input class="txt w_max" type="text" name="reason" value="<c:out value="${ bonusDto.reason }"/>">
+                                             </td>
+                                             <td class="end">
+                                             <input class="txt w_max" type="date" name="date" value="<c:out value="${ bonusDto.date }"/>">
+                                             </td>
+                                             <td class="position">
+                                             <input class="txt w_max" type="text" name="member_no" value="<c:out value="${ bonusDto.type }"/>">
+                                             </td>
+                                             <td class="member_no">
+                                             <input class="txt w_max" type="text" name="member_no" value="<c:out value="${ bonusDto.member_no }"/>"/>">
+                                             </td>
+                                             <td class="approve_code">
+                                             <input class="txt w_max" type="text" name="approve_code" value="<c:out value="${ bonusDto.approve_code }"/>">
+                                             </td>
+                                          </c:forEach>
+                                          <!-- c:forEach 끝 부분 -->
+                                       </c:otherwise>
+                                    </c:choose>
 											</tr>
 											</tbody>
 										</table>
@@ -1167,25 +1353,50 @@
 												<th class="certificate_code"><span class="title_txt">자격코드명</span></th>
 												</tr>
 											<tr class="num" data-id="">
-												<c:forEach var="certificateInsert" items="${ requestScope.certificateInsert }"> 
-												
-												<td class="no">
-												 <input class="txt w_max" type="text" name="no" value="<c:out value="${ certificateInsert.no }"/>">
-														</td>
-												<td class="start_date">
-													<input class="txt w_max" type="date" name="start_date" value="<c:out value="${ certificateInsert.start_date }"/>">
-													</td>
-												<td class="member_no">
-													<input class="txt w_max" type="date" name="end_date" value="<c:out value="${ certificateInsert.end_date }"/>">				
-														</td>
-												<td class="certificate_code">
-													 <input class="txt w_max" type="text" name="member_no" value="<c:out value="${ certificateInsert.member_no }"/>">
-													</td>
-												<td class="certificate_code">
-													 <input class="txt w_max" type="text" name="certificate_code" value="<c:out value="${ certificateInsert.certificate_code }"/>">
-													</td>
-												
-											</c:forEach>
+												 <c:choose>
+                                       <c:when test="${ empty requestScope.certificateInsert }">
+                                       
+                                          <td class="no">
+                                          <input class="txt w_max" type="text" name="no" value=""/>
+                                                
+                                          </td>
+                                          <td class="start_date">
+                                          <input class="txt w_max" type="date" name="start_date" value="">
+                                          </td>
+                                          <td class="end_date">
+                                          <input class="txt w_max" type="date" name="end_date" value="">
+                                          </td>
+                                          <td class="member_no">
+                                          <input class="txt w_max" type="text" name="member_no" value="">
+                                          </td>
+                                       	  <td class="member_no">
+                                          <input class="txt w_max" type="text" name="certificate_code" value="">
+                                         
+                                       </c:when>
+                                       <c:otherwise>
+                                          <!-- c:forEach 시작 부분 -->
+                                          <c:forEach var="certificateInsert" items="${ requestScope.certificateInsert }"> 
+                                             <td class="no">
+                                             <input class="txt w_max" type="text" name="no" value="<c:out value="${ certificateInsert.no }"/>">
+                                                   
+                                             </td>
+                                             <td class="start_date">
+                                             <input class="txt w_max" type="text" name="start_date" value="<c:out value="${ certificateInsert.start_date }"/>">
+                                             </td>
+                                             <td class="end_date">
+                                             <input class="txt w_max" type="date" name="end_date" value="<c:out value="${ certificateInsert.end_date }"/>">
+                                             </td>
+                                             <td class="member_no">
+                                             <input class="txt w_max" type="text" name="member_no" value="<c:out value="${ certificateInsert.member_no }"/>">
+                                             </td>
+                                             <td class="certificate_code">
+                                             <input class="txt w_max" type="text" name="certificate_code" value="<c:out value="${ certificateInsert.certificate_code }"/>"/>">
+                                             </td>
+                                            
+                                          </c:forEach>
+                                          <!-- c:forEach 끝 부분 -->
+                                       </c:otherwise>
+                                    </c:choose>
 											</tr>
 										</tbody></table>
 										<button class="btn_major" data-role="button" id="submit">저장</button>
@@ -1228,40 +1439,71 @@
 												
 											</tr>
 											<tr>
-											<!-- class="dataRow" data-id=""-->	
-											<td class="member_no">
-													<input class="txt w_max" type="text" name="member_no" id="member_no" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }">
-												</td>
-												<c:forEach var="armyInsert" items="${ requestScope.armyInsert }"> 
-											<td class="army_no">
-														 <input class="txt w_max" type="text" name="army_no" value="<c:out value="${ armyInsert.army_no }"/>">
-												</td>
-												
-												<td class="branch">
-												 <input class="txt w_max" type="text" name="branch" value="<c:out value="${ armyInsert.branch }"/>">
-												</td>
-												<td class="army_class">
-													 <input class="txt w_max" type="text" name="army_class" value="<c:out value="${ armyInsert.army_class }"/>">
-												</td>
-												<td class="service_num">
-													 <input class="txt w_max" type="text" name="service_num" value="<c:out value="${ armyInsert.service_num }"/>">
-												</td>
-												<td class="discharge">
-													 <input class="txt w_max" type="text" name="discharge" value="<c:out value="${ armyInsert.discharge }"/>">
-												</td> 
-												<td class="start">
-													 <input class="txt w_max" type="date" name="start" value="<c:out value="${ armyInsert.start }"/>">
-													
-												</td>
-												<td class="end">
-													 <input class="txt w_max" type="date" name="end" value="<c:out value="${ armyInsert.end }"/>">
-													
-												</td>
-												<td class="reason">
-												 <input class="txt w_max" type="text" name="reason" value="<c:out value="${ armyInsert.reason }"/>">
-												</td>
-												
-												</c:forEach>
+											 <c:choose>
+                                       <c:when test="${ empty requestScope.armyInsert }">
+                                       
+                                          <td class="member_no">
+                                          <input class="txt w_max" type="text" name="member_no" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }"/>
+                                           </td>
+                                          <td class="army_no">
+                                          <input class="txt w_max" type="text" name="army_no" value="">
+                                          </td>
+                                          <td class="branch">
+                                          <input class="txt w_max" type="text" name="branch" value="">
+                                          </td>
+                                          <td class="army_class">
+                                          <input class="txt w_max" type="text" name="army_class" value="">
+                                          </td>
+                                       	  <td class="service_num">
+                                          <input class="txt w_max" type="text" name="service_num" value="">
+                                          </td>
+                                          <td class="discharge">
+                                          <input class="txt w_max" type="text" name="discharge" value="">
+                                          </td>
+                                          <td class="start">
+                                          <input class="txt w_max" type="date" name="start" value="">
+                                          </td>
+                                         <td class="date">
+                                          <input class="txt w_max" type="date" name="date" value="">
+                                          </td>
+                                          <td class="reason">
+                                          <input class="txt w_max" type="text" name="reason" value="">
+                                          </td>
+                                       </c:when>
+                                       <c:otherwise>
+                                          <!-- c:forEach 시작 부분 -->
+                                          <c:forEach var="armyInsert" items="${ requestScope.armyInsert }"> 
+                                             <td class="member_no">
+                                             <input class="txt w_max" type="text" name="member_no" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }">
+                                             </td>
+                                             <td class="army_no">
+                                             <input class="txt w_max" type="text" name="army_no" value="<c:out value="${ armyInsert.army_no }"/>">
+                                             </td>
+                                             <td class="branch">
+                                             <input class="txt w_max" type="text" name="branch" value="<c:out value="${ armyInsert.branch }"/>">
+                                             </td>
+                                             <td class="army_class">
+                                             <input class="txt w_max" type="date" name="army_class" value="<c:out value="${ armyInsert.army_class }"/>">
+                                             </td>
+                                             <td class="service_num">
+                                             <input class="txt w_max" type="text" name="service_num" value="<c:out value="${ armyInsert.service_num }"/>">
+                                             </td>
+                                             <td class="discharge">
+                                             <input class="txt w_max" type="text" name="discharge" value="<c:out value="${ armyInsert.discharge }"/>">
+                                             </td>
+                                             <td class="start">
+                                             <input class="txt w_max" type="date" name="start" value="<c:out value="${ armyInsert.start }"/>">
+                                             </td>
+                                             <td class="date">
+                                             <input class="txt w_max" type="date" name="date" value="<c:out value="${ armyInsert.date }"/>">
+                                             </td>
+                                             <td class="reason">
+                                             <input class="txt w_max" type="text" name="reason" value="<c:out value="${ armyInsert.reason }"/>">
+                                             </td>	
+                                          </c:forEach>
+                                          <!-- c:forEach 끝 부분 -->
+                                       </c:otherwise>
+                                    </c:choose>
 											</tr>
 										</tbody>
 										</table>
@@ -1305,44 +1547,67 @@
 												<th class="member_no">사번</th>
 												<th class="code">학력코드명</th>
 											</tr>
-											<c:forEach var="academic" items="${ requestScope.academic }"> 
-											<tr class="ability_no" data-id="">
-												
-												<td class="ability_no">
-											 <input class="txt w_max" type="text" name="ability_no" value="<c:out value="${ academic.ability_no }"/>">
-											   </td>
-												
-												<td class="name">
-													 <input class="txt w_max" type="text" name="name" value="<c:out value="${ academic.name }"/>">
-											   </td>
-												
-												<td class="subject">
-													<input class="txt w_max" type="text" name="subject" value="<c:out value="${ academic.subject }"/>">
-												</td>
-												
-												<td class="date">
-														<input class="txt w_max" type="date" name="date" value="<c:out value="${ academic.date }"/>">
-												</td>
-
-												<td class="graduate_status">
-												<input class="txt w_max" type="text" name="graduate_status" value="<c:out value="${ academic.graduate_status }"/>">
-												</td>
-
-												<td class="graduate_name">
-													<input class="txt w_max" type="text" name="graduate_name" value="<c:out value="${ academic.graduate_name }"/>">
-												</td>
-
-												<td class="member_no">
-													<span class="txt"></span>
-													
-													<input class="txt w_max" type="text" name="member_no" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }" >
-													 
-												</td>
-												<td class="code">
-												<input class="txt w_max" type="text" name="code" value="<c:out value="${ academic.code }"/>">
-												</td>
-											</tr>
-											</c:forEach>
+											 <c:choose>
+                                       <c:when test="${ empty requestScope.academic }">
+                                       
+                                          <td class="ability_no">
+                                          <input class="txt w_max" type="text" name="ability_no" value=""/>
+                                           </td>
+                                          <td class="name">
+                                          <input class="txt w_max" type="text" name="name" value="">
+                                          </td>
+                                          <td class="subject">
+                                          <input class="txt w_max" type="text" name="subject" value="">
+                                          </td>
+                                          <td class="date">
+                                          <input class="txt w_max" type="date" name="date" value="">
+                                          </td>
+                                       	  <td class="graduate_status">
+                                          <input class="txt w_max" type="text" name="graduate_status" value="">
+                                          </td>
+                                          <td class="graduate_name">
+                                          <input class="txt w_max" type="text" name="graduate_name" value="">
+                                          </td>
+                                          <td class="member_no">
+                                          <input class="txt w_max" type="text" name="member_no" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }">
+                                          </td>
+                                         <td class="code">
+                                          <input class="txt w_max" type="text" name="code" value="">
+                                          </td>
+                                         
+                                       </c:when>
+                                       <c:otherwise>
+                                          <!-- c:forEach 시작 부분 -->
+                                          <c:forEach var="academic" items="${ requestScope.academic }"> 
+                                             <td class="ability_no">
+                                             <input class="txt w_max" type="text" name="ability_no" value="<c:out value="${ academic.ability_no }"/>">
+                                             </td>
+                                             <td class="name">
+                                             <input class="txt w_max" type="text" name="name" value="<c:out value="${ academic.name }"/>">
+                                             </td>
+                                             <td class="subject">
+                                             <input class="txt w_max" type="text" name="subject" value="<c:out value="${ academic.subject }"/>">
+                                             </td>
+                                             <td class="date">
+                                             <input class="txt w_max" type="date" name="date" value="<c:out value="${ academic.date }"/>">
+                                             </td>
+                                             <td class="graduate_status">
+                                             <input class="txt w_max" type="text" name="graduate_status" value="<c:out value="${ academic.graduate_status }"/>">
+                                             </td>
+                                             <td class="graduate_name">
+                                             <input class="txt w_max" type="text" name="graduate_name" value="<c:out value="${ academic.graduate_name }"/>">
+                                             </td>
+                                             <td class="member_no">
+                                             <input class="txt w_max" type="text" name="member_no" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }">
+                                             </td>
+                                             <td class="code">
+                                             <input class="txt w_max" type="text" name="code" value="<c:out value="${ academic.code }"/>">
+                                             </td>
+                                            	
+                                          </c:forEach>
+                                          <!-- c:forEach 끝 부분 -->
+                                       </c:otherwise>
+                                    </c:choose>
 										</tbody></table>
 										<div class="page_action_wrap" style="display: block;">
 										<button class="btn_major" data-role="button"  id="submit">저장</button>
@@ -1386,48 +1651,81 @@
 												<th class="no"><span class="title_txt">사번</span></th>
 												</tr>
 											<tr class="dataRow" data-id="">
-												<c:forEach var="familyDto" items="${ requestScope.familyDto }"> 
-											
-												<td class="info_no">
-												<input class="txt w_max" type="text" name="info_no" value="<c:out value="${ familyDto.info_no }"/>">
-												</td>
-												<td class="name">
-													
-													<input class="txt w_max" type="text" name="name" value="<c:out value="${ familyDto.name }"/>">
-												
-												</td>
-												<td class="relation">
-													
-													<input class="txt w_max" type="text" name="relation" value="<c:out value="${ familyDto.relation }"/>">
-												</td>
-												<td class="gender">
-												 <input class="txt w_max" type="text" name="gender" value="<c:out value="${ familyDto.gender }"/>">
-												 	   <span class="wrap_select">
+											 <c:choose>
+                                       <c:when test="${ empty requestScope.familyDto }">
+                                       
+                                          <td class="info_no">
+                                          <input class="txt w_max" type="text" name="info_no" value=""/>
+                                           </td>
+                                          <td class="name">
+                                          <input class="txt w_max" type="text" name="name" value="">
+                                          </td>
+                                          <td class="relation">
+                                          <input class="txt w_max" type="text" name="relation" value="">
+                                          </td>
+                                          <td class="gender">
+                                          <input class="txt w_max" type="text" name="gender" value="">
+                                          <span class="wrap_select">
 														  <select class="wfix_small" name="gender" value="">
 															 <option value="">선택하세요</option>
 															 <option value="남">남자</option>
 															 <option value="녀">여자</option>
 														  </select>
 													   </span>
-												</td>
-												<td class="birthday">
-													<span class="wrap_date">
-													<input class="txt wfix_small hasDatepicker" type="date" name="birthday" value="<c:out value="${ familyDto.birthday }"/>">
-													<span class="ic ic_calendar"></span>
-													</span>
-												</td>
-												<td class="study">
-													
-													<input class="txt w_max" type="text" name="study" value="<c:out value="${ familyDto.study }"/>">
-												</td>
-												<td class="job">
-													
-													<input class="txt w_max" type="text" name="job" value="<c:out value="${ familyDto.job }"/>">
-												</td>
-												<td class="no">
-													<input class="txt w_max" type="text" name="no" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }" >
-												</td>
-											</c:forEach>	
+                                          </td>
+                                       	  <td class="birthday">
+                                          <input class="txt w_max" type="date" name="birthday" value="">
+                                          </td>
+                                          <td class="study">
+                                          <input class="txt w_max" type="text" name="study" value="">
+                                          </td>
+                                          <td class="job">
+                                          <input class="txt w_max" type="text" name="job" value="">
+                                          </td>
+                                         <td class="no">
+                                          <input class="txt w_max" type="text" name="no" value="<c:out value="${ familyDto.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }"/>">
+                                          </td>
+                                         
+                                       </c:when>
+                                       <c:otherwise>
+                                          <!-- c:forEach 시작 부분 -->
+                                          <c:forEach var="familyDto" items="${ requestScope.familyDto }"> 
+                                             <td class="info_no">
+                                             <input class="txt w_max" type="text" name="info_no" value="<c:out value="${ familyDto.info_no }"/>">
+                                             </td>
+                                             <td class="name">
+                                             <input class="txt w_max" type="text" name="name" value="<c:out value="${ familyDto.name }"/>">
+                                             </td>
+                                             <td class="relation">
+                                             <input class="txt w_max" type="text" name="subject" value="<c:out value="${ familyDto.relation }"/>">
+                                             </td>
+                                             <td class="gender">
+                                             <input class="txt w_max" type="text" name="gender" value="<c:out value="${ familyDto.gender }"/>">
+                                             <span class="wrap_select">
+														  <select class="wfix_small" name="gender" value="<c:out value="${ familyDto.gender }"/>">
+															 <option value="">선택하세요</option>
+															 <option value="남">남자</option>
+															 <option value="녀">여자</option>
+														  </select>
+													   </span>
+                                             </td>
+                                             <td class="birthday">
+                                             <input class="txt w_max" type="date" name="birthday" value="<c:out value="${ familyDto.birthday }"/>">
+                                             </td>
+                                             <td class="study">
+                                             <input class="txt w_max" type="text" name="study" value="<c:out value="${ familyDto.study }"/>">
+                                             </td>
+                                             <td class="job">
+                                             <input class="txt w_max" type="text" name="job" value="${ familyDto.job }">
+                                             </td>
+                                             <td class="no">
+                                             <input class="txt w_max" type="text" name="no" value="<c:out value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }"/>">
+                                             </td>
+                                            	
+                                          </c:forEach>
+                                          <!-- c:forEach 끝 부분 -->
+                                       </c:otherwise>
+                                    </c:choose>	
 											</tr>
 											</tbody>
 										</table>
@@ -1469,28 +1767,42 @@
 												<th class="date"><span class="title_txt">취득일</span></th>
 												<th class="member_no"><span class="title_txt">사번</span></th>
 												</tr>
-											<c:forEach var="LicenseDto" items="${ requestScope.LicenseDto }"> 
-											<tr class="dataRow" data-id="">
-												<td class="no">
-													<input class="txt w_max" type="text" name="no" value="<c:out value="${ LicenseDto.no }"/>">
-												
-												</td>
-												<td class="code">
-														<input class="txt w_max" type="text" name="code" value="<c:out value="${ LicenseDto.code }"/>">
-												
-													
-												</td>
-												<td class="date">
-														<input class="txt w_max" type="date" name="date" value="<c:out value="${ LicenseDto.date }"/>">
-												
-													
-												</td>
-												<td class="member_no">
-													<span class="txt"></span>
-													<input class="txt w_max" type="text" name="member_no" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }" >
-												</td>
-												</tr>
-												</c:forEach>
+											 <c:choose>
+                                       <c:when test="${ empty requestScope.LicenseDto }">
+                                       
+                                          <td class="no">
+                                          <input class="txt w_max" type="text" name="no" value=""/>
+                                           </td>
+                                          <td class="code">
+                                          <input class="txt w_max" type="text" name="code" value="">
+                                          </td>
+                                          <td class="date">
+                                          <input class="txt w_max" type="date" name="date" value="">
+                                          </td>
+                                          <td class="member_no">
+                                          <input class="txt w_max" type="text" name="member_no"  value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }" >
+                                          </td>
+                                       	  
+                                       </c:when>
+                                       <c:otherwise>
+                                          <!-- c:forEach 시작 부분 -->
+                                          <c:forEach var="LicenseDto" items="${ requestScope.LicenseDto }"> 
+                                             <td class="no">
+                                             <input class="txt w_max" type="text" name="no" value="<c:out value="${ LicenseDto.no }"/>">
+                                             </td>
+                                             <td class="code">
+                                             <input class="txt w_max" type="text" name="code" value="<c:out value="${ LicenseDto.code }"/>">
+                                             </td>
+                                             <td class="date">
+                                             <input class="txt w_max" type="date" name="date" value="<c:out value="${ LicenseDto.date }"/>">
+                                             </td>
+                                             <td class="member_no">
+                                             <input class="txt w_max" type="text" name="member_no"  value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }"" >
+                                            </td>
+                                           </c:forEach>
+                                          <!-- c:forEach 끝 부분 -->
+                                       </c:otherwise>
+                                    </c:choose>
 										</tbody></table>
 										<div class="page_action_wrap" style="display: block;">
 										<span class="btn_major" data-role="button" id="hrcard_btn_submit"><span class="txt">저장</span></span>

@@ -259,11 +259,11 @@ public class ProfileServiceImpl implements ProfileService{
 		return mapper.academic(memberno);
 	}
 
-	@Override
-	public List<FamilyDTO> familyDto(int memberno) {
-		// TODO Auto-generated method stub
-		return mapper.familyDto(memberno);
-	}
+//	@Override
+//	public List<FamilyDTO> familyDto(int memberno) {
+//		// TODO Auto-generated method stub
+//		return mapper.familyDto(memberno);
+//	}
 
 //	@Override
 //	public List<MemberInfoDTO> modifyMember(int no) {
@@ -306,6 +306,20 @@ public class ProfileServiceImpl implements ProfileService{
 	public List<MemberInfoDTO> selectMemberInfo(int memberno) {
 		// TODO Auto-generated method stub
 		return mapper.selectMemberInfo(memberno);
+	}
+
+
+	@Override
+	public List<FamilyDTO> family(int memberno) {
+		// TODO Auto-generated method stub
+		return mapper.family(memberno);
+	}
+
+
+	@Override
+	public List<FamilyDTO> familySelect(int memberno) {
+		// TODO Auto-generated method stub
+		return mapper.familySelect(memberno);
 	}
 
 	
