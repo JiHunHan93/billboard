@@ -7,6 +7,11 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry excluding="mapper/" kind="src" path="src/main/resources"/>
+
+
+	<classpathentry kind="src" path="src/test/resources"/>
+	<classpathentry kind="src" path="src/test/java"/>
+	<classpathentry kind="src" path="src/main/resources/mapper"/>
 	<classpathentry kind="src" path="src/test/java"/>
 	<classpathentry kind="src" path="src/main/resources/mapper"/>
 	<classpathentry excluding="**" kind="src" output="target/test-classes" path="src/test/resources">

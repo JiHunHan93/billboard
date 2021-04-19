@@ -14,9 +14,9 @@ import com.sevenelite.billbo.workhour.work.model.dto.WorkDTO;
 
 	boolean insertWorkInfo(WorkDTO workInfo);
 	
-	List<StatusAndWorkDTO> selectCommute();
+	Date selectCommute();
 
-	List<StatusAndWorkDTO> selectLeave();
+	Date selectLeave();
 
    } 
   

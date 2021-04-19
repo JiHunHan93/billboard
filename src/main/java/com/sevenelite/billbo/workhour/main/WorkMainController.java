@@ -78,8 +78,8 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkStatusService;
 			
 			UserDetailsVO userDetails = (UserDetailsVO) authentication.getPrincipal();
 			int userno = userDetails.getMemberno();
-			List<StatusAndWorkDTO> com = workService.selectCommute();
-			List<StatusAndWorkDTO> leave = workService.selectLeave();
+			Date com = workService.selectCommute();
+			Date leave = workService.selectLeave();
 			System.out.println("관리자 : " + principal);
 			
 			
@@ -91,22 +91,20 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkStatusService;
 			System.out.println(leave);
 			///////////////////////////////////////////////////
 			SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
-			String commuteTime = format.format(commute);
-			String leaveTime = format.format(lwork);
+			String commuteTime = format.format(com);
+			String leaveTime = format.format(leave);
 			////////////////////////////////////////////////////
 			
-			System.out.println("퇴근시간 : " +leaveTime);
-			System.out.println("출근시간 : " + commuteTime );
-			////////////////////////////////////////////////////
 			
 			
 			//출근시간 스플릿
-	         String commuteTimeFormat = format.format(commute);
+	         String commuteTimeFormat = format.format(com);
 	         String[] splitCommute = commuteTimeFormat.split(":");
 	         int hour = Integer.parseInt(splitCommute[0]);
 	         int minute = Integer.parseInt(splitCommute[1]);
 	         int second = Integer.parseInt(splitCommute[2]);
-
+	         System.out.println("출근시간 !!!!!!!!!!!"+commuteTimeFormat);
+	         
 	         //퇴근시간
 	         String leaveTimeFormat = format.format(lwork);
 	         String[] splitLeave = leaveTimeFormat.split(":");
@@ -114,8 +112,7 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkStatusService;
 	         int lminute = Integer.parseInt(splitLeave[1]);
 	         int lsecond = Integer.parseInt(splitLeave[2]);
 	         
-	         Date curTime = new Date(System.currentTimeMillis());
-	         
+	         System.out.println("퇴근시간 !!!!!!!!!!!!!: " + leaveTimeFormat);
 	         if(hour > 8) {
 	        	 int overH = hour;
 	        	 int overM = minute;
