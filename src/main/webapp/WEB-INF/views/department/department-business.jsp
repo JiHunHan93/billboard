@@ -650,32 +650,51 @@
 								<table class="table table-striped custom-table mb-0 datatable">
 									<thead>
 										<tr>
-											<th style="width: 30px;">No</th>
-											<th>Department</th>
-											<th>position</th>
-											<th>employee</th>
+											<th>사원번호</th>
+											<th>부서명</th>
+											<th>직위명</th>
+											<th>이름</th>
 										</tr>
 									</thead>
-									<tbody>
-										<tr>
-										    <td>1</td>
-											<td>영업1팀</td>
-											<td>대리</td>
-											<td>신승록</td>
-					
-										</tr>
-							
-												</div>
-											</td>
-										</tr>
-									</tbody>
+									
+							   <c:forEach var="allMemberList" items="${requestScope.allMemberList }">
+									<tr>
+										<td class="free-td"><c:out value="${ allMemberList.no }" />
+										<td class="free-td"><c:out value="${ allMemberList.deptName }" />
+										<td class="free-td"><c:out value="${ allMemberList.spotName }"/>
+										<td class="free-td"><c:out value="${ allMemberList.memberName }" />	
+									</tr>
+								</c:forEach>
+									
 								</table>
 							</div>
 						</div>
 					</div>
-                </div>
+               
 				<!-- /Page Content -->
 
+    <script>
+	if(document.getElementsByTagName("td")) {
+		const $tds = document.getElementsByTagName("td");
+		
+		for(let i = 0; i < $tds.length; i++) {
+			$tds[i].onmouseenter = function() {
+				this.parentNode.style.backgroundColor = "yellow";
+				this.parentNode.style.cursor = "pointer";
+			}
+			$tds[i].onmouseout = function() {
+				this.parentNode.style.background = "white";
+			}
+			$tds[i].onclick = function() {
+				const no = this.parentNode.children[0].innerText;
+				/* const count = this.parentNode.children[7].innerText; */
+				/* console.log(count); */
+				console.log(no);
+				location.href = "${ pageContext.servletContext.contextPath }/detail?no=" + no;
+			}
+		}
+	}
+	</script>
 				<!-- Add Designation Modal -->
 				<div id="add_designation" class="modal custom-modal fade" role="dialog">
 					<div class="modal-dialog modal-dialog-centered" role="document">

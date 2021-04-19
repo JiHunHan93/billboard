@@ -8,6 +8,8 @@ import com.sevenelite.billbo.calendar.model.dto.CalDTO;
 public interface CalDAO {
 
 	List<Map<String, CalDTO>> selectCal();
+
+	int insertEvt(CalDTO calDTO);
 	
 	
 }

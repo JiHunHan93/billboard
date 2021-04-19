@@ -19,13 +19,13 @@ public class DepartmentServiceImpl implements DepartmentService {
 	}
 	/* 부서 조회 */
 	@Override
-	public DepartmentDTO selectLoginDept(int memberno) {
+	public DepartmentDTO selectDeptInfo(int deptCode) {
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	/* 직원 정보 조회 */
 	@Override
-	public DepartmentSpotDTO selectLoginSpot(int memberno) {
+	public DepartmentSpotDTO selectDeptInpoSpot(int memberName) {
 		// TODO Auto-generated method stub
 		return null;
 	}

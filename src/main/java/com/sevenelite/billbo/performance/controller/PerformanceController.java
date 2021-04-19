@@ -28,6 +28,6 @@ public class PerformanceController {
 		model.addAttribute("perList", perList);
 		System.out.println("!!!!!!!!!!!!!" + perList );
 		
-		return "performance/Performance";
+		return "performance/PerformanceReview";
 	}
 }

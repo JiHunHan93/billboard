@@ -336,7 +336,7 @@
  	  )
  </insert>
  
- <!-- <insert id="finalAcademic" parameterType="FinalAcademicDTO">
+ <insert id="finalAcademic" parameterType="FinalAcademicDTO">
   	INSERT
   	  INTO BB_FINAL_ACADEMIC_ABILITY(
   	  	   ACADEMIC_ABILITY_NO
@@ -359,9 +359,9 @@
 	  ,#{member_no}
   	  ,#{code}
   	  )
-  	  </insert> -->
+  	  </insert> 
   	  
- <insert id="family" parameterType="FamilyDTO">
+<insert id="family" parameterType="FamilyDTO">
  	INSERT
  	  INTO BB_FAMILY_INFO(
  	       FAMILY_INFO_NO
@@ -385,7 +385,7 @@
  	    ,#{no}
  	    )
  </insert>
-  	  
+  	   
 <insert id="license" parameterType="LicenseDTO">
 	INSERT
 	  INTO BB_LICENSE(
@@ -645,7 +645,7 @@ SELECT
 	                  JOIN BB_MEMBER D ON(C.MEMBER_NO = D.MEMBER_NO)
                       LEFT JOIN BB_CERTIFICATE_CODE E ON(C.CERTIFICATE_CODE = E.CERTIFICATE_CODE)
 	                  WHERE D.MEMBER_NO = #{ member_no }
-	                  ORDER BY MEMBER_NO DESC
+	                  ORDER BY CERTIFICATE_NO DESC
 	                  ) B
 	                  ) A
 	                  WHERE RNUM = 1
@@ -715,7 +715,7 @@ SELECT
 	                    FROM BB_ARMY C
 	                  JOIN BB_MEMBER D ON(C.MEMBER_NO = D.MEMBER_NO)
                       WHERE D.MEMBER_NO = #{ member.no }
-	                  ORDER BY MEMBER_NO DESC
+	                  ORDER BY ARMY_NO DESC
 	                  ) B
 	                  ) A
 	                  WHERE RNUM = 1 
@@ -760,7 +760,7 @@ SELECT
          
         </select> 
 	         
-      <select id="familyDto" resultMap="familyDTO" parameterType="FamilyDTO">
+       <select id="familySelect" resultMap="familyDTO" parameterType="FamilyDTO">
    SELECT
     	  A.FAMILY_INFO_NO
         , A.FAMILY_NAME
@@ -794,5 +794,5 @@ SELECT
 	                  ) B
 	                  ) A
 	                  WHERE RNUM = 1
-		</select>
+		</select> 
 </mapper>

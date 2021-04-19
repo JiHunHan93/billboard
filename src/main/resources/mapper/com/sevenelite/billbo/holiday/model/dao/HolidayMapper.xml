@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sevenelite.billbo.holiday.model.dao.HolidayMapper">
+
+<resultMap type="com.sevenelite.billbo.holiday.model.dto.HolidayDTO" id="HolidayResultMap">
+	<id property="holidayNo" column="HOLIDAY_NO"/>
+	<result property="startDate" column="START_DATE"/>
+	<result property="endDate" column="END_DATE"/>
+	<result property="reason" column="HOLIDAY_REASON"/>
+	<result property="type" column="HOLIDAY_TYPE"/>
+	<result property="memberNo" column="MEMBER_NO"/>
+	<result property="memberName" column="MEMBER_NAME"/>
+	<result property="email" column="EMAIL"/>
+	<result property="address" column="MEMBER_ADDRESS"/>
+	<result property="phone" column="PHONE"/>
+	<result property="enrollDate" column="ENROLL_DATE"/>
+	<result property="term" column="HOLIDAY_TERM"/>
+	
+</resultMap>
+
+<select id="selectHolidayInfo" resultMap="HolidayResultMap" parameterType="_int">
+SELECT
+      A.HOLIDAY_NO
+    , A.START_DATE
+    , A.END_DATE
+    , A.HOLIDAY_REASON
+    , A.HOLIDAY_TYPE
+    , B.MEMBER_NO
+    , B.MEMBER_NAME
+    , B.EMAIL
+    , C.ENROLL_DATE
+    , C.MEMBER_ADDRESS
+    , B.PHONE
+    , A.HOLIDAY_TERM 
+  FROM BB_HOLIDAY A
+  JOIN BB_MEMBER B ON ( A.MEMBER_NO = B.MEMBER_NO)
+  JOIN BB_MEMBER_INFO C ON(B.MEMBER_NO = C.MEMBER_NO)
+  WHERE B.MEMBER_NO=#{memberno} 
+</select>
+</mapper>

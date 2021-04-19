@@ -16,9 +16,11 @@ public interface WorkDAO {
 
 	List<StatusAndWorkDTO> selectTime();
 
-	Date selectCommute();
+	String selectWork();
 
-	Date selectLeave();
+	Date selectCommute(int userno, String workDate);
+
+	Date selectLeave(int userno, String workDate);
 
 
   }
