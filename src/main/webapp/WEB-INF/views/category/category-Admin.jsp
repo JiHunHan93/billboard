@@ -648,7 +648,7 @@
 												<!-- Admin 인사고과 -->
 												<p class="category-text">인사고과</p>
 												<i class="las la-graduation-cap category-icon"></i>
-												<i class="fas fa-circle category-dot"><div class="category-sub-text">업무평가</div></i>
+												<i class="fas fa-circle category-dot"><a href="performance/main"></a><div class="category-sub-text">업무평가</div></i>
 												<i class="fas fa-circle category-dot"><div class="category-sub-text">업무평가 내역</div></i>
 												<i class="fas fa-circle category-dot"><div class="category-sub-text">승진 심사</div></i>
 												<i class="fas fa-circle category-dot"><a href="Rnp/main"><div class="category-sub-text">상벌 관리</div></i>

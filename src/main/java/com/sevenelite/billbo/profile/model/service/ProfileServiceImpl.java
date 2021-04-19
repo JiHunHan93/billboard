@@ -31,12 +31,7 @@ public class ProfileServiceImpl implements ProfileService{
 
 	}
 
-	@Override
-	public boolean armyInfo(ArmyDTO army) {
-		// TODO Auto-generated method stub
-		return mapper.armyInfo(army) > 0? true : false;
-	}
-
+	
 	/*
 	 * @Override public List<MemberInfoDTO> memberInfo() { // TODO Auto-generated
 	 * method stub return mapper.memberInfo(); }
@@ -239,11 +234,23 @@ public class ProfileServiceImpl implements ProfileService{
 		// TODO Auto-generated method stub
 		return mapper.certificateInsert(memberno);
 	}
+	
+	/*army*/
+	@Override
+	public boolean armyInfo(ArmyDTO army) {
+		// TODO Auto-generated method stub
+		return mapper.armyInfo(army) > 0? true : false;
+	}
 
 	@Override
 	public List<ArmyDTO> armyInsert(int memberno) {
 		// TODO Auto-generated method stub
 		return mapper.armyInsert(memberno);
+	}
+	@Override
+	public List<ArmyDTO> armySelect(int memberno) {
+		// TODO Auto-generated method stub
+		return mapper.armySelect(memberno);
 	}
 
 	@Override
@@ -301,6 +308,7 @@ public class ProfileServiceImpl implements ProfileService{
 		return mapper.selectMemberInfo(memberno);
 	}
 
+	
 
 //	@Override
 //	public boolean mainProfile(MemberInfoDTO memberInfo) {

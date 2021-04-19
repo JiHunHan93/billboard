@@ -1222,8 +1222,8 @@
 										<table class="type_list_box">
 											<tbody><tr>
 												<th class="member_no"><span class="title_txt">사번</span></th>
-												<th class="army_no"><span class="title_txt">군번</span></th>
-												<th class="branch"><span class="title_txt">직위</span></th>
+												<th class="army_no"><span class="title_txt">번호</span></th>
+												<th class="branch"><span class="title_txt">군벌</span></th>
 												<th class="army_class"><span class="title_txt">계급</span></th>
 												<th class="service_num"><span class="title_txt">군번</span></th>
 												<th class="discharge"><span class="title_txt">전역구분</span></th>
@@ -1237,36 +1237,36 @@
 											<td class="member_no">
 													<input class="txt w_max" type="text" name="member_no" id="member_no" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }">
 												</td>
-												<c:forEach var="armyInsert" items="${ requestScope.armyInsert }"> 
+												
 											<td class="army_no">
-														 <input class="txt w_max" type="text" name="army_no" value="<c:out value="${ armyInsert.army_no }"/>">
+														 <input class="txt w_max" type="text" name="army_no" value="">
 												</td>
 												
 												<td class="branch">
-												 <input class="txt w_max" type="text" name="branch" value="<c:out value="${ armyInsert.branch }"/>">
+												 <input class="txt w_max" type="text" name="branch" value="">
 												</td>
 												<td class="army_class">
-													 <input class="txt w_max" type="text" name="army_class" value="<c:out value="${ armyInsert.army_class }"/>">
+													 <input class="txt w_max" type="text" name="army_class" value="">
 												</td>
 												<td class="service_num">
-													 <input class="txt w_max" type="text" name="service_num" value="<c:out value="${ armyInsert.service_num }"/>">
+													 <input class="txt w_max" type="text" name="service_num" value="">
 												</td>
 												<td class="discharge">
-													 <input class="txt w_max" type="text" name="discharge" value="<c:out value="${ armyInsert.discharge }"/>">
+													 <input class="txt w_max" type="text" name="discharge" value="">
 												</td> 
 												<td class="start">
-													 <input class="txt w_max" type="date" name="start" value="<c:out value="${ armyInsert.start }"/>">
+													 <input class="txt w_max" type="date" name="start" value="">
 													
 												</td>
 												<td class="end">
-													 <input class="txt w_max" type="date" name="end" value="<c:out value="${ armyInsert.end }"/>">
+													 <input class="txt w_max" type="date" name="end" value="">
 													
 												</td>
 												<td class="reason">
-												 <input class="txt w_max" type="text" name="reason" value="<c:out value="${ armyInsert.reason }"/>">
+												 <input class="txt w_max" type="text" name="reason" value="">
 												</td>
 												
-												</c:forEach>
+												
 											</tr>
 										</tbody>
 										</table>
@@ -1310,31 +1310,31 @@
 												<th class="member_no">사번</th>
 												<th class="code">학력코드명</th>
 											</tr>
-											<c:forEach var="academic" items="${ requestScope.academic }"> 
+											
 											<tr class="ability_no" data-id="">
 												
 												<td class="ability_no">
-											 <input class="txt w_max" type="text" name="ability_no" value="<c:out value="${ academic.ability_no }"/>">
+											 <input class="txt w_max" type="text" name="ability_no" value="">
 											   </td>
 												
 												<td class="name">
-													 <input class="txt w_max" type="text" name="name" value="<c:out value="${ academic.name }"/>">
+													 <input class="txt w_max" type="text" name="name" value="">
 											   </td>
 												
 												<td class="subject">
-													<input class="txt w_max" type="text" name="subject" value="<c:out value="${ academic.subject }"/>">
+													<input class="txt w_max" type="text" name="subject" value="">
 												</td>
 												
 												<td class="date">
-														<input class="txt w_max" type="date" name="date" value="<c:out value="${ academic.date }"/>">
+														<input class="txt w_max" type="date" name="date" value="">
 												</td>
 
 												<td class="graduate_status">
-												<input class="txt w_max" type="text" name="graduate_status" value="<c:out value="${ academic.graduate_status }"/>">
+												<input class="txt w_max" type="text" name="graduate_status" value="">
 												</td>
 
 												<td class="graduate_name">
-													<input class="txt w_max" type="text" name="graduate_name" value="<c:out value="${ academic.graduate_name }"/>">
+													<input class="txt w_max" type="text" name="graduate_name" value="">
 												</td>
 
 												<td class="member_no">
@@ -1344,10 +1344,10 @@
 													 
 												</td>
 												<td class="code">
-												<input class="txt w_max" type="text" name="code" value="<c:out value="${ academic.code }"/>">
+												<input class="txt w_max" type="text" name="code" value="">
 												</td>
 											</tr>
-											</c:forEach>
+											
 										</tbody></table>
 										<div class="page_action_wrap" style="display: block;">
 										<button class="btn_major" data-role="button"  id="submit">저장</button>

@@ -12,6 +12,9 @@
 <meta name="author" content="Dreamguys - Bootstrap Admin Template">
 <meta name="robots" content="noindex, nofollow">
 <title>Events - HRMS admin template</title>
+	
+<!-- jQuery -->
+<script src="../resources/hrtemp/js/jquery-3.5.1.min.js"></script>
 
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="../resources/hrtemp/css/bootstrap.min.css">
@@ -39,12 +42,9 @@
 <script src="../resources/hrtemp/lib/main.min.js"></script>
 <script src="../resources/hrtemp/lib/main.js"></script>
 <script src="../resources/hrtemp/lib/locales/ko.js"></script>
-	
-<!-- jQuery -->
-<script src="../resources/hrtemp/js/jquery-3.5.1.min.js"></script>
 
 <!-- Moment.js -->
-<script src="../resources/hrtemp/js/moment.min.js"></script>
+<script src="../resources/hrtemp/js/moment1.min.js"></script>
 <script src="../resources/hrtemp/js/moment.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment-with-locales.min.js" integrity="sha512-LGXaggshOkD/at6PFNcp2V2unf9LzFq6LE+sChH7ceMTDP0g2kn6Vxwgg7wkPP7AAtX+lmPqPdxB47A0Nz0cMQ==" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous"></script>
@@ -96,13 +96,30 @@
 			
 			locale : 'ko'
 		});
+		
+		$(document).ready(function(){
+			var arr = getCalendarDataInDB();
+			$.each(arr, function(index, item) {
+				console.log('click evt loop_in_cal' + index + ' : '	+ item);
+				console.log(arr);
+				calendar.addEvent(item);
+				$.each(item, function(iii, ttt) {
+					console.log('click evt inner loop_in_cal => ' + iii + ' : ' + ttt);
+				});
+			});
+			calendar.render();
+		});
 
 		calendar.on('dateClick', function(info) {
-			calendar.addEvent({
+			$('#add_event').modal().on('shown.bs.modal', function () {
+				  $('#add_event').focus();
+				  $('.start-date').val(info.dateStr);
+			})
+/* 			calendar.addEvent({
 				'title' : '이벤트 추가',
 				'start' : info.dateStr,
 				'end' : info.dateStr
-			});
+			}); */
 			alert('날짜 정보 콘솔에 출력됨');
 			console.log('clicked on ' + info.dateStr);
 		});
@@ -129,15 +146,6 @@
 		$("#btnAddTest").click(
 				function() {
 					alert('버튼입력');
-					var arr = getCalendarDataInDB();
-					$.each(arr, function(index, item) {
-						calendar.addEvent(item);
-						console.log('click evt loop_in_cal' + index + ' : '	+ item);
-						$.each(item, function(iii, ttt) {
-							console.log('click evt inner loop_in_cal => ' + iii + ' : ' + ttt);
-						});
-					});
-					calendar.render();
 				});
 		$(".asdfasdf").click(
 				function() {
@@ -199,28 +207,40 @@
 	        data:JSON.stringify(viewData),
 	        success:function(resp){
 	            $.each(resp, function(index, item){
+	            	console.table(resp);
+	            	console.log(Object.values(resp)[0].start);
+	            	console.log(formatDate(Object.values(resp)[0].start));
+	            	for(let i = 0; i < Object.values(resp).length; i++) {
+	            		Object.values(resp)[i].start = formatDate(Object.values(resp)[i].start);
+	            		Object.values(resp)[i].end = formatDate(Object.values(resp)[i].end);
+	            	}	
 	                console.log('맵??' + index + ' : ' + item);
 	                $.each(item, function(iii, ttt){
-	                    console.log('inner loop => ' + iii + ' : ' + ttt);
 	                    if(iii == 'start' || iii == 'end') {
-	                    	formatDate(ttt);
-	                    	/* console.log(formatDate(ttt)); */
+	                    	ttt = formatDate(ttt);
 	                    	console.log('if 문 통과');
 	                    }
+	                    console.log('inner loop => ' + iii + ' : ' + ttt);
 	                	/* console.log('index_in_arr' + iii == 'start'); */
 	                    arr.push(ttt);
 	                    console.log(arr);
 	                });
 	            });
-	            arr = resp;
+	            console.table(resp);
+	            console.table(arr);
+                arr = resp;
+	            console.table(arr);
 	        },
 	        error:function(){
 	            alert('저장 중 에러가 발생했습니다. 다시 시도해 주세요.');
 	        }
 	    });
-	    console.log('arrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr' + arr);
 	    return arr;
 	}
+	
+	$("#dtpicker").click(function() {
+				alert('버튼입력');
+			});
 	
 	function formatDate(date) {
 	    var d = new Date(date),
@@ -235,6 +255,14 @@
 
 	    return [year, month, day].join('-');
 	}
+</script>
+<script>
+if($('.select11').length > 0) {
+	$('.select11').select2({
+		minimumResultsForSearch: -1,
+		width: '100%'
+	});
+}
 </script>
 <style type="text/css">
 #external-events {
@@ -728,17 +756,17 @@
 								</div>
 								<div class="form-group">
 									<label>일정 기간 <span class="text-danger">*</span></label>
-									<div>
-										<input class="form-control datetimepicker start-date" type="date">
+									<div class="cal-icon">
+										<input class="form-control datetimepicker start-date" id="dtpicker" type="text">
 									</div>
 									<label>종료 기간 <span class="text-danger">*</span></label>
-									<div>
-										<input class="form-control datetimepicker end-date" type="date">
+									<div class="cal-icon">
+										<input class="form-control datetimepicker end-date" id="dtpicker" type="text">
 									</div>
 								</div>
 								<div class="form-group">
 									<label class="control-label">Category</label> <select
-										class="select form-control">
+										class="select11 form-control calSelect">
 										<option>개인일정</option>
 										<option>부서일정</option>
 										<option>Purple</option>
@@ -776,12 +804,8 @@
 						</div>
 						<div class="modal-body"></div>
 						<div class="modal-footer text-center">
-							<button type="button"
-								class="btn btn-success submit-btn save-event">Create
-								event</button>
-							<button type="button"
-								class="btn btn-danger submit-btn delete-event"
-								data-dismiss="modal">Delete</button>
+							<button type="button" class="btn btn-success submit-btn save-event">Create event</button>
+							<button type="button" class="btn btn-danger submit-btn delete-event" data-dismiss="modal">Delete</button>
 						</div>
 					</div>
 				</div>
@@ -854,9 +878,10 @@
 	<script src="../resources/hrtemp/js/dataTables.bootstrap4.min.js"></script>
 
 	<!-- Custom JS -->
-	<!-- 	<script src="../resources/hrtemp/js/app.js"></script> -->
+	<script src="../resources/hrtemp/js/app.js"></script>
 
 	<!-- Datetimepicker JS -->
+	<script src="../resources/hrtemp/js/moment.min.js"></script>
 	<script src="../resources/hrtemp/js/bootstrap-datetimepicker.min.js"></script>
 
 </body>
