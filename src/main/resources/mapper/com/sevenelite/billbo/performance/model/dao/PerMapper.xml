@@ -13,7 +13,7 @@
 </resultMap>	
 
 
-<select id="selectPerList" resultMap="perResultMap" parameterType="PerformanceListDTO">
+<select id="selectPerList" resultMap="perResultMap">
 	 SELECT 
        D.MODIFY_DEPT_NO
      , D.MODIFY_DEPT_DATE
