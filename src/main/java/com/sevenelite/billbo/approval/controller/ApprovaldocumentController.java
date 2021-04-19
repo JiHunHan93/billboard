@@ -68,7 +68,26 @@ public class ApprovaldocumentController {
 		System.out.println("2. membername : " + userDetails.getMembername());
 		System.out.println("3. memberno : " + userDetails.getMemberno());
 		
+		System.out.println("1008로 이동");
+		
 		return "approval/test";
+	}
+	
+	/* Controller에서 로그인 정보 가져오기 */
+	@GetMapping("1010")
+	public String testMap1010(Authentication authentication) {
+		
+		/* 1. authentication 토큰을 사용하여 로그인 정보를 UserDetailsVO에 담는다. */
+		UserDetailsVO userDetails = (UserDetailsVO) authentication.getPrincipal();
+		
+		/* 2. UserDetailsVO에 있는 getter를 이용하여 ID, NAME, NO를 가져온다. */
+		System.out.println("1. username : " + userDetails.getUsername());
+		System.out.println("2. membername : " + userDetails.getMembername());
+		System.out.println("3. memberno : " + userDetails.getMemberno());
+		
+		System.out.println("1010으로 이동");
+		
+		return "approval/ajax";
 	}
 	
 	@PostMapping(value="1004")

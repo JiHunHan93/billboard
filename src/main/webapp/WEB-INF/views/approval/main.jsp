@@ -1323,8 +1323,8 @@
 	<!-- Slimscroll JS -->
 	<script src="/billbo/resources/hrtemp/js/jquery.slimscroll.min.js"></script>
 
-	<!-- Custom JS -->
-	<script src="/billbo/resources/hrtemp/js/app.js"></script>
+	<!-- Custom JS 지훈버전으로 수정 -->
+	<script src="/billbo/resources/jihunhan/js/approval/approapp.js"></script>
 </body>
 
 <script>
