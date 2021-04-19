@@ -4,7 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sevenelite.billbo.department.model.dao.DepartmentMapper">
 
-	<resultMap type="com.sevenelite.billbo.department.model.dto.DepartmentDTO" id="dept">
+	<resultMap type="com.sevenelite.billbo.department.model.dto.DepartmentDTO" id="deptInfo">
 		<id property="deptRnum" column="RNUM"/>
 		<result property="deptCode" column="DEPT_CODE"/>
 		<result property="deptName" column="DEPT_NAME"/>
@@ -13,63 +13,32 @@
 		<result property="modifyDeptDate" column="MODIFY_DEPT_DATE"/>
 	</resultMap>
 	
-	<resultMap type="com.sevenelite.billbo.department.model.dto.DepartmentSpotDTO" id="deptSpot">
+	<resultMap type="com.sevenelite.billbo.department.model.dto.DepartmentSpotDTO" id="deptInfoSpot">
 		<id property="spotRnum" column="RNUM"/>
 		<result property="spotCode" column="SPOT_CODE"/>
 		<result property="spotName" column="SPOT_NAME"/>
+		<result property="memberName" column="MEMBER_NAME"/>
 		<result property="modifySpotDate" column="MODIFY_SPOT_DATE"/>
 	</resultMap>
 	
 	
 	
-	<select id="selectLoginDept" resultMap="dept" parameterType="_int">
+	<select id="selectDeptInfo" resultMap="deptInfo" parameterType="String">
         SELECT
-               A.RNUM
-             , A.DEPT_CODE
-             , A.DEPT_NAME
-             , A.DEPT_UPPER
-             , A.DEPT_LEVEL
-             , A.MODIFY_DEPT_DATE
-        FROM (SELECT ROWNUM RNUM
-                   , B.DEPT_CODE
-                   , B.DEPT_NAME
-                   , B.DEPT_UPPER
-                   , B.DEPT_LEVEL
-                   , B.MODIFY_DEPT_DATE
-               FROM (SELECT C.DEPT_CODE
-                          , C.DEPT_NAME
-                          , C.DEPT_UPPER
-                          , C.DEPT_LEVEL
-                          , D.MODIFY_DEPT_DATE
-                       FROM BB_DEPT C
-                       JOIN BB_MODIFY_DEPT D ON(C.DEPT_CODE = D.DEPT_CODE)
-                      WHERE D.MEMBER_NO = #{ memberno }
-                      ORDER BY MODIFY_DEPT_DATE DESC
-                    ) B 
-             ) A
-         WHERE RNUM = 1
+               A.DEPT_NAME 
+             , A.SPOT_NAME
+             , A.MEMBER_NAME            
+          FROM BB_DEPT A
+         WHERE DEPT_CODE = #{ deptcode }
 	</select>
 	
-	<select id="selectLoginSpot" resultMap="deptSpot" parameterType="_int">
+	<select id="selectDeptInfoSpot" resultMap="deptInfoSpot" parameterType="String">
         SELECT
-               A.RNUM
-             , A.SPOT_CODE
+               A.DEPT_NAME 
              , A.SPOT_NAME
-             , A.MODIFY_SPOT_DATE
-        FROM (SELECT ROWNUM RNUM
-                   , B.SPOT_CODE
-                   , B.SPOT_NAME
-                   , B.MODIFY_SPOT_DATE
-               FROM (SELECT C.SPOT_CODE
-                          , C.SPOT_NAME
-                          , D.MODIFY_SPOT_DATE
-                       FROM BB_SPOT C
-                       JOIN BB_MODIFY_SPOT D ON(C.SPOT_CODE = D.SPOT_CODE)
-                      WHERE D.MEMBER_NO = #{ memberno }
-                      ORDER BY MODIFY_SPOT_DATE DESC
-                    ) B 
-             ) A
-         WHERE RNUM = 1
+             , A.MEMBER_NAME
+        FROM 
+         WHERE MEMBER_NAME = #{ membername }
 	</select>
 	
 	

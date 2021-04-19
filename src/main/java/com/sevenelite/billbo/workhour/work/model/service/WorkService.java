@@ -14,9 +14,12 @@ import com.sevenelite.billbo.workhour.work.model.dto.WorkDTO;
 
 	boolean insertWorkInfo(WorkDTO workInfo);
 	
-	Date selectCommute();
 
-	Date selectLeave();
+	String selectWork();
+
+	Date selectCommute(int userno, String workDate);
+
+	Date selectLeave(int userno, String workDate);
 
    } 
   

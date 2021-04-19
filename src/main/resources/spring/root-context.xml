@@ -71,7 +71,7 @@
 	<mybatis-spring:scan base-package="com.sevenelite.billbo.member.model.dao,
 									   com.sevenelite.billbo.approval.model.dao,	
 									   com.sevenelite.billbo.noticeboard.model.dao,
-                                        com.sevenelite.billbo.department.model.dao,
+                                       com.sevenelite.billbo.department.model.dao,
 									   com.sevenelite.billbo.profile.model.dao,
 									   com.sevenelite.billbo.workhour.work.model.dao,
 									   com.sevenelite.billbo.board.model.dao,
