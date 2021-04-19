@@ -460,7 +460,7 @@
 													</div>
 												</div>
 											</form>
-											
+												
 											<div class="tab-content">
 												<div class="tab-pane show active" id="solid-justified-tab1">
 													<div class="card-body">
@@ -487,7 +487,7 @@
 																		<td class="rnp-td"><c:out value="${ perList.dept }" />
 																		<td class="rnp-td"><c:out value="${ perList.phone }" />
 																		<td class="rnp-td"><c:out value="${ perList.email}" />
-																		<td class="rnp-td tb-hidden"><%-- <c:out value="${ perList.no }"/> --%></td>
+																		<td class="rnp-td tb-hidden"></td>
 																	</tr>
 																</c:forEach>
 															</table>

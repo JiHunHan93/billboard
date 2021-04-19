@@ -650,13 +650,13 @@
 										<tr>
 											<th style="width: 30px;">No</th>
 											<th>부서 명</th>
-											<th class="text-right">Action</th>
+											<th class="text-right">OPTION</th>
 										</tr>
 									</thead>
 									<tbody>
 										<tr>
 											<td>1</td>
-											<td><a href="department/department-business">영업부</a></td>
+											<td><a href="department-business">영업부</a></td>
 											<td class="text-right">
                                             <div class="dropdown dropdown-action">
 													<a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
@@ -669,7 +669,7 @@
 										</tr>
 										<tr>
 											<td>2</td>
-											<td><a href="department/department-management.jsp">관리부</a></td>
+											<td><a href="department-management.jsp">관리부</a></td>
 											<td class="text-right">
                                             <div class="dropdown dropdown-action">
 													<a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
@@ -682,7 +682,7 @@
 										</tr>
 										<tr>
 											<td>3</td>
-											<td><a href="department/department-production.jsp">생산부</a></td>
+											<td><a href="department-production.jsp">생산부</a></td>
 											<td class="text-right">
                                             <div class="dropdown dropdown-action">
 													<a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>

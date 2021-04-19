@@ -13,6 +13,8 @@
  		<typeAlias alias="ApproLineMemDTO" type="com.sevenelite.billbo.approval.model.dto.ApproLineMemDTO"/>
  		<typeAlias alias="RoleDTO" type="com.sevenelite.billbo.member.model.dto.RoleDTO"/>
  		<!-- End 지훈 -->
+ 		
+ 		
  		<typeAlias alias="WorkDTO" type="com.sevenelite.billbo.workhour.work.model.dto.WorkDTO"/> 
  		<typeAlias alias="WorkTypeDTO" type="com.sevenelite.billbo.workhour.work.model.dto.WorkTypeDTO"/> 
  		<typeAlias alias="RecordWorkDTO" type="com.sevenelite.billbo.workhour.work.model.dto.RecordWorkDTO"/> 
@@ -34,7 +36,7 @@
  		<typeAlias alias="BoardDTO" type="com.sevenelite.billbo.board.model.dto.BoardDTO"/>
  		<typeAlias alias="ModifyDeptAndMemAndRnpDTO" type="com.sevenelite.billbo.rnp.model.dto.ModifyDeptAndMemAndRnpDTO"/>
  		<typeAlias alias="CalDTO" type="com.sevenelite.billbo.calendar.model.dto.CalDTO"/>
- 		<!-- <typeAlias alias="PerformanceListDTO" type="com.sevenelite.billbo.performance.model.dto.PerformanceListDTO"/> -->
+ 		<typeAlias alias="PerformanceListDTO" type="com.sevenelite.billbo.performance.model.dto.PerformanceListDTO"/>
  		
  		<typeAlias alias="MemberAndMemberInfoAndDeptAndModifyDeptDTO" type="com.sevenelite.billbo.allmember.model.dto.MemberAndMemberInfoAndDeptAndModifyDeptDTO"/>
 		<typeAlias alias="MemberAndArmyDTO" type="com.sevenelite.billbo.allmember.model.dto.MemberAndArmyDTO"/>
