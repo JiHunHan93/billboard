@@ -16,22 +16,22 @@
         <link rel="shortcut icon" type="image/x-icon" href="./resources/hrtemp/img/favicon.png">
 		
 		<!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="./resources/hrtemp/css/bootstrap.min.css">
+        <link rel="stylesheet" href="../resources/hrtemp/css/bootstrap.min.css">
 		
 		<!-- Fontawesome CSS -->
-        <link rel="stylesheet" href="./resources/hrtemp/css/font-awesome.min.css">
+        <link rel="stylesheet" href="../resources/hrtemp/css/font-awesome.min.css">
 		
 		<!-- Lineawesome CSS -->
-        <link rel="stylesheet" href="./resources/hrtemp/css/line-awesome.min.css">
+        <link rel="stylesheet" href="../resources/hrtemp/css/line-awesome.min.css">
 		
 		<!-- Select2 CSS -->
-		<link rel="stylesheet" href="./resources/hrtemp/css/select2.min.css">
+		<link rel="stylesheet" href="../resources/hrtemp/css/select2.min.css">
 		
 		<!-- Datatable CSS -->
-		<link rel="stylesheet" href="./resources/hrtemp/css/dataTables.bootstrap4.min.css">
+		<link rel="stylesheet" href="../resources/hrtemp/css/dataTables.bootstrap4.min.css">
 		
 		<!-- Main CSS -->
-        <link rel="stylesheet" href="./resources/hrtemp/css/style.css">
+        <link rel="stylesheet" href="../resources/hrtemp/css/style.css">
 		
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
@@ -826,24 +826,24 @@
 		<!-- /Main Wrapper -->
 		
 		<!-- jQuery -->
-        <script src="./resources/hrtemp/js/jquery-3.5.1.min.js"></script>
+        <script src="../resources/hrtemp/js/jquery-3.5.1.min.js"></script>
 		
 		<!-- Bootstrap Core JS -->
-        <script src="./resources/hrtemp/js/popper.min.js"></script>
-        <script src="./resources/hrtemp/js/bootstrap.min.js"></script>
+        <script src="../resources/hrtemp/js/popper.min.js"></script>
+        <script src="../resources/hrtemp/js/bootstrap.min.js"></script>
 		
 		<!-- Slimscroll JS -->
-		<script src="./resources/hrtemp/js/jquery.slimscroll.min.js"></script>
+		<script src="../resources/hrtemp/js/jquery.slimscroll.min.js"></script>
 		
 		<!-- Select2 JS -->
-		<script src="./resources/hrtemp/js/select2.min.js"></script>
+		<script src="../resources/hrtemp/js/select2.min.js"></script>
 		
 		<!-- Datatable JS -->
-		<script src="./resources/hrtemp/js/jquery.dataTables.min.js"></script>
-		<script src="./resources/hrtemp/js/dataTables.bootstrap4.min.js"></script>
+		<script src="../resources/hrtemp/js/jquery.dataTables.min.js"></script>
+		<script src="../resources/hrtemp/js/dataTables.bootstrap4.min.js"></script>
 		
 		<!-- Custom JS -->
-		<script src="./resources/hrtemp/js/app.js"></script>
+		<script src="../resources/hrtemp/js/app.js"></script>
 
     </body>
 </html>
