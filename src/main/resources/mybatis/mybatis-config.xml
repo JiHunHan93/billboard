@@ -38,6 +38,9 @@
  		<typeAlias alias="ModifyDeptAndMemAndRnpDTO" type="com.sevenelite.billbo.rnp.model.dto.ModifyDeptAndMemAndRnpDTO"/>
  		<typeAlias alias="CalDTO" type="com.sevenelite.billbo.calendar.model.dto.CalDTO"/>
  		<typeAlias alias="PerformanceListDTO" type="com.sevenelite.billbo.performance.model.dto.PerformanceListDTO"/>
+ 		<typeAlias alias="DepartmentDTO" type="com.sevenelite.billbo.department.model.dto.DepartmentDTO"/>
+ 		<typeAlias alias="DepartmentSpotDTO" type="com.sevenelite.billbo.department.model.dto.DepartmentSpotDTO"/>
+ 		
  		
  		<typeAlias alias="MemberAndMemberInfoAndDeptAndModifyDeptDTO" type="com.sevenelite.billbo.allmember.model.dto.MemberAndMemberInfoAndDeptAndModifyDeptDTO"/>
 		<typeAlias alias="MemberAndArmyDTO" type="com.sevenelite.billbo.allmember.model.dto.MemberAndArmyDTO"/>
