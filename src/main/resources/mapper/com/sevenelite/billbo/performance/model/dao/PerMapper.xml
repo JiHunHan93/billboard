@@ -1,38 +1,64 @@
-<!-- <?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace ="com.sevenelite.billbo.performance.model.dao.PerMapper">
-	
 <resultMap type="com.sevenelite.billbo.performance.model.dto.PerformanceListDTO" id="perResultMap">
-	<id property="no" column="MEMEBER_NO"/>
+	<id property="memberNo" column="MEMBER_NO"/>
 	<result property="name" column="MEMBER_NAME"/>
 	<result property="spot" column="SPOT_NAME"/>
 	<result property="dept" column="DEPT_NAME"/>
 	<result property="phone" column="PHONE"/>
 	<result property="email" column="EMAIL"/>
-</resultMap>
+</resultMap>	
 
-<select id="selectPer" resultMap="perResultMap">
-      SELECT *
-	FROM 
-	(
-	SELECT *
-	FROM
-	(
-	SELECT 
+
+<select id="selectPerList" resultMap="perResultMap" parameterType="PerformanceListDTO">
+	 SELECT 
+       D.MODIFY_DEPT_NO
+     , D.MODIFY_DEPT_DATE
+     , D.MEMBER_NO
+     , D.DEPT_CODE
+     , D.순번
+     , D.EMAIL
+     , D.PHONE
+     , D.MEMBER_NAME
+     , D.DEPT_NAME
+   FROM 
+   (
+   SELECT 
+       C.MODIFY_DEPT_NO
+     , C.MODIFY_DEPT_DATE
+     , C.MEMBER_NO
+     , C.MEMBER_NAME
+     , C.PHONE
+     , C.EMAIL
+     , C.DEPT_CODE
+     , C.순번
+     , C.DEPT_NAME
+   FROM
+   (
+   SELECT 
        A.MODIFY_DEPT_NO
      , A.MODIFY_DEPT_DATE
+     , S.MEMBER_NAME
+     , S.PHONE
+     , S.EMAIL
      , A.MEMBER_NO
      , B.DEPT_CODE
      , ROW_NUMBER() OVER(PARTITION BY A.MEMBER_NO ORDER BY A.MODIFY_DEPT_DATE DESC) 순번
      , B.DEPT_NAME
-	FROM BB_MODIFY_DEPT A
-	JOIN BB_DEPT B ON (A.DEPT_CODE = B.DEPT_CODE)
-	) 
-	WHERE 순번 = 1) C
-	JOIN BB_MEMBER D ON (C.MEMBER_NO = D.MEMBER_NO)
-	JOIN BB_MODIFY_SPOT E ON ( C.MEMBER_NO = E.MEMBER_NO)
-	JOIN BB_SPOT F ON ( F.SPOT_CODE = E.SPOT_CODE)
+   FROM BB_MODIFY_DEPT A
+   JOIN BB_DEPT B ON (A.DEPT_CODE = B.DEPT_CODE)
+   JOIN BB_MEMBER S ON (A.MEMBER_NO = S.MEMBER_NO)
+   )C 
+   WHERE 순번 = 1
+   GROUP BY C.DEPT_CODE, C.DEPT_NAME, C.MODIFY_DEPT_NO , C.MODIFY_DEPT_DATE,  C.MEMBER_NO , C.순번, C.MEMBER_NAME, C.PHONE, C.EMAIL) D
+   JOIN BB_MEMBER E ON (D.MEMBER_NO = E.MEMBER_NO)
+   JOIN BB_MODIFY_SPOT F ON ( D.MEMBER_NO = F.MEMBER_NO)
+   JOIN BB_SPOT G ON ( F.SPOT_CODE = G.SPOT_CODE)
+   GROUP BY D.DEPT_CODE, D.DEPT_NAME, D.MODIFY_DEPT_NO , D.MODIFY_DEPT_DATE,  D.MEMBER_NO , D.순번, D.MEMBER_NAME, D.PHONE, D.EMAIL
+   ORDER BY D.MODIFY_DEPT_NO ASC      
 </select>
-</mapper> -->
+
+</mapper>

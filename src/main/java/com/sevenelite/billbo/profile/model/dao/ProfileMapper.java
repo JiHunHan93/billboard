@@ -19,117 +19,117 @@ import com.sevenelite.billbo.profile.model.dto.SpotDTO;
 import com.sevenelite.billbo.rnp.model.dto.ModifyDeptDTO;
 
 public interface ProfileMapper {
-
-	ArmyDTO armyInfo();
-	
-	int armyInfo(ArmyDTO army);
-
-	int memberInfo(MemberInfoDTO member);
-	
-	
-	List<MemberInfoDTO> memberInfo(int memberno);
-
+	/*spotDTO*/
 	SpotDTO spot();
 	int spot(SpotDTO spot);
-
+	/*modifyDTO*/
 	int dept(ModifyDeptDTO dept);
-	//List<CareerDTO> career();
-	int career(CareerDTO career);
-//보류	
-//	BonusDTO bonus();
-//	int bonus(BonusDTO bonus);
-//	
-	List<CertificateDTO> selectCertificate(int memberno);
-	int certificate(CertificateDTO certificate);
 	
+	/*finalAcademicDTO*/
 	FinalAcademicDTO finalAcademic();
+	List<FinalAcademicDTO> academic(int memberno);
 	int finalAcademic(FinalAcademicDTO finalAcademic);
 
+	/*familyDTO*/
 	FamilyDTO family();
+	List<FamilyDTO> familyDto(int memberno);
 	int family(FamilyDTO family);
 	
-	LicenseDTO license();
-	int license(LicenseDTO license);
 
 	
-	
-
-	
-//	List<MemDTO> member_address();
-//
-//	List<MemDTO> member_enrollDate();
-
-//	List<DeptDTO> member_name();
+	/*MemBbDTO*/
 	List<MemBbDTO> member_info_phone();
-
-	//List<MemberInfoDTO> mainProfile();
- 
-
-//	int memberInfoInsert(MemberInfoDTO memberInfoInsert);
 
 	List<MemBbDTO> member_address();
 
 	List<MemBbDTO> member_enrollDate();
 
-	//List<MemberInfoDTO> main();
+	List<MemBbDTO> selectMemberDetail(int memberno);
 
-//	int member_info_no(MemberInfoDTO member_info_no);
-
-	List<MemberInfoDTO> selectMemberInfo(int memberno);
-
+	
+	/*dept*/
 	List<DeptDTO> selectMemberDept(int memberno);
 
+	List<DeptDTO> member_name();
 
-
+	/*UserDetailsVO*/
 	List<UserDetailsVO> selectUserDetail(int memberno);
 
 
 
-	List<MemBbDTO> selectMemberDetail(int memberno);
 
 
-	List<DeptDTO> member_name();
-
+	/*LicenseDTO*/
+	int license(LicenseDTO license);
+	LicenseDTO license();
+	List<LicenseDTO> licenseSelect(int memberno);
 	
+	
+	
+	/*ModifyspotDTO*/
 	int modifyspot(ModifySpotDTO modifyspot);
+	List<ModifySpotDTO> selectspot(int memberno);
 	
+	/*career*/
+	int career(CareerDTO career);
+	List<CareerDTO> careerSelect(int memberno);
+	
+	/*bonus*/
+	List<BonusDTO> bonus(int memberno);
+	List<BonusDTO> selectBonus(int memberno);
+
+	int bonusInsert(BonusDTO bonus);
+
+	/*certificate*/
+	int certificate(CertificateDTO certificate);
+	List<CertificateDTO> selectCertificate(int memberno);
+	List<CertificateDTO> certificateInsert(int memberno);
+	/*army*/
+    ArmyDTO armyInfo();
+	int armyInfo(ArmyDTO army);
+	int armySelect(ArmyDTO armySelect);
+	List<ArmyDTO> armyInsert(int memberno);	
+	List<ArmyDTO> armySelect(int memberno);
+	
+		/*modifyDTO1*/
+	int modifydept(ModifyDeptDTO1 modifydept);
 	int modifydept1(ModifyDeptDTO1 modifydept1);
 
 	int dept(ModifyDeptDTO1 dept);
 
 	List<ModifyDeptDTO1> selectModifyDept(int memberno);
-
-	List<ModifySpotDTO> selectspot(int memberno);
-
-	List<CareerDTO> careerSelect(int memberno);
-
-	List<BonusDTO> bonus(int memberno);
-
-	int bonusInsert(BonusDTO bonus);
-
-	List<LicenseDTO> licenseSelect(int memberno);
-
-	List<CertificateDTO> certificateInsert(int memberno);
-
-	List<ArmyDTO> armyInsert(int memberno);
-
-	List<FinalAcademicDTO> academic(int memberno);
-
-	List<FamilyDTO> familyDto(int memberno);
-
-	//List<MemberInfoDTO> modifyMember();
-
-	List<BonusDTO> selectBonus(int memberno);
-
-	//List<MemberInfoDTO> memberInfoInsert(int memberno);
-
-	//List<MemberInfoDTO> selectMemberInfo(int memberno);
-
+	
+	/*memberInfoDTO*/
 	int selectMemberInfo(MemberInfoDTO selectMemberInfo);
-
-	int modifydept(ModifyDeptDTO1 modifydept);
-
+	int memberInfo(MemberInfoDTO member);
+	List<MemberInfoDTO> memberInfo(int memberno);
+	List<MemberInfoDTO> selectMemberInfo(int memberno);
 	int mainProfile(MemberInfoDTO memberInfo);
-
-
 }
+
+//List<MemberInfoDTO> modifyMember();
+
+
+//List<MemberInfoDTO> memberInfoInsert(int memberno);
+
+//List<MemberInfoDTO> selectMemberInfo(int memberno);
+
+//List<CareerDTO> career();
+//보류	
+//	BonusDTO bonus();
+//	int bonus(BonusDTO bonus);
+//	
+
+//	List<MemDTO> member_address();
+//
+//	List<MemDTO> member_enrollDate();
+
+//	List<DeptDTO> member_name();
+
+//List<MemberInfoDTO> mainProfile();
+
+
+//	int memberInfoInsert(MemberInfoDTO memberInfoInsert);
+//List<MemberInfoDTO> main();
+
+//	int member_info_no(MemberInfoDTO member_info_no);
