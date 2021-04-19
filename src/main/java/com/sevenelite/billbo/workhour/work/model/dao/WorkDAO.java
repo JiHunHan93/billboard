@@ -16,9 +16,9 @@ public interface WorkDAO {
 
 	List<StatusAndWorkDTO> selectTime();
 
-	List<StatusAndWorkDTO> selectCommute();
+	Date selectCommute();
 
-	List<StatusAndWorkDTO> selectLeave();
+	Date selectLeave();
 
 
   }
