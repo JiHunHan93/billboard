@@ -238,9 +238,10 @@
 	    return arr;
 	}
 	
-	$("#dtpicker").click(function() {
-				alert('버튼입력');
-			});
+	$("#dtpicker").on('focus', function($){
+		var date = $('#dtpicker').val();
+		if(!isEmpty(date))
+	})
 	
 	function formatDate(date) {
 	    var d = new Date(date),
