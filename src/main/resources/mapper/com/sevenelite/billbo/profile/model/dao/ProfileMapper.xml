@@ -336,9 +336,9 @@
  	  )
  </insert>
  
- <insert id="finalAcademic" parameterType="FinalAcademicDTO">
+ <!-- <insert id="finalAcademic" parameterType="FinalAcademicDTO">
   	INSERT
-  	  INTO BB_FINAL_ACADEMIC(
+  	  INTO BB_FINAL_ACADEMIC_ABILITY(
   	  	   ACADEMIC_ABILITY_NO
   	  	 , SCHOOL_NAME
   	  	 , SCHOOL_SUBJECT
@@ -359,7 +359,7 @@
 	  ,#{member_no}
   	  ,#{code}
   	  )
-  	  </insert>
+  	  </insert> -->
   	  
  <insert id="family" parameterType="FamilyDTO">
  	INSERT
@@ -681,7 +681,7 @@ SELECT
 	              
 	              
 	              
-	      <select id="armyInsert" resultMap="armyDTO" parameterType="ArmyDTO">
+	      <select id="armySelect" resultMap="armyDTO" parameterType="ArmyDTO">
   
 	       SELECT
     	  A.ARMY_NO
@@ -723,7 +723,7 @@ SELECT
          
          
       <select id="academic" resultMap="finalAcademicDTO" parameterType="FinalAcademicDTO">
-              SELECT
+         SELECT
     	  A.ACADEMIC_ABILITY_NO
         , A.SCHOOL_NAME
 	    , A.SCHOOL_SUBJECT

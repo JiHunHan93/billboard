@@ -19,7 +19,7 @@ import com.sevenelite.billbo.rnp.model.dto.ModifyDeptDTO;
 
 public interface ProfileService {
 
-	boolean armyInfo(ArmyDTO army);
+
 
 	//List<MemberInfoDTO> memberInfo();
 	List<CareerDTO> career();
@@ -100,13 +100,17 @@ public interface ProfileService {
 	List<LicenseDTO> licenseSelect(int memberno);
 
 	List<CertificateDTO> certificateInsert(int memberno);
-
+	
+	/*armyDTO*/
+	boolean armyInfo(ArmyDTO army);
 	List<ArmyDTO> armyInsert(int memberno);
+	List<ArmyDTO> armySelect(int memberno);
 
 	List<FinalAcademicDTO> academic(int memberno);
 
 	List<FamilyDTO> familyDto(int memberno);
 
+	
 	//List<MemberInfoDTO> modifyMember(int no);
 	/* ***********************************main2 select 조회 위한************************* */
 	List<CertificateDTO> selectCertificate(int memberno);
@@ -117,7 +121,7 @@ public interface ProfileService {
 
 	boolean mainProfile(MemberInfoDTO memberInfo);
 
-
+	
 	
 	
 
