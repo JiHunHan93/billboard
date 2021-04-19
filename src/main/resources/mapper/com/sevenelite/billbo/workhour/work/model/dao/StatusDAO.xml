@@ -4,7 +4,7 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sevenelite.billbo.workhour.work.model.dao.StatusDAO">
  	<resultMap id="statusAndWorkResultMap" type="com.sevenelite.billbo.workhour.work.model.dto.StatusAndWorkDTO">
- 	<id column="MEMBMER_NO" property="memNo"/>
+ 	<id column="MEMBER_NO" property="memNo"/>
  	<result column="WORKDATE" property="date"/>
  	<result column="COMMUTE" property="commute"/>
  	<result column="LEAVE_WORK" property="lwork"/>

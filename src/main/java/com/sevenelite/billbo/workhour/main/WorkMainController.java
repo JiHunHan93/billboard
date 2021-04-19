@@ -24,7 +24,6 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkStatusService;
 @Controller
 @RequestMapping("/") public class WorkMainController {
 
-	private static final String ModelAndView = null;
 	private final WorkService workService;
 	private WorkStatusService workStatusService;
 	
@@ -76,29 +75,31 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkStatusService;
 			
 //			System.out.println("근무시간 : " + workTimeHour + workTimeMinute + workTimeSecond);
 			
+			
 			UserDetailsVO userDetails = (UserDetailsVO) authentication.getPrincipal();
 			int userno = userDetails.getMemberno();
-			Date com = workService.selectCommute();
-			Date leave = workService.selectLeave();
-			System.out.println("관리자 : " + principal);
-			
+			String workDate = workService.selectWork();
+			System.out.println("근무날짜 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11" + workDate);
+			System.out.println("userNo : " + userno);
+//			Date com = workService.selectCommute(userno, workDate);
+//			Date leave = workService.selectLeave(userno, workDate);
 			
 			Date commute = new Date();
 			Date lwork = new Date();
 			
 			
-			System.out.println(com);
-			System.out.println(leave);
+			System.out.println(commute);
+			System.out.println(lwork);
 			///////////////////////////////////////////////////
 			SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
-			String commuteTime = format.format(com);
-			String leaveTime = format.format(leave);
+			String commuteTime = format.format(commute);
+			String leaveTime = format.format(lwork);
 			////////////////////////////////////////////////////
-			
-			
+			System.out.println("COMMUTETIME : " + commuteTime);
+			System.out.println("LEAVETIME : " + leaveTime);
 			
 			//출근시간 스플릿
-	         String commuteTimeFormat = format.format(com);
+	         String commuteTimeFormat = format.format(commute);
 	         String[] splitCommute = commuteTimeFormat.split(":");
 	         int hour = Integer.parseInt(splitCommute[0]);
 	         int minute = Integer.parseInt(splitCommute[1]);
@@ -157,7 +158,6 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkStatusService;
 	        	 System.out.println("정상");
 	         }
 	         
-	         
 	         WorkDTO workInfo = new WorkDTO();
 	         workInfo.setExtraWork(timeStr);
 	         workInfo.setMemNo(userno);
@@ -166,6 +166,7 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkStatusService;
 	         workInfo.setWorkCount(workCount);
 	         System.out.println(workInfo);
 	         model.addAttribute("workInfo", workInfo);
+	         
 	         
 	        if(workService.insertWorkInfo(workInfo)) {
 	        	
