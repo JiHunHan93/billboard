@@ -786,20 +786,45 @@
 					<div class="modal-dialog modal-dialog-centered" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h5 class="modal-title">Add Holiday</h5>
+								<h5 class="modal-title">휴가 설정</h5>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
 							<div class="modal-body">
 								<form>
-									<div class="form-group">
-										<label>Holiday Name <span class="text-danger">*</span></label>
-										<input class="form-control" type="text">
+								<div class="form-group" hidden="false">
+										<label>사번 <span class="text-danger">*</span></label>
+										<div class="cal-icon"><!-- <input class="form-control datetimepicker" type="text"> -->
+										<input type="text" name="memberNo" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno}"></div>
 									</div>
 									<div class="form-group">
-										<label>Holiday Date <span class="text-danger">*</span></label>
-										<div class="cal-icon"><input class="form-control datetimepicker" type="text"></div>
+										<label>휴가종류 <span class="text-danger">*</span></label>
+										<select class="form-control" type="text" name="type">
+											<option value="병가">병가</option>
+											<option value="반차">반차</option>
+											<option value="연차">연차</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label>휴가시작일 <span class="text-danger">*</span></label>
+										<div class="cal-icon"><!-- <input class="form-control datetimepicker" type="text"> -->
+										<input type="date" name="startDate"></div>
+									</div>
+										<div class="form-group">
+										<label>휴가종료일 <span class="text-danger">*</span></label>
+										<div class="cal-icon"><!-- <input class="form-control datetimepicker" type="text"> -->
+										<input type="date" name="endDate"></div>
+									</div>
+									<div class="form-group">
+										<label>휴가사유 <span class="text-danger">*</span></label>
+										<div class="cal-icon"><!-- <input class="form-control datetimepicker" type="text"> -->
+										<input type="text" name="reason"></div>
+									</div>
+									<div class="form-group">
+										<label>휴가기간<span class="text-danger">*</span></label>
+										<div class="cal-icon"><!-- <input class="form-control datetimepicker" type="text"> -->
+										<input type="number" name="term" ></div>
 									</div>
 									<div class="submit-section">
 										<button class="btn btn-primary submit-btn">Submit</button>

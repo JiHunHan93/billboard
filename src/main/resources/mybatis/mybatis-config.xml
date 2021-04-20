@@ -49,6 +49,7 @@
  		<typeAlias alias="MemberAndFinalDTO" type="com.sevenelite.billbo.allmember.model.dto.MemberAndFinalDTO"/>
  		<typeAlias alias="MemberAndCareerDTO" type="com.sevenelite.billbo.allmember.model.dto.MemberAndCareerDTO"/>
  		<typeAlias alias="HolidayDTO" type="com.sevenelite.billbo.holiday.model.dto.HolidayDTO"/>
+ 		<typeAlias alias="MemberInfoAndFileDTO" type="com.sevenelite.billbo.allmember.model.dto.MemberInfoAndFileDTO"/>
  	</typeAliases>
  	
  	<!-- 

@@ -14,6 +14,13 @@
 	<result property="deptCode" column="DEPT_CODE"/>
 	<result property="deptName" column="DEPT_NAME"/>
 	<result property="address" column="MEMBER_ADDRESS"/>
+	<result property="fileNo" column="FILE_ATTACHMENT_NO"/>
+	<result property="attachmentPath" column="FILE_ATTACHMENT_PATH"/>
+	<result property="originalName" column="ORIGINAL_NAME"/>
+	<result property="savedName" column="SAVED_NAME"/>
+	<result property="attachmentType" column="ATTACHMENT_TYPE"/>
+	<result property="attchmentTypeNo" column="ATTACHMENT_TYPE_NO"/>
+	<result property="attachmentDate" column="ATTACHMENT_DATE"/>
 </resultMap>
 
 <resultMap type="com.sevenelite.billbo.profile.model.dto.MemberInfoDTO" id="memberInfoDTO">
@@ -121,7 +128,14 @@
         E.PHONE,
         D.ENROLL_DATE,
         D.MEMBER_ADDRESS,
-        C.DEPT_NAME
+        C.DEPT_NAME,
+        F.FILE_ATTACHMENT_NO,
+        F.FILE_ATTACHMENT_PATH,
+        F.ORIGINAL_NAME,
+        F.SAVED_NAME,
+        F.ATTACHMENT_TYPE,
+        F.ATTACHMENT_DATE,
+        F.ATTACHMENT_TYPE_NO
         FROM(               
              SELECT
                   *
@@ -141,6 +155,7 @@
     WHERE 순번 =1 ) C
     JOIN BB_MEMBER_INFO D ON (C.MEMBER_NO = D.MEMBER_NO)
     JOIN BB_MEMBER E ON( C.MEMBER_NO = E.MEMBER_NO)
+    JOIN BB_FILEATTACHMENT F ON (E.MEMBER_NO = F.MEMBER_NO)
     WHERE E.MEMBER_NO = #{no}
 </select>
 
