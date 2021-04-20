@@ -662,19 +662,24 @@
 					
 					<div class="card mb-0">
 					<c:forEach var="memberDetail" items="${requestScope.memberDetail }">
+					<form id="form1" action="${pageContext.servletContext.contextPath }/upload" method="POST" enctype="multipart/form-data" class="btn btn-custom">
+									<input type="file" name="FileAttachment" class="btn btn-custom">
+								 	<input type="submit" value="업로드" class="btn btn-custom">
+					</form>
 						<div class="card-body">
 							<div class="row">
 								<div class="col-md-12">
 									<div class="profile-view">
 										<div class="profile-img-wrap">
 											<div class="profile-img">
-												<a href="#"><img alt="" src="assets/img/profiles/avatar-02.jpg"></a>
+												<a href="#"><img src=/billbo/resources/images/main<c:out value="/${memberDetail.originalName}"/>></a>
 											</div>
 										</div>
 										
 										<div class="profile-basic">
 											<div class="row">
 												<div class="col-md-5">
+												
 													<div class="profile-info-left">
 														<h3 class="user-name m-t-0 mb-0"><c:out value="${memberDetail.memberName }"/></h3>
 														<h4 class="text-muted"><c:out value="${memberDetail.deptName }"/></h4>

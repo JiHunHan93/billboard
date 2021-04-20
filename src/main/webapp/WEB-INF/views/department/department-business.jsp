@@ -1,14 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html lang="ko">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-        <meta name="description" content="Smarthr - Bootstrap Admin Template">
-		<meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
-        <meta name="author" content="Dreamguys - Bootstrap Admin Template">
-        <meta name="robots" content="noindex, nofollow">
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, user-scalable=0">
+<meta name="description" content="Smarthr - Bootstrap Admin Template">
+<meta name="keywords"
+	content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
+<meta name="author" content="Dreamguys - Bootstrap Admin Template">
+<meta name="robots" content="noindex, nofollow">
+
         <title>Designation</title>
 		
 		<!-- Favicon -->
@@ -651,18 +655,18 @@
 									<thead>
 										<tr>
 											<th>사원번호</th>
-											<th>부서명</th>
-											<th>직위명</th>
 											<th>이름</th>
+											<th>부서명</th>
+											<th>직위명</th> 
 										</tr>
 									</thead>
 									
-							   <c:forEach var="allMemberList" items="${requestScope.allMemberList }">
+							   <c:forEach var="allDepartmentList" items="${requestScope.allBusinessDepartmentList}">
 									<tr>
-										<td class="free-td"><c:out value="${ allMemberList.no }" />
-										<td class="free-td"><c:out value="${ allMemberList.deptName }" />
-										<td class="free-td"><c:out value="${ allMemberList.spotName }"/>
-										<td class="free-td"><c:out value="${ allMemberList.memberName }" />	
+										<td class="free-td"><c:out value="${allDepartmentList.no}" />
+										<td class="free-td"><c:out value="${allDepartmentList.memberName}" />	
+										<td class="free-td"><c:out value="${allDepartmentList.deptName}" />
+									    <td class="free-td"><c:out value="${allDepartmentList.spotName}"/>
 									</tr>
 								</c:forEach>
 									
@@ -673,28 +677,28 @@
                
 				<!-- /Page Content -->
 
-    <script>
-	if(document.getElementsByTagName("td")) {
-		const $tds = document.getElementsByTagName("td");
-		
-		for(let i = 0; i < $tds.length; i++) {
-			$tds[i].onmouseenter = function() {
-				this.parentNode.style.backgroundColor = "yellow";
-				this.parentNode.style.cursor = "pointer";
-			}
-			$tds[i].onmouseout = function() {
-				this.parentNode.style.background = "white";
-			}
-			$tds[i].onclick = function() {
-				const no = this.parentNode.children[0].innerText;
-				/* const count = this.parentNode.children[7].innerText; */
-				/* console.log(count); */
-				console.log(no);
-				location.href = "${ pageContext.servletContext.contextPath }/detail?no=" + no;
-			}
-		}
-	}
-	</script>
+			    <script>
+				if(document.getElementsByTagName("td")) {
+					const $tds = document.getElementsByTagName("td");
+					
+					for(let i = 0; i < $tds.length; i++) {
+						$tds[i].onmouseenter = function() {
+							this.parentNode.style.backgroundColor = "rgb(253,192,124)";
+							this.parentNode.style.cursor = "pointer";
+						}
+						$tds[i].onmouseout = function() {
+							this.parentNode.style.background = "white";
+						}
+						$tds[i].onclick = function() {
+							const no = this.parentNode.children[0].innerText;
+							/* const count = this.parentNode.children[7].innerText; */
+							/* console.log(count); */
+							console.log(no);
+							location.href = "${ pageContext.servletContext.contextPath }/detail?no=" + no;
+						}
+					}
+				}
+				</script>
 				<!-- Add Designation Modal -->
 				<div id="add_designation" class="modal custom-modal fade" role="dialog">
 					<div class="modal-dialog modal-dialog-centered" role="document">

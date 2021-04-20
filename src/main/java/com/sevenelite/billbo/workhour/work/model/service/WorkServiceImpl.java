@@ -31,13 +31,14 @@ com.sevenelite.billbo.workhour.work.model.dto.WorkDTO;
 	@Override
 	public String selectWork() {
 		return dao.selectWork();
-}
-	@Override
-	public Date selectCommute(int userno, String workDate) {
-		return dao.selectCommute(userno, workDate);
 	}
 	@Override
-	public Date selectLeave(int userno, String workDate) {
-		return dao.selectLeave(userno, workDate);
+	public String selectCommute(StatusAndWorkDTO status) {
+		return dao.selectCommute(status);
+	}
+	@Override
+	public String selectLeave(StatusAndWorkDTO status) {
+		return dao.selectLeave(status);
 	}	
+	
 }	
