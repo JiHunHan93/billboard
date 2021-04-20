@@ -592,7 +592,7 @@
             </div>
 			<!-- /Sidebar -->
 			
-			<!-- Page Wrapper -->
+				<!-- Page Wrapper -->
             <div class="page-wrapper">
 			
 				<!-- Page Content -->
@@ -602,9 +602,9 @@
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title">ê´ë¦¬ë¶</h3>
+								<h3 class="page-title">Production Department</h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.html">ìì°ë¶</a></li>
+									<li class="breadcrumb-item"><a href="index.html">생산부</a></li>
 								</ul>
 							</div>
 							
@@ -618,77 +618,27 @@
 								<table class="table table-striped custom-table mb-0 datatable">
 									<thead>
 										<tr>
-											<th style="width: 30px;">#</th>
-											<th>ë¶ì</th>
-											<th>ì§ì</th>
-											<th>ì§ì</th>
+											<th>사원번호</th>
+											<th>이름</th>
+											<th>부서명</th>
+											<th>직위명</th> 
 										</tr>
 									</thead>
-									<tbody>
-										<tr>
-											<td>1</td>
-											<td>ìì°ë¶</td>
-											<td>ëë¦¬</td>
-											<td>ì ìì°</td>
-											</td>
-										</tr>
-										<tr>
-											<td>2</td>
-											<td>ìì°ë¶</td>
-											<td>ì¬ì</td>
-											<td>ì´ìì°</td>	
-												</div>
-											</td>
-										</tr>
-										<tr>
-											<td>3</td>
-											<td>ìì°ë¶</td>
-											<td>ë¶ì¥</td>
-											<td>ì§ê¸°ì </td>
-                                           
-											</td>
-										</tr>
-										<tr>
-											<td>4</td>
-											<td>ìì°ë¶</td>
-											<td>ì¬ì</td>
-											<td>ê¹ìì°</td>
-                                        
-											</td>
-										</tr>
-										<tr>
-											<td>6</td>
-											<td>ìì°ë¶</td>
-											<td>ì¬ì</td>
-											<td>ê°ìì°</td>
-                                        
-											</td>
-										</tr>
-										<tr>
-											<td>7</td>
-											<td>ìì°ë¶</td>
-											<td>ëë¦¬</td>
-											<td>íìì°</td>
-                                          
-											</td>
-										</tr>
-										<tr>
-											<td>8</td>
-											<td>ìì°ë¶</td>
-											<td>ê³¼ì¥</td>
-											<td>ìµìì°</td>
-                                          
-											</td>
-										</tr>
-												</div>
-											</td>
-										</tr>
-									</tbody>
+									
+							   <c:forEach var="allDepartmentList" items="${requestScope.allProductionDepartmentList}">
+									<tr>
+										<td class="free-td"><c:out value="${allDepartmentList.no}" />
+										<td class="free-td"><c:out value="${allDepartmentList.memberName}" />	
+										<td class="free-td"><c:out value="${allDepartmentList.deptName}" />
+									    <td class="free-td"><c:out value="${allDepartmentList.spotName}"/>
+									</tr>
+								</c:forEach>
+									
 								</table>
 							</div>
 						</div>
 					</div>
-                </div>
+               
 				<!-- /Page Content -->
 
 				<!-- Add Designation Modal -->
