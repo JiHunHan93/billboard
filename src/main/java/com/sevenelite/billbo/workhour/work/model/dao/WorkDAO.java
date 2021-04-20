@@ -18,9 +18,11 @@ public interface WorkDAO {
 
 	String selectWork();
 
-	Date selectCommute(int userno, String workDate);
-
 	Date selectLeave(int userno, String workDate);
+
+	String selectCommute(StatusAndWorkDTO status);
+
+	String selectLeave(StatusAndWorkDTO status);
 
 
   }
