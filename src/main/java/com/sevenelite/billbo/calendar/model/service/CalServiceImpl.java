@@ -29,5 +29,10 @@ public class CalServiceImpl implements CalService {
 		return calDAO.insertEvt(calDTO) > 0? true : false;
 	}
 
+	@Override
+	public String seletDept(int userNo) {
+		return calDAO.selectDept(userNo);
+	}
+
 
 }

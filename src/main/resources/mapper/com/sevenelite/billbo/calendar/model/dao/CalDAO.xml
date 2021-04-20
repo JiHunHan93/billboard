@@ -20,18 +20,68 @@
 	</resultMap>
 	<select id="selectCal" resultMap="calendarResultMap">
 		SELECT
-		       A.SCHEDULE_NAME
-		     , A.START_DATE
-		     , A.END_DATE
-		  FROM BB_WORK_SCHEDULE A
+		       D.SCHEDULE_NAME
+		     , D.START_DATE
+		     , D.END_DATE
+		     , C.DEPT_CODE
+		     , D.SCHEDULE_INFO
+		     , D.SCHEDULE_TYPE
+             FROM (SELECT
+                          *
+                FROM (SELECT
+                             A.MEMBER_NO
+                           , B.DEPT_CODE
+                           , ROW_NUMBER() OVER (PARTITION BY A.MEMBER_NO ORDER BY A.MODIFY_DEPT_DATE DESC) DEPTCODE
+                        FROM BB_MODIFY_DEPT A
+                        JOIN BB_DEPT B ON (A.DEPT_CODE = B.DEPT_CODE)
+                      )
+                WHERE DEPTCODE = 1
+                   ) C
+          JOIN BB_WORK_SCHEDULE D ON (C.MEMBER_NO = D.MEMBER_NO)  
 	</select>
  	<insert id="insertEvt" parameterType="CalDTO">
 		INSERT
-		       INTO BB_WORK_SCHEDURE A
+		       INTO BB_WORK_SCHEDULE A
 			        (
+			        A.SCHEDULE_NO
+			      , A.MEMBER_NO
+			      , A.SCHEDULE_NAME
+			      , A.SCHEDULE_TYPE
+			      , A.START_DATE
+			      , A.END_DATE
+			      <!-- , A.SCHEDULE_LOCATION -->
+			      <!-- , A.ATTENDANCE_NAME -->
+			      , A.SCHEDULE_INFO
 		   	        )
 	           VALUES
 	                (
+	                SEQ_SCHEDULE_NO.NEXTVAL
+	              , #{ memberNo }
+	              , #{ title }
+	              , #{ calType }
+	              , #{ start }
+	              , #{ end }
+	              <!-- , #{ location } -->
+	              <!-- , #{ attendance } -->
+	              , #{ body }
 	                )
 </insert>
+
+<select id="selectDept" resultType="string" parameterType="_int">
+		SELECT
+		       C.DEPT_CODE
+             FROM (SELECT
+                          *
+                FROM (SELECT
+                             A.MEMBER_NO
+                           , B.DEPT_CODE
+                           , ROW_NUMBER() OVER (PARTITION BY A.MEMBER_NO ORDER BY A.MODIFY_DEPT_NO DESC) DEPTCODE
+                        FROM BB_MODIFY_DEPT A
+                        JOIN BB_DEPT B ON (A.DEPT_CODE = B.DEPT_CODE)
+                      )
+                WHERE DEPTCODE = 1
+                   ) C
+          JOIN BB_WORK_SCHEDULE D ON (C.MEMBER_NO = D.MEMBER_NO)
+         WHERE C.MEMBER_NO = #{ userNo }
+</select>
 </mapper>

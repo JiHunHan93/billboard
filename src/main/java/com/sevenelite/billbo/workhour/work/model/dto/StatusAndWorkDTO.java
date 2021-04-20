@@ -1,8 +1,5 @@
 package com.sevenelite.billbo.workhour.work.model.dto;
 
-import java.util.Date;
-import java.util.List;
-
 public class StatusAndWorkDTO {
 
 	private int no;

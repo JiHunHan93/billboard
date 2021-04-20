@@ -43,7 +43,8 @@ public interface ProfileService {
 	List<FamilyDTO> familySelect(int memberno);
 	
 	boolean license(LicenseDTO license);
-
+	List<LicenseDTO> license(int memberno);
+	List<LicenseDTO> selectLicense(int memberno);
 
 	boolean memberInfo(MemberInfoDTO memberInfo);
 //보류	boolean bonus(BonusDTO bonus);
@@ -99,7 +100,7 @@ public interface ProfileService {
 
 	boolean bonusInsert(BonusDTO bonus);
 
-	List<LicenseDTO> licenseSelect(int memberno);
+	//List<LicenseDTO> licenseSelect(int memberno);
 
 	List<CertificateDTO> certificateInsert(int memberno);
 	
@@ -120,8 +121,28 @@ public interface ProfileService {
 	List<BonusDTO>selectBonus(int memberno);
 
 	List<MemberInfoDTO>selectMemberInfo(int memberno);
-
+	List<MemberInfoDTO>viewAllInfo(int memberno);
+	
+	
 	boolean mainProfile(MemberInfoDTO memberInfo);
+
+	List<ModifyDeptDTO1> viewMemberDept(int memberno);
+
+	List<ModifySpotDTO> viewModispotDto(int memberno);
+
+	List<CareerDTO> viewCareerDto(int memberno);
+
+	List<BonusDTO> viewBonusDto(int memberno);
+
+	List<CertificateDTO> viewCertificateInsert(int memberno);
+
+	List<ArmyDTO> viewArmySelect(int memberno);
+
+	List<FinalAcademicDTO> viewAcademic(int memberno);
+
+	List<FamilyDTO> viewFamilySelect(int memberno);
+
+	List<LicenseDTO> viewLicenseDto(int memberno);
 
 	
 	

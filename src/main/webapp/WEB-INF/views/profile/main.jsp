@@ -1472,19 +1472,19 @@
 												<th class="date"><span class="title_txt">취득일</span></th>
 												<th class="member_no"><span class="title_txt">사번</span></th>
 												</tr>
-											<c:forEach var="LicenseDto" items="${ requestScope.LicenseDto }"> 
+											 
 											<tr class="dataRow" data-id="">
 												<td class="no">
-													<input class="txt w_max" type="text" name="no" value="<c:out value="${ LicenseDto.no }"/>">
+													<input class="txt w_max" type="text" name="no" value="">
 												
 												</td>
 												<td class="code">
-														<input class="txt w_max" type="text" name="code" value="<c:out value="${ LicenseDto.code }"/>">
+														<input class="txt w_max" type="text" name="code" value="">
 												
 													
 												</td>
 												<td class="date">
-														<input class="txt w_max" type="date" name="date" value="<c:out value="${ LicenseDto.date }"/>">
+														<input class="txt w_max" type="date" name="date" value="">
 												
 													
 												</td>
@@ -1493,12 +1493,12 @@
 													<input class="txt w_max" type="text" name="member_no" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }" >
 												</td>
 												</tr>
-												</c:forEach>
+												
 										</tbody></table>
 										<div class="page_action_wrap" style="display: block;">
-										<span class="btn_major" data-role="button" id="hrcard_btn_submit"><span class="txt">저장</span></span>
-										<span class="btn_minor" data-role="button" id="hrcard_btn_cancel"><span class="txt">취소</span></span>
-								</div>
+										<button class="btn_major" data-role="button"  id="submit">저장</button>
+										<button class="btn_minor" data-role="button"  id="hrcard_btn_cancel">취소</button>
+							</div>
 										</form>
 									</div></div>
 								<section class="aside_wrapper article_reply" id="hrcardActivity"><div><div class="reply_wrap">

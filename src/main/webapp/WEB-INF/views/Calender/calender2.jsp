@@ -83,8 +83,27 @@
 			dateClick : function(info) {
 				alert(info.dateStr + '날짜 클릭');
 			},
-			eventClick : function() {
-				alert('일정 클릭');
+			eventClick : function(event) {
+				$('.modify-event').hide();
+				$('#event-modal').modal().on('shown.bs.modal', function () {
+					  $('#event-modal').focus();
+					  console.log(event);
+					  console.log(event.event._instance.range.start);
+					  event.event._instance.range.start = formatDate(event.event._instance.range.start);
+					  $('.start-date-a').val(event.event._instance.range.start);
+					  console.log(event.event._instance.range.end);
+					  event.event._instance.range.end = formatDate(event.event._instance.range.end);
+					  $('.end-date-a').val(event.event._instance.range.end);
+					  $('#modal-sub-title-a').val(event.event._def.title);
+					  $('.calSelect-a option').each(function() {
+						  if($(this).val() == event.event._def.extendedProps.calType) {
+							  $(this).attr("selected", "selected");
+						  }
+					  });
+					  var txt = event.event._def.extendedProps.body;
+					  txt.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+					  $('#modal-sub-txt-area-a').html(txt);
+				})
 			},
 			editable : true,
 			droppable : true,
@@ -101,7 +120,6 @@
 			var arr = getCalendarDataInDB();
 			$.each(arr, function(index, item) {
 				console.log('click evt loop_in_cal' + index + ' : '	+ item);
-				console.log(arr);
 				calendar.addEvent(item);
 				$.each(item, function(iii, ttt) {
 					console.log('click evt inner loop_in_cal => ' + iii + ' : ' + ttt);
@@ -140,47 +158,79 @@
 			$.each(item, function(iii, ttt) {
 				console.log('inner loop_in_cal => ' + iii + ' : ' + ttt);
 			});
-
 		});
 
-		$("#btnAddTest").click(
-				function() {
+		$("#modal-sub-mod-btn").click(function() {
 					alert('버튼입력');
+					$('.delete-event').hide();
+					$('.modify-event').show();
+					$('#modal-sub-title-a').attr('readonly', false);
+					$('.start-date-a').attr('readonly', false);
+					$('.end-date-a').attr('readonly', false);
+					$('#modal-sub-title-a').attr('readonly', false);
+					$('.calSelect-a').attr('disabled', false);
+				    $('#modal-sub-txt-area-a').attr('readonly', false);
+				    $('#event-modal').modal().on('hidden.bs.modal', function () {
+				    	$('#modal-sub-title-a').attr('readonly', true);
+						$('.start-date-a').attr('readonly', true);
+						$('.end-date-a').attr('readonly', true);
+						$('#modal-sub-title-a').attr('readonly', true);
+						$('.calSelect-a').attr('disabled', true);
+					    $('#modal-sub-txt-area-a').attr('readonly', true);
+				    })
 				});
-		$(".asdfasdf").click(
-				function() {
-/* 					var arr2 = [];
-					var arr = [];
-					var arr1 = [['title', $('.modal-sub-text').val()], ['start', $('.start-date').val()], ['end', $('.end-date').val()]]; */
-					var events_array = [
-				        {
-				        title: $('.modal-sub-text').val(),
-				        start: $('.start-date').val(),
-				        end: $('.end-date').val()
-				        }
-				    ];
-/* 					
-					console.log($('.modal-sub-text').val());
-					arr1.push( $('.modal-sub-text').val());
-					
-					console.log($('.start-date').val());
-					arr1.push($('.start-date').val());
-					
-					console.log($('.end-date').val());
-					arr1.push($('.end-date').val()); */
-/* 					arr.push(arr1);
-					console.log(arr1); */
-					$.each(events_array, function(index, item) {
-						console.log("이거아이템" + item);
-						calendar.addEvent(item);
-						console.log('click evt loop_in_cal' + index + ' : '	+ item);
-						$.each(item, function(iii, ttt) {
-							console.log(iii + ' : ' + ttt);
-							console.log('click evt inner loop_in_cal => ' + iii + ' : ' + ttt);
-						});
+		
+		$(document).on('click', '.modify-event', function(e) {
+			$('.delete-event').show();
+			$('.modify-event').hide();
+			$('#modal-sub-title-a').attr('readonly', true);
+			$('.start-date-a').attr('readonly', true);
+			$('.end-date-a').attr('readonly', true);
+			$('#modal-sub-title-a').attr('readonly', true);
+			$('.calSelect-a').attr('disabled', true);
+		    $('#modal-sub-txt-area-a').attr('readonly', true);
+		   
+		    var arr = [];
+		    arr.push(7);
+		    arr.push(8);
+		    
+		    var form = {
+		        arr : JSON.stringify(arr),
+		        title : $('.modal-sub-text-a').val(),
+		        start : $('.start-date-a').val(),
+		        end : $('.end-date-a').val(),
+		        category : $('.calSelect-a option:selected').val(),
+		        body : $('#modal-sub-txt-area-a').val()
+		    };
+
+		    $.ajax({
+		        type: "post", 
+		        url: "postMain", 
+		        dataType: "json", 
+		        contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+		        data: form
+		    });
+		});
+		
+		$(".asdfasdf").click(function() {
+				var events_array = [
+			        {
+			        title: $('.modal-sub-text').val(),
+	 		        start: $('.start-date').val(),
+			        end: $('.end-date').val()
+			        }
+			    ];
+				$.each(events_array, function(index, item) {
+					console.log("이거아이템" + item);
+					calendar.addEvent(item);
+					console.log('click evt loop_in_cal' + index + ' : '	+ item);
+					$.each(item, function(iii, ttt) {
+						console.log(iii + ' : ' + ttt);
+						console.log('click evt inner loop_in_cal => ' + iii + ' : ' + ttt);
 					});
-					calendar.render();
 				});
+				calendar.render();
+			});
 	});
 
 	function getCalendarEvent() {
@@ -198,7 +248,8 @@
 	        title : $('.modal-sub-text').val(),
 	        start : $('.start-date').val(),
 	        end : $('.end-date').val(),
-	        category : $('.calSelect option:selected').val()
+	        category : $('.calSelect option:selected').val(),
+	        body : $('#modal-sub-txt-area').val()
 	    };
 
 	    $.ajax({
@@ -228,6 +279,13 @@
 	        async: false,
 	        data:JSON.stringify(viewData),
 	        success:function(resp){
+	        	var arr1 = resp.filter(function(element, index, array) {
+    				console.log('array' + array);
+    				console.log('element' + element);
+    				console.table(element);
+    				return element.code == $("#dept-code").val();
+    			});
+    			console.table(arr1);
 	            $.each(resp, function(index, item){
 	            	console.table(resp);
 	            	console.log(Object.values(resp)[0].start);
@@ -243,18 +301,17 @@
 	                    	console.log('if 문 통과');
 	                    }
 	                    console.log('inner loop => ' + iii + ' : ' + ttt);
-	                	/* console.log('index_in_arr' + iii == 'start'); */
 	                    arr.push(ttt);
 	                    console.log(arr);
 	                });
 	            });
 	            console.table(resp);
 	            console.table(arr);
-                arr = resp;
+                arr = arr1;
 	            console.table(arr);
 	        },
 	        error:function(){
-	            alert('저장 중 에러가 발생했습니다. 다시 시도해 주세요.');
+	            alert('캘린더를 불러오는데 실패했습니다. 다시 시도해 주세요.');
 	        }
 	    });
 	    return arr;
@@ -301,6 +358,16 @@ if($('.select11').length > 0) {
 	padding: 0 10px;
 	border: 1px solid #ccc;
 	background: #eee;
+}
+
+#modal-sub-txt-area-a {
+	height: 501px;
+	resize: none;
+}
+
+#modal-sub-txt-area {
+	height: 496px;
+	resize: none;
 }
 
 #external-events .fc-event {
@@ -766,52 +833,59 @@ if($('.select11').length > 0) {
 
 			<!-- Add Event Modal -->
 			<div id="add_event" class="modal custom-modal fade" role="dialog">
-				<div class="modal-dialog modal-dialog-centered" role="document">
+				<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
 							<h5 class="modal-title">Add Event</h5>
-							<button type="button" class="close" data-dismiss="modal"
-								aria-label="Close">
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
 						</div>
 						<div class="modal-body">
-							<form>
-								<div class="form-group">
-									<label>일정 이름 <span class="text-danger">*</span></label> <input
-										class="form-control modal-sub-text" type="text">
-								</div>
-								<div class="form-group">
-									<label>일정 기간 <span class="text-danger">*</span></label>
-									<div class="cal-icon">
-										<input class="form-control datetimepicker start-date" id="dtpicker" type="text">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>일정명 <span class="text-danger">*</span></label> 
+										<input class="form-control modal-sub-text" type="text">
 									</div>
-									<label>종료 기간 <span class="text-danger">*</span></label>
-									<div class="cal-icon">
-										<input class="form-control datetimepicker end-date" id="dtpicker" type="text">
+									<div class="form-group">
+										<label>일정 기간 <span class="text-danger">*</span></label>
+										<div class="cal-icon">
+											<input class="form-control datetimepicker start-date" id="dtpicker" type="text">
+										</div>
+									</div>
+									<div class="form-group">
+										<label>종료 기간 <span class="text-danger">*</span></label>
+										<div class="cal-icon">
+											<input class="form-control datetimepicker end-date" id="dtpicker" type="text">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label">Category</label> 
+										<select class="select11 form-control calSelect">
+											<option>개인일정</option>
+											<option>부서일정</option>
+											<option>휴일</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label>사번</label> <input class="form-control" type="text" id="user-no" readonly="readonly" value="${ userNo }">
+									</div>
+									<div class="form-group">
+										<label>부서코드</label> <input class="form-control" type="text" id="dept-code" readonly="readonly" value="${ deptCode }">
 									</div>
 								</div>
-								<div class="form-group">
-									<label class="control-label">Category</label> <select
-										class="select11 form-control calSelect">
-										<option>개인일정</option>
-										<option>부서일정</option>
-										<option>Purple</option>
-										<option>Primary</option>
-										<option>Pink</option>
-										<option>Info</option>
-										<option>Inverse</option>
-										<option>Orange</option>
-										<option>Brown</option>
-										<option>Teal</option>
-										<option>Warning</option>
-									</select>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>내용</label>
+										<textarea rows="4" class="form-control" placeholder="이곳에 내용을 입력 해 주세요" name="body" id="modal-sub-txt-area"></textarea>
+									</div>
 								</div>
-								<div class="submit-section">
-									<button class="btn btn-primary submit-btn">Submit</button>
-									<button type="button" class="asdfasdf">textBtn</button>
-								</div>
-							</form>
+							</div>
+							<div class="submit-section">
+								<button class="btn btn-primary submit-btn">Submit</button>
+								<button type="button" class="asdfasdf">textBtn</button>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -819,20 +893,61 @@ if($('.select11').length > 0) {
 			<!-- /Add Event Modal -->
 
 			<!-- Event Modal -->
-			<div class="modal custom-modal fade" id="event-modal">
-				<div class="modal-dialog modal-dialog-centered" role="document">
+			<div id="event-modal" class="modal custom-modal fade" role="dialog">
+				<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h5 class="modal-title">일정추가</h5>
-							<button type="button" class="close" data-dismiss="modal"
-								aria-label="Close">
+							<h5 class="modal-title">일정 상세</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
 						</div>
-						<div class="modal-body"></div>
-						<div class="modal-footer text-center">
-							<button type="button" class="btn btn-success submit-btn save-event">Create event</button>
-							<button type="button" class="btn btn-danger submit-btn delete-event" data-dismiss="modal">Delete</button>
+						<div class="modal-body">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>일정명 <span class="text-danger">*</span></label>
+										<span style="float: right; margin-bottom: 5px;"><a class="btn btn-primary btn-sm" id="modal-sub-mod-btn">수정</a></span>
+										<input class="form-control modal-sub-text" type="text" id="modal-sub-title-a" readonly="readonly">
+									</div>
+									<div class="form-group">
+										<label>일정 기간 <span class="text-danger">*</span></label>
+										<div class="cal-icon">
+											<input class="form-control datetimepicker start-date-a" id="dtpicker" type="text" readonly="readonly">
+										</div>
+									</div>
+									<div class="form-group">
+										<label>종료 기간 <span class="text-danger">*</span></label>
+										<div class="cal-icon">
+											<input class="form-control datetimepicker end-date-a" id="dtpicker" type="text" readonly="readonly">
+										</div>
+									</div>
+									<div class="form-group">
+										<label class="control-label">Category</label> 
+										<select class="select11 form-control calSelect-a" disabled="disabled">
+											<option>개인일정</option>
+											<option>부서일정</option>
+											<option>휴일</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label>사번</label> <input class="form-control" type="text" id="user-no-a" readonly="readonly" value="${ userNo }">
+									</div>
+									<div class="form-group">
+										<label>부서코드</label> <input class="form-control" type="text" id="dept-code-a" readonly="readonly" value="${ deptCode }">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="form-group">
+										<label>내용</label>
+										<textarea rows="4" class="form-control" name="body" id="modal-sub-txt-area-a" readonly="readonly"></textarea>
+									</div>
+								</div>
+							</div>
+							<div class="submit-section">
+								<button class="btn btn-danger submit-btn delete-event" data-dismiss="modal">일정삭제</button>
+								<button class="btn btn-success submit-btn modify-event">일정수정</button>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -851,14 +966,12 @@ if($('.select11').length > 0) {
 							<form action="http://127.0.0.1:8001/billbo/calendar2/main" method="post">
 								<div class="row">
 									<div class="col-md-6">
-										<label class="col-form-label">Category Name</label> <input
-											class="form-control" placeholder="Enter name" type="text"
-											name="category-name">
+										<label class="col-form-label">Category Name</label> 
+										<input class="form-control" placeholder="Enter name" type="text" name="category-name">
 									</div>
 									<div class="col-md-6">
-										<label class="col-form-label">Choose Category Color</label> <select
-											class="form-control" data-placeholder="Choose a color..."
-											name="category-color">
+										<label class="col-form-label">Choose Category Color</label> 
+										<select	class="form-control" name="category-color">
 											<option value="success">개인</option>
 											<option value="danger">부서</option>
 											<option value="info">Info</option>

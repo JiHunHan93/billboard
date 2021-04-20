@@ -46,6 +46,7 @@ public interface ProfileMapper {
 	
 	/*dept*/
 	List<DeptDTO> selectMemberDept(int memberno);
+	List<ModifyDeptDTO1> viewMemberDept(int memberno);
 
 	List<DeptDTO> member_name();
 
@@ -56,11 +57,6 @@ public interface ProfileMapper {
 
 
 
-	/*LicenseDTO*/
-	int license(LicenseDTO license);
-	LicenseDTO license();
-	List<LicenseDTO> licenseSelect(int memberno);
-	
 	
 	
 	/*ModifyspotDTO*/
@@ -101,6 +97,7 @@ public interface ProfileMapper {
 	int memberInfo(MemberInfoDTO member);
 	List<MemberInfoDTO> memberInfo(int memberno);
 	List<MemberInfoDTO> selectMemberInfo(int memberno);
+	List<MemberInfoDTO> viewAllInfo(int memberno);
 	int mainProfile(MemberInfoDTO memberInfo);
 
 	/*familyDTO*/
@@ -109,6 +106,28 @@ public interface ProfileMapper {
 	int family(FamilyDTO family);
 	List<FamilyDTO> family(int memberno);
 	List<FamilyDTO> familySelect(int memberno);
+	
+	/*LicenseDTO*/
+	LicenseDTO license();
+	int license(LicenseDTO license);
+	//List<LicenseDTO> licenseSelect(int memberno);
+	List<LicenseDTO> license(int memberno);
+	
+	List<LicenseDTO> selectLicense(int memberno);
+	/*직위등록이력조회*/
+	List<ModifySpotDTO> viewModispotDto(int memberno);
+	/*경력 등록 이력 조회*/
+	List<CareerDTO> viewCareerDto(int memberno);
+	/*상벌 이력*/
+	List<BonusDTO> viewBonusDto(int memberno);
+	
+	List<CertificateDTO> viewCertificateInsert(int memberno);
+	
+	List<ArmyDTO> viewArmySelect(int memberno);
+	
+	List<FinalAcademicDTO> viewAcademic(int memberno);
+	List<FamilyDTO> viewFamilySelect(int memberno);
+	List<LicenseDTO> viewLicenseDto(int memberno);
 }
 
 //List<MemberInfoDTO> modifyMember();

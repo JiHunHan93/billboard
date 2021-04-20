@@ -12,6 +12,14 @@
 	<result property="email" column="EMAIL"/>
 </resultMap>	
 
+	<resultMap type="com.sevenelite.billbo.member.model.dto.MemBbDTO" id="memDTO">
+		<id property="no" column="MEMBER_NO" />
+		<result property="name" column="MEMBER_NAME" />
+		<result property="pwd" column="MEMBER_PWD" />
+		<result property="email" column="EMAIL" />
+		<result property="phone" column="PHONE" />
+	</resultMap>
+
 <select id="selectPerList" resultMap="perResultMap">
 	 SELECT 
        D.MODIFY_DEPT_NO
@@ -61,7 +69,13 @@
    JOIN BB_MEMBER E ON (D.MEMBER_NO = E.MEMBER_NO)
    JOIN BB_MODIFY_SPOT F ON ( D.MEMBER_NO = F.MEMBER_NO)
    GROUP BY D.DEPT_CODE, D.DEPT_NAME, D.MODIFY_DEPT_NO , D.MODIFY_DEPT_DATE,  D.MEMBER_NO , D.순번, D.MEMBER_NAME, D.PHONE, D.EMAIL, D.SPOT_NAME
-   ORDER BY D.MODIFY_DEPT_NO ASC                   
+   ORDER BY D.MEMBER_NO ASC                   
 </select>
-
+<select id="reviewList" resultMap="memDTO" parameterType="MemBbDTO">
+	SELECT
+	      A.MEMBER_NAME
+	    FROM BB_MEMBER A
+	   WHERE A.MEMBER_NO = #{no}
+</select>
+  
 </mapper>

@@ -11,5 +11,7 @@ public interface CalService {
 
 	boolean insertEvt(CalDTO calDTO);
 
+	String seletDept(int userNo);
+
 
 }
