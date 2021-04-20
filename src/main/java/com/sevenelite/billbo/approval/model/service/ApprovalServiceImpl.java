@@ -1,5 +1,8 @@
 package com.sevenelite.billbo.approval.model.service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -9,6 +12,7 @@ import com.sevenelite.billbo.approval.model.dto.ApproDraftingDTO;
 import com.sevenelite.billbo.approval.model.dto.ApproLineMemDTO;
 import com.sevenelite.billbo.approval.model.dto.ApproSpotDTO;
 import com.sevenelite.billbo.approval.model.dto.FormVacationDTO;
+import com.sevenelite.billbo.member.model.dto.MemBbDTO;
 
 @Service
 public class ApprovalServiceImpl implements ApprovalService {
@@ -52,6 +56,37 @@ public class ApprovalServiceImpl implements ApprovalService {
 		int result2 = mapper.insertLineMem(approLineMemDTO);
 		
 		return result1 + result2;
+	}
+	
+	/* 모든 사원 조회 */
+	@Override
+	public List<MemBbDTO> selectMemList() {
+		// TODO Auto-generated method stub
+		return mapper.selectMemList();
+	}
+	
+	/* 모든 사원의 부서 조회 */
+	@Override
+	public List<ApproDeptDTO> selectLoginDeptList(List<MemBbDTO> memList) {
+		
+		List<ApproDeptDTO> approDeptList = new ArrayList<>();
+		for(int i = 0; i < memList.size(); i++) {
+			approDeptList.add(mapper.selectLoginDeptList(memList.get(i)));
+		}
+		
+		return approDeptList;
+	}
+
+	/* 모든 사원의 직위 조회 */
+	@Override
+	public List<ApproSpotDTO> selectLoginSpotList(List<MemBbDTO> memList) {
+		
+		List<ApproSpotDTO> approSpotList = new ArrayList<>();
+		for(int i = 0; i < memList.size(); i++) {
+			approSpotList.add(mapper.selectLoginSpotList(memList.get(i)));
+		}
+		
+		return approSpotList;
 	}
 
 }

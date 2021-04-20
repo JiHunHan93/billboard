@@ -2,17 +2,17 @@ package com.sevenelite.billbo.approval.model.dto;
 
 import java.util.List;
 
-public class multitudeLineMemDTO {
+public class multitudeLineMem {
 
 	/* 선택된 결재선사원 */
 	
-	private List<ApproLineMemDTO> lineMem;
+	private List<MemListLine> lineMem;
 	
-	public List<ApproLineMemDTO> getLineMem() {
+	public List<MemListLine> getLineMem() {
 		return lineMem;
 	}
 	
-	public void setLineMem(List<ApproLineMemDTO> lineMem) {
+	public void setLineMem(List<MemListLine> lineMem) {
 		this.lineMem = lineMem;
 	}
 	

@@ -33,6 +33,11 @@
 <link rel="stylesheet" href="/billbo/resources/jihunhan/css/approval1.css">
 <link rel="stylesheet" href="/billbo/resources/jihunhan/css/approval2.css">
 <link rel="stylesheet" href="/billbo/resources/jihunhan/css/approval3.css">
+<!-- 추가 -->
+<link rel="stylesheet" href="/billbo/resources/jihunhan/css/approval6.css">
+<link rel="stylesheet" href="/billbo/resources/jihunhan/css/approval5.css">
+<link rel="stylesheet" href="/billbo/resources/jihunhan/css/approval4.css">
+<link rel="stylesheet" href="/billbo/resources/jihunhan/css/approval1004.css">
 
 <!-- 최신모델 -->
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -754,7 +759,8 @@ ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }
        <!-- Header : 연차신청서 --> 
        <table class="__se_tbl" style="background: white; border: 0px solid black; border-image: none; width: 800px; color: black; font-family: malgun gothic,dotum,arial,tahoma; font-size: 12px; border-collapse: collapse !important;">
              
-            <tbody><tr><td style="padding: 3px !important; border: 0px solid black; border-image: none; width: 300px; height: 90px !important; text-align: center; font-size: 22px; font-weight: bold; vertical-align: middle;" colspan="2" class="">
+            <tbody>
+            <tr><td style="padding: 3px !important; border: 0px solid black; border-image: none; width: 300px; height: 90px !important; text-align: center; font-size: 22px; font-weight: bold; vertical-align: middle;" colspan="2" class="">
             
             연차신청서
             </td></tr>
@@ -795,7 +801,7 @@ ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }
                 
        <!-- Start : 결재 승인 선  -->
             <td style="padding: 0px !important; border: 0px currentColor !important; border-image: none !important !important; width: 500px; text-align: right; vertical-align: top !important;" class=""><!-- 결재선 기본값으로 신청 1명, 승인 7명으로 설정--> 
-	            <span class="sign_type1_inline" style="line-height: normal; font-family: malgun gothic,dotum,arial,tahoma; font-size: 9pt; margin-top: 0px; margin-bottom: 0px;" data-group-seq="0" data-group-name="승인" data-group-max-count="7" data-group-type="type1" data-is-reception="">
+	            <span id="admissionTr" class="sign_type1_inline" style="line-height: normal; font-family: malgun gothic,dotum,arial,tahoma; font-size: 9pt; margin-top: 0px; margin-bottom: 0px;" data-group-seq="0" data-group-name="승인" data-group-max-count="7" data-group-type="type1" data-is-reception="">
 	            	<span class="sign_tit_wrap">
 	            		<span class="sign_tit"><strong>승인</strong></span>
 	            	</span>
@@ -949,75 +955,6 @@ ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }
        </form>
    </div>
    <!-- END 결재 정보 입력 FORM -->
-   
-   <!-- 설정 -->
-   <jsp:useBean id="nowday" class="java.util.Date"/>
-   <jsp:useBean id="nowtime" class="java.util.Date"/>
-   <fmt:formatDate value="${nowday}" pattern="yyyy-MM-dd" var="today" />
-   <fmt:formatDate value="${nowtime}" pattern="HH:mm:ss" var="todaytime" />
-   <script>
-   
-	   	console.log('안녕');
-	   	$("#memberName").val('${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }');
-	   	$("#draftDate").val('<c:out value="${today}"/>');
-	   	$("#docNo").val(1004);
-	   	$("#draftDept").val('${ requestScope.dept.deptName }');
-        	
-   </script>
-   <!-- 설정 -->
-   
-   
-   <!-- 결재 AJAX -->
-   <script>
-   $("#act_draft").click(function() {
-	   console.log($("input[name='startDate']").val());
-	   
-	   if($("input[name='startDate']").val() == "") {
-		   alert("시작 일시를 선택해주세요.");
-	   } else if($("input[name='endDate']").val() == "") {
-		   alert("종료 일시를 선택해주세요.");
-	   } else {
-		   alert("컨트롤러로 이동");
-		   /* Hidden 추가 */
-		   const $span = $("#hiddenInput");
-		   /* memberno, time, paymentNo */
-		   $hiddenInput = $("<input name='memberno' type='hidden' value='${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }'> <input name='time' type='hidden' value='<c:out value="${todaytime}"/>'> <input name='paymentNo' type='hidden' value='1004'>")
-		   /* Login DeptDTO */
-		   $hiddenInputDeptDTO = $("<input name='deptRnum' type='hidden' value='${ requestScope.dept.deptRnum }'> <input name='deptCode' type='hidden' value='${ requestScope.dept.deptCode }'> <input name='deptName' type='hidden' value='${ requestScope.dept.deptName }'> <input name='upper' type='hidden' value='${ requestScope.dept.upper }'> <input name='level' type='hidden' value='${ requestScope.dept.level }'> <input name='modifyDeptDate' type='hidden' value='${ requestScope.dept.modifyDeptDate }'>")
-		   /* Login SpotDTO */
-		   $hiddenInputSpotDTO = $("<input name='spotRnum' type='hidden' value='${ requestScope.spot.spotRnum }'> <input name='spotCode' type='hidden' value='${ requestScope.spot.spotCode }'> <input name='spotName' type='hidden' value='${ requestScope.spot.spotName }'> <input name='modifySpotDate' type='hidden' value='${ requestScope.spot.modifySpotDate }'>")
-		   $hiddenInputlineMemDTO = $("<input name='lineMem[0].lineKinds' type='hidden' value='첫 번째 휴가휴가'> <input name='lineMem[1].lineKinds' type='hidden' value='두 번째 근무근무'> <input name='lineMem[0].deptCode' type='hidden' value='부서코드부서코드'> <input name='lineMem[1].deptCode' type='hidden' value='두번째에에에에부서코드부서코드'> <input name='lineMem[0].spotCode' type='hidden' value='직위는직급과직책과뭐가 다른가?'> <input name='lineMem[1].spotCode' type='hidden' value='피곤하다아아아아아아 피곤해ㅐ해해해해'>")
-		   
-		   /* 담기 */
-		   $span.append($hiddenInput);
-		   $span.append($hiddenInputDeptDTO);
-		   $span.append($hiddenInputSpotDTO);
-		   $span.append($hiddenInputlineMemDTO);
-		   
-		   /* input 확인 및 submit */
-		   var jihun = $('form[name="vacation01"]').serializeArray();
-		   console.table(jihun);
-		   $("form[name='vacation01']").submit();
-	   }
-	   
-	   /* $.ajax({
-		   url: "${ pageContext.servletContext.contextPath }/approval/document/1004",
-		   type: 'POST',
-           dataType: 'json',
-           data: {
-               jihun : jihun
-           },
-           success : function(data, textStatus, xhr) {
-              alert(data);
-           	console.log("뭐가나오냐?");
-           },
-           error : function(xhr, status, error) {}
-       }); */
-
-   });
-   
-   </script>
-   
    
 
 <section class="article_reply" style="display: none;"></section></div>
@@ -1338,7 +1275,69 @@ ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }
 						
 						        
 						        <ul class="sidetab tab_type3 tab_type3_column2"><li data-role="tab" data-tabid="orgtree" class="selected first"><a href="#" data-bypass=""><span class="txt">조직도</span></a></li><li data-role="tab" data-tabid="myapprline" class="last"><a href="#" data-bypass=""><span class="txt">나의 결재선</span></a></li></ul>
-						        <div class="sidetab-item"><div id="aside-dept-orgtree" class="tabview-depttree" style="display: none;"><div class="orgTree_wrap">	<div class="orgTree content_tab_wrap">		<div id="aside-dept-orgtree-tree" class="jstree jstree-7 jstree-default jstree_depth" style="min-height: 306px; max-height: 306px;"><ul><li title="다우그룹" rel="company" nodeid="10" id="company_10" class="jstree-open jstree-last jstree-company depth0"><ins class="jstree-icon">&nbsp;</ins><a title="" rel="company" nodeid="10" id="company_10" href="#" data-bypass="1" class="ui-draggable"><ins class="jstree-icon company"></ins>다우그룹</a><ul><li title="영업본부" rel="org" nodeid="123" id="org_123" class="jstree-closed"><ins class="jstree-icon">&nbsp;</ins><a title="" rel="org" nodeid="123" id="org_123" href="#" data-bypass="1" nodestate="DISABLE"><ins class="jstree-icon">&nbsp;</ins>영업본부</a></li><li title="개발본부" rel="org" nodeid="178" id="org_178" class="jstree-closed"><ins class="jstree-icon">&nbsp;</ins><a title="" rel="org" nodeid="178" id="org_178" href="#" data-bypass="1" nodestate="DISABLE"><ins class="jstree-icon">&nbsp;</ins>개발본부</a></li><li title="경영지원본부" rel="org" nodeid="124" id="org_124" class="jstree-closed"><ins class="jstree-icon">&nbsp;</ins><a title="" rel="org" nodeid="124" id="org_124" href="#" data-bypass="1" nodestate="DISABLE"><ins class="jstree-icon">&nbsp;</ins>경영지원본부</a></li><li title="서비스본부" rel="org" nodeid="182" id="org_182" class="jstree-closed"><ins class="jstree-icon">&nbsp;</ins><a title="" rel="org" nodeid="182" id="org_182" href="#" data-bypass="1" nodestate="DISABLE"><ins class="jstree-icon">&nbsp;</ins>서비스본부</a></li><li title="(주)애드픽션" rel="org" nodeid="221" id="org_221" class="jstree-last jstree-leaf"><ins class="jstree-icon">&nbsp;</ins><a title="" rel="org" nodeid="221" id="org_221" href="#" data-bypass="1" class="ui-draggable"><ins class="jstree-icon">&nbsp;</ins>(주)애드픽션</a></li></ul></li></ul></div>	</div>	<div id="aside-dept-orgtree-search" class="content_tab_wrap" style="display: none;border:none;padding:5px 0px 5px 0px">	</div></div></div><div id="aside-orgtree" class="tabview-orgtree" style="display: block;"><section class="search">    <div class="search_wrap">    	<form onsubmit="return false;">        <input id="org_tree_tab_search_input" class="search" type="text" placeholder="이름/아이디/부서/직위/직책/전화" title="이름/아이디/부서/직위/직책/전화">        <input class="btn_search" type="button" value="" title="" evt-rol="mail-search"> 		</form>    </div>    <div id="detailSearchLayerWrap" style="position:relative;display:none;z-index:60"></div></section><div class="orgTree_wrap">	<div class="orgTree content_tab_wrap">		<div id="aside-orgtree-tree" class="jstree jstree-9 jstree-focused jstree-default jstree_depth" style="min-height: 306px; max-height: 306px;"><ul><li title="다우그룹" rel="company" nodeid="10" id="company_10" class="jstree-open jstree-last jstree-company depth0"><ins class="jstree-icon">&nbsp;</ins><a title="" rel="company" nodeid="10" id="company_10" href="#" data-bypass="1" class="ui-draggable"><ins class="jstree-icon company"></ins>다우그룹</a><ul><li title="김상후 대표이사" rel="MASTER" nodeid="457" id="MASTER_457" class="jstree-leaf"><ins class="jstree-icon">&nbsp;</ins><a title="" rel="MASTER" nodeid="457" id="MASTER_457" href="#" data-bypass="1" class="ui-draggable"><ins class="jstree-icon worker"></ins>김상후 대표이사</a></li><li title="구정모 사장" rel="MEMBER" nodeid="260" id="MEMBER_260" class="jstree-leaf"><ins class="jstree-icon">&nbsp;</ins><a title="" rel="MEMBER" nodeid="260" id="MEMBER_260" href="#" data-bypass="1" class="ui-draggable"><ins class="jstree-icon worker"></ins>구정모 사장</a></li><li title="이재오 전무" rel="MEMBER" nodeid="481" id="MEMBER_481" class="jstree-leaf"><ins class="jstree-icon">&nbsp;</ins><a title="" rel="MEMBER" nodeid="481" id="MEMBER_481" href="#" data-bypass="1" class="ui-draggable"><ins class="jstree-icon worker"></ins>이재오 전무</a></li><li title="영업본부" rel="org" nodeid="123" id="org_123" class="jstree-closed"><ins class="jstree-icon">&nbsp;</ins><a title="" rel="org" nodeid="123" id="org_123" href="#" data-bypass="1" class="ui-draggable"><ins class="jstree-icon">&nbsp;</ins>영업본부</a></li><li title="개발본부" rel="org" nodeid="178" id="org_178" class="jstree-closed"><ins class="jstree-icon">&nbsp;</ins><a title="" rel="org" nodeid="178" id="org_178" href="#" data-bypass="1" class="ui-draggable"><ins class="jstree-icon">&nbsp;</ins>개발본부</a></li><li title="경영지원본부" rel="org" nodeid="124" id="org_124" class="jstree-open"><ins class="jstree-icon">&nbsp;</ins><a title="" rel="org" nodeid="124" id="org_124" href="#" data-bypass="1" class="ui-draggable"><ins class="jstree-icon">&nbsp;</ins>경영지원본부</a><ul><li title="한성준 과장" rel="MASTER" nodeid="476" id="MASTER_476" class="jstree-leaf"><ins class="jstree-icon">&nbsp;</ins><a title="" rel="MASTER" nodeid="476" id="MASTER_476" href="#" data-bypass="1" class="ui-draggable"><ins class="jstree-icon worker"></ins>한성준 과장</a></li><li title="유수연 상무" rel="MODERATOR" nodeid="191" id="MODERATOR_191" class="jstree-leaf"><ins class="jstree-icon">&nbsp;</ins><a title="" rel="MODERATOR" nodeid="191" id="MODERATOR_191" href="#" data-bypass="1" class="ui-draggable"><ins class="jstree-icon worker"></ins>유수연 상무</a></li><li title="전병헌 차장" rel="MODERATOR" nodeid="334" id="MODERATOR_334" class="jstree-leaf"><ins class="jstree-icon">&nbsp;</ins><a title="" rel="MODERATOR" nodeid="334" id="MODERATOR_334" href="#" data-bypass="1" class="ui-draggable"><ins class="jstree-icon worker"></ins>전병헌 차장</a></li><li title="이다우 감사" rel="MEMBER" nodeid="344" id="MEMBER_344" class="jstree-leaf"><ins class="jstree-icon">&nbsp;</ins><a title="" rel="MEMBER" nodeid="344" id="MEMBER_344" href="#" data-bypass="1" class="ui-draggable"><ins class="jstree-icon worker"></ins>이다우 감사</a></li><li title="재경팀" rel="org" nodeid="132" id="org_132" class="jstree-closed"><ins class="jstree-icon">&nbsp;</ins><a title="" rel="org" nodeid="132" id="org_132" href="#" data-bypass="1" class="ui-draggable"><ins class="jstree-icon">&nbsp;</ins>재경팀</a></li><li title="총무팀" rel="org" nodeid="176" id="org_176" class="jstree-closed"><ins class="jstree-icon">&nbsp;</ins><a title="" rel="org" nodeid="176" id="org_176" href="#" data-bypass="1" class="ui-draggable"><ins class="jstree-icon">&nbsp;</ins>총무팀</a></li><li title="인사팀" rel="org" nodeid="177" id="org_177" class="jstree-closed jstree-last"><ins class="jstree-icon">&nbsp;</ins><a title="" rel="org" nodeid="177" id="org_177" href="#" data-bypass="1" class="ui-draggable"><ins class="jstree-icon">&nbsp;</ins>인사팀</a></li></ul></li><li title="서비스본부" rel="org" nodeid="182" id="org_182" class="jstree-closed"><ins class="jstree-icon">&nbsp;</ins><a title="" rel="org" nodeid="182" id="org_182" href="#" data-bypass="1" class="ui-draggable"><ins class="jstree-icon">&nbsp;</ins>서비스본부</a></li><li title="(주)애드픽션" rel="org" nodeid="221" id="org_221" class="jstree-last jstree-leaf"><ins class="jstree-icon">&nbsp;</ins><a title="" rel="org" nodeid="221" id="org_221" href="#" data-bypass="1" class="ui-draggable"><ins class="jstree-icon">&nbsp;</ins>(주)애드픽션</a></li></ul></li></ul></div>	</div>	<div id="aside-orgtree-search" class="content_tab_wrap" style="display: none;border:none;padding:5px 0px 5px 0px">	</div></div></div></div>
+						       	
+						       	<!-- Start sidetab -->
+						        <div class="sidetab-item"><div id="aside-dept-orgtree" class="tabview-depttree" style="display: none;">
+						        <div class="orgTree_wrap">	
+						        
+						        <!-- 04/20 이거 필요없음 -->
+						        <!-- <div class="orgTree content_tab_wrap">
+						        <div id="aside-dept-orgtree-tree" class="jstree jstree-7 jstree-default jstree_depth" style="min-height: 306px; max-height: 306px;"><ul><li title="다우그룹" rel="company" nodeid="10" id="company_10" class="jstree-open jstree-last jstree-company depth0"><ins class="jstree-icon">&nbsp;</ins>
+						        <a title="" rel="company" nodeid="10" id="company_10" href="#" data-bypass="1" class="ui-draggable"><ins class="jstree-icon company"></ins>다우그룹</a>
+						        <ul><li title="영업본부" rel="org" nodeid="123" id="org_123" class="jstree-closed"><ins class="jstree-icon">&nbsp;</ins><a title="" rel="org" nodeid="123" id="org_123" href="#" data-bypass="1" nodestate="DISABLE"><ins class="jstree-icon">&nbsp;</ins>영업본부</a></li><li title="개발본부" rel="org" nodeid="178" id="org_178" class="jstree-closed"><ins class="jstree-icon">&nbsp;</ins>
+						        <a title="" rel="org" nodeid="178" id="org_178" href="#" data-bypass="1" nodestate="DISABLE"><ins class="jstree-icon">&nbsp;</ins>개발본부</a></li><li title="경영지원본부" rel="org" nodeid="124" id="org_124" class="jstree-closed"><ins class="jstree-icon">&nbsp;</ins><a title="" rel="org" nodeid="124" id="org_124" href="#" data-bypass="1" nodestate="DISABLE"><ins class="jstree-icon">&nbsp;</ins>경영지원본부</a></li>
+						        <li title="서비스본부" rel="org" nodeid="182" id="org_182" class="jstree-closed"><ins class="jstree-icon">&nbsp;</ins><a title="" rel="org" nodeid="182" id="org_182" href="#" data-bypass="1" nodestate="DISABLE"><ins class="jstree-icon">&nbsp;</ins>서비스본부</a></li><li title="(주)애드픽션" rel="org" nodeid="221" id="org_221" class="jstree-last jstree-leaf"><ins class="jstree-icon">&nbsp;</ins><a title="" rel="org" nodeid="221" id="org_221" href="#" data-bypass="1" class="ui-draggable"><ins class="jstree-icon">&nbsp;</ins>(주)애드픽션</a>
+						        </li></ul></li></ul></div>	
+						        </div> -->
+						        
+						        <div id="aside-dept-orgtree-search" class="content_tab_wrap" style="display: none;border:none;padding:5px 0px 5px 0px">	</div></div></div>
+						        
+						       	<!-- Start aside-orgtree -->
+						        <div id="aside-orgtree" class="tabview-orgtree" style="display: block;">
+						        
+							        <section class="search">    
+							      	  <div class="search_wrap">    	<form onsubmit="return false;">        <input id="org_tree_tab_search_input" class="search" type="text" placeholder="이름/아이디/부서/직위/직책/전화" title="이름/아이디/부서/직위/직책/전화">        <input class="btn_search" type="button" value="" title="" evt-rol="mail-search"> 		</form>    </div>    
+							       	  <div id="detailSearchLayerWrap" style="position:relative;display:none;z-index:60"></div>
+							       	</section>
+							       	
+							       	<!-- Start orgTree_wrap -->
+							       	<div class="orgTree_wrap">	
+							       	<div class="orgTree content_tab_wrap">
+							       	
+							       	<!-- Start aside-orgtree-tree -->		
+							       	<div id="aside-orgtree-tree" class="jstree jstree-9 jstree-focused jstree-default jstree_depth" style="min-height: 306px; max-height: 306px;">
+							         <ul id="firstList" >
+							       	 <li title="Billbo" rel="company" nodeid="10" id="company_10" class="jstree-open jstree-last jstree-company depth0"><ins class="jstree-icon">&nbsp;</ins><a title="" rel="company" nodeid="10" id="company_10" href="#" data-bypass="1" class="ui-draggable"><ins class="jstree-icon company"></ins>BillBo</a>
+								      <ul>
+								        		<li>테스트를 위한 li 생성함</li>
+								      </ul>
+								        <li title="영업본부" rel="org" nodeid="123" id="org_123" class="jstree-closed"><ins class="jstree-icon">&nbsp;</ins><a title="" rel="org" nodeid="123" id="org_123" href="#" data-bypass="1" class="ui-draggable"><ins class="jstree-icon">&nbsp;</ins>영업본부</a></li>
+								        <li title="마지막본부" rel="org" nodeid="124" id="org_124" class="jstree-open"><ins class="jstree-icon">&nbsp;</ins><a title="" rel="org" nodeid="124" id="org_124" href="#" data-bypass="1" class="ui-draggable"><ins class="jstree-icon">&nbsp;</ins>마지막본부</a>
+									        <ul>
+									        <li title="한성준 과장" rel="MASTER" nodeid="476" id="MASTER_476" class="jstree-leaf"><ins class="jstree-icon">&nbsp;</ins><a title="" rel="MASTER" nodeid="476" id="MASTER_476" href="#" data-bypass="1" class="ui-draggable"><ins class="jstree-icon worker"></ins>한성주니 과장</a></li>
+									        <li title="유수연 상무" rel="MODERATOR" nodeid="191" id="MODERATOR_191" class="jstree-leaf"><ins class="jstree-icon">&nbsp;</ins><a title="" rel="MODERATOR" nodeid="191" id="MODERATOR_191" href="#" data-bypass="1" class="ui-draggable"><ins class="jstree-icon worker"></ins>유수연 상무</a></li>
+									        <li title="전병헌 차장" rel="MODERATOR" nodeid="334" id="MODERATOR_334" class="jstree-leaf"><ins class="jstree-icon">&nbsp;</ins><a title="" rel="MODERATOR" nodeid="334" id="MODERATOR_334" href="#" data-bypass="1" class="ui-draggable"><ins class="jstree-icon worker"></ins>전병헌 차장</a></li>
+									        <li title="이다우 감사" rel="MEMBER" nodeid="344" id="MEMBER_344" class="jstree-leaf"><ins class="jstree-icon">&nbsp;</ins><a title="" rel="MEMBER" nodeid="344" id="MEMBER_344" href="#" data-bypass="1" class="ui-draggable"><ins class="jstree-icon worker"></ins>이다우 감사</a></li>
+									        </ul>
+								        </li>
+								        <li title="서비스본부" rel="org" nodeid="182" id="org_182" class="jstree-closed"><ins class="jstree-icon">&nbsp;</ins><a title="" rel="org" nodeid="182" id="org_182" href="#" data-bypass="1" class="ui-draggable"><ins class="jstree-icon">&nbsp;</ins>서비스본부</a></li>
+								      </ul>
+								     </li>
+								     </ul>
+								    </div>
+								    <!-- End aside-orgtree-tree -->
+								    
+								    </div>	
+								    <div id="aside-orgtree-search" class="content_tab_wrap" style="display: none;border:none;padding:5px 0px 5px 0px"></div>
+							        
+							        </div>
+							        <!-- End orgTree_wrap -->
+						        
+						        </div>
+						       	<!-- End aside-orgtree -->
+						        
+						        </div>
+						       	<!-- End sidetab -->
 						
 						    </div>
 						    
@@ -1346,16 +1345,9 @@ ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }
 						    <thead>
 						        <tr>
 						            <th class="btn"></th>
-						            <th class="kind">타입</th>
 						            <th class="name">이름</th>
 						            <th class="depart">부서</th>
 						            <th class="state">상태</th>
-						            <th class="func">
-										<span id="allActivityDelete" class="btn_bdr delete_activity" title="전체 삭제">
-											<span class="ic_classic ic_basket"></span>
-										</span>
-						            </th>
-						            <th class="blank"></th>
 						        </tr>
 						    </thead>
 						</table>        
@@ -1366,40 +1358,18 @@ ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }
 						    <div class="list_approval_line">
 						        <div class="btn_langth add_activity" title="추가" data-id=""><span class="ic_con ic_arrow_type4"></span></div>
 						        <div class="tb_approval_line_wrap">
-						            <table class="appr-activity-table type_normal tb_approval_line">
+						            <table id="resultTable" class="appr-activity-table type_normal tb_approval_line">
 						                <tbody>
 						                        <tr data-userid="235" data-deptid="124" class="appr-activity activity inactive  ui-droppable">
 						                            <td class="kind">
 						                                기안
 						                            </td>
-						                            <td class="name">전병헌</td>
-						                            <td class="depart">경영지원본부</td>
+						                            <td class="name">${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }</td>
+						                            <td class="depart">${ requestScope.dept.deptName }</td>
 						                            <td class="state"></td>
 						                            <td class="func"></td>
 						                        </tr>
-						                        <tr data-userid="29" data-deptid="10" class="appr-activity activity   ui-droppable">
-						                            <td class="kind">
-						                                <select>
-								                                    <option name="type" value="APPROVAL" selected="">결재</option>
-						                                </select>
-						                            </td>
-						                            <td class="name">구정모</td>
-						                            <td class="depart">다우그룹</td>
-						                            <td class="state"></td>
-						                            <td class="func"><span class="btn_bdr delete_activity" title="삭제"><span class="ic_classic ic_basket"></span></span></td>
-						                        </tr>
-						                        <tr data-userid="63" data-deptid="10" class="appr-activity activity   ui-droppable">
-						                            <td class="kind">
-						                                <select>
-								                                    <option name="type" value="APPROVAL" selected="">결재</option>
-						                                </select>
-						                            </td>
-						                            <td class="name">이재오</td>
-						                            <td class="depart">다우그룹</td>
-						                            <td class="state"></td>
-						                            <td class="func"><span class="btn_bdr delete_activity" title="삭제"><span class="ic_classic ic_basket"></span></span></td>
-						                        </tr>
-						                        <tr data-userid="236" data-deptid="124" class="appr-activity activity   ui-droppable">
+						                        <!-- <tr data-userid="236" data-deptid="124" class="appr-activity activity   ui-droppable">
 						                            <td class="kind">
 						                                <select>
 								                                    <option name="type" value="APPROVAL" selected="">결재</option>
@@ -1420,7 +1390,7 @@ ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }
 						                            <td class="depart">경영지원본부</td>
 						                            <td class="state"></td>
 						                            <td class="func"><span class="btn_bdr delete_activity" title="삭제"><span class="ic_classic ic_basket"></span></span></td>
-						                        </tr>
+						                        </tr> -->
 						                </tbody>
 						            </table>
 						        </div>
@@ -1462,6 +1432,187 @@ ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }
 					<!-- go_popup -->
 			      </div>
 			      <!-- 모달 몸통 -->
+	<script type="text/javascript">
+		
+		var lineList = [];
+		var memNo = 0;
+		var memNo2 = 0;
+		
+		const $ul = $("#firstList")
+		
+		$("#act_edit_apprflow").click(function() {
+			console.log('이건 결재 정보를 눌러승ㄹ 때');
+			var test = '테스트다 이거지';
+			
+			$.ajax({
+				   url: "${ pageContext.servletContext.contextPath }/approval/document/1004LineCheck",
+				   type: 'POST',
+		           dataType: 'json',
+		           data: {
+		        	   test : test
+		           },
+		           success : function(data, textStatus, xhr) {
+		        	   
+		        	
+		        	/* 1. Controller에서 넘겨받은 data 출력하기 */
+		           	console.table(data);
+		           	console.log(data[2]);
+		           	console.log(data[2].memberNameLine);
+		           	
+		        	/* 2. 배열 변수를 만들어서 받아온 List를 담기 */
+		           	lineList = data;
+		           	
+		        	/* 2-1. 배열 변수를 index와 value를 이용하여 출력하기 */
+		           	$.each(lineList, function(index, value) {
+		           		console.log( index + " : " + value.memberNameLine);
+		           	});
+		           	
+		        	/* 2-2. 배열 변수 출력2 */
+		           	console.log(lineList[0]);
+		           	
+					$.each(lineList, function(index, value) {
+						$firstInput = $("<li value='" + value.memberNoLine + "' title='사번' class='jstree-leaf'> <span value='child로 접근 실패'> <input name='jihun' type='hidden' value='" + value.memberNoLine + "'> </span> <a title='첫번째a' id='firstA'>" + value.memberNameLine + " " + value.spotNameLien + "</a> </li>")
+						$ul.append($firstInput);
+					});
+					
+					/* 사원을 클릭해서 결재선에 등록하기 */
+					$("#firstList > li").click(function() {
+						
+						/* 1. this : 내용 */
+						console.log(this);
+						
+						/* 2. $(this).html() : li 안의 내용이 나온다. */
+						console.log($(this).html());
+						
+						/* 3. $(this).attr('value') : 사번 */
+						console.log($(this).attr('value'));
+						
+						/* 4. 해당 사번으로 변수 */
+						memNo = $(this).attr('value');	//3번 사원 기준 값 4
+						memNo2 = memNo - 1;				//3번 사원 기준 값 3
+						memNo3 = memNo2 - 1;			//3번 사원 기준 값 2
+						
+						console.log(lineList[memNo2]);
+						
+						const $table = $("#resultTable");
+						$tr = $("<tr>")
+						$tdValue1 = $("<td> <select> <option name='type' value='APPROVAL' selected=''>결재</option> </select> </td>");	//타입
+						$tdValue2 = $("<td>").text(lineList[memNo2].memberNameLine);	//이름
+						$tdValue3 = $("<td>").text(lineList[memNo2].deptNameLine);	//부서
+						
+						$tr.append($tdValue1);
+						$tr.append($tdValue2);
+						$tr.append($tdValue3);
+						$table.append($tr);
+						
+						/* 5. 결재 승인 담기 */
+						const $span = $("#admissionTr")
+						
+						/* $admission1 = $("<td style='padding: 0px !important; border: 0px currentColor !important; border-image: none !important !important; width: 500px; text-align: right; vertical-align: top !important;' class=''> <span class='sign_type1_inline' style='line-height: normal; font-family: malgun gothic,dotum,arial,tahoma; font-size: 9pt; margin-top: 0px; margin-bottom: 0px;' data-group-seq='0' data-group-name='승인' data-group-max-count='7' data-group-type='type1' data-is-reception=''>");	//타입
+						$admission2 = $("<span class='sign_tit_wrap'> <span class='sign_tit'><strong>승인</strong></span></span>");	//타입
+						$admission3 = $("<span class='sign_member_wrap' id='activity_16049'> <span class='sign_member'> <span class='sign_rank_wrap'> <span class='sign_rank'> ${ requestScope.spot.spotName }</span></span> <span class='sign_wrap'>	<span class='sign_name'>${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }</span></span> <span class='sign_date_wrap'> <span class='sign_date' id='date_16049'></span></span></span></span></span></td>"); */	//타입
+						
+						$admission1 = $("<span class='sign_tit_wrap'> <span class='sign_tit'><strong>승인</strong></span></span><span class='sign_member_wrap' id='activity_16049'> <span class='sign_member'> <span class='sign_rank_wrap'> <span class='sign_rank'>" + lineList[memNo2].deptNameLine + "</span></span> <span class='sign_wrap'>	<span class='sign_name'>" + lineList[memNo2].memberNameLine + "</span></span> <span class='sign_date_wrap'> <span class='sign_date' id='date_16049'></span></span></span></span>");	//타입
+						
+						$span.append($admission1);
+						
+						/* 6. form태그에 input 담기 */
+						const $span3 = $("#hiddenInput");
+						
+/* 						$hiddenInputMemListLine = $("<input name='lineMem[memNo3].memberNoLine' type='hidden' value='lineList[memNo2].memberNoLine'> <input name='lineMem[memNo3].memberNameLine' type='hidden' value='lineList[memNo2].memberNameLine'> <input name='lineMem[memNo3].deptCodeLine' type='hidden' value='lineList[memNo2].deptCodeLine'> <input name='lineMem[memNo3].deptNameLine' type='hidden' value='lineList[memNo2].deptNameLine'> <input name='lineMem[memNo3].spotCodeLine' type='hidden' value='lineList[memNo2].spotCodeLine'> <input name='lineMem[memNo3].spotNameLien' type='hidden' value='lineList[memNo2].spotNameLien'> ") */
+						
+						/* $hiddenInputMemListLine = $("<input name='" + lineMem[memNo3].memberNoLine + "' type='hidden' value='" + lineList[memNo2].memberNoLine + "'> <input name='" + lineMem[memNo3].memberNameLine + "' type='hidden' value='" + lineList[memNo2].memberNameLine + "'>")
+						console.log("<input name='" + lineMem[memNo3].memberNoLine + "' type='hidden' value='" + lineList[memNo2].memberNoLine + "'> <input name='" + lineMem[memNo3].memberNameLine + "' type='hidden' value='" + lineList[memNo2].memberNameLine + "'>")
+						$span3.append($hiddenInputMemListLine); */
+						
+					});
+					
+		           },
+		           error : function(xhr, status, error) {}
+		       });
+		
+			
+		});
+		
+		/* 모달 닫기 */
+		$(".btn_major_s").click(function() {
+			console.log('모달 종료 가즈아');
+			console.log(memNo);
+			console.log(memNo2);
+			console.log(lineList[memNo2]);
+		});
+		
+		
+	</script>
+		
+		   <!-- 설정 -->
+   <jsp:useBean id="nowday" class="java.util.Date"/>
+   <jsp:useBean id="nowtime" class="java.util.Date"/>
+   <fmt:formatDate value="${nowday}" pattern="yyyy-MM-dd" var="today" />
+   <fmt:formatDate value="${nowtime}" pattern="HH:mm:ss" var="todaytime" />
+   
+   <script>
+	   	console.log('안녕');
+	   	$("#memberName").val('${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }');
+	   	$("#draftDate").val('<c:out value="${today}"/>');
+	   	$("#docNo").val(1004);
+	   	$("#draftDept").val('${ requestScope.dept.deptName }');
+        	
+   </script>
+   <!-- 설정 -->
+   
+   
+   <!-- 결재 AJAX -->
+   <script>
+   $("#act_draft").click(function() {
+	   console.log($("input[name='startDate']").val());
+	   
+	   if($("input[name='startDate']").val() == "") {
+		   alert("시작 일시를 선택해주세요.");
+	   } else if($("input[name='endDate']").val() == "") {
+		   alert("종료 일시를 선택해주세요.");
+	   } else {
+		   alert("컨트롤러로 이동");
+		   /* Hidden 추가 */
+		   const $span = $("#hiddenInput");
+		   /* memberno, time, paymentNo */
+		   $hiddenInput = $("<input name='memberno' type='hidden' value='${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }'> <input name='time' type='hidden' value='<c:out value="${todaytime}"/>'> <input name='paymentNo' type='hidden' value='1004'>")
+		   /* Login DeptDTO */
+		   $hiddenInputDeptDTO = $("<input name='deptRnum' type='hidden' value='${ requestScope.dept.deptRnum }'> <input name='deptCode' type='hidden' value='${ requestScope.dept.deptCode }'> <input name='deptName' type='hidden' value='${ requestScope.dept.deptName }'> <input name='upper' type='hidden' value='${ requestScope.dept.upper }'> <input name='level' type='hidden' value='${ requestScope.dept.level }'> <input name='modifyDeptDate' type='hidden' value='${ requestScope.dept.modifyDeptDate }'>")
+		   /* Login SpotDTO */
+		   $hiddenInputSpotDTO = $("<input name='spotRnum' type='hidden' value='${ requestScope.spot.spotRnum }'> <input name='spotCode' type='hidden' value='${ requestScope.spot.spotCode }'> <input name='spotName' type='hidden' value='${ requestScope.spot.spotName }'> <input name='modifySpotDate' type='hidden' value='${ requestScope.spot.modifySpotDate }'>")
+		   /* $hiddenInputlineMemDTO = $("<input name='lineMem[0].lineKinds' type='hidden' value='첫 번째 휴가휴가'> <input name='lineMem[1].lineKinds' type='hidden' value='두 번째 근무근무'> <input name='lineMem[0].deptCode' type='hidden' value='부서코드부서코드'> <input name='lineMem[1].deptCode' type='hidden' value='두번째에에에에부서코드부서코드'> <input name='lineMem[0].spotCode' type='hidden' value='직위는직급과직책과뭐가 다른가?'> <input name='lineMem[1].spotCode' type='hidden' value='피곤하다아아아아아아 피곤해ㅐ해해해해'>")
+		   
+		   /* 담기 */
+		   $span.append($hiddenInput);
+		   $span.append($hiddenInputDeptDTO);
+		   $span.append($hiddenInputSpotDTO);
+		   
+		   /* input 확인 및 submit */
+		   var jihun = $('form[name="vacation01"]').serializeArray();
+		   console.table(jihun);
+		   $("form[name='vacation01']").submit();
+	   }
+	   
+	   /* $.ajax({
+		   url: "${ pageContext.servletContext.contextPath }/approval/document/1004",
+		   type: 'POST',
+           dataType: 'json',
+           data: {
+               jihun : jihun
+           },
+           success : function(data, textStatus, xhr) {
+              alert(data);
+           	console.log("뭐가나오냐?");
+           },
+           error : function(xhr, status, error) {}
+       }); */
+
+   });
+   
+   </script>
+			      
+			      
 			      
 			    </div>
 			  </div>

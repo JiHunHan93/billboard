@@ -1,5 +1,8 @@
 package com.sevenelite.billbo.approval.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
@@ -9,14 +12,19 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.sevenelite.billbo.approval.model.dto.ApproDeptDTO;
 import com.sevenelite.billbo.approval.model.dto.ApproDraftingDTO;
 import com.sevenelite.billbo.approval.model.dto.ApproLineMemDTO;
 import com.sevenelite.billbo.approval.model.dto.ApproSpotDTO;
 import com.sevenelite.billbo.approval.model.dto.FormVacationDTO;
-import com.sevenelite.billbo.approval.model.dto.multitudeLineMemDTO;
+import com.sevenelite.billbo.approval.model.dto.MemListLine;
+import com.sevenelite.billbo.approval.model.dto.multitudeLineMem;
 import com.sevenelite.billbo.approval.model.service.ApprovalService;
+import com.sevenelite.billbo.member.model.dto.MemBbDTO;
 import com.sevenelite.billbo.member.model.dto.UserDetailsVO;
 
 @Controller
@@ -91,7 +99,7 @@ public class ApprovaldocumentController {
 	}
 	
 	@PostMapping(value="1004")
-	public String vacationInsert(@ModelAttribute("lineMemDTO") multitudeLineMemDTO lineMemDTO, @ModelAttribute("spotDTO") ApproSpotDTO spotDTO, @ModelAttribute("deptDTO") ApproDeptDTO deptDTO, @RequestParam(required=false) String memberno, @RequestParam(required=false) String docNo, @RequestParam(required=false) String time, @RequestParam(required=false) String draftDate, @RequestParam(required=false) String draftDept, @ModelAttribute("vacation") FormVacationDTO vacation) {
+	public String vacationInsert(@ModelAttribute("lineMemDTO") multitudeLineMem lineMemDTO, @ModelAttribute("spotDTO") ApproSpotDTO spotDTO, @ModelAttribute("deptDTO") ApproDeptDTO deptDTO, @RequestParam(required=false) String memberno, @RequestParam(required=false) String docNo, @RequestParam(required=false) String time, @RequestParam(required=false) String draftDate, @RequestParam(required=false) String draftDept, @ModelAttribute("vacation") FormVacationDTO vacation) {
 		
 		System.out.println("연차신청서 : " + vacation);
 		System.out.println("로그인 회원번호 : " + memberno);
@@ -102,11 +110,11 @@ public class ApprovaldocumentController {
 		System.out.println("추가된 정보 spotDTO : " + spotDTO);
 //		System.out.println("추가된 정보 lineMemDTO : " + lineMemDTO);
 		/* 동일한 name의 값을 담을 List, List 사이즈로 접근. JSP에서는 추가한 for문 i에 맞춰서 카운트 계산을하여 보내줘도 됨 */
-		System.out.println("추가된 정보 lineMemDTO List : " + lineMemDTO);
-		System.out.println("추가된 정보 lineMemDTO List의 사이즈 : " + lineMemDTO.getLineMem().size());
-		for(int i = 0; i < lineMemDTO.getLineMem().size(); i++) {
-			System.out.println("가져온 값 :" + i+ "번째 값은? : " + lineMemDTO.getLineMem().get(i));
-		}
+//		System.out.println("추가된 정보 lineMemDTO List : " + lineMemDTO);
+//		System.out.println("추가된 정보 lineMemDTO List의 사이즈 : " + lineMemDTO.getLineMem().size());
+//		for(int i = 0; i < lineMemDTO.getLineMem().size(); i++) {
+//			System.out.println("가져온 값 :" + i+ "번째 값은? : " + lineMemDTO.getLineMem().get(i));
+//		}
 		
 		/* 반차가 아닐시 처리 */
 		if(vacation.getHalfDayPoint() == null) {
@@ -144,28 +152,94 @@ public class ApprovaldocumentController {
 		return "redirect:/approval/main";
 	}
 	
-//	@PostMapping(value="1004", produces="application/json; charset=UTF-8")
+	@PostMapping(value="1004LineCheck", produces="application/json; charset=UTF-8")
+	@ResponseBody
+	public String lineCheck(@RequestParam(required=false) String test) {
+		
+		Gson gson = new GsonBuilder().create();
+		
+		System.out.println("ajax로 가져온 test : " + test);
+		
+		/* 1. 모든 회원 조회 */
+	    List<MemBbDTO> memList = appro.selectMemList();
+	    
+	    for(MemBbDTO mem : memList) {
+	    	System.out.println(mem);
+	    }
+	    
+	    /* 2. 조회한 회원 리스트로 상세정보 조회 */
+		/* 2-1. 부서 정보 조회 */
+		List<ApproDeptDTO> deptList = appro.selectLoginDeptList(memList);
+	    
+		/* 2-2. 직위도 필요할듯 */
+		List<ApproSpotDTO> spotList = appro.selectLoginSpotList(memList);
+		
+		/* 결과 출력 */
+		for(ApproDeptDTO dept : deptList) {
+			System.out.println(dept);
+		}
+	    
+	    for(ApproSpotDTO spot : spotList) {
+	    	System.out.println(spot);
+	    }
+		
+	    List<MemListLine> memListLine = new ArrayList<>();
+	    MemListLine line = null;
+	    for(int i = 0; i < memList.size(); i++) {
+	    	
+	    	if(deptList.get(i).getMemberNameDept() != null) {
+	    		
+	    		for(int x = 0; x < memList.size(); x++) {
+	    			
+	    			if(deptList.get(i).getMemberNoDept() == spotList.get(x).getMemberNoSpot()) {
+	    				line = new MemListLine();
+	    				line.setMemberNoLine(deptList.get(i).getMemberNoDept());
+	    				line.setMemberNameLine(deptList.get(i).getMemberNameDept());
+	    				line.setDeptCodeLine(deptList.get(i).getDeptCode());
+	    				line.setDeptNameLine(deptList.get(i).getDeptName());
+	    				line.setSpotCodeLine(spotList.get(x).getSpotCode());
+	    				line.setSpotNameLien(spotList.get(x).getSpotName());
+	    				memListLine.add(line);
+	    			} 
+	    			
+	    			}
+	    		}
+	    	
+	    		
+	    	}
+	    	
+	    /* 필요한 반환 값은? */
+	    /* 1. memberNo, 2. memberName, 3.deptCode, 4.deptName, 5.spotCode, 6.spotName */
+	    System.out.println("담은 line 출력하기");
+	    for(MemListLine memLine : memListLine) {
+	    	System.out.println(memLine);
+	    }
+	    
+		return gson.toJson(memListLine);
+	}
+	
+//	@PostMapping(value="1004LineCheck", produces="application/json; charset=UTF-8")
 //	@ResponseBody
-//	public String vacationInsert(HttpServletRequest request, @ModelAttribute("vacation") FormVacationDTO vacation) {
+//	public String lineCheck(HttpServletRequest request, @ModelAttribute("vacation") FormVacationDTO vacation) {
 //		
 //		Gson gson = new GsonBuilder().create();
 //		
 //		/* 0. Ajax로 전송받은 key, value 확인 */
-//	      Map<String,String[]> paymentInfo = new TreeMap<String,String[]>(request.getParameterMap());
-//	      
-//	      for(String key : paymentInfo.keySet()) {
-//	         String[] value = paymentInfo.get(key);
-//
-//	         for(int i=0; i<value.length; i++) {
-//	            System.out.println((key + " : " + value[i]));
-//	         }
-//	      }
+//		Map<String,String[]> paymentInfo = new TreeMap<String,String[]>(request.getParameterMap());
 //		
-//	      int a = Integer.parseInt(((String[])paymentInfo.get("jihun[7][value]"))[0]);
-//	      System.out.println("가져온 값 a : " + a);
-//	      System.out.println(((String[])paymentInfo.get("jihun[0][value]"))[0]);
-//	      System.out.println(((String[])paymentInfo.get("jihun[10][value]"))[0]);
-//	      
+//		for(String key : paymentInfo.keySet()) {
+//			String[] value = paymentInfo.get(key);
+//			
+//			for(int i=0; i<value.length; i++) {
+//				System.out.println((key + " : " + value[i]));
+//			}
+//		}
+//		
+//		int a = Integer.parseInt(((String[])paymentInfo.get("jihun[7][value]"))[0]);
+//		System.out.println("가져온 값 a : " + a);
+//		System.out.println(((String[])paymentInfo.get("jihun[0][value]"))[0]);
+//		System.out.println(((String[])paymentInfo.get("jihun[10][value]"))[0]);
+//		
 //		return gson.toJson("AJA통신 완료");
 //	}
 	

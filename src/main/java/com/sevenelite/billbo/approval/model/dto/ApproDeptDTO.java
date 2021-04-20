@@ -14,9 +14,14 @@ public class ApproDeptDTO {
 	private int level;							//부서등급
 	private java.sql.Date modifyDeptDate;		//변경날짜
 	
+	/* 결재 정보 조회를 위한 회원 정보 추가 */
+	private int memberNoDept;
+	private String memberNameDept;
+	
 	public ApproDeptDTO() {}
 
-	public ApproDeptDTO(int deptRnum, String deptCode, String deptName, String upper, int level, Date modifyDeptDate) {
+	public ApproDeptDTO(int deptRnum, String deptCode, String deptName, String upper, int level, Date modifyDeptDate,
+			int memberNoDept, String memberNameDept) {
 		super();
 		this.deptRnum = deptRnum;
 		this.deptCode = deptCode;
@@ -24,6 +29,8 @@ public class ApproDeptDTO {
 		this.upper = upper;
 		this.level = level;
 		this.modifyDeptDate = modifyDeptDate;
+		this.memberNoDept = memberNoDept;
+		this.memberNameDept = memberNameDept;
 	}
 
 	public int getDeptRnum() {
@@ -74,10 +81,27 @@ public class ApproDeptDTO {
 		this.modifyDeptDate = modifyDeptDate;
 	}
 
+	public int getMemberNoDept() {
+		return memberNoDept;
+	}
+
+	public void setMemberNoDept(int memberNoDept) {
+		this.memberNoDept = memberNoDept;
+	}
+
+	public String getMemberNameDept() {
+		return memberNameDept;
+	}
+
+	public void setMemberNameDept(String memberNameDept) {
+		this.memberNameDept = memberNameDept;
+	}
+
 	@Override
 	public String toString() {
 		return "ApproDeptDTO [deptRnum=" + deptRnum + ", deptCode=" + deptCode + ", deptName=" + deptName + ", upper="
-				+ upper + ", level=" + level + ", modifyDeptDate=" + modifyDeptDate + "]";
+				+ upper + ", level=" + level + ", modifyDeptDate=" + modifyDeptDate + ", memberNoDept=" + memberNoDept
+				+ ", memberNameDept=" + memberNameDept + "]";
 	}
 
 }

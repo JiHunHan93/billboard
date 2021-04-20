@@ -1,10 +1,13 @@
 package com.sevenelite.billbo.approval.model.dao;
 
+import java.util.List;
+
 import com.sevenelite.billbo.approval.model.dto.ApproDeptDTO;
 import com.sevenelite.billbo.approval.model.dto.ApproDraftingDTO;
 import com.sevenelite.billbo.approval.model.dto.ApproLineMemDTO;
 import com.sevenelite.billbo.approval.model.dto.ApproSpotDTO;
 import com.sevenelite.billbo.approval.model.dto.FormVacationDTO;
+import com.sevenelite.billbo.member.model.dto.MemBbDTO;
 
 public interface ApprovalMapper {
 	
@@ -22,5 +25,14 @@ public interface ApprovalMapper {
 	
 	/* 결재선사원 입력 */
 	int insertLineMem(ApproLineMemDTO approLineMemDTO);
+
+	/* 모든 사원 조회 */
+	List<MemBbDTO> selectMemList();
+
+	/* 모든 사원의 부서 조회 */
+	ApproDeptDTO selectLoginDeptList(MemBbDTO memBbDTO);
+
+	/* 모든 사원의 직위 조회 */
+	ApproSpotDTO selectLoginSpotList(MemBbDTO memBbDTO);
 	
 }

@@ -11,6 +11,8 @@
 		<result property="upper" column="DEPT_UPPER"/>
 		<result property="level" column="DEPT_LEVEL"/>
 		<result property="modifyDeptDate" column="MODIFY_DEPT_DATE"/>
+		<result property="memberNoDept" column="MEMBER_NO"/>
+		<result property="memberNameDept" column="MEMBER_NAME"/>
 	</resultMap>
 	
 	<resultMap type="com.sevenelite.billbo.approval.model.dto.ApproSpotDTO" id="approSpot">
@@ -18,6 +20,8 @@
 		<result property="spotCode" column="SPOT_CODE"/>
 		<result property="spotName" column="SPOT_NAME"/>
 		<result property="modifySpotDate" column="MODIFY_SPOT_DATE"/>
+		<result property="memberNoSpot" column="MEMBER_NO"/>
+		<result property="memberNameSpot" column="MEMBER_NAME"/>
 	</resultMap>
 	
 	<resultMap type="com.sevenelite.billbo.approval.model.dto.FormVacationDTO" id="vacation">
@@ -42,6 +46,14 @@
 		<result property="emergency" column="DRAFTING_EMERGENCY"/>
 		<result property="memberNo" column="MEMBER_NO"/>
 		<result property="paymentNo" column="PAYMENT_NO"/>
+	</resultMap>
+	
+	<resultMap type="com.sevenelite.billbo.member.model.dto.MemBbDTO" id="memDTO">
+		<id property="no" column="MEMBER_NO" />
+		<result property="name" column="MEMBER_NAME" />
+		<result property="pwd" column="MEMBER_PWD" />
+		<result property="email" column="EMAIL" />
+		<result property="phone" column="PHONE" />
 	</resultMap>
 	
 	<select id="selectLoginDept" resultMap="approDept" parameterType="_int">
@@ -134,5 +146,78 @@
 		  SEQ_LINE_NO.NEXTVAL, #{ draftNo }, #{ lineBody }, #{ pKinds }, #{ thumbnail }, #{ lineKinds }, #{ deptCode }, #{ spotCode }
 		)
 	</insert>
-
+	
+	<select id="selectMemList" resultMap="memDTO">
+        SELECT
+               A.MEMBER_NO
+             , A.MEMBER_NAME
+             , A.MEMBER_PWD
+             , A.EMAIL
+             , A.PHONE
+          FROM BB_MEMBER A
+	</select> 
+	
+	<select id="selectLoginDeptList" resultMap="approDept" parameterType="memDTO">
+        SELECT
+               A.RNUM
+             , A.DEPT_CODE
+             , A.DEPT_NAME
+             , A.DEPT_UPPER
+             , A.DEPT_LEVEL
+             , A.MODIFY_DEPT_DATE
+             , A.MEMBER_NO
+             , A.MEMBER_NAME
+        FROM (SELECT ROWNUM RNUM
+                   , B.DEPT_CODE
+                   , B.DEPT_NAME
+                   , B.DEPT_UPPER
+                   , B.DEPT_LEVEL
+                   , B.MODIFY_DEPT_DATE
+                   , B.MEMBER_NO
+                   , B.MEMBER_NAME
+               FROM (SELECT C.DEPT_CODE
+                          , C.DEPT_NAME
+                          , C.DEPT_UPPER
+                          , C.DEPT_LEVEL
+                          , D.MODIFY_DEPT_DATE
+                          , E.MEMBER_NO
+                          , E.MEMBER_NAME
+                       FROM BB_DEPT C
+                       JOIN BB_MODIFY_DEPT D ON(C.DEPT_CODE = D.DEPT_CODE)
+                       JOIN BB_MEMBER E ON(D.MEMBER_NO = E.MEMBER_NO)
+                      WHERE D.MEMBER_NO = #{ no }
+                      ORDER BY MODIFY_DEPT_DATE DESC
+                    ) B 
+             ) A
+         WHERE RNUM = 1
+	</select>
+	
+	<select id="selectLoginSpotList" resultMap="approSpot" parameterType="memDTO">
+        SELECT
+               A.RNUM
+             , A.SPOT_CODE
+             , A.SPOT_NAME
+             , A.MODIFY_SPOT_DATE
+             , A.MEMBER_NO
+             , A.MEMBER_NAME
+        FROM (SELECT ROWNUM RNUM
+                   , B.SPOT_CODE
+                   , B.SPOT_NAME
+                   , B.MODIFY_SPOT_DATE
+                   , B.MEMBER_NO
+                   , B.MEMBER_NAME
+               FROM (SELECT C.SPOT_CODE
+                          , C.SPOT_NAME
+                          , D.MODIFY_SPOT_DATE
+                          , E.MEMBER_NO
+                          , E.MEMBER_NAME
+                       FROM BB_SPOT C
+                       JOIN BB_MODIFY_SPOT D ON(C.SPOT_CODE = D.SPOT_CODE)
+                       JOIN BB_MEMBER E ON(D.MEMBER_NO = E.MEMBER_NO)
+                      WHERE D.MEMBER_NO = #{ no }
+                      ORDER BY MODIFY_SPOT_DATE DESC
+                    ) B 
+             ) A
+         WHERE RNUM = 1
+	</select>
 </mapper>

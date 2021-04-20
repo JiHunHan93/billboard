@@ -12,14 +12,21 @@ public class ApproSpotDTO {
 	private String spotName;				//직위명
 	private java.sql.Date modifySpotDate;	//변경날짜
 	
+	/* 결재 정보 조회를 위한 회원 정보 추가 */
+	private int memberNoSpot;
+	private String memberNameSpot;
+	
 	public ApproSpotDTO() {}
 
-	public ApproSpotDTO(int spotRnum, String spotCode, String spotName, Date modifySpotDate) {
+	public ApproSpotDTO(int spotRnum, String spotCode, String spotName, Date modifySpotDate, int memberNoSpot,
+			String memberNameSpot) {
 		super();
 		this.spotRnum = spotRnum;
 		this.spotCode = spotCode;
 		this.spotName = spotName;
 		this.modifySpotDate = modifySpotDate;
+		this.memberNoSpot = memberNoSpot;
+		this.memberNameSpot = memberNameSpot;
 	}
 
 	public int getSpotRnum() {
@@ -54,10 +61,27 @@ public class ApproSpotDTO {
 		this.modifySpotDate = modifySpotDate;
 	}
 
+	public int getMemberNoSpot() {
+		return memberNoSpot;
+	}
+
+	public void setMemberNoSpot(int memberNoSpot) {
+		this.memberNoSpot = memberNoSpot;
+	}
+
+	public String getMemberNameSpot() {
+		return memberNameSpot;
+	}
+
+	public void setMemberNameSpot(String memberNameSpot) {
+		this.memberNameSpot = memberNameSpot;
+	}
+
 	@Override
 	public String toString() {
 		return "ApproSpotDTO [spotRnum=" + spotRnum + ", spotCode=" + spotCode + ", spotName=" + spotName
-				+ ", modifySpotDate=" + modifySpotDate + "]";
+				+ ", modifySpotDate=" + modifySpotDate + ", memberNoSpot=" + memberNoSpot + ", memberNameSpot="
+				+ memberNameSpot + "]";
 	}
-	
+
 }
