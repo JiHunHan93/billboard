@@ -503,73 +503,6 @@
 				</div>
 			</div>
 		</div>
-		<!-- insert Board Modal -->
-				<div id="edit_project" class="modal custom-modal fade" role="dialog">
-					<div class="modal-dialog modal-dialog-centered modal-lg sub-modal" role="document">
-					<form name="rnpInsert" action="http://127.0.0.1:8001/billbo/Rnp/main" method="post">
-						<div class="modal-content sub-modal">
-							<div class="modal-header">
-								<h5 class="modal-title">상벌 추가</h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-							<%-- <c:forEach var="rnpDetailInfo" items="${ requestScope.rnpDetailInfo }">  --%>
-									<div class="row">
-										<div class="col-sm-6">
-											<div class="form-group">
-												<label>사번</label>
-												<input name="memberNo" class="form-control" id="modifyTitle" type="text"/>
-											</div>
-										</div>
-									</div>
-								<%--  </c:forEach>  --%>
-									<div class="row">	
-										<div class="col-sm-6">
-											<div class="form-group">
-												<label>게시일</label>
-												<div class="cal-icon">
-													<input type="date"
-													name="enrollDate" id="modifyEnrollDate">
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-sm-3">
-											<div class="form-group">
-                                                <label>상벌 구분</label>
-												<select class="select1" name="rnpType" id="insertType" value="">
-													<option value="포상">포상</option>
-													<option value="징계">징계</option>
-												</select>
-											</div>
-										</div>
-										<div class="col-sm-6">
-											<div class="form-group">
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-										<label>상벌 사유</label>
-										<textarea rows="4" class="form-control"
-										 placeholder="Enter your message here" name="reason" id="modifyBody"></textarea>
-									</div>
-									<div class="form-group">
-										<label>상벌 내용</label>
-										<textarea rows="4" class="form-control"
-										 placeholder="Enter your message here" name="body" id="modifyBody"></textarea>
-									</div>
-									<div class="submit-section">
-										<!-- <button class="btn btn-primary submit-btn" id="modify-btn" type="button" onclick="goInsert(this.form)">상벌 추가</button> -->
-										<button class="btn btn-primary submit-btn" id="modify-btn" type="button">상벌 추가</button>
-									</div>
-							</div>
-						</div>
-						</form>
-					</div>
-				</div>
 	</div>
 	
 	<!-- /Page Wrapper -->
@@ -603,7 +536,7 @@
 		for(let i = 0; i < $tds.length; i++) {
 			
 			$tds[i].onmouseenter = function() {
-				this.parentNode.style.backgroundColor = "yellow";
+				this.parentNode.style.backgroundColor = "rgb(253,192,124)";
 				this.parentNode.style.cursor = "pointer";
 			}
 			
@@ -612,9 +545,9 @@
 			}
 			
 			$rnp[i].onclick = function() {
-				const no = this.parentNode.children[7].innerText;
+				const no = this.parentNode.children[1].innerText;
 				console.log(no);
-				location.href = "${ pageContext.servletContext.contextPath }/Rnp/detail?no=" + no;
+				location.href = "${ pageContext.servletContext.contextPath }/performance/detail?no=" + no;
 			} 
 			
 		}

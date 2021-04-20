@@ -1,8 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-
 <!DOCTYPE html>
-<html lang="en">
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<html lang="ko">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
@@ -10,10 +9,10 @@
 		<meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
         <meta name="author" content="Dreamguys - Bootstrap Admin Template">
         <meta name="robots" content="noindex, nofollow">
-        <title>Designation</title>
+        <title>Timesheet - HRMS admin template</title>
 		
 		<!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="./resources/hrtemp/img/favicon.png">
+        <link rel="shortcut icon" type="image/x-icon" href="../resources/hrtemp/img/favicon.png">
 		
 		<!-- Bootstrap CSS -->
         <link rel="stylesheet" href="../resources/hrtemp/css/bootstrap.min.css">
@@ -24,19 +23,22 @@
 		<!-- Lineawesome CSS -->
         <link rel="stylesheet" href="../resources/hrtemp/css/line-awesome.min.css">
 		
+		<!-- Datatable CSS -->
+		<link rel="stylesheet" href="../resources/hrtemp/css/dataTables.bootstrap4.min.css">
+		
 		<!-- Select2 CSS -->
 		<link rel="stylesheet" href="../resources/hrtemp/css/select2.min.css">
 		
-		<!-- Datatable CSS -->
-		<link rel="stylesheet" href="../resources/hrtemp/css/dataTables.bootstrap4.min.css">
+		<!-- Datetimepicker CSS -->
+		<link rel="stylesheet" href="../resources/hrtemp/css/bootstrap-datetimepicker.min.css">
 		
 		<!-- Main CSS -->
         <link rel="stylesheet" href="../resources/hrtemp/css/style.css">
 		
 		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
 		<!--[if lt IE 9]>
-			<script src="./resources/hrtemp/js/html5shiv.min.js"></script>
-			<script src="./resources/hrtemp/js/respond.min.js"></script>
+			<script src="../resources/hrtemp/js/html5shiv.min.js"></script>
+			<script src="../resources/hrtemp/js/respond.min.js"></script>
 		<![endif]-->
     </head>
     <body>
@@ -49,7 +51,7 @@
 				<!-- Logo -->
                 <div class="header-left">
                     <a href="index.html" class="logo">
-						<img src="./resources/hrtemp/img/logo.png" width="40" height="40" alt="">
+						<img src="../resources/hrtemp/img/logo.png" width="40" height="40" alt="">
 					</a>
                 </div>
 				<!-- /Logo -->
@@ -90,20 +92,20 @@
 					<!-- Flag -->
 					<li class="nav-item dropdown has-arrow flag-nav">
 						<a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
-							<img src="./resources/hrtemp/img/flags/us.png" alt="" height="20"> <span>English</span>
+							<img src="../resources/hrtemp/img/flags/us.png" alt="" height="20"> <span>English</span>
 						</a>
 						<div class="dropdown-menu dropdown-menu-right">
 							<a href="javascript:void(0);" class="dropdown-item">
-								<img src="./resources/hrtemp/img/flags/us.png" alt="" height="16"> English
+								<img src="../resources/hrtemp/img/flags/us.png" alt="" height="16"> English
 							</a>
 							<a href="javascript:void(0);" class="dropdown-item">
-								<img src="./resources/hrtemp/img/flags/fr.png" alt="" height="16"> French
+								<img src="../resources/hrtemp/img/flags/fr.png" alt="" height="16"> French
 							</a>
 							<a href="javascript:void(0);" class="dropdown-item">
-								<img src="./resources/hrtemp/img/flags/es.png" alt="" height="16"> Spanish
+								<img src="../resources/hrtemp/img/flags/es.png" alt="" height="16"> Spanish
 							</a>
 							<a href="javascript:void(0);" class="dropdown-item">
-								<img src="./resources/hrtemp/img/flags/de.png" alt="" height="16"> German
+								<img src="../resources/hrtemp/img/flags/de.png" alt="" height="16"> German
 							</a>
 						</div>
 					</li>
@@ -125,7 +127,7 @@
 										<a href="activities.html">
 											<div class="media">
 												<span class="avatar">
-													<img alt="" src="./resources/hrtemp/img/profiles/avatar-02.jpg">
+													<img alt="" src="../resources/hrtemp/img/profiles/avatar-02.jpg">
 												</span>
 												<div class="media-body">
 													<p class="noti-details"><span class="noti-title">John Doe</span> added new task <span class="noti-title">Patient appointment booking</span></p>
@@ -138,7 +140,7 @@
 										<a href="activities.html">
 											<div class="media">
 												<span class="avatar">
-													<img alt="" src="./resources/hrtemp/img/profiles/avatar-03.jpg">
+													<img alt="" src="../resources/hrtemp/img/profiles/avatar-03.jpg">
 												</span>
 												<div class="media-body">
 													<p class="noti-details"><span class="noti-title">Tarah Shropshire</span> changed the task name <span class="noti-title">Appointment booking with payment gateway</span></p>
@@ -151,7 +153,7 @@
 										<a href="activities.html">
 											<div class="media">
 												<span class="avatar">
-													<img alt="" src="./resources/hrtemp/img/profiles/avatar-06.jpg">
+													<img alt="" src="../resources/hrtemp/img/profiles/avatar-06.jpg">
 												</span>
 												<div class="media-body">
 													<p class="noti-details"><span class="noti-title">Misty Tison</span> added <span class="noti-title">Domenic Houston</span> and <span class="noti-title">Claire Mapes</span> to project <span class="noti-title">Doctor available module</span></p>
@@ -164,7 +166,7 @@
 										<a href="activities.html">
 											<div class="media">
 												<span class="avatar">
-													<img alt="" src="./resources/hrtemp/img/profiles/avatar-17.jpg">
+													<img alt="" src="../resources/hrtemp/img/profiles/avatar-17.jpg">
 												</span>
 												<div class="media-body">
 													<p class="noti-details"><span class="noti-title">Rolland Webber</span> completed task <span class="noti-title">Patient and Doctor video conferencing</span></p>
@@ -177,7 +179,7 @@
 										<a href="activities.html">
 											<div class="media">
 												<span class="avatar">
-													<img alt="" src="./resources/hrtemp/img/profiles/avatar-13.jpg">
+													<img alt="" src="../resources/hrtemp/img/profiles/avatar-13.jpg">
 												</span>
 												<div class="media-body">
 													<p class="noti-details"><span class="noti-title">Bernardo Galaviz</span> added new task <span class="noti-title">Private chat module</span></p>
@@ -212,7 +214,7 @@
 											<div class="list-item">
 												<div class="list-left">
 													<span class="avatar">
-														<img alt="" src="./resources/hrtemp/img/profiles/avatar-09.jpg">
+														<img alt="" src="../resources/hrtemp/img/profiles/avatar-09.jpg">
 													</span>
 												</div>
 												<div class="list-body">
@@ -229,7 +231,7 @@
 											<div class="list-item">
 												<div class="list-left">
 													<span class="avatar">
-														<img alt="" src="./resources/hrtemp/img/profiles/avatar-02.jpg">
+														<img alt="" src="../resources/hrtemp/img/profiles/avatar-02.jpg">
 													</span>
 												</div>
 												<div class="list-body">
@@ -246,7 +248,7 @@
 											<div class="list-item">
 												<div class="list-left">
 													<span class="avatar">
-														<img alt="" src="./resources/hrtemp/img/profiles/avatar-03.jpg">
+														<img alt="" src="../resources/hrtemp/img/profiles/avatar-03.jpg">
 													</span>
 												</div>
 												<div class="list-body">
@@ -263,7 +265,7 @@
 											<div class="list-item">
 												<div class="list-left">
 													<span class="avatar">
-														<img alt="" src="./resources/hrtemp/img/profiles/avatar-05.jpg">
+														<img alt="" src="../resources/hrtemp/img/profiles/avatar-05.jpg">
 													</span>
 												</div>
 												<div class="list-body">
@@ -280,7 +282,7 @@
 											<div class="list-item">
 												<div class="list-left">
 													<span class="avatar">
-														<img alt="" src="./resources/hrtemp/img/profiles/avatar-08.jpg">
+														<img alt="" src="../resources/hrtemp/img/profiles/avatar-08.jpg">
 													</span>
 												</div>
 												<div class="list-body">
@@ -303,7 +305,7 @@
 
 					<li class="nav-item dropdown has-arrow main-drop">
 						<a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-							<span class="user-img"><img src="./resources/hrtemp/img/profiles/avatar-21.jpg" alt="">
+							<span class="user-img"><img src="../resources/hrtemp/img/profiles/avatar-21.jpg" alt="">
 							<span class="status online"></span></span>
 							<span>Admin</span>
 						</a>
@@ -378,8 +380,8 @@
 									<li><a href="attendance.html">Attendance (Admin)</a></li>
 									<li><a href="attendance-employee.html">Attendance (Employee)</a></li>
 									<li><a href="departments.html">Departments</a></li>
-									<li><a class="active" href="designations.html">Designations</a></li>
-									<li><a href="timesheet.html">Timesheet</a></li>
+									<li><a href="designations.html">Designations</a></li>
+									<li><a class="active" href="timesheet.html">Timesheet</a></li>
 									<li><a href="overtime.html">Overtime</a></li>
 								</ul>
 							</li>
@@ -465,7 +467,7 @@
 								<span>Administration</span>
 							</li>
 							<li> 
-								<a href="./resources/hrtemp.html"><i class="la la-object-ungroup"></i> <span>./resources/hrtemp</span></a>
+								<a href="../resources/hrtemp.html"><i class="la la-object-ungroup"></i> <span>../resources/hrtemp</span></a>
 							</li>
 							<li class="submenu">
 								<a href="#"><i class="la la-briefcase"></i> <span> Jobs </span> <span class="menu-arrow"></span></a>
@@ -592,7 +594,7 @@
             </div>
 			<!-- /Sidebar -->
 			
-				<!-- Page Wrapper -->
+			<!-- Page Wrapper -->
             <div class="page-wrapper">
 			
 				<!-- Page Content -->
@@ -602,12 +604,15 @@
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title">Production Department</h3>
+								<h3 class="page-title">Timesheet</h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.html">생산부</a></li>
+									<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+									<li class="breadcrumb-item active">Timesheet</li>
 								</ul>
 							</div>
-							
+							<div class="col-auto float-right ml-auto">
+								<a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_todaywork"><i class="fa fa-plus"></i> Add Today Work</a>
+							</div>
 						</div>
 					</div>
 					<!-- /Page Header -->
@@ -618,53 +623,89 @@
 								<table class="table table-striped custom-table mb-0 datatable">
 									<thead>
 										<tr>
-											<th>사원번호</th>
 											<th>이름</th>
-											<th>부서명</th>
-											<th>직위명</th> 
+											<th>날짜</th>
+											<th>직위</th>
+											<th class="text-center">근무시간</th>
+											<th class="text-center">퇴근시간</th>
+											<th class="text-center">상태</th>
 										</tr>
 									</thead>
-									
-							   <c:forEach var="allDepartmentList" items="${requestScope.allProductionDepartmentList}">
+									<tbody>
+										<c:forEach var="workDept" items="${requestScope.workDept }">
 									<tr>
-										<td class="free-td"><c:out value="${allDepartmentList.no}" />
-										<td class="free-td"><c:out value="${allDepartmentList.memberName}" />	
-										<td class="free-td"><c:out value="${allDepartmentList.deptName}" />
-									    <td class="free-td"><c:out value="${allDepartmentList.spotName}"/>
+										<td class="free-td"><c:out value="${ workDept.no }" />
+										<td class="free-td"><c:out value="${ workDept.name }" />
+										<td class="free-td"><c:out value="${ workDept.email }" />
+										<td class="free-td"><c:out value="${ workDept.phone }" />
+										<td class="free-td"><c:out value="${ workDept.commute }" />
+										<td class="free-td"><c:out value="${ workDept.deptName }" />
+										<td class="free-td"><c:out value="${ workDept.type }" />
 									</tr>
-								</c:forEach>
-									
+								</c:forEach>		
+										
+									</tbody>
 								</table>
 							</div>
 						</div>
 					</div>
-               
+                </div>
 				<!-- /Page Content -->
-
-				<!-- Add Designation Modal -->
-				<div id="add_designation" class="modal custom-modal fade" role="dialog">
-					<div class="modal-dialog modal-dialog-centered" role="document">
+				
+				<!-- Add Today Work Modal -->
+				<div id="add_todaywork" class="modal custom-modal fade" role="dialog">
+					<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h5 class="modal-title">Add Designation</h5>
+								<h5 class="modal-title">Add Today Work details</h5>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
 							<div class="modal-body">
 								<form>
-									<div class="form-group">
-										<label>Designation Name <span class="text-danger">*</span></label>
-										<input class="form-control" type="text">
+									<div class="row">
+										<div class="form-group col-sm-6">
+											<label>Project <span class="text-danger">*</span></label>
+											<select class="select">
+												<option>Office Management</option>
+												<option>Project Management</option>
+												<option>Video Calling App</option>
+												<option>Hospital Administration</option>
+											</select>
+										</div>
+									</div>
+									<div class="row">
+										<div class="form-group col-sm-4">
+											<label>Deadline <span class="text-danger">*</span></label>
+											<div class="cal-icon">
+												<input class="form-control" type="text" value="5 May 2019" readonly>
+											</div>
+										</div>
+										<div class="form-group col-sm-4">
+											<label>Total Hours <span class="text-danger">*</span></label>
+											<input class="form-control" type="text" value="100" readonly>
+										</div>
+										<div class="form-group col-sm-4">
+											<label>Remaining Hours <span class="text-danger">*</span></label>
+											<input class="form-control" type="text" value="60" readonly>
+										</div>
+									</div>
+									<div class="row">
+										<div class="form-group col-sm-6">
+											<label>Date <span class="text-danger">*</span></label>
+											<div class="cal-icon">
+												<input class="form-control datetimepicker" type="text">
+											</div>
+										</div>
+										<div class="form-group col-sm-6">
+											<label>Hours <span class="text-danger">*</span></label>
+											<input class="form-control" type="text">
+										</div>
 									</div>
 									<div class="form-group">
-										<label>Department <span class="text-danger">*</span></label>
-										<select class="select">
-											<option>Select Department</option>
-											<option>Web Development</option>
-											<option>IT Management</option>
-											<option> 	Marketing</option>
-										</select>
+										<label>Description <span class="text-danger">*</span></label>
+										<textarea rows="4" class="form-control"></textarea>
 									</div>
 									<div class="submit-section">
 										<button class="btn btn-primary submit-btn">Submit</button>
@@ -674,32 +715,62 @@
 						</div>
 					</div>
 				</div>
-				<!-- /Add Designation Modal -->
+				<!-- /Add Today Work Modal -->
 				
-				<!-- Edit Designation Modal -->
-				<div id="edit_designation" class="modal custom-modal fade" role="dialog">
-					<div class="modal-dialog modal-dialog-centered" role="document">
+				<!-- Edit Today Work Modal -->
+				<div id="edit_todaywork" class="modal custom-modal fade" role="dialog">
+					<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h5 class="modal-title">Edit Designation</h5>
+								<h5 class="modal-title">Edit Work Details</h5>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
 							<div class="modal-body">
 								<form>
-									<div class="form-group">
-										<label>Designation Name <span class="text-danger">*</span></label>
-										<input class="form-control" value="Web Developer" type="text">
+									<div class="row">
+										<div class="form-group col-sm-6">
+											<label>Project <span class="text-danger">*</span></label>
+											<select class="select">
+												<option>Office Management</option>
+												<option>Project Management</option>
+												<option>Video Calling App</option>
+												<option>Hospital Administration</option>
+											</select>
+										</div>
+									</div>
+									<div class="row">
+										<div class="form-group col-sm-4">
+											<label>Deadline <span class="text-danger">*</span></label>
+											<div class="cal-icon">
+												<input class="form-control" type="text" value="5 May 2019" readonly>
+											</div>
+										</div>
+										<div class="form-group col-sm-4">
+											<label>Total Hours <span class="text-danger">*</span></label>
+											<input class="form-control" type="text" value="100" readonly>
+										</div>
+										<div class="form-group col-sm-4">
+											<label>Remaining Hours <span class="text-danger">*</span></label>
+											<input class="form-control" type="text" value="60" readonly>
+										</div>
+									</div>
+									<div class="row">
+										<div class="form-group col-sm-6">
+											<label>Date <span class="text-danger">*</span></label>
+											<div class="cal-icon">
+												<input class="form-control datetimepicker" value="03/03/2019" type="text">
+											</div>
+										</div>
+										<div class="form-group col-sm-6">
+											<label>Hours <span class="text-danger">*</span></label>
+											<input class="form-control" type="text" value="9">
+										</div>
 									</div>
 									<div class="form-group">
-										<label>Department <span class="text-danger">*</span></label>
-										<select class="select">
-											<option>Select Department</option>
-											<option>Web Development</option>
-											<option>IT Management</option>
-											<option>Marketing</option>
-										</select>
+										<label>Description <span class="text-danger">*</span></label>
+										<textarea rows="4" class="form-control">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel elit neque.</textarea>
 									</div>
 									<div class="submit-section">
 										<button class="btn btn-primary submit-btn">Save</button>
@@ -709,15 +780,15 @@
 						</div>
 					</div>
 				</div>
-				<!-- /Edit Designation Modal -->
+				<!-- /Edit Today Work Modal -->
 				
-				<!-- Delete Designation Modal -->
-				<div class="modal custom-modal fade" id="delete_designation" role="dialog">
+				<!-- Delete Today Work Modal -->
+				<div class="modal custom-modal fade" id="delete_workdetail" role="dialog">
 					<div class="modal-dialog modal-dialog-centered">
 						<div class="modal-content">
 							<div class="modal-body">
 								<div class="form-header">
-									<h3>Delete Designation</h3>
+									<h3>Delete Work Details</h3>
 									<p>Are you sure want to delete?</p>
 								</div>
 								<div class="modal-btn delete-action">
@@ -734,33 +805,37 @@
 						</div>
 					</div>
 				</div>
-				<!-- /Delete Designation Modal -->
-			
+				<!-- Delete Today Work Modal -->
+				
             </div>
 			<!-- /Page Wrapper -->
 
         </div>
 		<!-- /Main Wrapper -->
-		
+
 		<!-- jQuery -->
         <script src="../resources/hrtemp/js/jquery-3.5.1.min.js"></script>
-		
+
 		<!-- Bootstrap Core JS -->
         <script src="../resources/hrtemp/js/popper.min.js"></script>
         <script src="../resources/hrtemp/js/bootstrap.min.js"></script>
-		
+
 		<!-- Slimscroll JS -->
 		<script src="../resources/hrtemp/js/jquery.slimscroll.min.js"></script>
 		
 		<!-- Select2 JS -->
 		<script src="../resources/hrtemp/js/select2.min.js"></script>
 		
+		<!-- Datetimepicker JS -->
+		<script src="../resources/hrtemp/js/moment.min.js"></script>
+		<script src="../resources/hrtemp/js/bootstrap-datetimepicker.min.js"></script>
+		
 		<!-- Datatable JS -->
 		<script src="../resources/hrtemp/js/jquery.dataTables.min.js"></script>
 		<script src="../resources/hrtemp/js/dataTables.bootstrap4.min.js"></script>
-		
+
 		<!-- Custom JS -->
 		<script src="../resources/hrtemp/js/app.js"></script>
-
-    </body>
+		
+</body>
 </html>

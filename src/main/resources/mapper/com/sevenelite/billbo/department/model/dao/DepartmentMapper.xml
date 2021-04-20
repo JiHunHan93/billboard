@@ -3,15 +3,6 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sevenelite.billbo.department.model.dao.DepartmentMapper">
-
-	<resultMap type="com.sevenelite.billbo.department.model.dto.DepartmentDTO" id="deptInfo">
-		<id property="deptRnum" column="RNUM"/>
-		<result property="deptCode" column="DEPT_CODE"/>
-		<result property="deptName" column="DEPT_NAME"/>
-		<result property="upper" column="DEPT_UPPER"/>
-		<result property="level" column="DEPT_LEVEL"/>
-		<result property="modifyDeptDate" column="MODIFY_DEPT_DATE"/>
-	</resultMap>
 	
 	<resultMap type="com.sevenelite.billbo.department.model.dto.DepartmentSpotDTO" id="deptInfoSpot">
 		<id property="spotRnum" column="RNUM"/>
@@ -21,9 +12,15 @@
 		<result property="modifySpotDate" column="MODIFY_SPOT_DATE"/>
 	</resultMap>
 	
+	<resultMap type="com.sevenelite.billbo.department.model.dto.DepartmentDTO" id="ALlmemberResultMap">
+	<id property="no" column="MEMBER_NO"/>
+	<result property="memberName" column="MEMBER_NAME"/>
+	<result property="deptName" column="DEPT_NAME"/>
+	<result property="spotName" column="SPOT_NAME"/>
+    </resultMap>
 	
 	
-	<select id="selectDeptInfo" resultMap="deptInfo" parameterType="String">
+<!-- 	<select id="selectDeptInfo" resultMap="deptInfo" parameterType="String">
         SELECT
                A.DEPT_NAME 
              , A.SPOT_NAME
@@ -38,9 +35,125 @@
              , A.SPOT_NAME
              , A.MEMBER_NAME
         FROM 
-         WHERE MEMBER_NAME = #{ membername }
-	</select>
+         WHERE MEMBER_NAME = #{membername}
+	</select> -->
 	
-	
+	<select id="selectBusinessDepartmentList" resultMap="ALlmemberResultMap">
+  
+  SELECT
+         *
+         FROM
+         (
+         SELECT * FROM
+         (
+         SELECT
+       A.MODIFY_DEPT_NO
+     , A.MODIFY_DEPT_DATE
+     , A.MEMBER_NO
+     , B.DEPT_CODE
+     , ROW_NUMBER() OVER(PARTITION BY A.MEMBER_NO ORDER BY A.MODIFY_DEPT_NO DESC) 순번
+     , B.DEPT_NAME
+      , W.SPOT_NAME
+	FROM BB_MODIFY_DEPT A
+    JOIN BB_DEPT B ON (A.DEPT_CODE = B.DEPT_CODE)
+    JOIN BB_MEMBER S ON (A.MEMBER_NO = S.MEMBER_NO)
+     JOIN BB_MODIFY_SPOT T ON(S.MEMBER_NO = T.MEMBER_NO)
+    JOIN BB_SPOT W ON (T.SPOT_CODE = W.SPOT_CODE)
+    )
+    WHERE 순번 =1 ) C
+    JOIN BB_MEMBER_INFO D ON (C.MEMBER_NO = D.MEMBER_NO)
+    JOIN BB_MEMBER E ON( C.MEMBER_NO = E.MEMBER_NO)
+    JOIN BB_MODIFY_SPOT F ON ( D.MEMBER_NO = F.MEMBER_NO)
+    WHERE C.DEPT_CODE = 'A2'
+    
+    </select>
+    
+    	<select id="selectManagementDepartmentList" resultMap="ALlmemberResultMap" parameterType="DepartmentDTO">
+  
+  SELECT
+         *
+         FROM
+         (
+         SELECT * FROM
+         (
+         SELECT
+       A.MODIFY_DEPT_NO
+     , A.MODIFY_DEPT_DATE
+     , A.MEMBER_NO
+     , B.DEPT_CODE
+     , ROW_NUMBER() OVER(PARTITION BY A.MEMBER_NO ORDER BY A.MODIFY_DEPT_NO DESC) 순번
+     , B.DEPT_NAME
+      , W.SPOT_NAME
+	FROM BB_MODIFY_DEPT A
+    JOIN BB_DEPT B ON (A.DEPT_CODE = B.DEPT_CODE)
+    JOIN BB_MEMBER S ON (A.MEMBER_NO = S.MEMBER_NO)
+     JOIN BB_MODIFY_SPOT T ON(S.MEMBER_NO = T.MEMBER_NO)
+    JOIN BB_SPOT W ON (T.SPOT_CODE = W.SPOT_CODE)
+    )
+    WHERE 순번 =1 ) C
+    JOIN BB_MEMBER_INFO D ON (C.MEMBER_NO = D.MEMBER_NO)
+    JOIN BB_MEMBER E ON( C.MEMBER_NO = E.MEMBER_NO)
+    JOIN BB_MODIFY_SPOT F ON ( D.MEMBER_NO = F.MEMBER_NO)
+    WHERE C.DEPT_CODE = 'B2'      
+    
+    </select>
+    
+    	<select id="selectProductionDepartmentList" resultMap="ALlmemberResultMap" parameterType="DepartmentDTO">
+  
+  SELECT
+         *
+         FROM
+         (
+         SELECT * FROM
+         (
+         SELECT
+       A.MODIFY_DEPT_NO
+     , A.MODIFY_DEPT_DATE
+     , A.MEMBER_NO
+     , B.DEPT_CODE
+     , ROW_NUMBER() OVER(PARTITION BY A.MEMBER_NO ORDER BY A.MODIFY_DEPT_NO DESC) 순번
+     , B.DEPT_NAME
+      , W.SPOT_NAME
+	FROM BB_MODIFY_DEPT A
+    JOIN BB_DEPT B ON (A.DEPT_CODE = B.DEPT_CODE)
+    JOIN BB_MEMBER S ON (A.MEMBER_NO = S.MEMBER_NO)
+     JOIN BB_MODIFY_SPOT T ON(S.MEMBER_NO = T.MEMBER_NO)
+    JOIN BB_SPOT W ON (T.SPOT_CODE = W.SPOT_CODE)
+    )
+    WHERE 순번 =1 ) C
+    JOIN BB_MEMBER_INFO D ON (C.MEMBER_NO = D.MEMBER_NO)
+    JOIN BB_MEMBER E ON( C.MEMBER_NO = E.MEMBER_NO)
+    JOIN BB_MODIFY_SPOT F ON ( D.MEMBER_NO = F.MEMBER_NO)
+    WHERE C.DEPT_CODE = 'C2'      
+    
+    </select>
+
+<!--     <select id="detailEmployeeList" resultMap="ALlmemberResultMap" parameterType="DepartmentDTO">
+      SELECT 
+        E.MEMBER_NO,
+        E.MEMBER_NAME,
+        C.DEPT_NAME
+        FROM(               
+             SELECT
+                  *
+                FROM
+           
+         (
+         SELECT
+       A.MODIFY_DEPT_NO
+     , A.MODIFY_DEPT_DATE
+     , A.MEMBER_NO
+     , B.DEPT_CODE
+     , ROW_NUMBER() OVER(PARTITION BY A.MEMBER_NO ORDER BY A.MODIFY_DEPT_DATE DESC) 순번
+     , B.DEPT_NAME
+	FROM BB_MODIFY_DEPT A
+    JOIN BB_DEPT B ON (A.DEPT_CODE = B.DEPT_CODE)
+    )
+    WHERE 순번 =1 ) C
+    JOIN BB_MEMBER_INFO D ON (C.MEMBER_NO = D.MEMBER_NO)
+    JOIN BB_MEMBER E ON( C.MEMBER_NO = E.MEMBER_NO)
+    WHERE E.MEMBER_NO = #{no}
+</select>
+	 -->
 
 </mapper>
