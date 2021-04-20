@@ -15,12 +15,12 @@ public class CalDTO {
 	private String attendance;
 	private String body;
 	private String deleteStatus;
-	private int code;
+	private String code;
 	
 	public CalDTO() {}
 
 	public CalDTO(int no, String title, String start, String end, boolean status, int memberNo, String calType,
-			String location, String attendance, String body, String deleteStatus, int code) {
+			String location, String attendance, String body, String deleteStatus, String code) {
 		super();
 		this.no = no;
 		this.title = title;
@@ -124,12 +124,12 @@ public class CalDTO {
 		this.deleteStatus = deleteStatus;
 	}
 
-	public int getCode() {
+	public String getCode() {
 		return code;
 	}
 
-	public void setCode(int code) {
-		this.code = code;
+	public void setCode(String deptCode) {
+		this.code = deptCode;
 	}
 
 	@Override

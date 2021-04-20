@@ -10,6 +10,8 @@ public interface CalDAO {
 	List<Map<String, CalDTO>> selectCal();
 
 	int insertEvt(CalDTO calDTO);
+
+	String selectDept(int userNo);
 	
 	
 }
