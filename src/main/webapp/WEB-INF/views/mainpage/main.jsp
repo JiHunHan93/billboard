@@ -699,10 +699,10 @@
 									</div>
 								</div>
 								<form name="update" action="${pageContext.servletContext.contextPath }/work/regist" method="post">
-									<button class="btn btn-dark btn-lg" style="margin-left: 107px">출근등록</button>
+									<button class="btn btn-dark btn-lg" style="margin-left: 37px" resizeable>출근등록</button>
 										</form>
 									<form name="update" action="${pageContext.servletContext.contextPath }/work/update"method="post">
-										<button class="btn btn-success btn-lg" style="margin-left: 250px; margin-top:-71px;">퇴근 등록</button>
+										<button class="btn btn-success btn-lg" style="margin-left: 168px; margin-top:-71px;" resizeable>퇴근 등록</button>
 									</form>
 								<div class="statistics">
 									<div class="row">
