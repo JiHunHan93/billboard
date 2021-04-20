@@ -1,5 +1,6 @@
 package com.sevenelite.billbo.workhour.main;
 import java.security.Principal;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -37,7 +38,7 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkStatusService;
 	}
 
 	@GetMapping("work")
-	public String workController(Model model,Principal principal,Authentication authentication, HttpServletRequest request, ModelAndView mv) {
+	public String workController(Model model,Principal principal,Authentication authentication, HttpServletRequest request, ModelAndView mv) throws ParseException {
 		
 		
 		//출근 현황 보기
@@ -79,27 +80,30 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkStatusService;
 			UserDetailsVO userDetails = (UserDetailsVO) authentication.getPrincipal();
 			int userno = userDetails.getMemberno();
 			String workDate = workService.selectWork();
-			System.out.println("근무날짜 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!11" + workDate);
-			System.out.println("userNo : " + userno);
-//			Date com = workService.selectCommute(userno, workDate);
-//			Date leave = workService.selectLeave(userno, workDate);
+			StatusAndWorkDTO status = new StatusAndWorkDTO();
+			status.setDate(workDate);
+			status.setMemNo(userno);
+			String com = workService.selectCommute(status);
+			String leave = workService.selectLeave(status);
 			
-			Date commute = new Date();
-			Date lwork = new Date();
+			Date commute = new Date(System.currentTimeMillis());
+			Date lwork = new Date(System.currentTimeMillis());
 			
 			
-			System.out.println(commute);
-			System.out.println(lwork);
+			System.out.println("시스템시간 "+System.currentTimeMillis());
+			
 			///////////////////////////////////////////////////
-			SimpleDateFormat format = new SimpleDateFormat("HH:mm:ss");
-			String commuteTime = format.format(commute);
-			String leaveTime = format.format(lwork);
-			////////////////////////////////////////////////////
-			System.out.println("COMMUTETIME : " + commuteTime);
-			System.out.println("LEAVETIME : " + leaveTime);
+			SimpleDateFormat Dateformat = new SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
+				    Date CommuteTime = Dateformat.parse(com);
+				    Date LeaveTime = Dateformat.parse(leave);
+				    
+				    SimpleDateFormat TimeFormat = new SimpleDateFormat("hh:mm:ss");
+				    
+//				 String commuteTime = TimeFormat.format(commute); 
+//				 String leaveTime = TimeFormat.format(lwork);
 			
 			//출근시간 스플릿
-	         String commuteTimeFormat = format.format(commute);
+	         String commuteTimeFormat = TimeFormat.format(CommuteTime);
 	         String[] splitCommute = commuteTimeFormat.split(":");
 	         int hour = Integer.parseInt(splitCommute[0]);
 	         int minute = Integer.parseInt(splitCommute[1]);
@@ -107,33 +111,39 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkStatusService;
 	         System.out.println("출근시간 !!!!!!!!!!!"+commuteTimeFormat);
 	         
 	         //퇴근시간
-	         String leaveTimeFormat = format.format(lwork);
+	         String leaveTimeFormat = TimeFormat.format(LeaveTime);
 	         String[] splitLeave = leaveTimeFormat.split(":");
 	         int lhour = Integer.parseInt(splitLeave[0]);
 	         int lminute = Integer.parseInt(splitLeave[1]);
 	         int lsecond = Integer.parseInt(splitLeave[2]);
 	         
 	         System.out.println("퇴근시간 !!!!!!!!!!!!!: " + leaveTimeFormat);
-	         if(hour > 8) {
-	        	 int overH = hour;
-	        	 int overM = minute;
-	        	 int overS = second;
-	        	 String overResult = overH + ":" + overM + ":" + overS;
-	        	 System.out.println(overResult + " 시간 초과");
-	         } else {
-	        	 System.out.println("정상 근무");
-	         }
 	         
 	         
+	         
+//	         if( hour > 8) {
+//	        	 int overH = hour;
+//	        	 int overM = minute;
+//	        	 int overS = second;
+//	        	 String overResult = overH + ":" + overM + ":" + overS;
+//	        	 System.out.println(overResult + " 시간 초과");
+//	         } else {
+//	        	 System.out.println("정상 근무");
+//	         }
 	         
 	         String timeStr = hour + ":" + minute + ":" + second;
-	         System.out.println(timeStr);
+	         System.out.println(" 초과 근무 시간 : " + timeStr);
 	         	      
 	         //근무시간 
 	         int workH = lhour - hour;         
 	         int workM = lminute - minute;
 	         int workS = lsecond - second;
 	         
+	         int overH = workH - 8;
+	         int overM = workH - 0;
+	         int overS = second - 0;
+	         
+	         String overStr = overH + ":" + overM + ":" + overS;
 	         String workStr = workH + ":" + workM + ":" + workS;        
 	         System.out.println("근무시간 : " + workStr);
 	         
@@ -141,6 +151,8 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkStatusService;
 	         int lateCount = 0;
 	         int tenHour = 10;
 	         int workCount = 22;
+	         
+	         
 	         
 	         if(tenHour <= hour) {
 	        	 if(hour > 10) {
@@ -158,8 +170,10 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkStatusService;
 	        	 System.out.println("정상");
 	         }
 	         
+	         
+	         
 	         WorkDTO workInfo = new WorkDTO();
-	         workInfo.setExtraWork(timeStr);
+	         workInfo.setExtraWork(overStr);
 	         workInfo.setMemNo(userno);
 	         workInfo.setTotalWork(workStr);
 	         workInfo.setLateCount(lateCount);

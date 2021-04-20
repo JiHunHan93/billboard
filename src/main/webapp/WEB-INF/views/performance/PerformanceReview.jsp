@@ -432,10 +432,6 @@
 								<li class="breadcrumb-item"><a href="index.html">Performance appraisal</a></li>
 							</ul>
 						</div>
-						<div class="col-auto float-right ml-auto">
-							<a href="#" class="btn add-btn" data-toggle="modal" data-target="#edit_project"><i class="fa fa-plus"></i> 내역수정</a> 
-							<a href="#" class="btn add-btn" data-toggle="modal" data-target="#edit_project1"><i class="fa fa-minus"></i>내역삭제</a>
-						</div>
 					</div>
 				</div>
 				<!-- /Page Header -->
@@ -443,7 +439,9 @@
 				<section class="review-section personal-excellence">
 						<div class="review-header text-center">
 							<h3 class="review-title">인사고과표<h3>
-							<p class="text-muted">최지환</p>
+							<c:forEach var="perReviewList" items="${ requestScope.perReviewList }">
+							<p class="text-muted"><c:out value="${ perReviewList.name }"/></p>
+							</c:forEach>
 						</div>
 						<div class="row">
 							<div class="col-md-12">
@@ -464,83 +462,83 @@
 												<td rowspan="3">업적</td>
 												<td>업무달성도</td>
 												<td>계획, 지시에 의해  부과된 업무의 달성 여부 타 직원과의 업무량 비교 및 일정 기간 내의 달성 여부</td>
-												<td><input type="text" class="form-control" readonly value="2"></td>
+												<td><input type="text" class="form-control" readonly value="10"></td>
 												<td><input type="text" class="form-control" ></td>
 												
 											</tr>
 											<tr>
 												<td>업무의질</td>
 												<td>업무 달성 결과의 질적 수준과 착오 누락오류의 발생빈도 및 그 잘못의 경증</td>
-												<td><input type="text" class="form-control" readonly value="2"></td>
+												<td><input type="text" class="form-control" readonly value="10"></td>
 												<td><input type="text" class="form-control" ></td>
 												
 											</tr>
 											<tr>	
 												<td>업무개선</td>
 												<td>담당 업무 수행 시 능률 향상을 위한 구체적인 개선책 및 해결책을 꾸준히 모색하고 있는 지의 여부</td>
-												<td><input type="text" class="form-control" readonly value="2"></td>
+												<td><input type="text" class="form-control" readonly value="10"></td>
 												<td><input type="text" class="form-control"></td>
 											</tr>
 											<tr>
-												<td rowspan="3">능력</td>
+												<td rowspan="4">능력</td>
 												<td>업무 지식</td>
 												<td>당사 직무 수행에 필요한 사무 지식 및 전문적 지식의 정도</td>
-												<td><input type="text" class="form-control" readonly value="2"></td>
+												<td><input type="text" class="form-control" readonly value="10"></td>
 												<td><input type="text" class="form-control" ></td>
 											</tr>
 											<tr>
 												<td>기획 창의력</td>
 												<td>창의력을 바탕으로 주도면밀한 계획을 수립하여 이를 실천하는 능력 </td>
-												<td><input type="text" class="form-control" readonly value="2"></td>
+												<td><input type="text" class="form-control" readonly value="10"></td>
 												<td><input type="text" class="form-control" ></td>
 											</tr>
 											<tr>
 												<td>분석 판단력</td>
 												<td>계획, 지시된 업무의 문제점을 파악, 분석하여 올바른 결론, 정확한 대책을 강구하는 능력</td> 
-												<td><input type="text" class="form-control" readonly value="2"></td>
+												<td><input type="text" class="form-control" readonly value="10"></td>
+												<td><input type="text" class="form-control" ></td>
+											</tr>
+											<tr>
+												<td>실천력</td>
+												<td>계획, 지시된 업무를 적극적으로 박력 있게 끝까지 추진하는 능력</td> 
+												<td><input type="text" class="form-control" readonly value="10"></td>
 												<td><input type="text" class="form-control" ></td>
 											</tr>
 											<tr>
 												<td rowspan="3">태도</td>
 												<td>책임감</td>
 												<td>당사 직무 수행에 필요한 사무 지식 및 전문적 지식의 정도</td>
-												<td><input type="text" class="form-control" readonly value="2"></td>
+												<td><input type="text" class="form-control" readonly value="10"></td>
 												<td><input type="text" class="form-control" ></td>
 											</tr>
 											<tr>
 												<td>협동심</td>
 												<td>창의력을 바탕으로 주도면밀한 계획을 수립하여 이를 실천하는 능력 </td>
-												<td><input type="text" class="form-control" readonly value="2"></td>
+												<td><input type="text" class="form-control" readonly value="10"></td>
 												<td><input type="text" class="form-control" ></td>
 											</tr>
 											<tr>
 												<td>근무 태도</td>
 												<td>계획, 지시된 업무의 문제점을 파악, 분석하여 올바른 결론, 정확한 대책을 강구하는 능력</td> 
-												<td><input type="text" class="form-control" readonly value="2"></td>
+												<td><input type="text" class="form-control" readonly value="10"></td>
 												<td><input type="text" class="form-control" ></td>
 											</tr>		
-											
 											<tr>
-												<td colspan="3" class="text-center">Total </td>
-												<td><input type="text" class="form-control" readonly value="15"></td>
-												<td><input type="text" class="form-control" readonly value="0"></td>
-												<td><input type="text" class="form-control" readonly value="0"></td>
-												<td><input type="text" class="form-control" readonly value="0"></td>
-												<td><input type="text" class="form-control" readonly value="0"></td>
-											</tr>
-											<tr>
-												<td colspan="3" class="text-center"><b>Total Percentage(%)</b></td>
-												<td colspan="5" class="text-center"><input type="text" class="form-control" readonly value="0"></td>
+												<td colspan="3" class="text-center"><b>종합 점수 백분율(%)</b></td>
+												<td colspan="5" class="text-center"><input type="text" class="form-control" readonly value="100"></td>
 											</tr>
 											<tr>
 												<td colspan="8" class="text-center">
 													<div class="grade-span">
-														<h4>Grade</h4>
-														<span class="badge bg-inverse-danger">Below 65 Poor</span> 
-														<span class="badge bg-inverse-warning">65-74 Average</span> 
-														<span class="badge bg-inverse-info">75-84 Satisfactory</span> 
-														<span class="badge bg-inverse-purple">85-92 Good</span> 
-														<span class="badge bg-inverse-success">Above 92 Excellent</span>
+														<h4 style="margin-right: 120px;">종합 점수 평균</h4>
+														<span class="badge bg-inverse-danger"> 65점이하  D</span> 
+														<span class="badge bg-inverse-warning">65점-74점 C</span> 
+														<span class="badge bg-inverse-info">75점-84점 B</span> 
+														<span class="badge bg-inverse-purple">85점-92점 A</span> 
+														<span class="badge bg-inverse-success">92점 이상 A+</span>
+														<div class="col-auto float-right ml-auto">
+							<a href="#" class="btn add-btn" data-toggle="modal" data-target="#edit_project1"><i class="fa fa-plus"></i>평가</a> 
+						</div>
 													</div>
 												</td>
 											</tr>

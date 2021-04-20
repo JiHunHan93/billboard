@@ -40,6 +40,7 @@
  		<typeAlias alias="PerformanceListDTO" type="com.sevenelite.billbo.performance.model.dto.PerformanceListDTO"/>
  		<typeAlias alias="DepartmentDTO" type="com.sevenelite.billbo.department.model.dto.DepartmentDTO"/>
  		<typeAlias alias="DepartmentSpotDTO" type="com.sevenelite.billbo.department.model.dto.DepartmentSpotDTO"/>
+ 		<typeAlias alias="ReviewListDTO" type="com.sevenelite.billbo.performance.model.dto.ReviewListDTO"/>
  		
  		
  		<typeAlias alias="MemberAndMemberInfoAndDeptAndModifyDeptDTO" type="com.sevenelite.billbo.allmember.model.dto.MemberAndMemberInfoAndDeptAndModifyDeptDTO"/>

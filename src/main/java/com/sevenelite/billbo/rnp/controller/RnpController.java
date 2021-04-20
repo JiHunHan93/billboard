@@ -59,11 +59,11 @@ public class RnpController {
 	  return mv; 
 	}
 	 
-	 @GetMapping("insert")
-	 public String insertRnp() {
-		 
-		 return "rnp/RnpInsert"; 
-	 }
+	/*
+	 * @GetMapping("insert") public String insertRnp() {
+	 * 
+	 * return "rnp/RnpInsert"; }
+	 */
 	 
 	 @PostMapping("main")
 	 public String registRnp(@ModelAttribute RnpDTO rnpBody, RedirectAttributes redirect, Model model ) {

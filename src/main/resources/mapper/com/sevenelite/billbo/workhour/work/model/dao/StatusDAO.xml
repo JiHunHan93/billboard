@@ -66,6 +66,7 @@
           SET A.LEAVE_WORK = TO_DATE(#{ lwork, jdbcType=VARCHAR}, 'RRRRMMDD HH24:MI:SS')
         WHERE A.MEMBER_NO = #{ memNo }
           AND A.LEAVE_WORK IS NULL 
+          AND ROWNUM = 1
 	</update>
 	
  </mapper>   
