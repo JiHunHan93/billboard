@@ -392,11 +392,11 @@
 	       LICENSE_NO
 	     , LICENSE_DATE
 	     , MEMBER_NO
-	     ,LICENSE_CODE_CODE
+	     , LICENSE_CODE_CODE
 	  )
 	  VALUES
 	  (
-	    #{no} 
+	    SEQ_LICENSE_NO.NEXTVAL  
 	  , #{date}
 	  , #{member_no}
 	  , #{code}
@@ -595,9 +595,9 @@ SELECT
 	                  ) B
 	                  ) A
 	                  WHERE RNUM = 1
-         
+        
 </select>
-  <select id="licenseSelect" resultMap="licenseDTO" parameterType="LicenseDTO">
+  <select id="selectLicense" resultMap="licenseDTO" parameterType="LicenseDTO">
     SELECT
     	  A.LICENSE_NO
         , A.LICENSE_DATE
@@ -616,7 +616,7 @@ SELECT
 	                  JOIN BB_MEMBER D ON(C.MEMBER_NO = D.MEMBER_NO)
                       LEFT JOIN BB_LICENSE_CODE E ON(C.LICENSE_CODE_CODE = E.LICENSE_CODE_CODE)
 	                  WHERE D.MEMBER_NO = #{ member_no }
-	                  ORDER BY MEMBER_NO DESC
+	                  ORDER BY LICENSE_NO DESC
 	                  ) B
 	                  ) A
 	                  WHERE RNUM = 1 
@@ -795,4 +795,126 @@ SELECT
 	                  ) A
 	                  WHERE RNUM = 1
 		</select> 
+		<select id="viewAllInfo" parameterType="MemberInfoDTO" resultMap="memberInfoDTO">
+         SELECT
+          A.MEMBER_INFO_NO
+	    , A.MEMBER_ADDRESS
+	    , A.MEMBER_ACCOUNT_NO
+	    , A.MEMBER_ACCOUNT_BANK
+	    , A.ACCOUNT_HOST
+	    , A.MEMBER_FILEATTACHMENT
+	    , A.ENROLL_DATE
+	    , A.MEMBER_WORK_CONTRACT
+	    , A.MEMBER_NO
+	                  FROM BB_MEMBER_INFO A
+                      WHERE MEMBER_NO = #{ member_no }
+</select>
+<select id="viewMemberDept" resultMap="modifydeptDTO1" parameterType="ModifyDeptDTO1">
+	   SELECT
+                A.MODIFY_DEPT_NO
+              , A.MODIFY_DEPT_DATE
+              , A.DEPT_CODE
+              , A.MEMBER_NO
+        FROM  BB_MODIFY_DEPT A
+                  WHERE MEMBER_NO = #{ member_no }
+    
+</select>
+<!-- 직위 이력 조회 위한 쿼리 -->		
+<select id="viewModispotDto" resultMap="modifySpotDTO" parameterType="ModifySpotDTO">
+         SELECT
+                MODIFY_SPOT_NO
+              , MODIFY_SPOT_DATE
+              , SPOT_CODE
+              , MEMBER_NO
+        FROM BB_MODIFY_SPOT 
+      WHERE MEMBER_NO = #{ member_no }
+</select>
+
+<select id="viewCareerDto" resultMap="careerDTO" parameterType="CareerDTO">
+  
+   SELECT
+          A.CAREER_NO
+	    , A.CAREER_START
+	    , A.CAREER_END
+	    , A.CAREER_POSITION
+	    , A.MEMBER_NO
+	FROM BB_CAREER A
+   WHERE MEMBER_NO = #{ member_no }
+</select>
+
+<select id="viewBonusDto" resultMap="bonusDTO" parameterType="BonusDTO">
+   SELECT
+    	  BONUS_NO
+        , BONUS_REASON
+	    , BONUS_DATE
+        , BONUS_TYPE
+        , BONUS_BODY
+        , MEMBER_NO
+        , APPROVE_CODE
+     FROM BB_BONUS 
+    WHERE MEMBER_NO = #{ member_no } 
+        
+</select>
+<select id="viewCertificateInsert" resultMap="certificateDTO" parameterType="CertificateDTO">
+   SELECT
+    	  CERTIFICATE_NO
+        , CERTIFICATE_START_DATE
+	    , CERTIFICATE_END_DATE
+        , MEMBER_NO
+        , CERTIFICATE_CODE
+     FROM BB_CERTIFICATE 
+	WHERE MEMBER_NO = #{ member_no }                 
+</select>
+    <select id="viewArmySelect" resultMap="armyDTO" parameterType="ArmyDTO">
+   SELECT
+    	  ARMY_NO
+        , ARMY_BRANCH
+	    , ARMY_CLASS
+        , ARMY_SERVICE_NUM
+	    , ARMY_DISCHARGE
+        , ARMY_START
+	    , ARMY_END
+        , ARMY_REASON
+        , MEMBER_NO
+     FROM BB_ARMY 
+	WHERE MEMBER_NO = #{ member_no }              
+          </select>  
+
+  <select id="viewAcademic" resultMap="finalAcademicDTO" parameterType="FinalAcademicDTO">
+   SELECT
+    	  ACADEMIC_ABILITY_NO
+        , SCHOOL_NAME
+	    , SCHOOL_SUBJECT
+        , GRADUATE_DATE
+	    , GRADUATE_STATUS
+        , FINAL_GRADUATE_NAME
+	    , MEMBER_NO
+        , ACADEMIC_CODE
+     FROM BB_FINAL_ACADEMIC_ABILITY
+	WHERE MEMBER_NO = #{ member_no }     
+</select> 
+     <select id="viewFamilySelect" resultMap="familyDTO" parameterType="FamilyDTO">
+   SELECT
+    	  FAMILY_INFO_NO
+        , FAMILY_NAME
+	    , FAMILY_RELATION
+        , GENDER
+	    , FAMILY_BIRTHDAY
+        , FAMILY_STUDY
+	    , FAMILY_JOB
+        , MEMBER_NO
+     FROM BB_FAMILY_INFO
+    WHERE MEMBER_NO = #{ member_no }  
+</select> 
+<select id="viewLicenseDto" resultMap="licenseDTO" parameterType="LicenseDTO">
+   SELECT
+    	  LICENSE_NO
+        , LICENSE_DATE
+	    , MEMBER_NO
+        , LICENSE_CODE_CODE
+     FROM BB_LICENSE
+    WHERE MEMBER_NO = #{ member_no }
+	             
+ </select>
+	        
 </mapper>

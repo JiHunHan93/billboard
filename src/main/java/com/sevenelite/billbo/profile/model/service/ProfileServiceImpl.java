@@ -223,11 +223,10 @@ public class ProfileServiceImpl implements ProfileService{
 		return mapper.bonusInsert(bonus) > 0? true : false;
 	}
 
-	@Override
-	public List<LicenseDTO> licenseSelect(int memberno) {
-		// TODO Auto-generated method stub
-		return mapper.licenseSelect(memberno);
-	}
+	/*
+	 * @Override public List<LicenseDTO> licenseSelect(int memberno) { // TODO
+	 * Auto-generated method stub return mapper.licenseSelect(memberno); }
+	 */
 
 	@Override
 	public List<CertificateDTO> certificateInsert(int memberno) {
@@ -322,15 +321,92 @@ public class ProfileServiceImpl implements ProfileService{
 		return mapper.familySelect(memberno);
 	}
 
+
+	@Override
+	public List<LicenseDTO> license(int memberno) {
+		// TODO Auto-generated method stub
+		return mapper.license(memberno);
+	}
+
+
+	@Override
+	public List<LicenseDTO> selectLicense(int memberno) {
+		// TODO Auto-generated method stub
+		return mapper.selectLicense(memberno);
+	}
+
+
+	@Override
+	public List<MemberInfoDTO> viewAllInfo(int memberno) {
+		// TODO Auto-generated method stub
+		return mapper.viewAllInfo(memberno);
+	}
+
+
+	@Override
+	public List<ModifyDeptDTO1> viewMemberDept(int memberno) {
+		// TODO Auto-generated method stub
+		return mapper.viewMemberDept(memberno);
+	}
+
+
+	@Override
+	public List<ModifySpotDTO> viewModispotDto(int memberno) {
+		// TODO Auto-generated method stub
+		return mapper.viewModispotDto(memberno);
+	}
+
+	/*경력 등록이력 조회*/
+	@Override
+	public List<CareerDTO> viewCareerDto(int memberno) {
+		// TODO Auto-generated method stub
+		return mapper.viewCareerDto(memberno);
+	}
+
+
+	@Override
+	public List<BonusDTO> viewBonusDto(int memberno) {
+		// TODO Auto-generated method stub
+		return mapper.viewBonusDto(memberno);
+	}
+
+
+	@Override
+	public List<CertificateDTO> viewCertificateInsert(int memberno) {
+		// TODO Auto-generated method stub
+		return mapper.viewCertificateInsert(memberno);
+	}
+
+
+	@Override
+	public List<ArmyDTO> viewArmySelect(int memberno) {
+		// TODO Auto-generated method stub
+		return mapper.viewArmySelect(memberno);
+	}
+
+
+	@Override
+	public List<FinalAcademicDTO> viewAcademic(int memberno) {
+		// TODO Auto-generated method stub
+		return mapper.viewAcademic(memberno);
+	}
+
+
+	@Override
+	public List<FamilyDTO> viewFamilySelect(int memberno) {
+		// TODO Auto-generated method stub
+		return mapper.viewFamilySelect(memberno);
+	}
+
+
+	@Override
+	public List<LicenseDTO> viewLicenseDto(int memberno) {
+		// TODO Auto-generated method stub
+		return mapper.viewLicenseDto(memberno);
+	}
+
 	
 
-//	@Override
-//	public boolean mainProfile(MemberInfoDTO memberInfo) {
-//		// TODO Auto-generated method stub
-//		return mapper.mainProfile(memberInfo) > 0? true : false;
-//	}
-
-	
 
 
 

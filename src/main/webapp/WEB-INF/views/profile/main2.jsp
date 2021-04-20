@@ -951,18 +951,44 @@
 											</c:forEach>
 											</c:otherwise>
 											</c:choose>			
-										</tbody></table>
+										</tbody>
+										
+										</table>
 									<div class="page_action_wrap" style="display: block;">
 										<button class="btn_major" data-role="button"  id="submit">저장</button>
 										<button class="btn_minor" data-role="button"  id="hrcard_btn_cancel">취소</button>
 								</div>
+								
 										</form>
+										
 									</div></div>
 										<!-- <span class="btn_minor" data-role="button" id="hrcard_btn_cancel"><span class="txt">취소</span></span> -->
 								<section class="aside_wrapper article_reply" id="hrcardActivity"><div><div class="reply_wrap">
 									<header class="single_title">
-									   <!-- <span class="txt">변경이력</span><span class="num">17</span>
-									 --></header>
+									 <table class="table table-striped custom-table datatable">
+								<thead>
+									<tr>
+										<th>사번</th>
+										<th>입사일</th>
+										<th>계좌번호</th>
+										<th>은행</th>
+										<th>예금주</th>
+										<th>주소</th>
+									</tr>
+								</thead>
+								<c:forEach var="viewAllInfo" items="${requestScope.viewAllInfo }">
+									<tr>
+										<td class="free-td"><c:out value="${ viewAllInfo.member_no }" />
+										<td class="free-td"><c:out value="${ viewAllInfo.enroll_date }" />
+										<td class="free-td"><c:out value="${ viewAllInfo.account_no }" />
+										<td class="free-td"><c:out value="${ viewAllInfo.account_bank }" />
+										<td class="free-td"><c:out value="${ viewAllInfo.account_host }" />
+										<td class="free-td"><c:out value="${ viewAllInfo.address }" />
+									</tr>
+								</c:forEach>
+								</table>
+								
+									 </header>
 									<div class="aside_wrapper_body">
 									   <ul class="type_simple_list simple_list_alarm">        
 									  
@@ -1014,7 +1040,6 @@
                                           <c:forEach var="modispotDto" items="${ requestScope.modispotDto }"> 
                                              <td class="no">
                                              <input class="txt w_max" type="text" name="spot_no" value="<c:out value="${ modispotDto.spot_no }"/>">
-                                                   
                                              </td>
                                              <td class="start">
                                              <input class="txt w_max" type="date" name="spot_date" value="<c:out value="${ modispotDto.spot_date }"/>">
@@ -1030,26 +1055,7 @@
                                        </c:otherwise>
                                     </c:choose>
 											</tr>
-												<%-- <td class="spot_no">
-												<input class="txt w_max" type="text" name="spot_no" value="16" hidden='true' >
-												</td>
-												<td class="spot_date">
-													
-													<c:forEach var="modispotDto" items="${ requestScope.modispotDto }"> 
-												<input class="txt w_max" type="date" name="spot_date" value="<c:out value="${ modispotDto.spot_date }"/>">
-												</c:forEach>
-												</td>
-												<td class="spot_code">
-													
-													<c:forEach var="modispotDto" items="${ requestScope.modispotDto }"> 
-												<input class="txt w_max" type="text" name="spot_code" value="<c:out value="${ modispotDto.spot_code }"/>">
-												</c:forEach>
-												</td>
-												<td class="member_no">
-														<c:forEach var="modispotDto" items="${ requestScope.modispotDto }"> 
-												<input class="txt w_max" type="text" name="member_no" value="<c:out value="${ modispotDto.member_no }"/>">
-												</c:forEach>
-												</td> --%>
+												
 										</tbody></table>
 										<div class="page_action_wrap" style="display: block;">
 										<button class="btn_major" data-role="button"  id="submit">저장</button>
@@ -1061,8 +1067,26 @@
 											</div>
 								<section class="aside_wrapper article_reply" id="hrcardActivity"><div><div class="reply_wrap">
 									<header class="single_title">
-									<!--    <span class="txt">변경이력</span><span class="num">0</span>
-									 --></header>
+									 <table class="table table-striped custom-table datatable">
+								<thead>
+									<tr>
+										<th>사번</th>
+										<th>직위코드</th>
+										<th>변경날짜</th>
+										
+									</tr>
+								</thead>
+								<c:forEach var="viewModispotDto" items="${requestScope.viewModispotDto }">
+									<tr>
+										<td class="free-td"><c:out value="${ viewModispotDto.member_no }" />
+										<td class="free-td"><c:out value="${ viewModispotDto.spot_code }" />
+										<td class="free-td"><c:out value="${ viewModispotDto.spot_date }" />
+										
+									</tr>
+								</c:forEach>
+								</table>
+								
+									 </header>
 									<div class="aside_wrapper_body">
 									   <ul class="type_simple_list simple_list_alarm">        
 									
@@ -1143,8 +1167,26 @@
 									
 								<section class="aside_wrapper article_reply" id="hrcardActivity"><div><div class="reply_wrap">
 									<header class="single_title">
-									   <span class="txt">변경이력</span><span class="num">0</span>
-									</header>
+									 <table class="table table-striped custom-table datatable">
+								<thead>
+									<tr>
+										<th>사번</th>
+										<th>부서코드</th>
+										<th>변경날짜</th>
+										
+									</tr>
+								</thead>
+								<c:forEach var="viewMemberDept" items="${requestScope.viewMemberDept }">
+									<tr>
+										<td class="free-td"><c:out value="${ viewMemberDept.memberNo }" />
+										<td class="free-td"><c:out value="${ viewMemberDept.deptCode }" />
+										<td class="free-td"><c:out value="${ viewMemberDept.modifydate }" />
+										
+									</tr>
+								</c:forEach>
+								</table>
+								
+									 </header>
 									<div class="aside_wrapper_body">
 									   <ul class="type_simple_list simple_list_alarm">        
 									
@@ -1232,8 +1274,28 @@
 									</div></div>
 								<section class="aside_wrapper article_reply" id="hrcardActivity"><div><div class="reply_wrap">
 									<header class="single_title">
-									   <!-- <span class="txt">변경이력</span><span class="num">17</span> -->
-									</header>
+									 <table class="table table-striped custom-table datatable">
+								<thead>
+									<tr>
+										<th>사번</th>
+										<th>근무처</th>
+										<th>시작일</th>
+										<th>종료일</th>
+										
+									</tr>
+								</thead>
+								
+								<c:forEach var="viewCareerDto" items="${requestScope.viewCareerDto }">
+									<tr>
+										<td class="free-td"><c:out value="${ viewCareerDto.member_no }" />
+										<td class="free-td"><c:out value="${ viewCareerDto.position }" />
+										<td class="free-td"><c:out value="${ viewCareerDto.start }" />
+										<td class="free-td"><c:out value="${ viewCareerDto.end }" />
+									</tr>
+								</c:forEach>
+								</table>
+								
+									 </header>
 									<div class="aside_wrapper_body">
 									   <ul class="type_simple_list simple_list_alarm">        
 									  
@@ -1325,8 +1387,29 @@
 									</div></div>
 								<section class="aside_wrapper article_reply" id="hrcardActivity"><div><div class="reply_wrap">
 									<header class="single_title">
-									
-									</header>
+									 <table class="table table-striped custom-table datatable">
+								<thead>
+									<tr>
+										<th>사번</th>
+										<th>일자</th>
+										<th>구분</th>
+										<th>사유</th>
+										<th>승인여부</th>
+										
+									</tr>
+								</thead>
+								<c:forEach var="viewBonusDto" items="${ requestScope.viewBonusDto }">
+									<tr>
+										<td class="free-td"><c:out value="${ viewBonusDto.member_no }" />
+										<td class="free-td"><c:out value="${ viewBonusDto.date }" />
+										<td class="free-td"><c:out value="${ viewBonusDto.type }" />
+										<td class="free-td"><c:out value="${ viewBonusDto.reason }" />
+										<td class="free-td"><c:out value="${ viewBonusDto.approve_code }" />
+		    						</tr>
+								</c:forEach>
+								</table>
+								
+									 </header>
 									<div class="aside_wrapper_body">
 									   <ul class="type_simple_list simple_list_alarm">        
 									  
@@ -1390,7 +1473,7 @@
                                              <input class="txt w_max" type="text" name="member_no" value="<c:out value="${ certificateInsert.member_no }"/>">
                                              </td>
                                              <td class="certificate_code">
-                                             <input class="txt w_max" type="text" name="certificate_code" value="<c:out value="${ certificateInsert.certificate_code }"/>"/>">
+                                             <input class="txt w_max" type="text" name="certificate_code" value="<c:out value="${ certificateInsert.certificate_code }"/>">
                                              </td>
                                             
                                           </c:forEach>
@@ -1399,14 +1482,35 @@
                                     </c:choose>
 											</tr>
 										</tbody></table>
-										<button class="btn_major" data-role="button" id="submit">저장</button>
-										<button class="btn_major" data-role="button" id="cancel">취소</button>
-								</form>
+									<div class="page_action_wrap" style="display: block;">
+										<button class="btn_major" data-role="button"  id="submit">저장</button>
+										<button class="btn_minor" data-role="button"  id="hrcard_btn_cancel">취소</button>
+								</div></form>
 									</div></div>
 								<section class="aside_wrapper article_reply" id="hrcardActivity"><div><div class="reply_wrap">
 									<header class="single_title">
-									   <span class="txt">변경이력</span><span class="num">17</span>
-									</header>
+									 <table class="table table-striped custom-table datatable">
+								<thead>
+									<tr>
+										<th>사번</th>
+										<th>자격코드</th>
+										<th>취득일</th>
+										<th>만료일</th>
+										
+									</tr>
+								</thead>
+								<c:forEach var="viewCertificateInsert" items="${ requestScope.viewCertificateInsert }">
+									<tr>
+										<td class="free-td"><c:out value="${ viewCertificateInsert.member_no }" />
+										<td class="free-td"><c:out value="${ viewCertificateInsert.certificate_code }" />
+										<td class="free-td"><c:out value="${ viewCertificateInsert.start_date }" />
+										<td class="free-td"><c:out value="${ viewCertificateInsert.end_date }" />
+		
+		    						</tr>
+								</c:forEach>
+								</table>
+								
+									 </header>
 									<div class="aside_wrapper_body">
 									   <ul class="type_simple_list simple_list_alarm">        
 									  
@@ -1428,14 +1532,13 @@
 										<table class="type_list_box">
 											<tbody><tr>
 												<th class="member_no"><span class="title_txt">사번</span></th>
-												<th class="army_no"><span class="title_txt">군번</span></th>
-												<th class="branch"><span class="title_txt">직위</span></th>
+												<th class="branch"><span class="title_txt">군벌</span></th>
 												<th class="army_class"><span class="title_txt">계급</span></th>
 												<th class="service_num"><span class="title_txt">군번</span></th>
 												<th class="discharge"><span class="title_txt">전역구분</span></th>
 												<th class="start"><span class="title_txt">입대일</span></th>
-												<th class="date"><span class="title_txt">제대일</span></th>
-												<th class="reason"><span class="title_txt">기타 사유</span></th>
+												<th class="end"><span class="title_txt">제대일</span></th>
+												<th class="army_no"><span class="title_txt">병역번호</span></th>
 												
 											</tr>
 											<tr>
@@ -1516,8 +1619,34 @@
 									
 								<section class="aside_wrapper article_reply" id="hrcardActivity"><div><div class="reply_wrap">
 									<header class="single_title">
-									   <span class="txt">변경이력</span><span class="num">17</span>
-									</header>
+									 <table class="table table-striped custom-table datatable">
+								<thead>
+									<tr>
+										<th>사번</th>
+										<th>군벌</th>
+										<th>계급</th>
+										<th>군번</th>
+										<th>전역구분</th>
+										<th>입대일</th>
+										<th>전역일</th>
+										<th>기타사유</th>
+									</tr>
+								</thead>
+								<c:forEach var="viewArmySelect" items="${requestScope.viewArmySelect }">
+									<tr>
+										<td class="free-td"><c:out value="${ viewArmySelect.member_no }" />
+										<td class="free-td"><c:out value="${ viewArmySelect.branch }" />
+										<td class="free-td"><c:out value="${ viewArmySelect.army_class }" />
+										<td class="free-td"><c:out value="${ viewArmySelect.service_num }" />
+										<td class="free-td"><c:out value="${ viewArmySelect.discharge }" />
+										<td class="free-td"><c:out value="${ viewArmySelect.start }" />
+										<td class="free-td"><c:out value="${ viewArmySelect.end }" />
+										<td class="free-td"><c:out value="${ viewArmySelect.reason }" />
+									</tr>
+								</c:forEach>
+								</table>
+								
+									 </header>
 									<div class="aside_wrapper_body">
 									   <ul class="type_simple_list simple_list_alarm">        
 									  
@@ -1618,8 +1747,32 @@
 										</div>
 								<section class="aside_wrapper article_reply" id="hrcardActivity"><div><div class="reply_wrap">
 									<header class="single_title">
-								<!-- 	   <span class="txt">변경이력</span><span class="num">17</span>
-								 -->	</header>
+									 <table class="table table-striped custom-table datatable">
+								<thead>
+									<tr>
+										<th>사번</th>
+										<th>학교명</th>
+										<th>전공</th>
+										<th>졸업일자</th>
+										<th>졸업여부</th>
+										<th>최종학력</th>
+										<th>학력코드명</th>
+									</tr>
+								</thead>
+								<c:forEach var="viewAcademic" items="${requestScope.viewAcademic }">
+									<tr>
+										<td class="free-td"><c:out value="${ viewAcademic.member_no }" />
+										<td class="free-td"><c:out value="${ viewAcademic.name }" />
+										<td class="free-td"><c:out value="${ viewAcademic.subject }" />
+										<td class="free-td"><c:out value="${ viewAcademic.date }" />
+										<td class="free-td"><c:out value="${ viewAcademic.graduate_status }" />
+										<td class="free-td"><c:out value="${ viewAcademic.graduate_name }" />
+										<td class="free-td"><c:out value="${ viewAcademic.code }" />
+									</tr>
+								</c:forEach>
+								</table>
+								
+									 </header>
 									<div class="aside_wrapper_body">
 									   <ul class="type_simple_list simple_list_alarm">        
 									  
@@ -1730,16 +1883,39 @@
 											</tbody>
 										</table>
 										<div class="page_action_wrap" style="display: block;">
-										<span class="btn_major" data-role="button" id="hrcard_btn_submit"><span class="txt">저장</span></span>
-										<span class="btn_minor" data-role="button" id="hrcard_btn_cancel"><span class="txt">취소</span></span>
-								</div>
+										<button class="btn_major" data-role="button"  id="submit">저장</button>
+										<button class="btn_minor" data-role="button"  id="hrcard_btn_cancel">취소</button></div>
 										</form>
 									</div></div></div>
 									
 								<section class="aside_wrapper article_reply" id="hrcardActivity"><div><div class="reply_wrap">
 									<header class="single_title">
-									   <span class="txt">변경이력</span><span class="num">0</span>
-									</header>
+									 <table class="table table-striped custom-table datatable">
+								<thead>
+									<tr>
+										<th>사번</th>
+										<th>가족성명</th>
+										<th>가족관계</th>
+										<th>성별</th>
+										<th>생년월일</th>
+										<th>학력</th>
+										<th>직업</th>
+									</tr>
+								</thead>
+								<c:forEach var="viewFamilySelect" items="${requestScope.viewFamilySelect }">
+									<tr>
+										<td class="free-td"><c:out value="${ viewFamilySelect.no }"/>
+										<td class="free-td"><c:out value="${ viewFamilySelect.name }" />
+										<td class="free-td"><c:out value="${ viewFamilySelect.relation }" />
+										<td class="free-td"><c:out value="${ viewFamilySelect.gender }" />
+										<td class="free-td"><c:out value="${ viewFamilySelect.birthday }" />
+										<td class="free-td"><c:out value="${ viewFamilySelect.study }" />
+										<td class="free-td"><c:out value="${ viewFamilySelect.job }" />
+									</tr>
+								</c:forEach>
+								</table>
+								
+									 </header>
 									<div class="aside_wrapper_body">
 									   <ul class="type_simple_list simple_list_alarm">        
 									
@@ -1805,15 +1981,30 @@
                                     </c:choose>
 										</tbody></table>
 										<div class="page_action_wrap" style="display: block;">
-										<span class="btn_major" data-role="button" id="hrcard_btn_submit"><span class="txt">저장</span></span>
-										<span class="btn_minor" data-role="button" id="hrcard_btn_cancel"><span class="txt">취소</span></span>
-								</div>
+										<button class="btn_major" data-role="button"  id="submit">저장</button>
+										<button class="btn_minor" data-role="button"  id="hrcard_btn_cancel">취소</button>	</div>
 										</form>
 									</div></div>
 								<section class="aside_wrapper article_reply" id="hrcardActivity"><div><div class="reply_wrap">
 									<header class="single_title">
-									   <span class="txt">변경이력</span><span class="num">17</span>
-									</header>
+									 <table class="table table-striped custom-table datatable">
+								<thead>
+									<tr>
+										<th>사번</th>
+										<th>면허증 코드명</th>
+										<th>취득일</th>
+									</tr>
+								</thead>
+								<c:forEach var="viewLicenseDto" items="${requestScope.viewLicenseDto }">
+									<tr>
+										<td class="free-td"><c:out value="${ viewLicenseDto.member_no }" />
+										<td class="free-td"><c:out value="${ viewLicenseDto.code }" />
+										<td class="free-td"><c:out value="${ viewLicenseDto.date }" />
+									</tr>
+								</c:forEach>
+								</table>
+								
+									 </header>
 									<div class="aside_wrapper_body">
 									   <ul class="type_simple_list simple_list_alarm">        
 									  
@@ -1827,12 +2018,15 @@
 						
 					</div>
                 </div>
+                
 				<!-- /Page Content -->
 				<!--  모달 시작부분 -->
 				<!-- Profile Modal -->
 				<div id="profile_info" class="modal custom-modal fade" role="dialog">
 					<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-						<div class="modal-content">
+						<form name="mainInsert" action="http://127.0.0.1:8001/billbo/profile/mainProfile2" method="get">
+					<div class="modal-content sub-modal">
+						
 							<div class="modal-header">
 								<h5 class="modal-title">Profile Information Edit Page</h5>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -1840,8 +2034,7 @@
 								</button>
 							</div>
 							<div class="modal-body">
-								<form action="${pageContext.servletContext.contextPath }/modify" method="post" >
-									<div class="row">
+							 <div class="row">
 										<div class="col-md-12">
 											<div class="profile-img-wrap edit-img">
 												<!-- 사진 업로드********************************************************  -->
@@ -1852,552 +2045,74 @@
 												</div>
 											</div>
 											
+													<c:forEach var="detailMem" items="${ requestScope.detailMem }">
 											<div class="row">
 												<div class="col-md-6">
 													<div class="form-group">
 														<label>이름</label>
-														<input type="text" class="form-control" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }">
+														<input type="text" class="form-control"  value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }" readonly>
 													</div>
 												</div>
 												<div class="col-md-6">
 													<div class="form-group">
 														<label>연락처 변경</label>
-														<c:forEach var="detailMem" items="${ requestScope.detailMem }">
-														<input type="text" class="form-control" value="<c:out value="${detailMem.phone}"/>">
-														</c:forEach>
-													</div>
-												</div>
-												<div class="col-md-6">
-													<div class="form-group">
-														<label>입사일</label>
-														
-														<c:forEach var="member" items="${ requestScope.member }"> 
-															<input class="txt w_max" type="date" name="enroll_date" value="<c:out value="${member.enroll_date }"/>">
-														</c:forEach>
-														
+															<input class="txt w_max" type="text" name="phone" value="<c:out value="${detailMem.phone}"/>">
+															<!-- <div class="text"></div> -->
 													</div>
 												</div>
 												
 												<div class="col-md-6">
 													<div class="form-group">
-														<label>연락처 변경</label>
-														<c:forEach var="detailMem" items="${ requestScope.detailMem }">
-														<input type="text" class="form-control" value="<c:out value="${detailMem.email}"/>">
-														</c:forEach>
+														<label>이메일 변경</label>
+														<input type="text" class="form-control"name="email" value="<c:out value="${detailMem.email}"/>">
 													</div>
 												</div>
+												<%-- <div class="col-md-6">
+													<div class="form-group">
+														<label>입사일</label>
+														
+															<input class="txt w_max" type="date" name="enroll_date" value="<c:out value="${detailMem.enroll_date }"/>">
+														
+													</div>
+												</div> --%>
 												</div>
+										</c:forEach>
+												</div>
+												</div>
+										
 											</div>
-										</div>
+											
 									<div class="page_action_wrap" style="display: block;">
 										<button class="btn_major" data-role="button"  id="submit">저장</button>
 										<button class="btn_minor" data-role="button"  id="hrcard_btn_cancel">취소</button>
 								</div>
 									<div class="submit-section">
-										<button class="btn btn-primary submit-btn" data-role="button"  id="submit">Submit</button>
-									</div>
+										<button class="btn btn-primary submit-btn" data-role="button" type="button" onclick="submit1(this.form)">Submit</button>
+										</div>
+											</div>
 								</form>
+										</div>
+									  
 									</div>
 							</div>
-						</div>
-					</div>
-				</div>
-				<!-- ***************************************************모달 미적용부분**************************************************************** -->
-				<!-- /Profile Modal -->
-				<!-- 
-				Personal Info Modal
-				<div id="personal_info_modal" class="modal custom-modal fade" role="dialog">
-					<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title">Personal Information</h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-								<form>
-									<div class="row">
-										<div class="col-md-6">
-											<div class="form-group">
-												<label>Passport No</label>
-												<input type="text" class="form-control">
-											</div>
-										</div>
-										<div class="col-md-6">
-											<div class="form-group">
-												<label>Passport Expiry Date</label>
-												<div class="cal-icon">
-													<input class="form-control datetimepicker" type="text">
-												</div>
-											</div>
-										</div>
-										<div class="col-md-6">
-											<div class="form-group">
-												<label>Tel</label>
-												<input class="form-control" type="text">
-											</div>
-										</div>
-										<div class="col-md-6">
-											<div class="form-group">
-												<label>Nationality <span class="text-danger">*</span></label>
-												<input class="form-control" type="text">
-											</div>
-										</div>
-										<div class="col-md-6">
-											<div class="form-group">
-												<label>Religion</label>
-												<div class="cal-icon">
-													<input class="form-control" type="text">
-												</div>
-											</div>
-										</div>
-										<div class="col-md-6">
-											<div class="form-group">
-												<label>Marital status <span class="text-danger">*</span></label>
-												<select class="select form-control">
-													<option>-</option>
-													<option>Single</option>
-													<option>Married</option>
-												</select>
-											</div>
-										</div>
-										<div class="col-md-6">
-											<div class="form-group">
-												<label>Employment of spouse</label>
-												<input class="form-control" type="text">
-											</div>
-										</div>
-										<div class="col-md-6">
-											<div class="form-group">
-												<label>No. of children </label>
-												<input class="form-control" type="text">
-											</div>
-										</div>
-									</div>
-									<div class="submit-section">
-										<button class="btn btn-primary submit-btn">Submit</button>
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-				/Personal Info Modal
-				
-				Family Info Modal
-				<div id="family_info_modal" class="modal custom-modal fade" role="dialog">
-					<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title"> Family Informations</h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-								<form>
-									<div class="form-scroll">
-										<div class="card">
-											<div class="card-body">
-												<h3 class="card-title">Family Member <a href="javascript:void(0);" class="delete-icon"><i class="fa fa-trash-o"></i></a></h3>
-												<div class="row">
-													<div class="col-md-6">
-														<div class="form-group">
-															<label>Name <span class="text-danger">*</span></label>
-															<input class="form-control" type="text">
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="form-group">
-															<label>Relationship <span class="text-danger">*</span></label>
-															<input class="form-control" type="text">
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="form-group">
-															<label>Date of birth <span class="text-danger">*</span></label>
-															<input class="form-control" type="text">
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="form-group">
-															<label>Phone <span class="text-danger">*</span></label>
-															<input class="form-control" type="text">
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										
-										<div class="card">
-											<div class="card-body">
-												<h3 class="card-title">Education Informations <a href="javascript:void(0);" class="delete-icon"><i class="fa fa-trash-o"></i></a></h3>
-												<div class="row">
-													<div class="col-md-6">
-														<div class="form-group">
-															<label>Name <span class="text-danger">*</span></label>
-															<input class="form-control" type="text">
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="form-group">
-															<label>Relationship <span class="text-danger">*</span></label>
-															<input class="form-control" type="text">
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="form-group">
-															<label>Date of birth <span class="text-danger">*</span></label>
-															<input class="form-control" type="text">
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="form-group">
-															<label>Phone <span class="text-danger">*</span></label>
-															<input class="form-control" type="text">
-														</div>
-													</div>
-												</div>
-												<div class="add-more">
-													<a href="javascript:void(0);"><i class="fa fa-plus-circle"></i> Add More</a>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="submit-section">
-										<button class="btn btn-primary submit-btn">Submit</button>
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-				/Family Info Modal
-				
-				Emergency Contact Modal
-				<div id="emergency_contact_modal" class="modal custom-modal fade" role="dialog">
-					<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title">Personal Information</h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-								<form>
-									<div class="card">
-										<div class="card-body">
-											<h3 class="card-title">Primary Contact</h3>
-											<div class="row">
-												<div class="col-md-6">
-													<div class="form-group">
-														<label>Name <span class="text-danger">*</span></label>
-														<input type="text" class="form-control">
-													</div>
-												</div>
-												<div class="col-md-6">
-													<div class="form-group">
-														<label>Relationship <span class="text-danger">*</span></label>
-														<input class="form-control" type="text">
-													</div>
-												</div>
-												<div class="col-md-6">
-													<div class="form-group">
-														<label>Phone <span class="text-danger">*</span></label>
-														<input class="form-control" type="text">
-													</div>
-												</div>
-												<div class="col-md-6">
-													<div class="form-group">
-														<label>Phone 2</label>
-														<input class="form-control" type="text">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									
-									<div class="card">
-										<div class="card-body">
-											<h3 class="card-title">Primary Contact</h3>
-											<div class="row">
-												<div class="col-md-6">
-													<div class="form-group">
-														<label>Name <span class="text-danger">*</span></label>
-														<input type="text" class="form-control">
-													</div>
-												</div>
-												<div class="col-md-6">
-													<div class="form-group">
-														<label>Relationship <span class="text-danger">*</span></label>
-														<input class="form-control" type="text">
-													</div>
-												</div>
-												<div class="col-md-6">
-													<div class="form-group">
-														<label>Phone <span class="text-danger">*</span></label>
-														<input class="form-control" type="text">
-													</div>
-												</div>
-												<div class="col-md-6">
-													<div class="form-group">
-														<label>Phone 2</label>
-														<input class="form-control" type="text">
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="submit-section">
-										<button class="btn btn-primary submit-btn">Submit</button>
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-				/Emergency Contact Modal
-				
-				Education Modal
-				<div id="education_info" class="modal custom-modal fade" role="dialog">
-					<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title"> Education Informations</h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-								<form>
-									<div class="form-scroll">
-										<div class="card">
-											<div class="card-body">
-												<h3 class="card-title">Education Informations <a href="javascript:void(0);" class="delete-icon"><i class="fa fa-trash-o"></i></a></h3>
-												<div class="row">
-													<div class="col-md-6">
-														<div class="form-group form-focus focused">
-															<input type="text" value="Oxford University" class="form-control floating">
-															<label class="focus-label">Institution</label>
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="form-group form-focus focused">
-															<input type="text" value="Computer Science" class="form-control floating">
-															<label class="focus-label">Subject</label>
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="form-group form-focus focused">
-															<div class="cal-icon">
-																<input type="text" value="01/06/2002" class="form-control floating datetimepicker">
-															</div>
-															<label class="focus-label">Starting Date</label>
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="form-group form-focus focused">
-															<div class="cal-icon">
-																<input type="text" value="31/05/2006" class="form-control floating datetimepicker">
-															</div>
-															<label class="focus-label">Complete Date</label>
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="form-group form-focus focused">
-															<input type="text" value="BE Computer Science" class="form-control floating">
-															<label class="focus-label">Degree</label>
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="form-group form-focus focused">
-															<input type="text" value="Grade A" class="form-control floating">
-															<label class="focus-label">Grade</label>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										
-										<div class="card">
-											<div class="card-body">
-												<h3 class="card-title">Education Informations <a href="javascript:void(0);" class="delete-icon"><i class="fa fa-trash-o"></i></a></h3>
-												<div class="row">
-													<div class="col-md-6">
-														<div class="form-group form-focus focused">
-															<input type="text" value="Oxford University" class="form-control floating">
-															<label class="focus-label">Institution</label>
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="form-group form-focus focused">
-															<input type="text" value="Computer Science" class="form-control floating">
-															<label class="focus-label">Subject</label>
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="form-group form-focus focused">
-															<div class="cal-icon">
-																<input type="text" value="01/06/2002" class="form-control floating datetimepicker">
-															</div>
-															<label class="focus-label">Starting Date</label>
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="form-group form-focus focused">
-															<div class="cal-icon">
-																<input type="text" value="31/05/2006" class="form-control floating datetimepicker">
-															</div>
-															<label class="focus-label">Complete Date</label>
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="form-group form-focus focused">
-															<input type="text" value="BE Computer Science" class="form-control floating">
-															<label class="focus-label">Degree</label>
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="form-group form-focus focused">
-															<input type="text" value="Grade A" class="form-control floating">
-															<label class="focus-label">Grade</label>
-														</div>
-													</div>
-												</div>
-												<div class="add-more">
-													<a href="javascript:void(0);"><i class="fa fa-plus-circle"></i> Add More</a>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="submit-section">
-										<button class="btn btn-primary submit-btn">Submit</button>
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-				/Education Modal
-				
-				Experience Modal
-				<div id="experience_info" class="modal custom-modal fade" role="dialog">
-					<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-						<div class="modal-content">
-							<div class="modal-header">
-								<h5 class="modal-title">Experience Informations</h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
-								<form>
-									<div class="form-scroll">
-										<div class="card">
-											<div class="card-body">
-												<h3 class="card-title">Experience Informations <a href="javascript:void(0);" class="delete-icon"><i class="fa fa-trash-o"></i></a></h3>
-												<div class="row">
-													<div class="col-md-6">
-														<div class="form-group form-focus">
-															<input type="text" class="form-control floating" value="Digital Devlopment Inc">
-															<label class="focus-label">Company Name</label>
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="form-group form-focus">
-															<input type="text" class="form-control floating" value="United States">
-															<label class="focus-label">Location</label>
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="form-group form-focus">
-															<input type="text" class="form-control floating" value="Web Developer">
-															<label class="focus-label">Job Position</label>
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="form-group form-focus">
-															<div class="cal-icon">
-																<input type="text" class="form-control floating datetimepicker" value="01/07/2007">
-															</div>
-															<label class="focus-label">Period From</label>
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="form-group form-focus">
-															<div class="cal-icon">
-																<input type="text" class="form-control floating datetimepicker" value="08/06/2018">
-															</div>
-															<label class="focus-label">Period To</label>
-														</div>
-													</div>
-												</div>
-											</div>
-										</div>
-										
-										<div class="card">
-											<div class="card-body">
-												<h3 class="card-title">Experience Informations <a href="javascript:void(0);" class="delete-icon"><i class="fa fa-trash-o"></i></a></h3>
-												<div class="row">
-													<div class="col-md-6">
-														<div class="form-group form-focus">
-															<input type="text" class="form-control floating" value="Digital Devlopment Inc">
-															<label class="focus-label">Company Name</label>
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="form-group form-focus">
-															<input type="text" class="form-control floating" value="United States">
-															<label class="focus-label">Location</label>
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="form-group form-focus">
-															<input type="text" class="form-control floating" value="Web Developer">
-															<label class="focus-label">Job Position</label>
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="form-group form-focus">
-															<div class="cal-icon">
-																<input type="text" class="form-control floating datetimepicker" value="01/07/2007">
-															</div>
-															<label class="focus-label">Period From</label>
-														</div>
-													</div>
-													<div class="col-md-6">
-														<div class="form-group form-focus">
-															<div class="cal-icon">
-																<input type="text" class="form-control floating datetimepicker" value="08/06/2018">
-															</div>
-															<label class="focus-label">Period To</label>
-														</div>
-													</div>
-												</div>
-												<div class="add-more">
-													<a href="javascript:void(0);"><i class="fa fa-plus-circle"></i> Add More</a>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="submit-section">
-										<button class="btn btn-primary submit-btn">Submit</button>
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
-				/Experience Modal
-				 -->
-            </div>
-			<!-- /Page Wrapper -->
+		 <script type="text/javascript">
+     function goModify(frm) {
+ 
+    	var email = frm.email.value;
+    	var phone = frm.phone.value;
+    	
+    	console.table(email);
+    	console.table(phone);
+    	
+    		
+    	frm.submit();
+     }
+	
+	
+    </script> 					
 
-        </div>
-		<!-- /Main Wrapper -->
-
+     
+			     
 		<!-- jQuery -->
         <script src="/billbo/resources/hrtemp/js/jquery-3.5.1.min.js"></script>
 
