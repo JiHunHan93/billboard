@@ -15,28 +15,23 @@
 	<resultMap type="com.sevenelite.billbo.department.model.dto.DepartmentDTO" id="ALlmemberResultMap">
 	<id property="no" column="MEMBER_NO"/>
 	<result property="memberName" column="MEMBER_NAME"/>
+	<result property="memberpwd" column="MEMBER_PWD"/>
+	<result property="email" column="EMAIL"/>
+	<result property="phone" column="PHONE"/>
+	<result property="enrollDate" column="ENROLL_DATE"/>
+	<result property="deptCode" column="DEPT_CODE"/>
 	<result property="deptName" column="DEPT_NAME"/>
+	<result property="address" column="MEMBER_ADDRESS"/>
+	<result property="fileNo" column="FILE_ATTACHMENT_NO"/>
+	<result property="attachmentPath" column="FILE_ATTACHMENT_PATH"/>
+	<result property="originalName" column="ORIGINAL_NAME"/>
+	<result property="savedName" column="SAVED_NAME"/>
+	<result property="attachmentType" column="ATTACHMENT_TYPE"/>
+	<result property="attchmentTypeNo" column="ATTACHMENT_TYPE_NO"/>
+	<result property="attachmentDate" column="ATTACHMENT_DATE"/>
 	<result property="spotName" column="SPOT_NAME"/>
     </resultMap>
 	
-	
-<!-- 	<select id="selectDeptInfo" resultMap="deptInfo" parameterType="String">
-        SELECT
-               A.DEPT_NAME 
-             , A.SPOT_NAME
-             , A.MEMBER_NAME            
-          FROM BB_DEPT A
-         WHERE DEPT_CODE = #{ deptcode }
-	</select>
-	
-	<select id="selectDeptInfoSpot" resultMap="deptInfoSpot" parameterType="String">
-        SELECT
-               A.DEPT_NAME 
-             , A.SPOT_NAME
-             , A.MEMBER_NAME
-        FROM 
-         WHERE MEMBER_NAME = #{membername}
-	</select> -->
 	
 	<select id="selectBusinessDepartmentList" resultMap="ALlmemberResultMap">
   
@@ -128,11 +123,22 @@
     
     </select>
 
-<!--     <select id="detailEmployeeList" resultMap="ALlmemberResultMap" parameterType="DepartmentDTO">
-      SELECT 
+     <select id="detailEmployeeProfile" resultMap="ALlmemberResultMap" parameterType="DepartmentDTO">
+       SELECT 
         E.MEMBER_NO,
         E.MEMBER_NAME,
-        C.DEPT_NAME
+        E.EMAIL,
+        E.PHONE,
+        D.ENROLL_DATE,
+        D.MEMBER_ADDRESS,
+        C.DEPT_NAME,
+        F.FILE_ATTACHMENT_NO,
+        F.FILE_ATTACHMENT_PATH,
+        F.ORIGINAL_NAME,
+        F.SAVED_NAME,
+        F.ATTACHMENT_TYPE,
+        F.ATTACHMENT_DATE,
+        F.ATTACHMENT_TYPE_NO
         FROM(               
              SELECT
                   *
@@ -152,8 +158,8 @@
     WHERE 순번 =1 ) C
     JOIN BB_MEMBER_INFO D ON (C.MEMBER_NO = D.MEMBER_NO)
     JOIN BB_MEMBER E ON( C.MEMBER_NO = E.MEMBER_NO)
+    JOIN BB_FILEATTACHMENT F ON (E.MEMBER_NO = F.MEMBER_NO)
     WHERE E.MEMBER_NO = #{no}
-</select>
-	 -->
+</select> 
 
 </mapper>

@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -640,6 +640,29 @@
 					</div>
                
 				<!-- /Page Content -->
+				
+				 <script>
+				if(document.getElementsByTagName("td")) {
+					const $tds = document.getElementsByTagName("td");
+					
+					for(let i = 0; i < $tds.length; i++) {
+						$tds[i].onmouseenter = function() {
+							this.parentNode.style.backgroundColor = "rgb(253,192,124)";
+							this.parentNode.style.cursor = "pointer";
+						}
+						$tds[i].onmouseout = function() {
+							this.parentNode.style.background = "white";
+						}
+						$tds[i].onclick = function() {
+							const no = this.parentNode.children[0].innerText;
+							/* const count = this.parentNode.children[7].innerText; */
+							/* console.log(count); */
+							console.log(no);
+							location.href = "${ pageContext.servletContext.contextPath }/detail?no=" + no;
+						}
+					}
+				}
+				</script>
 
 				<!-- Add Designation Modal -->
 				<div id="add_designation" class="modal custom-modal fade" role="dialog">
