@@ -35,6 +35,7 @@
 }
 </style>
 <body>
+
 			<!-- 04/08(목) 결재 양식 선택 Moda -->
 			<section class="function">
 				<button type="button" class="btn_tool" data-toggle="modal" data-target="#exampleModal">
@@ -194,8 +195,8 @@
 				</div>
 				<!-- content apprflow-editor -->
 
-<footer class="btn_layer_wrap"><a class="btn_major_s" data-bypass="" style="margin-right:5px" title="확인"><span class="ic"></span><span class="txt">확인</span></a><a class="btn_minor_s" data-bypass="" style="margin-right:5px" title="취소"><span class="ic"></span><span class="txt">취소</span></a>
-</footer>
+				<footer class="btn_layer_wrap"><a class="btn_major_s" data-bypass="" style="margin-right:5px" title="확인"><span class="ic"></span><span class="txt">확인</span></a><a class="btn_minor_s" data-bypass="" style="margin-right:5px" title="취소"><span class="ic"></span><span class="txt">취소</span></a>
+				</footer>
 					</div>
 					<!-- go_popup -->
 			      </div>

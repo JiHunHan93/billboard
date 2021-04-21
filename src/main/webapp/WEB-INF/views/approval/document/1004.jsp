@@ -1516,7 +1516,7 @@ ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }
 						
 						$span.append($admission1);
 						
-						/* 6. form태그에 input 담기 */
+						/* 6. form태그에 input 담기 List 타입*/
 						const $span3 = $("#hiddenInput");
 						
 /* 						$hiddenInputMemListLine = $("<input name='lineMem[memNo3].memberNoLine' type='hidden' value='lineList[memNo2].memberNoLine'> <input name='lineMem[memNo3].memberNameLine' type='hidden' value='lineList[memNo2].memberNameLine'> <input name='lineMem[memNo3].deptCodeLine' type='hidden' value='lineList[memNo2].deptCodeLine'> <input name='lineMem[memNo3].deptNameLine' type='hidden' value='lineList[memNo2].deptNameLine'> <input name='lineMem[memNo3].spotCodeLine' type='hidden' value='lineList[memNo2].spotCodeLine'> <input name='lineMem[memNo3].spotNameLien' type='hidden' value='lineList[memNo2].spotNameLien'> ") */
