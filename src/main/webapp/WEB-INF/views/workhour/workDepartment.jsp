@@ -332,24 +332,28 @@
             </div>
 			<!-- /Header -->
 			
-			<!-- Sidebar -->
-            <div class="sidebar" id="sidebar">
-                <div class="sidebar-inner slimscroll">
-					<div id="sidebar-menu" class="sidebar-menu">
-						<ul>
-							<li class="menu-title"> 
+					<!-- Sidebar -->
+		<div class="sidebar" id="sidebar">
+			<div class="sidebar-inner slimscroll">
+				<div id="sidebar-menu" class="sidebar-menu">
+					<ul>
+						<!-- <li class="menu-title"> 
 								<span>Main</span>
-							</li>
-							<li class="submenu">
-								<a href="#"><i class="la la-dashboard"></i> <span> Dashboard</span> <span class="menu-arrow"></span></a>
-								<ul style="display: none;">
+							</li> -->
+						<!-- 사이드바 서브메뉴 안쓰는 방향으로 수정 -->
+						<li><a href="${pageContext.servletContext.contextPath}"
+							class="sidebar-default"> <i class="la la-home sidebar-icon"></i>
+								<!-- <span class="menu-arrow"></span> --> <span
+								class="sidebar-text">Home</span>
+						</a> <!-- <ul style="display: none;">
 									<li><a href="index.html">Admin Dashboard</a></li>
-									<li><a href="employee-dashboard.html">Employee Dashboard</a></li>
-								</ul>
-							</li>
-							<li class="submenu">
-								<a href="#"><i class="la la-cube"></i> <span> Apps</span> <span class="menu-arrow"></span></a>
-								<ul style="display: none;">
+									<li><a class="active" href="employee-dashboard.html">Employee Dashboard</a></li>
+								</ul> --></li>
+						<div class="sidebar-line"></div>
+						<li><a href="${pageContext.servletContext.contextPath}/apps"
+							class="sidebar-default"> <i class="la la-cube sidebar-icon"></i>
+								<span class="sidebar-text"> Apps</span> <!-- <span class="menu-arrow"></span> -->
+						</a> <!-- <ul style="display: none;">
 									<li><a href="chat.html">Chat</a></li>
 									<li class="submenu">
 										<a href="#"><span> Calls</span> <span class="menu-arrow"></span></a>
@@ -364,14 +368,17 @@
 									<li><a href="contacts.html">Contacts</a></li>
 									<li><a href="inbox.html">Email</a></li>
 									<li><a href="file-manager.html">File Manager</a></li>
-								</ul>
-							</li>
-							<li class="menu-title"> 
-								<span>Employees</span>
-							</li>
-							<li class="submenu">
-								<a href="#" class="noti-dot"><i class="la la-user"></i> <span> Employees</span> <span class="menu-arrow"></span></a>
-								<ul style="display: none;">
+								</ul> --></li>
+						<div class="sidebar-line"></div>
+						<!-- <li class="menu-title"> 
+								<span>Apps</span>
+							</li> -->
+						<li><a
+							href="${pageContext.servletContext.contextPath}/employee"
+							class="noti-dot sidebar-default"> <i
+								class="la la-user sidebar-icon"></i> <span class="sidebar-text">
+									Employees</span> <!-- <span class="menu-arrow"></span> -->
+						</a> <!-- <ul style="display: none;">
 									<li><a href="employees.html">All Employees</a></li>
 									<li><a href="holidays.html">Holidays</a></li>
 									<li><a href="leaves.html">Leaves (Admin) <span class="badge badge-pill bg-primary float-right">1</span></a></li>
@@ -381,28 +388,40 @@
 									<li><a href="attendance-employee.html">Attendance (Employee)</a></li>
 									<li><a href="departments.html">Departments</a></li>
 									<li><a href="designations.html">Designations</a></li>
-									<li><a class="active" href="timesheet.html">Timesheet</a></li>
+									<li><a href="timesheet.html">Timesheet</a></li>
 									<li><a href="overtime.html">Overtime</a></li>
-								</ul>
-							</li>
-							<li> 
-								<a href="clients.html"><i class="la la-users"></i> <span>Clients</span></a>
-							</li>
-							<li class="submenu">
-								<a href="#"><i class="la la-rocket"></i> <span> Projects</span> <span class="menu-arrow"></span></a>
-								<ul style="display: none;">
+								</ul> --></li>
+						<div class="sidebar-line"></div>
+						<li><a
+							href="${pageContext.servletContext.contextPath}/attendance"
+							class="sidebar-default"> <i
+								class="la la-briefcase sidebar-icon"></i> <span
+								class="sidebar-text">Attendance</span>
+						</a></li>
+						<div class="sidebar-line"></div>
+						<li><a href="${pageContext.servletContext.contextPath}/admin"
+							class="sidebar-default"> <i class="la la-key sidebar-icon"></i>
+								<span class="sidebar-text">Admin</span> <!-- <span class="menu-arrow"></span> -->
+						</a> <!-- <ul style="display: none;">
 									<li><a href="projects.html">Projects</a></li>
 									<li><a href="tasks.html">Tasks</a></li>
-									<li><a href="task-board.html">Task Board</a></li>
-								</ul>
-							</li>
-							<li> 
-								<a href="leads.html"><i class="la la-user-secret"></i> <span>Leads</span></a>
-							</li>
-							<li> 
-								<a href="tickets.html"><i class="la la-ticket"></i> <span>Tickets</span></a>
-							</li>
-							<li class="menu-title"> 
+									<li><a href="task-board.html">Task Board</a></li>	
+								</ul> --></li>
+						<div class="sidebar-line"></div>
+						<li><a
+							href="${pageContext.servletContext.contextPath}/calender/main"
+							class="sidebar-default"> <i class="la la-money sidebar-icon"></i>
+								<span class="sidebar-text">Payroll</span>
+						</a></li>
+						<div class="sidebar-line"></div>
+						<li><a
+							href="${pageContext.servletContext.contextPath}/information"
+							class="sidebar-default"> <i
+								class="la la-building sidebar-icon"></i> <span
+								class="sidebar-text">Information</span>
+						</a></li>
+						<div class="sidebar-line"></div>
+						<!-- <li class="menu-title"> 
 								<span>HR</span>
 							</li>
 							<li class="submenu">
@@ -467,7 +486,7 @@
 								<span>Administration</span>
 							</li>
 							<li> 
-								<a href="../resources/hrtemp.html"><i class="la la-object-ungroup"></i> <span>../resources/hrtemp</span></a>
+								<a href="assets.html"><i class="la la-object-ungroup"></i> <span>Assets</span></a>
 							</li>
 							<li class="submenu">
 								<a href="#"><i class="la la-briefcase"></i> <span> Jobs </span> <span class="menu-arrow"></span></a>
@@ -587,12 +606,12 @@
 										<a href="javascript:void(0);"> <span>Level 1</span></a>
 									</li>
 								</ul>
-							</li>
-						</ul>
-					</div>
-                </div>
-            </div>
-			<!-- /Sidebar -->
+							</li> -->
+					</ul>
+				</div>
+			</div>
+		</div>
+		<!-- /Sidebar -->
 			
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
@@ -623,9 +642,9 @@
 								<table class="table table-striped custom-table mb-0 datatable">
 									<thead>
 										<tr>
+											<th>번호</th>
 											<th>이름</th>
 											<th>날짜</th>
-											<th>직위</th>
 											<th class="text-center">근무시간</th>
 											<th class="text-center">퇴근시간</th>
 											<th class="text-center">상태</th>
@@ -636,11 +655,10 @@
 									<tr>
 										<td class="free-td"><c:out value="${ workDept.no }" />
 										<td class="free-td"><c:out value="${ workDept.name }" />
-										<td class="free-td"><c:out value="${ workDept.email }" />
-										<td class="free-td"><c:out value="${ workDept.phone }" />
+										<td class="free-td"><c:out value="${ workDept.date }" />
 										<td class="free-td"><c:out value="${ workDept.commute }" />
-										<td class="free-td"><c:out value="${ workDept.deptName }" />
-										<td class="free-td"><c:out value="${ workDept.type }" />
+										<td class="free-td"><c:out value="${ workDept.leave }" />
+										<td class="free-td"><c:out value="${ workDept.workCode }" />
 									</tr>
 								</c:forEach>		
 										
