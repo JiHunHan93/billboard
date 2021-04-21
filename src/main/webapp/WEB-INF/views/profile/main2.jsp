@@ -669,7 +669,7 @@
 											<div class="row">
 												<div class="col-md-5">
 													<div class="profile-info-left">
-														<h3 class="user-name m-t-0 mb-0">${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }ㅇㅇㅇㅇㅇㅇㅇㅇㅇ님 환영합니다.
+														<h3 class="user-name m-t-0 mb-0">${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }님 환영합니다.
 								</h3>
 														
 														<h6 class="text-muted"> 
@@ -2024,7 +2024,7 @@
 				<!-- Profile Modal -->
 				<div id="profile_info" class="modal custom-modal fade" role="dialog">
 					<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-						<form name="mainInsert" action="http://127.0.0.1:8001/billbo/profile/mainProfile2" method="get">
+						<form name="mainInsert" action="http://127.0.0.1:8001/billbo/profile/mainProfile2" method="post">
 					<div class="modal-content sub-modal">
 						
 							<div class="modal-header">
@@ -2095,21 +2095,23 @@
 									  
 									</div>
 							</div>
-		 <script type="text/javascript">
-     function goModify(frm) {
- 
-    	var email = frm.email.value;
-    	var phone = frm.phone.value;
+		<!--  <script type="text/javascript">
+    
+    	 $("#submit").click(function() {
+    	var email =$("input[email='email']").val();
+    	var phone =$("input[phone='phone']").val();
     	
     	console.table(email);
     	console.table(phone);
     	
-    		
-    	frm.submit();
-     }
+    	var jihwan = $('form[email="mainInsert"]').serializeArray();
+    	console.table(jihwan);
+    	$("form[email='mainInsert']").submit();
+    	
+     });
 	
 	
-    </script> 					
+    </script> 					 -->
 
      
 			     

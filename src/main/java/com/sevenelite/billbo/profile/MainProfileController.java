@@ -252,7 +252,9 @@ public class MainProfileController {
 
 		return "redirect:/profile/mainProfile2";
 	}
-
+	@PostMapping(value ="mainProfile2")
+	public String page2(@ModelAttribute MemDTO mem, Authentication authentication, Model model) {
+		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
 	@GetMapping(value = "mainProfile2")
 	public String page2(Model model, Authentication authentication) {
 

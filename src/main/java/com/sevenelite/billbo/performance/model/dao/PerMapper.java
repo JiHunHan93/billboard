@@ -12,4 +12,6 @@ public interface PerMapper {
 
 	List<ReviewListDTO> reviewList(int no);
 
+	int insertReview(ReviewListDTO reviewDTO);
+
 }

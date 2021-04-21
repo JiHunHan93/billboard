@@ -31,4 +31,12 @@ public class PerformanceServiceImpl implements PerformanceService {
 		return perMapper.reviewList(no);
 	}
 
+	@Override
+	public boolean insertReview(ReviewListDTO reviewDTO) {
+		
+		int result = perMapper.insertReview(reviewDTO);
+		
+		return result >= 1 ? true : false;
+	}
+
 }

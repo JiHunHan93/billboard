@@ -13,6 +13,6 @@ public interface DepartmentMapper {
 	
 	List<DepartmentDTO> selectProductionDepartmentList();
 
-	List<DepartmentDTO> detailEmployeeList(int no);
+	List<DepartmentDTO> detailEmployeeProfile(int no);
 	
 }
