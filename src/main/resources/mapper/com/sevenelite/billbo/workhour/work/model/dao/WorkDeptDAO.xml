@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sevenelite.billbo.workhour.work.model.dao.WorkDeptDAO">
+	<resultMap id="DeptResult" type="com.sevenelite.billbo.workhour.work.model.dto.WorkDeptAndMemberDTO">
+ 	<id column="MEMBER_NO" property="memNo"/>
+ 	<result column="WORKDATE" property="date"/>
+ 	<result column="COMMUTE" property="commute"/>
+ 	<result column="LEAVE_WORK" property="leave"/>
+ 	<result column="WORKTYPE_CODE" property="type"/>
+ 	<result column="WORKSTATUS_NO" property="no"/>
+ 	<result column="MEMBER_NAME" property="name"/>
+ 	<!--  <id column="WORKTYPE_CODE" property="workCode"/>
+ 	 <result column="WORKTYPE_TYPE" property="workType"/> -->
+	</resultMap>
+	
+	<select id="selectList" resultMap="DeptResult" resultType="com.sevenelite.billbo.workhour.work.model.dto.WorkDeptAndMemberDTO">
+      SELECT
+		       A.WORKSTATUS_NO
+			 , A.WORKDATE
+			 , A.COMMUTE
+			 , A.LEAVE_WORK
+			 , A.MEMBER_NO
+			 , A.WORKTYPE_CODE
+			 , B.MEMBER_NAME
+             , C.WORKTYPE_TYPE
+		  FROM BB_WORKSTATUS A 	
+          JOIN BB_WORKTYPE C ON(a.worktype_code = C.WORKTYPE_CODE)
+     FULL JOIN BB_MEMBER B ON(A.MEMBER_NO = B.MEMBER_NO)
+		  ORDER BY A.WORKSTATUS_NO
+	</select>
+</mapper>

@@ -81,10 +81,16 @@
 				right : 'dayGridMonth,timeGridWeek,timeGridDay'
 			},
 			dateClick : function(info) {
-				alert(info.dateStr + '날짜 클릭');
+				$('#add_event').modal().on('shown.bs.modal', function () {
+					  $('#add_event').focus();
+					  $('.start-date').val(info.dateStr);
+				})
+				calendar.render();
 			},
 			eventClick : function(event) {
 				$('.modify-event').hide();
+				$('.delete-event').show();
+				$("#modal-sub-mod-btn").show();
 				$('#event-modal').modal().on('shown.bs.modal', function () {
 					  $('#event-modal').focus();
 					  console.log(event);
@@ -101,16 +107,134 @@
 						  }
 					  });
 					  var txt = event.event._def.extendedProps.body;
-					  txt.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+					  if($('#modal-sub-txt-area-a') != null) {
+					  	  txt.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+					  }
 					  $('#modal-sub-txt-area-a').html(txt);
+					  
+					  $("#modal-sub-mod-btn").click(function() {
+							$('.delete-event').hide();
+							$('.modify-event').show();
+							$("#modal-sub-mod-btn").hide();
+							$('#modal-sub-title-a').attr('readonly', false);
+							$('.start-date-a').attr('readonly', false);
+							$('.end-date-a').attr('readonly', false);
+							$('#modal-sub-title-a').attr('readonly', false);
+							$('.calSelect-a').attr('disabled', false);
+						    $('#modal-sub-txt-area-a').attr('readonly', false);
+						    $('#event-modal').modal().on('hidden.bs.modal', function () {
+						    	$('#modal-sub-title-a').attr('readonly', true);
+								$('.start-date-a').attr('readonly', true);
+								$('.end-date-a').attr('readonly', true);
+								$('#modal-sub-title-a').attr('readonly', true);
+								$('.calSelect-a').attr('disabled', true);
+							    $('#modal-sub-txt-area-a').attr('readonly', true);
+						    })
+						});
+					  
+					  $(document).on('click', '.modify-event', function(e) {
+							$('.delete-event').show();
+							$('.modify-event').hide();
+							$('#modal-sub-title-a').attr('readonly', true);
+							$('.start-date-a').attr('readonly', true);
+							$('.end-date-a').attr('readonly', true);
+							$('#modal-sub-title-a').attr('readonly', true);
+							$('.calSelect-a').attr('disabled', true);
+						    $('#modal-sub-txt-area-a').attr('readonly', true);
+						   
+						    var arr = [];
+						    arr.push(7);
+						    arr.push(8);
+						    
+						    var form = {
+						        arr : JSON.stringify(arr),
+						        no : event.event._def.extendedProps.no,
+						        title : $('#modal-sub-title-a').val(),
+						        start : $('.start-date-a').val(),
+						        end : $('.end-date-a').val(),
+						        category : $('.calSelect-a option:selected').val(),
+						        body : $('#modal-sub-txt-area-a').val()
+						    };
+
+						    $.ajax({
+						        type: "post", 
+						        url: "postUpdate", 
+						        dataType: "json", 
+						        contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+						        data: form
+						    });
+						    location.reload();
+						});
+					  
+					  $(document).on('click', '.delete-event', function(e) {
+							$('.delete-event').show();
+							$('.modify-event').hide();
+							$('#modal-sub-title-a').attr('readonly', true);
+							$('.start-date-a').attr('readonly', true);
+							$('.end-date-a').attr('readonly', true);
+							$('#modal-sub-title-a').attr('readonly', true);
+							$('.calSelect-a').attr('disabled', true);
+						    $('#modal-sub-txt-area-a').attr('readonly', true);
+						   
+						    var arr = [];
+						    arr.push(7);
+						    arr.push(8);
+						    
+						    var form = {
+						        arr : JSON.stringify(arr),
+						        no : event.event._def.extendedProps.no,
+						        title : $('#modal-sub-title-a').val(),
+						        start : $('.start-date-a').val(),
+						        end : $('.end-date-a').val(),
+						        category : $('.calSelect-a option:selected').val(),
+						        body : $('#modal-sub-txt-area-a').val()
+						    };
+
+						    $.ajax({
+						        type: "post", 
+						        url: "postDelete", 
+						        dataType: "json", 
+						        contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+						        data: form
+						    });
+						    location.reload();
+						});
 				})
 			},
 			editable : true,
-			droppable : true,
+			eventReceive : function (event, xhr) { 
+				console.log(event);
+				},
+			droppable : false,
 			drop : function(info) {
 				if (checkbox.checked) {
 					info.draggedEl.parentNode.removeChild(info.draggedEl);
 				}
+				console.log(info);
+				var arr = [];
+			    arr.push(7);
+			    arr.push(8);
+			    
+			    var endYear = info.dateStr.substring(0,4);
+			    var endMonth = info.dateStr.substring(5,7);
+			    var endDay = parseInt(info.dateStr.substring(8,10)) + 1;
+			    
+			    var endDate = endYear + '-' + endMonth + '-' + endDay;
+			    
+			    var form = {
+			        arr : JSON.stringify(arr),
+			        title : info.draggedEl.innerText,
+			        start : info.dateStr,
+			        end : endDate,
+			    };
+
+			    $.ajax({
+			        type: "post", 
+			        url: "postInsert", 
+			        dataType: "json", 
+			        contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+			        data: form
+			    });
 			},
 			
 			locale : 'ko'
@@ -126,20 +250,6 @@
 				});
 			});
 			calendar.render();
-		});
-
-		calendar.on('dateClick', function(info) {
-			$('#add_event').modal().on('shown.bs.modal', function () {
-				  $('#add_event').focus();
-				  $('.start-date').val(info.dateStr);
-			})
-/* 			calendar.addEvent({
-				'title' : '이벤트 추가',
-				'start' : info.dateStr,
-				'end' : info.dateStr
-			}); */
-			alert('날짜 정보 콘솔에 출력됨');
-			console.log('clicked on ' + info.dateStr);
 		});
 
 		calendar.render();
@@ -158,58 +268,6 @@
 			$.each(item, function(iii, ttt) {
 				console.log('inner loop_in_cal => ' + iii + ' : ' + ttt);
 			});
-		});
-
-		$("#modal-sub-mod-btn").click(function() {
-					alert('버튼입력');
-					$('.delete-event').hide();
-					$('.modify-event').show();
-					$('#modal-sub-title-a').attr('readonly', false);
-					$('.start-date-a').attr('readonly', false);
-					$('.end-date-a').attr('readonly', false);
-					$('#modal-sub-title-a').attr('readonly', false);
-					$('.calSelect-a').attr('disabled', false);
-				    $('#modal-sub-txt-area-a').attr('readonly', false);
-				    $('#event-modal').modal().on('hidden.bs.modal', function () {
-				    	$('#modal-sub-title-a').attr('readonly', true);
-						$('.start-date-a').attr('readonly', true);
-						$('.end-date-a').attr('readonly', true);
-						$('#modal-sub-title-a').attr('readonly', true);
-						$('.calSelect-a').attr('disabled', true);
-					    $('#modal-sub-txt-area-a').attr('readonly', true);
-				    })
-				});
-		
-		$(document).on('click', '.modify-event', function(e) {
-			$('.delete-event').show();
-			$('.modify-event').hide();
-			$('#modal-sub-title-a').attr('readonly', true);
-			$('.start-date-a').attr('readonly', true);
-			$('.end-date-a').attr('readonly', true);
-			$('#modal-sub-title-a').attr('readonly', true);
-			$('.calSelect-a').attr('disabled', true);
-		    $('#modal-sub-txt-area-a').attr('readonly', true);
-		   
-		    var arr = [];
-		    arr.push(7);
-		    arr.push(8);
-		    
-		    var form = {
-		        arr : JSON.stringify(arr),
-		        title : $('.modal-sub-text-a').val(),
-		        start : $('.start-date-a').val(),
-		        end : $('.end-date-a').val(),
-		        category : $('.calSelect-a option:selected').val(),
-		        body : $('#modal-sub-txt-area-a').val()
-		    };
-
-		    $.ajax({
-		        type: "post", 
-		        url: "postMain", 
-		        dataType: "json", 
-		        contentType : "application/x-www-form-urlencoded; charset=UTF-8",
-		        data: form
-		    });
 		});
 		
 		$(".asdfasdf").click(function() {
@@ -786,28 +844,28 @@ if($('.select11').length > 0) {
 										<!-- Calendar -->
 										<div id='external-events'>
 											<p>
-												<strong>Draggable Events</strong>
+												<strong>개인일정 추가</strong>
 											</p>
 
 											<div
 												class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-												<div class='fc-event-main'>My Event 1</div>
+												<div class='fc-event-main'>휴가</div>
 											</div>
 											<div
 												class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-												<div class='fc-event-main'>My Event 2</div>
+												<div class='fc-event-main'>파견근무</div>
 											</div>
 											<div
 												class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-												<div class='fc-event-main'>My Event 3</div>
+												<div class='fc-event-main'>나의 커스텀 이벤트 1</div>
 											</div>
 											<div
 												class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-												<div class='fc-event-main'>My Event 4</div>
+												<div class='fc-event-main'>나의 커스텀 이벤트 2</div>
 											</div>
 											<div
 												class='fc-event fc-h-event fc-daygrid-event fc-daygrid-block-event'>
-												<div class='fc-event-main'>My Event 5</div>
+												<div class='fc-event-main'>나의 커스텀 이벤트 3</div>
 											</div>
 
 											<p>
@@ -819,7 +877,6 @@ if($('.select11').length > 0) {
 										<div id='calendar-container'>
 											<div id='calendar'></div>
 										</div>
-										<input type="button" id="btnAddTest" value="추가">
 										<!-- /Calendar -->
 
 									</div>
@@ -836,7 +893,7 @@ if($('.select11').length > 0) {
 				<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
 					<div class="modal-content">
 						<div class="modal-header">
-							<h5 class="modal-title">Add Event</h5>
+							<h5 class="modal-title">일정 추가</h5>
 							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 								<span aria-hidden="true">&times;</span>
 							</button>
@@ -849,13 +906,13 @@ if($('.select11').length > 0) {
 										<input class="form-control modal-sub-text" type="text">
 									</div>
 									<div class="form-group">
-										<label>일정 기간 <span class="text-danger">*</span></label>
+										<label>시작일<span class="text-danger">*</span></label>
 										<div class="cal-icon">
 											<input class="form-control datetimepicker start-date" id="dtpicker" type="text">
 										</div>
 									</div>
 									<div class="form-group">
-										<label>종료 기간 <span class="text-danger">*</span></label>
+										<label>종료일 <span class="text-danger">*</span></label>
 										<div class="cal-icon">
 											<input class="form-control datetimepicker end-date" id="dtpicker" type="text">
 										</div>
@@ -911,13 +968,13 @@ if($('.select11').length > 0) {
 										<input class="form-control modal-sub-text" type="text" id="modal-sub-title-a" readonly="readonly">
 									</div>
 									<div class="form-group">
-										<label>일정 기간 <span class="text-danger">*</span></label>
+										<label>시작일<span class="text-danger">*</span></label>
 										<div class="cal-icon">
 											<input class="form-control datetimepicker start-date-a" id="dtpicker" type="text" readonly="readonly">
 										</div>
 									</div>
 									<div class="form-group">
-										<label>종료 기간 <span class="text-danger">*</span></label>
+										<label>종료일 <span class="text-danger">*</span></label>
 										<div class="cal-icon">
 											<input class="form-control datetimepicker end-date-a" id="dtpicker" type="text" readonly="readonly">
 										</div>
@@ -946,7 +1003,7 @@ if($('.select11').length > 0) {
 							</div>
 							<div class="submit-section">
 								<button class="btn btn-danger submit-btn delete-event" data-dismiss="modal">일정삭제</button>
-								<button class="btn btn-success submit-btn modify-event">일정수정</button>
+								<button class="btn btn-success submit-btn modify-event" data-dismiss="modal">일정수정</button>
 							</div>
 						</div>
 					</div>

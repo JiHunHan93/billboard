@@ -6,16 +6,26 @@ public class WorkDeptAndMemberDTO {
 	private String date;
 	private String commute;
 	private String leave;
-	private int MemberNo;
+	private int memNo;
 	private String type;
-	private String MemberName;
+	private String name;
+	private WorkTypeDTO workType;
+	private WorkTypeDTO workCode;
 	
 	public WorkDeptAndMemberDTO() {}
 
-	@Override
-	public String toString() {
-		return "WorkDeptAndMemberDTO [no=" + no + ", date=" + date + ", commute=" + commute + ", leave=" + leave
-				+ ", MemberNo=" + MemberNo + ", type=" + type + ", MemberName=" + MemberName + "]";
+	public WorkDeptAndMemberDTO(int no, String date, String commute, String leave, int memNo, String type, String name,
+			WorkTypeDTO workType, WorkTypeDTO workCode) {
+		super();
+		this.no = no;
+		this.date = date;
+		this.commute = commute;
+		this.leave = leave;
+		this.memNo = memNo;
+		this.type = type;
+		this.name = name;
+		this.workType = workType;
+		this.workCode = workCode;
 	}
 
 	public int getNo() {
@@ -50,12 +60,12 @@ public class WorkDeptAndMemberDTO {
 		this.leave = leave;
 	}
 
-	public int getMemberNo() {
-		return MemberNo;
+	public int getMemNo() {
+		return memNo;
 	}
 
-	public void setMemberNo(int memberNo) {
-		MemberNo = memberNo;
+	public void setMemNo(int memNo) {
+		this.memNo = memNo;
 	}
 
 	public String getType() {
@@ -66,23 +76,35 @@ public class WorkDeptAndMemberDTO {
 		this.type = type;
 	}
 
-	public String getMemberName() {
-		return MemberName;
+	public String getName() {
+		return name;
 	}
 
-	public void setMemberName(String memberName) {
-		MemberName = memberName;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public WorkDeptAndMemberDTO(int no, String date, String commute, String leave, int memberNo, String type,
-			String memberName) {
-		super();
-		this.no = no;
-		this.date = date;
-		this.commute = commute;
-		this.leave = leave;
-		MemberNo = memberNo;
-		this.type = type;
-		MemberName = memberName;
+	public WorkTypeDTO getWorkType() {
+		return workType;
 	}
+
+	public void setWorkType(WorkTypeDTO workType) {
+		this.workType = workType;
+	}
+
+	public WorkTypeDTO getWorkCode() {
+		return workCode;
+	}
+
+	public void setWorkCode(WorkTypeDTO workCode) {
+		this.workCode = workCode;
+	}
+
+	@Override
+	public String toString() {
+		return "WorkDeptAndMemberDTO [no=" + no + ", date=" + date + ", commute=" + commute + ", leave=" + leave
+				+ ", memNo=" + memNo + ", type=" + type + ", name=" + name + ", workType=" + workType + ", workCode="
+				+ workCode + "]";
+	}
+
 }
