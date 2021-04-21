@@ -53,28 +53,6 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkStatusService;
 			principal.getName();
 			System.out.println("관리자 : " + principal);
 			System.out.println("==================================="); 
-																													
-																																
-
-			
-		/*
-		 * Calendar workHour = new GregorianCalendar();
-		 * 
-		 * int workHours = workHour.get(Calendar.HOUR_OF_DAY); int workMinutes =
-		 * workHour.get(Calendar.MINUTE); int workSeconds =
-		 * workHour.get(Calendar.SECOND);
-		 * 
-		 * Calendar leaveWork = new GregorianCalendar();
-		 * 
-		 * int leaveHours = leaveWork.get(Calendar.HOUR_OF_DAY); int leaveMinutes =
-		 * leaveWork.get(Calendar.MINUTE); int leaveSeconds =
-		 * leaveWork.get(Calendar.SECOND);
-		 * 
-		 * int workTimeHour = leaveHours - workHours; int workTimeMinute = leaveMinutes
-		 * - workMinutes; int workTimeSecond = leaveSeconds - workSeconds;
-		 */
-			
-//			System.out.println("근무시간 : " + workTimeHour + workTimeMinute + workTimeSecond);
 			
 			
 			UserDetailsVO userDetails = (UserDetailsVO) authentication.getPrincipal();

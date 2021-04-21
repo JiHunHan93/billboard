@@ -125,25 +125,6 @@ public class WorkDetailController {
 			
 			return "redirect:http://127.0.0.1:8001/billbo/work";
 	}
-	//상세보기 
-	
-	
-	/*
-	 * @GetMapping("/work/sequence")
-	 * 
-	 * @ResponseBody public ModelAndView sequenceWork(HttpServletRequest request,
-	 * HttpServletResponse response, Model model) {
-	 * 
-	 * 
-	 * ModelAndView mv = new ModelAndView(); mv.setViewName("work/WorkModify"); int
-	 * no = Integer.parseInt(request.getParameter("no")); 
-	 * mv.addObject("no", no);
-	 * System.out.println(no); 
-	 * List<StatusAndWorkDTO> detailInfo = workStatusService.sequenceWork(no);
-	 * model.addAttribute("detailInfo",detailInfo);
-	 */ 
-	 /* return mv; 
-	 */ 
-	 }
+}
 	 
 	
