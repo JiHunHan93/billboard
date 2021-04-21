@@ -40,21 +40,15 @@ public class DepartmentServiceImpl implements DepartmentService {
 
 	@Override
 	public DepartmentSpotDTO selectDeptInpoSpot(int memberName) {
+		// TODO Auto-generated method stub
 		return null;
 	}
-	
-//	/* 직원 정보 조회 */
-//	@Override
-//	public DepartmentSpotDTO selectDeptInpoSpot(int memberName) {
-//
-//		return null;
-//	}
-//
-//	@Override
-//	public DepartmentDTO selectDeptInfo(int deptCode) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+
+	@Override
+	public List<DepartmentDTO> memberDetailProfile(int no) {
+		// TODO Auto-generated method stub
+		return departmentMapper.detailEmployeeProfile(no);
+	}
 	
 	
 }

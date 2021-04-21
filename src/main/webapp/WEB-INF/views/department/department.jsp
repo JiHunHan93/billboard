@@ -669,7 +669,7 @@
 										</tr>
 										<tr>
 											<td>2</td>
-											<td><a href="department-management.jsp">관리부</a></td>
+											<td><a href="department-management">관리부</a></td>
 											<td class="text-right">
                                             <div class="dropdown dropdown-action">
 													<a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
@@ -682,7 +682,7 @@
 										</tr>
 										<tr>
 											<td>3</td>
-											<td><a href="department-production.jsp">생산부</a></td>
+											<td><a href="department-production">생산부</a></td>
 											<td class="text-right">
                                             <div class="dropdown dropdown-action">
 													<a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="material-icons">more_vert</i></a>
