@@ -12,6 +12,12 @@ public interface CalDAO {
 	int insertEvt(CalDTO calDTO);
 
 	String selectDept(int userNo);
+
+	int updateEvt(CalDTO calDTO);
+
+	int deleteEvt(CalDTO calDTO);
+
+	int insertDropEvt(CalDTO calDTO);
 	
 	
 }

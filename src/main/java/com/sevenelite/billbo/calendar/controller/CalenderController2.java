@@ -12,7 +12,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -37,6 +36,7 @@ public class CalenderController2 {
 		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
 		int userNo = user.getMemberno();
 		String deptCode = calService.seletDept(userNo);
+		System.out.println(deptCode);
 		model.addAttribute("userNo", userNo);
 		model.addAttribute("deptCode", deptCode);
 		return "Calender/calender2";
@@ -58,7 +58,7 @@ public class CalenderController2 {
 	
 	@RequestMapping(value = "/postMain", method = RequestMethod.POST)
 	@ResponseBody
-	public void asd(@ModelAttribute CalDTO calDTO, HttpServletRequest request, Authentication authentication) {
+	public void insertEvt(@ModelAttribute CalDTO calDTO, HttpServletRequest request, Authentication authentication) {
 		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
 		int userNo = user.getMemberno();
 		String title = request.getParameter("title");
@@ -67,7 +67,13 @@ public class CalenderController2 {
 		String body = request.getParameter("body");
 		String category = request.getParameter("category");
 		String deptCode = calService.seletDept(userNo);
-		System.out.println("userNo : " + userNo + "\ntitle : " + title + "\nstart : " + start + "\nend : " + end + "\nbody : " + body + "\ncategory : " + category + "\ndeptCode : " + deptCode);
+		System.out.println("userNo : " + userNo 
+				         + "\ntitle : " + title 
+				         + "\nstart : " + start 
+				         + "\nend : " + end 
+				         + "\nbody : " + body 
+				         + "\ncategory : " + category 
+				         + "\ndeptCode : " + deptCode);
 		calDTO.setMemberNo(userNo);
 		calDTO.setTitle(title);
 		calDTO.setStart(start);
@@ -79,52 +85,69 @@ public class CalenderController2 {
 		calService.insertEvt(calDTO);
 	}
 	
-//	@RequestMapping("calender2/getMain")
-//	@ResponseBody
-//	public HashMap<String, Object> AjaxCalenderMain() {
-//		
-//		HashMap<String, Object> map = new HashMap<String, Object>();
-////		CalMap.put("evt1", new CalDTO("db이벤트1", "2021-04-04", "2021-04-06", false) );
-////		CalMap.put("evt2", new CalDTO("db이벤트2", "2021-04-23", "2021-04-26", false) );
-//		
-//		List<CalDTO> calendarInfo = calService.selectCal();
-//		System.out.println("아직 컨트롤러" + calendarInfo);
-//		
-//		map.put("cal", calendarInfo);
-//		
-//		return map;
-//	}
-	
-//	@RequestMapping("calender2/getMain")
-//	@ResponseBody
-////	public List<Map<String,CalDTO>> AjaxCalenderMain() {
-//	public String AjaxCalenderMain() {	
-//		
-//		Gson gson = new GsonBuilder().create();
-//		
-////		CalMap.put("evt1", new CalDTO("db이벤트1", "2021-04-04", "2021-04-06", false) );
-////		CalMap.put("evt2", new CalDTO("db이벤트2", "2021-04-23", "2021-04-26", false) );
-//		
-//		List<Map<String,CalDTO>> calendarInfo = calService.selectCal();
-//		System.out.println("아직 컨트롤러" + calendarInfo);
-//		
-//		System.out.println("타입" + calendarInfo.get(0));
-//		System.out.println("타입" + calendarInfo.get(0).getClass().getName());
-//		System.out.println(calendarInfo.get(0).toString());
-//		System.out.println("타입 : " + calendarInfo.get(0).toString().getClass().getName());
-//		
-//	    return gson.toJson(calendarInfo.get(0).toString());
-//	}
-	
-	@PostMapping("/insert")
+	@RequestMapping(value = "/postUpdate", method = RequestMethod.POST)
 	@ResponseBody
-	public String CalenderPostMain(HttpServletRequest request) {
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-
-		String arr = request.getParameter("arr"); 
-		System.out.println(arr);
-		
-		return "redirect: http://127.0.0.1:8001/billbo/calender2/main.php";
+	public void updateEvt(@ModelAttribute CalDTO calDTO, HttpServletRequest request) {
+		if(request.getParameter("no") != null) {
+			String noStr = request.getParameter("no").trim();
+			int no = Integer.parseInt(noStr);
+			String title = request.getParameter("title");
+			String start = request.getParameter("start");
+			String end = request.getParameter("end");
+			String body = request.getParameter("body");
+			String category = request.getParameter("category");
+			System.out.println("no : " + no 
+					         + "\ntitle : " + title 
+			                 + "\nstart : " + start 
+			                 + "\nend : " + end 
+			                 + "\nbody : " + body 
+			                 + "\ncategory : " + category);
+			calDTO.setNo(no);
+			calDTO.setTitle(title);
+			calDTO.setStart(start);
+			calDTO.setEnd(end);
+			calDTO.setBody(body);
+			calDTO.setCalType(category);
+			System.out.println("calDTO : [" + calDTO + "]");
+			calService.updateEvt(calDTO);
+		}
+		System.out.println("재방문");
+	}
+	
+	@RequestMapping(value = "/postDelete", method = RequestMethod.POST)
+	@ResponseBody
+	public void deleteEvt(@ModelAttribute CalDTO calDTO, HttpServletRequest request) {
+		if(request.getParameter("no") != null) {
+			String noStr = request.getParameter("no").trim();
+			int no = Integer.parseInt(noStr);
+			System.out.println("no : " + no);
+			calDTO.setNo(no);
+			System.out.println("calDTO : [" + calDTO + "]");
+			calService.deleteEvt(calDTO);
+		}
+		System.out.println("재방문");
+	}
+	
+	@RequestMapping(value = "/postInsert", method = RequestMethod.POST)
+	@ResponseBody
+	public void insertDropEvt(@ModelAttribute CalDTO calDTO, HttpServletRequest request, Authentication authentication) {
+		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
+		int userNo = user.getMemberno();
+		String title = request.getParameter("title");
+		String start = request.getParameter("start");
+		String end = request.getParameter("end");
+		String deptCode = calService.seletDept(userNo);
+		System.out.println("userNo : " + userNo 
+				         + "\ntitle : " + title 
+				         + "\nstart : " + start 
+				         + "\ndeptCode : " + deptCode);
+		calDTO.setMemberNo(userNo);
+		calDTO.setTitle(title);
+		calDTO.setStart(start);
+		calDTO.setEnd(end);
+		calDTO.setCode(deptCode);
+		System.out.println("calDTO : [" + calDTO + "]");
+		calService.insertDropEvt(calDTO);
 	}
 
 }

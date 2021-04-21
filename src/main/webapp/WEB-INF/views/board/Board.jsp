@@ -691,10 +691,8 @@
 				</div>
 
 				<div class="row dashboard-sub-container">
-
 					<div class="col-sm-12" style="height: 900px;">
 						<div class="card mb-0">
-
 							<div class="card-header">
 								<div class="col-md-6" style="max-width: 100%;">
 									<div class="card-board-style">

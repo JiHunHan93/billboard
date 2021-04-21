@@ -34,5 +34,20 @@ public class CalServiceImpl implements CalService {
 		return calDAO.selectDept(userNo);
 	}
 
+	@Override
+	public boolean updateEvt(CalDTO calDTO) {
+		return calDAO.updateEvt(calDTO) > 0? true : false;
+	}
+
+	@Override
+	public boolean deleteEvt(CalDTO calDTO) {
+		return calDAO.deleteEvt(calDTO) > 0? true : false;
+	}
+
+	@Override
+	public boolean insertDropEvt(CalDTO calDTO) {
+		return calDAO.insertDropEvt(calDTO) > 0? true : false;
+	}
+
 
 }
