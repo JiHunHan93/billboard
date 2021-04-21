@@ -252,113 +252,115 @@ public class MainProfileController {
 
 		return "redirect:/profile/mainProfile2";
 	}
-	@PostMapping(value ="mainProfile2")
-	public String page2(@ModelAttribute MemDTO mem, Authentication authentication, Model model) {
-		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
-	@GetMapping(value = "mainProfile2")
-	public String page2(Model model, Authentication authentication) {
-
-		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
-		System.out.println("로그인 회원번호");
-		/* 멤버정보조회 */
-		List<MemberInfoDTO> member = profileService.selectMemberInfo(user.getMemberno());
-		/*멤버정보등록이력*/
-		List<MemberInfoDTO> viewAllInfo = profileService.viewAllInfo(user.getMemberno());
-		
-		/* 부서조회 */
-		List<DeptDTO> dept = profileService.selectMemberDept(user.getMemberno());
-		
-		/* 이메일조회 */
-		List<MemBbDTO> detailMem = profileService.selectMemberDetail(user.getMemberno());
-		/* 부서변경 조회 */
-		List<ModifyDeptDTO1> modidept = profileService.selectModifyDept(user.getMemberno());
-		/*부서등록이력 하단 조회*/
-		List<ModifyDeptDTO1> viewMemberDept = profileService.viewMemberDept(user.getMemberno());
-		/* 직위변경 조회 */
-		List<ModifySpotDTO> modispotDto = profileService.selectspot(user.getMemberno());
-		/* 직위조회*/
-		List<ModifySpotDTO> viewModispotDto = profileService.viewModispotDto(user.getMemberno());
-		
-		/* 경력 */
-		List<CareerDTO> careerDto = profileService.career(user.getMemberno());
-		/* 경력 이력 조회 */
-		List<CareerDTO> viewCareerDto = profileService.viewCareerDto(user.getMemberno());
-		/* 상벌 */
-		List<BonusDTO> bonusDto = profileService.bonus(user.getMemberno());
-		/* 상벌 이력 */
-		List<BonusDTO> viewBonusDto = profileService.viewBonusDto(user.getMemberno());
-		/*면허 */
-		List<LicenseDTO> LicenseDto = profileService.selectLicense(user.getMemberno());
-		/*면허 */
-		List<LicenseDTO> viewLicenseDto = profileService.viewLicenseDto(user.getMemberno());
-		/* 자격 */
-		List<CertificateDTO> certificateInsert = profileService.certificateInsert(user.getMemberno());
-		/* 자격 이력 */
-		List<CertificateDTO> viewCertificateInsert = profileService.viewCertificateInsert(user.getMemberno());
-		/* 병역 */
-		List<ArmyDTO> armySelect = profileService.armySelect(user.getMemberno());
-		/* 병역이력 */
-		List<ArmyDTO> viewArmySelect = profileService.viewArmySelect(user.getMemberno());
-		/* 학력 */
-		List<FinalAcademicDTO> academic = profileService.academic(user.getMemberno());
-		/* 학력이력 */
-		List<FinalAcademicDTO> viewAcademic = profileService.viewAcademic(user.getMemberno());
-		/* 정말 가 족같은 가족사항 */
-		List<FamilyDTO> familySelect = profileService.familySelect(user.getMemberno());
-		/* 정말 가 족같은 가족사항 */
-		List<FamilyDTO> viewFamilySelect = profileService.viewFamilySelect(user.getMemberno());
-
-		
-		/*신상정보 전체 조회용*/
-		
-		System.out.println(member + "오나???!?");
-		System.out.println(dept + "이것도 오나???!?");
-		System.out.println(detailMem + "이거도 제발");
-		System.out.println(modidept + "이거도 제발Q");
-		System.out.println(modispotDto + "이거도 제발시발");
-		System.out.println(careerDto + "이거도 제발시발");
-		System.out.println(bonusDto + "이거도 제발시발");
-		System.out.println(LicenseDto + "젭알 되주세요");
-		System.out.println(certificateInsert + "젭알 되주세요");
-		System.out.println(armySelect + "이거 안되면 재입대한다");
-		System.out.println(academic + "이쯤되면 그냥 되겠지..");
-		System.out.println(familySelect + "마지막");
-
-		model.addAttribute("member", member);
-		model.addAttribute("viewAllInfo", viewAllInfo);
-		
-		model.addAttribute("dept", dept);
-		model.addAttribute("viewMemberDept", viewMemberDept);
-		
-		model.addAttribute("detailMem", detailMem);
-		model.addAttribute("modidept", modidept);
-		model.addAttribute("modispotDto", modispotDto);
-		model.addAttribute("viewModispotDto", viewModispotDto);
-		
-		model.addAttribute("careerDto", careerDto);
-		model.addAttribute("viewCareerDto", viewCareerDto);
-		
-		model.addAttribute("bonusDto", bonusDto);
-		model.addAttribute("viewBonusDto", viewBonusDto);
-		
-		model.addAttribute("LicenseDto", LicenseDto);
-		model.addAttribute("viewLicenseDto", viewLicenseDto);
-		
-		model.addAttribute("certificateInsert", certificateInsert);
-		model.addAttribute("viewCertificateInsert", viewCertificateInsert);
-		
-		model.addAttribute("armySelect", armySelect);
-		model.addAttribute("viewArmySelect", viewArmySelect);
-		
-		model.addAttribute("academic", academic);
-		model.addAttribute("viewAcademic", viewAcademic);
-		
-		model.addAttribute("familySelect", familySelect);
-		model.addAttribute("viewFamilySelect", viewFamilySelect);
-
-		return "profile/main2";
-
-	}
+	
+	/* 서버 터져서 주석 */
+//	@PostMapping(value ="mainProfile2")
+//	public String page2(@ModelAttribute MemDTO mem, Authentication authentication, Model model) {
+//		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
+//	@GetMapping(value = "mainProfile2")
+//	public String page2(Model model, Authentication authentication) {
+//
+//		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
+//		System.out.println("로그인 회원번호");
+//		/* 멤버정보조회 */
+//		List<MemberInfoDTO> member = profileService.selectMemberInfo(user.getMemberno());
+//		/*멤버정보등록이력*/
+//		List<MemberInfoDTO> viewAllInfo = profileService.viewAllInfo(user.getMemberno());
+//		
+//		/* 부서조회 */
+//		List<DeptDTO> dept = profileService.selectMemberDept(user.getMemberno());
+//		
+//		/* 이메일조회 */
+//		List<MemBbDTO> detailMem = profileService.selectMemberDetail(user.getMemberno());
+//		/* 부서변경 조회 */
+//		List<ModifyDeptDTO1> modidept = profileService.selectModifyDept(user.getMemberno());
+//		/*부서등록이력 하단 조회*/
+//		List<ModifyDeptDTO1> viewMemberDept = profileService.viewMemberDept(user.getMemberno());
+//		/* 직위변경 조회 */
+//		List<ModifySpotDTO> modispotDto = profileService.selectspot(user.getMemberno());
+//		/* 직위조회*/
+//		List<ModifySpotDTO> viewModispotDto = profileService.viewModispotDto(user.getMemberno());
+//		
+//		/* 경력 */
+//		List<CareerDTO> careerDto = profileService.career(user.getMemberno());
+//		/* 경력 이력 조회 */
+//		List<CareerDTO> viewCareerDto = profileService.viewCareerDto(user.getMemberno());
+//		/* 상벌 */
+//		List<BonusDTO> bonusDto = profileService.bonus(user.getMemberno());
+//		/* 상벌 이력 */
+//		List<BonusDTO> viewBonusDto = profileService.viewBonusDto(user.getMemberno());
+//		/*면허 */
+//		List<LicenseDTO> LicenseDto = profileService.selectLicense(user.getMemberno());
+//		/*면허 */
+//		List<LicenseDTO> viewLicenseDto = profileService.viewLicenseDto(user.getMemberno());
+//		/* 자격 */
+//		List<CertificateDTO> certificateInsert = profileService.certificateInsert(user.getMemberno());
+//		/* 자격 이력 */
+//		List<CertificateDTO> viewCertificateInsert = profileService.viewCertificateInsert(user.getMemberno());
+//		/* 병역 */
+//		List<ArmyDTO> armySelect = profileService.armySelect(user.getMemberno());
+//		/* 병역이력 */
+//		List<ArmyDTO> viewArmySelect = profileService.viewArmySelect(user.getMemberno());
+//		/* 학력 */
+//		List<FinalAcademicDTO> academic = profileService.academic(user.getMemberno());
+//		/* 학력이력 */
+//		List<FinalAcademicDTO> viewAcademic = profileService.viewAcademic(user.getMemberno());
+//		/* 정말 가 족같은 가족사항 */
+//		List<FamilyDTO> familySelect = profileService.familySelect(user.getMemberno());
+//		/* 정말 가 족같은 가족사항 */
+//		List<FamilyDTO> viewFamilySelect = profileService.viewFamilySelect(user.getMemberno());
+//
+//		
+//		/*신상정보 전체 조회용*/
+//		
+//		System.out.println(member + "오나???!?");
+//		System.out.println(dept + "이것도 오나???!?");
+//		System.out.println(detailMem + "이거도 제발");
+//		System.out.println(modidept + "이거도 제발Q");
+//		System.out.println(modispotDto + "이거도 제발시발");
+//		System.out.println(careerDto + "이거도 제발시발");
+//		System.out.println(bonusDto + "이거도 제발시발");
+//		System.out.println(LicenseDto + "젭알 되주세요");
+//		System.out.println(certificateInsert + "젭알 되주세요");
+//		System.out.println(armySelect + "이거 안되면 재입대한다");
+//		System.out.println(academic + "이쯤되면 그냥 되겠지..");
+//		System.out.println(familySelect + "마지막");
+//
+//		model.addAttribute("member", member);
+//		model.addAttribute("viewAllInfo", viewAllInfo);
+//		
+//		model.addAttribute("dept", dept);
+//		model.addAttribute("viewMemberDept", viewMemberDept);
+//		
+//		model.addAttribute("detailMem", detailMem);
+//		model.addAttribute("modidept", modidept);
+//		model.addAttribute("modispotDto", modispotDto);
+//		model.addAttribute("viewModispotDto", viewModispotDto);
+//		
+//		model.addAttribute("careerDto", careerDto);
+//		model.addAttribute("viewCareerDto", viewCareerDto);
+//		
+//		model.addAttribute("bonusDto", bonusDto);
+//		model.addAttribute("viewBonusDto", viewBonusDto);
+//		
+//		model.addAttribute("LicenseDto", LicenseDto);
+//		model.addAttribute("viewLicenseDto", viewLicenseDto);
+//		
+//		model.addAttribute("certificateInsert", certificateInsert);
+//		model.addAttribute("viewCertificateInsert", viewCertificateInsert);
+//		
+//		model.addAttribute("armySelect", armySelect);
+//		model.addAttribute("viewArmySelect", viewArmySelect);
+//		
+//		model.addAttribute("academic", academic);
+//		model.addAttribute("viewAcademic", viewAcademic);
+//		
+//		model.addAttribute("familySelect", familySelect);
+//		model.addAttribute("viewFamilySelect", viewFamilySelect);
+//
+//		return "profile/main2";
+//
+//	}
 	
 	
 	/* select이긴 한데 .. */
