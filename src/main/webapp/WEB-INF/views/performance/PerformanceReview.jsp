@@ -710,19 +710,21 @@
 
 </body>
 <script type="text/javascript">
-function goModify(frm){
-	 var title = frm.title.value;
-	 var name = frm.name.value;
-	 var enrollDate = frm.enrollDate.value;
-	 var endDate = frm.endDate.value;
-	 var boardType = frm.boardType.value;
-	 var body = frm.body.value;
-	 var fileAttachment = frm.fileAttachment.value;
-	 
-	 frm.submit();
-	 
-	 
-}
+	<script type="text/javascript">
+	
+	$("#modify-btn").click(function() {
+	var memberNo = $("input[name='memberNo']").val();
+	var enrollDate = $("input[name='enrollDate']").val();
+	var rnpType = $("select[name='rnpType']").val();
+	var reason = $("textarea[name='reason']").val();
+	var body = $("textarea[name='body']").val();
+	
+
+	var jihwan = $('form[name="rnpInsert"]').serializeArray();
+	console.table(jihwan);
+	$("form[name='rnpInsert']").submit();	
+	
+});
 </script>
 
 <script type="text/javascript">

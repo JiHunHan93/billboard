@@ -19,6 +19,9 @@ public interface DepartmentService {
 	
 	/* 생산부서 조회 */
 	List<DepartmentDTO> selectProductionDepartmentList();
+
+	List<DepartmentDTO> memberDetailProfile(int no);
+
 	
 
 
