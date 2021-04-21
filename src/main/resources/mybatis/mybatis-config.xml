@@ -17,6 +17,7 @@
  		
  		<typeAlias alias="WorkDTO" type="com.sevenelite.billbo.workhour.work.model.dto.WorkDTO"/> 
  		<typeAlias alias="WorkTypeDTO" type="com.sevenelite.billbo.workhour.work.model.dto.WorkTypeDTO"/> 
+ 		<typeAlias alias="WorkDeptAndMemberDTO" type="com.sevenelite.billbo.workhour.work.model.dto.WorkDeptAndMemberDTO"/>
  		<typeAlias alias="StatusAndWorkDTO" type="com.sevenelite.billbo.workhour.work.model.dto.StatusAndWorkDTO"/>
  		<typeAlias alias="RecordWorkDTO" type="com.sevenelite.billbo.workhour.work.model.dto.RecordWorkDTO"/> 
  		<typeAlias alias="ArmyDTO" type="com.sevenelite.billbo.profile.model.dto.ArmyDTO"/>

@@ -2024,11 +2024,11 @@
 				<!-- Profile Modal -->
 				<div id="profile_info" class="modal custom-modal fade" role="dialog">
 					<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-						<form name="mainInsert" action="http://127.0.0.1:8001/billbo/profile/mainProfile2" method="post">
-					<div class="modal-content sub-modal">
-						
+						<form name="member" action="http://127.0.0.1:8001/billbo/profile/mainProfile2" method="post">
+					<div class="modal-content sub-modal">		
+						<div class="modal-content sub-modal">
 							<div class="modal-header">
-								<h5 class="modal-title">Profile Information Edit Page</h5>
+								<h5 class="modal-title">상벌 추가</h5>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
@@ -2036,16 +2036,16 @@
 							<div class="modal-body">
 							 <div class="row">
 										<div class="col-md-12">
-											<div class="profile-img-wrap edit-img">
-												<!-- 사진 업로드********************************************************  -->
+											<!-- <div class="profile-img-wrap edit-img">
+												사진 업로드******************************************************** 
 												<img class="inline-block" src="hrtemp/img/profiles/avatar-02.jpg" alt="user">
 												<div class="fileupload btn">
 													<span class="btn-text">edit</span>
 													<input class="upload" type="file">
 												</div>
-											</div>
+											</div> -->
 											
-													<c:forEach var="detailMem" items="${ requestScope.detailMem }">
+											<c:forEach var="detailMem" items="${ requestScope.detailMem }">
 											<div class="row">
 												<div class="col-md-6">
 													<div class="form-group">
@@ -2078,23 +2078,42 @@
 												</div>
 										</c:forEach>
 												</div>
+												<!-- 요기까지는 됬음. -->
 												</div>
-										
+										<!-- modalbody -->
 											</div>
-											
-									<div class="page_action_wrap" style="display: block;">
-										<button class="btn_major" data-role="button"  id="submit">저장</button>
-										<button class="btn_minor" data-role="button"  id="hrcard_btn_cancel">취소</button>
+								 	<div class="page_action_wrap" style="display: block;">
+										<button class="btn_major" data-role="button" onclick="submit(this.form)">저장</button>
+										<button class="btn_minor" data-role="button"  id="submit">취소</button>
 								</div>
 									<div class="submit-section">
 										<button class="btn btn-primary submit-btn" data-role="button" type="button" onclick="submit1(this.form)">Submit</button>
-										</div>
+										</div> 
+										<div class="page_action_wrap">
+										<button class="btn btn-primary submit-btn" data-role="button" id="submit" type="button">즈으장</button>
+									</div>
+											</div>
 											</div>
 								</form>
 										</div>
 									  
 									</div>
 							</div>
+			<script type="text/javascript">
+     $("#submit").click(function() {
+  /*   	var phone = $("select[phone='phone']").val();
+    	var email = $("select[email='email']").val();
+    	 */
+    	
+    /* 	
+    	var jihwan = $('form[name="rnpInsert"]').serializeArray();
+    	console.table(jihwan);
+    	$("form[name='rnpInsert']").submit();	 */
+    	
+     });
+	
+	
+    </script>				
 		<!--  <script type="text/javascript">
     
     	 $("#submit").click(function() {
