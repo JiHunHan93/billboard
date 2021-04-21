@@ -256,7 +256,7 @@
 				<li class="nav-item dropdown"><a href="#"
 					class="dropdown-toggle nav-link" data-toggle="dropdown"> <i
 						class="fa fa-comment-o"></i> <span class="badge badge-pill">8</span>
-				</a>
+				</a>  
 					<div class="dropdown-menu notifications">
 						<div class="topnav-dropdown-header">
 							<span class="notification-title">Messages</span> <a

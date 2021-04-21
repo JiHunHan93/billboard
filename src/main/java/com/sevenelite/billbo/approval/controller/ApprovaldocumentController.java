@@ -176,7 +176,7 @@ public class ApprovaldocumentController {
 		/* 2-2. 직위도 필요할듯 */
 		List<ApproSpotDTO> spotList = appro.selectLoginSpotList(memList);
 		
-		/* 결과 출력 */
+		/* 결과 출력 */ 
 		for(ApproDeptDTO dept : deptList) {
 			System.out.println(dept);
 		}
