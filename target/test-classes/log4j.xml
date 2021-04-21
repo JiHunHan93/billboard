@@ -9,7 +9,7 @@
             <param name="ConversionPattern" value="%d %5p [%c] %m%n" />
         </layout>
     </appender>
-
+    
     <!-- *추가* -->
     <appender name="console-infolog" class="org.apache.log4j.ConsoleAppender">
           <layout class="org.apache.log4j.PatternLayout">
@@ -17,14 +17,14 @@
           </layout>  
     </appender>
     <!--  -->
-
+    
     <!-- DB log 설정 -->
     <appender name="sqlLogger" class="org.apache.log4j.ConsoleAppender">
     	<layout class="org.apache.log4j.PatternLayout">
     		<param name="ConversionPattern" value="[%d{yyyy-MM-dd HH:mm:ss}] %-5p:%m%n"/>
     	</layout>
     </appender>
-
+    
     <logger name="jdbc.sqlonly" additivity="false">
     	<level value="info"/>
     	<appender-ref ref="sqlLogger"/>
@@ -34,30 +34,30 @@
     	<appender-ref ref="sqlLogger"/>
     </logger>
     <!--  -->
-
+    
     <!-- Application Loggers -->
     <logger name="com" additivity="false">
         <level value="debug" />
         <appender-ref ref="console"/>
     </logger>
-
+    
     <!-- 3rdparty Loggers -->
     <logger name="org.springframework.core">
         <level value="info" />
     </logger>
-
+    
     <logger name="org.springframework.beans">
         <level value="info" />
     </logger>
-
+    
     <logger name="org.springframework.context">
         <level value="info" />
     </logger>
-
+ 
     <logger name="org.springframework.web">
         <level value="info" />
     </logger>
-
+ 
     <!-- Root Logger -->
     <root>
         <priority value="off" />
