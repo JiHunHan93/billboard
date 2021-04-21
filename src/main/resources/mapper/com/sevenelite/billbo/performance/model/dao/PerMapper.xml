@@ -11,14 +11,30 @@
 	<result property="phone" column="PHONE"/>
 	<result property="email" column="EMAIL"/>
 </resultMap>	
-
-	<resultMap type="com.sevenelite.billbo.member.model.dto.MemBbDTO" id="memDTO">
-		<id property="no" column="MEMBER_NO" />
-		<result property="name" column="MEMBER_NAME" />
-		<result property="pwd" column="MEMBER_PWD" />
-		<result property="email" column="EMAIL" />
-		<result property="phone" column="PHONE" />
-	</resultMap>
+<resultMap type="com.sevenelite.billbo.performance.model.dto.ReviewListDTO" id="reviewResultMap">
+	<id property="reviewNo" column="PER_NO"/>
+	<result property="memberNo" column="MEMBER_NO"/>
+	<result property="achOne" column="ACH_ONE"/>
+	<result property="achTwo" column="ACH_TWO"/>
+	<result property="achThree" column="ACH_THREE"/>
+	<result property="abilOne" column="ABIL_ONE"/>
+	<result property="abilTwo" column="ABIL_TWO"/>
+	<result property="abilThree" column="ABIL_THREE"/>
+	<result property="abilFour" column="ABIL_FOUR"/>
+	<result property="attOne" column="ATT_ONE"/>
+	<result property="attTwo" column="ATT_TWO"/>
+	<result property="attThree" column="ATT_THREE"/>
+	<result property="reviewAvg" column="REVIEW_AVG"/>
+	<result property="date" column="REVIEW_DATE"/>
+	<result property="reviewGrade" column="REVIEW_GRADE"/>
+</resultMap>
+<resultMap type="com.sevenelite.billbo.member.model.dto.MemBbDTO" id="memDTO">
+	<id property="no" column="MEMBER_NO" />
+	<result property="name" column="MEMBER_NAME" />
+	<result property="pwd" column="MEMBER_PWD" />
+	<result property="email" column="EMAIL" />
+	<result property="phone" column="PHONE" />
+</resultMap>
 
 <select id="selectPerList" resultMap="perResultMap">
 	 SELECT 
@@ -77,5 +93,38 @@
 	    FROM BB_MEMBER A
 	   WHERE A.MEMBER_NO = #{no}
 </select>
-  
+
+<insert id="insertReview" parameterType="ReviewListDTO">
+ INSERT
+ 	INTO BB_REVIEW A
+ 	  (
+ 	  	A.PER_NO,
+ 	  	A.REVIEW_DATE,
+ 	  	A.ACH_ONE,
+ 	  	A.ACH_TWO,
+ 	  	A.ACH_THREE,
+ 	  	A.ABIL_ONE,
+ 	  	A.ABIL_TWO,
+ 	  	A.ABIL_THREE,
+ 	  	A.ABIL_FOUR,
+ 	  	A.ATT_ONE,
+ 	  	A.ATT_TWO,
+ 	  	A.ATT_THREE
+ 	  )
+ 	  VALUES
+ 	  (
+ 	   SEQ_PER_NO.NEXTVAL,
+ 	   #{date},
+ 	   #{achOne},
+ 	   #{achTwo},
+ 	   #{achThree},
+ 	   #{abilOne},
+ 	   #{abilTwo},
+ 	   #{abilThree},
+ 	   #{abilFour},
+ 	   #{attOne},
+ 	   #{attTwo},
+ 	   #{attThree}
+ 	  )
+</insert>
 </mapper>

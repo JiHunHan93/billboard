@@ -11,4 +11,6 @@ public interface PerformanceService {
 
 	List<ReviewListDTO> reviewList(int no);
 
+	boolean insertReview(ReviewListDTO reviewDTO);
+
 }
