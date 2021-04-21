@@ -669,7 +669,7 @@
 											<div class="row">
 												<div class="col-md-5">
 													<div class="profile-info-left">
-														<h3 class="user-name m-t-0 mb-0">${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }ㅇㅇㅇㅇㅇㅇㅇㅇㅇ님 환영합니다.
+														<h3 class="user-name m-t-0 mb-0">${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }님 환영합니다.
 								</h3>
 														
 														<h6 class="text-muted"> 
