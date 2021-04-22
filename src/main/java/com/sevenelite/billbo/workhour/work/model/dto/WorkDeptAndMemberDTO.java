@@ -10,12 +10,11 @@ public class WorkDeptAndMemberDTO {
 	private String type;
 	private String name;
 	private WorkTypeDTO workType;
-	private WorkTypeDTO workCode;
 	
 	public WorkDeptAndMemberDTO() {}
 
 	public WorkDeptAndMemberDTO(int no, String date, String commute, String leave, int memNo, String type, String name,
-			WorkTypeDTO workType, WorkTypeDTO workCode) {
+			WorkTypeDTO workType) {
 		super();
 		this.no = no;
 		this.date = date;
@@ -25,7 +24,6 @@ public class WorkDeptAndMemberDTO {
 		this.type = type;
 		this.name = name;
 		this.workType = workType;
-		this.workCode = workCode;
 	}
 
 	public int getNo() {
@@ -92,19 +90,10 @@ public class WorkDeptAndMemberDTO {
 		this.workType = workType;
 	}
 
-	public WorkTypeDTO getWorkCode() {
-		return workCode;
-	}
-
-	public void setWorkCode(WorkTypeDTO workCode) {
-		this.workCode = workCode;
-	}
-
 	@Override
 	public String toString() {
 		return "WorkDeptAndMemberDTO [no=" + no + ", date=" + date + ", commute=" + commute + ", leave=" + leave
-				+ ", memNo=" + memNo + ", type=" + type + ", name=" + name + ", workType=" + workType + ", workCode="
-				+ workCode + "]";
+				+ ", memNo=" + memNo + ", type=" + type + ", name=" + name + ", workType=" + workType + "]";
 	}
 
-}
+	}

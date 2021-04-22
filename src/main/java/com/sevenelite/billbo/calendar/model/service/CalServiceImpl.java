@@ -49,5 +49,15 @@ public class CalServiceImpl implements CalService {
 		return calDAO.insertDropEvt(calDTO) > 0? true : false;
 	}
 
+	@Override
+	public boolean draggEvt(CalDTO calDTO) {
+		return calDAO.draggEvt(calDTO) > 0? true : false;
+	}
+
+	@Override
+	public boolean dropEvt(CalDTO calDTO) {
+		return calDAO.dropEvt(calDTO) > 0? true : false;
+	}
+
 
 }

@@ -634,7 +634,7 @@
 				<!-- Page Content -->
                 <div class="content container-fluid category-container">
 					<div class="row">
-						<div class="col-lg-8 col-md-8 category-box">
+						<div class="col-lg-8 col-md-8 category-one-box">
 							<section class="dash-section">
 								<div class="dash-sec-content">
 									<div class="dash-info-list">
@@ -676,12 +676,12 @@
 							</section>
 						</div>
 						<div></div>
-						<div class="col-lg-8 col-md-8 category-box">
+						<!-- <div class="col-lg-8 col-md-8 category-box">
 							<section class="dash-section">
 								<div class="dash-sec-content">
 									<div class="dash-info-list">
 										<div class="dash-card category-card">
-											<div class="dash-card-container category-dash">
+											<div class="dash-card-container category-dash"> -->
 												<!-- Employee 조직도 -->
 												<!-- <p class="category-text">전자결재</p> -->
 												<!-- <i class="las la-inbox category-icon"></i> -->
@@ -701,16 +701,16 @@
 												<!-- <i class="las la-user-plus category-icon"></i> -->
 												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">급여 명세서 확인</div></i> -->
 												<!-- Information 문서함 -->
-												<p class="category-text">문서함</p>
-												<i class="las la-folder category-icon"></i>
-												<i class="fas fa-circle category-dot"><div class="category-sub-text">문서 조회</div></i>
-												<i class="fas fa-circle category-dot"><div class="category-sub-text">문서 등록</div></i>
-											</div>
+												<!-- <p class="category-text">문서함</p> -->
+												<!-- <i class="las la-folder category-icon"></i> -->
+												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">문서 조회</div></i> -->
+												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">문서 등록</div></i> -->
+											<!-- </div>
 										</div>
 									</div>
 								</div>
 							</section>
-						</div>
+						</div> -->
 						<!-- col-lg-8 col-md-8 category-one-box category-three-box 갯수 변경 가능 -->
 						<!-- 세번째 박스 -->
 						<!-- <div class="col-lg-8 col-md-8 category-box">

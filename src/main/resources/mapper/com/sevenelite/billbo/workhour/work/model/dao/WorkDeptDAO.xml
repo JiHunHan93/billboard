@@ -11,11 +11,14 @@
  	<result column="WORKTYPE_CODE" property="type"/>
  	<result column="WORKSTATUS_NO" property="no"/>
  	<result column="MEMBER_NAME" property="name"/>
- 	<!--  <id column="WORKTYPE_CODE" property="workCode"/>
- 	 <result column="WORKTYPE_TYPE" property="workType"/> -->
+ 	<association property="workType" resultMap="WorkType"/>
+	</resultMap>
+	<resultMap type="com.sevenelite.billbo.workhour.work.model.dto.WorkTypeDTO" id="WorkType">
+		<id column="WORKTYPE_CODE" property="code"/>
+		<result column="WORKTYPE_TYPE" property="type"/>
 	</resultMap>
 	
-	<select id="selectList" resultMap="DeptResult" resultType="com.sevenelite.billbo.workhour.work.model.dto.WorkDeptAndMemberDTO">
+	<select id="selectList" resultMap="DeptResult,WorkType" resultType="com.sevenelite.billbo.workhour.work.model.dto.WorkDeptAndMemberDTO">
       SELECT
 		       A.WORKSTATUS_NO
 			 , A.WORKDATE

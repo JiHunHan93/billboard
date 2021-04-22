@@ -42,8 +42,8 @@ public class MainProfileController {
 
 		this.profileService = profileService;
 	}
-	@RequestMapping(value = "mainProfile", method= {RequestMethod.GET, RequestMethod.POST})
-	//@GetMapping(value = "mainProfile")
+	//@RequestMapping(value = "mainProfile", method= {RequestMethod.GET, RequestMethod.POST})
+	@GetMapping(value = "mainProfile")
 	public String page(Model model, Authentication authentication) {
 
 		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();

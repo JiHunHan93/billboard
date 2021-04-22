@@ -18,6 +18,10 @@ public interface CalDAO {
 	int deleteEvt(CalDTO calDTO);
 
 	int insertDropEvt(CalDTO calDTO);
+
+	int draggEvt(CalDTO calDTO);
+
+	int dropEvt(CalDTO calDTO);
 	
 	
 }

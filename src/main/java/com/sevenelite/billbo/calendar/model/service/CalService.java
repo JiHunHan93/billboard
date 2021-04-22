@@ -19,5 +19,9 @@ public interface CalService {
 
 	boolean insertDropEvt(CalDTO calDTO);
 
+	boolean draggEvt(CalDTO calDTO);
+
+	boolean dropEvt(CalDTO calDTO);
+
 
 }

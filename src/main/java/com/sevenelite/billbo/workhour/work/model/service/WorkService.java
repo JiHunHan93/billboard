@@ -19,6 +19,8 @@ import com.sevenelite.billbo.workhour.work.model.dto.WorkDTO;
 
 	String selectLeave(StatusAndWorkDTO status);
 
+	int insertWorkCount();
+
 
    } 
   
