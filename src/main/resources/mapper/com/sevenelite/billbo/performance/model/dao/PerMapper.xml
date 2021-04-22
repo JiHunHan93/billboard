@@ -97,7 +97,7 @@
 <insert id="insertReview" parameterType="ReviewListDTO">
  INSERT
  	INTO BB_REVIEW A
- 	  (
+ 	  ( 
  	  	A.PER_NO,
  	  	A.REVIEW_DATE,
  	  	A.ACH_ONE,
@@ -109,12 +109,15 @@
  	  	A.ABIL_FOUR,
  	  	A.ATT_ONE,
  	  	A.ATT_TWO,
- 	  	A.ATT_THREE
+ 	  	A.ATT_THREE,
+ 	  	A.MEMBER_NO,
+ 	  	A.REVIEW_GRADE,
+ 	  	A.REVIEW_AVG
  	  )
  	  VALUES
  	  (
  	   SEQ_PER_NO.NEXTVAL,
- 	   #{date},
+ 	   SYSDATE,
  	   #{achOne},
  	   #{achTwo},
  	   #{achThree},
@@ -124,7 +127,10 @@
  	   #{abilFour},
  	   #{attOne},
  	   #{attTwo},
- 	   #{attThree}
+ 	   #{attThree},
+ 	   #{no},
+ 	   NULL,
+ 	   NULL
  	  )
 </insert>
 </mapper>

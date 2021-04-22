@@ -98,9 +98,8 @@
 </resultMap>
 
 <select id="selectAllEmployeeList" resultMap="ALlmemberResultMap" parameterType="MemberAndMemberInfoAndDeptAndModifyDeptDTO">
-         
-          SELECT
-         *
+SELECT
+     *
          FROM
          (
          SELECT * FROM
@@ -109,15 +108,19 @@
        A.MODIFY_DEPT_NO
      , A.MODIFY_DEPT_DATE
      , A.MEMBER_NO
+     , T.MEMBER_NAME
      , B.DEPT_CODE
      , ROW_NUMBER() OVER(PARTITION BY A.MEMBER_NO ORDER BY A.MODIFY_DEPT_DATE DESC) 순번
      , B.DEPT_NAME
+     , T.PHONE
+     , T.EMAIL
+     , S.ENROLL_DATE
 	FROM BB_MODIFY_DEPT A
     JOIN BB_DEPT B ON (A.DEPT_CODE = B.DEPT_CODE)
+    JOIN BB_MEMBER T ON (T.MEMBER_NO = A.MEMBER_NO)
+    JOIN BB_MEMBER_INFO S ON (A.MEMBER_NO = S.MEMBER_NO)
     )
     WHERE 순번 =1 ) C
-    JOIN BB_MEMBER_INFO D ON (C.MEMBER_NO = D.MEMBER_NO)
-    JOIN BB_MEMBER E ON( C.MEMBER_NO = E.MEMBER_NO)
 </select>
 
 <select id="detailEmployeeList" resultMap="ALlmemberResultMap" parameterType="MemberAndMemberInfoAndDeptAndModifyDeptDTO">
