@@ -261,10 +261,8 @@ public class MainProfileController {
 	@RequestMapping(value = "mainProfile2", method= {RequestMethod.GET, RequestMethod.POST})
 	public String page2(Model model, Authentication authentication) {
 
-		System.out.println("태헌이형 해결됐습니까?");
-		
 		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
-		System.out.println("로그인 회원번호");
+		
 		/* 멤버정보조회 */
 		List<MemberInfoDTO> member = profileService.selectMemberInfo(user.getMemberno());
 		/*멤버정보등록이력*/

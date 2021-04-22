@@ -109,9 +109,19 @@ public class ApprovaldocumentController {
 		System.out.println("추가된 정보 deptDTO : " + deptDTO);
 		System.out.println("추가된 정보 spotDTO : " + spotDTO);
 		
-		/* 받아온 List타입으로 정리 */
+//		if(lineMemDTO == null) {
+//			lineMemDTO = new multitudeLineMem();
+//			List<MemListLine> index1 = new ArrayList<>();
+//			List<MemListLine> index2 = new ArrayList<>();
+//			index1.add(new MemListLine(0, "1", "2", "3", "4","5"));
+//			index2.add(new MemListLine(0, "1", "2", "3", "4","5"));
+//			lineMemDTO.setLineMem(index1);
+//			lineMemDTO.setLineMem(index2);
+//		}
+//		
+//		/* 받아온 List타입으로 정리 */
 //		System.out.println("추가된 정보 lineMemDTO : " + lineMemDTO);
-		/* 동일한 name의 값을 담을 List, List 사이즈로 접근. JSP에서는 추가한 for문 i에 맞춰서 카운트 계산을하여 보내줘도 됨 */
+//		/* 동일한 name의 값을 담을 List, List 사이즈로 접근. JSP에서는 추가한 for문 i에 맞춰서 카운트 계산을하여 보내줘도 됨 */
 //		System.out.println("추가된 정보 lineMemDTO List : " + lineMemDTO);
 //		System.out.println("추가된 정보 lineMemDTO List의 사이즈 : " + lineMemDTO.getLineMem().size());
 //		for(int i = 0; i < lineMemDTO.getLineMem().size(); i++) {
