@@ -67,6 +67,14 @@ public class AllmemberController {
 		  System.out.println("no : " + no);
 		  mv.setViewName("allmember/detail");
 		  List<MemberAndMemberInfoAndDeptAndModifyDeptDTO> memberDetail = allMemberService.memberDetail(no);
+		  System.out.println(memberDetail);
+		  
+		  String root = memberDetail.get(0).getOriginalName();
+		  
+		  System.out.println(root);
+		  
+		  model.addAttribute(root);
+		  
 		  model.addAttribute("memberDetail", memberDetail);
 		  
 		  //은행정보

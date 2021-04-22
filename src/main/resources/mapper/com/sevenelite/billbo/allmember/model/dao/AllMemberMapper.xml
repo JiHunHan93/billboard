@@ -124,53 +124,74 @@ SELECT
 </select>
 
 <select id="detailEmployeeList" resultMap="ALlmemberResultMap" parameterType="MemberAndMemberInfoAndDeptAndModifyDeptDTO">
-      SELECT 
-        E.MEMBER_NO,
-        E.MEMBER_NAME,
-        E.EMAIL,
-        E.PHONE,
-        D.ENROLL_DATE,
-        D.MEMBER_ADDRESS,
-        C.DEPT_NAME,
-        F.FILE_ATTACHMENT_NO,
-        F.FILE_ATTACHMENT_PATH,
-        F.ORIGINAL_NAME,
-        F.SAVED_NAME,
-        F.ATTACHMENT_TYPE,
-        F.ATTACHMENT_DATE,
-        F.ATTACHMENT_TYPE_NO
-        FROM(               
-             SELECT
-                  *
-                FROM
-           
-         (
-         SELECT
-       A.MODIFY_DEPT_NO
-     , A.MODIFY_DEPT_DATE
-     , A.MEMBER_NO
-     , B.DEPT_CODE
-     , ROW_NUMBER() OVER(PARTITION BY A.MEMBER_NO ORDER BY A.MODIFY_DEPT_DATE DESC) 순번
-     , B.DEPT_NAME
-	FROM BB_MODIFY_DEPT A
-    JOIN BB_DEPT B ON (A.DEPT_CODE = B.DEPT_CODE)
-    )
-    WHERE 순번 =1 ) C
-    JOIN BB_MEMBER_INFO D ON (C.MEMBER_NO = D.MEMBER_NO)
-    JOIN BB_MEMBER E ON( C.MEMBER_NO = E.MEMBER_NO)
-    JOIN BB_FILEATTACHMENT F ON (E.MEMBER_NO = F.MEMBER_NO)
-    WHERE E.MEMBER_NO = #{no}
+SELECT
+       *
+  FROM (SELECT
+               G.MEMBER_NO
+             , G.MEMBER_NAME
+             , G.EMAIL
+             , G.PHONE
+             , H.ENROLL_DATE
+             , H.MEMBER_ADDRESS
+             , G.DEPT_NAME
+             , G.FILE_ATTACHMENT_NO
+             , G.FILE_ATTACHMENT_PATH
+             , G.ORIGINAL_NAME
+             , G.SAVED_NAME
+             , G.ATTACHMENT_TYPE
+             , G.ATTACHMENT_DATE
+             , G.ATTACHMENT_TYPE_NO
+             , ROW_NUMBER() OVER (PARTITION BY G.MEMBER_NO ORDER BY MEMBER_INFO_NO DESC) 사원정보
+          FROM (SELECT 
+                       F.*
+                     , E.DEPT_NAME
+                     , E.MEMBER_NAME  
+                     , E.EMAIL
+                     , E.PHONE
+                     , ROW_NUMBER() OVER (PARTITION BY E.MEMBER_NO ORDER BY F.FILE_ATTACHMENT_NO DESC) 파일이름
+                  FROM (SELECT 
+                               C.*
+                             , D.PHONE
+                             , D.EMAIL
+                             , D.MEMBER_NAME
+                             , ROW_NUMBER() OVER (PARTITION BY D.MEMBER_NAME ORDER BY D.MEMBER_NO DESC) 사원이름
+                          FROM (SELECT
+                                       B.MEMBER_NO
+                                     , A.DEPT_NAME
+                                     , ROW_NUMBER() OVER (PARTITION BY B.MEMBER_NO ORDER BY B.MODIFY_DEPT_NO DESC) 부서이름
+                                  FROM BB_DEPT A
+                                  JOIN BB_MODIFY_DEPT B ON (A.DEPT_CODE = B.DEPT_CODE)
+                               ) C
+                          JOIN BB_MEMBER D ON (C.MEMBER_NO = D.MEMBER_NO)
+                         WHERE 부서이름 = 1
+                       ) E
+                  JOIN BB_FILEATTACHMENT F ON (E.MEMBER_NO = F.MEMBER_NO)
+                 WHERE 사원이름 = 1
+                ) G
+          JOIN BB_MEMBER_INFO H ON (G.MEMBER_NO = H.MEMBER_NO)
+         WHERE 파일이름 = 1
+       ) I
+ WHERE 사원정보 = 1
+   AND I.MEMBER_NO = #{no}
 </select>
 
 <select id="selectBankInfo" resultMap="memberInfoDTO" parameterType="MemberInfoDTO">
-       SELECT
-              A.MEMBER_NO
-            , A.MEMBER_ADDRESS
-            , A.MEMBER_ACCOUNT_NO
-            , A.MEMBER_ACCOUNT_BANK
-            , A.ACCOUNT_HOST
-        FROM BB_MEMBER_INFO A
-       WHERE A.MEMBER_NO = #{no}     
+ SELECT
+              C.MEMBER_NO
+            , C.MEMBER_ADDRESS
+            , C.MEMBER_ACCOUNT_NO
+            , C.MEMBER_ACCOUNT_BANK
+            , C.ACCOUNT_HOST
+        FROM (SELECT 
+                     *
+                FROM (SELECT
+                             A.*,
+                             ROW_NUMBER() OVER (PARTITION BY A.ACCOUNT_HOST ORDER BY A.MEMBER_NO DESC) 이름
+                        FROM BB_MEMBER_INFO A
+                      ) B
+              WHERE 이름 = 1
+             ) C
+       WHERE C.MEMBER_NO = #{ no }
 </select>
 
 <select id="selectArmyInfo" resultMap="MemberAndArmyResultMap" parameterType="MemberAndArmyDTO">
