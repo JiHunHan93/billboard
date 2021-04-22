@@ -10,6 +10,8 @@
 	<result property="dept" column="DEPT_NAME"/>
 	<result property="phone" column="PHONE"/>
 	<result property="email" column="EMAIL"/>
+	<result property="date" column="REVIEW_DATE"/>
+	<result property="grade" column="REVIEW_GRADE"/>
 </resultMap>	
 <resultMap type="com.sevenelite.billbo.performance.model.dto.ReviewListDTO" id="reviewResultMap">
 	<id property="reviewNo" column="PER_NO"/>
@@ -128,9 +130,68 @@
  	   #{attOne},
  	   #{attTwo},
  	   #{attThree},
- 	   #{no},
- 	   NULL,
- 	   NULL
+ 	   #{memberNo},
+ 	   #{reviewGrade},
+ 	   #{reviewAvg}
  	  )
 </insert>
+
+<select id="selectMyPer" resultMap="perResultMap">
+ SELECT 
+       D.MODIFY_DEPT_NO
+     , D.MODIFY_DEPT_DATE
+     , D.MEMBER_NO
+     , D.DEPT_CODE
+     , D.순번
+     , D.EMAIL
+     , D.PHONE
+     , D.MEMBER_NAME
+     , D.DEPT_NAME
+     , D.SPOT_NAME
+     , D.REVIEW_DATE
+     , D.REVIEW_GRADE
+   FROM 
+   (
+   SELECT 
+       C.MODIFY_DEPT_NO
+     , C.MODIFY_DEPT_DATE
+     , C.MEMBER_NO
+     , C.MEMBER_NAME
+     , C.PHONE
+     , C.EMAIL
+     , C.DEPT_CODE
+     , C.순번
+     , C.DEPT_NAME
+     , C.SPOT_NAME
+     , C.REVIEW_DATE
+     , C.REVIEW_GRADE
+   FROM
+   (
+   SELECT 
+       A.MODIFY_DEPT_NO
+     , A.MODIFY_DEPT_DATE
+     , S.MEMBER_NAME
+     , S.PHONE
+     , S.EMAIL
+     , A.MEMBER_NO
+     , B.DEPT_CODE
+     , ROW_NUMBER() OVER(PARTITION BY A.MEMBER_NO ORDER BY A.MODIFY_DEPT_DATE DESC) 순번
+     , B.DEPT_NAME
+     , W.SPOT_NAME
+     , H.REVIEW_DATE
+     , H.REVIEW_GRADE
+   FROM BB_MODIFY_DEPT A
+   JOIN BB_DEPT B ON (A.DEPT_CODE = B.DEPT_CODE)
+   JOIN BB_MEMBER S ON (A.MEMBER_NO = S.MEMBER_NO)
+   JOIN BB_REVIEW H ON (S.MEMBER_NO = H.MEMBER_NO)
+   JOIN BB_MODIFY_SPOT T ON(H.MEMBER_NO = T.MEMBER_NO)
+   JOIN BB_SPOT W ON (T.SPOT_CODE = W.SPOT_CODE)
+   )C 
+   WHERE 순번 = 1 
+   GROUP BY C.DEPT_CODE, C.DEPT_NAME, C.MODIFY_DEPT_NO , C.MODIFY_DEPT_DATE,  C.MEMBER_NO , C.순번, C.MEMBER_NAME, C.PHONE, C.EMAIL, C.SPOT_NAME, C.REVIEW_DATE, C.REVIEW_GRADE) D
+   JOIN BB_MEMBER E ON (D.MEMBER_NO = E.MEMBER_NO)
+   JOIN BB_MODIFY_SPOT F ON ( D.MEMBER_NO = F.MEMBER_NO)
+   GROUP BY D.DEPT_CODE, D.DEPT_NAME, D.MODIFY_DEPT_NO , D.MODIFY_DEPT_DATE,  D.MEMBER_NO , D.순번, D.MEMBER_NAME, D.PHONE, D.EMAIL, D.SPOT_NAME, D.REVIEW_DATE, D.REVIEW_GRADE
+   ORDER BY D.MEMBER_NO ASC
+</select>
 </mapper>

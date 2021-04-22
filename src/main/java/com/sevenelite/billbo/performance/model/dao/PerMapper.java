@@ -14,4 +14,6 @@ public interface PerMapper {
 
 	int insertReview(ReviewListDTO reviewDTO);
 
+	List<PerformanceListDTO> selectMyPer();
+
 }

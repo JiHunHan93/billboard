@@ -13,4 +13,6 @@ public interface PerformanceService {
 
 	boolean insertReview(ReviewListDTO reviewDTO);
 
+	List<PerformanceListDTO> selectMyPer();
+
 }
