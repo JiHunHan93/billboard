@@ -39,6 +39,10 @@ com.sevenelite.billbo.workhour.work.model.dto.WorkDTO;
 	@Override
 	public String selectLeave(StatusAndWorkDTO status) {
 		return dao.selectLeave(status);
-	}	
+	}
+	@Override
+	public int insertWorkCount() {
+		return dao.insertWorkCount();
+	}
 	
 }	

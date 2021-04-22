@@ -76,5 +76,11 @@
 		 FROM BB_WORKSTATUS A
 		WHERE ROWNUM = 1
 	</select>
+	
+	<insert id="insertWorkCount">
+		INSERT
+		       INTO  BB_WEEK_WORK_STATISTIC A
+		       
+	</insert>
 
 </mapper> 
