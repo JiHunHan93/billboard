@@ -27,17 +27,17 @@
 		     , C.DEPT_CODE
 		     , D.SCHEDULE_INFO
 		     , D.SCHEDULE_TYPE
-             FROM (SELECT
-                          *
-                FROM (SELECT
-                             A.MEMBER_NO
-                           , B.DEPT_CODE
-                           , ROW_NUMBER() OVER (PARTITION BY A.MEMBER_NO ORDER BY A.MODIFY_DEPT_NO DESC) DEPTCODE
-                        FROM BB_MODIFY_DEPT A
-                        JOIN BB_DEPT B ON (A.DEPT_CODE = B.DEPT_CODE)
-                      )
-                WHERE DEPTCODE = 1
-                   ) C
+          FROM (SELECT
+                       *
+                  FROM (SELECT
+                               A.MEMBER_NO
+                             , B.DEPT_CODE
+                             , ROW_NUMBER() OVER (PARTITION BY A.MEMBER_NO ORDER BY A.MODIFY_DEPT_NO DESC) DEPTCODE
+                          FROM BB_MODIFY_DEPT A
+                          JOIN BB_DEPT B ON (A.DEPT_CODE = B.DEPT_CODE)
+                       )
+                 WHERE DEPTCODE = 1
+               ) C
           JOIN BB_WORK_SCHEDULE D ON (C.MEMBER_NO = D.MEMBER_NO)
          WHERE D.SCHEDULE_DELETE_STATUS = 'Y'
 	</select>
@@ -51,8 +51,6 @@
 			      , A.SCHEDULE_TYPE
 			      , A.START_DATE
 			      , A.END_DATE
-			      <!-- , A.SCHEDULE_LOCATION -->
-			      <!-- , A.ATTENDANCE_NAME -->
 			      , A.SCHEDULE_INFO
 			      , A.SCHEDULE_DELETE_STATUS
 		   	        )
@@ -64,8 +62,6 @@
 	              , #{ calType }
 	              , #{ start }
 	              , #{ end }
-	              <!-- , #{ location } -->
-	              <!-- , #{ attendance } -->
 	              , #{ body }
 	              , 'Y'
 	                )
@@ -137,4 +133,18 @@
 	     , 'Y'
 	     )
 </insert>
+
+<update id="draggEvt" parameterType="CalDTO">
+    UPDATE BB_WORK_SCHEDULE A
+	   SET A.START_DATE = #{ start }
+	     , A.END_DATE = #{ end }
+     WHERE A.SCHEDULE_NO = #{ no }
+</update>
+
+<update id="dropEvt" parameterType="CalDTO">
+    UPDATE BB_WORK_SCHEDULE A
+	   SET A.START_DATE = #{ start }
+	     , A.END_DATE = #{ end }
+     WHERE A.SCHEDULE_NO = #{ no }
+</update>
 </mapper>

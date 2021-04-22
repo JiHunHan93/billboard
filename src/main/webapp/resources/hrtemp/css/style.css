@@ -376,6 +376,20 @@ table.dataTable thead > tr > td.sorting {
 	    display: none;
 }
 
+/* main css */
+.work_btn {
+	margin: 20% 0;
+}
+.work_btn_box {
+	width: 120px;
+    margin: 0 auto;
+    height: 130px;
+}
+.work_sysdate {
+	height: 60px;
+    text-align: center;
+}
+
 /* board css*/
 .tab-category {
 	margin: 25px 0 0 0;

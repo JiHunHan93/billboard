@@ -11,8 +11,8 @@
         <meta name="robots" content="noindex, nofollow">
         <title>Employee Dashboard - HRMS admin template</title>
 		
-		<!-- Favicon -->
-        <link rel="shortcut icon" type="image/x-icon" href="./resources/hrtemp/img/favicon.png">
+		<!-- shortcut logo -->
+        <link rel="shortcut icon" type="image/x-icon" href="./resources/hrtemp/img/Logo.png">
 		
 		<!-- Bootstrap CSS -->
         <link rel="stylesheet" href="./resources/hrtemp/css/bootstrap.min.css">
@@ -29,11 +29,6 @@
 		<!-- Main CSS -->
         <link rel="stylesheet" href="./resources/hrtemp/css/style.css">
 		
-		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-		<!--[if lt IE 9]>
-			<script src="assets/js/html5shiv.min.js"></script>
-			<script src="assets/js/respond.min.js"></script>
-		<![endif]-->
     </head>
     <body>
 		<!-- Main Wrapper -->
@@ -648,9 +643,9 @@
 												<!-- Apps 게시판 -->
 												<p class="category-text">게시판</p>
 												<i class="fas fa-chalkboard-teacher category-icon"></i>
-												<i class="fas fa-circle category-dot"><a href="${pageContext.servletContext.contextPath}/board" class="category-sub-text">공지사항</a></i>
+												<i class="fas fa-circle category-dot"><a href="http://127.0.0.1:8001/billbo/board"><div class="category-sub-text">공지사항</div></a></i>
 												<i class="fas fa-circle category-dot"><div class="category-sub-text">인사관리 게시판</div></i>
-												<i class="fas fa-circle category-dot"><div class="category-sub-text">근태관리 게시판</div></i>
+												<i class="fas fa-circle category-dot"><div class="category-sub-text">자유 게시판</div></i>
 												<!-- Admin 인사고과 -->
 												<!-- <p class="category-text">인사고과</p> -->
 												<!-- <i class="las la-graduation-cap category-icon"></i> -->
