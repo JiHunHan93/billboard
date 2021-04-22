@@ -128,7 +128,10 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkStatusService;
 	         //지각 횟수 
 	         int lateCount = 0;
 	         int tenHour = 10;
-	         int workCount = 22;
+	         int workCount = 0;
+	         
+	         workCount = workService.insertWorkCount();
+	         
 	         
 	         
 	         

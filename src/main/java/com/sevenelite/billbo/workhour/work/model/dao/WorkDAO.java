@@ -24,6 +24,7 @@ public interface WorkDAO {
 
 	String selectLeave(StatusAndWorkDTO status);
 
+	int insertWorkCount();
 
   }
  
