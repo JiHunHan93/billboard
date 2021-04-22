@@ -658,7 +658,7 @@
 										<td class="free-td"><c:out value="${ workDept.date }" />
 										<td class="free-td"><c:out value="${ workDept.commute }" />
 										<td class="free-td"><c:out value="${ workDept.leave }" />
-										<td class="free-td"><c:out value="${ workDept.workCode }" />
+										<td class="free-td"><c:out value="${ workDept.workType}" />
 									</tr>
 								</c:forEach>		
 										
