@@ -659,9 +659,19 @@
 							<div class="row">
 								<div class="col-md-12">
 									<div class="profile-view">
-										<div class="profile-img-wrap">
-											
-												<a href="#"><img alt="" src="assets/img/profiles/avatar-02.jpg"></a>
+			
+										<div class="profile-img-wrap">	
+										<div class="card mb-0">	
+										<c:forEach var="detailMem" items="${ requestScope.detailMem }">								
+												<form id="form1" action="${pageContext.servletContext.contextPath }/upload" method="POST" enctype="multipart/form-data" class="btn btn-custom">
+									<input type="file" name="FileAttachment" class="btn btn-custom">
+								 	<input type="submit" value="업로드" class="btn btn-custom">
+					</form>
+												<div class="profile-img">
+												<a href="#"><img src=/billbo/resources/images/main<c:out value="/${detailMem.no}"/>></a>
+											    </div>
+											</c:forEach>
+					</div>
 											</div>
 										</div>
 										<!-- 로그인 정보 프로필 select 부분  -->
@@ -1045,7 +1055,7 @@
                                              <input class="txt w_max" type="date" name="spot_date" value="<c:out value="${ modispotDto.spot_date }"/>">
                                              </td>
                                              <td class="end">
-                                             <input class="txt w_max" type="date" name="spot_code" value="<c:out value="${ modispotDto.spot_code }"/>">
+                                             <input class="txt w_max" type="text" name="spot_code" value="<c:out value="${ modispotDto.spot_code }"/>">
                                              </td>
                                              <td class="position">
                                              <input class="txt w_max" type="text" name="member_no" value="<c:out value="${ modispotDto.member_no }"/>">
@@ -1147,7 +1157,7 @@
                                              <input class="txt w_max" type="date" name="modifydate" value="<c:out value="${ modidept.modifydate }"/>">
                                              </td>
                                              <td class="end">
-                                             <input class="txt w_max" type="date" name="deptCode" value="<c:out value="${ modidept.deptCode }"/>">
+                                             <input class="txt w_max" type="text" name="deptCode" value="<c:out value="${ modidept.deptCode }"/>">
                                              </td>
                                              <td class="position">
                                              <input class="txt w_max" type="text" name="memberNo" value="<c:out value="${ modidept.memberNo }"/>">
@@ -1357,14 +1367,14 @@
                                              <input class="txt w_max" type="text" name="no" value="<c:out value="${ bonusDto.no }"/>">
                                                    
                                              </td>
-                                             <td class="start">
+                                             <td class="reason3">
                                              <input class="txt w_max" type="text" name="reason" value="<c:out value="${ bonusDto.reason }"/>">
                                              </td>
-                                             <td class="end">
+                                             <td class="date">
                                              <input class="txt w_max" type="date" name="date" value="<c:out value="${ bonusDto.date }"/>">
                                              </td>
-                                             <td class="position">
-                                             <input class="txt w_max" type="text" name="member_no" value="<c:out value="${ bonusDto.type }"/>">
+                                             <td class="type">
+                                             <input class="txt w_max" type="text" name="type" value="<c:out value="${ bonusDto.type }"/>">
                                              </td>
                                              <td class="member_no">
                                              <input class="txt w_max" type="text" name="member_no" value="<c:out value="${ bonusDto.member_no }"/>"/>">
@@ -1539,11 +1549,12 @@
 												<th class="start"><span class="title_txt">입대일</span></th>
 												<th class="end"><span class="title_txt">제대일</span></th>
 												<th class="army_no"><span class="title_txt">병역번호</span></th>
+												<th class="reason"><span class="title_txt">전역사유</span></th>
 												
 											</tr>
 											<tr>
 											 <c:choose>
-                                       <c:when test="${ empty requestScope.armyInsert }">
+                                       <c:when test="${ empty requestScope.armySelect }">
                                        
                                           <td class="member_no">
                                           <input class="txt w_max" type="text" name="member_no" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }"/>
@@ -1575,33 +1586,33 @@
                                        </c:when>
                                        <c:otherwise>
                                           <!-- c:forEach 시작 부분 -->
-                                          <c:forEach var="armyInsert" items="${ requestScope.armyInsert }"> 
+                                          <c:forEach var="armySelect" items="${ requestScope.armySelect }"> 
                                              <td class="member_no">
                                              <input class="txt w_max" type="text" name="member_no" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }">
                                              </td>
                                              <td class="army_no">
-                                             <input class="txt w_max" type="text" name="army_no" value="<c:out value="${ armyInsert.army_no }"/>">
+                                             <input class="txt w_max" type="text" name="army_no" value="<c:out value="${ armySelect.army_no }"/>">
                                              </td>
                                              <td class="branch">
-                                             <input class="txt w_max" type="text" name="branch" value="<c:out value="${ armyInsert.branch }"/>">
+                                             <input class="txt w_max" type="text" name="branch" value="<c:out value="${ armySelect.branch }"/>">
                                              </td>
                                              <td class="army_class">
-                                             <input class="txt w_max" type="date" name="army_class" value="<c:out value="${ armyInsert.army_class }"/>">
+                                             <input class="txt w_max" type="date" name="army_class" value="<c:out value="${ armySelect.army_class }"/>">
                                              </td>
                                              <td class="service_num">
-                                             <input class="txt w_max" type="text" name="service_num" value="<c:out value="${ armyInsert.service_num }"/>">
+                                             <input class="txt w_max" type="text" name="service_num" value="<c:out value="${ armySelect.service_num }"/>">
                                              </td>
                                              <td class="discharge">
-                                             <input class="txt w_max" type="text" name="discharge" value="<c:out value="${ armyInsert.discharge }"/>">
+                                             <input class="txt w_max" type="text" name="discharge" value="<c:out value="${ armySelect.discharge }"/>">
                                              </td>
                                              <td class="start">
-                                             <input class="txt w_max" type="date" name="start" value="<c:out value="${ armyInsert.start }"/>">
+                                             <input class="txt w_max" type="date" name="start" value="<c:out value="${ armySelect.start }"/>">
                                              </td>
-                                             <td class="date">
-                                             <input class="txt w_max" type="date" name="date" value="<c:out value="${ armyInsert.date }"/>">
+                                             <td class="end">
+                                             <input class="txt w_max" type="date" name="date" value="<c:out value="${ armySelect.end }"/>">
                                              </td>
                                              <td class="reason">
-                                             <input class="txt w_max" type="text" name="reason" value="<c:out value="${ armyInsert.reason }"/>">
+                                             <input class="txt w_max" type="text" name="reason" value="<c:out value="${ armySelect.reason }"/>">
                                              </td>	
                                           </c:forEach>
                                           <!-- c:forEach 끝 부분 -->
@@ -1805,7 +1816,7 @@
 												</tr>
 											<tr class="dataRow" data-id="">
 											 <c:choose>
-                                       <c:when test="${ empty requestScope.familyDto }">
+                                       <c:when test="${ empty requestScope.familySelect }">
                                        
                                           <td class="info_no">
                                           <input class="txt w_max" type="text" name="info_no" value=""/>
@@ -1842,20 +1853,20 @@
                                        </c:when>
                                        <c:otherwise>
                                           <!-- c:forEach 시작 부분 -->
-                                          <c:forEach var="familyDto" items="${ requestScope.familyDto }"> 
+                                          <c:forEach var="familySelect" items="${ requestScope.familySelect }"> 
                                              <td class="info_no">
-                                             <input class="txt w_max" type="text" name="info_no" value="<c:out value="${ familyDto.info_no }"/>">
+                                             <input class="txt w_max" type="text" name="info_no" value="<c:out value="${ familySelect.info_no }"/>">
                                              </td>
                                              <td class="name">
-                                             <input class="txt w_max" type="text" name="name" value="<c:out value="${ familyDto.name }"/>">
+                                             <input class="txt w_max" type="text" name="name" value="<c:out value="${ familySelect.name }"/>">
                                              </td>
                                              <td class="relation">
-                                             <input class="txt w_max" type="text" name="subject" value="<c:out value="${ familyDto.relation }"/>">
+                                             <input class="txt w_max" type="text" name="subject" value="<c:out value="${ familySelect.relation }"/>">
                                              </td>
                                              <td class="gender">
-                                             <input class="txt w_max" type="text" name="gender" value="<c:out value="${ familyDto.gender }"/>">
+                                             <input class="txt w_max" type="text" name="gender" value="<c:out value="${ familySelect.gender }"/>">
                                              <span class="wrap_select">
-														  <select class="wfix_small" name="gender" value="<c:out value="${ familyDto.gender }"/>">
+														  <select class="wfix_small" name="gender" value="<c:out value="${ familySelect.gender }"/>">
 															 <option value="">선택하세요</option>
 															 <option value="남">남자</option>
 															 <option value="녀">여자</option>

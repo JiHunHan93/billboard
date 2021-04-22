@@ -42,8 +42,8 @@ public class MainProfileController {
 
 		this.profileService = profileService;
 	}
-	@RequestMapping(value = "mainProfile", method= {RequestMethod.GET, RequestMethod.POST})
-	//@GetMapping(value = "mainProfile")
+	//@RequestMapping(value = "mainProfile", method= {RequestMethod.GET, RequestMethod.POST})
+	@GetMapping(value = "mainProfile")
 	public String page(Model model, Authentication authentication) {
 
 		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
@@ -257,7 +257,7 @@ public class MainProfileController {
 //	@PostMapping(value ="mainProfile2")
 //	public String page2(@ModelAttribute MemDTO mem, Authentication authentication, Model model) {
 //		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
-	@GetMapping(value = "mainProfile2")
+	@RequestMapping(value = "mainProfile2", method= {RequestMethod.GET, RequestMethod.POST})
 	public String page2(Model model, Authentication authentication) {
 
 		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
