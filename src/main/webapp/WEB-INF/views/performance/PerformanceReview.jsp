@@ -445,6 +445,7 @@
 						</div>
 						<div class="row">
 							<div class="col-md-12">
+						<form name="insertReview" action="http://127.0.0.1:8001/billbo/performance/detail" id="insertReview" method="post">
 								<div class="table-responsive">
 									<table class="table table-bordered review-table mb-0">
 										<thead>
@@ -463,65 +464,65 @@
 												<td>업무달성도</td>
 												<td>계획, 지시에 의해  부과된 업무의 달성 여부 타 직원과의 업무량 비교 및 일정 기간 내의 달성 여부</td>
 												<td><input type="text" class="form-control" readonly value="10"></td>
-												<td><input type="text" class="form-control" ></td>
+												<td><input type="text" class="form-control" name="achOne"></td>
 												
 											</tr>
 											<tr>
 												<td>업무의질</td>
 												<td>업무 달성 결과의 질적 수준과 착오 누락오류의 발생빈도 및 그 잘못의 경증</td>
 												<td><input type="text" class="form-control" readonly value="10"></td>
-												<td><input type="text" class="form-control" ></td>
+												<td><input type="text" class="form-control" name="achTwo"></td>
 												
 											</tr>
 											<tr>	
 												<td>업무개선</td>
 												<td>담당 업무 수행 시 능률 향상을 위한 구체적인 개선책 및 해결책을 꾸준히 모색하고 있는 지의 여부</td>
 												<td><input type="text" class="form-control" readonly value="10"></td>
-												<td><input type="text" class="form-control"></td>
+												<td><input type="text" class="form-control" name="achThree"></td>
 											</tr>
 											<tr>
 												<td rowspan="4">능력</td>
 												<td>업무 지식</td>
 												<td>당사 직무 수행에 필요한 사무 지식 및 전문적 지식의 정도</td>
 												<td><input type="text" class="form-control" readonly value="10"></td>
-												<td><input type="text" class="form-control" ></td>
+												<td><input type="text" class="form-control" name="abilOne"></td>
 											</tr>
 											<tr>
 												<td>기획 창의력</td>
 												<td>창의력을 바탕으로 주도면밀한 계획을 수립하여 이를 실천하는 능력 </td>
 												<td><input type="text" class="form-control" readonly value="10"></td>
-												<td><input type="text" class="form-control" ></td>
+												<td><input type="text" class="form-control" name="abilTwo" ></td>
 											</tr>
 											<tr>
 												<td>분석 판단력</td>
 												<td>계획, 지시된 업무의 문제점을 파악, 분석하여 올바른 결론, 정확한 대책을 강구하는 능력</td> 
 												<td><input type="text" class="form-control" readonly value="10"></td>
-												<td><input type="text" class="form-control" ></td>
+												<td><input type="text" class="form-control" name="abilThree"></td>
 											</tr>
 											<tr>
 												<td>실천력</td>
 												<td>계획, 지시된 업무를 적극적으로 박력 있게 끝까지 추진하는 능력</td> 
 												<td><input type="text" class="form-control" readonly value="10"></td>
-												<td><input type="text" class="form-control" ></td>
+												<td><input type="text" class="form-control" name="abilFour"></td>
 											</tr>
 											<tr>
 												<td rowspan="3">태도</td>
 												<td>책임감</td>
 												<td>당사 직무 수행에 필요한 사무 지식 및 전문적 지식의 정도</td>
 												<td><input type="text" class="form-control" readonly value="10"></td>
-												<td><input type="text" class="form-control" ></td>
+												<td><input type="text" class="form-control" name="attOne"></td>
 											</tr>
 											<tr>
 												<td>협동심</td>
 												<td>창의력을 바탕으로 주도면밀한 계획을 수립하여 이를 실천하는 능력 </td>
 												<td><input type="text" class="form-control" readonly value="10"></td>
-												<td><input type="text" class="form-control" ></td>
+												<td><input type="text" class="form-control" name="attTwo"></td>
 											</tr>
 											<tr>
 												<td>근무 태도</td>
 												<td>계획, 지시된 업무의 문제점을 파악, 분석하여 올바른 결론, 정확한 대책을 강구하는 능력</td> 
 												<td><input type="text" class="form-control" readonly value="10"></td>
-												<td><input type="text" class="form-control" ></td>
+												<td><input type="text" class="form-control" name="attThree"></td>
 											</tr>		
 											<tr>
 												<td colspan="3" class="text-center"><b>종합 점수 백분율(%)</b></td>
@@ -530,155 +531,27 @@
 											<tr>
 												<td colspan="8" class="text-center">
 													<div class="grade-span">
-														<h4 style="margin-right: 120px;">종합 점수 평균</h4>
+														<h4 style="margin-right: 36%;">종합 점수 평균</h4>
 														<span class="badge bg-inverse-danger"> 65점이하  D</span> 
 														<span class="badge bg-inverse-warning">65점-74점 C</span> 
 														<span class="badge bg-inverse-info">75점-84점 B</span> 
 														<span class="badge bg-inverse-purple">85점-92점 A</span> 
 														<span class="badge bg-inverse-success">92점 이상 A+</span>
-														<div class="col-auto float-right ml-auto">
-							<a href="#" class="btn add-btn" data-toggle="modal" data-target="#edit_project1"><i class="fa fa-plus"></i>평가</a> 
-						</div>
+														<button type="submit" class="btn btn-primary" value="전송 하기" style="margin-left : 30%;">전송 하기</button>
 													</div>
 												</td>
 											</tr>
-										</tbody>
+										</tbody>	
 									</table>
 								</div>
 							</div>
+							</form>
 						</div>
 					</section>
 			</div>
 		   
 			<!-- /Page Content -->
 
-			<!-- Edit Board Modal -->
-			<div id="edit_project" class="modal custom-modal fade" role="dialog">
-				<div class="modal-dialog modal-dialog-centered modal-lg"
-					role="document">
-					<form name="board5" action="${pageContext.servletContext.contextPath }/board/modify">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title">게시글 수정</h5>
-							<button type="button" class="close" data-dismiss="modal"
-								aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body">
-							<c:forEach var="detailInfo" items="${ requestScope.detailInfo }">
-								
-								<div class="row">
-								<div class="col-sm-6">
-										<div class="form-group">
-											<label>글번호</label> <input name="no" class="form-control" id="modifyTitle"
-												value="<c:out value="${ detailInfo.no }"/>" type="text" readOnly>
-										</div>
-									</div>
-									<div class="col-sm-6">
-										<div class="form-group">
-											<label>제목</label> <input name="title" class="form-control" id="modifyTitle"
-												value="<c:out value="${ detailInfo.title }"/>" type="text">
-										</div>
-									</div>
-									<div class="col-sm-6">
-										<div class="form-group">
-											<label>작성자</label> <input name="writer" class="form-control" readOnly
-												value="<c:out value="${ detailInfo.writer }"/>" type="text">
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-sm-6">
-										<div class="form-group">
-											<label>게시일</label>
-											<div class="cal-icon">
-												<!-- <input class="form-control datetimepicker"> --> 
-												<input type="date"
-													name="enrollDate" id="modifyEnrollDate"
-													value="<c:out value="${ detailInfo.enrollDate }"/>">
-											</div>
-										</div>
-									</div>
-									<div class="col-sm-6">
-										<div class="form-group">
-											<label>만료일</label>
-											<div class="cal-icon">
-												<!-- <input class="form-control datetimepicker"> -->
-												<input type="date"
-													name="endDate" id="modifyEndDate"
-													value="<c:out value="${ detailInfo.endDate }"/>">
-											</div>
-										</div>
-									</div>
-									<div class="form-group">
-											<label>상태</label> <input name="status" class="form-control" id="modifyTitle"
-												value="<c:out value="${ detailInfo.status }"/>" type="text" readOnly>
-										</div>
-								</div>
-								<div class="row">
-									<div class="col-sm-3">
-										<div class="form-group">
-											<label>분류</label> <select class="select" name="boardType" id="modify-type-sel">
-												<option value="공지" <c:if test="${ detailInfo.boardType eq '공지'}">selected</c:if>>공지</option>
-												<option value="인사" <c:if test="${ detailInfo.boardType eq '인사'}">selected</c:if>>인사</option>
-												<option value="자유" <c:if test="${ detailInfo.boardType eq '자유'}">selected</c:if>>자유</option>
-											</select>
-										</div>
-									</div>
-									<div class="col-sm-6">
-										<div class="form-group"></div>
-									</div>
-								</div>
-								<div class="form-group">
-									<label>내용</label>
-									<textarea rows="4" class="form-control"	placeholder="Enter your message here" name="body" id="modifyBody" style="white-space: pre-line;">
-									<c:out escapeXml="false" value="${ detailInfo.body }"/>
-									</textarea>
-								</div>
-								<div class="form-group">
-									<label>업로드한 파일</label> <input class="form-control" type="file"
-										name="fileAttachment">
-								</div>
-								<div class="submit-section">
-									<button class="btn btn-primary submit-btn" id="modify-btn" type="button" onclick="goModify(this.form)">수정
-										완료</button>
-								</div>
-
-							</c:forEach>
-						</div>
-					</div>
-					</form>
-				</div>
-			</div>
-			<!-- /Edit Board Modal -->
-
-
-			<!-- delete modal-->
-			<div id="edit_project1" class="modal custom-modal fade" role="dialog">
-				<div class="modal-dialog modal-dialog-centered modal-lg"
-					role="document">
-					<div class="modal-content">
-						<div class="modal-header">
-							<c:forEach var="rnpDetailInfo" items="${requestScope.rnpDetailInfo }">
-								<h5 class="modal-title">
-									<c:out value="${ rnpDetailInfo.no }" />
-									번 게시물 삭제
-								</h5>
-							</c:forEach>
-							<button type="button" class="close" data-dismiss="modal"
-								aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body">
-							<div class="submit-section">
-								<button id="rnpDelete-btn" class="btn btn-primary submit-btn">삭제하기</button>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
 		</div>
 		<!-- /Page Wrapper -->
 
