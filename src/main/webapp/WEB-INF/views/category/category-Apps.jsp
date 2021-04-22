@@ -643,9 +643,7 @@
 												<!-- Apps 게시판 -->
 												<p class="category-text">게시판</p>
 												<i class="fas fa-chalkboard-teacher category-icon"></i>
-												<i class="fas fa-circle category-dot"><a href="http://127.0.0.1:8001/billbo/board"><div class="category-sub-text">공지사항</div></a></i>
-												<i class="fas fa-circle category-dot"><div class="category-sub-text">인사관리 게시판</div></i>
-												<i class="fas fa-circle category-dot"><div class="category-sub-text">자유 게시판</div></i>
+												<i class="fas fa-circle category-dot"><a href="http://127.0.0.1:8001/billbo/board"><div class="category-sub-text">통합 게시판</div></a></i>
 												<!-- Admin 인사고과 -->
 												<!-- <p class="category-text">인사고과</p> -->
 												<!-- <i class="las la-graduation-cap category-icon"></i> -->

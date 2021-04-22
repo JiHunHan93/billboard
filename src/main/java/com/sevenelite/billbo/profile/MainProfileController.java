@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.sevenelite.billbo.member.model.dto.MemBbDTO;
 import com.sevenelite.billbo.member.model.dto.UserDetailsVO;
@@ -42,6 +43,12 @@ public class MainProfileController {
 
 		this.profileService = profileService;
 	}
+	 @RequestMapping(value = "insertMemberNo", method= {RequestMethod.GET, RequestMethod.POST})
+	 public String page3() {
+		return null;
+		 
+	 }
+	
 	//@RequestMapping(value = "mainProfile", method= {RequestMethod.GET, RequestMethod.POST})
 	@GetMapping(value = "mainProfile")
 	public String page(Model model, Authentication authentication) {
@@ -253,16 +260,20 @@ public class MainProfileController {
 		return "redirect:/profile/mainProfile2";
 	}
 	
-	/* 서버 터져서 주석 */
-//	@PostMapping(value ="mainProfile2")
-//	public String page2(@ModelAttribute MemDTO mem, Authentication authentication, Model model) {
-//		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
-//	@GetMapping(value = "mainProfile2")
-	@RequestMapping(value = "mainProfile2", method= {RequestMethod.GET, RequestMethod.POST})
-	public String page2(Model model, Authentication authentication) {
+	   @RequestMapping(value = "mainProfile2", method= {RequestMethod.GET, RequestMethod.POST})
+	   public String page2(@RequestParam(required=false) String memberno, Model model, Authentication authentication) {
 
-		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
-		
+	      System.out.println("태헌이형 해결됐습니까?");
+	      
+	      UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
+	      
+	      /* 기존에는 로그인한 사번이 담겨있었는데 이걸 파라미터로 전송받은 사용자가 입력한 사번으로 교체 */
+	      if(memberno != null ) {
+	         user.setMemberno(Integer.parseInt(memberno));
+	      } else {
+	         user.setMemberno(0);
+	      }
+		System.out.println("로그인 회원번호");
 		/* 멤버정보조회 */
 		List<MemberInfoDTO> member = profileService.selectMemberInfo(user.getMemberno());
 		/*멤버정보등록이력*/

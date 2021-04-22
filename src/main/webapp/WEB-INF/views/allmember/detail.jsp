@@ -672,7 +672,7 @@
 									<div class="profile-view">
 										<div class="profile-img-wrap">
 											<div class="profile-img">
-												<a href="#"><img src=/billbo/resources/images/main<c:out value="/${memberDetail.originalName}"/>></a>
+												<a href="#"><img src=/billbo/resources/images/main/지창욱1.jpg></a>
 											</div>
 										</div>
 										

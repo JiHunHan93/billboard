@@ -57,7 +57,7 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkStatusService;
 			
 			UserDetailsVO userDetails = (UserDetailsVO) authentication.getPrincipal();
 			int userno = userDetails.getMemberno();
-			String workDate = workService.selectWork();
+			String workDate = workService.selectWork(userno);
 			StatusAndWorkDTO status = new StatusAndWorkDTO();
 			status.setDate(workDate);
 			status.setMemNo(userno);
@@ -128,9 +128,9 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkStatusService;
 	         //지각 횟수 
 	         int lateCount = 0;
 	         int tenHour = 10;
-	         int workCount = 0;
+	         int workCount = Integer.parseInt(request.getParameter("no"));
 	         
-	         workCount = workService.insertWorkCount();
+	         workCount = workService.updateWorkCount(workCount);
 	         
 	         
 	         
@@ -161,11 +161,8 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkStatusService;
 	         workInfo.setWorkCount(workCount);
 	         System.out.println(workInfo);
 	         model.addAttribute("workInfo", workInfo);
-	         
-	         
 	        if(workService.insertWorkInfo(workInfo)) {
-	        	
-	        	
+	        
 	        }
 	        
 	        return "workhour/workList";
