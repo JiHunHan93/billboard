@@ -711,7 +711,7 @@ ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }
                 <span class="txt">취소</span>
             </a>
         </span>
-        
+          
   	<!-- 04/17(토) 결재 양식 선택 Moda -->
        <a id="act_edit_apprflow" class="btn_tool" data-role="button" data-toggle="modal" data-target="#exampleModal">
           <span class="ic_toolbar info"></span>
@@ -1289,7 +1289,7 @@ ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }
 						        <li title="서비스본부" rel="org" nodeid="182" id="org_182" class="jstree-closed"><ins class="jstree-icon">&nbsp;</ins><a title="" rel="org" nodeid="182" id="org_182" href="#" data-bypass="1" nodestate="DISABLE"><ins class="jstree-icon">&nbsp;</ins>서비스본부</a></li><li title="(주)애드픽션" rel="org" nodeid="221" id="org_221" class="jstree-last jstree-leaf"><ins class="jstree-icon">&nbsp;</ins><a title="" rel="org" nodeid="221" id="org_221" href="#" data-bypass="1" class="ui-draggable"><ins class="jstree-icon">&nbsp;</ins>(주)애드픽션</a>
 						        </li></ul></li></ul></div>	
 						        </div> -->
-						        
+						         
 						        <div id="aside-dept-orgtree-search" class="content_tab_wrap" style="display: none;border:none;padding:5px 0px 5px 0px">	</div></div></div>
 						        
 						       	<!-- Start aside-orgtree -->

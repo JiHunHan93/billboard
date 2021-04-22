@@ -257,9 +257,12 @@ public class MainProfileController {
 //	@PostMapping(value ="mainProfile2")
 //	public String page2(@ModelAttribute MemDTO mem, Authentication authentication, Model model) {
 //		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
-	@GetMapping(value = "mainProfile2")
+//	@GetMapping(value = "mainProfile2")
+	@RequestMapping(value = "mainProfile2", method= {RequestMethod.GET, RequestMethod.POST})
 	public String page2(Model model, Authentication authentication) {
 
+		System.out.println("태헌이형 해결됐습니까?");
+		
 		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
 		System.out.println("로그인 회원번호");
 		/* 멤버정보조회 */

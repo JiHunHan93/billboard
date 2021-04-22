@@ -2024,7 +2024,7 @@
 				<!-- Profile Modal -->
 				<div id="profile_info" class="modal custom-modal fade" role="dialog">
 					<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
-						<form name="member" action="http://127.0.0.1:8001/billbo/profile/mainProfile2" method="post">
+						<form id="memberTest" name="member" action="http://127.0.0.1:8001/billbo/profile/mainProfile2" method="post">
 					<div class="modal-content sub-modal">		
 						<div class="modal-content sub-modal">
 							<div class="modal-header">
@@ -2083,14 +2083,14 @@
 										<!-- modalbody -->
 											</div>
 								 	<div class="page_action_wrap" style="display: block;">
-										<button class="btn_major" data-role="button" onclick="submit(this.form)">저장</button>
-										<button class="btn_minor" data-role="button"  id="submit">취소</button>
+										<button id="testId" type="button" class="btn_major" data-role="button">저장</button>
+										<button class="btn_minor" data-role="button">취소</button>
 								</div>
 									<div class="submit-section">
 										<button class="btn btn-primary submit-btn" data-role="button" type="button" onclick="submit1(this.form)">Submit</button>
 										</div> 
 										<div class="page_action_wrap">
-										<button class="btn btn-primary submit-btn" data-role="button" id="submit" type="button">즈으장</button>
+										<button class="btn btn-primary submit-btn" data-role="button" type="button">즈으장</button>
 									</div>
 											</div>
 											</div>
@@ -2100,7 +2100,12 @@
 									</div>
 							</div>
 			<script type="text/javascript">
-     $("#submit").click(function() {
+     $("#testId").click(function() {
+    	 
+    	 console.log('왜안되누');
+    	 alert('동작 ㄱㄱ');
+    	 $("#memberTest").submit();
+    	 
   /*   	var phone = $("select[phone='phone']").val();
     	var email = $("select[email='email']").val();
     	 */

@@ -117,7 +117,7 @@ public class ApprovaldocumentController {
 //		for(int i = 0; i < lineMemDTO.getLineMem().size(); i++) {
 //			System.out.println("가져온 값 :" + i+ "번째 값은? : " + lineMemDTO.getLineMem().get(i));
 //		}
-		
+		  
 		/* 반차가 아닐시 처리 */
 		if(vacation.getHalfDayPoint() == null) {
 			vacation.setHalfDayPoint("");
