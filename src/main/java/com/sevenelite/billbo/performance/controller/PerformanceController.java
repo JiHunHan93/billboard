@@ -40,12 +40,6 @@ public class PerformanceController {
 		return "performance/Performance";
 	}
 	
-	/*
-	 * @GetMapping("review") public String perReview() {
-	 * 
-	 * return "performance/PerformanceReview"; }
-	 */
-
 	@GetMapping("detail")
 	@ResponseBody
 	public ModelAndView perReview(Model model, HttpServletRequest request,
@@ -64,11 +58,54 @@ public class PerformanceController {
 	}
 	
 	@PostMapping("detail")
-	public String insertReview(@ModelAttribute ReviewListDTO reviewDTO, RedirectAttributes redirect, Model model ) {
-		
+	public String insertReview(@ModelAttribute ReviewListDTO reviewDTO, RedirectAttributes redirect, Model model, HttpServletRequest request ) {
+		System.out.println("????" + reviewDTO);
+	      
+	      String no = request.getParameter("memberNo");
+	      
+	      int Mno = Integer.parseInt(no);
+	      
+	      reviewDTO.setMemberNo(Mno);
+	      
+	      System.out.println("no : " + no);
+	      
+	      int score1 = Integer.parseInt(request.getParameter("achOne"));
+	      int score2 = Integer.parseInt(request.getParameter("achTwo"));
+	      int score3 = Integer.parseInt(request.getParameter("achThree"));
+	      int score4 = Integer.parseInt(request.getParameter("abilOne"));
+	      int score5 = Integer.parseInt(request.getParameter("abilTwo"));
+	      int score6 = Integer.parseInt(request.getParameter("abilThree"));
+	      int score7 = Integer.parseInt(request.getParameter("abilFour"));
+	      int score8 = Integer.parseInt(request.getParameter("attOne"));
+	      int score9 = Integer.parseInt(request.getParameter("attTwo"));
+	      int score10 = Integer.parseInt(request.getParameter("attThree"));
+	      
+	      int sum = score1 + score2 + score3 + score4 + score5 + score6 + score7 + score8 + score9 + score10;
+	      
+	      int avg = sum / 10;
+	      
+	      reviewDTO.setReviewAvg(avg);
+	      
+	      String grade = "";
+	      if(avg < 65) {
+	         grade = "D";
+	      } else if(avg <= 74) {
+	         grade = "C";
+	      } else if(avg <= 84) {
+	         grade = "B";
+	      } else if(avg <= 92) {
+	         grade = "A";
+	      } else if(avg > 92) {
+	         grade = "A+";
+	      }
+	      
+	      reviewDTO.setReviewGrade(grade);
+	      
+	      System.out.println("@@@@@@@@" + reviewDTO);
 		if (!pfService.insertReview(reviewDTO)) {
 			redirect.addFlashAttribute("message", "인사평가를 반영하는데 실패하였습니다");
 		}
+		
 		
 		redirect.addFlashAttribute("message", "인사평가 성공");
 		
@@ -76,6 +113,15 @@ public class PerformanceController {
 		model.addAttribute("perList", perList);
 		
 		return "performance/Performance";
+	}
+	
+	@GetMapping("myReview")
+	public String selectReviewList(Model model) {
+		List<PerformanceListDTO> myReviewList = pfService.selectMyPer();
+		model.addAttribute("myReviewList", myReviewList);
+		System.out.println("!!!!!!!!!!!!!" + myReviewList);
+		
+		return "performance/MyPerformance";
 	}
 	
 }

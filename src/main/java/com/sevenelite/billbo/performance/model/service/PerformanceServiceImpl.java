@@ -39,4 +39,10 @@ public class PerformanceServiceImpl implements PerformanceService {
 		return result >= 1 ? true : false;
 	}
 
+	@Override
+	public List<PerformanceListDTO> selectMyPer() {
+		
+		return perMapper.selectMyPer();
+	}
+
 }

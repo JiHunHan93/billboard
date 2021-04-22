@@ -16,7 +16,7 @@ public interface WorkDAO {
 
 	List<StatusAndWorkDTO> selectTime();
 
-	String selectWork();
+	String selectWork(int userno);
 
 	Date selectLeave(int userno, String workDate);
 
@@ -25,6 +25,8 @@ public interface WorkDAO {
 	String selectLeave(StatusAndWorkDTO status);
 
 	int insertWorkCount();
+
+	int updateWorkCount();
 
   }
  

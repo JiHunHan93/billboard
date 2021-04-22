@@ -13,14 +13,13 @@ import com.sevenelite.billbo.workhour.work.model.dto.WorkDTO;
 	boolean insertWorkInfo(WorkDTO workInfo);
 	
 
-	String selectWork();
+	String selectWork(int userno);
 
 	String selectCommute(StatusAndWorkDTO status);
 
 	String selectLeave(StatusAndWorkDTO status);
 
-	int insertWorkCount();
-
+	int updateWorkCount(int workCount);
 
    } 
   

@@ -29,10 +29,6 @@ com.sevenelite.billbo.workhour.work.model.dto.WorkDTO;
 		return dao.insertWorkInfo(workInfo);
 	}
 	@Override
-	public String selectWork() {
-		return dao.selectWork();
-	}
-	@Override
 	public String selectCommute(StatusAndWorkDTO status) {
 		return dao.selectCommute(status);
 	}
@@ -41,8 +37,12 @@ com.sevenelite.billbo.workhour.work.model.dto.WorkDTO;
 		return dao.selectLeave(status);
 	}
 	@Override
-	public int insertWorkCount() {
-		return dao.insertWorkCount();
+	public String selectWork(int userno) {
+		return dao.selectWork(userno);
+	}
+	@Override
+	public int updateWorkCount(int workCount) {
+		return dao.updateWorkCount();
 	}
 	
 }	
