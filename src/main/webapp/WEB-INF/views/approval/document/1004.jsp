@@ -1437,6 +1437,7 @@ ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }
 		var lineList = [];
 		var memNo = 0;
 		var memNo2 = 0;
+		var memNo3 = 0;
 		
 		const $ul = $("#firstList")
 		
@@ -1485,7 +1486,7 @@ ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }
 						console.log($(this).html());
 						
 						/* 3. $(this).attr('value') : 사번 */
-						console.log($(this).attr('value'));
+						console.log('memNo에 담기 전 순수 값 : ' + $(this).attr('value'));
 						
 						/* 4. 해당 사번으로 변수 */
 						memNo = $(this).attr('value');	//3번 사원 기준 값 4
@@ -1519,8 +1520,17 @@ ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }
 						/* 6. form태그에 input 담기 List 타입*/
 						const $span3 = $("#hiddenInput");
 						
-/* 						$hiddenInputMemListLine = $("<input name='lineMem[memNo3].memberNoLine' type='hidden' value='lineList[memNo2].memberNoLine'> <input name='lineMem[memNo3].memberNameLine' type='hidden' value='lineList[memNo2].memberNameLine'> <input name='lineMem[memNo3].deptCodeLine' type='hidden' value='lineList[memNo2].deptCodeLine'> <input name='lineMem[memNo3].deptNameLine' type='hidden' value='lineList[memNo2].deptNameLine'> <input name='lineMem[memNo3].spotCodeLine' type='hidden' value='lineList[memNo2].spotCodeLine'> <input name='lineMem[memNo3].spotNameLien' type='hidden' value='lineList[memNo2].spotNameLien'> ") */
-						
+						console.log('memNo : ' + memNo);	//3번 사원 기준 값 4
+						console.log('memNo2 : ' + memNo2);	//3번 사원 기준 값 3
+						/* console.log('memNo3 : ' + memNo3);	//3번 사원 기준 값 2 */
+						/* console.log('lineList[memNo].memberNoLine : ' + lineList[memNo].memberNoLine);
+						console.log('lineList[memNo2].memberNoLine : ' + lineList[memNo2].memberNoLine);
+						console.log("<input name='memberNoLine[ + 3 + ] : " + "<input name='memberNoLine[" + 3 + "]"); */	//3번 사원 기준 값 4
+ 						$hiddenInputMemListLine = $("<input name='lineMem[" + memNo3 + "].memberNoLine' type='hidden' value='" + lineList[memNo2].memberNoLine + "'> <input name='lineMem[" +memNo3 + "].memberNameLine' type='hidden' value='" + lineList[memNo2].memberNameLine + "'> <input name='lineMem[" + memNo3 + "].deptCodeLine' type='hidden' value='" + lineList[memNo2].deptCodeLine + "'> <input name='lineMem[" + memNo3 + "].deptNameLine' type='hidden' value='" + lineList[memNo2].deptNameLine + "'> <input name='lineMem[" + memNo3 + "].spotCodeLine' type='hidden' value='" + lineList[memNo2].spotCodeLine + "'> <input name='lineMem[" + memNo3 + "].spotNameLien' type='hidden' value='" + lineList[memNo2].spotNameLien + "'> ");
+ 						/* $hiddenInputMemListLine1 = $("<input name='lineMem[" + memNo3 + "].memberNoLine' type='hidden' value='" + lineList[memNo2].memberNoLine + "'> <input name='lineMem[" + memNo3 + "].memberNameLine' type='hidden' value='" + lineList[memNo2].memberNameLine + "'>"); */
+ 						$span3.append($hiddenInputMemListLine);
+ 						/* $span3.append($hiddenInputMemListLine1); */
+ 						
 						/* $hiddenInputMemListLine = $("<input name='" + lineMem[memNo3].memberNoLine + "' type='hidden' value='" + lineList[memNo2].memberNoLine + "'> <input name='" + lineMem[memNo3].memberNameLine + "' type='hidden' value='" + lineList[memNo2].memberNameLine + "'>")
 						console.log("<input name='" + lineMem[memNo3].memberNoLine + "' type='hidden' value='" + lineList[memNo2].memberNoLine + "'> <input name='" + lineMem[memNo3].memberNameLine + "' type='hidden' value='" + lineList[memNo2].memberNameLine + "'>")
 						$span3.append($hiddenInputMemListLine); */
@@ -1572,6 +1582,10 @@ ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }
 	   } else if($("input[name='endDate']").val() == "") {
 		   alert("종료 일시를 선택해주세요.");
 	   } else {
+			console.log('memNo : ' + memNo);	//3번 사원 기준 값 4
+			console.log('memNo2 : ' + memNo2);	//3번 사원 기준 값 3
+			/* console.log('memNo3 : ' + memNo3);	//3번 사원 기준 값 2 */
+			/* console.log('lineList[memNo2].memberNoLine : ' + lineList[memNo2].memberNoLine); */
 		   alert("컨트롤러로 이동");
 		   /* Hidden 추가 */
 		   const $span = $("#hiddenInput");
