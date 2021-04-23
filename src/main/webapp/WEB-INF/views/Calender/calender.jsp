@@ -106,6 +106,12 @@
 				$('.delete-event').show();
 				$("#modal-sub-mod-btn").show();
 				
+				if(event.event._def.extendedProps.calType == '공휴일') {
+					$('.delete-event').hide();
+					$("#modal-sub-mod-btn").hide();
+					console.log('공휴일입니다.');
+				}
+				
 				// detail modal focus [
 				$('#event-modal').modal().on('shown.bs.modal', function () {
 					$('#event-modal').focus();
@@ -127,42 +133,49 @@
 				})
 				// detail modal focus ]
 				
-				// modify submit button clicked [
-				$(document).on('click', '.modify-event', function(e) {
-					$('.delete-event').show();
-					$('.modify-event').hide();
+				// detail modal closed [
+				$('#event-modal').modal().on('hidden.bs.modal', function () {
 					$('#modal-sub-title-a').attr('readonly', true);
 					$('.start-date-a').attr('readonly', true);
 					$('.end-date-a').attr('readonly', true);
 					$('#modal-sub-title-a').attr('readonly', true);
 					$('.calSelect-a').attr('disabled', true);
-				    $('#modal-sub-txt-area-a').attr('readonly', true);
-				    
+					$('#modal-sub-txt-area-a').attr('readonly', true);
+					
 					// set arr for ajax [
 					var arr = [];		// []
 						arr.push(7);	// [7]
 						arr.push(8);	// [{7, 8}]
 					
 					var form = {
-						arr : JSON.stringify(arr),
-						no : event.event._def.extendedProps.no,
-						title : $('#modal-sub-title-a').val(),
-						start : $('.start-date-a').val(),
-						end : $('.end-date-a').val(),
-						category : $('.calSelect-a option:selected').val(),
-						body : $('#modal-sub-txt-area-a').val()
-					};
-					// set arr for ajax ]
-					
-					// transfer [form] to controller [ 
-					$.ajax({
-						type: "post", 
-						url: "postUpdate", 
-						dataType: "json", 
-						contentType : "application/x-www-form-urlencoded; charset=UTF-8",
-						data: form
-					});
-					// transfer [form] to controller ]
+							arr : JSON.stringify(arr),
+							no : event.event._def.extendedProps.no,
+							title : $('#modal-sub-title-a').val(),
+							start : $('.start-date-a').val(),
+							end : $('.end-date-a').val(),
+							category : $('.calSelect-a option:selected').val(),
+							body : $('#modal-sub-txt-area-a').val()
+						};
+						// set arr for ajax ]
+						
+						// transfer [form] to controller [ 
+						$.ajax({
+							type: "post", 
+							url: "postUpdate", 
+							dataType: "json", 
+							contentType : "application/x-www-form-urlencoded; charset=UTF-8",
+							data: form
+						});
+						// transfer [form] to controller ]
+					calendar.render();
+				})
+				// detail modal closed ]
+				
+				// modify submit button clicked [
+				$(document).on('click', '.modify-event', function(e) {
+					$('.delete-event').show();
+					$('.modify-event').hide();
+				    
 					location.reload();
 				});
 				// modify submit button clicked ]
@@ -171,12 +184,6 @@
 				$(document).on('click', '.delete-event', function(e) {
 					$('.delete-event').show();
 					$('.modify-event').hide();
-					$('#modal-sub-title-a').attr('readonly', true);
-					$('.start-date-a').attr('readonly', true);
-					$('.end-date-a').attr('readonly', true);
-					$('#modal-sub-title-a').attr('readonly', true);
-					$('.calSelect-a').attr('disabled', true);
-					$('#modal-sub-txt-area-a').attr('readonly', true);
 					
 					// set arr for ajax [
 					var arr = [];
@@ -186,11 +193,6 @@
 					var form = {
 						arr : JSON.stringify(arr),
 						no : event.event._def.extendedProps.no,
-						title : $('#modal-sub-title-a').val(),
-						start : $('.start-date-a').val(),
-						end : $('.end-date-a').val(),
-						category : $('.calSelect-a option:selected').val(),
-						body : $('#modal-sub-txt-area-a').val()
 					};
 					// set arr for ajax ]
 					
@@ -204,31 +206,6 @@
 					});
 					// transfer [form] to controller ]
 					
-					// modify button clicked [
-					$("#modal-sub-mod-btn").click(function() {
-						$('.delete-event').hide();
-						$('.modify-event').show();
-						$("#modal-sub-mod-btn").hide();
-						$('#modal-sub-title-a').attr('readonly', false);
-						$('.start-date-a').attr('readonly', false);
-						$('.end-date-a').attr('readonly', false);
-						$('#modal-sub-title-a').attr('readonly', false);
-						$('.calSelect-a').attr('disabled', false);
-					    $('#modal-sub-txt-area-a').attr('readonly', false);
-					});
-					// modify button clicked ]
-					
-					// detail modal closed [
-					$('#event-modal').modal().on('hidden.bs.modal', function () {
-						$('#modal-sub-title-a').attr('readonly', true);
-						$('.start-date-a').attr('readonly', true);
-						$('.end-date-a').attr('readonly', true);
-						$('#modal-sub-title-a').attr('readonly', true);
-						$('.calSelect-a').attr('disabled', true);
-						$('#modal-sub-txt-area-a').attr('readonly', true);
-						calendar.render();
-					})
-					// detail modal closed ]
 					location.reload();
 				});
 				// delete button clicked ]
@@ -372,6 +349,21 @@
 			locale : 'ko'
 		});
 		// set calendar ]
+		
+		// modify button clicked [
+		$("#modal-sub-mod-btn").click(function() {
+			alert('수정버튼');
+			$('.delete-event').hide();
+			$('.modify-event').show();
+			$("#modal-sub-mod-btn").hide();
+			$('#modal-sub-title-a').attr('readonly', false);
+			$('.start-date-a').attr('readonly', false);
+			$('.end-date-a').attr('readonly', false);
+			$('#modal-sub-title-a').attr('readonly', false);
+			$('.calSelect-a').attr('disabled', false);
+		    $('#modal-sub-txt-area-a').attr('readonly', false);
+		});
+		// modify button clicked ]
 		
 		// page loaded [
 		$(document).ready(function() {
@@ -1081,6 +1073,7 @@ if($('.select11').length > 0) {
 											<option>개인일정</option>
 											<option>부서일정</option>
 											<option>휴일</option>
+											<option disabled="disabled">공휴일</option>
 										</select>
 									</div>
 									<div class="form-group">
@@ -1143,6 +1136,7 @@ if($('.select11').length > 0) {
 											<option>개인일정</option>
 											<option>부서일정</option>
 											<option>휴일</option>
+											<option disabled="disabled">공휴일</option>
 										</select>
 									</div>
 									<div class="form-group">

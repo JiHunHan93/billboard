@@ -49,8 +49,6 @@ public class CalenderController {
 		List<Map<String,CalDTO>> calendarInfo = calService.selectCal();
 		System.out.println(calendarInfo.get(0).get("start"));
 		SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
-		System.out.println(f.format(calendarInfo.get(0).get("start")));
-		f.format(calendarInfo.get(0).get("start"));
 		System.out.println("아직 컨트롤러" + calendarInfo);
 
 		return calendarInfo;

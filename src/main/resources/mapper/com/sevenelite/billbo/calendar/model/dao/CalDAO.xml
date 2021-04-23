@@ -138,6 +138,7 @@
     UPDATE BB_WORK_SCHEDULE A
 	   SET A.START_DATE = #{ start }
 	     , A.END_DATE = #{ end }
+	     , A.SCHEDULE_DELETE_STATUS = 'Y'
      WHERE A.SCHEDULE_NO = #{ no }
 </update>
 
@@ -145,6 +146,7 @@
     UPDATE BB_WORK_SCHEDULE A
 	   SET A.START_DATE = #{ start }
 	     , A.END_DATE = #{ end }
+	     , A.SCHEDULE_DELETE_STATUS = 'Y'
      WHERE A.SCHEDULE_NO = #{ no }
 </update>
 </mapper>
