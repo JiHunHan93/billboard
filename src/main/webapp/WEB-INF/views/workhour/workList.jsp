@@ -61,7 +61,7 @@
             <!-- Logo -->
                 <div class="header-left">
                     <a href="index.html" class="logo">
-                  <img src="assets/img/Logo.png" width="40" height="40" alt="">
+                  <img src="../resources/hrtemp/img/Logo.png" width="40" height="40" alt="">
                </a>
                 </div>
             <!-- /Logo -->
@@ -102,20 +102,20 @@
                <!-- Flag -->
                <li class="nav-item dropdown has-arrow flag-nav">
                   <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
-                     <img src="assets/img/flags/us.png" alt="" height="20"> <span>English</span>
+                     <img src="../resources/hrtemp/img/flags/us.png" alt="" height="20"> <span>English</span>
                   </a>
                   <div class="dropdown-menu dropdown-menu-right">
                      <a href="javascript:void(0);" class="dropdown-item">
-                        <img src="assets/img/flags/us.png" alt="" height="16"> English
+                        <img src="../resources/hrtemp/img/flags/us.png" alt="" height="16"> English
                      </a>
                      <a href="javascript:void(0);" class="dropdown-item">
-                        <img src="assets/img/flags/fr.png" alt="" height="16"> French
+                        <img src="../resources/hrtemp/img/flags/fr.png" alt="" height="16"> French
                      </a>
                      <a href="javascript:void(0);" class="dropdown-item">
-                        <img src="assets/img/flags/es.png" alt="" height="16"> Spanish
+                        <img src="../resources/hrtemp/img/flags/es.png" alt="" height="16"> Spanish
                      </a>
                      <a href="javascript:void(0);" class="dropdown-item">
-                        <img src="assets/img/flags/de.png" alt="" height="16"> German
+                        <img src="../resources/hrtemp/img/flags/de.png" alt="" height="16"> German
                      </a>
                   </div>
                </li>
@@ -137,7 +137,7 @@
                               <a href="activities.html">
                                  <div class="media">
                                     <span class="avatar">
-                                       <img alt="" src="assets/img/profiles/avatar-02.jpg">
+                                       <img alt="" src="../resources/hrtemp/img/profiles/avatar-02.jpg">
                                     </span>
                                     <div class="media-body">
                                        <p class="noti-details"><span class="noti-title">John Doe</span> added new task <span class="noti-title">Patient appointment booking</span></p>
@@ -150,7 +150,7 @@
                               <a href="activities.html">
                                  <div class="media">
                                     <span class="avatar">
-                                       <img alt="" src="assets/img/profiles/avatar-03.jpg">
+                                       <img alt="" src="../resources/hrtemp/img/profiles/avatar-03.jpg">
                                     </span>
                                     <div class="media-body">
                                        <p class="noti-details"><span class="noti-title">Tarah Shropshire</span> changed the task name <span class="noti-title">Appointment booking with payment gateway</span></p>
@@ -163,7 +163,7 @@
                               <a href="activities.html">
                                  <div class="media">
                                     <span class="avatar">
-                                       <img alt="" src="assets/img/profiles/avatar-06.jpg">
+                                       <img alt="" src="../resources/hrtemp/img/profiles/avatar-06.jpg">
                                     </span>
                                     <div class="media-body">
                                        <p class="noti-details"><span class="noti-title">Misty Tison</span> added <span class="noti-title">Domenic Houston</span> and <span class="noti-title">Claire Mapes</span> to project <span class="noti-title">Doctor available module</span></p>
@@ -176,7 +176,7 @@
                               <a href="activities.html">
                                  <div class="media">
                                     <span class="avatar">
-                                       <img alt="" src="assets/img/profiles/avatar-17.jpg">
+                                       <img alt="" src="../resources/hrtemp/img/profiles/avatar-17.jpg">
                                     </span>
                                     <div class="media-body">
                                        <p class="noti-details"><span class="noti-title">Rolland Webber</span> completed task <span class="noti-title">Patient and Doctor video conferencing</span></p>
@@ -189,7 +189,7 @@
                               <a href="activities.html">
                                  <div class="media">
                                     <span class="avatar">
-                                       <img alt="" src="assets/img/profiles/avatar-13.jpg">
+                                       <img alt="" src="../resources/hrtemp/img/profiles/avatar-13.jpg">
                                     </span>
                                     <div class="media-body">
                                        <p class="noti-details"><span class="noti-title">Bernardo Galaviz</span> added new task <span class="noti-title">Private chat module</span></p>
@@ -224,7 +224,7 @@
                                  <div class="list-item">
                                     <div class="list-left">
                                        <span class="avatar">
-                                          <img alt="" src="assets/img/profiles/avatar-09.jpg">
+                                          <img alt="" src="../resources/hrtemp/img/profiles/avatar-09.jpg">
                                        </span>
                                     </div>
                                     <div class="list-body">
@@ -241,7 +241,7 @@
                                  <div class="list-item">
                                     <div class="list-left">
                                        <span class="avatar">
-                                          <img alt="" src="assets/img/profiles/avatar-02.jpg">
+                                          <img alt="" src="../resources/hrtemp/img/profiles/avatar-02.jpg">
                                        </span>
                                     </div>
                                     <div class="list-body">
@@ -258,7 +258,7 @@
                                  <div class="list-item">
                                     <div class="list-left">
                                        <span class="avatar">
-                                          <img alt="" src="assets/img/profiles/avatar-03.jpg">
+                                          <img alt="" src="../resources/hrtemp/img/profiles/avatar-03.jpg">
                                        </span>
                                     </div>
                                     <div class="list-body">
@@ -275,7 +275,7 @@
                                  <div class="list-item">
                                     <div class="list-left">
                                        <span class="avatar">
-                                          <img alt="" src="assets/img/profiles/avatar-05.jpg">
+                                          <img alt="" src="../resources/hrtemp/img/profiles/avatar-05.jpg">
                                        </span>
                                     </div>
                                     <div class="list-body">
@@ -292,7 +292,7 @@
                                  <div class="list-item">
                                     <div class="list-left">
                                        <span class="avatar">
-                                          <img alt="" src="assets/img/profiles/avatar-08.jpg">
+                                          <img alt="" src="../resources/hrtemp/img/profiles/avatar-08.jpg">
                                        </span>
                                     </div>
                                     <div class="list-body">
@@ -315,7 +315,7 @@
    
                <li class="nav-item dropdown has-arrow main-drop">
                   <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                     <span class="user-img"><img src="assets/img/profiles/avatar-21.jpg" alt="">
+                     <span class="user-img"><img src="../resources/hrtemp/img/profiles/avatar-21.jpg" alt="">
                      <span class="status online"></span></span>
                      <span><!-- 해당 사원 명 --></span>
                   </a>
@@ -510,7 +510,7 @@
                         <span>Administration</span>
                      </li>
                      <li> 
-                        <a href="assets.html"><i class="la la-object-ungroup"></i> <span>Assets</span></a>
+                        <a href="../resources/hrtemp.html"><i class="la la-object-ungroup"></i> <span>../resources/hrtemp</span></a>
                      </li>
                      <li class="submenu">
                         <a href="#"><i class="la la-briefcase"></i> <span> Jobs </span> <span class="menu-arrow"></span></a>
@@ -717,7 +717,7 @@
                                  <td><input type="hidden" name="no" value="${statusList.no}"></td>
                                  <td><c:out value="${ statusList.commute }"></c:out></td>
                                  <td><c:out value="${ statusList.lwork }"></c:out></td>
-                                 <td></td>
+                                 <td><button class="btn btn-info" data-toggle="modal" data-target="#away-select">수정 요청</button></td>
                         </c:forEach>
                         <div class="dropdown action-label">
                            <div class="dropdown-menu dropdown-menu-right">
@@ -752,6 +752,59 @@
                      </button>
                   </div>
             <!-- /Mobile Menu -->
+            
+            <!-- Away Modal -->
+			<div class="modal custom-modal fade" id="away-select" role="dialog">
+				<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">연차 신청 양식</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="card punch-status">
+										<div class="card-body">
+											<h5 class="card-title">휴가신청 양식</h5>
+											<a class="modal-sub-text">휴가</a>
+											<ul>
+												<li>
+													<a title="휴가신청서" rel="FORM" nodeid="708" id="FORM_708" href="#" data-bypass="1" class="modal-sub-text1">휴가신청서</a>
+												</li>
+												<li>
+													<a title="휴일근무신청서" rel="FORM" nodeid="673" id="FORM_673" href="#" data-bypass="1" class="modal-sub-text2">휴일근무신청서</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="card recent-activity">
+										<div class="card-body">
+											<h5 class="card-title">양식 미리보기</h5>
+											<ul class="modal-sub0img-area">
+												<li class="modal-sub-img1">
+													<img src="./resources/images/main/휴가 신청서.PNG" class="modal-sub-img1">
+												</li>
+												<li class="modal-sub-img2">
+													<img src="./resources/images/main/휴일근무신청서.PNG" class="modal-sub-img2">
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<button class="btn btn-success modal-sub-submit-btn">작성하기</button>
+								<button class="btn btn-success modal-sub-submit-btn-a">작성하기</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Away Modal -->
             
             </div>
          <!-- /Header -->
@@ -791,28 +844,28 @@
       <!-- /Main Wrapper -->
 
       <!-- jQuery -->
-        <script src="assets/js/jquery-3.5.1.min.js"></script>
+        <script src="../resources/hrtemp/js/jquery-3.5.1.min.js"></script>
 
       <!-- Bootstrap Core JS -->
-        <script src="assets/js/popper.min.js"></script>
-        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="../resources/hrtemp/js/popper.min.js"></script>
+        <script src="../resources/hrtemp/js/bootstrap.min.js"></script>
 
       <!-- Slimscroll JS -->
-      <script src="assets/js/jquery.slimscroll.min.js"></script>
+      <script src="../resources/hrtemp/js/jquery.slimscroll.min.js"></script>
       
       <!-- Select2 JS -->
-      <script src="assets/js/select2.min.js"></script>
+      <script src="../resources/hrtemp/js/select2.min.js"></script>
       
       <!-- Datatable JS -->
-      <script src="assets/js/jquery.dataTables.min.js"></script>
-      <script src="assets/js/dataTables.bootstrap4.min.js"></script>
+      <script src="../resources/hrtemp/js/jquery.dataTables.min.js"></script>
+      <script src="../resources/hrtemp/js/dataTables.bootstrap4.min.js"></script>
       
       <!-- Datetimepicker JS -->
-      <script src="assets/js/moment.min.js"></script>
-      <script src="assets/js/bootstrap-datetimepicker.min.js"></script>
+      <script src="../resources/hrtemp/js/moment.min.js"></script>
+      <script src="../resources/hrtemp/js/bootstrap-datetimepicker.min.js"></script>
 
       <!-- Custom JS -->
-      <script src="assets/js/app.js"></script>
+      <script src="../resources/hrtemp/js/app.js"></script>
       
     </body>
 </html>

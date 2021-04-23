@@ -623,14 +623,11 @@
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title">Timesheet</h3>
+								<h3 class="page-title">부서 근태현황</h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-									<li class="breadcrumb-item active">Timesheet</li>
 								</ul>
 							</div>
 							<div class="col-auto float-right ml-auto">
-								<a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_todaywork"><i class="fa fa-plus"></i> Add Today Work</a>
 							</div>
 						</div>
 					</div>
@@ -658,7 +655,7 @@
 										<td class="free-td"><c:out value="${ workDept.date }" />
 										<td class="free-td"><c:out value="${ workDept.commute }" />
 										<td class="free-td"><c:out value="${ workDept.leave }" />
-										<td class="free-td"><c:out value="${ workDept.workType}" />
+										<td class="free-td"><c:out value="${ workDept.type}"/>
 									</tr>
 								</c:forEach>		
 										
