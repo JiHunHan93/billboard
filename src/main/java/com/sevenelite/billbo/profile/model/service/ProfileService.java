@@ -122,7 +122,7 @@ public interface ProfileService {
 
 	List<MemberInfoDTO>selectMemberInfo(int memberno);
 	List<MemberInfoDTO>viewAllInfo(int memberno);
-	
+	List<MemberInfoDTO>deleteInfo(int memberno);
 	
 	boolean mainProfile(MemberInfoDTO memberInfo);
 

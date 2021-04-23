@@ -916,5 +916,6 @@ SELECT
     WHERE MEMBER_NO = #{ member_no }
 	             
  </select>
-	        
+ 
+
 </mapper>

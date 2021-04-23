@@ -853,6 +853,59 @@
 				</div>
 			</div>
 			<!-- /Approve Leave Modal -->
+			
+			<!-- Away Modal -->
+			<div class="modal custom-modal fade" id="away-select" role="dialog">
+				<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title">연차 신청 양식</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="card punch-status">
+										<div class="card-body">
+											<h5 class="card-title">휴가신청 양식</h5>
+											<a class="modal-sub-text">휴가</a>
+											<ul>
+												<li>
+													<a title="휴가신청서" rel="FORM" nodeid="708" id="FORM_708" href="#" data-bypass="1" class="modal-sub-text1">휴가신청서</a>
+												</li>
+												<li>
+													<a title="휴일근무신청서" rel="FORM" nodeid="673" id="FORM_673" href="#" data-bypass="1" class="modal-sub-text2">휴일근무신청서</a>
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="card recent-activity">
+										<div class="card-body">
+											<h5 class="card-title">양식 미리보기</h5>
+											<ul class="modal-sub0img-area">
+												<li class="modal-sub-img1">
+													<img src="./resources/images/main/휴가 신청서.PNG" class="modal-sub-img1">
+												</li>
+												<li class="modal-sub-img2">
+													<img src="./resources/images/main/휴일근무신청서.PNG" class="modal-sub-img2">
+												</li>
+											</ul>
+										</div>
+									</div>
+								</div>
+								<button class="btn btn-success modal-sub-submit-btn">작성하기</button>
+								<button class="btn btn-success modal-sub-submit-btn-a">작성하기</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!-- /Away Modal -->
 
 			<!-- Delete Leave Modal -->
 			<div class="modal custom-modal fade" id="delete_approve"

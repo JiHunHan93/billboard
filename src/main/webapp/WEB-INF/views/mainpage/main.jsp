@@ -38,7 +38,6 @@
 <link rel="stylesheet" href="/billbo/resources/hrtemp/css/style.css">
 
 </head>
-<body>
 	<!-- Main Wrapper -->
 	<div class="main-wrapper">
 
@@ -474,9 +473,9 @@
 							<div class="card-body">
 								<h5 class="card-title">
 								</h5>
-								<div class="punch-det work_sysdate">
-									<p><%= sf.format(nowTime) %></p>
-								</div>
+							<h1 class="poscenter white alignleft">
+											<span id="clock"></span>
+										</h1>
 								<div class="punch-info">
 									<div class="punch-hours">
 										<span><strong>근무시간</strong></span>
@@ -493,6 +492,9 @@
 								<div class="statistics">
 									<div class="row">
 										<div class="col-md-6 col-6 text-center">
+										<small class="text-muted">
+										
+									</small>
 										</div>
 										<div class="col-md-6 col-6 text-center">
 										</div>
@@ -954,26 +956,34 @@
 	<script src="/billbo/resources/hrtemp/js/app.js"></script>
 </body>
 
-<script>
-	$(function() {
-		$(".modal-sub-text1").click(function() {
 
-			const $t = $(this);
+    </script>
+		<script type="text/javascript">
 
-			$(".modal-sub-img2.on").removeClass("on")
-			$(".modal-sub-img1").toggleClass("on");
-		})
-	})
-	$(function() {
-		$(".modal-sub-text2").click(function() {
+    setInterval("clock()",1000);
+    function clock(){
+       var now = new Date();
+        hours = now.getHours();
+        minutes = now.getMinutes();
+        seconds = now.getSeconds();
+ 
+        if (hours > 12){
+            hours -= 12;
+        ampm = "오후 ";
+        }else{
+            ampm = "오전 ";
+        }
+        if (hours < 10){
+            hours = "0" + hours;
+        }
+        if (minutes < 10){
+            minutes = "0" + minutes;
+        }
+        if (seconds < 10){
+            seconds = "0" + seconds;
+        }
+document.getElementById("clock").innerHTML = ampm + hours + ":" + minutes + ":" + seconds;
+    }
 
-			const $t = $(this);
-
-			$(".modal-sub-img1.on").removeClass("on")
-			$(".modal-sub-img2").toggleClass("on");
-		})
-	})
-
-	
 </script>
 </html>

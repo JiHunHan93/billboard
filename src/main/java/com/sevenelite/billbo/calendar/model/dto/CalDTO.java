@@ -1,7 +1,5 @@
 package com.sevenelite.billbo.calendar.model.dto;
 
-import java.sql.Date;
-
 public class CalDTO {
 	
 	private int no;

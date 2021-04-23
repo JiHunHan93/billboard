@@ -41,7 +41,7 @@ com.sevenelite.billbo.workhour.work.model.dto.WorkDTO;
 		return dao.selectWork(userno);
 	}
 	@Override
-	public int updateWorkCount(int workCount) {
+	public int updateWorkCount() {
 		return dao.updateWorkCount();
 	}
 	

@@ -40,9 +40,15 @@ public class PerformanceServiceImpl implements PerformanceService {
 	}
 
 	@Override
-	public List<PerformanceListDTO> selectMyPer() {
+	public List<PerformanceListDTO> selectMyPer(int memNo) {
 		
-		return perMapper.selectMyPer();
+		return perMapper.selectMyPer(memNo);
+	}
+
+	@Override
+	public List<ReviewListDTO> selectMyReview(int no) {
+		
+		return perMapper.selectMyReview(no);
 	}
 
 }
