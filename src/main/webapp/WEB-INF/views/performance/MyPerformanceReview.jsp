@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<% pageContext.setAttribute("replaceChar", "\n"); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,11 +14,11 @@
 	content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
 <meta name="author" content="Dreamguys - Bootstrap Admin Template">
 <meta name="robots" content="noindex, nofollow">
-<title>2조BB-게시판/문서함</title>
+<title>Project View - HRMS admin template</title>
 
 <!-- Favicon -->
 <link rel="shortcut icon" type="image/x-icon"
-	href="assets/img/favicon.png">
+	href="../resources/hrtemp/img/favicon.png">
 
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="../resources/hrtemp/css/bootstrap.min.css">
@@ -29,20 +31,22 @@
 <link rel="stylesheet"
 	href="../resources/hrtemp/css/line-awesome.min.css">
 
-<!-- Datatable CSS -->
+<!-- Select2 CSS -->
+<link rel="stylesheet" href="../resources/hrtemp/css/select2.min.css">
+
+<!-- Datetimepicker CSS -->
 <link rel="stylesheet"
-	href="../resources/hrtemp/css/dataTables.bootstrap4.min.css">
+	href="../resources/hrtemp/css/bootstrap-datetimepicker.min.css">
 
 <!-- Main CSS -->
 <link rel="stylesheet" href="../resources/hrtemp/css/style.css">
 
-<!-- Custom JS -->
-<script src="../resources/hrtemp/js/app.js"></script>
-
-<!-- jQuery -->
-<script src="../resources/hrtemp/js/jquery-3.5.1.min.js"></script>
-
-
+<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+<!--[if lt IE 9]>
+			<script src="assets/js/html5shiv.min.js"></script>
+			<script src="assets/js/respond.min.js"></script>
+		<![endif]-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 	<!-- Main Wrapper -->
@@ -361,7 +365,8 @@
 		<div class="sidebar" id="sidebar">
 			<div class="sidebar-inner slimscroll">
 				<div id="sidebar-menu" class="sidebar-menu">
-					<ul>	
+					<ul>
+						
 						<!-- 사이드바 서브메뉴 안쓰는 방향으로 수정 -->
 						<li><a href="${pageContext.servletContext.contextPath}"
 							class="sidebar-default"> <i class="la la-home sidebar-icon"></i>
@@ -372,7 +377,7 @@
 						<li><a href="${pageContext.servletContext.contextPath}/apps"
 							class="sidebar-default"> <i class="la la-cube sidebar-icon"></i>
 								<span class="sidebar-text"> Apps</span> <!-- <span class="menu-arrow"></span> -->
-						</a> </li>
+						</a></li>
 						<div class="sidebar-line"></div>
 						
 						<li><a
@@ -405,161 +410,155 @@
 								class="sidebar-text">Information</span>
 						</a></li>
 						<div class="sidebar-line"></div>
+						
 					</ul>
 				</div>
 			</div>
 		</div>
 		<!-- /Sidebar -->
 
-
 		<!-- Page Wrapper -->
 		<div class="page-wrapper">
 
+			<!-- Page Content -->
 			<div class="content container-fluid">
 
 				<!-- Page Header -->
 				<div class="page-header">
-					<div class="row">
+					<div class="row align-items-center">
 						<div class="col">
-							<h3 class="page-title">업무 평가 내역</h3>
+							<h3 class="page-title">인사평가</h3>
 							<ul class="breadcrumb">
-								<!-- <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li> -->
-								<li class="breadcrumb-item active">My Performance review</li>
+								<li class="breadcrumb-item"><a href="index.html">My Performance appraisal</a></li>
 							</ul>
 						</div>
 					</div>
 				</div>
 				<!-- /Page Header -->
-				<div class="row bonus-sub-container">
-				
-					<div class="col-sm-12" style="height: 900px;">
-						<div class="card mb-0" >
-							<div class="card-header">
-								<div class="col-md-6" style="max-width: 100%;">
-									<div class="card-board-style">
-										<div class="notice-body" align="center">
-											<br>
-											<div class="review-header text-center">
-												<h3 class="review-title">업무 평가 내역</h3>
-												<p class="text-muted">${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }</p>
-											</div>
-											<!-- <form class="file-search">
-											<div class="col-auto float-right ml-auto">
-											<a href="#" class="btn btn-primary btn-sm sub-btn" data-toggle="modal" data-target="#edit_project"><i class="fa fa-plus"></i> 업무 평가</a>
-											</div>
-												<div class="input-group" style="width: 300px; float: left;">
-													<select>
-														<option>제목</option>
-														<option>내용</option>
-														<option>통합</option>
-													</select> <input type="text" class="form-control"
-														placeholder="Search">
-													<div class="input-group-prepend">
-														<i class="fa fa-search board-icon"></i>
-													</div>
-												</div>
-											</form> -->
+
+				<section class="review-section personal-excellence">
+						<div class="review-header text-center">
+							<h3 class="review-title">인사고과표<h3>
+							<p class="text-muted"><%-- <c:out value="${ detailReview.memberName }"/> --%></p>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<div class="table-responsive">
+							<c:forEach var="detailReview" items="${ requestScope.detailReview }">
+									<table class="table table-bordered review-table mb-0">
+										<thead>
+											<tr>
+												<th style="width:40px;">#</th>
+												<th>고과요소</th>
+												<th>착안점</th>
+												<th>가중치</th>
+												<th>고과점수</th>
 												
-											<div class="tab-content">
-												<div class="tab-pane show active" id="solid-justified-tab1">
-													<div class="card-body">
-														<div class="table-responsive board-table-sort">
-															<!-- <button type="button" class="btn btn-primary dropdown-toggle" style="float: right;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">해당 연도</button>
-															<div class="dropdown-menu">
-															<a class="dropdown-item" href="#" name="2021">2021</a>
-															<a class="dropdown-item" href="#" name="2020">2020</a>
-															</div> -->
-															<table class="datatable table table-stripped mb-0">
-																<thead>
-																	<tr>
-																		<th><input type="checkbox"></th>
-																		<th>평가일</th>
-																		<th>이름</th>
-																		<th>직위</th>
-																		<th>근무부서</th>
-																		<th>휴대폰</th>
-																		<th>평가 등급</th>
-																		<th class="tb-hidden">인사평가고유번호</th>
-																	</tr> 
-																</thead>
-																<c:forEach var="myReviewList" items="${ requestScope.myReviewList }">
-																	<tr class="rowClick">
-																		<td><input type="checkbox"/>
-																		<td class="rnp-td"><c:out value="${ myReviewList.date }" />
-																		<td class="rnp-td"><c:out value="${ myReviewList.name }" />
-																		<td class="rnp-td"><c:out value="${ myReviewList.spot }" />
-																		<td class="rnp-td"><c:out value="${ myReviewList.dept }" />
-																		<td class="rnp-td"><c:out value="${ myReviewList.phone }" />
-																		<td class="rnp-td"><c:out value="${ myReviewList.grade}" />
-																		<td class="rnp-td tb-hidden"><c:out value="${ myReviewList.reviewNo}" />
-																	</tr>
-																</c:forEach>
-															</table>
-														</div>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td rowspan="3">업적</td>
+												<td>업무달성도</td>
+												<td>계획, 지시에 의해  부과된 업무의 달성 여부 타 직원과의 업무량 비교 및 일정 기간 내의 달성 여부</td>
+												<td><input type="text" class="form-control" readonly value="10"></td>
+												<td><c:out value="${ detailReview.achOne }"/></td>
+												
+											</tr>
+											<tr>
+												<td>업무의질</td>
+												<td>업무 달성 결과의 질적 수준과 착오 누락오류의 발생빈도 및 그 잘못의 경증</td>
+												<td><input type="text" class="form-control" readonly value="10"></td>
+												<td><c:out value="${ detailReview.achTwo }"/></td>
+												
+											</tr>
+											<tr>	
+												<td>업무개선</td>
+												<td>담당 업무 수행 시 능률 향상을 위한 구체적인 개선책 및 해결책을 꾸준히 모색하고 있는 지의 여부</td>
+												<td><input type="text" class="form-control" readonly value="10"></td>
+												<td><c:out value="${ detailReview.achThree }"/></td>
+											</tr>
+											<tr>
+												<td rowspan="4">능력</td>
+												<td>업무 지식</td>
+												<td>당사 직무 수행에 필요한 사무 지식 및 전문적 지식의 정도</td>
+												<td><input type="text" class="form-control" readonly value="10"></td>
+												<td><c:out value="${ detailReview.abilOne }"/></td>
+											</tr>
+											<tr>
+												<td>기획 창의력</td>
+												<td>창의력을 바탕으로 주도면밀한 계획을 수립하여 이를 실천하는 능력 </td>
+												<td><input type="text" class="form-control" readonly value="10"></td>
+												<td><c:out value="${ detailReview.abilTwo }"/></td>
+											</tr>
+											<tr>
+												<td>분석 판단력</td>
+												<td>계획, 지시된 업무의 문제점을 파악, 분석하여 올바른 결론, 정확한 대책을 강구하는 능력</td> 
+												<td><input type="text" class="form-control" readonly value="10"></td>
+												<td><c:out value="${ detailReview.abilThree }"/></td>
+											</tr>
+											<tr>
+												<td>실천력</td>
+												<td>계획, 지시된 업무를 적극적으로 박력 있게 끝까지 추진하는 능력</td> 
+												<td><input type="text" class="form-control" readonly value="10"></td>
+												<td><c:out value="${ detailReview.abilFour }"/></td>
+											</tr>
+											<tr>
+												<td rowspan="3">태도</td>
+												<td>책임감</td>
+												<td>당사 직무 수행에 필요한 사무 지식 및 전문적 지식의 정도</td>
+												<td><input type="text" class="form-control" readonly value="10"></td>
+												<td><c:out value="${ detailReview.attOne }"/></td>
+											</tr>
+											<tr>
+												<td>협동심</td>
+												<td>창의력을 바탕으로 주도면밀한 계획을 수립하여 이를 실천하는 능력 </td>
+												<td><input type="text" class="form-control" readonly value="10"></td>
+												<td><c:out value="${ detailReview.attTwo }"/></td>
+											</tr>
+											<tr>
+												<td>근무 태도</td>
+												<td>계획, 지시된 업무의 문제점을 파악, 분석하여 올바른 결론, 정확한 대책을 강구하는 능력</td> 
+												<td><input type="text" class="form-control" readonly value="10"></td>
+												<td><c:out value="${ detailReview.attThree }"/></td>
+											</tr>		
+											<tr>
+												<td colspan="3" class="text-center"><b>종합 점수 백분율(%)</b></td>
+												<td colspan="1" class="text-center"><input type="text" class="form-control" readonly value="100"></td>
+												<td><c:out value="${ detailReview.reviewAvg }"/></td>
+											</tr>
+											<tr>
+												<td colspan="8" class="text-center">
+													<div class="grade-span">
+														<h4>종합 점수 평균</h4>
+														<span class="badge bg-inverse-danger"> 65점이하  D</span> 
+														<span class="badge bg-inverse-warning">65점-74점 C</span> 
+														<span class="badge bg-inverse-info">75점-84점 B</span> 
+														<span class="badge bg-inverse-purple">85점-92점 A</span> 
+														<span class="badge bg-inverse-success">92점 이상 A+</span>
+														<%-- <input type="text" name="reviewNo" class="reviewNo" value="${no}">		 --%>										
 													</div>
-												</div>
-											</div>
-										</div>
-									</div>
+												</td>
+											</tr>
+										</tbody>	
+									</table>
+							</c:forEach>
 								</div>
 							</div>
 						</div>
-					</div>
-				</div>
+					</section>
 			</div>
+		   
+			<!-- /Page Content -->
+
 		</div>
-	</div>
-	
-	<!-- /Page Wrapper -->
+		<!-- /Page Wrapper -->
 
 	</div>
 	<!-- /Main Wrapper -->
-	<script type="text/javascript">
-     $("#modify-btn").click(function() {
-    	var memberNo = $("input[name='memberNo']").val();
-    	var enrollDate = $("input[name='enrollDate']").val();
-    	var rnpType = $("select[name='rnpType']").val();
-    	var reason = $("textarea[name='reason']").val();
-    	var body = $("textarea[name='body']").val();
-    	
-    	
-    	var jihwan = $('form[name="rnpInsert"]').serializeArray();
-    	console.table(jihwan);
-    	$("form[name='rnpInsert']").submit();	
-    	
-     });
-	
-	
-    </script>
 
-	<script>
-	
-	if(document.getElementsByTagName("td")) {
-		const $tds = document.getElementsByTagName("td");
-		const $rnp = document.getElementsByClassName("rnp-td");
-		
-		for(let i = 0; i < $tds.length; i++) {
-			
-			$tds[i].onmouseenter = function() {
-				this.parentNode.style.backgroundColor = "rgb(253,192,124)";
-				this.parentNode.style.cursor = "pointer";
-			}
-			
-			$tds[i].onmouseout = function() {
-				this.parentNode.style.background = "white";
-			}
-			
-			$rnp[i].onclick = function() {
-				const no = this.parentNode.children[7].innerText;
-				console.log(no);
-				location.href = "${ pageContext.servletContext.contextPath }/performance/myReviewDetail?no=" + no;
-			} 
-			
-		}
-	}
-	</script>
-   
-	<script src="/resources/hrtemp/js/jquery-3.5.1.min.js"></script>
+	<!-- jQuery -->
+	<script src="../resources/hrtemp/js/jquery-3.5.1.min.js"></script>
 
 	<!-- Bootstrap Core JS -->
 	<script src="../resources/hrtemp/js/popper.min.js"></script>
@@ -568,12 +567,34 @@
 	<!-- Slimscroll JS -->
 	<script src="../resources/hrtemp/js/jquery.slimscroll.min.js"></script>
 
-	<!-- Datatable JS -->
-	<script src="../resources/hrtemp/js/jquery.dataTables.min.js"></script>
-	<script src="../resources/hrtemp/js/dataTables.bootstrap4.min.js"></script>
+	<!-- Select2 JS -->
+	<script src="../resources/hrtemp/js/select2.min.js"></script>
+
+	<!-- Datetimepicker JS -->
+	<script src="../resources/hrtemp/js/moment.min.js"></script>
+	<script src="../resources/hrtemp/js/bootstrap-datetimepicker.min.js"></script>
+
+	<!-- Task JS -->
+	<script src="../resources/hrtemp/js/task.js"></script>
 
 	<!-- Custom JS -->
 	<script src="../resources/hrtemp/js/app.js"></script>
 
 </body>
+
+<script>
+	$(document).ready(function() {
+		$('.memNo').hide();
+		
+	})
+</script>
+<!-- <script>
+    function numberMaxLength(e){
+        if(e.value.length > e.maxLength){
+            e.value = e.value.slice(0, e.maxLength);
+        }
+    }
+</script> -->
+
+
 </html>
