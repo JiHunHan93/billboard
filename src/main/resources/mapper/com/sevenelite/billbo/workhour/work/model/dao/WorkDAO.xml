@@ -32,7 +32,7 @@
  		<result column="WORKTYPE_TYPE" property="type"/>
 	</resultMap>
 	
-	<insert id="insertWorkInfo" parameterType="WorkDTO">
+    	<insert id="insertWorkInfo" parameterType="WorkDTO">
 		 INSERT
 		   INTO BB_WEEK_WORK_STATISTIC A
 		  (
@@ -53,6 +53,8 @@
         ,  #{ workCount }
 		) 
 	</insert>
+
+	
 	<select id="selectCommute" parameterType="StatusAndWorkDTO" resultType="String">
     SELECT
         COMMUTE
@@ -61,20 +63,10 @@
 	</select>
 
 	    <select id="selectLeave" parameterType="StatusAndWorkDTO" resultType="String">
-       SELECT
-	       C.LEAVE_WORK
-	  FROM (SELECT 
-	               *
-	          FROM (SELECT 
-	                       A.LEAVE_WORK
-	                     , A.WORKDATE
-	                     , A.MEMBER_NO
-	                     , ROW_NUMBER() OVER (PARTITION BY A.COMMUTE ORDER BY A.WORKSTATUS_NO DESC) 날짜
-	                  FROM BB_WORKSTATUS A
-	               ) B 
-	         WHERE 날짜 = 1
-	       ) C
-	 WHERE C.MEMBER_NO = #{ MemNo }  
+	     SELECT
+         LEAVE_WORK
+                  FROM (SELECT * FROM BB_WORKSTATUS ORDER BY ROWNUM DESC) 
+         WHERE ROWNUM = 1
 	</select>
 	
 	<select id="selectWork" resultType="String" parameterType="StatusAndWorkDTO">
@@ -82,17 +74,12 @@
         WORKDATE 
         FROM (SELECT * FROM BB_WORKSTATUS ORDER BY ROWNUM DESC) 
          WHERE ROWNUM = 1
-
-
-
-
 	</select>
 	
-	<update id="updateWorkCount">
-     UPDATE
-             BB_WEEK_WORK_STATISTIC A
-		    SET A.WORK_COUNT = WORK_COUNT+1 
-		  WHERE A.WEEK_WORK_STATISTIC_NO = #{ no }  
-	</update>
+	<select id="updateWorkCount" resultType="_int" parameterType="WorkDTO">
+        SELECT
+           COUNT(A.TOTAL_WORK_HOURS)
+       FROM bb_week_work_statistic A
+       </select>
 
 </mapper> 

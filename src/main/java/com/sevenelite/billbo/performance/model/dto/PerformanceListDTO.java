@@ -5,6 +5,7 @@ import java.sql.Date;
 public class PerformanceListDTO {
 	
 	private int memberNo;
+	private int reviewNo;
 	private String name;
 	private String spot;
 	private String dept;
@@ -13,10 +14,13 @@ public class PerformanceListDTO {
 	private java.sql.Date date;
 	private String grade;
 	
-	public PerformanceListDTO(int memberNo, String name, String spot, String dept, String phone, String email,
-			Date date, String grade) {
+	public PerformanceListDTO() {}
+
+	public PerformanceListDTO(int memberNo, int reviewNo, String name, String spot, String dept, String phone,
+			String email, Date date, String grade) {
 		super();
 		this.memberNo = memberNo;
+		this.reviewNo = reviewNo;
 		this.name = name;
 		this.spot = spot;
 		this.dept = dept;
@@ -32,6 +36,14 @@ public class PerformanceListDTO {
 
 	public void setMemberNo(int memberNo) {
 		this.memberNo = memberNo;
+	}
+
+	public int getReviewNo() {
+		return reviewNo;
+	}
+
+	public void setReviewNo(int reviewNo) {
+		this.reviewNo = reviewNo;
 	}
 
 	public String getName() {
@@ -90,12 +102,13 @@ public class PerformanceListDTO {
 		this.grade = grade;
 	}
 
-	public PerformanceListDTO() {}
-
 	@Override
 	public String toString() {
-		return "PerformanceListDTO [memberNo=" + memberNo + ", name=" + name + ", spot=" + spot + ", dept=" + dept
-				+ ", phone=" + phone + ", email=" + email + ", date=" + date + ", grade=" + grade + "]";
+		return "PerformanceListDTO [memberNo=" + memberNo + ", reviewNo=" + reviewNo + ", name=" + name + ", spot="
+				+ spot + ", dept=" + dept + ", phone=" + phone + ", email=" + email + ", date=" + date + ", grade="
+				+ grade + "]";
 	}
+
+	
 	
 }
