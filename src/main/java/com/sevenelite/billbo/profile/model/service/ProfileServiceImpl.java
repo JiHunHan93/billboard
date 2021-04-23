@@ -405,6 +405,13 @@ public class ProfileServiceImpl implements ProfileService{
 		return mapper.viewLicenseDto(memberno);
 	}
 
+
+	@Override
+	public List<MemberInfoDTO> deleteInfo(int memberno) {
+		// TODO Auto-generated method stub
+		return mapper.deleteInfo(memberno);
+	}
+
 	
 
 

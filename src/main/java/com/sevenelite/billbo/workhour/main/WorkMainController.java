@@ -77,8 +77,8 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkStatusService;
 				    
 				    SimpleDateFormat TimeFormat = new SimpleDateFormat("hh:mm:ss");
 				    
-//				 String commuteTime = TimeFormat.format(commute); 
-//				 String leaveTime = TimeFormat.format(lwork);
+				 String commuteTime = TimeFormat.format(commute); 
+				 String leaveTime = TimeFormat.format(lwork);
 			
 			//출근시간 스플릿
 	         String commuteTimeFormat = TimeFormat.format(CommuteTime);
@@ -99,16 +99,6 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkStatusService;
 	         
 	         
 	         
-//	         if( hour > 8) {
-//	        	 int overH = hour;
-//	        	 int overM = minute;
-//	        	 int overS = second;
-//	        	 String overResult = overH + ":" + overM + ":" + overS;
-//	        	 System.out.println(overResult + " 시간 초과");
-//	         } else {
-//	        	 System.out.println("정상 근무");
-//	         }
-	         
 	         String timeStr = hour + ":" + minute + ":" + second;
 	         System.out.println(" 초과 근무 시간 : " + timeStr);
 	         	      
@@ -128,12 +118,7 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkStatusService;
 	         //지각 횟수 
 	         int lateCount = 0;
 	         int tenHour = 10;
-	         int workCount = Integer.parseInt(request.getParameter("no"));
-	         
-	         workCount = workService.updateWorkCount(workCount);
-	         
-	         
-	         
+	         int workCount = workService.updateWorkCount();
 	         
 	         if(tenHour <= hour) {
 	        	 if(hour > 10) {
