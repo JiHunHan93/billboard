@@ -668,7 +668,7 @@
 									<div class="profile-view">
 										<div class="profile-img-wrap">
 											<div class="profile-img">
-												<a href="#"><img alt="" src="assets/img/profiles/avatar-02.jpg"></a>
+												<a href="#"><img src=/billbo/resources/images/main<c:out value="/${holidayInfo.originalName}"/>></a>
 											</div>
 										</div>
 										
@@ -729,6 +729,7 @@
 								</div>
 							</div>
 						</div>
+						</c:forEach>
 						
 					</div>
 					<br>
@@ -764,26 +765,29 @@
 										</tr>
 									</thead>
 									<tbody>
+									<c:forEach var="holidaylist" items="${requestScope.holidaylist }">
 										<tr class="holiday-completed">
-											<td><c:out value="${holidayInfo.type }"/></td>
-											<td><c:out value="${holidayInfo.startDate }"/></td>
-											<td><c:out value="${holidayInfo.endDate }"/></td>
-											<td><c:out value="${holidayInfo.term }"/></td>
-											<td><c:out value="${holidayInfo.reason }"/></td>
+											<td><c:out value="${holidaylist.type }"/></td>
+											<td><c:out value="${holidaylist.startDate }"/></td>
+											<td><c:out value="${holidaylist.endDate }"/></td>
+											<td><c:out value="${holidaylist.term }"/></td>
+											<td><c:out value="${holidaylist.reason }"/></td>
 											<td></td>
-									
+									</c:forEach>
 									</tbody>
 								</table>
 							</div>
 						</div>
 					</div>
-					</c:forEach>
+					
                 </div>
 				<!-- /Page Content -->
 				
 				<!-- Add Holiday Modal -->
+				
 				<div class="modal custom-modal fade" id="add_holiday" role="dialog">
 					<div class="modal-dialog modal-dialog-centered" role="document">
+					<form action="${pageContext.servletContext.contextPath }/holiday/insert" method="post">
 						<div class="modal-content">
 							<div class="modal-header">
 								<h5 class="modal-title">휴가 설정</h5>
@@ -792,7 +796,7 @@
 								</button>
 							</div>
 							<div class="modal-body">
-								<form>
+								
 								<div class="form-group" hidden="false">
 										<label>사번 <span class="text-danger">*</span></label>
 										<div class="cal-icon"><!-- <input class="form-control datetimepicker" type="text"> -->
@@ -821,13 +825,14 @@
 										<div class="cal-icon"><!-- <input class="form-control datetimepicker" type="text"> -->
 										<input type="text" name="reason"></div>
 									</div>
-									<div class="form-group">
+									<div class="form-group" hidden="true">
 										<label>휴가기간<span class="text-danger">*</span></label>
 										<div class="cal-icon"><!-- <input class="form-control datetimepicker" type="text"> -->
-										<input type="number" name="term" ></div>
+										<input type="text" name="term" class="term" id="term" value="2"></div>
 									</div>
 									<div class="submit-section">
-										<button class="btn btn-primary submit-btn">Submit</button>
+										<button class="btn btn-primary submit-btn" type="button" onclick="registHoliday(this.form)"> 수정하기</button>
+										<button class="btn btn-primary submit-btn">돌아가기</button>
 									</div>
 								</form>
 							</div>
@@ -899,7 +904,42 @@
 
         </div>
 		<!-- /Main Wrapper -->
+		<script>
+		function registHoliday(regist){
+			var memberNo = regist.memberNo.value;
+			var type = regist.type.value;
+			var startDate = regist.startDate.value;
+			var endDate = regist.endDate.value;
+			var reason = regist.reason.value;
+			var term = regist.term.value;
+			
+			regist.submit();
+		}
+		</script> 
 		
+		<!-- <script>
+		input.addEventListener('term' e => { 
+			   var start = $('startDate').val();
+			   var date = $('endDate').val();
+			   
+			   var endYear = date.substring(0,4);
+			   var endMonth = date.substring(5,7);
+			   var endDay = date.substring(8,10);
+			   
+			   var startYear = start.substring(0,4);
+			   var startMonth = start.substring(5,7);
+			   var startDay = start.substring(8,10);
+			   
+			   var SDate = new Date(startYear, startMonth, startDay);   
+			   var RDate = new Date(endYear, endMonth, endDay);
+			   
+			   var term = SDate - RDate;
+			   
+			   $('term').val() = term;
+			   
+			   console.table(term)
+			}) -->
+		</script>
 
 		<!-- jQuery -->
         <script src="../resources/hrtemp/js/jquery-3.5.1.min.js"></script>
