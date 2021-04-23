@@ -128,6 +128,7 @@ public interface ProfileMapper {
 	List<FinalAcademicDTO> viewAcademic(int memberno);
 	List<FamilyDTO> viewFamilySelect(int memberno);
 	List<LicenseDTO> viewLicenseDto(int memberno);
+	List<MemberInfoDTO> deleteInfo(int memberno);
 }
 
 //List<MemberInfoDTO> modifyMember();

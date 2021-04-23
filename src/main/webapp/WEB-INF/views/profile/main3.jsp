@@ -10,7 +10,7 @@
 		<meta name="words" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
         <meta name="author" content="Dreamguys - Bootstrap Admin Template">
         <meta name="robots" content="noindex, nofollow">
-        <title>Employee Profile - main2</title>
+        <title>내 인사정보 조회</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="/billbo/resources/hrtemp/img/favicon.png">
@@ -20,9 +20,6 @@
 		
 		<!-- Fontawesome CSS -->
         <link rel="stylesheet" href="/billbo/resources/hrtemp/css/font-awesome.min.css">
-        
-        <!-- jQuery -->
-        <script src="/billbo/resources/hrtemp/js/jquery-3.5.1.min.js"></script>
 		
 		<!-- Lineawesome CSS -->
         <link rel="stylesheet" href="/billbo/resources/hrtemp/css/line-awesome.min.css">
@@ -682,7 +679,7 @@
 											<div class="row">
 												<div class="col-md-5">
 													<div class="profile-info-left">
-														<h3 class="user-name m-t-0 mb-0">${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }님 의 인사 정보 페이지.
+														<h3 class="user-name m-t-0 mb-0">${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }님 환영합니다.
 								</h3>
 														
 														<h6 class="text-muted"> 
@@ -847,7 +844,7 @@
 												</td>
 											</tr>
 											<tr>
-												<!-- <th class="col1">
+												<th class="col1">
 													<span class="title_txt">근로계약서</span>
 												</th>
 												<td colspan="3">
@@ -863,7 +860,7 @@
 												<input class="txt w_max" type="text" name="fileattachment" value="">
 								
 												
-												</td> -->
+												</td>
 												<th class="col7">
 													<span class="title_txt">예금주</span>
 													</th>
@@ -934,7 +931,7 @@
 												</td>
 											</tr>
 											<tr>
-												<%-- <th class="col1">
+												<th class="col1">
 													<span class="title_txt">근로계약서</span>
 												</th>
 												<td colspan="3">
@@ -950,7 +947,7 @@
 												<input class="txt w_max" type="text" name="fileattachment" value="<c:out value="${member.fileattachment }"/>">
 								
 												
-												</td> --%>
+												</td>
 												<th class="col7">
 													<span class="title_txt">예금주</span>
 													</th>
@@ -987,56 +984,32 @@
 										<th>은행</th>
 										<th>예금주</th>
 										<th>주소</th>
-										<th>qq</th>
 									</tr>
 								</thead>
-									
-									<tbody id="viewAllInfo">
 								<c:forEach var="viewAllInfo" items="${requestScope.viewAllInfo }">
 									<tr>
-										<td id="qq" class="free-td"><c:out value="${ viewAllInfo.member_no }" />
-										<td id="qq" class="free-td"><c:out value="${ viewAllInfo.enroll_date }" />
-										<td id="qq" class="free-td"><c:out value="${ viewAllInfo.account_no }" />
-										<td id="qq" class="free-td"><c:out value="${ viewAllInfo.account_bank }" />
-										<td id="qq" class="free-td"><c:out value="${ viewAllInfo.account_host }" />
-										<td id="qq" class="free-td"><c:out value="${ viewAllInfo.address }" />
-										<td id="qq" class="free-td"><button id="delete_log" class="btn_delete" type="button" >삭제</button></td>
+										<td class="free-td"><c:out value="${ viewAllInfo.member_no }" />
+										<td class="free-td"><c:out value="${ viewAllInfo.enroll_date }" />
+										<td class="free-td"><c:out value="${ viewAllInfo.account_no }" />
+										<td class="free-td"><c:out value="${ viewAllInfo.account_bank }" />
+										<td class="free-td"><c:out value="${ viewAllInfo.account_host }" />
+										<td class="free-td"><c:out value="${ viewAllInfo.address }" />
 									</tr>
 								</c:forEach>
-									</tbody>
-									
 								</table>
 								
 									 </header>
-									<!-- <div class="aside_wrapper_body">
+									<div class="aside_wrapper_body">
 									   <ul class="type_simple_list simple_list_alarm">        
 									  
 								 </ul>
 									   <div id="moreLog" class="bottom_action" style="display: none;"><a class="btn_list_reload"><span class="ic"></span><span class="txt">더보기</span></a></div>
-									</div> -->
+									</div>
 								 </div></div></section></div>
 							</div>
 						</div>
 						<!-- 첫번째 신상 탭 끝 -->
-						<!--  <script>
-	                      $(function(){
-	                    	  var eventTarget = document.getElementsByClassName('btn_delete')
-	                    	  for (var i=0; i<eventTarget.length; i++) {
-								eventTarget[i].addEventListener('click', function() {
-								console.log('event동작')
-									})
-								}
-	                    	  for (var i=0; i<eventTarget.length; i++) {
-	                    		  eventTarget[i].addEventListener('click', function() {
-	                    		  var parent = document.querySelector('#testTable tbody')
-	                    		  parent.removeChild(this.parentElement.parentElement)
-	                    		  i --
-	                    		  })
-	                    		  }
-		});
-	
-</script>
-	                     -->
+						
 						
 						<!-- 여기 두번째 탭-->
 						<!-- 두번째탭 -->
@@ -1110,21 +1083,17 @@
 										<th>사번</th>
 										<th>직위코드</th>
 										<th>변경날짜</th>
-										<th>111</th>
+										
 									</tr>
 								</thead>
-									<tbody id="viewModispotDto">
-								
 								<c:forEach var="viewModispotDto" items="${requestScope.viewModispotDto }">
 									<tr>
 										<td class="free-td"><c:out value="${ viewModispotDto.member_no }" />
 										<td class="free-td"><c:out value="${ viewModispotDto.spot_code }" />
 										<td class="free-td"><c:out value="${ viewModispotDto.spot_date }" />
-										<td><button class="btn_delete" type="button" >삭제</button></td>
-								
+										
 									</tr>
 								</c:forEach>
-								</tbody>
 								</table>
 								
 									 </header>
@@ -1139,22 +1108,6 @@
 							</div>
 						</div>
 						</div>
-						 <script>
-						 if(document.getElementById("qq")) {
-							    const $tds = document.getElementsByTagName("td");
-							    
-							    for(let i = 0; i < $tds.length; i++) {
-							    	$tds[i].onmouseenter = function(){
-							    		console.log($tds[i].parentNode.children[3]);
-							    	}
-							    	$('#delete_log').click(function() {
-							    		console.log($tds[i]);
-							    		$tds[i].remove("#qq");
-							      })
-							   }
-							}
-						</script>
-	                    
 						<!-- /두번째 탭-1 끝 -->
 						<!-- 세번째탭 -->
 						<div class="tab-pane fade" id="emp_part">
@@ -2086,7 +2039,7 @@
 					<div class="modal-content sub-modal">		
 						<div class="modal-content sub-modal">
 							<div class="modal-header">
-								<h5 class="modal-title">정보 변경</h5>
+								<h5 class="modal-title">상벌 추가</h5>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
@@ -2139,17 +2092,17 @@
 												<!-- 요기까지는 됬음. -->
 												</div>
 										<!-- modalbody -->
-									<!-- 		</div>
+											</div>
 								 	<div class="page_action_wrap" style="display: block;">
 										<button id="testId" type="button" class="btn_major" data-role="button">저장</button>
 										<button class="btn_minor" data-role="button">취소</button>
-								</div> -->
+								</div>
 									<div class="submit-section">
 										<button class="btn btn-primary submit-btn" data-role="button" type="button" onclick="submit1(this.form)">Submit</button>
 										</div> 
 										<div class="page_action_wrap">
-									<!-- 	<button class="btn btn-primary submit-btn" data-role="button" type="button">즈으장</button>
-									</div> -->
+										<button class="btn btn-primary submit-btn" data-role="button" type="button">즈으장</button>
+									</div>
 											</div>
 											</div>
 								</form>
@@ -2157,7 +2110,7 @@
 									  
 									</div>
 							</div>
-			<!-- <script type="text/javascript">
+			<script type="text/javascript">
      $("#testId").click(function() {
     	 
     	 console.log('왜안되누');
@@ -2176,7 +2129,7 @@
      });
 	
 	
-    </script> -->				
+    </script>				
 		<!--  <script type="text/javascript">
     
     	 $("#submit").click(function() {

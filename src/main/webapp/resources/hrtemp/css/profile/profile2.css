@@ -1026,6 +1026,7 @@ header.content_top h1 span.num strong,header.content_top h1 span.meta strong {co
 .btn_state_disable {cursor:default; display:inline-block; padding: 2px 4px 4px; color:#fff; font-weight:normal; font-size:11px; line-height:11px; background:#aeb2ba; letter-spacing:-1px}
 .btn_state_disable span.txt {filter: Alpha(Opacity=100) !important; opacity:1 !important}
 .btn_major {display:inline-block; cursor:pointer; padding:11px 25px 8px; color:#fff; font-weight: bold; font-weight: 500; font-size:13px; line-height:12px; background: #00a1b9 ;border:1px solid #00a1b9; border-radius:2px}
+.btn_delete {margin-left:40%; display:inline-block; cursor:pointer; padding:11px 25px 8px; color:#fff; font-weight: bold; font-weight: 500; font-size:13px; line-height:12px; background: #ec6565 ;border:1px solid #ec6565; border-radius:2px}
 .btn_major:hover{background-color:#0392a7; border-color:#0392a7}
 .btn_major:hover span {color:#fff!important}
 .btn_minor {display:inline-block; cursor:pointer; padding:11px 25px 8px; color:#656565; font-weight: normal; font-size: 13px; line-height:12px;
