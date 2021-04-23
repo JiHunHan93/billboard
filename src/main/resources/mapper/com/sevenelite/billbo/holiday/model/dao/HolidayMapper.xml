@@ -17,26 +17,112 @@
 	<result property="phone" column="PHONE"/>
 	<result property="enrollDate" column="ENROLL_DATE"/>
 	<result property="term" column="HOLIDAY_TERM"/>
-	
+	<result property="fileAttachmentPath" column="FILE_ATTACHMENT_PATH"/>
+	<result property="originalName" column="ORIGINAL_NAME"/>
+	<result property="savedPath" column="SAVED_NAME"/>
+	<result property="attachmentType" column="ATTACHMENT_TYPE"/>
+	<result property="attchmentTypeNo" column="ATTACHMENT_TYPE_NO"/>
+	<result property="fileDate" column="ATTACHMENT_DATE"/>
 </resultMap>
 
-<select id="selectHolidayInfo" resultMap="HolidayResultMap" parameterType="_int">
+<resultMap type="com.sevenelite.billbo.allmember.model.dto.MemberAndMemberInfoAndDeptAndModifyDeptDTO" id="ALlmemberResultMap">
+	<id property="no" column="MEMBER_NO"/>
+	<result property="memberName" column="MEMBER_NAME"/>
+	<result property="memberpwd" column="MEMBER_PWD"/>
+	<result property="email" column="EMAIL"/>
+	<result property="phone" column="PHONE"/>
+	<result property="enrollDate" column="ENROLL_DATE"/>
+	<result property="deptCode" column="DEPT_CODE"/>
+	<result property="deptName" column="DEPT_NAME"/>
+	<result property="address" column="MEMBER_ADDRESS"/>
+	<result property="fileNo" column="FILE_ATTACHMENT_NO"/>
+	<result property="attachmentPath" column="FILE_ATTACHMENT_PATH"/>
+	<result property="originalName" column="ORIGINAL_NAME"/>
+	<result property="savedName" column="SAVED_NAME"/>
+	<result property="attachmentType" column="ATTACHMENT_TYPE"/>
+	<result property="attchmentTypeNo" column="ATTACHMENT_TYPE_NO"/>
+	<result property="attachmentDate" column="ATTACHMENT_DATE"/>
+</resultMap>
+
+<resultMap type="com.sevenelite.billbo.holiday.model.dto.MemberHolidayDTO" id="registHoldayResultMap">
+	<id property="no" column="HOLIDAY_NO"/>
+	<result property="startDate" column="START_DATE"/>
+	<result property="endDate" column="END_DATE"/>
+	<result property="reason" column="HOLIDAY_REASON"/>
+	<result property="type" column="HOLIDAY_TYPE"/>
+	<result property="term" column="HOLIDAY_TERM"/>
+	<result property="memberNo" column="MEMBER_NO"/>
+</resultMap>
+
+<select id="selectHolidayList" resultMap="registHoldayResultMap" parameterType="_int">
 SELECT
-      A.HOLIDAY_NO
-    , A.START_DATE
-    , A.END_DATE
-    , A.HOLIDAY_REASON
-    , A.HOLIDAY_TYPE
-    , B.MEMBER_NO
-    , B.MEMBER_NAME
-    , B.EMAIL
-    , C.ENROLL_DATE
-    , C.MEMBER_ADDRESS
-    , B.PHONE
-    , A.HOLIDAY_TERM 
+       A.HOLIDAY_TYPE
+     , A.START_DATE
+     , A.END_DATE
+     , A.HOLIDAY_TERM
+     , A.HOLIDAY_REASON
   FROM BB_HOLIDAY A
-  JOIN BB_MEMBER B ON ( A.MEMBER_NO = B.MEMBER_NO)
-  JOIN BB_MEMBER_INFO C ON(B.MEMBER_NO = C.MEMBER_NO)
-  WHERE B.MEMBER_NO=#{memberno} 
+ WHERE A.MEMBER_NO = #{menberno}     
 </select>
+<insert id="registHoliday" parameterType="MemberHolidayDTO">
+INSERT INTO BB_HOLIDAY (HOLIDAY_NO, START_DATE, END_DATE, HOLIDAY_REASON, HOLIDAY_TYPE, HOLIDAY_TERM, MEMBER_NO)
+VALUES (SEQ_HOLIDAY_NO.NEXTVAL, #{startDate}, #{endDate}, #{reason}, #{type}, #{term}, #{memberNo})
+</insert>
+<select id="selectHolidayInfo" resultMap="HolidayResultMap" parameterType="_int">
+  SELECT 
+                      E.HOLIDAY_NO
+                    , E.MEMBER_NO  
+                    , E.MEMBER_NAME  
+                    , E.START_DATE
+                    , E.END_DATE
+                    , E.HOLIDAY_REASON
+                    , E.HOLIDAY_TYPE
+                    , E.HOLIDAY_TERM
+                    , E.MEMBER_ADDRESS
+                    , E.ENROLL_DATE
+                    , E.EMAIL
+                    , E.PHONE
+                    , F.FILE_ATTACHMENT_NO
+                    , F.FILE_ATTACHMENT_PATH
+                    , F.ORIGINAL_NAME
+                    , F.SAVED_NAME
+                    , ROW_NUMBER() OVER (PARTITION BY F.MEMBER_NO ORDER BY F.FILE_ATTACHMENT_NO DESC) 파일이름
+                  FROM (SELECT 
+                               C.HOLIDAY_NO
+                             , C.MEMBER_NO
+                             , C.START_DATE
+                             , C.END_DATE
+                             , C.HOLIDAY_REASON
+                             , C.HOLIDAY_TYPE
+                             , C.HOLIDAY_TERM
+                             , C.PHONE
+                             , C.EMAIL
+                             , C.MEMBER_NAME
+                             , D.MEMBER_ADDRESS
+                             , D.ENROLL_DATE
+                             , ROW_NUMBER() OVER (PARTITION BY D.MEMBER_NO ORDER BY D.MEMBER_INFO_NO DESC) 사원이름
+                          FROM (SELECT
+                                       B.MEMBER_NO
+                                     , B.HOLIDAY_NO
+                                     , B.START_DATE
+                                     , B.END_DATE
+                                     , B.HOLIDAY_TYPE
+                                     , B.HOLIDAY_TERM
+                                     , B.HOLIDAY_REASON
+                                     , A.MEMBER_NAME
+                                     , A.PHONE
+                                     , A.EMAIL
+                                     , ROW_NUMBER() OVER (PARTITION BY B.MEMBER_NO ORDER BY B.HOLIDAY_NO DESC) 휴가순번
+                                  FROM BB_MEMBER A
+                                  JOIN BB_HOLIDAY B ON (A.MEMBER_NO = B.MEMBER_NO)
+                               ) C
+                          JOIN BB_MEMBER_INFO D ON (C.MEMBER_NO = D.MEMBER_NO)
+                         WHERE 휴가순번 = 1
+                       ) E
+                  JOIN BB_FILEATTACHMENT F ON (E.MEMBER_NO = F.MEMBER_NO)
+                 WHERE 사원이름 = 1
+                  AND E.MEMBER_NO = #{memberno}
+</select>
+
+
 </mapper>

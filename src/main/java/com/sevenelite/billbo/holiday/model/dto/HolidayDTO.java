@@ -16,11 +16,19 @@ public class HolidayDTO {
 	private String phone;
 	private java.sql.Date enrollDate;
 	private int term;
+	private String fileAttachmentPath; //파일경로
+	private String originalName; //원본이름
+	private String savedPath; //저장경로
+	private String attachmentType; //파일종류
+	private String fileDate; //파일일자
+	private int attachmenetTypeNo; //첨부파일번호
 	
 	public HolidayDTO() {}
 
 	public HolidayDTO(int holidayNo, Date startDate, Date endDate, String reason, String type, int memberNo,
-			String memberName, String email, String address, String phone, Date enrollDate, int term) {
+			String memberName, String email, String address, String phone, Date enrollDate, int term,
+			String fileAttachmentPath, String originalName, String savedPath, String attachmentType, String fileDate,
+			int attachmenetTypeNo) {
 		super();
 		this.holidayNo = holidayNo;
 		this.startDate = startDate;
@@ -34,6 +42,12 @@ public class HolidayDTO {
 		this.phone = phone;
 		this.enrollDate = enrollDate;
 		this.term = term;
+		this.fileAttachmentPath = fileAttachmentPath;
+		this.originalName = originalName;
+		this.savedPath = savedPath;
+		this.attachmentType = attachmentType;
+		this.fileDate = fileDate;
+		this.attachmenetTypeNo = attachmenetTypeNo;
 	}
 
 	public int getHolidayNo() {
@@ -132,18 +146,65 @@ public class HolidayDTO {
 		this.term = term;
 	}
 
+	public String getFileAttachmentPath() {
+		return fileAttachmentPath;
+	}
+
+	public void setFileAttachmentPath(String fileAttachmentPath) {
+		this.fileAttachmentPath = fileAttachmentPath;
+	}
+
+	public String getOriginalName() {
+		return originalName;
+	}
+
+	public void setOriginalName(String originalName) {
+		this.originalName = originalName;
+	}
+
+	public String getSavedPath() {
+		return savedPath;
+	}
+
+	public void setSavedPath(String savedPath) {
+		this.savedPath = savedPath;
+	}
+
+	public String getAttachmentType() {
+		return attachmentType;
+	}
+
+	public void setAttachmentType(String attachmentType) {
+		this.attachmentType = attachmentType;
+	}
+
+	public String getFileDate() {
+		return fileDate;
+	}
+
+	public void setFileDate(String fileDate) {
+		this.fileDate = fileDate;
+	}
+
+	public int getAttachmenetTypeNo() {
+		return attachmenetTypeNo;
+	}
+
+	public void setAttachmenetTypeNo(int attachmenetTypeNo) {
+		this.attachmenetTypeNo = attachmenetTypeNo;
+	}
+
 	@Override
 	public String toString() {
 		return "HolidayDTO [holidayNo=" + holidayNo + ", startDate=" + startDate + ", endDate=" + endDate + ", reason="
 				+ reason + ", type=" + type + ", memberNo=" + memberNo + ", memberName=" + memberName + ", email="
 				+ email + ", address=" + address + ", phone=" + phone + ", enrollDate=" + enrollDate + ", term=" + term
-				+ ", getHolidayNo()=" + getHolidayNo() + ", getStartDate()=" + getStartDate() + ", getEndDate()="
-				+ getEndDate() + ", getReason()=" + getReason() + ", getType()=" + getType() + ", getMemberNo()="
-				+ getMemberNo() + ", getMemberName()=" + getMemberName() + ", getEmail()=" + getEmail()
-				+ ", getAddress()=" + getAddress() + ", getPhone()=" + getPhone() + ", getEnrollDate()="
-				+ getEnrollDate() + ", getTerm()=" + getTerm() + ", getClass()=" + getClass() + ", hashCode()="
-				+ hashCode() + ", toString()=" + super.toString() + "]";
+				+ ", fileAttachmentPath=" + fileAttachmentPath + ", originalName=" + originalName + ", savedPath="
+				+ savedPath + ", attachmentType=" + attachmentType + ", fileDate=" + fileDate + ", attachmenetTypeNo="
+				+ attachmenetTypeNo + "]";
 	}
+
+	
 
 	
 	

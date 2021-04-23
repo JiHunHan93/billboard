@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.sevenelite.billbo.member.model.dto.UserDetailsVO;
 import com.sevenelite.billbo.performance.model.dto.PerformanceListDTO;
 import com.sevenelite.billbo.performance.model.dto.ReviewListDTO;
 import com.sevenelite.billbo.performance.model.service.PerformanceService;
@@ -35,9 +37,9 @@ public class PerformanceController {
 	public String selectPerList(Model model) {
 		List<PerformanceListDTO> perList = pfService.selectPer();
 		model.addAttribute("perList", perList);
-		System.out.println("!!!!!!!!!!!!!" + perList );
 		
 		return "performance/Performance";
+//		return "performance/MyPerformanceReview";
 	}
 	
 	@GetMapping("detail")
@@ -66,8 +68,6 @@ public class PerformanceController {
 	      int Mno = Integer.parseInt(no);
 	      
 	      reviewDTO.setMemberNo(Mno);
-	      
-	      System.out.println("no : " + no);
 	      
 	      int score1 = Integer.parseInt(request.getParameter("achOne"));
 	      int score2 = Integer.parseInt(request.getParameter("achTwo"));
@@ -101,7 +101,6 @@ public class PerformanceController {
 	      
 	      reviewDTO.setReviewGrade(grade);
 	      
-	      System.out.println("@@@@@@@@" + reviewDTO);
 		if (!pfService.insertReview(reviewDTO)) {
 			redirect.addFlashAttribute("message", "인사평가를 반영하는데 실패하였습니다");
 		}
@@ -111,17 +110,43 @@ public class PerformanceController {
 		
 		List<PerformanceListDTO> perList = pfService.selectPer();
 		model.addAttribute("perList", perList);
+		System.out.println("!!!!@!@@!@@!" + perList);
 		
 		return "performance/Performance";
 	}
 	
 	@GetMapping("myReview")
-	public String selectReviewList(Model model) {
-		List<PerformanceListDTO> myReviewList = pfService.selectMyPer();
+	public String selectReviewList(Model model, HttpServletRequest request,
+		HttpServletResponse response, Authentication authentication) {
+		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
+		int memNo = user.getMemberno();
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("performance/PerformanceReview");
+		
+		mv.addObject("memNo", memNo);
+		List<PerformanceListDTO> myReviewList = pfService.selectMyPer(memNo);
 		model.addAttribute("myReviewList", myReviewList);
 		System.out.println("!!!!!!!!!!!!!" + myReviewList);
 		
 		return "performance/MyPerformance";
 	}
 	
+	@GetMapping("myReviewDetail")
+	@ResponseBody
+	public ModelAndView myReviewDetail(HttpServletRequest request, HttpServletResponse response,
+			Model model) {
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("performance/MyPerformanceReview");
+		int no = Integer.parseInt(request.getParameter("no"));
+		
+		System.out.println(no);
+		
+		mv.addObject("reviewNo", no);
+		
+		List<ReviewListDTO> detailReview = pfService.selectMyReview(no);
+		model.addAttribute("detailReview", detailReview);
+		
+		return mv;
+	}
 }
