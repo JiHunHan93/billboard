@@ -95,5 +95,8 @@ public class WorkDeptAndMemberDTO {
 		return "WorkDeptAndMemberDTO [no=" + no + ", date=" + date + ", commute=" + commute + ", leave=" + leave
 				+ ", memNo=" + memNo + ", type=" + type + ", name=" + name + ", workType=" + workType + "]";
 	}
+	
+	
+	
 
-	}
+		}
