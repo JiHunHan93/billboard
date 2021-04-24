@@ -6,6 +6,6 @@ import com.sevenelite.billbo.workhour.work.model.dto.RecordWorkDTO;
 
 public interface WorkRecordService {
 
-	public List<RecordWorkDTO> selectRecord();
+	List<RecordWorkDTO> selectRecord();
 
 }

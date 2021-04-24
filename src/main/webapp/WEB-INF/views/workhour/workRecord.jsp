@@ -435,34 +435,9 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm:ss"); %>
 				</div>
 			</div>
 			<!-- /Page Header -->
-			<h3 class="page-title" font>${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }님의 근태 현황</h3>
+			<h3 class="page-title" font>${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }님의 출근 LOG</h3>
 			<form>
 
-				<div class="row">
-					<div class="col-md-3">
-						<div class="stats-info">
-							<h5 style="font-weight: bold;">근무시간</h5>
-							<h4 style="color: darkorange;">
-								<c:out value="${ workInfo.totalWork }" />
-							</h4>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="stats-info">
-							<h6 style="font-weight: bold;">초과시간</h6>
-							<h4 style="color: darkorange;">
-								<c:out value="${ workInfo.extraWork }" />
-							</h4>
-						</div>
-					</div>
-					<div class="col-md-3">
-						<div class="stats-info">
-							<h6 style="font-weight: bold;">근무일</h6>
-							<h4 style="color: gray;">
-								<c:out value="${ workInfo.workCount }" />
-							</h4>
-					</div>
-				</div>
 				<!-- /Leave Statistics -->
 				<!-- Page Content -->
 				<div class="content container-fluid">
@@ -485,30 +460,35 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm:ss"); %>
 					</div>
 				</div>
 				<!-- /Search Filter -->
-				<div class="row">
+			<div class="row">
 					<div class="col-md-12">
 						<div class="table-responsive">
-							<table class="table table-striped custom-table mb-0 datatable">
-								<thead>
-									<tr>
-										<th></th>
-										<th>업무시작</th>
-										<th>업무종료</th>
-										<th>상태</th>
-										<th>수정</th>
-									</tr>
-								</thead>
-								<tbody>
-									<c:forEach var="statusList" items="${requestScope.statusList }">
-										<tr>
-											<td><input type="hidden" name="no" value="${statusList.no}"></td>
-											<td><c:out value="${ statusList.commute }"></c:out></td>
-											<td><c:out value="${ statusList.lwork }"></c:out></td>
-											<td><c:out value="${ workInfo.workTypeCode }"></c:out></td>
-											<td><button class="btn btn-info" type="button" data-toggle="modal" data-target="#add_todaywork">수정요청</button></td>
-										</tr>
-									</c:forEach>
-							</table>
+							<form action="${pageContext.servletContext.contextPath }/work/record">
+								 <table class="table table-striped custom-table mb-0 datatable">
+							<thead>
+								   <tr>
+								       <th>수정 이력 번호</th>
+								       <th>근태 현황 고유번호</th>
+								       <th>변경 전 날짜</th>
+								       <th>변경 전 출근 시간</th>
+								       <th>변경 전 퇴근 시간</th>
+								       <th>사유</th>
+								   </tr>
+						 </thead>
+								  <c:forEach var="recordList" items="${requestScope.recordList }">
+								  <tbody>
+								    	<tr>	  
+										    <td><c:out value="${recordList.no }"></c:out></td>
+										    <td><c:out value="${recordList.statusNo }"></c:out></td>
+										    <td><c:out value="${recordList.modifyDate }"></c:out></td>
+										    <td><c:out value="${recordList.modifyCommute }"></c:out></td>
+										    <td><c:out value="${recordList.modifyLeave }"></c:out></td>
+										    <td><c:out value="${recordList.reason }"></c:out></td>
+								    	</tr>
+								  </tbody>								
+					    </c:forEach>
+								</table>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -524,9 +504,11 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm:ss"); %>
 							<div class="modal-header">
 								<h5 class="modal-title">수정이력</h5>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
 							<div class="modal-body">
+								<form>
 								 <table class="table table-striped custom-table mb-0 datatable">
 							<thead>
 								   <tr>
@@ -539,18 +521,17 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm:ss"); %>
 								   </tr>
 						   </thead>
 								  <tbody>
-								  <c:forEach var="recordList" items="${requestScope.recordList }">
-								    	<tr>	  
-										    <td><c:out value="${recordList.no }"></c:out></td>
-										    <td><c:out value="${recordList.statusNo }"></c:out></td>
-										    <td><c:out value="${recordList.modifyDate }"></c:out></td>
-										    <td><c:out value="${recordList.modifyCommute }"></c:out></td>
-										    <td><c:out value="${recordList.modifyLeave }"></c:out></td>
-										    <td><c:out value="${recordList.reason }"></c:out></td>
+								    	<tr>						  
+										    <td><c:out value="${record.no }"></c:out></td>
+										    <td><c:out value="${record.statusNo }"></c:out></td>
+										    <td><c:out value="${record.modifyDate }"></c:out></td>
+										    <td><c:out value="${record.modifyCommute }"></c:out></td>
+										    <td><c:out value="${record.modifyLeave }"></c:out></td>
+										    <td><c:out value="${record.reason }"></c:out></td>
 								    	</tr>
-								  </c:forEach>
 								  </tbody>								
 								</table>
+								</form>
 								</div>
 							      </div>
 							         </div>

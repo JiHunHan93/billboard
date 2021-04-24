@@ -6,13 +6,13 @@
 	<resultMap id="recordResult" type="RecordWorkDTO">
 	<id column="MODIFY_NO" property="no"/>
 	<result column="WORKSTATUS_NO" property="statusNo"/> 
-	<result column="MODIFY_DATE" property="date"/>
-	<result column="MODIFY_COMMUTE" property="commute"/>
-	<result column="MODIFY_LEAVE_WORK" property="lwork"/>
+	<result column="MODIFY_DATE" property="modifyDate"/>
+	<result column="MODIFY_COMMUTE" property="modifyCommute"/>
+	<result column="MODIFY_LEAVE_WORK" property="modifyLeave"/>
 	<result column="MODIFY_REASON" property="reason"/>
 	</resultMap>
 	
-	<select id="selectRecord" resultMap="recordResult" parameterType="RecordWorkDTO">
+	<select id="selectRecord" resultMap="recordResult" resultType="com.sevenelite.billbo.workhour.work.model.dto.RecordWorkDTO">
 		  SELECT
 		          MODIFY_NO
               , A.WORKSTATUS_NO
