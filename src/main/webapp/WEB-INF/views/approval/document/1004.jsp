@@ -1456,9 +1456,9 @@ ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }
 		        	   
 		        	
 		        	/* 1. Controller에서 넘겨받은 data 출력하기 */
-		           	console.table(data);
-		           	console.log(data[2]);
-		           	console.log(data[2].memberNameLine);
+		           	console.table('ajax후 data : ' + data);
+		           	console.log('ajax후 data[2] : ' + data[2]);
+		           	console.log('ajax후 data[2].memberNameLine : ' + data[2].memberNameLine);
 		           	
 		        	/* 2. 배열 변수를 만들어서 받아온 List를 담기 */
 		           	lineList = data;
@@ -1469,7 +1469,7 @@ ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }
 		           	});
 		           	
 		        	/* 2-2. 배열 변수 출력2 */
-		           	console.log(lineList[0]);
+		           	console.log('2-2. 배열 변수 출력2 lineList[0] : ' + lineList[0]);
 		           	
 					$.each(lineList, function(index, value) {
 						$firstInput = $("<li value='" + value.memberNoLine + "' title='사번' class='jstree-leaf'> <span value='child로 접근 실패'> <input name='jihun' type='hidden' value='" + value.memberNoLine + "'> </span> <a title='첫번째a' id='firstA'>" + value.memberNameLine + " " + value.spotNameLien + "</a> </li>")
@@ -1480,20 +1480,20 @@ ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }
 					$("#firstList > li").click(function() {
 						
 						/* 1. this : 내용 */
-						console.log(this);
+						console.log('#firstList > li의 this : ' + this);
 						
 						/* 2. $(this).html() : li 안의 내용이 나온다. */
-						console.log($(this).html());
+						console.log('#firstList > li의 this.html : ' + $(this).html());
 						
 						/* 3. $(this).attr('value') : 사번 */
 						console.log('memNo에 담기 전 순수 값 : ' + $(this).attr('value'));
 						
 						/* 4. 해당 사번으로 변수 */
-						memNo = $(this).attr('value');	//3번 사원 기준 값 4
-						memNo2 = memNo - 1;				//3번 사원 기준 값 3
+						memNo = $(this).attr('value');	//3번 사원 기준 값 4	0424 1번 사원 기준 값 1
+						memNo2 = memNo - 1;				//3번 사원 기준 값 3	0424 1번 사원 기준 값 0
 						memNo3 = memNo2 - 1;			//3번 사원 기준 값 2
 						
-						console.log(lineList[memNo2]);
+						console.log('4번의 lineList[memNo2] : ' + lineList[memNo2]);
 						
 						const $table = $("#resultTable");
 						$tr = $("<tr>")
@@ -1520,16 +1520,22 @@ ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }
 						/* 6. form태그에 input 담기 List 타입*/
 						const $span3 = $("#hiddenInput");
 						
-						console.log('memNo : ' + memNo);	//3번 사원 기준 값 4
-						console.log('memNo2 : ' + memNo2);	//3번 사원 기준 값 3
+						console.log('6번의 form태그 input memNo : ' + memNo);	//3번 사원 기준 값 4
+						console.log('6번의 form태그 input memNo2 : ' + memNo2);	//3번 사원 기준 값 3
 						/* console.log('memNo3 : ' + memNo3);	//3번 사원 기준 값 2 */
 						/* console.log('lineList[memNo].memberNoLine : ' + lineList[memNo].memberNoLine);
 						console.log('lineList[memNo2].memberNoLine : ' + lineList[memNo2].memberNoLine);
 						console.log("<input name='memberNoLine[ + 3 + ] : " + "<input name='memberNoLine[" + 3 + "]"); */	//3번 사원 기준 값 4
- 						$hiddenInputMemListLine = $("<input name='lineMem[" + memNo3 + "].memberNoLine' type='hidden' value='" + lineList[memNo2].memberNoLine + "'> <input name='lineMem[" +memNo3 + "].memberNameLine' type='hidden' value='" + lineList[memNo2].memberNameLine + "'> <input name='lineMem[" + memNo3 + "].deptCodeLine' type='hidden' value='" + lineList[memNo2].deptCodeLine + "'> <input name='lineMem[" + memNo3 + "].deptNameLine' type='hidden' value='" + lineList[memNo2].deptNameLine + "'> <input name='lineMem[" + memNo3 + "].spotCodeLine' type='hidden' value='" + lineList[memNo2].spotCodeLine + "'> <input name='lineMem[" + memNo3 + "].spotNameLien' type='hidden' value='" + lineList[memNo2].spotNameLien + "'> ");
- 						/* $hiddenInputMemListLine1 = $("<input name='lineMem[" + memNo3 + "].memberNoLine' type='hidden' value='" + lineList[memNo2].memberNoLine + "'> <input name='lineMem[" + memNo3 + "].memberNameLine' type='hidden' value='" + lineList[memNo2].memberNameLine + "'>"); */
+						
+						/* 04/24(토) List에 담은건 -1로 접근 하고(memNo2) 마찬가지로 List 번호는 0부터니깐 memNo2를 써보자. => 성공 (-1 오류 해결) */
+						/* 사번만큼 List Size가 생기는 오류 해결해보자. 클릭시 마다 for문으로 input이 들어가게 만들기*/
+						for (var i = 0; i <lineList.length; i++) {
+							console.log('사이즈 몇이누? : ' + lineList.length);
+ 						$hiddenInputMemListLine = $("<input name='lineMem[" + i + "].memberNoLine' type='hidden' value='" + lineList[memNo2].memberNoLine + "'> <input name='lineMem[" +i + "].memberNameLine' type='hidden' value='" + lineList[memNo2].memberNameLine + "'> <input name='lineMem[" + i + "].deptCodeLine' type='hidden' value='" + lineList[memNo2].deptCodeLine + "'> <input name='lineMem[" + i + "].deptNameLine' type='hidden' value='" + lineList[memNo2].deptNameLine + "'> <input name='lineMem[" + i + "].spotCodeLine' type='hidden' value='" + lineList[memNo2].spotCodeLine + "'> <input name='lineMem[" + i + "].spotNameLien' type='hidden' value='" + lineList[memNo2].spotNameLien + "'> ");
+						}
+						
+/*  						$hiddenInputMemListLine = $("<input name='lineMem[" + memNo2 + "].memberNoLine' type='hidden' value='" + lineList[memNo2].memberNoLine + "'> <input name='lineMem[" +memNo2 + "].memberNameLine' type='hidden' value='" + lineList[memNo2].memberNameLine + "'> <input name='lineMem[" + memNo2 + "].deptCodeLine' type='hidden' value='" + lineList[memNo2].deptCodeLine + "'> <input name='lineMem[" + memNo2 + "].deptNameLine' type='hidden' value='" + lineList[memNo2].deptNameLine + "'> <input name='lineMem[" + memNo2 + "].spotCodeLine' type='hidden' value='" + lineList[memNo2].spotCodeLine + "'> <input name='lineMem[" + memNo2 + "].spotNameLien' type='hidden' value='" + lineList[memNo2].spotNameLien + "'> "); */
  						$span3.append($hiddenInputMemListLine);
- 						/* $span3.append($hiddenInputMemListLine1); */
  						
 						/* $hiddenInputMemListLine = $("<input name='" + lineMem[memNo3].memberNoLine + "' type='hidden' value='" + lineList[memNo2].memberNoLine + "'> <input name='" + lineMem[memNo3].memberNameLine + "' type='hidden' value='" + lineList[memNo2].memberNameLine + "'>")
 						console.log("<input name='" + lineMem[memNo3].memberNoLine + "' type='hidden' value='" + lineList[memNo2].memberNoLine + "'> <input name='" + lineMem[memNo3].memberNameLine + "' type='hidden' value='" + lineList[memNo2].memberNameLine + "'>")
@@ -1547,9 +1553,9 @@ ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }
 		/* 모달 닫기 */
 		$(".btn_major_s").click(function() {
 			console.log('모달 종료 가즈아');
-			console.log(memNo);
-			console.log(memNo2);
-			console.log(lineList[memNo2]);
+			console.log('모달 종료 후 memNo : ' + memNo);
+			console.log('모달 종료 후 memNo2 : ' + memNo2);
+			console.log('모달 종료 후 lineList[memNo2] : ' + lineList[memNo2]);
 		});
 		
 		
