@@ -57,6 +57,7 @@
 <select id="selectHolidayList" resultMap="registHoldayResultMap" parameterType="_int">
 SELECT
        A.HOLIDAY_TYPE
+     , A.HOLIDAY_NO
      , A.START_DATE
      , A.END_DATE
      , A.HOLIDAY_TERM

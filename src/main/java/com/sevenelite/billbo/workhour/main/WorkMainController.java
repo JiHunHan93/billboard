@@ -17,28 +17,46 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.sevenelite.billbo.member.model.dto.UserDetailsVO;
+import com.sevenelite.billbo.workhour.work.model.dto.RecordWorkDTO;
 import com.sevenelite.billbo.workhour.work.model.dto.StatusAndWorkDTO;
 import com.sevenelite.billbo.workhour.work.model.dto.WorkDTO;
+import com.sevenelite.billbo.workhour.work.model.dto.WorkDeptAndMemberDTO;
+import com.sevenelite.billbo.workhour.work.model.dto.WorkTypeDTO;
+import com.sevenelite.billbo.workhour.work.model.service.WorkDeptService;
+import com.sevenelite.billbo.workhour.work.model.service.WorkRecordService;
 import com.sevenelite.billbo.workhour.work.model.service.WorkService;
 import com.sevenelite.billbo.workhour.work.model.service.WorkStatusService;
-
+@RequestMapping("/")
 @Controller
-@RequestMapping("/") public class WorkMainController {
+public class WorkMainController {
 
 	private final WorkService workService;
-	private WorkStatusService workStatusService;
-	
+	private final WorkStatusService workStatusService;
+	private final WorkRecordService  recordService;
 	
 
-	@Autowired WorkMainController(WorkService workService, WorkStatusService workStatusService) {
+	@Autowired WorkMainController(WorkService workService, WorkStatusService workStatusService, WorkRecordService recordService) {
 		this.workService = workService;
 		this.workStatusService = workStatusService;
+		this.recordService = recordService;
 	
-
 	}
+	//수정 이력 보관
+	@GetMapping("/work/record")
+	public String RecordController(Model model) {
+		
 
+		List<RecordWorkDTO> recordList = recordService.selectRecord();
+		
+		for(RecordWorkDTO record : recordList) {
+			model.addAttribute("recordList", recordList);
+		
+		}
+		
+		return "workhour/workList";
+	}
 	@GetMapping("work")
-	public String workController(Model model,Principal principal,Authentication authentication, HttpServletRequest request, ModelAndView mv) throws ParseException {
+	public String workController(Model model,Principal principal,Authentication authentication) throws ParseException {
 		
 		
 		//출근 현황 보기
@@ -136,7 +154,15 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkStatusService;
 	        	 System.out.println("정상");
 	         }
 	         
-	         
+	         String typeB1 = workService.workTypeB1();
+	         System.out.println("B1 :" + typeB1);
+	         String typeB2 = workService.workTypeB2();
+	         String typeB3 = workService.workTypeB3();
+	         String typeB4 = workService.workTypeB4();
+	         String typeB5 = workService.workTypeB5();
+	         String typeB6 = workService.workTypeB6();
+	         String typeB7 = workService.workTypeB7();
+	         String typeB8 = workService.workTypeB8();
 	         
 	         WorkDTO workInfo = new WorkDTO();
 	         workInfo.setExtraWork(overStr);
@@ -144,7 +170,15 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkStatusService;
 	         workInfo.setTotalWork(workStr);
 	         workInfo.setLateCount(lateCount);
 	         workInfo.setWorkCount(workCount);
-	         System.out.println(workInfo);
+	         workInfo.setWorkTypeCode(typeB1); {
+//	         workInfo.setWorkTypeCode(typeB2);
+//	         workInfo.setWorkTypeCode(typeB3);
+//	         workInfo.setWorkTypeCode(typeB4);
+//	         workInfo.setWorkTypeCode(typeB5);
+//	         workInfo.setWorkTypeCode(typeB6);
+//	         workInfo.setWorkTypeCode(typeB7);
+//	         workInfo.setWorkTypeCode(typeB8);
+	         
 	         model.addAttribute("workInfo", workInfo);
 	        if(workService.insertWorkInfo(workInfo)) {
 	        
@@ -154,6 +188,7 @@ import com.sevenelite.billbo.workhour.work.model.service.WorkStatusService;
 
 		} 
 	 } 
+}	
 	
 	     	
 	

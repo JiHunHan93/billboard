@@ -2,221 +2,237 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace ="com.sevenelite.billbo.performance.model.dao.PerMapper">
-<resultMap type="com.sevenelite.billbo.performance.model.dto.PerformanceListDTO" id="perResultMap">
-	<id property="memberNo" column="MEMBER_NO"/>
-	<result property="reviewNo" column="PER_NO"/>
-	<result property="name" column="MEMBER_NAME"/>
-	<result property="spot" column="SPOT_NAME"/>
-	<result property="dept" column="DEPT_NAME"/>
-	<result property="phone" column="PHONE"/>
-	<result property="email" column="EMAIL"/>
-	<result property="date" column="REVIEW_DATE"/>
-	<result property="grade" column="REVIEW_GRADE"/>
-</resultMap>	
-<resultMap type="com.sevenelite.billbo.performance.model.dto.ReviewListDTO" id="reviewResultMap">
-	<id property="reviewNo" column="PER_NO"/>
-	<result property="memberNo" column="MEMBER_NO"/>
-	<result property="memberName" column="MEMBER_NAME"/>
-	<result property="achOne" column="ACH_ONE"/>
-	<result property="achTwo" column="ACH_TWO"/>
-	<result property="achThree" column="ACH_THREE"/>
-	<result property="abilOne" column="ABIL_ONE"/>
-	<result property="abilTwo" column="ABIL_TWO"/>
-	<result property="abilThree" column="ABIL_THREE"/>
-	<result property="abilFour" column="ABIL_FOUR"/>
-	<result property="attOne" column="ATT_ONE"/>
-	<result property="attTwo" column="ATT_TWO"/>
-	<result property="attThree" column="ATT_THREE"/>
-	<result property="reviewAvg" column="REVIEW_AVG"/>
-	<result property="date" column="REVIEW_DATE"/>
-	<result property="reviewGrade" column="REVIEW_GRADE"/>
-</resultMap>
-<resultMap type="com.sevenelite.billbo.member.model.dto.MemBbDTO" id="memDTO">
-	<id property="no" column="MEMBER_NO" />
-	<result property="name" column="MEMBER_NAME" />
-	<result property="pwd" column="MEMBER_PWD" />
-	<result property="email" column="EMAIL" />
-	<result property="phone" column="PHONE" />
-</resultMap>
+<mapper
+	namespace="com.sevenelite.billbo.performance.model.dao.PerMapper">
+	<resultMap
+		type="com.sevenelite.billbo.performance.model.dto.PerformanceListDTO"
+		id="perResultMap">
+		<id property="memberNo" column="MEMBER_NO" />
+		<result property="reviewNo" column="PER_NO" />
+		<result property="name" column="MEMBER_NAME" />
+		<result property="spot" column="SPOT_NAME" />
+		<result property="dept" column="DEPT_NAME" />
+		<result property="phone" column="PHONE" />
+		<result property="email" column="EMAIL" />
+		<result property="date" column="REVIEW_DATE" />
+		<result property="grade" column="REVIEW_GRADE" />
+	</resultMap>
+	<resultMap
+		type="com.sevenelite.billbo.performance.model.dto.ReviewListDTO"
+		id="reviewResultMap">
+		<id property="reviewNo" column="PER_NO" />
+		<result property="memberNo" column="MEMBER_NO" />
+		<result property="memberName" column="MEMBER_NAME" />
+		<result property="achOne" column="ACH_ONE" />
+		<result property="achTwo" column="ACH_TWO" />
+		<result property="achThree" column="ACH_THREE" />
+		<result property="abilOne" column="ABIL_ONE" />
+		<result property="abilTwo" column="ABIL_TWO" />
+		<result property="abilThree" column="ABIL_THREE" />
+		<result property="abilFour" column="ABIL_FOUR" />
+		<result property="attOne" column="ATT_ONE" />
+		<result property="attTwo" column="ATT_TWO" />
+		<result property="attThree" column="ATT_THREE" />
+		<result property="reviewAvg" column="REVIEW_AVG" />
+		<result property="date" column="REVIEW_DATE" />
+		<result property="reviewGrade" column="REVIEW_GRADE" />
+	</resultMap>
+	<resultMap
+		type="com.sevenelite.billbo.member.model.dto.MemBbDTO" id="memDTO">
+		<id property="no" column="MEMBER_NO" />
+		<result property="name" column="MEMBER_NAME" />
+		<result property="pwd" column="MEMBER_PWD" />
+		<result property="email" column="EMAIL" />
+		<result property="phone" column="PHONE" />
+	</resultMap>
 
-<select id="selectPerList" resultMap="perResultMap">
-	 SELECT 
-       D.MODIFY_DEPT_NO
-     , D.MODIFY_DEPT_DATE
-     , D.MEMBER_NO
-     , D.DEPT_CODE
-     , D.순번
-     , D.EMAIL
-     , D.PHONE
-     , D.MEMBER_NAME
-     , D.DEPT_NAME
-     , D.SPOT_NAME
-   FROM 
-   (
-   SELECT 
-       C.MODIFY_DEPT_NO
-     , C.MODIFY_DEPT_DATE
-     , C.MEMBER_NO
-     , C.MEMBER_NAME
-     , C.PHONE
-     , C.EMAIL
-     , C.DEPT_CODE
-     , C.순번
-     , C.DEPT_NAME
-     , C.SPOT_NAME
-   FROM
-   (
-   SELECT 
-       A.MODIFY_DEPT_NO
-     , A.MODIFY_DEPT_DATE
-     , S.MEMBER_NAME
-     , S.PHONE
-     , S.EMAIL
-     , A.MEMBER_NO
-     , B.DEPT_CODE
-     , ROW_NUMBER() OVER(PARTITION BY A.MEMBER_NO ORDER BY A.MODIFY_DEPT_DATE DESC) 순번
-     , B.DEPT_NAME
-     , W.SPOT_NAME
-   FROM BB_MODIFY_DEPT A
-   JOIN BB_DEPT B ON (A.DEPT_CODE = B.DEPT_CODE)
-   JOIN BB_MEMBER S ON (A.MEMBER_NO = S.MEMBER_NO)
-   JOIN BB_MODIFY_SPOT T ON(S.MEMBER_NO = T.MEMBER_NO)
-   JOIN BB_SPOT W ON (T.SPOT_CODE = W.SPOT_CODE)
-   )C 
-   WHERE 순번 = 1
-   GROUP BY C.DEPT_CODE, C.DEPT_NAME, C.MODIFY_DEPT_NO , C.MODIFY_DEPT_DATE,  C.MEMBER_NO , C.순번, C.MEMBER_NAME, C.PHONE, C.EMAIL, C.SPOT_NAME) D
-   JOIN BB_MEMBER E ON (D.MEMBER_NO = E.MEMBER_NO)
-   JOIN BB_MODIFY_SPOT F ON ( D.MEMBER_NO = F.MEMBER_NO)
-   GROUP BY D.DEPT_CODE, D.DEPT_NAME, D.MODIFY_DEPT_NO , D.MODIFY_DEPT_DATE,  D.MEMBER_NO , D.순번, D.MEMBER_NAME, D.PHONE, D.EMAIL, D.SPOT_NAME
-   ORDER BY D.MEMBER_NO ASC                   
-</select>
-<select id="reviewList" resultMap="memDTO" parameterType="MemBbDTO">
-	SELECT
-	      A.MEMBER_NAME
-	    FROM BB_MEMBER A
-	   WHERE A.MEMBER_NO = #{no}
-</select>
+	<select id="selectPerList" resultMap="perResultMap">
+		SELECT
+		D.MODIFY_DEPT_NO
+		, D.MODIFY_DEPT_DATE
+		, D.MEMBER_NO
+		, D.DEPT_CODE
+		, D.순번
+		, D.EMAIL
+		, D.PHONE
+		, D.MEMBER_NAME
+		, D.DEPT_NAME
+		, D.SPOT_NAME
+		FROM
+		(
+		SELECT
+		C.MODIFY_DEPT_NO
+		, C.MODIFY_DEPT_DATE
+		, C.MEMBER_NO
+		, C.MEMBER_NAME
+		, C.PHONE
+		, C.EMAIL
+		, C.DEPT_CODE
+		, C.순번
+		, C.DEPT_NAME
+		, C.SPOT_NAME
+		FROM
+		(
+		SELECT
+		A.MODIFY_DEPT_NO
+		, A.MODIFY_DEPT_DATE
+		, S.MEMBER_NAME
+		, S.PHONE
+		, S.EMAIL
+		, A.MEMBER_NO
+		, B.DEPT_CODE
+		, ROW_NUMBER() OVER(PARTITION BY A.MEMBER_NO ORDER BY
+		A.MODIFY_DEPT_DATE DESC) 순번
+		, B.DEPT_NAME
+		, W.SPOT_NAME
+		FROM BB_MODIFY_DEPT A
+		JOIN BB_DEPT B ON (A.DEPT_CODE = B.DEPT_CODE)
+		JOIN BB_MEMBER S ON (A.MEMBER_NO = S.MEMBER_NO)
+		JOIN BB_MODIFY_SPOT T ON(S.MEMBER_NO = T.MEMBER_NO)
+		JOIN BB_SPOT W ON (T.SPOT_CODE = W.SPOT_CODE)
+		)C
+		WHERE 순번 = 1
+		GROUP BY C.DEPT_CODE, C.DEPT_NAME, C.MODIFY_DEPT_NO , C.MODIFY_DEPT_DATE,
+		C.MEMBER_NO , C.순번, C.MEMBER_NAME, C.PHONE, C.EMAIL, C.SPOT_NAME) D
+		JOIN BB_MEMBER E ON (D.MEMBER_NO = E.MEMBER_NO)
+		JOIN BB_MODIFY_SPOT F ON ( D.MEMBER_NO = F.MEMBER_NO)
+		GROUP BY D.DEPT_CODE, D.DEPT_NAME, D.MODIFY_DEPT_NO , D.MODIFY_DEPT_DATE,
+		D.MEMBER_NO , D.순번, D.MEMBER_NAME, D.PHONE, D.EMAIL, D.SPOT_NAME
+		ORDER BY D.MEMBER_NO ASC
+	</select>
+	<select id="reviewList" resultMap="memDTO"
+		parameterType="MemBbDTO">
+		SELECT
+		A.MEMBER_NAME
+		FROM BB_MEMBER A
+		WHERE A.MEMBER_NO = #{no}
+	</select>
 
-<insert id="insertReview" parameterType="ReviewListDTO">
- INSERT
- 	INTO BB_REVIEW A
- 	  ( 
- 	  	A.PER_NO,
- 	  	A.REVIEW_DATE,
- 	  	A.ACH_ONE,
- 	  	A.ACH_TWO,
- 	  	A.ACH_THREE,
- 	  	A.ABIL_ONE,
- 	  	A.ABIL_TWO,
- 	  	A.ABIL_THREE,
- 	  	A.ABIL_FOUR,
- 	  	A.ATT_ONE,
- 	  	A.ATT_TWO,
- 	  	A.ATT_THREE,
- 	  	A.MEMBER_NO,
- 	  	A.REVIEW_GRADE,
- 	  	A.REVIEW_AVG
- 	  )
- 	  VALUES
- 	  (
- 	   SEQ_PER_NO.NEXTVAL,
- 	   SYSDATE,
- 	   #{achOne},
- 	   #{achTwo},
- 	   #{achThree},
- 	   #{abilOne},
- 	   #{abilTwo},
- 	   #{abilThree},
- 	   #{abilFour},
- 	   #{attOne},
- 	   #{attTwo},
- 	   #{attThree},
- 	   #{memberNo},
- 	   #{reviewGrade},
- 	   #{reviewAvg}
- 	  )
-</insert>
+	<insert id="insertReview" parameterType="ReviewListDTO">
+		INSERT
+		INTO BB_REVIEW A
+		(
+		A.PER_NO,
+		A.REVIEW_DATE,
+		A.ACH_ONE,
+		A.ACH_TWO,
+		A.ACH_THREE,
+		A.ABIL_ONE,
+		A.ABIL_TWO,
+		A.ABIL_THREE,
+		A.ABIL_FOUR,
+		A.ATT_ONE,
+		A.ATT_TWO,
+		A.ATT_THREE,
+		A.MEMBER_NO,
+		A.REVIEW_GRADE,
+		A.REVIEW_AVG
+		)
+		VALUES
+		(
+		SEQ_PER_NO.NEXTVAL,
+		SYSDATE,
+		#{achOne},
+		#{achTwo},
+		#{achThree},
+		#{abilOne},
+		#{abilTwo},
+		#{abilThree},
+		#{abilFour},
+		#{attOne},
+		#{attTwo},
+		#{attThree},
+		#{memberNo},
+		#{reviewGrade},
+		#{reviewAvg}
+		)
+	</insert>
 
-<select id="selectMyPer" resultMap="perResultMap" parameterType="_int">
-SELECT 
-       D.MODIFY_DEPT_NO
-     , D.MODIFY_DEPT_DATE
-     , D.MEMBER_NO
-     , D.DEPT_CODE
-     , D.순번
-     , D.EMAIL
-     , D.PHONE
-     , D.MEMBER_NAME
-     , D.DEPT_NAME
-     , D.SPOT_NAME
-     , D.REVIEW_DATE
-     , D.REVIEW_GRADE
-     , D.PER_NO
-   FROM 
-   (
-   SELECT 
-       C.MODIFY_DEPT_NO
-     , C.MODIFY_DEPT_DATE
-     , C.MEMBER_NO
-     , C.MEMBER_NAME
-     , C.PHONE
-     , C.EMAIL
-     , C.DEPT_CODE
-     , C.순번
-     , C.DEPT_NAME
-     , C.SPOT_NAME
-     , C.REVIEW_DATE
-     , C.REVIEW_GRADE
-     , C.PER_NO
-   FROM
-   (
-   SELECT 
-       A.MODIFY_DEPT_NO
-     , A.MODIFY_DEPT_DATE
-     , S.MEMBER_NAME
-     , S.PHONE
-     , S.EMAIL
-     , A.MEMBER_NO
-     , B.DEPT_CODE
-     , ROW_NUMBER() OVER(PARTITION BY H.PER_NO ORDER BY S.MEMBER_NO DESC) 순번
-     , B.DEPT_NAME
-     , W.SPOT_NAME
-     , H.REVIEW_DATE
-     , H.REVIEW_GRADE
-     , H.PER_NO
-   FROM BB_MODIFY_DEPT A
-   JOIN BB_DEPT B ON (A.DEPT_CODE = B.DEPT_CODE)
-   JOIN BB_MEMBER S ON (A.MEMBER_NO = S.MEMBER_NO)
-   JOIN BB_REVIEW H ON (S.MEMBER_NO = H.MEMBER_NO)
-   JOIN BB_MODIFY_SPOT T ON(H.MEMBER_NO = T.MEMBER_NO)
-   JOIN BB_SPOT W ON (T.SPOT_CODE = W.SPOT_CODE)
-   )C 
-   WHERE 순번 = 1  AND C.MEMBER_NO = #{memNo}
-   GROUP BY C.DEPT_CODE, C.DEPT_NAME, C.MODIFY_DEPT_NO , C.MODIFY_DEPT_DATE,  C.MEMBER_NO , C.순번, C.MEMBER_NAME, C.PHONE, C.EMAIL, C.SPOT_NAME, C.REVIEW_DATE, C.REVIEW_GRADE, C.PER_NO) D
-   JOIN BB_MEMBER E ON (D.MEMBER_NO = E.MEMBER_NO)
-   JOIN BB_MODIFY_SPOT F ON ( D.MEMBER_NO = F.MEMBER_NO)
-   GROUP BY D.DEPT_CODE, D.DEPT_NAME, D.MODIFY_DEPT_NO , D.MODIFY_DEPT_DATE,  D.MEMBER_NO , D.순번, D.MEMBER_NAME, D.PHONE, D.EMAIL, D.SPOT_NAME, D.REVIEW_DATE, D.REVIEW_GRADE, D.PER_NO
-   ORDER BY D.MEMBER_NO ASC
-</select>
-<select id="selectMyReview" resultMap="reviewResultMap" parameterType="_int">
-   SELECT 
-   		A.PER_NO,
-   		A.MEMBER_NO,
-   		A.ACH_ONE,
-   		A.ACH_TWO,
-   		A.ACH_THREE,
-   		A.ABIL_ONE,
-   		A.ABIL_TWO,
-   		A.ABIL_THREE,
-   		A.ABIL_FOUR,
-   		A.ATT_ONE,
-   		A.ATT_TWO,
-   		A.ATT_THREE,
-   		A.REVIEW_AVG,
-   		A.REVIEW_DATE,
-   		A.REVIEW_GRADE
-   FROM BB_REVIEW A
-   WHERE A.PER_NO = #{no}
-</select>
+	<select id="selectMyPer" resultMap="perResultMap"
+		parameterType="_int">
+		SELECT
+		D.MODIFY_DEPT_NO
+		, D.MODIFY_DEPT_DATE
+		, D.MEMBER_NO
+		, D.DEPT_CODE
+		, D.순번
+		, D.EMAIL
+		, D.PHONE
+		, D.MEMBER_NAME
+		, D.DEPT_NAME
+		, D.SPOT_NAME
+		, D.REVIEW_DATE
+		, D.REVIEW_GRADE
+		, D.PER_NO
+		FROM
+		(
+		SELECT
+		C.MODIFY_DEPT_NO
+		, C.MODIFY_DEPT_DATE
+		, C.MEMBER_NO
+		, C.MEMBER_NAME
+		, C.PHONE
+		, C.EMAIL
+		, C.DEPT_CODE
+		, C.순번
+		, C.DEPT_NAME
+		, C.SPOT_NAME
+		, C.REVIEW_DATE
+		, C.REVIEW_GRADE
+		, C.PER_NO
+		FROM
+		(
+		SELECT
+		A.MODIFY_DEPT_NO
+		, A.MODIFY_DEPT_DATE
+		, S.MEMBER_NAME
+		, S.PHONE
+		, S.EMAIL
+		, A.MEMBER_NO
+		, B.DEPT_CODE
+		, ROW_NUMBER() OVER(PARTITION BY H.PER_NO ORDER BY S.MEMBER_NO DESC) 순번
+		, B.DEPT_NAME
+		, W.SPOT_NAME
+		, H.REVIEW_DATE
+		, H.REVIEW_GRADE
+		, H.PER_NO
+		FROM BB_MODIFY_DEPT A
+		JOIN BB_DEPT B ON (A.DEPT_CODE = B.DEPT_CODE)
+		JOIN BB_MEMBER S ON (A.MEMBER_NO = S.MEMBER_NO)
+		JOIN BB_REVIEW H ON (S.MEMBER_NO = H.MEMBER_NO)
+		JOIN BB_MODIFY_SPOT T ON(H.MEMBER_NO = T.MEMBER_NO)
+		JOIN BB_SPOT W ON (T.SPOT_CODE = W.SPOT_CODE)
+		)C
+		WHERE 순번 = 1 AND C.MEMBER_NO = #{memNo}
+		GROUP BY C.DEPT_CODE, C.DEPT_NAME, C.MODIFY_DEPT_NO , C.MODIFY_DEPT_DATE,
+		C.MEMBER_NO , C.순번, C.MEMBER_NAME, C.PHONE, C.EMAIL, C.SPOT_NAME,
+		C.REVIEW_DATE, C.REVIEW_GRADE, C.PER_NO) D
+		JOIN BB_MEMBER E ON (D.MEMBER_NO = E.MEMBER_NO)
+		JOIN BB_MODIFY_SPOT F ON ( D.MEMBER_NO = F.MEMBER_NO)
+		GROUP BY D.DEPT_CODE, D.DEPT_NAME, D.MODIFY_DEPT_NO , D.MODIFY_DEPT_DATE,
+		D.MEMBER_NO , D.순번, D.MEMBER_NAME, D.PHONE, D.EMAIL, D.SPOT_NAME,
+		D.REVIEW_DATE, D.REVIEW_GRADE, D.PER_NO
+		ORDER BY D.MEMBER_NO ASC
+	</select>
+	<select id="selectMyReview" resultMap="reviewResultMap"
+		parameterType="_int">
+		SELECT
+		A.PER_NO,
+		A.MEMBER_NO,
+		A.ACH_ONE,
+		A.ACH_TWO,
+		A.ACH_THREE,
+		A.ABIL_ONE,
+		A.ABIL_TWO,
+		A.ABIL_THREE,
+		A.ABIL_FOUR,
+		A.ATT_ONE,
+		A.ATT_TWO,
+		A.ATT_THREE,
+		A.REVIEW_AVG,
+		A.REVIEW_DATE,
+		A.REVIEW_GRADE
+		FROM BB_REVIEW A
+		WHERE A.PER_NO = #{no}
+	</select>
 </mapper>

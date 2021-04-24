@@ -755,7 +755,7 @@
 								<table class="table table-striped custom-table mb-0">
 									<thead>
 										<tr>
-											
+											<th>번호</th>
 											<th>휴가종류 </th>
 											<th>휴가시작날짜</th>
 											<th>휴가종료날짜</th>
@@ -767,6 +767,7 @@
 									<tbody>
 									<c:forEach var="holidaylist" items="${requestScope.holidaylist }">
 										<tr class="holiday-completed">
+											<td><c:out value="${holidaylist.no }"/></td>
 											<td><c:out value="${holidaylist.type }"/></td>
 											<td><c:out value="${holidaylist.startDate }"/></td>
 											<td><c:out value="${holidaylist.endDate }"/></td>
