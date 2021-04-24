@@ -22,9 +22,9 @@ public class WorkDepartmentController {
 	}
 
 	@GetMapping("work/department")
-		public String workDepartment(Model model) {
-		
+		public String workDepartment(Model model) {		
 		List<WorkDeptAndMemberDTO> workDept = workDeptService.selectList(); 
+		
 		for(WorkDeptAndMemberDTO testList : workDept) {
 			System.out.println("workDept : " + workDept);
 			
