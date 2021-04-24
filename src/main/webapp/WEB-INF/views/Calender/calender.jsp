@@ -62,9 +62,6 @@
 		var calendarEl = document.getElementById('calendar');
 		var checkbox = document.getElementById('drop-remove');
 
-		// initialize the external events
-		// -----------------------------------------------------------------
-
 		new Draggable(containerEl, {
 			itemSelector : '.fc-event',
 			eventData : function(eventEl) {
@@ -74,9 +71,6 @@
 			}
 		});
 
-		// initialize the calendar
-		// -----------------------------------------------------------------
-		
 		// set calendar [
 		var calendar = new Calendar(calendarEl, {
 			
