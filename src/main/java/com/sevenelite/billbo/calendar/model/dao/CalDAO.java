@@ -23,5 +23,4 @@ public interface CalDAO {
 
 	int dropEvt(CalDTO calDTO);
 	
-	
 }

@@ -17,82 +17,13 @@ public class WorkDTO {
 	private int MemNo;
 	private StatusAndWorkDTO status;
 	private MemBbDTO member;
-	private WorkTypeDTO type;
+	private String WorkTypeCode;
 	private String today;
-	@Override
-	public String toString() {
-		return "WorkDTO [weekNo=" + weekNo + ", date=" + date + ", totalWork=" + totalWork + ", extraWork=" + extraWork
-				+ ", LateCount=" + LateCount + ", workCount=" + workCount + ", MemNo=" + MemNo + ", status=" + status
-				+ ", member=" + member + ", type=" + type + ", today=" + today + "]";
-	}
-	public int getWeekNo() {
-		return weekNo;
-	}
-	public void setWeekNo(int weekNo) {
-		this.weekNo = weekNo;
-	}
-	public java.util.Date getDate() {
-		return date;
-	}
-	public void setDate(java.util.Date date) {
-		this.date = date;
-	}
-	public String getTotalWork() {
-		return totalWork;
-	}
-	public void setTotalWork(String totalWork) {
-		this.totalWork = totalWork;
-	}
-	public String getExtraWork() {
-		return extraWork;
-	}
-	public void setExtraWork(String extraWork) {
-		this.extraWork = extraWork;
-	}
-	public int getLateCount() {
-		return LateCount;
-	}
-	public void setLateCount(int lateCount) {
-		LateCount = lateCount;
-	}
-	public int getWorkCount() {
-		return workCount;
-	}
-	public void setWorkCount(int workCount) {
-		this.workCount = workCount;
-	}
-	public int getMemNo() {
-		return MemNo;
-	}
-	public void setMemNo(int memNo) {
-		MemNo = memNo;
-	}
-	public StatusAndWorkDTO getStatus() {
-		return status;
-	}
-	public void setStatus(StatusAndWorkDTO status) {
-		this.status = status;
-	}
-	public MemBbDTO getMember() {
-		return member;
-	}
-	public void setMember(MemBbDTO member) {
-		this.member = member;
-	}
-	public WorkTypeDTO getType() {
-		return type;
-	}
-	public void setType(WorkTypeDTO type) {
-		this.type = type;
-	}
-	public String getToday() {
-		return today;
-	}
-	public void setToday(String today) {
-		this.today = today;
-	}
+	
+	public WorkDTO() {}
+
 	public WorkDTO(int weekNo, Date date, String totalWork, String extraWork, int lateCount, int workCount, int memNo,
-			StatusAndWorkDTO status, MemBbDTO member, WorkTypeDTO type, String today) {
+			StatusAndWorkDTO status, MemBbDTO member, String workTypeCode, String today) {
 		super();
 		this.weekNo = weekNo;
 		this.date = date;
@@ -103,9 +34,103 @@ public class WorkDTO {
 		MemNo = memNo;
 		this.status = status;
 		this.member = member;
-		this.type = type;
+		WorkTypeCode = workTypeCode;
 		this.today = today;
 	}
-	public WorkDTO() {}
 
-		}
+	public int getWeekNo() {
+		return weekNo;
+	}
+
+	public void setWeekNo(int weekNo) {
+		this.weekNo = weekNo;
+	}
+
+	public java.util.Date getDate() {
+		return date;
+	}
+
+	public void setDate(java.util.Date date) {
+		this.date = date;
+	}
+
+	public String getTotalWork() {
+		return totalWork;
+	}
+
+	public void setTotalWork(String totalWork) {
+		this.totalWork = totalWork;
+	}
+
+	public String getExtraWork() {
+		return extraWork;
+	}
+
+	public void setExtraWork(String extraWork) {
+		this.extraWork = extraWork;
+	}
+
+	public int getLateCount() {
+		return LateCount;
+	}
+
+	public void setLateCount(int lateCount) {
+		LateCount = lateCount;
+	}
+
+	public int getWorkCount() {
+		return workCount;
+	}
+
+	public void setWorkCount(int workCount) {
+		this.workCount = workCount;
+	}
+
+	public int getMemNo() {
+		return MemNo;
+	}
+
+	public void setMemNo(int memNo) {
+		MemNo = memNo;
+	}
+
+	public StatusAndWorkDTO getStatus() {
+		return status;
+	}
+
+	public void setStatus(StatusAndWorkDTO status) {
+		this.status = status;
+	}
+
+	public MemBbDTO getMember() {
+		return member;
+	}
+
+	public void setMember(MemBbDTO member) {
+		this.member = member;
+	}
+
+	public String getWorkTypeCode() {
+		return WorkTypeCode;
+	}
+
+	public void setWorkTypeCode(String workTypeCode) {
+		WorkTypeCode = workTypeCode;
+	}
+
+	public String getToday() {
+		return today;
+	}
+
+	public void setToday(String today) {
+		this.today = today;
+	}
+
+	@Override
+	public String toString() {
+		return "WorkDTO [weekNo=" + weekNo + ", date=" + date + ", totalWork=" + totalWork + ", extraWork=" + extraWork
+				+ ", LateCount=" + LateCount + ", workCount=" + workCount + ", MemNo=" + MemNo + ", status=" + status
+				+ ", member=" + member + ", WorkTypeCode=" + WorkTypeCode + ", today=" + today + "]";
+	}
+	
+}
