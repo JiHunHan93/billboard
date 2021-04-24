@@ -58,6 +58,7 @@
 	<id property="no" column="BONUS_NO"/>
 	<result property="reason" column="BONUS_REASON"/>
 	<result property="type" column="BONUS_TYPE"/>
+	<result property="date" column="BONUS_DATE"/>
 	<result property="member_no" column="MEMBER_NO"/>
 	<result property="approve_code" column="APPROVE_CODE"/>
 </resultMap>

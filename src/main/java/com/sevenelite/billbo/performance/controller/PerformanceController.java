@@ -87,17 +87,11 @@ public class PerformanceController {
 	      reviewDTO.setReviewAvg(avg);
 	      
 	      String grade = "";
-	      if(avg < 65) {
-	         grade = "D";
-	      } else if(avg <= 74) {
-	         grade = "C";
-	      } else if(avg <= 84) {
-	         grade = "B";
-	      } else if(avg <= 92) {
-	         grade = "A";
-	      } else if(avg > 92) {
-	         grade = "A+";
-	      }
+	      if(avg < 65) 		 grade = "D";
+	      else if(avg <= 74) grade = "C";
+	      else if(avg <= 84) grade = "B";
+	      else if(avg <= 92) grade = "A";
+	      else if(avg > 92)  grade = "A+";
 	      
 	      reviewDTO.setReviewGrade(grade);
 	      

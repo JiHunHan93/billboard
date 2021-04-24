@@ -115,24 +115,25 @@ public class MainProfileController {
 
 	/* 1 신상 */
 	@PostMapping("main")
-	public String memberInfo(@ModelAttribute MemberInfoDTO memberInfo, Authentication authentication, Model model) {
+	public String memberInfo(@RequestParam(required=false) String memberno, @ModelAttribute MemberInfoDTO memberInfo, Authentication authentication, Model model) {
 		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
 		System.out.println("아 왜케안대");
 		profileService.memberInfo(memberInfo);
+		model.addAttribute("memberno", memberno);
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		// List<MemberInfoDTO> memberInfo = profileService.main();
 
 		System.out.println("왜 안오는거여 쉬벌?????");
 
-		return "redirect:/profile/mainProfile2,redirect:/profile/mainProfile3";
+		return "redirect:/profile/mainProfile2";
 	}
 
 //	 /*2 직위*/
 	@PostMapping("joblevel")
-	public String modifyspot(@ModelAttribute ModifySpotDTO modifyspot, Authentication authentication, Model model) {
+	public String modifyspot(@RequestParam(required=false) String memberno, @ModelAttribute ModifySpotDTO modifyspot, Authentication authentication, Model model) {
 		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
 		profileService.modifyspot(modifyspot);
-
+		model.addAttribute("memberno", memberno);
 		System.out.println(modifyspot + "왜 안오는거여 쉬벌?????");
 
 		return "redirect:/profile/mainProfile2";
@@ -140,19 +141,19 @@ public class MainProfileController {
 
 	/* 3 부서 */
 	@PostMapping("part")
-	public String modifydept(@ModelAttribute ModifyDeptDTO1 modifydept, Authentication authentication, Model model) {
+	public String modifydept(@RequestParam(required=false) String memberno, @ModelAttribute ModifyDeptDTO1 modifydept, Authentication authentication, Model model) {
 		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
 		System.out.println(modifydept);
-
+		
 		System.out.println("왜 안오는거여 쉬벌?????");
 		profileService.modifydept(modifydept);
-
+		model.addAttribute("memberno", memberno);
 		return "redirect:/profile/mainProfile2";
 	}
 
 	/* 4.경력 */
 	@PostMapping("career")
-	public String career(@ModelAttribute CareerDTO career, Authentication authentication, Model model) {
+	public String career(@RequestParam(required=false) String memberno, @ModelAttribute CareerDTO career, Authentication authentication, Model model) {
 		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
 
 		System.out.println("왜 안오는거여 쉬벌?????");
@@ -164,7 +165,7 @@ public class MainProfileController {
 
 	/* 4상벌내역 */
 	@PostMapping("bonus")
-	public String bonus(@ModelAttribute BonusDTO bonus, Authentication authentication, Model model) {
+	public String bonus(@RequestParam(required=false) String memberno, @ModelAttribute BonusDTO bonus, Authentication authentication, Model model) {
 		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
 
 		System.out.println("branch : " + bonus);
@@ -180,7 +181,7 @@ public class MainProfileController {
 
 	/* 5.자격? */
 	@PostMapping("certificate")
-	public String certificate(@ModelAttribute CertificateDTO certificate, Authentication authentication, Model model) {
+	public String certificate(@RequestParam(required=false) String memberno, @ModelAttribute CertificateDTO certificate, Authentication authentication, Model model) {
 		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
 
 		System.out.println("branch : " + certificate);
@@ -200,7 +201,7 @@ public class MainProfileController {
 
 	/* 7.병역 */
 	@PostMapping("army")
-	public String armyInfo(@ModelAttribute ArmyDTO army, Authentication authentication, Model model) {
+	public String armyInfo(@RequestParam(required=false) String memberno, @ModelAttribute ArmyDTO army, Authentication authentication, Model model) {
 		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
 		System.out.println("branch : " + army);
 
@@ -216,7 +217,7 @@ public class MainProfileController {
 
 	/* 8.학력 */
 	@PostMapping("finalAcademic")
-	public String finalAcademic(@ModelAttribute FinalAcademicDTO finalAcademic, Authentication authentication, Model model) {
+	public String finalAcademic(@RequestParam(required=false) String memberno, @ModelAttribute FinalAcademicDTO finalAcademic, Authentication authentication, Model model) {
 		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
 
 		System.out.println("branch : " + finalAcademic);
@@ -232,7 +233,7 @@ public class MainProfileController {
 
 	/* 9.가족사항 */
 	@PostMapping("family")
-	public String family(@ModelAttribute FamilyDTO family, Authentication authentication, Model model) {
+	public String family(@RequestParam(required=false) String memberno, @ModelAttribute FamilyDTO family, Authentication authentication, Model model) {
 		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
 
 		System.out.println("branch : " + family);
@@ -247,7 +248,7 @@ public class MainProfileController {
 
 	/* 10.면허 */
 	@PostMapping("license")
-	public String license(@ModelAttribute LicenseDTO license, Authentication authentication, Model model) {
+	public String license(@RequestParam(required=false) String memberno, @ModelAttribute LicenseDTO license, Authentication authentication, Model model) {
 		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
 
 
@@ -266,7 +267,7 @@ public class MainProfileController {
 	   @RequestMapping(value = "mainProfile2", method= {RequestMethod.GET, RequestMethod.POST})
 	   public String page2(@RequestParam(required=false) String memberno, Model model, Authentication authentication) {
 		   
-	      System.out.println("태헌이형 해결됐습니까?");
+	   
 	      
 	      UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
 	      
@@ -340,7 +341,7 @@ public class MainProfileController {
 		System.out.println(armySelect + "이거 안되면 재입대한다");
 		System.out.println(academic + "이쯤되면 그냥 되겠지..");
 		System.out.println(familySelect + "마지막");
-
+		model.addAttribute("memberno", memberno);
 		model.addAttribute("member", member);
 		model.addAttribute("viewAllInfo", viewAllInfo);
 		

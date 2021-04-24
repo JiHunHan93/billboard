@@ -10,7 +10,7 @@
 		<meta name="words" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
         <meta name="author" content="Dreamguys - Bootstrap Admin Template">
         <meta name="robots" content="noindex, nofollow">
-        <title>Employee Profile - main2</title>
+        <title>직원인사관리 - main</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="/billbo/resources/hrtemp/img/favicon.png">
@@ -43,13 +43,14 @@
 		<link rel="stylesheet" href="/billbo/resources/hrtemp/css/profile/profile2.css">
 		
 		
-		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-		<!--[if lt IE 9]>
-			<script src="assets/js/html5shiv.min.js"></script>
-			<script src="assets/js/respond.min.js"></script>
-		<![endif]-->
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+			
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    	<!-- tooltip -->
+    	<script type="text/javascript">
+    	 $(function () {
+    		 $('[data-toggle = "tooltip"]').tooltip()
+    	 });
+    	</script>
     </head>
     <body>
     
@@ -682,16 +683,21 @@
 											<div class="row">
 												<div class="col-md-5">
 													<div class="profile-info-left">
-														<h3 class="user-name m-t-0 mb-0">${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }님 의 인사 정보 페이지.
+													<c:forEach var="detailMem" items="${ requestScope.detailMem }">
+														<h3 class="user-name m-t-0 mb-0">${ detailMem.name }님 의 인사 정보 페이지.
 								</h3>
+														<br>
+														<br> 
 														
-														<h6 class="text-muted"> 
-														
-														<div class="staff-id">Employee ID : ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username}</div>
+														<div class="staff-id">Employee ID :${ detailMem.email }</div>
+								</c:forEach>			
+											
 														<c:forEach var="member" items="${ requestScope.member }">
+														<br>
+														<br>
 														<div class="small doj text-muted">Date of Join :"${ member.enroll_date }"</div>
 														</c:forEach>
-														<div class="staff-msg"><a class="btn btn-custom" href="chat.html">Send Message</a></div>
+														<div class="staff-msg" hidden='true'><a class="btn btn-custom" href="chat.html">Send Message</a></div>
 													</div>
 												</div>
 												<div class="col-md-7">
@@ -705,13 +711,14 @@
 															
 														</li>
 														<br>
+														
+														<c:forEach var="detailMem" items="${ requestScope.detailMem }">
 														<li>
-														<li>
-															<div class="title">사번:  <c:out value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }"/></div>
+														<br><br>
+															<div class="title">사번:  <c:out value="${detailMem.no}"/></div>
 															<!-- <div class="text"></div> -->
 															
 														</li>
-														<c:forEach var="detailMem" items="${ requestScope.detailMem }">
 														<br>
 														<br>
 														<li>
@@ -790,9 +797,9 @@
 											<c:choose>
 											<c:when test="${ empty requestScope.member}">
 												<tr>
-												<th class="col1">
+												<!-- <th class="col1">
 													<span class="title_txt">신상번호</span>
-												</th>
+												</th> -->
 												
 												<td class="col2">
 													 
@@ -804,7 +811,7 @@
 												</th>
 												<td class="col4">
 													
-													<input class="txt w_max" type="text" name="member_no" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }" >
+													<input class="txt w_max" type="text" name="member_no" value="" >
 												</td>
 												<th class="col5">
 													<span class="title_txt">입사일</span>
@@ -873,26 +880,31 @@
 												
 											</td>
 										</tr>
+										
 											</c:when>
 											<c:otherwise>
 											<c:forEach var="member" items="${requestScope.member}">
 											<tr>
-												<th class="col1">
+												<!-- <th class="col1">
 													<span class="title_txt">신상번호</span>
-												</th>
+												</th> -->
 												
-												<td class="col2">
+												<%-- <td class="col2">
 													 
 												<input class="txt w_max" type="text" name="info_no" value="<c:out value="${ member.info_no }"/>">
 														
-												</td>
+												</td> --%>
 												<th class="col3">
 													<span class="title_txt">사번</span>
 												</th>
+											</c:forEach>
+											<c:forEach var="detailMem" items="${requestScope.detailMem}">
 												<td class="col4">
 													
-													<input class="txt w_max" type="text" name="member_no" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }" >
+													<input class="txt w_max" type="text" name="member_no" value="${ detailMem.no }" >
 												</td>
+												</c:forEach>
+												<c:forEach var="member" items="${requestScope.member}">
 												<th class="col5">
 													<span class="title_txt">입사일</span>
 													
@@ -902,15 +914,6 @@
 												<input class="txt w_max" type="date" name="enroll_date" value="<c:out value="${ member.enroll_date }"/>">
 														
 												</td>            
-												<th class="col7">
-													<span class="title_txt">계좌은행</span>
-												</th>
-												<td class="col8">
-														
-												<input class="txt w_max" type="text" name="account_bank" value="<c:out value="${ member.account_bank }"/>">
-														
-												
-												</td>
 											</tr>
 											<tr>
 												<th class="col1">
@@ -920,15 +923,6 @@
 												<td colspan="5">
 														
 												<input class="txt w_max" type="text" name="address" value="<c:out value="${member.address }"/>">
-														
-												
-												</td>
-												<th class="col7">
-													<span class="title_txt">계좌번호</span>
-												</th>
-												<td class="col8">
-														
-												<input class="txt w_max" type="text" name="account_no" value="<c:out value="${member.account_no }"/>">
 														
 												
 												</td>
@@ -960,8 +954,26 @@
 													
 												
 											</td>
+												<th class="col7">
+													<span class="title_txt">계좌은행</span>
+												</th>
+												<td class="col8">
+														
+												<input class="txt w_max" type="text" name="account_bank" value="<c:out value="${ member.account_bank }"/>">
+														
+												
+												</td>
+												<th class="col7">
+													<span class="title_txt">계좌번호</span>
+												</th>
+												<td class="col8">
+														
+												<input class="txt w_max" type="text" name="account_no" value="<c:out value="${member.account_no }"/>">
+														
+												
+												</td>
 										</tr>
-											</c:forEach>
+										</c:forEach>
 											</c:otherwise>
 											</c:choose>			
 										</tbody>
@@ -987,7 +999,7 @@
 										<th>은행</th>
 										<th>예금주</th>
 										<th>주소</th>
-										<th>qq</th>
+										
 									</tr>
 								</thead>
 									
@@ -1048,7 +1060,7 @@
 										<form action="${ pageContext.servletContext.contextPath }/profile/joblevel" method="post">
 										<table class="type_list_box">
 											<tbody><tr>
-												<th class="spot_no"><span class="title_txt" hidden='true'>직위변경이력번호</span></th>
+												<!-- <th class="spot_no"><span class="title_txt" hidden='true'>직위변경이력번호</span></th> -->
 												<th class="spot_date"><span class="title_txt">변경날짜</span></th>
 												<th class="spot_code"><span class="title_txt">직위코드</span></th>
 												<th class="member_no"><span class="title_txt">사번</span></th>
@@ -1057,10 +1069,10 @@
 												 <c:choose>
                                        <c:when test="${ empty requestScope.modispotDto }">
                                        
-                                          <td class="no">
+                                          <!-- <td class="no">
                                           <input class="txt w_max" type="text" name="spot_no" value=""/>">
                                                 
-                                          </td>
+                                          </td> -->
                                           <td class="start">
                                           <input class="txt w_max" type="date" name="spot_date" value=""/>">
                                           </td>
@@ -1075,9 +1087,9 @@
                                        <c:otherwise>
                                           <!-- c:forEach 시작 부분 -->
                                           <c:forEach var="modispotDto" items="${ requestScope.modispotDto }"> 
-                                             <td class="no">
+                                            <%--  <td class="no">
                                              <input class="txt w_max" type="text" name="spot_no" value="<c:out value="${ modispotDto.spot_no }"/>">
-                                             </td>
+                                             </td> --%>
                                              <td class="start">
                                              <input class="txt w_max" type="date" name="spot_date" value="<c:out value="${ modispotDto.spot_date }"/>">
                                              </td>
@@ -1110,7 +1122,7 @@
 										<th>사번</th>
 										<th>직위코드</th>
 										<th>변경날짜</th>
-										<th>111</th>
+										
 									</tr>
 								</thead>
 									<tbody id="viewModispotDto">
@@ -1166,7 +1178,7 @@
 										
 										<table class="type_list_box">
 											<tbody><tr>
-												<th class="modifyDeptNo"><span class="title_txt">부서변경이력번호</span></th>
+												<!-- <th class="modifyDeptNo"><span class="title_txt">부서변경이력번호</span></th> -->
 												<th class="modifydate"><span class="title_txt">변경날짜</span></th>
 												<th class="deptCode"><span class="title_txt">부서코드</span></th>
 												<th class="memberNo"><span class="title_txt">사번</span></th>
@@ -1178,10 +1190,10 @@
                                     <c:choose>
                                        <c:when test="${ empty requestScope.modidept }">
                                        
-                                          <td class="no">
+                                         <!--  <td class="no">
                                           <input class="txt w_max" type="text" name="modifyDeptNo" value=""/>">
                                                 
-                                          </td>
+                                          </td> -->
                                           <td class="start">
                                           <input class="txt w_max" type="date" name="modifydate" value=""/>">
                                           </td>
@@ -1196,10 +1208,10 @@
                                        <c:otherwise>
                                           <!-- c:forEach 시작 부분 -->
                                           <c:forEach var="modidept" items="${ requestScope.modidept }"> 
-                                             <td class="no">
+                                             <%-- <td class="no">
                                              <input class="txt w_max" type="text" name="modifyDeptNo" value="<c:out value="${ modidept.modifyDeptNo }"/>">
                                                    
-                                             </td>
+                                             </td> --%>
                                              <td class="start">
                                              <input class="txt w_max" type="date" name="modifydate" value="<c:out value="${ modidept.modifydate }"/>">
                                              </td>
@@ -1269,7 +1281,7 @@
 										<table class="type_list_box">
 											<tbody>
 											<tr>
-												<th class="no"><span class="title_txt">경력번호</span></th>
+												<!-- <th class="no"><span class="title_txt">경력번호</span></th> -->
 												<th class="start"><span class="title_txt">시작일</span></th>
 												<th class="end"><span class="title_txt">종료일</span></th>
 												<th class="position"><span class="title_txt">근무처</span></th>
@@ -1280,9 +1292,9 @@
 										<c:choose>
                                        <c:when test="${ empty requestScope.careerDto }">
                                        
-                                          <td class="no">
+                                         <!--  <td class="no">
                                           <input class="txt w_max" type="text" name="no" value=""/>">
-                                          </td>
+                                          </td> -->
                                           <td class="start">
                                           <input class="txt w_max" type="date" name="start" value=""/>">
                                           </td>
@@ -1299,10 +1311,10 @@
                                        <c:otherwise>
                                           <!-- c:forEach 시작 부분 -->
                                           <c:forEach var="careerDto" items="${ requestScope.careerDto }"> 
-                                             <td class="no">
+                                           <%--   <td class="no">
                                              <input class="txt w_max" type="text" name="no" value="<c:out value="${ careerDto.no }"/>">
                                                    
-                                             </td>
+                                             </td> --%>
                                              <td class="start">
                                              <input class="txt w_max" type="date" name="start" value="<c:out value="${ careerDto.start }"/>">
                                              </td>
@@ -1374,7 +1386,7 @@
 										<table class="type_list_box">
 											<tbody>
 											<tr>
-												<th class="no"><span class="title_txt">상벌내역번호</span></th>
+												<!-- <th class="no"><span class="title_txt">상벌내역번호</span></th> -->
 												<th class="reason"><span class="title_txt">상벌사유</span></th>
 												<th class="date"><span class="title_txt">일자</span></th>
 												<th class="type"><span class="title_txt">상벌구분</span></th>
@@ -1387,10 +1399,10 @@
 												 <c:choose>
                                        <c:when test="${ empty requestScope.bonusDto }">
                                        
-                                          <td class="no">
+                                          <!-- <td class="no">
                                           <input class="txt w_max" type="text" name="no" value=""/>">
                                                 
-                                          </td>
+                                          </td> -->
                                           <td class="reason">
                                           <input class="txt w_max" type="text" name="reason" value="">
                                           </td>
@@ -1410,10 +1422,10 @@
                                        <c:otherwise>
                                           <!-- c:forEach 시작 부분 -->
                                           <c:forEach var="bonusDto" items="${ requestScope.bonusDto }"> 
-                                             <td class="no">
+                                             <%-- <td class="no">
                                              <input class="txt w_max" type="text" name="no" value="<c:out value="${ bonusDto.no }"/>">
                                                    
-                                             </td>
+                                             </td> --%>
                                              <td class="reason3">
                                              <input class="txt w_max" type="text" name="reason" value="<c:out value="${ bonusDto.reason }"/>">
                                              </td>
@@ -1424,7 +1436,7 @@
                                              <input class="txt w_max" type="text" name="type" value="<c:out value="${ bonusDto.type }"/>">
                                              </td>
                                              <td class="member_no">
-                                             <input class="txt w_max" type="text" name="member_no" value="<c:out value="${ bonusDto.member_no }"/>"/>">
+                                             <input class="txt w_max" type="text" name="member_no" value="<c:out value="${ bonusDto.member_no }"/>"/>
                                              </td>
                                              <td class="approve_code">
                                              <input class="txt w_max" type="text" name="approve_code" value="<c:out value="${ bonusDto.approve_code }"/>">
@@ -1486,7 +1498,7 @@
 		                    			<form action="${ pageContext.servletContext.contextPath }/profile/certificate" method="post">
 										<table class="type_list_box">
 											<tbody><tr>
-												<th class="no"><span class="title_txt">자격번호</span></th>
+												<!-- <th class="no"><span class="title_txt">자격번호</span></th> -->
 												<th class="start_date"><span class="title_txt">취득일</span></th>
 												<th class="end_date"><span class="title_txt">만료일</span></th>
 												<th class="member_no"><span class="title_txt">사번</span></th>
@@ -1496,10 +1508,10 @@
 												 <c:choose>
                                        <c:when test="${ empty requestScope.certificateInsert }">
                                        
-                                          <td class="no">
+                                         <!--  <td class="no">
                                           <input class="txt w_max" type="text" name="no" value=""/>
                                                 
-                                          </td>
+                                          </td> -->
                                           <td class="start_date">
                                           <input class="txt w_max" type="date" name="start_date" value="">
                                           </td>
@@ -1516,10 +1528,10 @@
                                        <c:otherwise>
                                           <!-- c:forEach 시작 부분 -->
                                           <c:forEach var="certificateInsert" items="${ requestScope.certificateInsert }"> 
-                                             <td class="no">
+                                            <%--  <td class="no">
                                              <input class="txt w_max" type="text" name="no" value="<c:out value="${ certificateInsert.no }"/>">
                                                    
-                                             </td>
+                                             </td> --%>
                                              <td class="start_date">
                                              <input class="txt w_max" type="text" name="start_date" value="<c:out value="${ certificateInsert.start_date }"/>">
                                              </td>
@@ -1595,7 +1607,7 @@
 												<th class="discharge"><span class="title_txt">전역구분</span></th>
 												<th class="start"><span class="title_txt">입대일</span></th>
 												<th class="end"><span class="title_txt">제대일</span></th>
-												<th class="army_no"><span class="title_txt">병역번호</span></th>
+												<!-- <th class="army_no"><span class="title_txt">병역번호</span></th> -->
 												<th class="reason"><span class="title_txt">전역사유</span></th>
 												
 											</tr>
@@ -1604,7 +1616,7 @@
                                        <c:when test="${ empty requestScope.armySelect }">
                                        
                                           <td class="member_no">
-                                          <input class="txt w_max" type="text" name="member_no" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }"/>
+                                          <input class="txt w_max" type="text" name="member_no" value=""/>
                                            </td>
                                           <td class="army_no">
                                           <input class="txt w_max" type="text" name="army_no" value="">
@@ -1634,9 +1646,9 @@
                                        <c:otherwise>
                                           <!-- c:forEach 시작 부분 -->
                                           <c:forEach var="armySelect" items="${ requestScope.armySelect }"> 
-                                             <td class="member_no">
+                                           <%--   <td class="member_no">
                                              <input class="txt w_max" type="text" name="member_no" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }">
-                                             </td>
+                                             </td> --%>
                                              <td class="army_no">
                                              <input class="txt w_max" type="text" name="army_no" value="<c:out value="${ armySelect.army_no }"/>">
                                              </td>
@@ -1725,7 +1737,7 @@
 										<form action="${ pageContext.servletContext.contextPath }/profile/finalAcademic" method="post">
 										<table class="type_list_box">
 											<tbody><tr>
-												<th class="ability_no">최종학력번호</th>
+												<!-- <th class="ability_no">최종학력번호</th> -->
 												<th class="name">학교명</th>
 												<th class="subject">전공</th>
 												<th class="date">졸업일자</th>
@@ -1737,9 +1749,9 @@
 											 <c:choose>
                                        <c:when test="${ empty requestScope.academic }">
                                        
-                                          <td class="ability_no">
+                                          <!-- <td class="ability_no">
                                           <input class="txt w_max" type="text" name="ability_no" value=""/>
-                                           </td>
+                                           </td> -->
                                           <td class="name">
                                           <input class="txt w_max" type="text" name="name" value="">
                                           </td>
@@ -1766,9 +1778,9 @@
                                        <c:otherwise>
                                           <!-- c:forEach 시작 부분 -->
                                           <c:forEach var="academic" items="${ requestScope.academic }"> 
-                                             <td class="ability_no">
+                                            <%--  <td class="ability_no">
                                              <input class="txt w_max" type="text" name="ability_no" value="<c:out value="${ academic.ability_no }"/>">
-                                             </td>
+                                             </td> --%>
                                              <td class="name">
                                              <input class="txt w_max" type="text" name="name" value="<c:out value="${ academic.name }"/>">
                                              </td>
@@ -1852,7 +1864,7 @@
 										<table class="type_list_box">
 											<tbody>
 											<tr>
-												<th class="info_no"><span class="title_txt">가족사항번호</span></th>
+												<!-- <th class="info_no"><span class="title_txt">가족사항번호</span></th> -->
 												<th class="name"><span class="title_txt">가족성명</span></th>
 												<th class="relation"><span class="title_txt">가족관계</span></th>
 												<th class="gender"><span class="title_txt">성별</span></th>
@@ -1865,9 +1877,9 @@
 											 <c:choose>
                                        <c:when test="${ empty requestScope.familySelect }">
                                        
-                                          <td class="info_no">
+                                          <!-- <td class="info_no">
                                           <input class="txt w_max" type="text" name="info_no" value=""/>
-                                           </td>
+                                           </td> -->
                                           <td class="name">
                                           <input class="txt w_max" type="text" name="name" value="">
                                           </td>
@@ -1875,7 +1887,7 @@
                                           <input class="txt w_max" type="text" name="relation" value="">
                                           </td>
                                           <td class="gender">
-                                          <input class="txt w_max" type="text" name="gender" value="">
+                                          <!-- <input class="txt w_max" type="text" name="gender" value=""> -->
                                           <span class="wrap_select">
 														  <select class="wfix_small" name="gender" value="">
 															 <option value="">선택하세요</option>
@@ -1894,25 +1906,25 @@
                                           <input class="txt w_max" type="text" name="job" value="">
                                           </td>
                                          <td class="no">
-                                          <input class="txt w_max" type="text" name="no" value="<c:out value="${ familyDto.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }"/>">
+                                          <input class="txt w_max" type="text" name="no" value="">
                                           </td>
                                          
                                        </c:when>
                                        <c:otherwise>
                                           <!-- c:forEach 시작 부분 -->
                                           <c:forEach var="familySelect" items="${ requestScope.familySelect }"> 
-                                             <td class="info_no">
+                                             <%-- <td class="info_no">
                                              <input class="txt w_max" type="text" name="info_no" value="<c:out value="${ familySelect.info_no }"/>">
-                                             </td>
+                                             </td> --%>
                                              <td class="name">
                                              <input class="txt w_max" type="text" name="name" value="<c:out value="${ familySelect.name }"/>">
                                              </td>
                                              <td class="relation">
-                                             <input class="txt w_max" type="text" name="subject" value="<c:out value="${ familySelect.relation }"/>">
+                                             <input class="txt w_max" type="text" name="relation" value="<c:out value="${ familySelect.relation }"/>">
                                              </td>
                                              <td class="gender">
-                                             <input class="txt w_max" type="text" name="gender" value="<c:out value="${ familySelect.gender }"/>">
-                                             <span class="wrap_select">
+                                             <%-- <input class="txt w_max" type="text" name="gender" value="<c:out value="${ familySelect.gender }"/>">
+                                              --%><span class="wrap_select">
 														  <select class="wfix_small" name="gender" value="<c:out value="${ familySelect.gender }"/>">
 															 <option value="">선택하세요</option>
 															 <option value="남">남자</option>
@@ -1927,10 +1939,10 @@
                                              <input class="txt w_max" type="text" name="study" value="<c:out value="${ familyDto.study }"/>">
                                              </td>
                                              <td class="job">
-                                             <input class="txt w_max" type="text" name="job" value="${ familyDto.job }">
+                                             <input class="txt w_max" type="text" name="job" value="<c:out value="${ familyDto.job }"/>">
                                              </td>
                                              <td class="no">
-                                             <input class="txt w_max" type="text" name="no" value="<c:out value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }"/>">
+                                             <input class="txt w_max" type="text" name="no" value="<c:out value="${ familyDto.no }"/>">
                                              </td>
                                             	
                                           </c:forEach>

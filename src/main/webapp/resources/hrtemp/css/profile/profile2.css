@@ -36,6 +36,12 @@ input[type="text"]::-ms-clear {display:none}/* ie10 x icon */
 	div.layer_sign div.content table.form_type tbody th {width:71px !important}
 	}
 .no_focus, .no_focus:hover {cursor:default !important}
+
+.tooltip-inner{
+	 white-space: pre-wrap;
+}
+/* tooltip 버그 픽스용  */
+svg > g > g:last-child{ pointer-events : none }
 /* vertical-align */
 .go_renew input[type=radio],
 input, select,
