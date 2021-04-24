@@ -23,5 +23,6 @@ public class WorkRecordServiceImpl implements WorkRecordService {
 	public List<RecordWorkDTO> selectRecord() {
 		return dao.selectRecord();
 	}
+
 	
 }	
