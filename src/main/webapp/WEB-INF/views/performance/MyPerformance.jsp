@@ -514,24 +514,7 @@
 
 	</div>
 	<!-- /Main Wrapper -->
-	<script type="text/javascript">
-     $("#modify-btn").click(function() {
-    	var memberNo = $("input[name='memberNo']").val();
-    	var enrollDate = $("input[name='enrollDate']").val();
-    	var rnpType = $("select[name='rnpType']").val();
-    	var reason = $("textarea[name='reason']").val();
-    	var body = $("textarea[name='body']").val();
-    	
-    	
-    	var jihwan = $('form[name="rnpInsert"]').serializeArray();
-    	console.table(jihwan);
-    	$("form[name='rnpInsert']").submit();	
-    	
-     });
 	
-	
-    </script>
-
 	<script>
 	
 	if(document.getElementsByTagName("td")) {
