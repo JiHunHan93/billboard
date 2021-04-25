@@ -6,23 +6,21 @@ import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.sevenelite.billbo.member.model.dto.UserDetailsVO;
 import com.sevenelite.billbo.workhour.work.model.dto.RecordWorkDTO;
 import com.sevenelite.billbo.workhour.work.model.dto.StatusAndWorkDTO;
 import com.sevenelite.billbo.workhour.work.model.dto.WorkDTO;
-import com.sevenelite.billbo.workhour.work.model.dto.WorkDeptAndMemberDTO;
-import com.sevenelite.billbo.workhour.work.model.dto.WorkTypeDTO;
-import com.sevenelite.billbo.workhour.work.model.service.WorkDeptService;
 import com.sevenelite.billbo.workhour.work.model.service.WorkRecordService;
 import com.sevenelite.billbo.workhour.work.model.service.WorkService;
 import com.sevenelite.billbo.workhour.work.model.service.WorkStatusService;
@@ -41,23 +39,15 @@ public class WorkMainController {
 		this.recordService = recordService;
 	
 	}
-	//수정 이력 보관
-	@GetMapping("/work/record")
-	public String RecordController(Model model) {
-		
-
-		List<RecordWorkDTO> recordList = recordService.selectRecord();
-		
-		for(RecordWorkDTO record : recordList) {
-			model.addAttribute("recordList", recordList);
-		
-		}
-		
-		return "workhour/workList";
-	}
 	@GetMapping("work")
 	public String workController(Model model,Principal principal,Authentication authentication) throws ParseException {
 		
+		//출근 기록 확인
+		
+			List<RecordWorkDTO> recordList = recordService.selectRecord();
+		
+				for(RecordWorkDTO record : recordList) {
+					model.addAttribute("recordList", recordList);	
 		
 		//출근 현황 보기
 
@@ -181,14 +171,28 @@ public class WorkMainController {
 	         
 	         model.addAttribute("workInfo", workInfo);
 	        if(workService.insertWorkInfo(workInfo)) {
+	       
+	          }
+	       }
 	        
-	        }
-	        
-	        return "workhour/workList";
-
-		} 
-	 } 
-}	
+	    }        	
+				return "workhour/workList";
+	}
+		
+	@PostMapping("/work/edit") 
+		public ModelAndView editWork(HttpServletRequest request, StatusAndWorkDTO status, RedirectAttributes rttr, Model model) {		 	
+		if(workService.editWork(status)) {
+			rttr.addFlashAttribute("message", "수정에 성공했습니다");
+		
+		};
+		ModelAndView mv = new ModelAndView();
+		List<StatusAndWorkDTO> statusList = workService.selectStatusList();
+		model.addAttribute("statusList", statusList);
+		mv.setViewName("redirect:editForm");
+		return mv;
+			
+		}
+}
 	
 	     	
 	

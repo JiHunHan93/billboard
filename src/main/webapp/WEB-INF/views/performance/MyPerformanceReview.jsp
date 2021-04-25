@@ -531,11 +531,23 @@
 												<td colspan="8" class="text-center">
 													<div class="grade-span">
 														<h4>종합 점수 평균</h4>
-														<span class="badge bg-inverse-danger"> 65점이하  D</span> 
-														<span class="badge bg-inverse-warning">65점-74점 C</span> 
-														<span class="badge bg-inverse-info">75점-84점 B</span> 
-														<span class="badge bg-inverse-purple">85점-92점 A</span> 
-														<span class="badge bg-inverse-success">92점 이상 A+</span>
+														<c:choose>
+														<c:when test="${detailReview.reviewAvg >= 92}">
+														 <span class="badge bg-inverse-danger"><c:out value="${ detailReview.reviewAvg }"/>점   A+</span>
+														</c:when> 
+														<c:when test="${detailReview.reviewAvg >= 85}">
+														<span class="badge bg-inverse-warning"><c:out value="${ detailReview.reviewAvg }"/>점 A</span> 
+														</c:when>
+														<c:when test="${detailReview.reviewAvg >= 75}">
+														<span class="badge bg-inverse-info"><c:out value="${ detailReview.reviewAvg }"/>점 B</span> 
+														</c:when>
+														<c:when test="${detailReview.reviewAvg >= 65}">
+														<span class="badge bg-inverse-purple"><c:out value="${ detailReview.reviewAvg }"/>점 C</span> 
+														</c:when>
+														<c:when test="${detailReview.reviewAvg <= 64 }">
+														<span class="badge bg-inverse-success"><c:out value="${ detailReview.reviewAvg }"/>점 D</span>
+														</c:when>
+														</c:choose>
 														<%-- <input type="text" name="reviewNo" class="reviewNo" value="${no}">		 --%>										
 													</div>
 												</td>
