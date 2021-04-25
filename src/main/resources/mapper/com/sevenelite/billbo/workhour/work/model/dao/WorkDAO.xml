@@ -121,15 +121,34 @@
     </select>   
     <select id="workTypeB7" resultType="String" parameterType="WorkDTO">
     	 SELECT
-                 A.WORKTYPE_TYPE
-            FROM BB_WORKTYPE A
-           WHERE A.WORKTYPE_CODE = 'B7'
+                A.WORKTYPE_TYPE
+          FROM BB_WORKTYPE A
+         WHERE A.WORKTYPE_CODE = 'B7'
     </select>   
     <select id="workTypeB8" resultType="String" parameterType="WorkDTO">
     	 SELECT
                  A.WORKTYPE_TYPE
-            FROM BB_WORKTYPE A
+           FROM BB_WORKTYPE A
            WHERE A.WORKTYPE_CODE = 'B8'
     </select>   
     
-</mapper> 
+    <update id="editWork" parameterType="StatusAndWorkDTO">
+        UPDATE 
+               BB_WORKSTATUS A
+           SET A.WORKDATE = #{ date, jdbcType = DATE }
+             , A.COMMUTE =  #{ commute, jdbcType= TIME }
+             , A.LEAVE_WORK = #{ lwork, jdbcType= TIME }
+             , A.WORKTYPE_CODE = #{ type, jdbcType = VARCHAR }     
+    </update>
+    <select id="editForm" parameterType="StatusAndWorkDTO">
+    	SELECT
+               A.WORKSTATUS_NO
+             , A.WORKDATE
+		     , A.COMMUTE
+		     , A.LEAVE_WORK
+	         , A.WORKTYPE_CODE
+	    FROM BB_WORKSTATUS A
+	   WHERE ROWNUM = 1
+    </select>
+    
+</mapper>  
