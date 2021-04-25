@@ -55,323 +55,340 @@
     <body>
     
 		<!-- Main Wrapper -->
-        <div class="main-wrapper">
-		
-			<!-- Header -->
-            <div class="header">
-         
-				<!-- Logo -->
-					<div class="header-left">
-						<a href="employee-dashboard.html" class="logo">
-					  <img src="/billbo/resources/hrtemp/img/Logo.png" width="40" height="40" alt="">
-				   </a>
-					</div>
-				<!-- /Logo -->
-				
-				<a id="toggle_btn" href="javascript:void(0);">
-				   <span class="bar-icon">
-					  <span></span>
-					  <span></span>
-					  <span></span>
-				   </span>
+        <!-- Main Wrapper -->
+	<div class="main-wrapper">
+
+		<!-- Header -->
+		<div class="header">
+
+			<!-- Logo -->
+			<div class="header-left">
+				<a href="${pageContext.servletContext.contextPath}" class="logo">
+					<img src="/billbo/resources/hrtemp/img/Logo.png" width="40"
+					height="40" alt="">
 				</a>
-				
-				<!-- Header Title -->
-					<div class="page-title-box">
-				   <h3>Bill-Board Employee Management</h3>
-					</div>
-				<!-- /Header Title -->
-				
-				<a id="mobile_btn" class="mobile_btn" href="#sidebar"><i class="fa fa-bars"></i></a>
-				
-				<!-- Header Menu -->
-				<ul class="nav user-menu">
-				
-				   <!-- Search -->
-				   <li class="nav-item">
-					  <div class="top-nav-search">
-						 <a href="javascript:void(0);" class="responsive-search">
-							<i class="fa fa-search"></i>
-						 </a>
-						 <form action="search.html">
+			</div>
+			<!-- /Logo -->
+
+			<a id="toggle_btn" href="javascript:void(0);"> <span
+				class="bar-icon"> <span></span> <span></span> <span></span>
+			</span>
+			</a>
+
+			<!-- Header Title -->
+			<div class="page-title-box">
+				<h3>Bill-Board Employee Management</h3>
+			</div>
+			<!-- /Header Title -->
+
+			<a id="mobile_btn" class="mobile_btn" href="#sidebar"><i
+				class="fa fa-bars"></i></a>
+
+			<!-- Header Menu -->
+			<ul class="nav user-menu">
+
+				<!-- Search -->
+				<li class="nav-item">
+					<div class="top-nav-search">
+						<a href="javascript:void(0);" class="responsive-search"> <i
+							class="fa fa-search"></i>
+						</a>
+						<form action="search.html">
 							<input class="form-control" type="text" placeholder="Search here">
-							<button class="btn" type="submit"><i class="fa fa-search"></i></button>
-						 </form>
-					  </div>
-				   </li>
-				   <!-- /Search -->
-				
-				   <!-- Flag -->
-				   <li class="nav-item dropdown has-arrow flag-nav">
-					  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
-						 <img src="/billbo/resources/hrtemp/img/flags/us.png" alt="" height="20"> <span>English</span>
-					  </a>
-					  <div class="dropdown-menu dropdown-menu-right">
-						 <a href="javascript:void(0);" class="dropdown-item">
-							<img src="/billbo/resources/hrtemp/img/flags/us.png" alt="" height="16"> English
-						 </a>
-						 <a href="javascript:void(0);" class="dropdown-item">
-							<img src="/billbo/resources/hrtemp/img/flags/fr.png" alt="" height="16"> French
-						 </a>
-						 <a href="javascript:void(0);" class="dropdown-item">
-							<img src="/billbo/resources/hrtemp/img/flags/es.png" alt="" height="16"> Spanish
-						 </a>
-						 <a href="javascript:void(0);" class="dropdown-item">
-							<img src="/billbo/resources/hrtemp/img/flags/de.png" alt="" height="16"> German
-						 </a>
-					  </div>
-				   </li>
-				   <!-- /Flag -->
-				
-				   <!-- Notifications -->
-				   <li class="nav-item dropdown">
-					  <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-						 <i class="fa fa-bell-o"></i> <span class="badge badge-pill">3</span>
-					  </a>
-					  <div class="dropdown-menu notifications">
-						 <div class="topnav-dropdown-header">
-							<span class="notification-title">Notifications</span>
-							<a href="javascript:void(0)" class="clear-noti"> Clear All </a>
-						 </div>
-						 <div class="noti-content">
+							<button class="btn" type="submit">
+								<i class="fa fa-search"></i>
+							</button>
+						</form>
+					</div>
+				</li>
+				<!-- /Search -->
+
+				<!-- Flag -->
+				<li class="nav-item dropdown has-arrow flag-nav"><a
+					class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
+					role="button"> <img
+						src="/billbo/resources/hrtemp/img/flags/us.png" alt="" height="20">
+						<span>English</span>
+				</a>
+					<div class="dropdown-menu dropdown-menu-right">
+						<a href="javascript:void(0);" class="dropdown-item"> <img
+							src="/billbo/resources/hrtemp/img/flags/us.png" alt=""
+							height="16"> English
+						</a> <a href="javascript:void(0);" class="dropdown-item"> <img
+							src="/billbo/resources/hrtemp/img/flags/fr.png" alt=""
+							height="16"> French
+						</a> <a href="javascript:void(0);" class="dropdown-item"> <img
+							src="/billbo/resources/hrtemp/img/flags/es.png" alt=""
+							height="16"> Spanish
+						</a> <a href="javascript:void(0);" class="dropdown-item"> <img
+							src="/billbo/resources/hrtemp/img/flags/de.png" alt=""
+							height="16"> German
+						</a>
+					</div></li>
+				<!-- /Flag -->
+
+				<!-- Notifications -->
+				<li class="nav-item dropdown"><a href="#"
+					class="dropdown-toggle nav-link" data-toggle="dropdown"> <i
+						class="fa fa-bell-o"></i> <span class="badge badge-pill">3</span>
+				</a>
+					<div class="dropdown-menu notifications">
+						<div class="topnav-dropdown-header">
+							<span class="notification-title">Notifications</span> <a
+								href="javascript:void(0)" class="clear-noti"> Clear All </a>
+						</div>
+						<div class="noti-content">
 							<ul class="notification-list">
-							   <li class="notification-message">
-								  <a href="activities.html">
-									 <div class="media">
-										<span class="avatar">
-										   <img alt="" src="assets/img/profiles/avatar-02.jpg">
-										</span>
-										<div class="media-body">
-										   <p class="noti-details"><span class="noti-title">John Doe</span> added new task <span class="noti-title">Patient appointment booking</span></p>
-										   <p class="noti-time"><span class="notification-time">4 mins ago</span></p>
+								<li class="notification-message"><a href="activities.html">
+										<div class="media">
+											<span class="avatar"> <img alt=""
+												src="/billbo/resources/hrtemp/img/profiles/avatar-02.jpg">
+											</span>
+											<div class="media-body">
+												<p class="noti-details">
+													<span class="noti-title">John Doe</span> added new task <span
+														class="noti-title">Patient appointment booking</span>
+												</p>
+												<p class="noti-time">
+													<span class="notification-time">4 mins ago</span>
+												</p>
+											</div>
 										</div>
-									 </div>
-								  </a>
-							   </li>
-							   <li class="notification-message">
-								  <a href="activities.html">
-									 <div class="media">
-										<span class="avatar">
-										   <img alt="" src="/billbo/resources/hrtemp/img/profiles/avatar-03.jpg">
-										</span>
-										<div class="media-body">
-										   <p class="noti-details"><span class="noti-title">Tarah Shropshire</span> changed the task name <span class="noti-title">Appointment booking with payment gateway</span></p>
-										   <p class="noti-time"><span class="notification-time">6 mins ago</span></p>
+								</a></li>
+								<li class="notification-message"><a href="activities.html">
+										<div class="media">
+											<span class="avatar"> <img alt=""
+												src="/billbo/resources/hrtemp/img/profiles/avatar-03.jpg">
+											</span>
+											<div class="media-body">
+												<p class="noti-details">
+													<span class="noti-title">Tarah Shropshire</span> changed
+													the task name <span class="noti-title">Appointment
+														booking with payment gateway</span>
+												</p>
+												<p class="noti-time">
+													<span class="notification-time">6 mins ago</span>
+												</p>
+											</div>
 										</div>
-									 </div>
-								  </a>
-							   </li>
-							   <li class="notification-message">
-								  <a href="activities.html">
-									 <div class="media">
-										<span class="avatar">
-										   <img alt="" src="/billbo/resources/hrtemp/img/profiles/avatar-06.jpg">
-										</span>
-										<div class="media-body">
-										   <p class="noti-details"><span class="noti-title">Misty Tison</span> added <span class="noti-title">Domenic Houston</span> and <span class="noti-title">Claire Mapes</span> to project <span class="noti-title">Doctor available module</span></p>
-										   <p class="noti-time"><span class="notification-time">8 mins ago</span></p>
+								</a></li>
+								<li class="notification-message"><a href="activities.html">
+										<div class="media">
+											<span class="avatar"> <img alt=""
+												src="/billbo/resources/hrtemp/img/profiles/avatar-06.jpg">
+											</span>
+											<div class="media-body">
+												<p class="noti-details">
+													<span class="noti-title">Misty Tison</span> added <span
+														class="noti-title">Domenic Houston</span> and <span
+														class="noti-title">Claire Mapes</span> to project <span
+														class="noti-title">Doctor available module</span>
+												</p>
+												<p class="noti-time">
+													<span class="notification-time">8 mins ago</span>
+												</p>
+											</div>
 										</div>
-									 </div>
-								  </a>
-							   </li>
-							   <li class="notification-message">
-								  <a href="activities.html">
-									 <div class="media">
-										<span class="avatar">
-										   <img alt="" src="/billbo/resources/hrtemp/img/profiles/avatar-17.jpg">
-										</span>
-										<div class="media-body">
-										   <p class="noti-details"><span class="noti-title">Rolland Webber</span> completed task <span class="noti-title">Patient and Doctor video conferencing</span></p>
-										   <p class="noti-time"><span class="notification-time">12 mins ago</span></p>
+								</a></li>
+								<li class="notification-message"><a href="activities.html">
+										<div class="media">
+											<span class="avatar"> <img alt=""
+												src="/billbo/resources/hrtemp/img/profiles/avatar-17.jpg">
+											</span>
+											<div class="media-body">
+												<p class="noti-details">
+													<span class="noti-title">Rolland Webber</span> completed
+													task <span class="noti-title">Patient and Doctor
+														video conferencing</span>
+												</p>
+												<p class="noti-time">
+													<span class="notification-time">12 mins ago</span>
+												</p>
+											</div>
 										</div>
-									 </div>
-								  </a>
-							   </li>
-							   <li class="notification-message">
-								  <a href="activities.html">
-									 <div class="media">
-										<span class="avatar">
-										   <img alt="" src="/billbo/resources/hrtemp/img/profiles/avatar-13.jpg">
-										</span>
-										<div class="media-body">
-										   <p class="noti-details"><span class="noti-title">Bernardo Galaviz</span> added new task <span class="noti-title">Private chat module</span></p>
-										   <p class="noti-time"><span class="notification-time">2 days ago</span></p>
+								</a></li>
+								<li class="notification-message"><a href="activities.html">
+										<div class="media">
+											<span class="avatar"> <img alt=""
+												src="/billbo/resources/hrtemp/img/profiles/avatar-13.jpg">
+											</span>
+											<div class="media-body">
+												<p class="noti-details">
+													<span class="noti-title">Bernardo Galaviz</span> added new
+													task <span class="noti-title">Private chat module</span>
+												</p>
+												<p class="noti-time">
+													<span class="notification-time">2 days ago</span>
+												</p>
+											</div>
 										</div>
-									 </div>
-								  </a>
-							   </li>
+								</a></li>
 							</ul>
-						 </div>
-						 <div class="topnav-dropdown-footer">
+						</div>
+						<div class="topnav-dropdown-footer">
 							<a href="activities.html">View all Notifications</a>
-						 </div>
-					  </div>
-				   </li>
-				   <!-- /Notifications -->
-				   
-				   <!-- Message Notifications -->
-				   <li class="nav-item dropdown">
-					  <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-						 <i class="fa fa-comment-o"></i> <span class="badge badge-pill">8</span>
-					  </a>
-					  <div class="dropdown-menu notifications">
-						 <div class="topnav-dropdown-header">
-							<span class="notification-title">Messages</span>
-							<a href="javascript:void(0)" class="clear-noti"> Clear All </a>
-						 </div>
-						 <div class="noti-content">
+						</div>
+					</div></li>
+				<!-- /Notifications -->
+
+				<!-- Message Notifications -->
+				<li class="nav-item dropdown"><a href="#"
+					class="dropdown-toggle nav-link" data-toggle="dropdown"> <i
+						class="fa fa-comment-o"></i> <span class="badge badge-pill">8</span>
+				</a>
+					<div class="dropdown-menu notifications">
+						<div class="topnav-dropdown-header">
+							<span class="notification-title">Messages</span> <a
+								href="javascript:void(0)" class="clear-noti"> Clear All </a>
+						</div>
+						<div class="noti-content">
 							<ul class="notification-list">
-							   <li class="notification-message">
-								  <a href="chat.html">
-									 <div class="list-item">
-										<div class="list-left">
-										   <span class="avatar">
-											  <img alt="" src="assets/img/profiles/avatar-09.jpg">
-										   </span>
+								<li class="notification-message"><a
+									href="${pageContext.servletContext.contextPath}/apps/chat">
+										<div class="list-item">
+											<div class="list-left">
+												<span class="avatar"> <img alt=""
+													src="/billbo/resources/hrtemp/img/profiles/avatar-09.jpg">
+												</span>
+											</div>
+											<div class="list-body">
+												<span class="message-author">Richard Miles </span> <span
+													class="message-time">12:28 AM</span>
+												<div class="clearfix"></div>
+												<span class="message-content">Lorem ipsum dolor sit
+													amet, consectetur adipiscing</span>
+											</div>
 										</div>
-										<div class="list-body">
-										   <span class="message-author">Richard Miles </span>
-										   <span class="message-time">12:28 AM</span>
-										   <div class="clearfix"></div>
-										   <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+								</a></li>
+								<li class="notification-message"><a
+									href="${pageContext.servletContext.contextPath}/apps/chat">
+										<div class="list-item">
+											<div class="list-left">
+												<span class="avatar"> <img alt=""
+													src="/billbo/resources/hrtemp/img/profiles/avatar-02.jpg">
+												</span>
+											</div>
+											<div class="list-body">
+												<span class="message-author">John Doe</span> <span
+													class="message-time">6 Mar</span>
+												<div class="clearfix"></div>
+												<span class="message-content">Lorem ipsum dolor sit
+													amet, consectetur adipiscing</span>
+											</div>
 										</div>
-									 </div>
-								  </a>
-							   </li>
-							   <li class="notification-message">
-								  <a href="chat.html">
-									 <div class="list-item">
-										<div class="list-left">
-										   <span class="avatar">
-											  <img alt="" src="assets/img/profiles/avatar-02.jpg">
-										   </span>
+								</a></li>
+								<li class="notification-message"><a
+									href="${pageContext.servletContext.contextPath}/apps/chat">
+										<div class="list-item">
+											<div class="list-left">
+												<span class="avatar"> <img alt=""
+													src="/billbo/resources/hrtemp/img/profiles/avatar-03.jpg">
+												</span>
+											</div>
+											<div class="list-body">
+												<span class="message-author"> Tarah Shropshire </span> <span
+													class="message-time">5 Mar</span>
+												<div class="clearfix"></div>
+												<span class="message-content">Lorem ipsum dolor sit
+													amet, consectetur adipiscing</span>
+											</div>
 										</div>
-										<div class="list-body">
-										   <span class="message-author">John Doe</span>
-										   <span class="message-time">6 Mar</span>
-										   <div class="clearfix"></div>
-										   <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+								</a></li>
+								<li class="notification-message"><a
+									href="${pageContext.servletContext.contextPath}/apps/chat">
+										<div class="list-item">
+											<div class="list-left">
+												<span class="avatar"> <img alt=""
+													src="/billbo/resources/hrtemp/img/profiles/avatar-05.jpg">
+												</span>
+											</div>
+											<div class="list-body">
+												<span class="message-author">Mike Litorus</span> <span
+													class="message-time">3 Mar</span>
+												<div class="clearfix"></div>
+												<span class="message-content">Lorem ipsum dolor sit
+													amet, consectetur adipiscing</span>
+											</div>
 										</div>
-									 </div>
-								  </a>
-							   </li>
-							   <li class="notification-message">
-								  <a href="chat.html">
-									 <div class="list-item">
-										<div class="list-left">
-										   <span class="avatar">
-											  <img alt="" src="assets/img/profiles/avatar-03.jpg">
-										   </span>
+								</a></li>
+								<li class="notification-message"><a
+									href="${pageContext.servletContext.contextPath}/apps/chat">
+										<div class="list-item">
+											<div class="list-left">
+												<span class="avatar"> <img alt=""
+													src="/billbo/resources/hrtemp/img/profiles/avatar-08.jpg">
+												</span>
+											</div>
+											<div class="list-body">
+												<span class="message-author"> Catherine Manseau </span> <span
+													class="message-time">27 Feb</span>
+												<div class="clearfix"></div>
+												<span class="message-content">Lorem ipsum dolor sit
+													amet, consectetur adipiscing</span>
+											</div>
 										</div>
-										<div class="list-body">
-										   <span class="message-author"> Tarah Shropshire </span>
-										   <span class="message-time">5 Mar</span>
-										   <div class="clearfix"></div>
-										   <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
-										</div>
-									 </div>
-								  </a>
-							   </li>
-							   <li class="notification-message">
-								  <a href="chat.html">
-									 <div class="list-item">
-										<div class="list-left">
-										   <span class="avatar">
-											  <img alt="" src="assets/img/profiles/avatar-05.jpg">
-										   </span>
-										</div>
-										<div class="list-body">
-										   <span class="message-author">Mike Litorus</span>
-										   <span class="message-time">3 Mar</span>
-										   <div class="clearfix"></div>
-										   <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
-										</div>
-									 </div>
-								  </a>
-							   </li>
-							   <li class="notification-message">
-								  <a href="chat.html">
-									 <div class="list-item">
-										<div class="list-left">
-										   <span class="avatar">
-											  <img alt="" src="assets/img/profiles/avatar-08.jpg">
-										   </span>
-										</div>
-										<div class="list-body">
-										   <span class="message-author"> Catherine Manseau </span>
-										   <span class="message-time">27 Feb</span>
-										   <div class="clearfix"></div>
-										   <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
-										</div>
-									 </div>
-								  </a>
-							   </li>
+								</a></li>
 							</ul>
-						 </div>
-						 <div class="topnav-dropdown-footer">
+						</div>
+						<div class="topnav-dropdown-footer">
 							<a href="chat.html">View all Messages</a>
-						 </div>
-					  </div>
-				   </li>
-				   <!-- /Message Notifications -->
-	   
-				   <li class="nav-item dropdown has-arrow main-drop">
-					  <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-						 <span class="user-img"><img src="assets/img/profiles/avatar-21.jpg" alt="">
-						 <span class="status online"></span></span>
-						 <span><!-- 해당 사원 명 --></span>
-					  </a>
-					  <div class="dropdown-menu">
-						 <a class="dropdown-item" href="profile.html">내 정보</a>
-						 <a class="dropdown-item" href="settings.html">환경설정</a>
-						 <a class="dropdown-item" href="login.html">로그아웃</a>
-					  </div>
-				   </li>
-				</ul>
-				<!-- /Header Menu -->
-				
-				<!-- Mobile Menu -->
-				<div class="dropdown mobile-user-menu">
-				   <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
-				   <div class="dropdown-menu dropdown-menu-right">
-					  <a class="dropdown-item" href="profile.html">내 정보</a>
-					  <a class="dropdown-item" href="settings.html">환경설정</a>
-					  <a class="dropdown-item" href="login.html">로그아웃</a>
-				   </div>
+						</div>
+					</div></li>
+				<!-- /Message Notifications -->
+
+				<li class="nav-item dropdown has-arrow main-drop"><a href="#"
+					class="dropdown-toggle nav-link" data-toggle="dropdown"> <span
+						class="user-img"><img
+							src="/billbo/resources/hrtemp/img/profiles/avatar-21.jpg" alt="">
+							<span class="status online"></span></span> <span> <!-- 해당 사원 명 -->
+					</span>
+				</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="profile.html">내 정보</a> <a
+							class="dropdown-item" href="settings.html">환경설정</a> <a
+							class="dropdown-item"
+							href="${pageContext.servletContext.contextPath}/member/logout">로그아웃</a>
+					</div></li>
+			</ul>
+			<!-- /Header Menu -->
+
+			<!-- Mobile Menu -->
+			<div class="dropdown mobile-user-menu">
+				<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
+					aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+				<div class="dropdown-menu dropdown-menu-right">
+					<a class="dropdown-item" href="profile.html">내 정보</a> <a
+						class="dropdown-item" href="settings.html">환경설정</a> <a
+						class="dropdown-item" href="login.html">로그아웃</a>
 				</div>
-				<!-- /Mobile Menu -->
-				
-				</div>
-			 <!-- /Header -->
-			
-			<!-- Sidebar -->
-            <div class="sidebar" id="sidebar">
-                <div class="sidebar-inner slimscroll">
-               <div id="sidebar-menu" class="sidebar-menu">
-                  <ul>
-                     <!-- <li class="menu-title"> 
+			</div>
+			<!-- /Mobile Menu -->
+
+		</div>
+		<!-- /Header -->
+
+		<!-- Sidebar -->
+		<div class="sidebar" id="sidebar">
+			<div class="sidebar-inner slimscroll">
+				<div id="sidebar-menu" class="sidebar-menu">
+					<ul>
+						<!-- <li class="menu-title"> 
                         <span>Main</span>
                      </li> -->
-                     <!-- 사이드바 서브메뉴 안쓰는 방향으로 수정 -->
-                     <li class="submenu">
-                        <a href="employee-dashboard.html" class="sidebar-default">   
-                           <i class="la la-home sidebar-icon"></i>                        
-                           <!-- <span class="menu-arrow"></span> -->
-                           <span class="sidebar-text">Home</span>
-                        </a>
-                        <!-- <ul style="display: none;">
+						<!-- 사이드바 서브메뉴 안쓰는 방향으로 수정 -->
+						<li><a href="${pageContext.servletContext.contextPath}"
+							class="sidebar-default"> <i class="la la-home sidebar-icon"></i>
+								<!-- <span class="menu-arrow"></span> --> <span
+								class="sidebar-text">Home</span>
+						</a> <!-- <ul style="display: none;">
                            <li><a href="index.html">Admin Dashboard</a></li>
                            <li><a class="active" href="employee-dashboard.html">Employee Dashboard</a></li>
-                        </ul> -->
-                     </li>
-                     <div class="sidebar-line"></div>
-                     <li class="submenu">
-                        <a href="#" class="sidebar-default">
-                           <i class="la la-cube sidebar-icon"></i> 
-                           <span class="sidebar-text"> Apps</span> 
-                           <!-- <span class="menu-arrow"></span> -->
-                        </a>
-                        <!-- <ul style="display: none;">
+                        </ul> --></li>
+						<div class="sidebar-line"></div>
+						<li><a href="${pageContext.servletContext.contextPath}/apps"
+							class="sidebar-default"> <i class="la la-cube sidebar-icon"></i>
+								<span class="sidebar-text"> Apps</span> <!-- <span class="menu-arrow"></span> -->
+						</a> <!-- <ul style="display: none;">
                            <li><a href="chat.html">Chat</a></li>
                            <li class="submenu">
                               <a href="#"><span> Calls</span> <span class="menu-arrow"></span></a>
@@ -386,19 +403,17 @@
                            <li><a href="contacts.html">Contacts</a></li>
                            <li><a href="inbox.html">Email</a></li>
                            <li><a href="file-manager.html">File Manager</a></li>
-                        </ul> -->
-                     </li>
-                     <div class="sidebar-line"></div>
-                     <!-- <li class="menu-title"> 
+                        </ul> --></li>
+						<div class="sidebar-line"></div>
+						<!-- <li class="menu-title"> 
                         <span>Apps</span>
                      </li> -->
-                     <li>
-                        <a href="category-Employee.html" class="noti-dot sidebar-default">
-                           <i class="la la-user sidebar-icon"></i>
-                           <span class="sidebar-text"> Employees</span>
-                           <!-- <span class="menu-arrow"></span> -->
-                        </a>
-                        <!-- <ul style="display: none;">
+						<li><a
+							href="${pageContext.servletContext.contextPath}/employee"
+							class="noti-dot sidebar-default"> <i
+								class="la la-user sidebar-icon"></i> <span class="sidebar-text">
+									Employees</span> <!-- <span class="menu-arrow"></span> -->
+						</a> <!-- <ul style="display: none;">
                            <li><a href="employees.html">All Employees</a></li>
                            <li><a href="holidays.html">Holidays</a></li>
                            <li><a href="leaves.html">Leaves (Admin) <span class="badge badge-pill bg-primary float-right">1</span></a></li>
@@ -410,44 +425,36 @@
                            <li><a href="designations.html">Designations</a></li>
                            <li><a href="timesheet.html">Timesheet</a></li>
                            <li><a href="overtime.html">Overtime</a></li>
-                        </ul> -->
-                     </li>
-                     <div class="sidebar-line"></div>
-                     <li> 
-                        <a href="category-Attendance.html" class="sidebar-default">
-                           <i class="la la-briefcase sidebar-icon"></i>
-                           <span class="sidebar-text">Attendance</span>
-                        </a>
-                     </li>
-                     <div class="sidebar-line"></div>
-                     <li>
-                        <a href="category-Admin.html" class="sidebar-default">
-                           <i class="la la-key sidebar-icon"></i>
-                           <span class="sidebar-text">Admin</span>
-                           <!-- <span class="menu-arrow"></span> -->
-                        </a>
-                        <!-- <ul style="display: none;">
+                        </ul> --></li>
+						<div class="sidebar-line"></div>
+						<li><a
+							href="${pageContext.servletContext.contextPath}/attendance"
+							class="sidebar-default"> <i
+								class="la la-briefcase sidebar-icon"></i> <span
+								class="sidebar-text">Attendance</span>
+						</a></li>
+						<div class="sidebar-line"></div>
+						<li><a href="${pageContext.servletContext.contextPath}/admin"
+							class="sidebar-default"> <i class="la la-key sidebar-icon"></i>
+								<span class="sidebar-text">Admin</span> <!-- <span class="menu-arrow"></span> -->
+						</a> <!-- <ul style="display: none;">
                            <li><a href="projects.html">Projects</a></li>
                            <li><a href="tasks.html">Tasks</a></li>
                            <li><a href="task-board.html">Task Board</a></li>   
-                        </ul> -->
-                     </li>
-                     <div class="sidebar-line"></div>
-                     <li> 
-                        <a href="category-Payroll.html" class="sidebar-default">
-                           <i class="la la-money sidebar-icon"></i>
-                           <span class="sidebar-text">Payroll</span>
-                        </a>
-                     </li>
-                     <div class="sidebar-line"></div>
-                     <li> 
-                        <a href="category-Information.html" class="sidebar-default">
-                           <i class="la la-building sidebar-icon"></i>
-                           <span class="sidebar-text">Information</span>
-                        </a>
-                     </li>
-                     <div class="sidebar-line"></div>
-                     <!-- <li class="menu-title"> 
+                        </ul> --></li>
+						<div class="sidebar-line"></div>
+						<li><a href="#" class="sidebar-default"> <i
+								class="la la-money sidebar-icon"></i> <span class="sidebar-text">Payroll</span>
+						</a></li>
+						<div class="sidebar-line"></div>
+						<li><a
+							href="${pageContext.servletContext.contextPath}/information"
+							class="sidebar-default"> <i
+								class="la la-building sidebar-icon"></i> <span
+								class="sidebar-text">Information</span>
+						</a></li>
+						<div class="sidebar-line"></div>
+						<!-- <li class="menu-title"> 
                         <span>HR</span>
                      </li>
                      <li class="submenu">
@@ -579,65 +586,64 @@
                         </ul>
                      </li>
                      <li class="menu-title"> 
-                        <span>UI Interface</span>
-                     </li>
-                     <li> 
-                        <a href="components.html"><i class="la la-puzzle-piece"></i> <span>Components</span></a>
-                     </li>
-                     <li class="submenu">
-                        <a href="#"><i class="la la-object-group"></i> <span> Forms </span> <span class="menu-arrow"></span></a>
-                        <ul style="display: none;">
-                           <li><a href="form-basic-inputs.html">Basic Inputs </a></li>
-                           <li><a href="form-input-groups.html">Input Groups </a></li>
-                           <li><a href="form-horizontal.html">Horizontal Form </a></li>
-                           <li><a href="form-vertical.html"> Vertical Form </a></li>
-                           <li><a href="form-mask.html"> Form Mask </a></li>
-                           <li><a href="form-validation.html"> Form Validation </a></li>
-                        </ul>
-                     </li>
-                     <li class="submenu">
-                        <a href="#"><i class="la la-table"></i> <span> Tables </span> <span class="menu-arrow"></span></a>
-                        <ul style="display: none;">
-                           <li><a href="tables-basic.html">Basic Tables </a></li>
-                           <li><a href="data-tables.html">Data Table </a></li>
-                        </ul>
-                     </li>
-                     <li class="menu-title"> 
-                        <span>Extras</span>
-                     </li>
-                     <li> 
-                        <a href="#"><i class="la la-file-text"></i> <span>Documentation</span></a>
-                     </li>
-                     <li> 
-                        <a href="javascript:void(0);"><i class="la la-info"></i> <span>Change Log</span> <span class="badge badge-primary ml-auto">v3.4</span></a>
-                     </li>
-                     <li class="submenu">
-                        <a href="javascript:void(0);"><i class="la la-share-alt"></i> <span>Multi Level</span> <span class="menu-arrow"></span></a>
-                        <ul style="display: none;">
-                           <li class="submenu">
-                              <a href="javascript:void(0);"> <span>Level 1</span> <span class="menu-arrow"></span></a>
-                              <ul style="display: none;">
-                                 <li><a href="javascript:void(0);"><span>Level 2</span></a></li>
-                                 <li class="submenu">
-                                    <a href="javascript:void(0);"> <span> Level 2</span> <span class="menu-arrow"></span></a>
-                                    <ul style="display: none;">
-                                       <li><a href="javascript:void(0);">Level 3</a></li>
-                                       <li><a href="javascript:void(0);">Level 3</a></li>
-                                    </ul>
-                                 </li>
-                                 <li><a href="javascript:void(0);"> <span>Level 2</span></a></li>
-                              </ul>
-                           </li>
-                           <li>
-                              <a href="javascript:void(0);"> <span>Level 1</span></a>
-                           </li>
-                        </ul>
-                     </li> -->
-                  </ul>
-               </div>
-                </div>
-            </div>
-         <!-- /Sidebar -->
+                         <span>UI Interface</span>
+                      </li>
+                      <li> 
+                         <a href="components.html"><i class="la la-puzzle-piece"></i> <span>Components</span></a>
+                      </li>
+                      <li class="submenu">
+                         <a href="#"><i class="la la-object-group"></i> <span> Forms </span> <span class="menu-arrow"></span></a>
+                         <ul style="display: none;">
+                            <li><a href="form-basic-inputs.html">Basic Inputs </a></li>
+                            <li><a href="form-input-groups.html">Input Groups </a></li>
+                            <li><a href="form-horizontal.html">Horizontal Form </a></li>
+                            <li><a href="form-vertical.html"> Vertical Form </a></li>
+                            <li><a href="form-mask.html"> Form Mask </a></li>
+                            <li><a href="form-validation.html"> Form Validation </a></li>
+                         </ul>
+                      </li>
+                      <li class="submenu">
+                         <a href="#"><i class="la la-table"></i> <span> Tables </span> <span class="menu-arrow"></span></a>
+                         <ul style="display: none;">
+                            <li><a href="tables-basic.html">Basic Tables </a></li>
+                            <li><a href="data-tables.html">Data Table </a></li>
+                         </ul>
+                      </li>
+                      <li class="menu-title"> 
+                         <span>Extras</span>
+                      </li>
+                      <li> 
+                         <a href="#"><i class="la la-file-text"></i> <span>Documentation</span></a>
+                      </li>
+                      <li> 
+                         <a href="javascript:void(0);"><i class="la la-info"></i> <span>Change Log</span> <span class="badge badge-primary ml-auto">v3.4</span></a>
+                      </li>
+                      <li class="submenu">
+                         <a href="javascript:void(0);"><i class="la la-share-alt"></i> <span>Multi Level</span> <span class="menu-arrow"></span></a>
+                         <ul style="display: none;">
+                            <li class="submenu">
+                               <a href="javascript:void(0);"> <span>Level 1</span> <span class="menu-arrow"></span></a>
+                               <ul style="display: none;">
+                                  <li><a href="javascript:void(0);"><span>Level 2</span></a></li>
+                                  <li class="submenu">
+                                     <a href="javascript:void(0);"> <span> Level 2</span> <span class="menu-arrow"></span></a>
+                                     <ul style="display: none;">
+                                        <li><a href="javascript:void(0);">Level 3</a></li>
+                                        <li><a href="javascript:void(0);">Level 3</a></li>
+                                     </ul>
+                                  </li>
+                                  <li><a href="javascript:void(0);"> <span>Level 2</span></a></li>
+                               </ul>
+                            </li>
+                            <li>
+                               <a href="javascript:void(0);"> <span>Level 1</span></a>
+                            </li>
+                         </ul>
+                      </li> -->
+					</ul>
+				</div>
+			</div>
+		</div>
 			<!-- Page Wrapper -->
             <div class="page-wrapper">
 			
@@ -666,16 +672,16 @@
 			
 										<div class="profile-img-wrap">	
 										<div class="card mb-0">	
-										<c:forEach var="detailMem" items="${ requestScope.detailMem }">								
-												<form id="form1" action="${pageContext.servletContext.contextPath }/upload" method="POST" enctype="multipart/form-data" class="btn btn-custom">
-									<input type="file" name="FileAttachment" class="btn btn-custom">
-								 	<input type="submit" value="업로드" class="btn btn-custom">
-					</form>
+										<c:forEach var="fileAttach" items="${ requestScope.fileAttach }">								
+									<%-- 			<form id="form1" action="${pageContext.servletContext.contextPath }/upload" method="POST" enctype="multipart/form-data" class="btn btn-custom">
+									 <input type="file" name="FileAttachment" class="btn btn-custom">
+								 	<input type="submit" value="업로드" class="btn btn-custom">  
+					                           </form> --%>
 												<div class="profile-img">
-												<a href="#"><img src=/billbo/resources/images/main<c:out value="/${detailMem.no}"/>></a>
+												<a href="#"><img src="/billbo/resources/uploadFiles/<c:out value="${fileAttach.savedName}"/>"></a>
 											    </div>
 											</c:forEach>
-					</div>
+					                    </div>
 											</div>
 										</div>
 										<!-- 로그인 정보 프로필 select 부분  -->
@@ -695,7 +701,7 @@
 														<c:forEach var="member" items="${ requestScope.member }">
 														<br>
 														<br>
-														<div class="small doj text-muted">Date of Join :"${ member.enroll_date }"</div>
+														<div class="staff-id">Date of Join :${ member.enroll_date }</div>
 														</c:forEach>
 														<div class="staff-msg" hidden='true'><a class="btn btn-custom" href="chat.html">Send Message</a></div>
 													</div>
@@ -792,6 +798,7 @@
 									<div class="ehr_detail viewForm">
 										
 										<form action="${ pageContext.servletContext.contextPath }/profile/main" method="post">
+										<input type="hidden" name="memberno" value="${requestScope.memberno}">
 										<table class="type_list_box">
 											<tbody>
 											<c:choose>
@@ -922,7 +929,7 @@
 												
 												<td colspan="5">
 														
-												<input class="txt w_max" type="text" name="address" value="<c:out value="${member.address }"/>">
+												<input class="txt w_max" type="text" name="address" value="<c:out value="${ member.address }"/>">
 														
 												
 												</td>
@@ -950,7 +957,7 @@
 													</th>
 													<td class="col8">
 													 
-												<input class="txt w_max" type="text" name="account_host" value="<c:out value="${member.account_host }"/>">
+												<input class="txt w_max" type="text" name="account_host" value="<c:out value="${ member.account_host }"/>">
 													
 												
 											</td>
@@ -968,7 +975,7 @@
 												</th>
 												<td class="col8">
 														
-												<input class="txt w_max" type="text" name="account_no" value="<c:out value="${member.account_no }"/>">
+												<input class="txt w_max" type="text" name="account_no" value="<c:out value="${ member.account_no }"/>">
 														
 												
 												</td>
@@ -1058,9 +1065,11 @@
 									<!--탭 전체 펼치기시 타이틀 나옴-->
 									<div class="ehr_jop viewForm">
 										<form action="${ pageContext.servletContext.contextPath }/profile/joblevel" method="post">
+										
+										<input type="hidden" name="memberno" value="${requestScope.memberno}">
 										<table class="type_list_box">
 											<tbody><tr>
-												<!-- <th class="spot_no"><span class="title_txt" hidden='true'>직위변경이력번호</span></th> -->
+												<!-- <th class="spot_no"><span class="title_txt" hidden='true'>직위변경이력번호</span></th>  -->
 												<th class="spot_date"><span class="title_txt">변경날짜</span></th>
 												<th class="spot_code"><span class="title_txt">직위코드</span></th>
 												<th class="member_no"><span class="title_txt">사번</span></th>
@@ -1069,18 +1078,18 @@
 												 <c:choose>
                                        <c:when test="${ empty requestScope.modispotDto }">
                                        
-                                          <!-- <td class="no">
+                                          <%--  <td class="no">
                                           <input class="txt w_max" type="text" name="spot_no" value=""/>">
                                                 
-                                          </td> -->
+                                          </td>  --%>
                                           <td class="start">
-                                          <input class="txt w_max" type="date" name="spot_date" value=""/>">
+                                          <input class="txt w_max" type="date" name="spot_date" value="">
                                           </td>
                                           <td class="end">
-                                          <input class="txt w_max" type="text" name="spot_code" value=""/>">
+                                          <input class="txt w_max" type="text" name="spot_code" value="">
                                           </td>
                                           <td class="position">
-                                          <input class="txt w_max" type="text" name="member_no" value=""/>">
+                                          <input class="txt w_max" type="text" name="member_no" value="">
                                           </td>
                                        
                                        </c:when>
@@ -1151,7 +1160,7 @@
 							</div>
 						</div>
 						</div>
-						 <script>
+						<!--  <script>
 						 if(document.getElementById("qq")) {
 							    const $tds = document.getElementsByTagName("td");
 							    
@@ -1165,7 +1174,7 @@
 							      })
 							   }
 							}
-						</script>
+						</script> -->
 	                    
 						<!-- /두번째 탭-1 끝 -->
 						<!-- 세번째탭 -->
@@ -1175,7 +1184,7 @@
 									<!--탭 전체 펼치기시 타이틀 나옴-->
 									<div class="ehr_jop viewForm">
 										<form action="${ pageContext.servletContext.contextPath }/profile/part" method="post">
-										
+										<input type="hidden" name="memberno" value="${requestScope.memberno}">
 										<table class="type_list_box">
 											<tbody><tr>
 												<!-- <th class="modifyDeptNo"><span class="title_txt">부서변경이력번호</span></th> -->
@@ -1250,7 +1259,7 @@
 										<td class="free-td"><c:out value="${ viewMemberDept.memberNo }" />
 										<td class="free-td"><c:out value="${ viewMemberDept.deptCode }" />
 										<td class="free-td"><c:out value="${ viewMemberDept.modifydate }" />
-										
+										<td><button id="delete_log" class="btn_delete" type="button" >삭제</button></td>
 									</tr>
 								</c:forEach>
 								</table>
@@ -1277,7 +1286,7 @@
 								<div class="ehr_con_wrap"><div><h3 class="tab_title" >경력</h3>
 									<div class="ehr_career viewForm">
 									<form action="${ pageContext.servletContext.contextPath }/profile/career" method="post">
-										
+									<input type="hidden" name="memberno" value="${requestScope.memberno}">	
 										<table class="type_list_box">
 											<tbody>
 											<tr>
@@ -1360,6 +1369,7 @@
 										<td class="free-td"><c:out value="${ viewCareerDto.position }" />
 										<td class="free-td"><c:out value="${ viewCareerDto.start }" />
 										<td class="free-td"><c:out value="${ viewCareerDto.end }" />
+										<td><button id="delete_log" class="btn_delete" type="button" >삭제</button></td>
 									</tr>
 								</c:forEach>
 								</table>
@@ -1382,7 +1392,7 @@
 								<div class="ehr_con_wrap"><div><h3 class="tab_title" >포상/징계</h3>
 									<div class="ehr_reward viewForm">
 									<form action="${ pageContext.servletContext.contextPath }/profile/bonus" method="post">
-									
+									<input type="hidden" name="memberno" value="${requestScope.memberno}">
 										<table class="type_list_box">
 											<tbody>
 											<tr>
@@ -1474,6 +1484,7 @@
 										<td class="free-td"><c:out value="${ viewBonusDto.type }" />
 										<td class="free-td"><c:out value="${ viewBonusDto.reason }" />
 										<td class="free-td"><c:out value="${ viewBonusDto.approve_code }" />
+		    							<td><button id="delete_log" class="btn_delete" type="button" >삭제</button></td>
 		    						</tr>
 								</c:forEach>
 								</table>
@@ -1496,6 +1507,7 @@
 									<!--탭 전체 펼치기시 타이틀 나옴-->
 									<div class="ehr_qualification viewForm">
 		                    			<form action="${ pageContext.servletContext.contextPath }/profile/certificate" method="post">
+										<input type="hidden" name="memberno" value="${requestScope.memberno}">
 										<table class="type_list_box">
 											<tbody><tr>
 												<!-- <th class="no"><span class="title_txt">자격번호</span></th> -->
@@ -1574,7 +1586,7 @@
 										<td class="free-td"><c:out value="${ viewCertificateInsert.certificate_code }" />
 										<td class="free-td"><c:out value="${ viewCertificateInsert.start_date }" />
 										<td class="free-td"><c:out value="${ viewCertificateInsert.end_date }" />
-		
+										<td><button id="delete_log" class="btn_delete" type="button" >삭제</button></td>
 		    						</tr>
 								</c:forEach>
 								</table>
@@ -1598,6 +1610,7 @@
 									<!--탭 전체 펼치기시 타이틀 나옴-->
 									<div class="ehr_military viewForm">
 											<form action="${ pageContext.servletContext.contextPath }/profile/army" method="post">
+										<input type="hidden" name="memberno" value="${requestScope.memberno}">
 										<table class="type_list_box">
 											<tbody><tr>
 												<th class="member_no"><span class="title_txt">사번</span></th>
@@ -1712,6 +1725,7 @@
 										<td class="free-td"><c:out value="${ viewArmySelect.start }" />
 										<td class="free-td"><c:out value="${ viewArmySelect.end }" />
 										<td class="free-td"><c:out value="${ viewArmySelect.reason }" />
+										<td><button id="delete_log" class="btn_delete" type="button" >삭제</button></td>
 									</tr>
 								</c:forEach>
 								</table>
@@ -1735,6 +1749,7 @@
 									<!--탭 전체 펼치기시 타이틀 나옴-->
 									<div class="ehr_academy viewForm">
 										<form action="${ pageContext.servletContext.contextPath }/profile/finalAcademic" method="post">
+										<input type="hidden" name="memberno" value="${requestScope.memberno}">
 										<table class="type_list_box">
 											<tbody><tr>
 												<!-- <th class="ability_no">최종학력번호</th> -->
@@ -1838,6 +1853,7 @@
 										<td class="free-td"><c:out value="${ viewAcademic.graduate_status }" />
 										<td class="free-td"><c:out value="${ viewAcademic.graduate_name }" />
 										<td class="free-td"><c:out value="${ viewAcademic.code }" />
+										<td><button id="delete_log" class="btn_delete" type="button" >삭제</button></td>
 									</tr>
 								</c:forEach>
 								</table>
@@ -1860,7 +1876,7 @@
 								<div class="ehr_con_wrap"><div><h3 class="tab_title" >가족사항</h3>
 									<div class="ehr_family viewForm">
 										<form action="${ pageContext.servletContext.contextPath }/profile/family" method="post">
-										
+										<input type="hidden" name="memberno" value="${requestScope.memberno}">
 										<table class="type_list_box">
 											<tbody>
 											<tr>
@@ -1933,16 +1949,16 @@
 													   </span>
                                              </td>
                                              <td class="birthday">
-                                             <input class="txt w_max" type="date" name="birthday" value="<c:out value="${ familyDto.birthday }"/>">
+                                             <input class="txt w_max" type="date" name="birthday" value="<c:out value="${ familySelect.birthday }"/>">
                                              </td>
                                              <td class="study">
-                                             <input class="txt w_max" type="text" name="study" value="<c:out value="${ familyDto.study }"/>">
+                                             <input class="txt w_max" type="text" name="study" value="<c:out value="${ familySelect.study }"/>">
                                              </td>
                                              <td class="job">
-                                             <input class="txt w_max" type="text" name="job" value="<c:out value="${ familyDto.job }"/>">
+                                             <input class="txt w_max" type="text" name="job" value="<c:out value="${ familySelect.job }"/>">
                                              </td>
                                              <td class="no">
-                                             <input class="txt w_max" type="text" name="no" value="<c:out value="${ familyDto.no }"/>">
+                                             <input class="txt w_max" type="text" name="no" value="<c:out value="${ familySelect.no }"/>">
                                              </td>
                                             	
                                           </c:forEach>
@@ -1981,6 +1997,7 @@
 										<td class="free-td"><c:out value="${ viewFamilySelect.birthday }" />
 										<td class="free-td"><c:out value="${ viewFamilySelect.study }" />
 										<td class="free-td"><c:out value="${ viewFamilySelect.job }" />
+										<td><button id="delete_log" class="btn_delete" type="button" >삭제</button></td>
 									</tr>
 								</c:forEach>
 								</table>
@@ -2005,10 +2022,10 @@
 									<!--탭 전체 펼치기시 타이틀 나옴-->
 									<div class="ehr_qualification viewForm">
 										<form action="${ pageContext.servletContext.contextPath }/profile/license" method="post">
-										
+										<input type="hidden" name="memberno" value="${requestScope.memberno}">
 										<table class="type_list_box">
 											<tbody><tr>
-												<th class="no"><span class="title_txt">면허 번호</span></th>
+												<!-- <th class="no"><span class="title_txt">면허 번호</span></th> -->
 												<th class="code"><span class="title_txt">면허증코드명</span></th>
 												<th class="date"><span class="title_txt">취득일</span></th>
 												<th class="member_no"><span class="title_txt">사번</span></th>
@@ -2016,9 +2033,9 @@
 											 <c:choose>
                                        <c:when test="${ empty requestScope.LicenseDto }">
                                        
-                                          <td class="no">
+                                          <!-- <td class="no">
                                           <input class="txt w_max" type="text" name="no" value=""/>
-                                           </td>
+                                           </td> -->
                                           <td class="code">
                                           <input class="txt w_max" type="text" name="code" value="">
                                           </td>
@@ -2033,9 +2050,9 @@
                                        <c:otherwise>
                                           <!-- c:forEach 시작 부분 -->
                                           <c:forEach var="LicenseDto" items="${ requestScope.LicenseDto }"> 
-                                             <td class="no">
+                                            <%--  <td class="no">
                                              <input class="txt w_max" type="text" name="no" value="<c:out value="${ LicenseDto.no }"/>">
-                                             </td>
+                                             </td> --%>
                                              <td class="code">
                                              <input class="txt w_max" type="text" name="code" value="<c:out value="${ LicenseDto.code }"/>">
                                              </td>
@@ -2070,7 +2087,8 @@
 										<td class="free-td"><c:out value="${ viewLicenseDto.member_no }" />
 										<td class="free-td"><c:out value="${ viewLicenseDto.code }" />
 										<td class="free-td"><c:out value="${ viewLicenseDto.date }" />
-									</tr>
+										<td><button id="delete_log" class="btn_delete" type="button" >삭제</button></td>
+										</tr>
 								</c:forEach>
 								</table>
 								

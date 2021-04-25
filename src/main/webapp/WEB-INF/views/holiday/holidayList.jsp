@@ -755,7 +755,7 @@
 								<table class="table table-striped custom-table mb-0">
 									<thead>
 										<tr>
-											<th>번호</th>
+											<th hidden="true">번호</th>
 											<th>휴가종류 </th>
 											<th>휴가시작날짜</th>
 											<th>휴가종료날짜</th>
@@ -767,7 +767,7 @@
 									<tbody>
 									<c:forEach var="holidaylist" items="${requestScope.holidaylist }">
 										<tr class="holiday-completed">
-											<td><c:out value="${holidaylist.no }"/></td>
+											<td hidden="true"><c:out value="${holidaylist.no }"/></td>
 											<td><c:out value="${holidaylist.type }"/></td>
 											<td><c:out value="${holidaylist.startDate }"/></td>
 											<td><c:out value="${holidaylist.endDate }"/></td>
@@ -791,7 +791,7 @@
 					<form action="${pageContext.servletContext.contextPath }/holiday/insert" method="post">
 						<div class="modal-content">
 							<div class="modal-header">
-								<h5 class="modal-title">휴가 설정</h5>
+								<h5 class="modal-title">휴가 추가</h5>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
@@ -832,7 +832,7 @@
 										<input type="text" name="term" class="term" id="term" value="2"></div>
 									</div>
 									<div class="submit-section">
-										<button class="btn btn-primary submit-btn" type="button" onclick="registHoliday(this.form)"> 수정하기</button>
+										<button class="btn btn-primary submit-btn" type="button" onclick="registHoliday(this.form)"> 추가하기</button>
 										<button class="btn btn-primary submit-btn">돌아가기</button>
 									</div>
 								</form>
@@ -917,6 +917,26 @@
 			regist.submit();
 		}
 		</script> 
+		<script>
+	if(document.getElementsByTagName("td")) {
+		const $tds = document.getElementsByTagName("td");
+		
+		for(let i = 0; i < $tds.length; i++) {
+			$tds[i].onmouseenter = function() {
+				this.parentNode.style.backgroundColor = "yellow";
+				this.parentNode.style.cursor = "pointer";
+			}
+			$tds[i].onmouseout = function() {
+				this.parentNode.style.background = "white";
+			}
+			$tds[i].onclick = function() {
+				const no = this.parentNode.children[0].innerText;
+			
+				/* location.href = "${ pageContext.servletContext.contextPath }/holiday/detail?no=" + no; */
+			}
+		}
+	}
+	</script>
 		
 		<!-- <script>
 		input.addEventListener('term' e => { 

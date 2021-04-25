@@ -44,5 +44,9 @@ public interface WorkDAO {
 
 	String workTypeB8();
 
+	boolean editWork(StatusAndWorkDTO status);
+
+	List<StatusAndWorkDTO> editForm();
+
   }
  

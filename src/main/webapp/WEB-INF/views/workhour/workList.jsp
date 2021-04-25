@@ -485,6 +485,7 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm:ss"); %>
 					</div>
 				</div>
 				<!-- /Search Filter -->
+				<form>
 				<div class="row">
 					<div class="col-md-12">
 						<div class="table-responsive">
@@ -495,7 +496,7 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm:ss"); %>
 										<th>업무시작</th>
 										<th>업무종료</th>
 										<th>상태</th>
-										<th>수정</th>
+										<th>수정하기</th>
 									</tr>
 								</thead>
 								<tbody>
@@ -505,14 +506,13 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm:ss"); %>
 											<td><c:out value="${ statusList.commute }"></c:out></td>
 											<td><c:out value="${ statusList.lwork }"></c:out></td>
 											<td><c:out value="${ workInfo.workTypeCode }"></c:out></td>
-											<td><button class="btn btn-info" type="button" data-toggle="modal" data-target="#add_todaywork">수정요청</button></td>
+											<td><button class="btn btn-success" type="button" data-toggle="modal" data-target="#edit_todaywork">수정하기</button></td>
 										</tr>
 									</c:forEach>
 							</table>
+											<button class="btn btn-info" type="button" data-toggle="modal" data-target="#add_todaywork">Log</button>
+				</form>
 						</div>
-					</div>
-				</div>
-		</div>
 		<!-- /Page Content -->
 		
 		<!-- Shin modal -->
@@ -530,8 +530,6 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm:ss"); %>
 								 <table class="table table-striped custom-table mb-0 datatable">
 							<thead>
 								   <tr>
-								       <th>수정 이력 번호</th>
-								       <th>근태 현황 고유번호</th>
 								       <th>변경 전 날짜</th>
 								       <th>변경 전 출근 시간</th>
 								       <th>변경 전 퇴근 시간</th>
@@ -541,8 +539,6 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm:ss"); %>
 								  <tbody>
 								  <c:forEach var="recordList" items="${requestScope.recordList }">
 								    	<tr>	  
-										    <td><c:out value="${recordList.no }"></c:out></td>
-										    <td><c:out value="${recordList.statusNo }"></c:out></td>
 										    <td><c:out value="${recordList.modifyDate }"></c:out></td>
 										    <td><c:out value="${recordList.modifyCommute }"></c:out></td>
 										    <td><c:out value="${recordList.modifyLeave }"></c:out></td>
@@ -556,7 +552,38 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm:ss"); %>
 							         </div>
 								        </div>
 				<!-- /Add Today Work Modal -->
-
+				<div id="edit_todaywork" class="modal custom-modal fade" role="dialog">
+					<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">수정하기</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								</button>
+							</div>
+							
+							<div class="modal-body">
+							<form action="${pageContext.servletContext.contextPath }/work/edit" method="Post">
+							<table>
+								<thead>
+									<tr>
+										<th>근무날짜</th>     <th>출근시간</th>      <th>퇴근시간</th>      <th>근무타입</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td><input type="date" name="date"></td> <td> <input type="time" name="commute"></td> <td><input type="time" name="lwork"></td> <td><input type="text" name="type"></td>
+									</tr>
+								</tbody>
+							</table>
+							<div><button type="submit" class="btn btn-dark btn-sm">수정</button></div>
+							</form>
+							
+								</div>
+							      </div>
+							         </div>
+								        </div>
+				
+				
 
 
 				<!-- /Header -->
