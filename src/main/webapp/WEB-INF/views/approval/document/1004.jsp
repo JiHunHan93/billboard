@@ -84,8 +84,7 @@
 
 			<!-- Logo -->
 			<div class="header-left">
-				<a href="index.html" class="logo"> <img
-					src="/billbo/resources/hrtemp/img/Logo.png" width="40" height="40"
+				<a href="index.html" class="logo"> <img src="/billbo/resources/hrtemp/img/Logo.png" width="40" height="40"
 					alt="">
 				</a>
 			</div>
@@ -667,7 +666,6 @@
 ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username }
 ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }
 ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }
-
 
    <div class="go_content go_renew" id="content"><header class="content_top"><h1><span class="txt single_tit" title="휴가신청서">휴가신청서</span><span class="meta"><span id="processMessageWrap" class="num" style="display: none;"><strong id="processMessageContent">자동 저장 하였습니다.(3분)</strong></span></span></h1>
 <section class="combine_search">
@@ -1434,10 +1432,11 @@ ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }
 			      <!-- 모달 몸통 -->
 	<script type="text/javascript">
 		
-		var lineList = [];
-		var memNo = 0;
-		var memNo2 = 0;
+		var lineList = [];	//사원 리스트
+		var memNo = 0;		//사원 번호
+		var memNo2 = 0;		//사원 번호 - 1
 		var memNo3 = 0;
+		var i = 0;			//결재선 컨트롤러 전달
 		
 		const $ul = $("#firstList")
 		
@@ -1528,12 +1527,9 @@ ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }
 						console.log("<input name='memberNoLine[ + 3 + ] : " + "<input name='memberNoLine[" + 3 + "]"); */	//3번 사원 기준 값 4
 						
 						/* 04/24(토) List에 담은건 -1로 접근 하고(memNo2) 마찬가지로 List 번호는 0부터니깐 memNo2를 써보자. => 성공 (-1 오류 해결) */
-						/* 사번만큼 List Size가 생기는 오류 해결해보자. 클릭시 마다 for문으로 input이 들어가게 만들기*/
-						for (var i = 0; i <lineList.length; i++) {
-							console.log('사이즈 몇이누? : ' + lineList.length);
+						/* 사번만큼 List Size가 생기는 오류 해결해보자. 클릭시 마다 for문으로 input이 들어가게 만들기 => 0의 값인 i를 넣어주고 ++로 올려주기. */
  						$hiddenInputMemListLine = $("<input name='lineMem[" + i + "].memberNoLine' type='hidden' value='" + lineList[memNo2].memberNoLine + "'> <input name='lineMem[" +i + "].memberNameLine' type='hidden' value='" + lineList[memNo2].memberNameLine + "'> <input name='lineMem[" + i + "].deptCodeLine' type='hidden' value='" + lineList[memNo2].deptCodeLine + "'> <input name='lineMem[" + i + "].deptNameLine' type='hidden' value='" + lineList[memNo2].deptNameLine + "'> <input name='lineMem[" + i + "].spotCodeLine' type='hidden' value='" + lineList[memNo2].spotCodeLine + "'> <input name='lineMem[" + i + "].spotNameLien' type='hidden' value='" + lineList[memNo2].spotNameLien + "'> ");
-						}
-						
+						i++;
 /*  						$hiddenInputMemListLine = $("<input name='lineMem[" + memNo2 + "].memberNoLine' type='hidden' value='" + lineList[memNo2].memberNoLine + "'> <input name='lineMem[" +memNo2 + "].memberNameLine' type='hidden' value='" + lineList[memNo2].memberNameLine + "'> <input name='lineMem[" + memNo2 + "].deptCodeLine' type='hidden' value='" + lineList[memNo2].deptCodeLine + "'> <input name='lineMem[" + memNo2 + "].deptNameLine' type='hidden' value='" + lineList[memNo2].deptNameLine + "'> <input name='lineMem[" + memNo2 + "].spotCodeLine' type='hidden' value='" + lineList[memNo2].spotCodeLine + "'> <input name='lineMem[" + memNo2 + "].spotNameLien' type='hidden' value='" + lineList[memNo2].spotNameLien + "'> "); */
  						$span3.append($hiddenInputMemListLine);
  						

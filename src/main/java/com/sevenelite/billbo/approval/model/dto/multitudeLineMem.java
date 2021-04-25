@@ -6,13 +6,13 @@ public class multitudeLineMem {
 
 	/* 선택된 결재선사원 */
 	
-	private List<MemListLine> lineMem;
+	private List<ApproLineMemDTO> lineMem;
 	
-	public List<MemListLine> getLineMem() {
+	public List<ApproLineMemDTO> getLineMem() {
 		return lineMem;
 	}
 	
-	public void setLineMem(List<MemListLine> lineMem) {
+	public void setLineMem(List<ApproLineMemDTO> lineMem) {
 		this.lineMem = lineMem;
 	}
 	

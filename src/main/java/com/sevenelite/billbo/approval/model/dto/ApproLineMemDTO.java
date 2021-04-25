@@ -129,6 +129,15 @@ import java.sql.Date;
 
 public class ApproLineMemDTO {
 	
+	/* View에서 선택한 결재라인 */
+	
+	private int memberNoLine;
+	private String memberNameLine;
+	private String deptCodeLine;
+	private String deptNameLine;
+	private String spotCodeLine;
+	private String spotNameLien;
+	
 	/* 결재선사원(BB_LINE_MEM) */
 	
 	private int lineNo;						//Pk 결재선 순번
@@ -153,10 +162,17 @@ public class ApproLineMemDTO {
 		this.deptCode = deptCode;
 		this.spotCode = spotCode;
 	}
-	
-	public ApproLineMemDTO(int lineNo, int draftNo, Date processDate, String lineBody, String pKinds, String thumbnail,
-			String lineKinds, String deptCode, String spotCode) {
+
+	public ApproLineMemDTO(int memberNoLine, String memberNameLine, String deptCodeLine, String deptNameLine,
+			String spotCodeLine, String spotNameLien, int lineNo, int draftNo, Date processDate, String lineBody,
+			String pKinds, String thumbnail, String lineKinds, String deptCode, String spotCode) {
 		super();
+		this.memberNoLine = memberNoLine;
+		this.memberNameLine = memberNameLine;
+		this.deptCodeLine = deptCodeLine;
+		this.deptNameLine = deptNameLine;
+		this.spotCodeLine = spotCodeLine;
+		this.spotNameLien = spotNameLien;
 		this.lineNo = lineNo;
 		this.draftNo = draftNo;
 		this.processDate = processDate;
@@ -166,6 +182,54 @@ public class ApproLineMemDTO {
 		this.lineKinds = lineKinds;
 		this.deptCode = deptCode;
 		this.spotCode = spotCode;
+	}
+
+	public int getMemberNoLine() {
+		return memberNoLine;
+	}
+
+	public void setMemberNoLine(int memberNoLine) {
+		this.memberNoLine = memberNoLine;
+	}
+
+	public String getMemberNameLine() {
+		return memberNameLine;
+	}
+
+	public void setMemberNameLine(String memberNameLine) {
+		this.memberNameLine = memberNameLine;
+	}
+
+	public String getDeptCodeLine() {
+		return deptCodeLine;
+	}
+
+	public void setDeptCodeLine(String deptCodeLine) {
+		this.deptCodeLine = deptCodeLine;
+	}
+
+	public String getDeptNameLine() {
+		return deptNameLine;
+	}
+
+	public void setDeptNameLine(String deptNameLine) {
+		this.deptNameLine = deptNameLine;
+	}
+
+	public String getSpotCodeLine() {
+		return spotCodeLine;
+	}
+
+	public void setSpotCodeLine(String spotCodeLine) {
+		this.spotCodeLine = spotCodeLine;
+	}
+
+	public String getSpotNameLien() {
+		return spotNameLien;
+	}
+
+	public void setSpotNameLien(String spotNameLien) {
+		this.spotNameLien = spotNameLien;
 	}
 
 	public int getLineNo() {
@@ -242,9 +306,11 @@ public class ApproLineMemDTO {
 
 	@Override
 	public String toString() {
-		return "ApproLineMemDTO [lineNo=" + lineNo + ", draftNo=" + draftNo + ", processDate=" + processDate
-				+ ", lineBody=" + lineBody + ", pKinds=" + pKinds + ", thumbnail=" + thumbnail + ", lineKinds="
-				+ lineKinds + ", deptCode=" + deptCode + ", spotCode=" + spotCode + "]";
+		return "ApproLineMemDTO [memberNoLine=" + memberNoLine + ", memberNameLine=" + memberNameLine
+				+ ", deptCodeLine=" + deptCodeLine + ", deptNameLine=" + deptNameLine + ", spotCodeLine=" + spotCodeLine
+				+ ", spotNameLien=" + spotNameLien + ", lineNo=" + lineNo + ", draftNo=" + draftNo + ", processDate="
+				+ processDate + ", lineBody=" + lineBody + ", pKinds=" + pKinds + ", thumbnail=" + thumbnail
+				+ ", lineKinds=" + lineKinds + ", deptCode=" + deptCode + ", spotCode=" + spotCode + "]";
 	}
 	
 }

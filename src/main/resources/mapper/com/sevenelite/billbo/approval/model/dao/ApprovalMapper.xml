@@ -56,6 +56,15 @@
 		<result property="phone" column="PHONE" />
 	</resultMap>
 	
+	<resultMap type="com.sevenelite.billbo.approval.model.dto.CheckApproveDTO" id="checkAppDTO">
+		<id property="appCode" column="APPROVE_CODE" />
+		<result property="appStatus" column="APPROVE_STATUS" />
+		<result property="DRAFT_NO" column="DRAFTING_NO" />
+		<result property="LINE_NO" column="LINE_NO" />
+		<result property="draftNo" column="DRAFTING_NO" />
+		<result property="lineNo" column="LINE_NO" />
+	</resultMap>
+	
 	<select id="selectLoginDept" resultMap="approDept" parameterType="_int">
         SELECT
                A.RNUM
@@ -143,10 +152,27 @@
         ) 
 		VALUES
 		(
-		  SEQ_LINE_NO.NEXTVAL, #{ draftNo }, #{ lineBody }, #{ pKinds }, #{ thumbnail }, #{ lineKinds }, #{ deptCode }, #{ spotCode }
+		  SEQ_LINE_NO.NEXTVAL, #{ draftNo }, #{ lineBody }, #{ pKinds }, #{ thumbnail }, #{ lineKinds }, #{ deptCodeLine }, #{ spotCodeLine }
 		)
 	</insert>
-	
+
+	<insert id="insertCheckApprove">
+		<selectKey keyProperty="DRAFT_NO,LINE_NO" order="BEFORE" resultType="hashmap">
+            SELECT
+                   SEQ_DRAFTING_NO.CURRVAL as DRAFT_NO, SEQ_LINE_NO.CURRVAL as LINE_NO
+              FROM DUAL    
+		</selectKey>
+        INSERT 
+          INTO BB_APPROVE A
+        (
+          A.APPROVE_CODE, A.APPROVE_STATUS, A.DRAFTING_NO, A.LINE_NO
+        ) 
+		VALUES
+		(
+		  SEQ_APPROVECODE_NO.NEXTVAL, '대기', #{ DRAFT_NO }, #{ LINE_NO }
+		)
+	</insert>
+
 	<select id="selectMemList" resultMap="memDTO">
         SELECT
                A.MEMBER_NO

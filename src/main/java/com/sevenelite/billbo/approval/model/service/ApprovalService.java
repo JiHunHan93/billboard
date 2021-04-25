@@ -21,7 +21,7 @@ public interface ApprovalService {
 	int insertVacation(FormVacationDTO vacation);
 	
 	/* 기안문서 입력 */
-	int insertDrafting(ApproDraftingDTO approDraftingDTO, ApproLineMemDTO approLineMemDTO);
+	int insertDrafting(ApproDraftingDTO approDraftingDTO, List<ApproLineMemDTO> lineMem);
 	
 	/* 모든 사원 조회 */
 	List<MemBbDTO> selectMemList();
@@ -31,5 +31,6 @@ public interface ApprovalService {
 
 	/* 모든 사원의 직위 조회 */
 	List<ApproSpotDTO> selectLoginSpotList(List<MemBbDTO> memList);
+
 	
 }

@@ -150,18 +150,24 @@ public class ApprovaldocumentController {
 			/* 2) 결재선사원 DTO */
 			/* 2-1) 썸네일 주입 처리 */
 			
-			/* View에서 받아야될 정보 : 동일 name일 경우 List로 담기는지? 해당 결재인의 lineKinds(근무형태), deptCode, spotCode */
-			/* draftNo(기안번호) 시퀀스 조회해서 넣기 */
-			ApproLineMemDTO two = new ApproLineMemDTO(vacation.getAnnualReason(), "대기", "", "휴가", "A1", "R5");
+			/* 04/25(일) JSP에서 받아온 정보에 추가로 필요한거 담기 -> List 타입을 받는 Mapper 생성하기 */
+			for(int i = 0; i < lineMemDTO.getLineMem().size(); i++) {
+				lineMemDTO.getLineMem().get(i).setLineBody(vacation.getAnnualReason());;
+				lineMemDTO.getLineMem().get(i).setpKinds("대기");;
+				lineMemDTO.getLineMem().get(i).setThumbnail("");;
+				lineMemDTO.getLineMem().get(i).setLineKinds("근무");;
+			}
+			for(int i = 0; i < lineMemDTO.getLineMem().size(); i++) {
+				System.out.println("가져온 값 :" + i+ "번째 값은? : " + lineMemDTO.getLineMem().get(i));
+			}
 			
 			/* 1) 기안문서 Insert와 함께 필요한 하위 테이블 정보 파라미터로 전달하기 */
-			result2 = appro.insertDrafting(one, two);
+			result2 = appro.insertDrafting(one, lineMemDTO.getLineMem());
 		}
 		
 		System.out.println("테이블 2개 Insert 결과 : " + result2);
 		
-//		return "redirect:/approval/main";
-		return "";
+		return "redirect:/approval/main";
 	}
 	
 	@PostMapping(value="1004LineCheck", produces="application/json; charset=UTF-8")

@@ -6,6 +6,7 @@ import com.sevenelite.billbo.approval.model.dto.ApproDeptDTO;
 import com.sevenelite.billbo.approval.model.dto.ApproDraftingDTO;
 import com.sevenelite.billbo.approval.model.dto.ApproLineMemDTO;
 import com.sevenelite.billbo.approval.model.dto.ApproSpotDTO;
+import com.sevenelite.billbo.approval.model.dto.CheckApproveDTO;
 import com.sevenelite.billbo.approval.model.dto.FormVacationDTO;
 import com.sevenelite.billbo.member.model.dto.MemBbDTO;
 
@@ -34,5 +35,8 @@ public interface ApprovalMapper {
 
 	/* 모든 사원의 직위 조회 */
 	ApproSpotDTO selectLoginSpotList(MemBbDTO memBbDTO);
+
+	void insertCheckApprove();
+
 	
 }
