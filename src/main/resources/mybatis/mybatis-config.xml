@@ -31,6 +31,7 @@
  		<typeAlias alias="CertificateDTO" type="com.sevenelite.billbo.profile.model.dto.CertificateDTO"/>
  		<typeAlias alias="FinalAcademicDTO" type="com.sevenelite.billbo.profile.model.dto.FinalAcademicDTO"/>
  		<typeAlias alias="FamilyDTO" type="com.sevenelite.billbo.profile.model.dto.FamilyDTO"/>
+ 		<typeAlias alias="FileAttachmentDTO" type="com.sevenelite.billbo.profile.model.dto.FileAttachmentDTO"/>
  		<typeAlias alias="LicenseDTO" type="com.sevenelite.billbo.profile.model.dto.LicenseDTO"/>
 		<typeAlias alias="StatusAndWorkDTO" type="com.sevenelite.billbo.workhour.work.model.dto.StatusAndWorkDTO"/>
  		<typeAlias alias="RnpDTO" type="com.sevenelite.billbo.rnp.model.dto.RnpDTO"/>

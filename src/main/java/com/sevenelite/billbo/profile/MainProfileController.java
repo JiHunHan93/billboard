@@ -26,6 +26,7 @@ import com.sevenelite.billbo.profile.model.dto.CareerDTO;
 import com.sevenelite.billbo.profile.model.dto.CertificateDTO;
 import com.sevenelite.billbo.profile.model.dto.DeptDTO;
 import com.sevenelite.billbo.profile.model.dto.FamilyDTO;
+import com.sevenelite.billbo.profile.model.dto.FileAttachmentDTO;
 import com.sevenelite.billbo.profile.model.dto.FinalAcademicDTO;
 import com.sevenelite.billbo.profile.model.dto.LicenseDTO;
 import com.sevenelite.billbo.profile.model.dto.MemberInfoDTO;
@@ -124,7 +125,6 @@ public class MainProfileController {
 		// List<MemberInfoDTO> memberInfo = profileService.main();
 
 		System.out.println("왜 안오는거여 쉬벌?????");
-
 		return "redirect:/profile/mainProfile2";
 	}
 
@@ -132,6 +132,7 @@ public class MainProfileController {
 	@PostMapping("joblevel")
 	public String modifyspot(@RequestParam(required=false) String memberno, @ModelAttribute ModifySpotDTO modifyspot, Authentication authentication, Model model) {
 		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
+		System.out.println("아ㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏㅏ");
 		profileService.modifyspot(modifyspot);
 		model.addAttribute("memberno", memberno);
 		System.out.println(modifyspot + "왜 안오는거여 쉬벌?????");
@@ -235,7 +236,7 @@ public class MainProfileController {
 	@PostMapping("family")
 	public String family(@RequestParam(required=false) String memberno, @ModelAttribute FamilyDTO family, Authentication authentication, Model model) {
 		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
-
+		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 		System.out.println("branch : " + family);
 
 		System.out.println("하..");
@@ -288,7 +289,10 @@ public class MainProfileController {
 		
 		/* 이메일조회 */
 		List<MemBbDTO> detailMem = profileService.selectMemberDetail(user.getMemberno());
-		/* 부서변경 조회 */
+		/* 사진조회*/
+		
+		List<FileAttachmentDTO> fileAttach =profileService.selectFileAttach(user.getMemberno());
+		 /* 부서변경 조회 */
 		List<ModifyDeptDTO1> modidept = profileService.selectModifyDept(user.getMemberno());
 		/*부서등록이력 하단 조회*/
 		List<ModifyDeptDTO1> viewMemberDept = profileService.viewMemberDept(user.getMemberno());
@@ -341,6 +345,8 @@ public class MainProfileController {
 		System.out.println(armySelect + "이거 안되면 재입대한다");
 		System.out.println(academic + "이쯤되면 그냥 되겠지..");
 		System.out.println(familySelect + "마지막");
+		System.out.println(fileAttach + "이거만 오면 프로젝트 마무리");
+		model.addAttribute("fileAttach", fileAttach);
 		model.addAttribute("memberno", memberno);
 		model.addAttribute("member", member);
 		model.addAttribute("viewAllInfo", viewAllInfo);
@@ -399,7 +405,9 @@ public class MainProfileController {
 		
 		/* 부서조회 */
 		List<DeptDTO> dept = profileService.selectMemberDept(user.getMemberno());
+        /* 사진조회*/
 		
+		List<FileAttachmentDTO> fileAttach =profileService.selectFileAttach(user.getMemberno());
 		/* 이메일조회 */
 		List<MemBbDTO> detailMem = profileService.selectMemberDetail(user.getMemberno());
 		/* 부서변경 조회 */
@@ -455,7 +463,7 @@ public class MainProfileController {
 		System.out.println(armySelect + "이거 안되면 재입대한다");
 		System.out.println(academic + "이쯤되면 그냥 되겠지..");
 		System.out.println(familySelect + "마지막");
-
+		model.addAttribute("fileAttach",fileAttach);
 		model.addAttribute("member", member);
 		model.addAttribute("viewAllInfo", viewAllInfo);
 		

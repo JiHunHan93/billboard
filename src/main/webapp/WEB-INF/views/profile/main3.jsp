@@ -51,281 +51,594 @@
     <body>
     
 		<!-- Main Wrapper -->
-        <div class="main-wrapper">
-		
-			<!-- Header -->
-            <div class="header">
-         
-				<!-- Logo -->
-					<div class="header-left">
-						<a href="employee-dashboard.html" class="logo">
-					  <img src="/billbo/resources/hrtemp/img/Logo.png" width="40" height="40" alt="">
-				   </a>
-					</div>
-				<!-- /Logo -->
-				
-				<a id="toggle_btn" href="javascript:void(0);">
-				   <span class="bar-icon">
-					  <span></span>
-					  <span></span>
-					  <span></span>
-				   </span>
+	<div class="main-wrapper">
+
+		<!-- Header -->
+		<div class="header">
+
+			<!-- Logo -->
+			<div class="header-left">
+				<a href="${pageContext.servletContext.contextPath}" class="logo">
+					<img src="/billbo/resources/hrtemp/img/Logo.png" width="40"
+					height="40" alt="">
 				</a>
-				
-				<!-- Header Title -->
-					<div class="page-title-box">
-				   <h3>Bill-Board Employee Management</h3>
-					</div>
-				<!-- /Header Title -->
-				
-				<a id="mobile_btn" class="mobile_btn" href="#sidebar"><i class="fa fa-bars"></i></a>
-				
-				<!-- Header Menu -->
-				<ul class="nav user-menu">
-				
-				   <!-- Search -->
-				   <li class="nav-item">
-					  <div class="top-nav-search">
-						 <a href="javascript:void(0);" class="responsive-search">
-							<i class="fa fa-search"></i>
-						 </a>
-						 <form action="search.html">
+			</div>
+			<!-- /Logo -->
+
+			<a id="toggle_btn" href="javascript:void(0);"> <span
+				class="bar-icon"> <span></span> <span></span> <span></span>
+			</span>
+			</a>
+
+			<!-- Header Title -->
+			<div class="page-title-box">
+				<h3>Bill-Board Employee Management</h3>
+			</div>
+			<!-- /Header Title -->
+
+			<a id="mobile_btn" class="mobile_btn" href="#sidebar"><i
+				class="fa fa-bars"></i></a>
+
+			<!-- Header Menu -->
+			<ul class="nav user-menu">
+
+				<!-- Search -->
+				<li class="nav-item">
+					<div class="top-nav-search">
+						<a href="javascript:void(0);" class="responsive-search"> <i
+							class="fa fa-search"></i>
+						</a>
+						<form action="search.html">
 							<input class="form-control" type="text" placeholder="Search here">
-							<button class="btn" type="submit"><i class="fa fa-search"></i></button>
-						 </form>
-					  </div>
-				   </li>
-				   <!-- /Search -->
-				
-				   <!-- Flag -->
-				   <li class="nav-item dropdown has-arrow flag-nav">
-					  <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button">
-						 <img src="/billbo/resources/hrtemp/img/flags/us.png" alt="" height="20"> <span>English</span>
-					  </a>
-					  <div class="dropdown-menu dropdown-menu-right">
-						 <a href="javascript:void(0);" class="dropdown-item">
-							<img src="/billbo/resources/hrtemp/img/flags/us.png" alt="" height="16"> English
-						 </a>
-						 <a href="javascript:void(0);" class="dropdown-item">
-							<img src="/billbo/resources/hrtemp/img/flags/fr.png" alt="" height="16"> French
-						 </a>
-						 <a href="javascript:void(0);" class="dropdown-item">
-							<img src="/billbo/resources/hrtemp/img/flags/es.png" alt="" height="16"> Spanish
-						 </a>
-						 <a href="javascript:void(0);" class="dropdown-item">
-							<img src="/billbo/resources/hrtemp/img/flags/de.png" alt="" height="16"> German
-						 </a>
-					  </div>
-				   </li>
-				   <!-- /Flag -->
-				
-				   <!-- Notifications -->
-				   <li class="nav-item dropdown">
-					  <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-						 <i class="fa fa-bell-o"></i> <span class="badge badge-pill">3</span>
-					  </a>
-					  <div class="dropdown-menu notifications">
-						 <div class="topnav-dropdown-header">
-							<span class="notification-title">Notifications</span>
-							<a href="javascript:void(0)" class="clear-noti"> Clear All </a>
-						 </div>
-						 <div class="noti-content">
+							<button class="btn" type="submit">
+								<i class="fa fa-search"></i>
+							</button>
+						</form>
+					</div>
+				</li>
+				<!-- /Search -->
+
+				<!-- Flag -->
+				<li class="nav-item dropdown has-arrow flag-nav"><a
+					class="nav-link dropdown-toggle" data-toggle="dropdown" href="#"
+					role="button"> <img
+						src="/billbo/resources/hrtemp/img/flags/us.png" alt="" height="20">
+						<span>English</span>
+				</a>
+					<div class="dropdown-menu dropdown-menu-right">
+						<a href="javascript:void(0);" class="dropdown-item"> <img
+							src="/billbo/resources/hrtemp/img/flags/us.png" alt=""
+							height="16"> English
+						</a> <a href="javascript:void(0);" class="dropdown-item"> <img
+							src="/billbo/resources/hrtemp/img/flags/fr.png" alt=""
+							height="16"> French
+						</a> <a href="javascript:void(0);" class="dropdown-item"> <img
+							src="/billbo/resources/hrtemp/img/flags/es.png" alt=""
+							height="16"> Spanish
+						</a> <a href="javascript:void(0);" class="dropdown-item"> <img
+							src="/billbo/resources/hrtemp/img/flags/de.png" alt=""
+							height="16"> German
+						</a>
+					</div></li>
+				<!-- /Flag -->
+
+				<!-- Notifications -->
+				<li class="nav-item dropdown"><a href="#"
+					class="dropdown-toggle nav-link" data-toggle="dropdown"> <i
+						class="fa fa-bell-o"></i> <span class="badge badge-pill">3</span>
+				</a>
+					<div class="dropdown-menu notifications">
+						<div class="topnav-dropdown-header">
+							<span class="notification-title">Notifications</span> <a
+								href="javascript:void(0)" class="clear-noti"> Clear All </a>
+						</div>
+						<div class="noti-content">
 							<ul class="notification-list">
-							   <li class="notification-message">
-								  <a href="activities.html">
-									 <div class="media">
-										<span class="avatar">
-										   <img alt="" src="assets/img/profiles/avatar-02.jpg">
-										</span>
-										<div class="media-body">
-										   <p class="noti-details"><span class="noti-title">John Doe</span> added new task <span class="noti-title">Patient appointment booking</span></p>
-										   <p class="noti-time"><span class="notification-time">4 mins ago</span></p>
+								<li class="notification-message"><a href="activities.html">
+										<div class="media">
+											<span class="avatar"> <img alt=""
+												src="/billbo/resources/hrtemp/img/profiles/avatar-02.jpg">
+											</span>
+											<div class="media-body">
+												<p class="noti-details">
+													<span class="noti-title">John Doe</span> added new task <span
+														class="noti-title">Patient appointment booking</span>
+												</p>
+												<p class="noti-time">
+													<span class="notification-time">4 mins ago</span>
+												</p>
+											</div>
 										</div>
-									 </div>
-								  </a>
-							   </li>
-							   <li class="notification-message">
-								  <a href="activities.html">
-									 <div class="media">
-										<span class="avatar">
-										   <img alt="" src="/billbo/resources/hrtemp/img/profiles/avatar-03.jpg">
-										</span>
-										<div class="media-body">
-										   <p class="noti-details"><span class="noti-title">Tarah Shropshire</span> changed the task name <span class="noti-title">Appointment booking with payment gateway</span></p>
-										   <p class="noti-time"><span class="notification-time">6 mins ago</span></p>
+								</a></li>
+								<li class="notification-message"><a href="activities.html">
+										<div class="media">
+											<span class="avatar"> <img alt=""
+												src="/billbo/resources/hrtemp/img/profiles/avatar-03.jpg">
+											</span>
+											<div class="media-body">
+												<p class="noti-details">
+													<span class="noti-title">Tarah Shropshire</span> changed
+													the task name <span class="noti-title">Appointment
+														booking with payment gateway</span>
+												</p>
+												<p class="noti-time">
+													<span class="notification-time">6 mins ago</span>
+												</p>
+											</div>
 										</div>
-									 </div>
-								  </a>
-							   </li>
-							   <li class="notification-message">
-								  <a href="activities.html">
-									 <div class="media">
-										<span class="avatar">
-										   <img alt="" src="/billbo/resources/hrtemp/img/profiles/avatar-06.jpg">
-										</span>
-										<div class="media-body">
-										   <p class="noti-details"><span class="noti-title">Misty Tison</span> added <span class="noti-title">Domenic Houston</span> and <span class="noti-title">Claire Mapes</span> to project <span class="noti-title">Doctor available module</span></p>
-										   <p class="noti-time"><span class="notification-time">8 mins ago</span></p>
+								</a></li>
+								<li class="notification-message"><a href="activities.html">
+										<div class="media">
+											<span class="avatar"> <img alt=""
+												src="/billbo/resources/hrtemp/img/profiles/avatar-06.jpg">
+											</span>
+											<div class="media-body">
+												<p class="noti-details">
+													<span class="noti-title">Misty Tison</span> added <span
+														class="noti-title">Domenic Houston</span> and <span
+														class="noti-title">Claire Mapes</span> to project <span
+														class="noti-title">Doctor available module</span>
+												</p>
+												<p class="noti-time">
+													<span class="notification-time">8 mins ago</span>
+												</p>
+											</div>
 										</div>
-									 </div>
-								  </a>
-							   </li>
-							   <li class="notification-message">
-								  <a href="activities.html">
-									 <div class="media">
-										<span class="avatar">
-										   <img alt="" src="/billbo/resources/hrtemp/img/profiles/avatar-17.jpg">
-										</span>
-										<div class="media-body">
-										   <p class="noti-details"><span class="noti-title">Rolland Webber</span> completed task <span class="noti-title">Patient and Doctor video conferencing</span></p>
-										   <p class="noti-time"><span class="notification-time">12 mins ago</span></p>
+								</a></li>
+								<li class="notification-message"><a href="activities.html">
+										<div class="media">
+											<span class="avatar"> <img alt=""
+												src="/billbo/resources/hrtemp/img/profiles/avatar-17.jpg">
+											</span>
+											<div class="media-body">
+												<p class="noti-details">
+													<span class="noti-title">Rolland Webber</span> completed
+													task <span class="noti-title">Patient and Doctor
+														video conferencing</span>
+												</p>
+												<p class="noti-time">
+													<span class="notification-time">12 mins ago</span>
+												</p>
+											</div>
 										</div>
-									 </div>
-								  </a>
-							   </li>
-							   <li class="notification-message">
-								  <a href="activities.html">
-									 <div class="media">
-										<span class="avatar">
-										   <img alt="" src="/billbo/resources/hrtemp/img/profiles/avatar-13.jpg">
-										</span>
-										<div class="media-body">
-										   <p class="noti-details"><span class="noti-title">Bernardo Galaviz</span> added new task <span class="noti-title">Private chat module</span></p>
-										   <p class="noti-time"><span class="notification-time">2 days ago</span></p>
+								</a></li>
+								<li class="notification-message"><a href="activities.html">
+										<div class="media">
+											<span class="avatar"> <img alt=""
+												src="/billbo/resources/hrtemp/img/profiles/avatar-13.jpg">
+											</span>
+											<div class="media-body">
+												<p class="noti-details">
+													<span class="noti-title">Bernardo Galaviz</span> added new
+													task <span class="noti-title">Private chat module</span>
+												</p>
+												<p class="noti-time">
+													<span class="notification-time">2 days ago</span>
+												</p>
+											</div>
 										</div>
-									 </div>
-								  </a>
-							   </li>
+								</a></li>
 							</ul>
-						 </div>
-						 <div class="topnav-dropdown-footer">
+						</div>
+						<div class="topnav-dropdown-footer">
 							<a href="activities.html">View all Notifications</a>
-						 </div>
-					  </div>
-				   </li>
-				   <!-- /Notifications -->
-				   
-				   <!-- Message Notifications -->
-				   <li class="nav-item dropdown">
-					  <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-						 <i class="fa fa-comment-o"></i> <span class="badge badge-pill">8</span>
-					  </a>
-					  <div class="dropdown-menu notifications">
-						 <div class="topnav-dropdown-header">
-							<span class="notification-title">Messages</span>
-							<a href="javascript:void(0)" class="clear-noti"> Clear All </a>
-						 </div>
-						 <div class="noti-content">
+						</div>
+					</div></li>
+				<!-- /Notifications -->
+
+				<!-- Message Notifications -->
+				<li class="nav-item dropdown"><a href="#"
+					class="dropdown-toggle nav-link" data-toggle="dropdown"> <i
+						class="fa fa-comment-o"></i> <span class="badge badge-pill">8</span>
+				</a>
+					<div class="dropdown-menu notifications">
+						<div class="topnav-dropdown-header">
+							<span class="notification-title">Messages</span> <a
+								href="javascript:void(0)" class="clear-noti"> Clear All </a>
+						</div>
+						<div class="noti-content">
 							<ul class="notification-list">
-							   <li class="notification-message">
-								  <a href="chat.html">
-									 <div class="list-item">
-										<div class="list-left">
-										   <span class="avatar">
-											  <img alt="" src="assets/img/profiles/avatar-09.jpg">
-										   </span>
+								<li class="notification-message"><a
+									href="${pageContext.servletContext.contextPath}/apps/chat">
+										<div class="list-item">
+											<div class="list-left">
+												<span class="avatar"> <img alt=""
+													src="/billbo/resources/hrtemp/img/profiles/avatar-09.jpg">
+												</span>
+											</div>
+											<div class="list-body">
+												<span class="message-author">Richard Miles </span> <span
+													class="message-time">12:28 AM</span>
+												<div class="clearfix"></div>
+												<span class="message-content">Lorem ipsum dolor sit
+													amet, consectetur adipiscing</span>
+											</div>
 										</div>
-										<div class="list-body">
-										   <span class="message-author">Richard Miles </span>
-										   <span class="message-time">12:28 AM</span>
-										   <div class="clearfix"></div>
-										   <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+								</a></li>
+								<li class="notification-message"><a
+									href="${pageContext.servletContext.contextPath}/apps/chat">
+										<div class="list-item">
+											<div class="list-left">
+												<span class="avatar"> <img alt=""
+													src="/billbo/resources/hrtemp/img/profiles/avatar-02.jpg">
+												</span>
+											</div>
+											<div class="list-body">
+												<span class="message-author">John Doe</span> <span
+													class="message-time">6 Mar</span>
+												<div class="clearfix"></div>
+												<span class="message-content">Lorem ipsum dolor sit
+													amet, consectetur adipiscing</span>
+											</div>
 										</div>
-									 </div>
-								  </a>
-							   </li>
-							   <li class="notification-message">
-								  <a href="chat.html">
-									 <div class="list-item">
-										<div class="list-left">
-										   <span class="avatar">
-											  <img alt="" src="assets/img/profiles/avatar-02.jpg">
-										   </span>
+								</a></li>
+								<li class="notification-message"><a
+									href="${pageContext.servletContext.contextPath}/apps/chat">
+										<div class="list-item">
+											<div class="list-left">
+												<span class="avatar"> <img alt=""
+													src="/billbo/resources/hrtemp/img/profiles/avatar-03.jpg">
+												</span>
+											</div>
+											<div class="list-body">
+												<span class="message-author"> Tarah Shropshire </span> <span
+													class="message-time">5 Mar</span>
+												<div class="clearfix"></div>
+												<span class="message-content">Lorem ipsum dolor sit
+													amet, consectetur adipiscing</span>
+											</div>
 										</div>
-										<div class="list-body">
-										   <span class="message-author">John Doe</span>
-										   <span class="message-time">6 Mar</span>
-										   <div class="clearfix"></div>
-										   <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
+								</a></li>
+								<li class="notification-message"><a
+									href="${pageContext.servletContext.contextPath}/apps/chat">
+										<div class="list-item">
+											<div class="list-left">
+												<span class="avatar"> <img alt=""
+													src="/billbo/resources/hrtemp/img/profiles/avatar-05.jpg">
+												</span>
+											</div>
+											<div class="list-body">
+												<span class="message-author">Mike Litorus</span> <span
+													class="message-time">3 Mar</span>
+												<div class="clearfix"></div>
+												<span class="message-content">Lorem ipsum dolor sit
+													amet, consectetur adipiscing</span>
+											</div>
 										</div>
-									 </div>
-								  </a>
-							   </li>
-							   <li class="notification-message">
-								  <a href="chat.html">
-									 <div class="list-item">
-										<div class="list-left">
-										   <span class="avatar">
-											  <img alt="" src="assets/img/profiles/avatar-03.jpg">
-										   </span>
+								</a></li>
+								<li class="notification-message"><a
+									href="${pageContext.servletContext.contextPath}/apps/chat">
+										<div class="list-item">
+											<div class="list-left">
+												<span class="avatar"> <img alt=""
+													src="/billbo/resources/hrtemp/img/profiles/avatar-08.jpg">
+												</span>
+											</div>
+											<div class="list-body">
+												<span class="message-author"> Catherine Manseau </span> <span
+													class="message-time">27 Feb</span>
+												<div class="clearfix"></div>
+												<span class="message-content">Lorem ipsum dolor sit
+													amet, consectetur adipiscing</span>
+											</div>
 										</div>
-										<div class="list-body">
-										   <span class="message-author"> Tarah Shropshire </span>
-										   <span class="message-time">5 Mar</span>
-										   <div class="clearfix"></div>
-										   <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
-										</div>
-									 </div>
-								  </a>
-							   </li>
-							   <li class="notification-message">
-								  <a href="chat.html">
-									 <div class="list-item">
-										<div class="list-left">
-										   <span class="avatar">
-											  <img alt="" src="assets/img/profiles/avatar-05.jpg">
-										   </span>
-										</div>
-										<div class="list-body">
-										   <span class="message-author">Mike Litorus</span>
-										   <span class="message-time">3 Mar</span>
-										   <div class="clearfix"></div>
-										   <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
-										</div>
-									 </div>
-								  </a>
-							   </li>
-							   <li class="notification-message">
-								  <a href="chat.html">
-									 <div class="list-item">
-										<div class="list-left">
-										   <span class="avatar">
-											  <img alt="" src="assets/img/profiles/avatar-08.jpg">
-										   </span>
-										</div>
-										<div class="list-body">
-										   <span class="message-author"> Catherine Manseau </span>
-										   <span class="message-time">27 Feb</span>
-										   <div class="clearfix"></div>
-										   <span class="message-content">Lorem ipsum dolor sit amet, consectetur adipiscing</span>
-										</div>
-									 </div>
-								  </a>
-							   </li>
+								</a></li>
 							</ul>
-						 </div>
-						 <div class="topnav-dropdown-footer">
+						</div>
+						<div class="topnav-dropdown-footer">
 							<a href="chat.html">View all Messages</a>
-						 </div>
-					  </div>
-				   </li>
-				   <!-- /Message Notifications -->
-	   
-				   <li class="nav-item dropdown has-arrow main-drop">
-					  <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-						 <span class="user-img"><img src="assets/img/profiles/avatar-21.jpg" alt="">
-						 <span class="status online"></span></span>
-						 <span><!-- 해당 사원 명 --></span>
-					  </a>
-					  <div class="dropdown-menu">
-						 <a class="dropdown-item" href="profile.html">내 정보</a>
-						 <a class="dropdown-item" href="settings.html">환경설정</a>
-						 <a class="dropdown-item" href="login.html">로그아웃</a>
-					  </div>
-				   </li>
-				</ul>
-				<!-- /Header Menu -->
-				
+						</div>
+					</div></li>
+				<!-- /Message Notifications -->
+
+				<li class="nav-item dropdown has-arrow main-drop"><a href="#"
+					class="dropdown-toggle nav-link" data-toggle="dropdown"> <span
+						class="user-img"><img
+							src="/billbo/resources/hrtemp/img/profiles/avatar-21.jpg" alt="">
+							<span class="status online"></span></span> <span> <!-- 해당 사원 명 -->
+					</span>
+				</a>
+					<div class="dropdown-menu">
+						<a class="dropdown-item" href="profile.html">내 정보</a> <a
+							class="dropdown-item" href="settings.html">환경설정</a> <a
+							class="dropdown-item"
+							href="${pageContext.servletContext.contextPath}/member/logout">로그아웃</a>
+					</div></li>
+			</ul>
+			<!-- /Header Menu -->
+
+			<!-- Mobile Menu -->
+			<div class="dropdown mobile-user-menu">
+				<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
+					aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+				<div class="dropdown-menu dropdown-menu-right">
+					<a class="dropdown-item" href="profile.html">내 정보</a> <a
+						class="dropdown-item" href="settings.html">환경설정</a> <a
+						class="dropdown-item" href="login.html">로그아웃</a>
+				</div>
+			</div>
+			<!-- /Mobile Menu -->
+
+		</div>
+		<!-- /Header -->
+
+		<!-- Sidebar -->
+		<div class="sidebar" id="sidebar">
+			<div class="sidebar-inner slimscroll">
+				<div id="sidebar-menu" class="sidebar-menu">
+					<ul>
+						<!-- <li class="menu-title"> 
+                        <span>Main</span>
+                     </li> -->
+						<!-- 사이드바 서브메뉴 안쓰는 방향으로 수정 -->
+						<li><a href="${pageContext.servletContext.contextPath}"
+							class="sidebar-default"> <i class="la la-home sidebar-icon"></i>
+								<!-- <span class="menu-arrow"></span> --> <span
+								class="sidebar-text">Home</span>
+						</a> <!-- <ul style="display: none;">
+                           <li><a href="index.html">Admin Dashboard</a></li>
+                           <li><a class="active" href="employee-dashboard.html">Employee Dashboard</a></li>
+                        </ul> --></li>
+						<div class="sidebar-line"></div>
+						<li><a href="${pageContext.servletContext.contextPath}/apps"
+							class="sidebar-default"> <i class="la la-cube sidebar-icon"></i>
+								<span class="sidebar-text"> Apps</span> <!-- <span class="menu-arrow"></span> -->
+						</a> <!-- <ul style="display: none;">
+                           <li><a href="chat.html">Chat</a></li>
+                           <li class="submenu">
+                              <a href="#"><span> Calls</span> <span class="menu-arrow"></span></a>
+                              <ul style="display: none;">
+                                 <li><a href="voice-call.html">Voice Call</a></li>
+                                 <li><a href="video-call.html">Video Call</a></li>
+                                 <li><a href="outgoing-call.html">Outgoing Call</a></li>
+                                 <li><a href="incoming-call.html">Incoming Call</a></li>
+                              </ul>
+                           </li>
+                           <li><a href="events.html">Calendar</a></li>
+                           <li><a href="contacts.html">Contacts</a></li>
+                           <li><a href="inbox.html">Email</a></li>
+                           <li><a href="file-manager.html">File Manager</a></li>
+                        </ul> --></li>
+						<div class="sidebar-line"></div>
+						<!-- <li class="menu-title"> 
+                        <span>Apps</span>
+                     </li> -->
+						<li><a
+							href="${pageContext.servletContext.contextPath}/employee"
+							class="noti-dot sidebar-default"> <i
+								class="la la-user sidebar-icon"></i> <span class="sidebar-text">
+									Employees</span> <!-- <span class="menu-arrow"></span> -->
+						</a> <!-- <ul style="display: none;">
+                           <li><a href="employees.html">All Employees</a></li>
+                           <li><a href="holidays.html">Holidays</a></li>
+                           <li><a href="leaves.html">Leaves (Admin) <span class="badge badge-pill bg-primary float-right">1</span></a></li>
+                           <li><a href="leaves-employee.html">Leaves (Employee)</a></li>
+                           <li><a href="leave-settings.html">Leave Settings</a></li>
+                           <li><a href="attendance.html">Attendance (Admin)</a></li>
+                           <li><a href="attendance-employee.html">Attendance (Employee)</a></li>
+                           <li><a href="departments.html">Departments</a></li>
+                           <li><a href="designations.html">Designations</a></li>
+                           <li><a href="timesheet.html">Timesheet</a></li>
+                           <li><a href="overtime.html">Overtime</a></li>
+                        </ul> --></li>
+						<div class="sidebar-line"></div>
+						<li><a
+							href="${pageContext.servletContext.contextPath}/attendance"
+							class="sidebar-default"> <i
+								class="la la-briefcase sidebar-icon"></i> <span
+								class="sidebar-text">Attendance</span>
+						</a></li>
+						<div class="sidebar-line"></div>
+						<li><a href="${pageContext.servletContext.contextPath}/admin"
+							class="sidebar-default"> <i class="la la-key sidebar-icon"></i>
+								<span class="sidebar-text">Admin</span> <!-- <span class="menu-arrow"></span> -->
+						</a> <!-- <ul style="display: none;">
+                           <li><a href="projects.html">Projects</a></li>
+                           <li><a href="tasks.html">Tasks</a></li>
+                           <li><a href="task-board.html">Task Board</a></li>   
+                        </ul> --></li>
+						<div class="sidebar-line"></div>
+						<li><a href="#" class="sidebar-default"> <i
+								class="la la-money sidebar-icon"></i> <span class="sidebar-text">Payroll</span>
+						</a></li>
+						<div class="sidebar-line"></div>
+						<li><a
+							href="${pageContext.servletContext.contextPath}/information"
+							class="sidebar-default"> <i
+								class="la la-building sidebar-icon"></i> <span
+								class="sidebar-text">Information</span>
+						</a></li>
+						<div class="sidebar-line"></div>
+						<!-- <li class="menu-title"> 
+                        <span>HR</span>
+                     </li>
+                     <li class="submenu">
+                        <a href="#"><i class="la la-files-o"></i> <span> Accounts </span> <span class="menu-arrow"></span></a>
+                        <ul style="display: none;">
+                           <li><a href="estimates.html">Estimates</a></li>
+                           <li><a href="invoices.html">Invoices</a></li>
+                           <li><a href="payments.html">Payments</a></li>
+                           <li><a href="expenses.html">Expenses</a></li>
+                           <li><a href="provident-fund.html">Provident Fund</a></li>
+                           <li><a href="taxes.html">Taxes</a></li>
+                        </ul>
+                     </li>
+                     <li class="submenu">
+                        <a href="#"><i class="la la-money"></i> <span> Payroll </span> <span class="menu-arrow"></span></a>
+                        <ul style="display: none;">
+                           <li><a href="salary.html"> Employee Salary </a></li>
+                           <li><a href="salary-view.html"> Payslip </a></li>
+                           <li><a href="payroll-items.html"> Payroll Items </a></li>
+                        </ul>
+                     </li>
+                     <li> 
+                        <a href="policies.html"><i class="la la-file-pdf-o"></i> <span>Policies</span></a>
+                     </li>
+                     <li class="submenu">
+                        <a href="#"><i class="la la-pie-chart"></i> <span> Reports </span> <span class="menu-arrow"></span></a>
+                        <ul style="display: none;">
+                           <li><a href="expense-reports.html"> Expense Report </a></li>
+                           <li><a href="invoice-reports.html"> Invoice Report </a></li>
+                        </ul>
+                     </li>
+                     <li class="menu-title"> 
+                        <span>Performance</span>
+                     </li>
+                     <li class="submenu">
+                        <a href="#"><i class="la la-graduation-cap"></i> <span> Performance </span> <span class="menu-arrow"></span></a>
+                        <ul style="display: none;">
+                           <li><a href="performance-indicator.html"> Performance Indicator </a></li>
+                           <li><a href="performance.html"> Performance Review </a></li>
+                           <li><a href="performance-appraisal.html"> Performance Appraisal </a></li>
+                        </ul>
+                     </li>
+                     <li class="submenu">
+                        <a href="#"><i class="la la-crosshairs"></i> <span> Goals </span> <span class="menu-arrow"></span></a>
+                        <ul style="display: none;">
+                           <li><a href="goal-tracking.html"> Goal List </a></li>
+                           <li><a href="goal-type.html"> Goal Type </a></li>
+                        </ul>
+                     </li>
+                     <li class="submenu">
+                        <a href="#"><i class="la la-edit"></i> <span> Training </span> <span class="menu-arrow"></span></a>
+                        <ul style="display: none;">
+                           <li><a href="training.html"> Training List </a></li>
+                           <li><a href="trainers.html"> Trainers</a></li>
+                           <li><a href="training-type.html"> Training Type </a></li>
+                        </ul>
+                     </li>
+                     <li><a href="promotion.html"><i class="la la-bullhorn"></i> <span>Promotion</span></a></li>
+                     <li><a href="resignation.html"><i class="la la-external-link-square"></i> <span>Resignation</span></a></li>
+                     <li><a href="termination.html"><i class="la la-times-circle"></i> <span>Termination</span></a></li>
+                     <li class="menu-title"> 
+                        <span>Administration</span>
+                     </li>
+                     <li> 
+                        <a href="assets.html"><i class="la la-object-ungroup"></i> <span>Assets</span></a>
+                     </li>
+                     <li class="submenu">
+                        <a href="#"><i class="la la-briefcase"></i> <span> Jobs </span> <span class="menu-arrow"></span></a>
+                        <ul style="display: none;">
+                           <li><a href="jobs.html"> Manage Jobs </a></li>
+                           <li><a href="job-applicants.html"> Applied Candidates </a></li>
+                        </ul>
+                     </li>
+                     <li> 
+                        <a href="knowledgebase.html"><i class="la la-question"></i> <span>Knowledgebase</span></a>
+                     </li>
+                     <li> 
+                        <a href="activities.html"><i class="la la-bell"></i> <span>Activities</span></a>
+                     </li>
+                     <li> 
+                        <a href="users.html"><i class="la la-user-plus"></i> <span>Users</span></a>
+                     </li>
+                     <li> 
+                        <a href="settings.html"><i class="la la-cog"></i> <span>Settings</span></a>
+                     </li>
+                     <li class="menu-title"> 
+                        <span>Pages</span>
+                     </li>
+                     <li class="submenu">
+                        <a href="#"><i class="la la-user"></i> <span> Profile </span> <span class="menu-arrow"></span></a>
+                        <ul style="display: none;">
+                           <li><a href="profile.html"> Employee Profile </a></li>
+                           <li><a href="client-profile.html"> Client Profile </a></li>
+                        </ul>
+                     </li>
+                     <li class="submenu">
+                        <a href="#"><i class="la la-key"></i> <span> Authentication </span> <span class="menu-arrow"></span></a>
+                        <ul style="display: none;">
+                           <li><a href="login.html"> Login </a></li>
+                           <li><a href="register.html"> Register </a></li>
+                           <li><a href="forgot-password.html"> Forgot Password </a></li>
+                           <li><a href="otp.html"> OTP </a></li>
+                           <li><a href="lock-screen.html"> Lock Screen </a></li>
+                        </ul>
+                     </li>
+                     <li class="submenu">
+                        <a href="#"><i class="la la-exclamation-triangle"></i> <span> Error Pages </span> <span class="menu-arrow"></span></a>
+                        <ul style="display: none;">
+                           <li><a href="error-404.html">404 Error </a></li>
+                           <li><a href="error-500.html">500 Error </a></li>
+                        </ul>
+                     </li>
+                     <li class="submenu">
+                        <a href="#"><i class="la la-hand-o-up"></i> <span> Subscriptions </span> <span class="menu-arrow"></span></a>
+                        <ul style="display: none;">
+                           <li><a href="subscriptions.html"> Subscriptions (Admin) </a></li>
+                           <li><a href="subscriptions-company.html"> Subscriptions (Company) </a></li>
+                           <li><a href="subscribed-companies.html"> Subscribed Companies</a></li>
+                        </ul>
+                     </li>
+                     <li class="submenu">
+                        <a href="#"><i class="la la-columns"></i> <span> Pages </span> <span class="menu-arrow"></span></a>
+                        <ul style="display: none;">
+                           <li><a href="search.html"> Search </a></li>
+                           <li><a href="faq.html"> FAQ </a></li>
+                           <li><a href="terms.html"> Terms </a></li>
+                           <li><a href="privacy-policy.html"> Privacy Policy </a></li>
+                           <li><a href="blank-page.html"> Blank Page </a></li>
+                        </ul>
+                     </li>
+                     <li class="menu-title"> 
+                         <span>UI Interface</span>
+                      </li>
+                      <li> 
+                         <a href="components.html"><i class="la la-puzzle-piece"></i> <span>Components</span></a>
+                      </li>
+                      <li class="submenu">
+                         <a href="#"><i class="la la-object-group"></i> <span> Forms </span> <span class="menu-arrow"></span></a>
+                         <ul style="display: none;">
+                            <li><a href="form-basic-inputs.html">Basic Inputs </a></li>
+                            <li><a href="form-input-groups.html">Input Groups </a></li>
+                            <li><a href="form-horizontal.html">Horizontal Form </a></li>
+                            <li><a href="form-vertical.html"> Vertical Form </a></li>
+                            <li><a href="form-mask.html"> Form Mask </a></li>
+                            <li><a href="form-validation.html"> Form Validation </a></li>
+                         </ul>
+                      </li>
+                      <li class="submenu">
+                         <a href="#"><i class="la la-table"></i> <span> Tables </span> <span class="menu-arrow"></span></a>
+                         <ul style="display: none;">
+                            <li><a href="tables-basic.html">Basic Tables </a></li>
+                            <li><a href="data-tables.html">Data Table </a></li>
+                         </ul>
+                      </li>
+                      <li class="menu-title"> 
+                         <span>Extras</span>
+                      </li>
+                      <li> 
+                         <a href="#"><i class="la la-file-text"></i> <span>Documentation</span></a>
+                      </li>
+                      <li> 
+                         <a href="javascript:void(0);"><i class="la la-info"></i> <span>Change Log</span> <span class="badge badge-primary ml-auto">v3.4</span></a>
+                      </li>
+                      <li class="submenu">
+                         <a href="javascript:void(0);"><i class="la la-share-alt"></i> <span>Multi Level</span> <span class="menu-arrow"></span></a>
+                         <ul style="display: none;">
+                            <li class="submenu">
+                               <a href="javascript:void(0);"> <span>Level 1</span> <span class="menu-arrow"></span></a>
+                               <ul style="display: none;">
+                                  <li><a href="javascript:void(0);"><span>Level 2</span></a></li>
+                                  <li class="submenu">
+                                     <a href="javascript:void(0);"> <span> Level 2</span> <span class="menu-arrow"></span></a>
+                                     <ul style="display: none;">
+                                        <li><a href="javascript:void(0);">Level 3</a></li>
+                                        <li><a href="javascript:void(0);">Level 3</a></li>
+                                     </ul>
+                                  </li>
+                                  <li><a href="javascript:void(0);"> <span>Level 2</span></a></li>
+                               </ul>
+                            </li>
+                            <li>
+                               <a href="javascript:void(0);"> <span>Level 1</span></a>
+                            </li>
+                         </ul>
+                      </li> -->
+					</ul>
+				</div>
+			</div>
+		</div>
 				<!-- Mobile Menu -->
 				<div class="dropdown mobile-user-menu">
 				   <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
@@ -662,18 +975,17 @@
 			
 										<div class="profile-img-wrap">	
 										<div class="card mb-0">	
-										<c:forEach var="detailMem" items="${ requestScope.detailMem }">								
-												<form id="form1" action="${pageContext.servletContext.contextPath }/upload" method="POST" enctype="multipart/form-data" class="btn btn-custom">
-									<input type="file" name="FileAttachment" class="btn btn-custom">
-								 	<input type="submit" value="업로드" class="btn btn-custom">
-					</form>
+										<c:forEach var="fileAttach" items="${ requestScope.fileAttach }">								
+									<%-- 			<form id="form1" action="${pageContext.servletContext.contextPath }/upload" method="POST" enctype="multipart/form-data" class="btn btn-custom">
+									 <input type="file" name="FileAttachment" class="btn btn-custom">
+								 	<input type="submit" value="업로드" class="btn btn-custom">  
+					                           </form> --%>
 												<div class="profile-img">
-												<a href="#"><img src=/billbo/resources/images/main<c:out value="/${detailMem.no}"/>></a>
+												<a href="#"><img src="/billbo/resources/uploadFiles/<c:out value="${fileAttach.savedName}"/>"></a>
 											    </div>
 											</c:forEach>
-					</div>
+					                    </div>
 											</div>
-										</div>
 										<!-- 로그인 정보 프로필 select 부분  -->
 										<div class="profile-basic">
 											<div class="row">
@@ -681,14 +993,16 @@
 													<div class="profile-info-left">
 														<h3 class="user-name m-t-0 mb-0">${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }님 환영합니다.
 								</h3>
-														
+														<br><br>
 														<h6 class="text-muted"> 
 														
 														<div class="staff-id">Employee ID : ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.username}</div>
 														<c:forEach var="member" items="${ requestScope.member }">
-														<div class="small doj text-muted">Date of Join :"${ member.enroll_date }"</div>
+														
+														<br><br>
+														<div class="staff-id">Date of Join :"${ member.enroll_date }"</div>
 														</c:forEach>
-														<div class="staff-msg"><a class="btn btn-custom" href="chat.html">Send Message</a></div>
+														<div class="staff-msg"><a class="btn btn-custom" href="chat.html" hidden='true'>Send Message</a></div>
 													</div>
 												</div>
 												<div class="col-md-7">
@@ -746,8 +1060,8 @@
 												</c:forEach> --%>
 											</div>
 										</div>
-										<div class="pro-edit"><a data-target="#profile_info" data-toggle="modal" class="edit-icon" href="#"><i class="fa fa-pencil"></i></a></div>
-									</div>
+										<!-- <div class="pro-edit"><a data-target="#profile_info" data-toggle="modal" class="edit-icon" href="#"><i class="fa fa-pencil"></i></a></div>
+									</div> -->
 								</div>
 							</div>
 						</div>
@@ -787,15 +1101,15 @@
 											<c:choose>
 											<c:when test="${ empty requestScope.member}">
 												<tr>
-												<th class="col1">
+												<!-- <th class="col1">
 													<span class="title_txt">신상번호</span>
-												</th>
+												</th> -->
 												
-												<td class="col2">
+												<!-- <td class="col2">
 													 
 												<input class="txt w_max" type="text" name="info_no" value="">
 														
-												</td>
+												</td> -->
 												<th class="col3">
 													<span class="title_txt">사번</span>
 												</th>
@@ -874,15 +1188,15 @@
 											<c:otherwise>
 											<c:forEach var="member" items="${requestScope.member}">
 											<tr>
-												<th class="col1">
+												<!-- <th class="col1">
 													<span class="title_txt">신상번호</span>
-												</th>
+												</th> -->
 												
-												<td class="col2">
+												<%-- <td class="col2">
 													 
 												<input class="txt w_max" type="text" name="info_no" value="<c:out value="${ member.info_no }"/>">
 														
-												</td>
+												</td> --%>
 												<th class="col3">
 													<span class="title_txt">사번</span>
 												</th>
@@ -899,15 +1213,6 @@
 												<input class="txt w_max" type="date" name="enroll_date" value="<c:out value="${ member.enroll_date }"/>">
 														
 												</td>            
-												<th class="col7">
-													<span class="title_txt">계좌은행</span>
-												</th>
-												<td class="col8">
-														
-												<input class="txt w_max" type="text" name="account_bank" value="<c:out value="${ member.account_bank }"/>">
-														
-												
-												</td>
 											</tr>
 											<tr>
 												<th class="col1">
@@ -919,6 +1224,26 @@
 												<input class="txt w_max" type="text" name="address" value="<c:out value="${member.address }"/>">
 														
 												
+											</tr>
+											<tr>
+											
+												<th class="col7">
+													<span class="title_txt">예금주</span>
+													</th>
+													<td class="col8">
+													 
+												<input class="txt w_max" type="text" name="account_host" value="<c:out value="${member.account_host }"/>">
+											</td>
+													
+												<th class="col7">
+													<span class="title_txt">계좌은행</span>
+												</th>
+												<td class="col8">
+														
+												<input class="txt w_max" type="text" name="account_bank" value="<c:out value="${ member.account_bank }"/>">
+														
+												
+												</td>
 												</td>
 												<th class="col7">
 													<span class="title_txt">계좌번호</span>
@@ -929,34 +1254,7 @@
 														
 												
 												</td>
-											</tr>
-											<tr>
-												<th class="col1">
-													<span class="title_txt">근로계약서</span>
-												</th>
-												<td colspan="3">
-													
-												<input class="txt w_max" type="text" name="work_contract" value="<c:out value="${member.work_contract }"/>">
-							
-												</td>        
-												<th class="col5">
-													<span class="title_txt">파일첨부</span>
-												</th>
-												<td class="col6">
-														
-												<input class="txt w_max" type="text" name="fileattachment" value="<c:out value="${member.fileattachment }"/>">
-								
 												
-												</td>
-												<th class="col7">
-													<span class="title_txt">예금주</span>
-													</th>
-													<td class="col8">
-													 
-												<input class="txt w_max" type="text" name="account_host" value="<c:out value="${member.account_host }"/>">
-													
-												
-											</td>
 										</tr>
 											</c:forEach>
 											</c:otherwise>
@@ -964,16 +1262,13 @@
 										</tbody>
 										
 										</table>
-									<div class="page_action_wrap" style="display: block;">
-										<button class="btn_major" data-role="button"  id="submit">저장</button>
-										<button class="btn_minor" data-role="button"  id="hrcard_btn_cancel">취소</button>
-								</div>
+									
 								
 										</form>
 										
 									</div></div>
 										<!-- <span class="btn_minor" data-role="button" id="hrcard_btn_cancel"><span class="txt">취소</span></span> -->
-								<section class="aside_wrapper article_reply" id="hrcardActivity"><div><div class="reply_wrap">
+								<%-- <section class="aside_wrapper article_reply" id="hrcardActivity"><div><div class="reply_wrap">
 									<header class="single_title">
 									 <table class="table table-striped custom-table datatable">
 								<thead>
@@ -1005,7 +1300,7 @@
 								 </ul>
 									   <div id="moreLog" class="bottom_action" style="display: none;"><a class="btn_list_reload"><span class="ic"></span><span class="txt">더보기</span></a></div>
 									</div>
-								 </div></div></section></div>
+								 </div></div></section> --%></div>
 							</div>
 						</div>
 						<!-- 첫번째 신상 탭 끝 -->
@@ -1021,7 +1316,7 @@
 										<form action="${ pageContext.servletContext.contextPath }/profile/joblevel" method="post">
 										<table class="type_list_box">
 											<tbody><tr>
-												<th class="spot_no"><span class="title_txt" hidden='true'>직위변경이력번호</span></th>
+												<!-- <th class="spot_no"><span class="title_txt" hidden='true'>직위변경이력번호</span></th> -->
 												<th class="spot_date"><span class="title_txt">변경날짜</span></th>
 												<th class="spot_code"><span class="title_txt">직위코드</span></th>
 												<th class="member_no"><span class="title_txt">사번</span></th>
@@ -1030,10 +1325,10 @@
 												 <c:choose>
                                        <c:when test="${ empty requestScope.modispotDto }">
                                        
-                                          <td class="no">
+                                          <!-- <td class="no">
                                           <input class="txt w_max" type="text" name="spot_no" value=""/>">
                                                 
-                                          </td>
+                                          </td> -->
                                           <td class="start">
                                           <input class="txt w_max" type="date" name="spot_date" value=""/>">
                                           </td>
@@ -1048,9 +1343,9 @@
                                        <c:otherwise>
                                           <!-- c:forEach 시작 부분 -->
                                           <c:forEach var="modispotDto" items="${ requestScope.modispotDto }"> 
-                                             <td class="no">
+                                             <%-- <td class="no">
                                              <input class="txt w_max" type="text" name="spot_no" value="<c:out value="${ modispotDto.spot_no }"/>">
-                                             </td>
+                                             </td> --%>
                                              <td class="start">
                                              <input class="txt w_max" type="date" name="spot_date" value="<c:out value="${ modispotDto.spot_date }"/>">
                                              </td>
@@ -1067,7 +1362,7 @@
 											</tr>
 												
 										</tbody></table>
-										<div class="page_action_wrap" style="display: block;">
+										<%-- <div class="page_action_wrap" style="display: block;">
 										<button class="btn_major" data-role="button"  id="submit">저장</button>
 										<button class="btn_minor" data-role="button"  id="hrcard_btn_cancel">취소</button>
 										</div>
@@ -1103,7 +1398,7 @@
 									
 								 </ul>
 									   <div id="moreLog" class="bottom_action" style="display: none;"><a class="btn_list_reload"><span class="ic"></span><span class="txt">더보기</span></a></div>
-									</div>
+									</div> --%>
 								 </div></div></section>
 							</div>
 						</div>
@@ -1119,8 +1414,8 @@
 										
 										<table class="type_list_box">
 											<tbody><tr>
-												<th class="modifyDeptNo"><span class="title_txt">부서변경이력번호</span></th>
-												<th class="modifydate"><span class="title_txt">변경날짜</span></th>
+												<!-- <th class="modifyDeptNo"><span class="title_txt">부서변경이력번호</span></th>
+												 --><th class="modifydate"><span class="title_txt">변경날짜</span></th>
 												<th class="deptCode"><span class="title_txt">부서코드</span></th>
 												<th class="memberNo"><span class="title_txt">사번</span></th>
 												
@@ -1131,10 +1426,10 @@
                                     <c:choose>
                                        <c:when test="${ empty requestScope.modidept }">
                                        
-                                          <td class="no">
+                                          <!-- <td class="no">
                                           <input class="txt w_max" type="text" name="modifyDeptNo" value=""/>">
-                                                
                                           </td>
+                                           -->      
                                           <td class="start">
                                           <input class="txt w_max" type="date" name="modifydate" value=""/>">
                                           </td>
@@ -1149,11 +1444,11 @@
                                        <c:otherwise>
                                           <!-- c:forEach 시작 부분 -->
                                           <c:forEach var="modidept" items="${ requestScope.modidept }"> 
-                                             <td class="no">
+  <%--                                            <td class="no">
                                              <input class="txt w_max" type="text" name="modifyDeptNo" value="<c:out value="${ modidept.modifyDeptNo }"/>">
                                                    
                                              </td>
-                                             <td class="start">
+   --%>                                           <td class="start">
                                              <input class="txt w_max" type="date" name="modifydate" value="<c:out value="${ modidept.modifydate }"/>">
                                              </td>
                                              <td class="end">
@@ -1168,7 +1463,7 @@
                                     </c:choose>
                                     		</tr>
 										</tbody></table>
-										<div class="page_action_wrap" style="display: block;">
+										<%-- <div class="page_action_wrap" style="display: block;">
 										<button class="btn_major" data-role="button"  id="submit">저장</button>
 										<button class="btn_minor" data-role="button"  id="hrcard_btn_cancel">취소</button>
 									</div>
@@ -1203,7 +1498,7 @@
 									
 								 </ul>
 									   <div id="moreLog" class="bottom_action" style="display: none;"><a class="btn_list_reload"><span class="ic"></span><span class="txt">더보기</span></a></div>
-									</div>
+									</div> --%>
 								 </div></div></section>
 							</div>
 						</div>
@@ -1222,8 +1517,9 @@
 										<table class="type_list_box">
 											<tbody>
 											<tr>
-												<th class="no"><span class="title_txt">경력번호</span></th>
-												<th class="start"><span class="title_txt">시작일</span></th>
+												<!-- <th class="no"><span class="title_txt">경력번호</span></th>
+												 -->
+												 <th class="start"><span class="title_txt">시작일</span></th>
 												<th class="end"><span class="title_txt">종료일</span></th>
 												<th class="position"><span class="title_txt">근무처</span></th>
 												<th class="member_no"><span class="title_txt">사번</span></th>
@@ -1233,9 +1529,9 @@
 										<c:choose>
                                        <c:when test="${ empty requestScope.careerDto }">
                                        
-                                          <td class="no">
+                                          <!-- <td class="no">
                                           <input class="txt w_max" type="text" name="no" value=""/>">
-                                          </td>
+                                          </td> -->
                                           <td class="start">
                                           <input class="txt w_max" type="date" name="start" value=""/>">
                                           </td>
@@ -1252,10 +1548,10 @@
                                        <c:otherwise>
                                           <!-- c:forEach 시작 부분 -->
                                           <c:forEach var="careerDto" items="${ requestScope.careerDto }"> 
-                                             <td class="no">
+                                             <%-- <td class="no">
                                              <input class="txt w_max" type="text" name="no" value="<c:out value="${ careerDto.no }"/>">
                                                    
-                                             </td>
+                                             </td> --%>
                                              <td class="start">
                                              <input class="txt w_max" type="date" name="start" value="<c:out value="${ careerDto.start }"/>">
                                              </td>
@@ -1276,14 +1572,14 @@
 											</tr>
 											</tbody>
 										</table>
-										<div class="page_action_wrap" style="display: block;">
+								<%-- 		<div class="page_action_wrap" style="display: block;">
 										<button class="btn_major" data-role="button"  id="submit">저장</button>
 										<button class="btn_minor" data-role="button"  id="hrcard_btn_cancel">취소</button>
-								</div>
+								</div>--%>
 										</form>
 									</div></div>
 								<section class="aside_wrapper article_reply" id="hrcardActivity"><div><div class="reply_wrap">
-									<header class="single_title">
+									<%-- <header class="single_title">
 									 <table class="table table-striped custom-table datatable">
 								<thead>
 									<tr>
@@ -1311,7 +1607,7 @@
 									  
 								 </ul>
 									   <div id="moreLog" class="bottom_action" style="display: none;"><a class="btn_list_reload"><span class="ic"></span><span class="txt">더보기</span></a></div>
-									</div>
+									 </div>--%> 
 								 </div></div></section></div>
 							</div>
 						</div>
@@ -1327,8 +1623,8 @@
 										<table class="type_list_box">
 											<tbody>
 											<tr>
-												<th class="no"><span class="title_txt">상벌내역번호</span></th>
-												<th class="reason"><span class="title_txt">상벌사유</span></th>
+												<!-- <th class="no"><span class="title_txt">상벌내역번호</span></th>
+												 --><th class="reason"><span class="title_txt">상벌사유</span></th>
 												<th class="date"><span class="title_txt">일자</span></th>
 												<th class="type"><span class="title_txt">상벌구분</span></th>
 												<th class="member_no"><span class="title_txt">사번</span></th>
@@ -1340,10 +1636,10 @@
 												 <c:choose>
                                        <c:when test="${ empty requestScope.bonusDto }">
                                        
-                                          <td class="no">
+                                          <!-- <td class="no">
                                           <input class="txt w_max" type="text" name="no" value=""/>">
                                                 
-                                          </td>
+                                          </td> -->
                                           <td class="reason">
                                           <input class="txt w_max" type="text" name="reason" value="">
                                           </td>
@@ -1363,10 +1659,10 @@
                                        <c:otherwise>
                                           <!-- c:forEach 시작 부분 -->
                                           <c:forEach var="bonusDto" items="${ requestScope.bonusDto }"> 
-                                             <td class="no">
+                                             <%-- <td class="no">
                                              <input class="txt w_max" type="text" name="no" value="<c:out value="${ bonusDto.no }"/>">
                                                    
-                                             </td>
+                                             </td> --%>
                                              <td class="reason3">
                                              <input class="txt w_max" type="text" name="reason" value="<c:out value="${ bonusDto.reason }"/>">
                                              </td>
@@ -1377,7 +1673,7 @@
                                              <input class="txt w_max" type="text" name="type" value="<c:out value="${ bonusDto.type }"/>">
                                              </td>
                                              <td class="member_no">
-                                             <input class="txt w_max" type="text" name="member_no" value="<c:out value="${ bonusDto.member_no }"/>"/>">
+                                             <input class="txt w_max" type="text" name="member_no" value="<c:out value="${ bonusDto.member_no }"/>"/>
                                              </td>
                                              <td class="approve_code">
                                              <input class="txt w_max" type="text" name="approve_code" value="<c:out value="${ bonusDto.approve_code }"/>">
@@ -1389,16 +1685,16 @@
 											</tr>
 											</tbody>
 										</table>
-											<div class="page_action_wrap" style="display: block;">
+											<!-- <div class="page_action_wrap" style="display: block;">
 										<button class="btn_major" data-role="button"  id="submit">저장</button>
 										<button class="btn_minor" data-role="button"  id="hrcard_btn_cancel">취소</button>
-								</div>
+								</div> -->
 								</form>
 									</div></div>
 								<section class="aside_wrapper article_reply" id="hrcardActivity"><div><div class="reply_wrap">
 									<header class="single_title">
 									 <table class="table table-striped custom-table datatable">
-								<thead>
+								<!-- <thead>
 									<tr>
 										<th>사번</th>
 										<th>일자</th>
@@ -1408,7 +1704,7 @@
 										
 									</tr>
 								</thead>
-								<c:forEach var="viewBonusDto" items="${ requestScope.viewBonusDto }">
+ -->								<%-- <c:forEach var="viewBonusDto" items="${ requestScope.viewBonusDto }">
 									<tr>
 										<td class="free-td"><c:out value="${ viewBonusDto.member_no }" />
 										<td class="free-td"><c:out value="${ viewBonusDto.date }" />
@@ -1416,7 +1712,7 @@
 										<td class="free-td"><c:out value="${ viewBonusDto.reason }" />
 										<td class="free-td"><c:out value="${ viewBonusDto.approve_code }" />
 		    						</tr>
-								</c:forEach>
+								</c:forEach> --%>
 								</table>
 								
 									 </header>
@@ -1439,8 +1735,8 @@
 		                    			<form action="${ pageContext.servletContext.contextPath }/profile/certificate" method="post">
 										<table class="type_list_box">
 											<tbody><tr>
-												<th class="no"><span class="title_txt">자격번호</span></th>
-												<th class="start_date"><span class="title_txt">취득일</span></th>
+												<!-- <th class="no"><span class="title_txt">자격번호</span></th>
+												 --><th class="start_date"><span class="title_txt">취득일</span></th>
 												<th class="end_date"><span class="title_txt">만료일</span></th>
 												<th class="member_no"><span class="title_txt">사번</span></th>
 												<th class="certificate_code"><span class="title_txt">자격코드명</span></th>
@@ -1449,10 +1745,10 @@
 												 <c:choose>
                                        <c:when test="${ empty requestScope.certificateInsert }">
                                        
-                                          <td class="no">
+                                          <!-- <td class="no">
                                           <input class="txt w_max" type="text" name="no" value=""/>
                                                 
-                                          </td>
+                                          </td> -->
                                           <td class="start_date">
                                           <input class="txt w_max" type="date" name="start_date" value="">
                                           </td>
@@ -1469,10 +1765,10 @@
                                        <c:otherwise>
                                           <!-- c:forEach 시작 부분 -->
                                           <c:forEach var="certificateInsert" items="${ requestScope.certificateInsert }"> 
-                                             <td class="no">
+                                       <%--       <td class="no">
                                              <input class="txt w_max" type="text" name="no" value="<c:out value="${ certificateInsert.no }"/>">
                                                    
-                                             </td>
+                                             </td> --%>
                                              <td class="start_date">
                                              <input class="txt w_max" type="text" name="start_date" value="<c:out value="${ certificateInsert.start_date }"/>">
                                              </td>
@@ -1492,24 +1788,24 @@
                                     </c:choose>
 											</tr>
 										</tbody></table>
-									<div class="page_action_wrap" style="display: block;">
+									<!-- <div class="page_action_wrap" style="display: block;">
 										<button class="btn_major" data-role="button"  id="submit">저장</button>
 										<button class="btn_minor" data-role="button"  id="hrcard_btn_cancel">취소</button>
-								</div></form>
+								</div> --></form>
 									</div></div>
 								<section class="aside_wrapper article_reply" id="hrcardActivity"><div><div class="reply_wrap">
 									<header class="single_title">
 									 <table class="table table-striped custom-table datatable">
 								<thead>
-									<tr>
+									<!-- <tr>
 										<th>사번</th>
 										<th>자격코드</th>
 										<th>취득일</th>
 										<th>만료일</th>
 										
-									</tr>
+									</tr> -->
 								</thead>
-								<c:forEach var="viewCertificateInsert" items="${ requestScope.viewCertificateInsert }">
+								<%-- <c:forEach var="viewCertificateInsert" items="${ requestScope.viewCertificateInsert }">
 									<tr>
 										<td class="free-td"><c:out value="${ viewCertificateInsert.member_no }" />
 										<td class="free-td"><c:out value="${ viewCertificateInsert.certificate_code }" />
@@ -1518,7 +1814,7 @@
 		
 		    						</tr>
 								</c:forEach>
-								</table>
+		 --%>						</table>
 								
 									 </header>
 									<div class="aside_wrapper_body">
@@ -1548,8 +1844,8 @@
 												<th class="discharge"><span class="title_txt">전역구분</span></th>
 												<th class="start"><span class="title_txt">입대일</span></th>
 												<th class="end"><span class="title_txt">제대일</span></th>
-												<th class="army_no"><span class="title_txt">병역번호</span></th>
-												<th class="reason"><span class="title_txt">전역사유</span></th>
+												<!-- <th class="army_no"><span class="title_txt">병역번호</span></th>
+												 --><th class="reason"><span class="title_txt">전역사유</span></th>
 												
 											</tr>
 											<tr>
@@ -1559,9 +1855,9 @@
                                           <td class="member_no">
                                           <input class="txt w_max" type="text" name="member_no" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }"/>
                                            </td>
-                                          <td class="army_no">
+                                         <!--  <td class="army_no">
                                           <input class="txt w_max" type="text" name="army_no" value="">
-                                          </td>
+                                          </td> -->
                                           <td class="branch">
                                           <input class="txt w_max" type="text" name="branch" value="">
                                           </td>
@@ -1590,9 +1886,9 @@
                                              <td class="member_no">
                                              <input class="txt w_max" type="text" name="member_no" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }">
                                              </td>
-                                             <td class="army_no">
+                                             <%-- <td class="army_no">
                                              <input class="txt w_max" type="text" name="army_no" value="<c:out value="${ armySelect.army_no }"/>">
-                                             </td>
+                                             </td> --%>
                                              <td class="branch">
                                              <input class="txt w_max" type="text" name="branch" value="<c:out value="${ armySelect.branch }"/>">
                                              </td>
@@ -1621,15 +1917,15 @@
 											</tr>
 										</tbody>
 										</table>
-										<div class="page_action_wrap" style="display: block;">
+										<!-- <div class="page_action_wrap" style="display: block;">
 										<button class="btn_major" data-role="button"  id="submit">저장</button>
 										<button class="btn_minor" data-role="button"  id="hrcard_btn_cancel">취소</button>
-								</div>
+								</div> -->
 										</form>
 									</div></div>
 									
 								<section class="aside_wrapper article_reply" id="hrcardActivity"><div><div class="reply_wrap">
-									<header class="single_title">
+									<<%-- header class="single_title">
 									 <table class="table table-striped custom-table datatable">
 								<thead>
 									<tr>
@@ -1657,7 +1953,7 @@
 								</c:forEach>
 								</table>
 								
-									 </header>
+									 </header> --%>
 									<div class="aside_wrapper_body">
 									   <ul class="type_simple_list simple_list_alarm">        
 									  
@@ -1678,7 +1974,7 @@
 										<form action="${ pageContext.servletContext.contextPath }/profile/finalAcademic" method="post">
 										<table class="type_list_box">
 											<tbody><tr>
-												<th class="ability_no">최종학력번호</th>
+												<!-- <th class="ability_no">최종학력번호</th> -->
 												<th class="name">학교명</th>
 												<th class="subject">전공</th>
 												<th class="date">졸업일자</th>
@@ -1690,9 +1986,9 @@
 											 <c:choose>
                                        <c:when test="${ empty requestScope.academic }">
                                        
-                                          <td class="ability_no">
+                                        <!--   <td class="ability_no">
                                           <input class="txt w_max" type="text" name="ability_no" value=""/>
-                                           </td>
+                                           </td> -->
                                           <td class="name">
                                           <input class="txt w_max" type="text" name="name" value="">
                                           </td>
@@ -1719,9 +2015,9 @@
                                        <c:otherwise>
                                           <!-- c:forEach 시작 부분 -->
                                           <c:forEach var="academic" items="${ requestScope.academic }"> 
-                                             <td class="ability_no">
+                                             <%-- <td class="ability_no">
                                              <input class="txt w_max" type="text" name="ability_no" value="<c:out value="${ academic.ability_no }"/>">
-                                             </td>
+                                             </td> --%>
                                              <td class="name">
                                              <input class="txt w_max" type="text" name="name" value="<c:out value="${ academic.name }"/>">
                                              </td>
@@ -1749,16 +2045,16 @@
                                        </c:otherwise>
                                     </c:choose>
 										</tbody></table>
-										<div class="page_action_wrap" style="display: block;">
+										<!-- <div class="page_action_wrap" style="display: block;">
 										<button class="btn_major" data-role="button"  id="submit">저장</button>
 										<button class="btn_minor" data-role="button"  id="hrcard_btn_cancel">취소</button>
-								</div>
+								</div> -->
 										</form>
 									</div></div><div class="page_action_wrap" style="display: block;">
 										</div>
 								<section class="aside_wrapper article_reply" id="hrcardActivity"><div><div class="reply_wrap">
 									<header class="single_title">
-									 <table class="table table-striped custom-table datatable">
+									<%--  <table class="table table-striped custom-table datatable">
 								<thead>
 									<tr>
 										<th>사번</th>
@@ -1781,15 +2077,15 @@
 										<td class="free-td"><c:out value="${ viewAcademic.code }" />
 									</tr>
 								</c:forEach>
-								</table>
+								</table> --%>
 								
 									 </header>
-									<div class="aside_wrapper_body">
+									<!-- <div class="aside_wrapper_body">
 									   <ul class="type_simple_list simple_list_alarm">        
 									  
 								 </ul>
 									   <div id="moreLog" class="bottom_action" style="display: none;"><a class="btn_list_reload"><span class="ic"></span><span class="txt">더보기</span></a></div>
-									</div>
+									</div> -->
 								 </div></div></section></div>
 							</div>
 						</div>
@@ -1805,8 +2101,8 @@
 										<table class="type_list_box">
 											<tbody>
 											<tr>
-												<th class="info_no"><span class="title_txt">가족사항번호</span></th>
-												<th class="name"><span class="title_txt">가족성명</span></th>
+												<!-- <th class="info_no"><span class="title_txt">가족사항번호</span></th>
+												 --><th class="name"><span class="title_txt">가족성명</span></th>
 												<th class="relation"><span class="title_txt">가족관계</span></th>
 												<th class="gender"><span class="title_txt">성별</span></th>
 												<th class="birthday"><span class="title_txt">생년월일</span></th>
@@ -1818,10 +2114,10 @@
 											 <c:choose>
                                        <c:when test="${ empty requestScope.familySelect }">
                                        
-                                          <td class="info_no">
+                                          <!-- <td class="info_no">
                                           <input class="txt w_max" type="text" name="info_no" value=""/>
                                            </td>
-                                          <td class="name">
+                                           --><td class="name">
                                           <input class="txt w_max" type="text" name="name" value="">
                                           </td>
                                           <td class="relation">
@@ -1854,18 +2150,18 @@
                                        <c:otherwise>
                                           <!-- c:forEach 시작 부분 -->
                                           <c:forEach var="familySelect" items="${ requestScope.familySelect }"> 
-                                             <td class="info_no">
+                                             <%-- <td class="info_no">
                                              <input class="txt w_max" type="text" name="info_no" value="<c:out value="${ familySelect.info_no }"/>">
                                              </td>
-                                             <td class="name">
+                                              --%><td class="name">
                                              <input class="txt w_max" type="text" name="name" value="<c:out value="${ familySelect.name }"/>">
                                              </td>
                                              <td class="relation">
                                              <input class="txt w_max" type="text" name="subject" value="<c:out value="${ familySelect.relation }"/>">
                                              </td>
                                              <td class="gender">
-                                             <input class="txt w_max" type="text" name="gender" value="<c:out value="${ familySelect.gender }"/>">
-                                             <span class="wrap_select">
+                                            <%--  <input class="txt w_max" type="text" name="gender" value="<c:out value="${ familySelect.gender }"/>">
+                                             --%> <span class="wrap_select">
 														  <select class="wfix_small" name="gender" value="<c:out value="${ familySelect.gender }"/>">
 															 <option value="">선택하세요</option>
 															 <option value="남">남자</option>
@@ -1874,13 +2170,13 @@
 													   </span>
                                              </td>
                                              <td class="birthday">
-                                             <input class="txt w_max" type="date" name="birthday" value="<c:out value="${ familyDto.birthday }"/>">
+                                             <input class="txt w_max" type="date" name="birthday" value="<c:out value="${ familySelect.birthday }"/>">
                                              </td>
                                              <td class="study">
-                                             <input class="txt w_max" type="text" name="study" value="<c:out value="${ familyDto.study }"/>">
+                                             <input class="txt w_max" type="text" name="study" value="<c:out value="${ familySelect.study }"/>">
                                              </td>
                                              <td class="job">
-                                             <input class="txt w_max" type="text" name="job" value="${ familyDto.job }">
+                                             <input class="txt w_max" type="text" name="job" value="${ familySelect.job }">
                                              </td>
                                              <td class="no">
                                              <input class="txt w_max" type="text" name="no" value="<c:out value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }"/>">
@@ -1893,9 +2189,9 @@
 											</tr>
 											</tbody>
 										</table>
-										<div class="page_action_wrap" style="display: block;">
+										<!-- <div class="page_action_wrap" style="display: block;">
 										<button class="btn_major" data-role="button"  id="submit">저장</button>
-										<button class="btn_minor" data-role="button"  id="hrcard_btn_cancel">취소</button></div>
+										<button class="btn_minor" data-role="button"  id="hrcard_btn_cancel">취소</button></div> -->
 										</form>
 									</div></div></div>
 									
@@ -1949,17 +2245,17 @@
 										
 										<table class="type_list_box">
 											<tbody><tr>
-												<th class="no"><span class="title_txt">면허 번호</span></th>
-												<th class="code"><span class="title_txt">면허증코드명</span></th>
+												<!-- <th class="no"><span class="title_txt">면허 번호</span></th>
+												 --><th class="code"><span class="title_txt">면허증코드명</span></th>
 												<th class="date"><span class="title_txt">취득일</span></th>
 												<th class="member_no"><span class="title_txt">사번</span></th>
 												</tr>
 											 <c:choose>
                                        <c:when test="${ empty requestScope.LicenseDto }">
                                        
-                                          <td class="no">
+                                          <!-- <td class="no">
                                           <input class="txt w_max" type="text" name="no" value=""/>
-                                           </td>
+                                           </td> -->
                                           <td class="code">
                                           <input class="txt w_max" type="text" name="code" value="">
                                           </td>
@@ -1974,10 +2270,10 @@
                                        <c:otherwise>
                                           <!-- c:forEach 시작 부분 -->
                                           <c:forEach var="LicenseDto" items="${ requestScope.LicenseDto }"> 
-                                             <td class="no">
+                                             <%-- <td class="no">
                                              <input class="txt w_max" type="text" name="no" value="<c:out value="${ LicenseDto.no }"/>">
                                              </td>
-                                             <td class="code">
+                                              --%><td class="code">
                                              <input class="txt w_max" type="text" name="code" value="<c:out value="${ LicenseDto.code }"/>">
                                              </td>
                                              <td class="date">
@@ -1991,13 +2287,13 @@
                                        </c:otherwise>
                                     </c:choose>
 										</tbody></table>
-										<div class="page_action_wrap" style="display: block;">
+										<!-- <div class="page_action_wrap" style="display: block;">
 										<button class="btn_major" data-role="button"  id="submit">저장</button>
 										<button class="btn_minor" data-role="button"  id="hrcard_btn_cancel">취소</button>	</div>
-										</form>
+										 --></form>
 									</div></div>
 								<section class="aside_wrapper article_reply" id="hrcardActivity"><div><div class="reply_wrap">
-									<header class="single_title">
+								<%-- 	<header class="single_title">
 									 <table class="table table-striped custom-table datatable">
 								<thead>
 									<tr>
@@ -2016,7 +2312,7 @@
 								</table>
 								
 									 </header>
-									<div class="aside_wrapper_body">
+								 --%>	<div class="aside_wrapper_body">
 									   <ul class="type_simple_list simple_list_alarm">        
 									  
 								 </ul>

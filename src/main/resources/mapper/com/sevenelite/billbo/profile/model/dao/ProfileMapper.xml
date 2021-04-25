@@ -4,6 +4,17 @@
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sevenelite.billbo.profile.model.dao.ProfileMapper">
 
+<resultMap type="com.sevenelite.billbo.profile.model.dto.FileAttachmentDTO" id="fileAttachmentDTO">
+	<id property="fileNo" column="File_FILE_ATTACHMENT_NO"/>
+	<result property="attachmentPath" column="FILE_ATTACHMENT_PATH"/>
+	<result property="originalName" column="ORIGINAL_NAME"/>
+	<result property="savedName" column="SAVED_NAME"/>
+	<result property="attachmentType" column="ATTACHMENT_TYPE"/>
+	<result property="attchmentTypeNo" column="ATTACHMENT_TYPE_NO"/>
+	<result property="attachmentDate" column="ATTACHMENT_DATE"/>
+	<result property="memberNo" column="MEMBER_NO"/>
+</resultMap>
+
 <resultMap type="com.sevenelite.billbo.profile.model.dto.ArmyDTO" id="armyDTO">
 	<id property="army_no" column="ARMY_NO" />
 	<result property="branch" column="ARMY_BRANCH"/>
@@ -148,9 +159,7 @@
 	    , MEMBER_ACCOUNT_NO
 	    , MEMBER_ACCOUNT_BANK
 	    , ACCOUNT_HOST
-	    , MEMBER_FILEATTACHMENT
 	    , ENROLL_DATE
-	    , MEMBER_WORK_CONTRACT
 	    , MEMBER_NO
 	    )
 	    VALUES
@@ -160,9 +169,7 @@
 	    , #{account_no}
 	    , #{account_bank}
 	    , #{account_host}
-	    , #{fileattachment}
 	    , #{enroll_date}
-	    , #{work_contract}
 	    , #{member_no}
 	    )
 </insert>
@@ -918,5 +925,14 @@ SELECT
 	             
  </select>
  
+
+ <select id="selectFileAttach" resultMap="fileAttachmentDTO" parameterType="FileAttachmentDTO">
+SELECT
+       *
+  FROM BB_FILEATTACHMENT
+ WHERE MEMBER_NO = #{ member_no } 
+               
+</select> 
+
 
 </mapper>

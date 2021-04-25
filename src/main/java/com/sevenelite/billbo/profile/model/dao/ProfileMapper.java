@@ -10,6 +10,7 @@ import com.sevenelite.billbo.profile.model.dto.CareerDTO;
 import com.sevenelite.billbo.profile.model.dto.CertificateDTO;
 import com.sevenelite.billbo.profile.model.dto.DeptDTO;
 import com.sevenelite.billbo.profile.model.dto.FamilyDTO;
+import com.sevenelite.billbo.profile.model.dto.FileAttachmentDTO;
 import com.sevenelite.billbo.profile.model.dto.FinalAcademicDTO;
 import com.sevenelite.billbo.profile.model.dto.LicenseDTO;
 import com.sevenelite.billbo.profile.model.dto.MemberInfoDTO;
@@ -129,6 +130,7 @@ public interface ProfileMapper {
 	List<FamilyDTO> viewFamilySelect(int memberno);
 	List<LicenseDTO> viewLicenseDto(int memberno);
 	List<MemberInfoDTO> deleteInfo(int memberno);
+	List<FileAttachmentDTO> selectFileAttach(int memberno);
 }
 
 //List<MemberInfoDTO> modifyMember();
