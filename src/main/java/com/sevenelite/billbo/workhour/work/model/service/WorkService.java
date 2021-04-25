@@ -37,6 +37,10 @@ import com.sevenelite.billbo.workhour.work.model.dto.WorkDTO;
 
 	String workTypeB8();
 
+	boolean editWork(StatusAndWorkDTO status);
+
+	List<StatusAndWorkDTO> selectStatusList();
+
 
    } 
   

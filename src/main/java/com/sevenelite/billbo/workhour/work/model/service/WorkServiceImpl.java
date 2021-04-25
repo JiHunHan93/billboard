@@ -76,5 +76,13 @@ com.sevenelite.billbo.workhour.work.model.dto.WorkDTO;
 	public String workTypeB8() {
 		return dao.workTypeB8();
 	}
+	@Override
+	public List<StatusAndWorkDTO> selectStatusList() {
+		return dao.editForm();
+	}
+	@Override
+	public boolean editWork(StatusAndWorkDTO status) {
+		return dao.editWork(status);
+	}
 	
 }	
