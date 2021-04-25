@@ -532,13 +532,13 @@
 												<td colspan="8" class="text-center">
 													<div class="grade-span">
 														<h4 style="margin-right: 36%;">종합 점수 평균</h4>
-														<span class="badge bg-inverse-danger"> 65점이하  D</span> 
+														<span class="badge bg-inverse-danger"> 65점 미만  D</span> 
 														<span class="badge bg-inverse-warning">65점-74점 C</span> 
 														<span class="badge bg-inverse-info">75점-84점 B</span> 
 														<span class="badge bg-inverse-purple">85점-92점 A</span> 
 														<span class="badge bg-inverse-success">92점 이상 A+</span>
 														<input type="text" name="memberNo" class="memNo" value="${ no }">
-														<button type="submit" class="btn btn-primary" value="전송 하기" style="margin-left : 30%;">전송 하기</button>
+														<button type="submit" class="btn btn-primary" value="전송 하기" style="margin-left : 30%;">평가 하기</button>
 													</div>
 												</td>
 											</tr>
