@@ -41,4 +41,19 @@ public class HoilidayServiceImpl implements HolidayService{
 		return holidayMapper.selectHolidayList(memberno);
 	}
 
+
+
+	@Override
+	public boolean modifyHoliday(MemberHolidayDTO holiday2) {
+		// TODO Auto-generated method stub
+		return holidayMapper.modifyHoliday(holiday2);
+	}
+
+
+	@Override
+	public boolean deleteHoliday(int deleteNo) {
+		// TODO Auto-generated method stub
+		return holidayMapper.deleteHoliday(deleteNo);
+	}
+
 }
