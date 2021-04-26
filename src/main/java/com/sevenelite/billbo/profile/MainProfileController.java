@@ -159,6 +159,7 @@ public class MainProfileController {
 
 		System.out.println("왜 안오는거여 쉬벌?????");
 		profileService.career(career);
+		model.addAttribute("memberno", memberno);
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
 		return "redirect:/profile/mainProfile2";
@@ -174,7 +175,7 @@ public class MainProfileController {
 		System.out.println("오나!!!!!!!!!!!!!");
 
 		profileService.bonusInsert(bonus);
-
+		model.addAttribute("memberno", memberno);
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
 		return "redirect:/profile/mainProfile2";
@@ -190,7 +191,7 @@ public class MainProfileController {
 		System.out.println("오나!!!!!!!!!!!!!");
 
 		profileService.certificate(certificate);
-
+		model.addAttribute("memberno", memberno);
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		System.out.println("131241414q");
 		// List<CertificateDTO> certi =
@@ -209,7 +210,7 @@ public class MainProfileController {
 		System.out.println("오나!!!!!!!!!!!!!");
 
 		profileService.armyInfo(army);
-
+		model.addAttribute("memberno", memberno);
 		System.out.println("요기는???");
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
@@ -223,10 +224,10 @@ public class MainProfileController {
 
 		System.out.println("branch : " + finalAcademic);
 
-		System.out.println("하..");
+		
 
 		profileService.finalAcademic(finalAcademic);
-
+		model.addAttribute("memberno", memberno);
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
 		return "redirect:/profile/mainProfile2";
@@ -236,12 +237,11 @@ public class MainProfileController {
 	@PostMapping("family")
 	public String family(@RequestParam(required=false) String memberno, @ModelAttribute FamilyDTO family, Authentication authentication, Model model) {
 		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-		System.out.println("branch : " + family);
+		
 
-		System.out.println("하..");
+	
 		profileService.family(family);
-
+		model.addAttribute("memberno", memberno);
 		 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); 
 
 		return "redirect:/profile/mainProfile2";
@@ -259,7 +259,7 @@ public class MainProfileController {
 
 		/* SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd"); */
 		profileService.license(license);
-
+		model.addAttribute("memberno", memberno);
 		return "redirect:/profile/mainProfile2";
 	}
 	
@@ -451,18 +451,7 @@ public class MainProfileController {
 		
 		/*신상정보 전체 조회용*/
 		
-		System.out.println(member + "오나???!?");
-		System.out.println(dept + "이것도 오나???!?");
-		System.out.println(detailMem + "이거도 제발");
-		System.out.println(modidept + "이거도 제발Q");
-		System.out.println(modispotDto + "이거도 제발시발");
-		System.out.println(careerDto + "이거도 제발시발");
-		System.out.println(bonusDto + "이거도 제발시발");
-		System.out.println(LicenseDto + "젭알 되주세요");
-		System.out.println(certificateInsert + "젭알 되주세요");
-		System.out.println(armySelect + "이거 안되면 재입대한다");
-		System.out.println(academic + "이쯤되면 그냥 되겠지..");
-		System.out.println(familySelect + "마지막");
+		
 		model.addAttribute("fileAttach",fileAttach);
 		model.addAttribute("member", member);
 		model.addAttribute("viewAllInfo", viewAllInfo);
