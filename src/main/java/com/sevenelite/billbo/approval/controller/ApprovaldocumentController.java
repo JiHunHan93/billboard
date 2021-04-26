@@ -54,7 +54,7 @@ public class ApprovaldocumentController {
 		/* 결과 */
 		System.out.println("조회해온 소속 부서 : " + dept);
 		System.out.println("조회해온 해당 직위 : " + spot);
-
+		
 		/* 부서 정보 추가하기 */
 		model.addAttribute("dept", dept);
 		
@@ -151,12 +151,16 @@ public class ApprovaldocumentController {
 			/* 2-1) 썸네일 주입 처리 */
 			
 			/* 04/25(일) JSP에서 받아온 정보에 추가로 필요한거 담기 -> List 타입을 받는 Mapper 생성하기 */
-			for(int i = 0; i < lineMemDTO.getLineMem().size(); i++) {
+			
+			int lineMemSize = lineMemDTO.getLineMem().size();
+			
+			for(int i = 0; i < lineMemSize; i++) {
 				lineMemDTO.getLineMem().get(i).setLineBody(vacation.getAnnualReason());;
 				lineMemDTO.getLineMem().get(i).setpKinds("대기");;
 				lineMemDTO.getLineMem().get(i).setThumbnail("");;
 				lineMemDTO.getLineMem().get(i).setLineKinds("근무");;
 			}
+			
 			for(int i = 0; i < lineMemDTO.getLineMem().size(); i++) {
 				System.out.println("가져온 값 :" + i+ "번째 값은? : " + lineMemDTO.getLineMem().get(i));
 			}

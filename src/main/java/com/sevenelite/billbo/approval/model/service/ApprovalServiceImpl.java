@@ -13,6 +13,8 @@ import com.sevenelite.billbo.approval.model.dto.ApproLineMemDTO;
 import com.sevenelite.billbo.approval.model.dto.ApproSpotDTO;
 import com.sevenelite.billbo.approval.model.dto.CheckApproveDTO;
 import com.sevenelite.billbo.approval.model.dto.FormVacationDTO;
+import com.sevenelite.billbo.approval.model.dto.ListDraftingDTO;
+import com.sevenelite.billbo.approval.model.dto.ListWaitingApprovalDTO;
 import com.sevenelite.billbo.member.model.dto.MemBbDTO;
 
 @Service
@@ -59,7 +61,9 @@ public class ApprovalServiceImpl implements ApprovalService {
 		for(int i = 0; i < lineMem.size(); i++) {
 			System.out.println("가져온 값 :" + i+ "번째 값은? : " + lineMem.get(i));
 			int result3 = mapper.insertLineMem(lineMem.get(i));
-			mapper.insertCheckApprove();
+			CheckApproveDTO currval = new CheckApproveDTO("대기"); 
+			currval.setDRAFT_NO(mapper.selectCheckCurrvalDraft());
+			mapper.insertCheckApprove(currval);
 			result2 = result2 + result3;
 		}
 		System.out.println("가져온 List 사이즈? : " + lineMem.size());
@@ -97,6 +101,18 @@ public class ApprovalServiceImpl implements ApprovalService {
 		}
 		
 		return approSpotList;
+	}
+
+	@Override
+	public List<ListDraftingDTO> selectAllDraftingList(int memberno) {
+		
+		return mapper.selectAllDraftingList(memberno);
+	}
+
+	@Override
+	public List<ListWaitingApprovalDTO> selectWaitingApproval(ListWaitingApprovalDTO listWaitingApprovalDTO) {
+		
+		return mapper.selectWaitingApproval(listWaitingApprovalDTO);
 	}
 
 }

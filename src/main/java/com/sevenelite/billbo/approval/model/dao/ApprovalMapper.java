@@ -8,6 +8,8 @@ import com.sevenelite.billbo.approval.model.dto.ApproLineMemDTO;
 import com.sevenelite.billbo.approval.model.dto.ApproSpotDTO;
 import com.sevenelite.billbo.approval.model.dto.CheckApproveDTO;
 import com.sevenelite.billbo.approval.model.dto.FormVacationDTO;
+import com.sevenelite.billbo.approval.model.dto.ListDraftingDTO;
+import com.sevenelite.billbo.approval.model.dto.ListWaitingApprovalDTO;
 import com.sevenelite.billbo.member.model.dto.MemBbDTO;
 
 public interface ApprovalMapper {
@@ -36,7 +38,19 @@ public interface ApprovalMapper {
 	/* 모든 사원의 직위 조회 */
 	ApproSpotDTO selectLoginSpotList(MemBbDTO memBbDTO);
 
-	void insertCheckApprove();
+	int selectCheckCurrvalDraft();
+	
+	void insertCheckApprove(CheckApproveDTO currval);
+
+	/* 기안문서 조회 */
+	List<ListDraftingDTO> selectAllDraftingList(int memberno);
+	
+	/* 결재 대기 중인 문서(로그인한 사원에 대한) */
+	List<ListWaitingApprovalDTO> selectWaitingApproval(ListWaitingApprovalDTO listWaitingApprovalDTO);
+
+
+
+
 
 	
 }

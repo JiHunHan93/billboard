@@ -963,7 +963,72 @@
 			</header>
 			<div class="content_page dashboard_survey">
 			    <div class="dr_wrapper" id="home_approval_waiting_doclist">
-			        <div class="dashboard_box"><p class="desc">결재할 문서가 없습니다.</p></div>
+			        <!-- <div class="dashboard_box"><p class="desc">결재할 문서가 없습니다.</p></div> -->
+			        
+			        <div class="dashboard_box">
+				    <div>
+				    <div class="card_item_wrapper card_flex">
+				    
+				    
+					   	<c:choose>
+					   	
+				            <c:when test="${ requestScope.waitAppro ne null }">
+								<c:forEach var="approInfo" items="${ requestScope.waitAppro }">
+	         
+					    <!-- 04/26(월) 찐으로 시작 -->
+				    <section class="card_item approval_home_card">
+				    <div class="h_border"></div>
+								<div class="card_wrapper">
+								    <header>
+								        <span class="state ongoing">진행중</span>
+								    </header>
+								    <div class="card_subject">
+											<span class="title t_card" style="cursor:pointer;" title="(신규)연장근무신청-근태관리연동">
+												<c:out value="${ approInfo.docuContents }"/>
+											</span>
+								        <span class="btn_wrap pop_card">
+								                <a><span class="popup ic_classic ic_blank" title="팝업보기"></span></a>
+								            </span>
+								    </div>
+								    <div class="card_content">
+								        <div class="form">
+								            <div class="form_tr">
+								                <div class="form_th">기안자 :</div>
+								                <div class="form_td" title="김상후 대표이사"><c:out value="${ approInfo.memberName }"/>
+								                </div>
+								            </div>
+								            <div class="form_tr">
+								                <div class="form_th">기안일 :</div>
+								                <div class="form_td" title="2021-04-24"><c:out value="${ approInfo.draftDate }"/></div>
+								            </div>
+								            <div class="form_tr">
+								                <div class="form_th">결재양식 :</div>
+								                <div class="form_td" title="(신규)연장근무신청-근태관리연동"><c:out value="${ approInfo.docuname }"/></div>
+								            </div>
+								        </div>
+								    </div>
+								    <div class="card_action">
+								        <a class="btn_lead"><span class="ic ic_report"></span><span class="txt">결재하기</span></a>
+								    </div>
+								</div>
+						
+
+					</section>
+					    <!-- 04/26(월) 찐으로 시작 -->
+								</c:forEach>
+				            
+				            </c:when>
+			            
+			            <c:otherwise>
+			            </c:otherwise>
+		      		   </c:choose>
+
+					</div>
+					</div>
+					</div>
+			        
+			        
+			        
 			    </div>
 			
 			    <div class="dr_wrapper" id="home_reception_waiting_doclist" style="display:none">
@@ -1024,16 +1089,26 @@
 						<th id="header_doc_status" class="sorting_disabled state_wrap"><span class="title_sort">결재상태</span></th>
 					</tr>
 				</thead>
-				<tbody><tr>
+				<tbody>
+				
+				<!-- 04/26(월) 결재 넣기 -->
+				<c:forEach var="draftInfo" items="${ requestScope.draftList }">
+					<tr>
+						<td class="date first"><span class="txt"><c:out value="${ draftInfo.draftDate }"/></span></td>
+						<td class="division"><span class="txt"><c:out value="${ draftInfo.docuname }"/></span></td>
+						<td class="doc_emergency"><c:if test="${ draftInfo.emergency eq 'N' }"></c:if><c:if test="${ draftInfo.emergency eq 'Y' }"><span class="state emergency">긴급</span></c:if></td>
+						<td class="subject"><a><span class="txt"><c:out value="${ draftInfo.docuContents }"/></span></a></td>
+						<td class="attach"></td>
+						<td class="state_wrap"><a><span class="state read"><c:out value="${ draftInfo.draftCompleteStatus }"/></span></a></td>
+					</tr>
+				</c:forEach>
+				
+				
+				
+				<tr>
 			<td class="date first"><span class="txt">2021-03-30</span></td>
-			
-			
-			
-			
-			
 			<td class="division"><span class="txt">해외출장신청</span></td>
-			<td class="doc_emergency">
-			</td>
+			<td class="doc_emergency"></td>
 			<td class="subject">
 			    <a><span class="txt">해외출장신청</span></a>
 			    <span class="btn_wrap">
@@ -1049,20 +1124,13 @@
 			        </span></a>
 			    </span>
 			</td>
-			<td class="attach">
-			</td>
-			
-			
-			
+			<td class="attach"></td>
 			
 			<td class="state_wrap"><a><span class="state read">진행중</span></a></td>
-			</tr><tr>
+			</tr>
+			
+			<tr>
 			<td class="date first"><span class="txt">2021-03-11</span></td>
-			
-			
-			
-			
-			
 			<td class="division"><span class="txt">업무기안</span></td>
 			<td class="doc_emergency">
 			</td>
@@ -1074,12 +1142,10 @@
 			</td>
 			<td class="attach">
 			</td>
-			
-			
-			
-			
 			<td class="state_wrap"><a><span class="state read">진행중</span></a></td>
-			</tr><tr>
+			</tr>
+			
+			<tr>
 			<td class="date first"><span class="txt">2021-02-26</span></td>
 			
 			
@@ -1137,68 +1203,59 @@
 			            <th id="header_emergency" class="sorting_disabled doc_emergency"><span class="title_sort">긴급<ins class="ic"></ins></span></th>
 						<th id="header_title" class="sorting_disabled subject"><span class="title_sort">제목<ins class="ic"></ins></span></th>
 						<th id="header_attach" class="sorting_disabled attach"><span class="title_sort">첨부</span></th>
-						<th id="header_doc_no" class="sorting_disabled doc_num"><span class="title_sort">문서번호<ins class="ic"></ins></span></th>
+						<th id="header_doc_no" class="sorting_disabled doc_num"><span class="title_sort">완료일<ins class="ic"></ins></span></th>
 						<th id="header_doc_status" class="sorting_disabled state_wrap"><span class="title_sort">결재상태</span></th>
 					</tr>
 				</thead>
-				<tbody><tr>
-			<td class="date first"><span class="txt">2021-02-26</span></td>
+				<tbody>
+				
+				<c:choose>
+		            <c:when test="${ requestScope.draftList ne null }">
+		            
+			            <c:forEach var="draftInfo" items="${ requestScope.draftList }">
+				            <c:if test="${ draftInfo.draftCompleteDate ne null }">
+								<tr>
+									<td class="date first"><span class="txt"><c:out value="${ draftInfo.draftDate }"/></span></td>
+									<td class="division"><span class="txt"><c:out value="${ draftInfo.docuname }"/></span></td>
+									<td class="doc_emergency"></td>
+									<td class="subject"> <a><span class="txt"><c:out value="${ draftInfo.docuContents }"/></span></a></td>
+									<td class="attach"></td>
+									<td class="doc_num"><span class="txt"><c:out value="${ draftInfo.draftCompleteDate }"/></span></td>
+									<td class="state_wrap"><a><span class="state finish">완료</span></a></td>
+								</tr>
+				            </c:if>
+						</c:forEach>
+		            
+		            </c:when>
+		            
+		            <c:otherwise>
+		            </c:otherwise>
+	         </c:choose>
+				
+				<tr>
+					<td class="date first"><span class="txt">2021-02-26</span></td>
+					<td class="division"><span class="txt">(신규)연장근무신청-근태관리연동</span></td>
+					<td class="doc_emergency"></td>
+					<td class="subject"> <a><span class="txt">(신규)연장근무신청-근태관리연동</span></a></td>
+					<td class="attach"></td>
+					<td class="doc_num"><span class="txt">2021-03-01</span></td>
+					<td class="state_wrap"><a><span class="state finish">완료</span></a></td>
+				</tr>
+				
+				
+				
+				<tr>
+					<td class="date first"><span class="txt">2021-01-10</span></td>
+					<td class="division"><span class="txt">자율 출퇴근 신청서</span></td>
+					<td class="doc_emergency"></td>
+					<td class="subject"><a><span class="txt">자율 출퇴근 신청서</span></a></td>
+					<td class="attach"></td>
+					<td class="doc_num"><span class="txt">2021-01-31</span></td>
+					<td class="state_wrap"><a><span class="state finish">완료</span></a></td>
+				</tr>
 			
 			
-			
-			
-			
-			<td class="division"><span class="txt">(신규)연장근무신청-근태관리연동</span></td>
-			<td class="doc_emergency">
-			</td>
-			<td class="subject">
-			    <a><span class="txt">(신규)연장근무신청-근태관리연동</span></a>
-			    <span class="btn_wrap">
-			        <a class="popup"><span class="ic_classic ic_blank" title="팝업보기"></span></a>
-			        <a><span class="wrap_ic" title="댓글">
-			            <span class="ic_classic ic_reply"></span>
-			            <span class="num">0</span>
-			        </span></a>
-			        <span class="space"></span>
-			        <a><span class="wrap_ic" title="의견">
-			            <span class="ic_classic ic_opinion"></span>
-			            <span class="num">1</span>
-			        </span></a>
-			    </span>
-			</td>
-			<td class="attach">
-			</td>
-			
-			
-			
-			
-			<td class="doc_num"><span class="txt">다우그룹-2021-00008</span></td>
-			<td class="state_wrap"><a><span class="state finish">완료</span></a></td>
-			</tr><tr>
-			<td class="date first"><span class="txt">2021-01-10</span></td>
-			
-			
-			
-			
-			
-			<td class="division"><span class="txt">자율 출퇴근 신청서</span></td>
-			<td class="doc_emergency">
-			</td>
-			<td class="subject">
-			    <a><span class="txt">자율 출퇴근 신청서</span></a>
-			    <span class="btn_wrap">
-			        <a class="popup"><span class="ic_classic ic_blank" title="팝업보기"></span></a>
-			    </span>
-			</td>
-			<td class="attach">
-			</td>
-			
-			
-			
-			
-			<td class="doc_num"><span class="txt">다우그룹-2021-00001</span></td>
-			<td class="state_wrap"><a><span class="state finish">완료</span></a></td>
-			</tr><tr>
+			<tr>
 			<td class="date first"><span class="txt">2020-11-04</span></td>
 			
 			
@@ -1210,18 +1267,6 @@
 			</td>
 			<td class="subject">
 			    <a><span class="txt">일반품의서</span></a>
-			    <span class="btn_wrap">
-			        <a class="popup"><span class="ic_classic ic_blank" title="팝업보기"></span></a>
-			        <a><span class="wrap_ic" title="댓글">
-			            <span class="ic_classic ic_reply"></span>
-			            <span class="num">0</span>
-			        </span></a>
-			        <span class="space"></span>
-			        <a><span class="wrap_ic" title="의견">
-			            <span class="ic_classic ic_opinion"></span>
-			            <span class="num">2</span>
-			        </span></a>
-			    </span>
 			</td>
 			<td class="attach">
 			</td>
@@ -1229,7 +1274,7 @@
 			
 			
 			
-			<td class="doc_num"><span class="txt">다우그룹-2020-00026</span></td>
+			<td class="doc_num"><span class="txt">2020-11-17</span></td>
 			<td class="state_wrap"><a><span class="state finish">완료</span></a></td>
 			</tr><tr>
 			<td class="date first"><span class="txt">2020-11-03</span></td>
@@ -1243,18 +1288,6 @@
 			</td>
 			<td class="subject">
 			    <a><span class="txt">111</span></a>
-			    <span class="btn_wrap">
-			        <a class="popup"><span class="ic_classic ic_blank" title="팝업보기"></span></a>
-			        <a><span class="wrap_ic" title="댓글">
-			            <span class="ic_classic ic_reply"></span>
-			            <span class="num">0</span>
-			        </span></a>
-			        <span class="space"></span>
-			        <a><span class="wrap_ic" title="의견">
-			            <span class="ic_classic ic_opinion"></span>
-			            <span class="num">1</span>
-			        </span></a>
-			    </span>
 			</td>
 			<td class="attach">
 			</td>
@@ -1262,7 +1295,7 @@
 			
 			
 			
-			<td class="doc_num"><span class="txt">다우그룹-2020-00025</span></td>
+			<td class="doc_num"><span class="txt">2020-11-16</span></td>
 			<td class="state_wrap"><a><span class="state finish">완료</span></a></td>
 			</tr><tr>
 			<td class="date first"><span class="txt">2020-11-03</span></td>
@@ -1286,7 +1319,7 @@
 			
 			
 			
-			<td class="doc_num"><span class="txt">다우그룹-2020-00023</span></td>
+			<td class="doc_num"><span class="txt">2020-11-11</span></td>
 			<td class="state_wrap"><a><span class="state finish">완료</span></a></td>
 			</tr></tbody>
 			</table>

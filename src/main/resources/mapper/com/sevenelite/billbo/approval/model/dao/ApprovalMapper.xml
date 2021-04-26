@@ -61,8 +61,41 @@
 		<result property="appStatus" column="APPROVE_STATUS" />
 		<result property="DRAFT_NO" column="DRAFTING_NO" />
 		<result property="LINE_NO" column="LINE_NO" />
+	</resultMap>
+	
+	<resultMap type="com.sevenelite.billbo.approval.model.dto.ListDraftingDTO" id="listDrafting">
+		<id property="draftNo" column="DRAFTING_NO" />
+		<result property="draftDate" column="DRAFTING_DATE" />
+		<result property="draftCompleteDate" column="DRAFTING_COMPLETE_DATE" />
+		<result property="draftCompleteStatus" column="DRAFTING_COMPLETE_STATUS" />
+		<result property="docuname" column="DRAFTING_DOCUMENTS_NAME" />
+		<result property="docuContents" column="DRAFTING_DOCUMENTS_CONTENTS" />
+		<result property="emergency" column="DRAFTING_EMERGENCY" />
+		<result property="paymentNo" column="PAYMENT_NO" />
+		<result property="memberNo" column="MEMBER_NO" />
+	</resultMap>
+	
+	<resultMap type="com.sevenelite.billbo.approval.model.dto.ListWaitingApprovalDTO" id="listWaitingApproval">
+		<id property="lineNo" column="LINE_NO" />
 		<result property="draftNo" column="DRAFTING_NO" />
-		<result property="lineNo" column="LINE_NO" />
+		<result property="lineProcess" column="LINE_PROCESS" />
+		<result property="lineBody" column="LINE_BODY" />
+		<result property="pkinds" column="LINE_PKINDS" />
+		<result property="thumbnail" column="LINE_THUMBNAIL" />
+		<result property="lineKinds" column="LINE_KINDS" />
+		<result property="deptCode" column="DEPT_CODE" />
+		<result property="spotCode" column="SPOT_CODE" />
+		<result property="draftDate" column="DRAFTING_DATE" />
+		<result property="draftCompleteDate" column="DRAFTING_COMPLETE_DATE" />
+		<result property="draftCompleteStatus" column="DRAFTING_COMPLETE_STATUS" />
+		<result property="docuname" column="DRAFTING_DOCUMENTS_NAME" />
+		<result property="docuContents" column="DRAFTING_DOCUMENTS_CONTENTS" />
+		<result property="emergency" column="DRAFTING_EMERGENCY" />
+		<result property="paymentNo" column="PAYMENT_NO" />
+		<result property="memberNo" column="MEMBER_NO" />
+		<result property="approveCode" column="APPROVE_CODE" />
+		<result property="approveStatus" column="APPROVE_STATUS" />
+		
 	</resultMap>
 	
 	<select id="selectLoginDept" resultMap="approDept" parameterType="_int">
@@ -156,10 +189,16 @@
 		)
 	</insert>
 
-	<insert id="insertCheckApprove">
-		<selectKey keyProperty="DRAFT_NO,LINE_NO" order="BEFORE" resultType="hashmap">
+	<select id="selectCheckCurrvalDraft" resultType="_int">
             SELECT
-                   SEQ_DRAFTING_NO.CURRVAL as DRAFT_NO, SEQ_LINE_NO.CURRVAL as LINE_NO
+                   SEQ_DRAFTING_NO.CURRVAL as DRAFT_NO
+              FROM DUAL  
+	</select> 
+
+	<insert id="insertCheckApprove" parameterType="CheckApproveDTO">
+		<selectKey keyProperty="LINE_NO" order="BEFORE" resultType="_int">
+            SELECT
+                   SEQ_LINE_NO.CURRVAL
               FROM DUAL    
 		</selectKey>
         INSERT 
@@ -169,7 +208,7 @@
         ) 
 		VALUES
 		(
-		  SEQ_APPROVECODE_NO.NEXTVAL, '대기', #{ DRAFT_NO }, #{ LINE_NO }
+		  SEQ_APPROVECODE_NO.NEXTVAL, #{ appStatus }, #{ DRAFT_NO }, #{ LINE_NO }
 		)
 	</insert>
 
@@ -181,6 +220,11 @@
              , A.EMAIL
              , A.PHONE
           FROM BB_MEMBER A
+          JOIN BB_MODIFY_DEPT B ON(A.MEMBER_NO = B.MEMBER_NO)
+          JOIN BB_MODIFY_SPOT C ON(A.MEMBER_NO = C.MEMBER_NO)
+         WHERE B.DEPT_CODE IS NOT NULL
+         GROUP BY (A.MEMBER_NO, A.MEMBER_NAME, A.MEMBER_PWD, A.EMAIL, A.PHONE)
+         ORDER BY A.MEMBER_NO
 	</select> 
 	
 	<select id="selectLoginDeptList" resultMap="approDept" parameterType="memDTO">
@@ -246,4 +290,51 @@
              ) A
          WHERE RNUM = 1
 	</select>
+	
+	<select id="selectAllDraftingList" resultMap="listDrafting" parameterType="memDTO">
+        SELECT
+               B.DRAFTING_NO
+             , B.DRAFTING_DATE
+             , B.DRAFTING_COMPLETE_DATE
+             , B.DRAFTING_COMPLETE_STATUS
+             , B.DRAFTING_DOCUMENTS_NAME
+             , B.DRAFTING_DOCUMENTS_CONTENTS
+             , B.DRAFTING_EMERGENCY
+             , B.PAYMENT_NO
+             , B.MEMBER_NO
+          FROM BB_DRAFTING B
+         WHERE B.MEMBER_NO = #{ no }
+         ORDER BY B.DRAFTING_NO DESC
+	</select>
+	
+	<select id="selectWaitingApproval" resultMap="listWaitingApproval" parameterType="ListWaitingApprovalDTO">
+        SELECT
+               A.LINE_NO
+             , A.DRAFTING_NO
+             , A.LINE_PROCESS
+             , A.LINE_BODY
+             , A.LINE_PKINDS
+             , A.LINE_THUMBNAIL
+             , A.LINE_KINDS
+             , A.DEPT_CODE
+             , A.SPOT_CODE
+             , B.DRAFTING_DATE
+             , B.DRAFTING_COMPLETE_DATE
+             , B.DRAFTING_COMPLETE_STATUS
+             , B.DRAFTING_DOCUMENTS_NAME
+             , B.DRAFTING_DOCUMENTS_CONTENTS
+             , B.DRAFTING_EMERGENCY
+             , B.PAYMENT_NO
+             , B.MEMBER_NO
+             , C.APPROVE_CODE
+             , C.APPROVE_STATUS
+          FROM BB_LINE_MEM A
+          JOIN BB_DRAFTING B ON(A.DRAFTING_NO = B.DRAFTING_NO)
+          JOIN BB_APPROVE C ON(A.LINE_NO = C.LINE_NO)
+         WHERE A.DEPT_CODE = #{ deptCode }
+           AND A.SPOT_CODE = #{ spotCode }
+           AND C.APPROVE_STATUS = #{ draftCompleteStatus }
+         ORDER BY A.LINE_NO DESC
+	</select>
+	
 </mapper>

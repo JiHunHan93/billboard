@@ -12,6 +12,7 @@
  		<typeAlias alias="ApproDraftingDTO" type="com.sevenelite.billbo.approval.model.dto.ApproDraftingDTO"/>
  		<typeAlias alias="ApproLineMemDTO" type="com.sevenelite.billbo.approval.model.dto.ApproLineMemDTO"/>
  		<typeAlias alias="CheckApproveDTO" type="com.sevenelite.billbo.approval.model.dto.CheckApproveDTO"/>
+ 		<typeAlias alias="ListWaitingApprovalDTO" type="com.sevenelite.billbo.approval.model.dto.ListWaitingApprovalDTO"/>
  		<typeAlias alias="RoleDTO" type="com.sevenelite.billbo.member.model.dto.RoleDTO"/>
  		<!-- End 지훈 -->
  		
