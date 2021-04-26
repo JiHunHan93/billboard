@@ -1267,7 +1267,9 @@ table.dataTable thead > tr > th.sorting_asc.not-sort{
 	margin: 15px auto;
 }
 .sub-modal {
-	width: 500px;
+	/* width: 500px; */
+	width: 750px;
+	padding: 0 20px 19px 32px;
 }
 /*-----------------
 	8. Header
