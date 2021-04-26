@@ -436,8 +436,8 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm:ss"); %>
 			</div>
 			<!-- /Page Header -->
 			<h3 class="page-title" font>${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }님의 근태 현황</h3>
+			<a href="${pageContext.servletContext.contextPath }/work/department">부서현황</a>
 			<form>
-
 				<div class="row">
 					<div class="col-md-3">
 						<div class="stats-info">
@@ -460,9 +460,12 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm:ss"); %>
 							<h6 style="font-weight: bold;">근무일</h6>
 							<h4 style="color: gray;">
 								<c:out value="${ workInfo.workCount }" />
+	
 							</h4>
+					</div>		
+					
 					</div>
-				</div>
+			</div>
 				<!-- /Leave Statistics -->
 				<!-- Page Content -->
 				<div class="content container-fluid">
@@ -571,7 +574,7 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm:ss"); %>
 								</thead>
 								<tbody>
 									<tr>
-										<td><input type="date" name="date"></td> <td> <input type="time" name="commute"></td> <td><input type="time" name="lwork"></td> <td><input type="text" name="type"></td>
+										<td><input type="date" name="date"></td> <td> <input type="Time" name="commute"></td> <td><input type="Time" name="lwork"></td> <td><input type="text" name="type"></td>
 									</tr>
 								</tbody>
 							</table>
