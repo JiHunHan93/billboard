@@ -146,13 +146,6 @@ public class WorkMainController {
 	         
 	         String typeB1 = workService.workTypeB1();
 	         System.out.println("B1 :" + typeB1);
-	         String typeB2 = workService.workTypeB2();
-	         String typeB3 = workService.workTypeB3();
-	         String typeB4 = workService.workTypeB4();
-	         String typeB5 = workService.workTypeB5();
-	         String typeB6 = workService.workTypeB6();
-	         String typeB7 = workService.workTypeB7();
-	         String typeB8 = workService.workTypeB8();
 	         
 	         WorkDTO workInfo = new WorkDTO();
 	         workInfo.setExtraWork(overStr);
@@ -161,13 +154,6 @@ public class WorkMainController {
 	         workInfo.setLateCount(lateCount);
 	         workInfo.setWorkCount(workCount);
 	         workInfo.setWorkTypeCode(typeB1); {
-//	         workInfo.setWorkTypeCode(typeB2);
-//	         workInfo.setWorkTypeCode(typeB3);
-//	         workInfo.setWorkTypeCode(typeB4);
-//	         workInfo.setWorkTypeCode(typeB5);
-//	         workInfo.setWorkTypeCode(typeB6);
-//	         workInfo.setWorkTypeCode(typeB7);
-//	         workInfo.setWorkTypeCode(typeB8);
 	         
 	         model.addAttribute("workInfo", workInfo);
 	        if(workService.insertWorkInfo(workInfo)) {
