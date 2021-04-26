@@ -634,7 +634,7 @@
 				<!-- Page Content -->
                 <div class="content container-fluid category-container">
 					<div class="row">
-						<div class="col-lg-8 col-md-8 category-box">
+						<div class="col-lg-8 col-md-8 category-three-box">
 							<section class="dash-section">
 								<div class="dash-sec-content">
 									<div class="dash-info-list">
@@ -676,7 +676,7 @@
 							</section>
 						</div>
 						<div></div>
-						<div class="col-lg-8 col-md-8 category-box">
+						<div class="col-lg-8 col-md-8 category-three-box">
 							<section class="dash-section">
 								<div class="dash-sec-content">
 									<div class="dash-info-list">
@@ -712,13 +712,21 @@
 						</div>
 						<!-- style.css 6549 max-width: 33% 주석 해제 후 나머지 주석처리 하면 세가지 박스 사용 가능 -->
 						<!-- 세번째 박스 -->
-						<!-- <div class="col-lg-8 col-md-8 category-box">
+						<div class="col-lg-8 col-md-8 category-three-box">
 							<section class="dash-section">
 								<div class="dash-sec-content">
 									<div class="dash-info-list">
 										<div class="dash-card category-card">
 											<div class="dash-card-container category-dash">
-												Admin 문서함
+												<!-- Admin 인사고과 -->
+												<p class="category-text">인사고과</p>
+												<i class="las la-graduation-cap category-icon"></i>
+												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">업무평가</div></i> -->
+												<i class="fas fa-circle category-dot"><a href="performance/myReview"/><div class="category-sub-text">업무평가 내역</div></i>
+												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">승진 심사</div></i> -->
+												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">상여 관리</div></i> -->
+												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">연봉 협상</div></i> -->
+												<!-- Admin 문서함
 												<p class="category-text">문서함</p>
 												<i class="las la-folder category-icon"></i>
 												<i class="fas fa-circle category-dot"><div class="category-sub-text">문서 조회</div></i>
@@ -733,13 +741,13 @@
 												<p class="category-text">연말정산 프로세스</p>
 												<i class="las la-calendar-day category-icon"></i>
 												<i class="fas fa-circle category-long-dot"><div class="category-sub-text">개인별 연말정산 결과 조회</div></i>
-												<i class="fas fa-circle category-long-dot"><div class="category-sub-text">연말정산 처리/신고</div></i>
+												<i class="fas fa-circle category-long-dot"><div class="category-sub-text">연말정산 처리/신고</div></i> -->
 											</div>
 										</div>
 									</div>
 								</div>
 							</section>
-						</div> -->
+						</div>
 						<!-- /세번째 박스 -->
 					</div>
 				</div>
