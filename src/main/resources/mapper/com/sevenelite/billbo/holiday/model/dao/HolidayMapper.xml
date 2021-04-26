@@ -54,6 +54,21 @@
 	<result property="memberNo" column="MEMBER_NO"/>
 </resultMap>
 
+<delete id="deleteHoliday" parameterType="_int">
+DELETE FROM BB_HOLIDAY
+WHERE HOLIDAY_NO = #{no}
+
+</delete>
+<update id="modifyHoliday" parameterType="MemberHolidayDTO">
+UPDATE BB_HOLIDAY A
+   SET 
+       A.HOLIDAY_TYPE= #{type},
+       A.START_DATE = #{startDate},
+       A.END_DATE = #{endDate},
+       A.HOLIDAY_TERM = #{term},
+       A.HOLIDAY_REASON = #{reason}
+    WHERE A.HOLIDAY_NO = #{no}   
+</update>
 <select id="selectHolidayList" resultMap="registHoldayResultMap" parameterType="_int">
 SELECT
        A.HOLIDAY_TYPE

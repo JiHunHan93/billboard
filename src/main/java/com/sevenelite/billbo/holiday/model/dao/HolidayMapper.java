@@ -17,4 +17,8 @@ public interface HolidayMapper {
 
 	List<MemberHolidayDTO> selectHolidayList(int memberno);
 
+	boolean modifyHoliday(MemberHolidayDTO holiday2);
+
+	boolean deleteHoliday(int deleteNo);
+
 }

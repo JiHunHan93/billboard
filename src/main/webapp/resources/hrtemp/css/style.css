@@ -1267,7 +1267,9 @@ table.dataTable thead > tr > th.sorting_asc.not-sort{
 	margin: 15px auto;
 }
 .sub-modal {
-	width: 500px;
+	/* width: 500px; */
+	width: 750px;
+	padding: 0 20px 19px 32px;
 }
 /*-----------------
 	8. Header
@@ -1744,7 +1746,7 @@ table.dataTable thead > tr > th.sorting_asc.not-sort{
 	color: #333;
 }
 .card {
-	border: 1px solid #ededed;
+	border: 0px solid #ededed;
 	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
 	margin-bottom: 30px;
 }
