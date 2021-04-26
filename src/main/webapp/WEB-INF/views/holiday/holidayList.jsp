@@ -755,25 +755,29 @@
 								<table class="table table-striped custom-table mb-0">
 									<thead>
 										<tr>
-											<th hidden="true">번호</th>
+											<th>번호</th>
+											<th>번호</th>
 											<th>휴가종류 </th>
 											<th>휴가시작날짜</th>
 											<th>휴가종료날짜</th>
 											<th>휴가기간</th>
 											<th>휴가사유</th>
-											
+											<th></th>
+											<th></th>
 										</tr>
 									</thead>
 									<tbody>
 									<c:forEach var="holidaylist" items="${requestScope.holidaylist }">
 										<tr class="holiday-completed">
-											<td hidden="true"><c:out value="${holidaylist.no }"/></td>
+											<td><c:out value="${holidaylist.no }"/></td>
+											<td><c:out value="${holidaylist.no }"/></td>
 											<td><c:out value="${holidaylist.type }"/></td>
 											<td><c:out value="${holidaylist.startDate }"/></td>
 											<td><c:out value="${holidaylist.endDate }"/></td>
 											<td><c:out value="${holidaylist.term }"/></td>
 											<td><c:out value="${holidaylist.reason }"/></td>
-											<td></td>
+											<td><a href="#" class="btn add-btn" data-toggle="modal" data-target="#delete_holiday" id="deleteHoliday"><i class="fa fa-minus" id=""></i>휴가삭제</a></td>
+											<td><a href="#" class="btn add-btn" data-toggle="modal" data-target="#edit_holiday" id="modifyHoliday"><i class="fa fa-minus" ></i>휴가수정</a></td>
 									</c:forEach>
 									</tbody>
 								</table>
@@ -824,7 +828,7 @@
 									<div class="form-group">
 										<label>휴가사유 <span class="text-danger">*</span></label>
 										<div class="cal-icon"><!-- <input class="form-control datetimepicker" type="text"> -->
-										<input type="text" name="reason"></div>
+										<textarea name="reason" style="resize:none; width: 440px; margin-top: 0px; margin-bottom: 0px; height: 192px;"></textarea><!-- <input type="text" name="reason"> --></div>
 									</div>
 									<div class="form-group" hidden="true">
 										<label>휴가기간<span class="text-danger">*</span></label>
@@ -846,27 +850,55 @@
 				<div class="modal custom-modal fade" id="edit_holiday" role="dialog">
 					<div class="modal-dialog modal-dialog-centered" role="document">
 						<div class="modal-content">
+						
 							<div class="modal-header">
-								<h5 class="modal-title">Edit Holiday</h5>
+								<h5 class="modal-title">휴가 수정</h5>
 								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 									<span aria-hidden="true">&times;</span>
 								</button>
 							</div>
 							<div class="modal-body">
-								<form>
-									<div class="form-group">
-										<label>Holiday Name <span class="text-danger">*</span></label>
-										<input class="form-control" value="New Year" type="text">
+								<form action="${pageContext.servletContext.contextPath }/holiday/modify" method="post">
+								<div class="form-group" hidden="false">
+								<label>사번 <span class="text-danger">*</span></label>
+										<div class="cal-icon"><!-- <input class="form-control datetimepicker" type="text"> -->
+										<input type="text" name="memberNo" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno}"></div>
+								</div>
+								<div class="form-group">
+										<label>휴가번호 <span class="text-danger">*</span></label>
+										<input type="text" name="no" id="no">
 									</div>
 									<div class="form-group">
-										<label>Holiday Date <span class="text-danger">*</span></label>
-										<div class="cal-icon"><input class="form-control datetimepicker" value="01-01-2019" type="text"></div>
+										<label>휴가종류 <span class="text-danger">*</span></label>
+										<select class="form-control" type="text" name="type">
+											<option value="병가">병가</option>
+											<option value="반차">반차</option>
+											<option value="연차">연차</option>
+										</select>
+									</div>
+									<div class="form-group">
+										<label>휴가시작날짜 <span class="text-danger">*</span></label>
+										<div class="cal-icon"><input  value="26-04-2019" type="date" name="startDate"></div>
+									</div>
+									<div class="form-group">
+										<label>휴가종료날짜 <span class="text-danger">*</span></label>
+										<div class="cal-icon"><input  value="01-01-2019" type="date" name="endDate"></div>
+									</div>
+									<div>
+										<label>휴가사유 <span class="text-danger">*</span></label>
+										<div class="text-danger"><textarea name="reason" style="resize:none; width: 440px; margin-top: 0px; margin-bottom: 0px; height: 192px;"></textarea></div>
+									</div>
+									<div class="form-group" hidden="true">
+										<label>휴가기간<span class="text-danger">*</span></label>
+										<div class="cal-icon"><!-- <input class="form-control datetimepicker" type="text"> -->
+										<input type="text" name="term" class="term" id="term" value="2"></div>
 									</div>
 									<div class="submit-section">
-										<button class="btn btn-primary submit-btn">Save</button>
+										<button class="btn btn-primary submit-btn" type="button" onclick="modifyHoliday(this.form)">수정하기</button>
 									</div>
 								</form>
 							</div>
+						
 						</div>
 					</div>
 				</div>
@@ -877,20 +909,26 @@
 					<div class="modal-dialog modal-dialog-centered">
 						<div class="modal-content">
 							<div class="modal-body">
+							<form action="${pageContext.servletContext.contextPath }/holiday/delete" method="post">
 								<div class="form-header">
 									<h3>Delete Holiday</h3>
+									<h3>휴가삭제</h3>
+										<div class="form-group">
+										<label>휴가번호 <span class="text-danger">*</span></label>
+										<input type="text" name="no" id="no2">
+									</div>
 									<p>Are you sure want to delete?</p>
 								</div>
 								<div class="modal-btn delete-action">
 									<div class="row">
 										<div class="col-6">
-											<a href="javascript:void(0);" class="btn btn-primary continue-btn">Delete</a>
+											<button class="btn btn-primary submit-btn" type="button" onclick="deleteHoliday(this.form)">삭제하기</button>
 										</div>
 										<div class="col-6">
-											<a href="javascript:void(0);" data-dismiss="modal" class="btn btn-primary cancel-btn">Cancel</a>
-										</div>
+											<button class="btn btn-primary submit-btn" type="button" >취소</button>
 									</div>
 								</div>
+								</form>
 							</div>
 						</div>
 					</div>
@@ -917,6 +955,30 @@
 			regist.submit();
 		}
 		</script> 
+		
+		<!-- 휴가수정 -->
+		<script>
+		function modifyHoliday(modify){
+			var memberNo = modify.memberNo.value;
+			var no = modify.no.value;
+			var startDate = modify.startDate.value;
+			var endDate = modify.endDate.value;
+			var reason = modify.reason.value;
+			var term = modify.term.value
+			
+			modify.submit();
+			
+		}
+		</script>
+		
+		<!-- 휴가삭ㅈ -->
+		<script>
+			function deleteHoliday(delete2){
+				var no = delete2.no.value;
+				console.log(no)
+				delete2.submit();
+			}
+		</script>
 		<script>
 	if(document.getElementsByTagName("td")) {
 		const $tds = document.getElementsByTagName("td");
@@ -929,14 +991,35 @@
 			$tds[i].onmouseout = function() {
 				this.parentNode.style.background = "white";
 			}
-			$tds[i].onclick = function() {
-				const no = this.parentNode.children[0].innerText;
+		/* 	$tds[i].onclick = function() {
+				const no = this.parentNode.children[6].innerText; */
 			
 				/* location.href = "${ pageContext.servletContext.contextPath }/holiday/detail?no=" + no; */
-			}
+			//}
+			$tds[i].onmouseenter = function() {
+             $('#modifyHoliday').on('click', function(ii) {
+                 console.log("클릭");
+                 console.log($tds[0].innerText);
+                 console.log(this.parentNode.children[0].innerText);
+                 console.log(ii);
+                 $('#no').val($tds[0].innerText);
+             });
+             
+                $('#deleteHoliday').on('click', function(ii) {
+                    console.log("클릭");
+                    console.log($tds[1].innerText);
+                    console.log(this.parentNode.children[0].innerText);
+                    console.log(ii);
+                    $('#no2').val($tds[1].innerText);
+                });
+         }
+			
+		
 		}
 	}
 	</script>
+	<script>
+</script>
 		
 		<!-- <script>
 		input.addEventListener('term' e => { 
@@ -960,7 +1043,7 @@
 			   
 			   console.table(term)
 			}) -->
-		</script>
+	<!-- 	</script> -->
 
 		<!-- jQuery -->
         <script src="../resources/hrtemp/js/jquery-3.5.1.min.js"></script>

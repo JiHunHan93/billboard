@@ -85,7 +85,7 @@ public class PerformanceController {
 	      int avg = sum / 10;
 	      
 	      reviewDTO.setReviewAvg(avg);
-	      
+              
 	      String grade = "";
 	      if(avg < 65) 		 grade = "D";
 	      else if(avg <= 74) grade = "C";
