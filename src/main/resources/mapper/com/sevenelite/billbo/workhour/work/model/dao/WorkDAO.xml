@@ -36,12 +36,12 @@
 		 INSERT
 		   INTO BB_WEEK_WORK_STATISTIC A
 		  (
-            STATISTIC_DATE 
-		 ,  WEEK_WORK_STATISTIC_NO
-		 ,  TOTAL_WORK_HOURS
-         ,  TOTAL_EXTRA_WORK_HOURS
-		 ,  WORK_LATE_COUNT
-         ,  WORK_COUNT
+            A.STATISTIC_DATE 
+		 ,  A.WEEK_WORK_STATISTIC_NO
+		 ,  A.TOTAL_WORK_HOURS
+         ,  A.TOTAL_EXTRA_WORK_HOURS
+		 ,  A.WORK_LATE_COUNT
+         ,  A.WORK_COUNT
 		 )
 		VALUES
 		(
@@ -51,7 +51,7 @@
         ,  #{ extraWork }
         ,  #{ LateCount }
         ,  #{ workCount }
-		) 
+		)
 	</insert>
 
 	
@@ -77,9 +77,10 @@
 	</select>
 	
 	<select id="updateWorkCount" resultType="_int" parameterType="WorkDTO">
-       SELECT
-               COUNT(A.TOTAL_WORK_HOURS)
+    SELECT
+               COUNT(B.COMMUTE)
          FROM  BB_WEEK_WORK_STATISTIC A
+     FULL JOIN BB_WORKSTATUS B ON (A.MEMBER_NO = B.MEMBER_NO)
        </select>
     <select id="workTypeB1" resultType="String" parameterType="WorkDTO">
     	 SELECT
@@ -135,7 +136,7 @@
     <update id="editWork" parameterType="StatusAndWorkDTO">
         UPDATE 
                BB_WORKSTATUS A
-           SET A.WORKDATE = #{ date, jdbcType = DATE }
+           SET A.WORKDATE = #{ date}
              , A.COMMUTE =  #{ commute, jdbcType= TIME }
              , A.LEAVE_WORK = #{ lwork, jdbcType= TIME }
              , A.WORKTYPE_CODE = #{ type, jdbcType = VARCHAR }     
