@@ -309,7 +309,7 @@ public class ApprovaldocumentController {
 		
 		System.out.println(result1 + result2 + result3);
 		
-		return gson.toJson("유후");
+		return gson.toJson("결재가 완료되었습니다.");
 	}
 	
 //	@PostMapping(value="1004LineCheck", produces="application/json; charset=UTF-8")
