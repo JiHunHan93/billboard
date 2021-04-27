@@ -45,13 +45,7 @@ public class MainProfileController {
 
 		this.profileService = profileService;
 	}
-	 @RequestMapping(value = "insertMemberNo", method= {RequestMethod.GET, RequestMethod.POST})
-	 public String page3() {
-		return null;
-		 
-	 }
 	
-	//@RequestMapping(value = "mainProfile", method= {RequestMethod.GET, RequestMethod.POST})
 	@GetMapping(value = "mainProfile")
 	public String page(Model model, Authentication authentication) {
 
@@ -82,18 +76,6 @@ public class MainProfileController {
 		/* 정말 가 족같은 가족사항 */
 		List<FamilyDTO> familySelect = profileService.familySelect(user.getMemberno());
 
-		System.out.println(member + "오나???!?");
-		System.out.println(dept + "이것도 오나???!?");
-		System.out.println(detailMem + "이거도 제발");
-		System.out.println(modidept + "이거도 제발Q");
-		System.out.println(modispotDto + "이거도 제발시발");
-		System.out.println(careerDto + "이거도 제발시발");
-		System.out.println(bonusDto + "이거도 제발시발");
-		System.out.println(LicenseDto + "젭알 되주세요");
-		System.out.println(certificateInsert + "젭알 되주세요");
-		System.out.println(armySelect + "이거 안되면 재입대한다");
-		System.out.println(academic + "이쯤되면 그냥 되겠지..");
-		System.out.println(familySelect + "마지막");
 
 		model.addAttribute("member", member);
 		model.addAttribute("dept", dept);
@@ -194,10 +176,7 @@ public class MainProfileController {
 		model.addAttribute("memberno", memberno);
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 		System.out.println("131241414q");
-		// List<CertificateDTO> certi =
-		// profileService.selectCertificate(user.getMemberno());
-		// model.addAttribute("certi", certi);
-		return "redirect:/profile/mainProfile2";
+			return "redirect:/profile/mainProfile2";
 
 	}
 
@@ -393,10 +372,7 @@ public class MainProfileController {
 	      UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
 	      
 	      /* 기존에는 로그인한 사번이 담겨있었는데 이걸 파라미터로 전송받은 사용자가 입력한 사번으로 교체 */
-			/*
-			 * if(memberno != null ) { user.setMemberno(Integer.parseInt(memberno)); } else
-			 * { user.setMemberno(0); }
-			 */
+			
 		System.out.println("로그인 회원번호");
 		/* 멤버정보조회 */
 		List<MemberInfoDTO> member = profileService.selectMemberInfo(user.getMemberno());
@@ -488,30 +464,25 @@ public class MainProfileController {
 		return "profile/main3";
 	}
 	
+	   @RequestMapping(value = "insertMemberNo", method= {RequestMethod.GET, RequestMethod.POST})
+	   public String page3() {
+		   return null;
+		   
+	   }
 	/* select이긴 한데 .. */
 
 	@GetMapping("memberProfile")
 	public String member_info_phone(Authentication authentication, Model model, HttpServletRequest request,
 			@ModelAttribute MemBbDTO memBbDTO, HttpSession session) {
 		System.out.println("여기와?");
-//		int no = Integer.parseInt(request.getParameter("no"));
-//		System.out.println("!!!!!!!!!!!!!" + no);
-//		List<MemDTO> profileList1 = profileService.member_info_phone(no);
-		List<MemBbDTO> profileList1 = profileService.mainProfile();
+	List<MemBbDTO> profileList1 = profileService.mainProfile();
 		System.out.println(profileList1);
-		// int no =
-		// System.out.println(no);
-
+	
 		System.out.println("================================" + profileList1);
 		model.addAttribute("profileList1", profileList1);
 		request.getSession().setAttribute("profileList1", profileList1);
 
-//		List<MemberInfoDTO> MList = profileService.memberInfo();/* no 매개변수로  */
-////??		List<CareerDTO> CList = profileService.career();
-//		System.out.println("????????????????????????????????????????");
-//		System.out.println(MList);
-//		model.addAttribute("MList", MList);
-//		
+	
 
 		return "profile/main";
 	}
@@ -526,15 +497,7 @@ public class MainProfileController {
 		return "profile/main";
 	}
 
-//	@GetMapping("mainProfile")
-//	public String member_enrollDate(Model model) {
-//
-//		List<MemBbDTO> member_enrollDate = profileService.member_enrollDate();
-//		System.out.println(member_enrollDate);
-//		model.addAttribute("profileList", member_enrollDate);
-//		
-//		return "profile/mainProfile";
-//	}
+
 
 	@GetMapping("member_name")
 	public String member_name(Model model) {
@@ -546,15 +509,4 @@ public class MainProfileController {
 		return "profile/main";
 	}
 
-	/*
-	 * @PostMapping("modify") public String mainModify(Model model, @ModelAttribute
-	 * MemberInfoDTO memberInfo, Authentication authentication) {
-	 * 
-	 * UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
-	 * 
-	 * List<MemberInfoDTO> modifyMember =
-	 * profileService.modifyMember(user.getMemberno());
-	 * 
-	 * return "profile/main"; }
-	 */
 }

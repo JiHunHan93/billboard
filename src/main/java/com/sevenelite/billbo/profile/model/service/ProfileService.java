@@ -22,19 +22,13 @@ public interface ProfileService {
 
 
 
-	//List<MemberInfoDTO> memberInfo();
+	
 	List<CareerDTO> career();
-//
-//	void memberInfo(MemberInfoDTO member);
 
-//	boolean spot(ModifySpotDTO modifyspot);
-
-
-	//void career(CareerDTO career);
 
 	boolean career(CareerDTO career);
 
-	//void certificate(CertificateDTO certificate);
+	
 	boolean certificate(CertificateDTO certificate);
 
 	boolean finalAcademic(FinalAcademicDTO finalAcademic);
@@ -48,11 +42,11 @@ public interface ProfileService {
 	List<LicenseDTO> selectLicense(int memberno);
 
 	boolean memberInfo(MemberInfoDTO memberInfo);
-//보류	boolean bonus(BonusDTO bonus);
+
 
 	List<MemBbDTO> member_info_phone();
 	
-//	List<MemDTO> member_info_phone(int no);
+
 	
 	List<MemBbDTO> member_address();
 
@@ -60,18 +54,17 @@ public interface ProfileService {
 
 	
 
-	//List<DeptDTO> member_name();
+	
 
 	List<MemBbDTO> mainProfile();
 
 	List<MemberInfoDTO> memberInfo(int memberno);
 	
-	//List<MemberInfoDTO> main();
+	
 
 	boolean selectMemberInfo(MemberInfoDTO member_info_no);
 
-	//List<MemberInfoDTO> selectMemberInfo(int memberno);
-//?
+	
 	List<DeptDTO> selectMemberDept(int memberno);
 
 
@@ -89,8 +82,7 @@ public interface ProfileService {
 
 	boolean modifyspot(ModifySpotDTO modifyspot);
 
-	//boolean dept(ModifyDeptDTO1 modifydept);
-
+	
 	List<ModifyDeptDTO1> selectModifyDept(int memberno);
 
 	List<ModifySpotDTO> selectspot(int memberno);
@@ -101,8 +93,7 @@ public interface ProfileService {
 
 	boolean bonusInsert(BonusDTO bonus);
 
-	//List<LicenseDTO> licenseSelect(int memberno);
-
+	
 	List<CertificateDTO> certificateInsert(int memberno);
 	
 	/*armyDTO*/
@@ -112,10 +103,7 @@ public interface ProfileService {
 
 	List<FinalAcademicDTO> academic(int memberno);
 
-	//List<FamilyDTO> familyDto(int memberno);
-
 	
-	//List<MemberInfoDTO> modifyMember(int no);
 	/* ***********************************main2 select 조회 위한************************* */
 	List<CertificateDTO> selectCertificate(int memberno);
 	
@@ -146,7 +134,7 @@ public interface ProfileService {
 	List<LicenseDTO> viewLicenseDto(int memberno);
 
 	
-	  List<FileAttachmentDTO> selectFileAttach(int memberno);
+    List<FileAttachmentDTO> selectFileAttach(int memberno);
 	 
 	
 	

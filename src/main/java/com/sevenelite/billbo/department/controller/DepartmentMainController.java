@@ -34,6 +34,12 @@ public class DepartmentMainController {
 		return "department/department";
 	}
 	
+	@GetMapping(value={"all-department", "/"})
+	public String allDepartment() {
+		
+		return "department/all-department";
+	}
+	
 	@GetMapping(value={"department-business", "/"})
 	public String departmentBusiness(Model model) {
 		
@@ -77,6 +83,36 @@ public class DepartmentMainController {
 		
 		
 		return "department/department-production";
+	}
+	
+	@GetMapping(value={"department-education", "/"})
+	public String departmentEducation(Model model) {
+		
+		List<DepartmentDTO> allEducationDepartmentList = departmentService.selectEducationDepartmentList();
+		
+		for(DepartmentDTO allEducationDepartment : allEducationDepartmentList) {
+			System.out.println("allEducationDepartment : " + allEducationDepartmentList);
+		}
+		
+		model.addAttribute("allEducationDepartmentList", allEducationDepartmentList);
+		
+		
+		return "department/department-education";
+	}
+	
+	@GetMapping(value={"department-employee", "/"})
+	public String departmentEmployee(Model model) {
+		
+		List<DepartmentDTO> allEmployeeDepartmentList = departmentService.selectEmployeeDepartmentList();
+		
+		for(DepartmentDTO allEmployeeDepartment : allEmployeeDepartmentList) {
+			System.out.println("allEmployeeDepartment : " + allEmployeeDepartment);
+		}
+		
+		model.addAttribute("allEmployeeDepartmentList", allEmployeeDepartmentList);
+		
+		
+		return "department/department-employee";
 	}
 	
 	 @GetMapping(value={"detail", "/"}) 

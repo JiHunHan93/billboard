@@ -11,7 +11,7 @@ public interface CalService {
 
 	boolean insertEvt(CalDTO calDTO);
 
-	String seletDept(int userNo);
+	String selectDept(int userNo);
 
 	boolean updateEvt(CalDTO calDTO);
 

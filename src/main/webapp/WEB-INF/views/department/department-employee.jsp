@@ -1,48 +1,61 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<meta name="viewport"
-	content="width=device-width, initial-scale=1.0, user-scalable=0">
-<meta name="description" content="Smarthr - Bootstrap Admin Template">
-<meta name="keywords"
-	content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
-<meta name="author" content="Dreamguys - Bootstrap Admin Template">
-<meta name="robots" content="noindex, nofollow">
-<title>2조BB-게시판/문서함</title>
-
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="../resources/hrtemp/css/bootstrap.min.css">
-
-<!-- Fontawesome CSS -->
-<link rel="stylesheet"
-	href="../resources/hrtemp/css/font-awesome.min.css">
-
-<!-- Lineawesome CSS -->
-<link rel="stylesheet"
-	href="../resources/hrtemp/css/line-awesome.min.css">
-
-<!-- Datatable CSS -->
-<link rel="stylesheet"
-	href="../resources/hrtemp/css/dataTables.bootstrap4.min.css">
-
-<!-- Main CSS -->
-<link rel="stylesheet" href="../resources/hrtemp/css/style.css">
-
-<!-- Custom JS -->
-<script src="../resources/hrtemp/js/app.js"></script>
-
-<!-- jQuery -->
-<script src="../resources/hrtemp/js/jquery-3.5.1.min.js"></script>
-
-
-</head>
-<body>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
+        <meta name="description" content="Smarthr - Bootstrap Admin Template">
+		<meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
+        <meta name="author" content="Dreamguys - Bootstrap Admin Template">
+        <meta name="robots" content="noindex, nofollow">
+        <title>Designation</title>
+		
+		<!-- Favicon -->
+        <!-- shortcut logo -->
+		<link rel="shortcut icon" type="image/x-icon" href="./resources/hrtemp/img/Logo.png">
+		
+		<!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="../resources/hrtemp/css/bootstrap.min.css">
+		
+		<!-- Fontawesome CSS -->
+        <link rel="stylesheet" href="../resources/hrtemp/css/font-awesome.min.css">
+		
+		<!-- Lineawesome CSS -->
+        <link rel="stylesheet" href="../resources/hrtemp/css/line-awesome.min.css">
+		
+		<!-- Select2 CSS -->
+		<link rel="stylesheet" href="../resources/hrtemp/css/select2.min.css">
+		
+		<!-- Datatable CSS -->
+		<link rel="stylesheet" href="../resources/hrtemp/css/dataTables.bootstrap4.min.css">
+		
+		<!-- Main CSS -->
+        <link rel="stylesheet" href="../resources/hrtemp/css/style.css">
+		
+		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!--[if lt IE 9]>
+			<script src="./resources/hrtemp/js/html5shiv.min.js"></script>
+			<script src="./resources/hrtemp/js/respond.min.js"></script>
+		<![endif]-->
+    </head>
+    <body>
 	<!-- Main Wrapper -->
 	<div class="main-wrapper">
+
+		<!-- Loader -->
+		<div id="loader-wrapper">
+			<div id="loader">
+				<div class="loader-ellips">
+					<span class="loader-ellips__dot"></span> <span
+						class="loader-ellips__dot"></span> <span
+						class="loader-ellips__dot"></span> <span
+						class="loader-ellips__dot"></span>
+				</div>
+			</div>
+		</div>
+		<!-- /Loader -->
 
 		      <!-- Header -->
       <div class="header">
@@ -429,156 +442,164 @@
          </div>
       </div>
       <!-- /Sidebar -->
-      
-		<div class="sidebar" id="sidebar">
-			<div class="sidebar-inner slimscroll">
-				<div id="sidebar-menu" class="sidebar-menu">
-					<ul>
-						<!-- 사이드바 서브메뉴 안쓰는 방향으로 수정 -->
-						<li><a href="${pageContext.servletContext.contextPath}"
-							class="sidebar-default"> <i class="la la-home sidebar-icon"></i>
-								<!-- <span class="menu-arrow"></span> --> <span
-								class="sidebar-text">Home</span>
-						</a></li>
-						<div class="sidebar-line"></div>
-						<li><a href="${pageContext.servletContext.contextPath}/apps"
-							class="sidebar-default"> <i class="la la-cube sidebar-icon"></i>
-								<span class="sidebar-text"> Apps</span> <!-- <span class="menu-arrow"></span> -->
-						</a></li>
-						<div class="sidebar-line"></div>
-
-						<li><a
-							href="${pageContext.servletContext.contextPath}/employee"
-							class="noti-dot sidebar-default"> <i
-								class="la la-user sidebar-icon"></i> <span class="sidebar-text">
-									Employees</span> <!-- <span class="menu-arrow"></span> -->
-						</a></li>
-						<div class="sidebar-line"></div>
-						<li><a
-							href="${pageContext.servletContext.contextPath}/attendance"
-							class="sidebar-default"> <i
-								class="la la-briefcase sidebar-icon"></i> <span
-								class="sidebar-text">Attendance</span>
-						</a></li>
-						<div class="sidebar-line"></div>
-						<li><a href="${pageContext.servletContext.contextPath}/admin"
-							class="sidebar-default"> <i class="la la-key sidebar-icon"></i>
-								<span class="sidebar-text">Admin</span> <!-- <span class="menu-arrow"></span> -->
-						</a></li>
-						<div class="sidebar-line"></div>
-						<li><a href="#" class="sidebar-default"> <i
-								class="la la-money sidebar-icon"></i> <span class="sidebar-text">Payroll</span>
-						</a></li>
-						<div class="sidebar-line"></div>
-						<li><a
-							href="${pageContext.servletContext.contextPath}/information"
-							class="sidebar-default"> <i
-								class="la la-building sidebar-icon"></i> <span
-								class="sidebar-text">Information</span>
-						</a></li>
-						<div class="sidebar-line"></div>
-					</ul>
-				</div>
-			</div>
-		</div>
-		<!-- /Sidebar -->
-
-
-		<!-- Page Wrapper -->
-		<div class="page-wrapper">
-
-			<div class="content container-fluid">
-
-				<!-- Page Header -->
-				<div class="page-header">
+			
+				<!-- Page Wrapper -->
+            <div class="page-wrapper">
+			
+				<!-- Page Content -->
+                <div class="content container-fluid">
+				
+					<!-- Page Header -->
+					<div class="page-header">
+						<div class="row align-items-center">
+							<div class="col">
+								<h3 class="page-title">Employee Department</h3>
+								<ul class="breadcrumb">
+									<li class="breadcrumb-item"><a href="index.html">인사지원부</a></li>
+								</ul>
+							</div>
+							
+						</div>
+					</div>
+					<!-- /Page Header -->
+					
 					<div class="row">
-						<div class="col">
-							<h3 class="page-title">업무 평가 내역</h3>
-							<ul class="breadcrumb">
-								<!-- <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li> -->
-								<li class="breadcrumb-item active">My Performance review</li>
-							</ul>
+						<div class="col-md-12">
+							<div class="table-responsive">
+								<table class="table table-striped custom-table mb-0 datatable">
+									<thead>
+										<tr>
+											<th>사원번호</th>
+											<th>이름</th>
+											<th>부서명</th>
+											<th>직위명</th> 
+										</tr>
+									</thead>
+								<c:forEach var="allDepartmentList" items="${requestScope.allEmployeeDepartmentList}">	
+									<tr>
+										<td class="free-td"><c:out value="${allDepartmentList.no}" />
+										<td class="free-td"><c:out value="${allDepartmentList.memberName}" />	
+										<td class="free-td"><c:out value="${allDepartmentList.deptName}" />
+									    <td class="free-td"><c:out value="${allDepartmentList.spotName}"/>
+									</tr>
+								</c:forEach>
+									
+								</table>
+							</div>
+						</div>
+					</div>
+               
+				<!-- /Page Content -->
+				
+				 <script>
+				if(document.getElementsByTagName("td")) {
+					const $tds = document.getElementsByTagName("td");
+					
+					for(let i = 0; i < $tds.length; i++) {
+						$tds[i].onmouseenter = function() {
+							this.parentNode.style.backgroundColor = "rgb(253,192,124)";
+							this.parentNode.style.cursor = "pointer";
+						}
+						$tds[i].onmouseout = function() {
+							this.parentNode.style.background = "white";
+						}
+						$tds[i].onclick = function() {
+							const no = this.parentNode.children[0].innerText;
+							/* const count = this.parentNode.children[7].innerText; */
+							/* console.log(count); */
+							console.log(no);
+							location.href = "${ pageContext.servletContext.contextPath }/detail?no=" + no;
+						}
+					}
+				}
+				</script>
+
+				<!-- Add Designation Modal -->
+				<div id="add_designation" class="modal custom-modal fade" role="dialog">
+					<div class="modal-dialog modal-dialog-centered" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">Add Designation</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<form>
+									<div class="form-group">
+										<label>Designation Name <span class="text-danger">*</span></label>
+										<input class="form-control" type="text">
+									</div>
+									<div class="form-group">
+										<label>Department <span class="text-danger">*</span></label>
+										<select class="select">
+											<option>Select Department</option>
+											<option>Web Development</option>
+											<option>IT Management</option>
+											<option> 	Marketing</option>
+										</select>
+									</div>
+									<div class="submit-section">
+										<button class="btn btn-primary submit-btn">Submit</button>
+									</div>
+								</form>
+							</div>
 						</div>
 					</div>
 				</div>
-				<!-- /Page Header -->
-				<div class="row bonus-sub-container">
-
-					<div class="col-sm-12" style="height: 900px;">
-						<div class="card mb-0">
-							<div class="card-header">
-								<div class="col-md-6" style="max-width: 100%;">
-									<div class="card-board-style">
-										<div class="notice-body" align="center">
-											<br>
-											<div class="review-header text-center">
-												<h3 class="review-title">업무 평가 내역</h3>
-												<p class="text-muted">${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }</p>
-											</div>
-											<!-- <form class="file-search">
-											<div class="col-auto float-right ml-auto">
-											<a href="#" class="btn btn-primary btn-sm sub-btn" data-toggle="modal" data-target="#edit_project"><i class="fa fa-plus"></i> 업무 평가</a>
-											</div>
-												<div class="input-group" style="width: 300px; float: left;">
-													<select>
-														<option>제목</option>
-														<option>내용</option>
-														<option>통합</option>
-													</select> <input type="text" class="form-control"
-														placeholder="Search">
-													<div class="input-group-prepend">
-														<i class="fa fa-search board-icon"></i>
-													</div>
-												</div>
-											</form> -->
-
-											<div class="tab-content">
-												<div class="tab-pane show active" id="solid-justified-tab1">
-													<div class="card-body">
-														<div class="table-responsive board-table-sort">
-															<!-- <button type="button" class="btn btn-primary dropdown-toggle" style="float: right;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">해당 연도</button>
-															<div class="dropdown-menu">
-															<a class="dropdown-item" href="#" name="2021">2021</a>
-															<a class="dropdown-item" href="#" name="2020">2020</a>
-															</div> -->
-															<table class="datatable table table-stripped mb-0">
-																<thead>
-																	<tr>
-																		<th><input type="checkbox"></th>
-																		<th>평가일</th>
-																		<th>이름</th>
-																		<th>직위</th>
-																		<th>근무부서</th>
-																		<th>휴대폰</th>
-																		<th>평가 등급</th>
-																		<th class="tb-hidden">인사평가고유번호</th>
-																	</tr>
-																</thead>
-																<c:forEach var="myReviewList"
-																	items="${ requestScope.myReviewList }">
-																	<tr class="rowClick">
-																		<td><input type="checkbox" />
-																		<td class="rnp-td"><c:out
-																				value="${ myReviewList.date }" />
-																		<td class="rnp-td"><c:out
-																				value="${ myReviewList.name }" />
-																		<td class="rnp-td"><c:out
-																				value="${ myReviewList.spot }" />
-																		<td class="rnp-td"><c:out
-																				value="${ myReviewList.dept }" />
-																		<td class="rnp-td"><c:out
-																				value="${ myReviewList.phone }" />
-																		<td class="rnp-td"><c:out
-																				value="${ myReviewList.grade}" />
-																		<td class="rnp-td tb-hidden"><c:out
-																				value="${ myReviewList.reviewNo}" />
-																	</tr>
-																</c:forEach>
-															</table>
-														</div>
-													</div>
-												</div>
-											</div>
+				<!-- /Add Designation Modal -->
+				
+				<!-- Edit Designation Modal -->
+				<div id="edit_designation" class="modal custom-modal fade" role="dialog">
+					<div class="modal-dialog modal-dialog-centered" role="document">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">Edit Designation</h5>
+								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<form>
+									<div class="form-group">
+										<label>Designation Name <span class="text-danger">*</span></label>
+										<input class="form-control" value="Web Developer" type="text">
+									</div>
+									<div class="form-group">
+										<label>Department <span class="text-danger">*</span></label>
+										<select class="select">
+											<option>Select Department</option>
+											<option>Web Development</option>
+											<option>IT Management</option>
+											<option>Marketing</option>
+										</select>
+									</div>
+									<div class="submit-section">
+										<button class="btn btn-primary submit-btn">Save</button>
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<!-- /Edit Designation Modal -->
+				
+				<!-- Delete Designation Modal -->
+				<div class="modal custom-modal fade" id="delete_designation" role="dialog">
+					<div class="modal-dialog modal-dialog-centered">
+						<div class="modal-content">
+							<div class="modal-body">
+								<div class="form-header">
+									<h3>Delete Designation</h3>
+									<p>Are you sure want to delete?</p>
+								</div>
+								<div class="modal-btn delete-action">
+									<div class="row">
+										<div class="col-6">
+											<a href="javascript:void(0);" class="btn btn-primary continue-btn">Delete</a>
+										</div>
+										<div class="col-6">
+											<a href="javascript:void(0);" data-dismiss="modal" class="btn btn-primary cancel-btn">Cancel</a>
 										</div>
 									</div>
 								</div>
@@ -586,57 +607,33 @@
 						</div>
 					</div>
 				</div>
-			</div>
-		</div>
-	</div>
+				<!-- /Delete Designation Modal -->
+			
+            </div>
+			<!-- /Page Wrapper -->
 
-	<!-- /Page Wrapper -->
+        </div>
+		<!-- /Main Wrapper -->
+		
+		<!-- jQuery -->
+        <script src="../resources/hrtemp/js/jquery-3.5.1.min.js"></script>
+		
+		<!-- Bootstrap Core JS -->
+        <script src="../resources/hrtemp/js/popper.min.js"></script>
+        <script src="../resources/hrtemp/js/bootstrap.min.js"></script>
+		
+		<!-- Slimscroll JS -->
+		<script src="../resources/hrtemp/js/jquery.slimscroll.min.js"></script>
+		
+		<!-- Select2 JS -->
+		<script src="../resources/hrtemp/js/select2.min.js"></script>
+		
+		<!-- Datatable JS -->
+		<script src="../resources/hrtemp/js/jquery.dataTables.min.js"></script>
+		<script src="../resources/hrtemp/js/dataTables.bootstrap4.min.js"></script>
+		
+		<!-- Custom JS -->
+		<script src="../resources/hrtemp/js/app.js"></script>
 
-	</div>
-	<!-- /Main Wrapper -->
-
-	<script>
-		if (document.getElementsByTagName("td")) {
-			const $tds = document.getElementsByTagName("td");
-			const $rnp = document.getElementsByClassName("rnp-td");
-
-			for (let i = 0; i < $tds.length; i++) {
-
-				$tds[i].onmouseenter = function() {
-					this.parentNode.style.backgroundColor = "rgb(253,192,124)";
-					this.parentNode.style.cursor = "pointer";
-				}
-
-				$tds[i].onmouseout = function() {
-					this.parentNode.style.background = "white";
-				}
-
-				$rnp[i].onclick = function() {
-					const no = this.parentNode.children[7].innerText;
-					console.log(no);
-					location.href = "${ pageContext.servletContext.contextPath }/performance/myReviewDetail?no="
-							+ no;
-				}
-
-			}
-		}
-	</script>
-
-	<script src="/resources/hrtemp/js/jquery-3.5.1.min.js"></script>
-
-	<!-- Bootstrap Core JS -->
-	<script src="../resources/hrtemp/js/popper.min.js"></script>
-	<script src="../resources/hrtemp/js/bootstrap.min.js"></script>
-
-	<!-- Slimscroll JS -->
-	<script src="../resources/hrtemp/js/jquery.slimscroll.min.js"></script>
-
-	<!-- Datatable JS -->
-	<script src="../resources/hrtemp/js/jquery.dataTables.min.js"></script>
-	<script src="../resources/hrtemp/js/dataTables.bootstrap4.min.js"></script>
-
-	<!-- Custom JS -->
-	<script src="../resources/hrtemp/js/app.js"></script>
-
-</body>
+    </body>
 </html>

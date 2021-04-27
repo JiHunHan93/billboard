@@ -35,7 +35,7 @@ public class CalendarController {
 	public String CalendarMain(Authentication authentication, Model model) {
 		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
 		int userNo = user.getMemberno();
-		String deptCode = calService.seletDept(userNo);
+		String deptCode = calService.selectDept(userNo);
 		System.out.println(deptCode);
 		model.addAttribute("userNo", userNo);
 		model.addAttribute("deptCode", deptCode);
@@ -46,7 +46,6 @@ public class CalendarController {
 	@ResponseBody
 	public List<Map<String,CalDTO>> AjaxCalendarMain() {
 		
-		/*  */
 		List<Map<String,CalDTO>> calendarInfo = calService.selectCal();
 
 		return calendarInfo;
@@ -62,13 +61,13 @@ public class CalendarController {
 		String end = request.getParameter("end");
 		String body = request.getParameter("body");
 		String category = request.getParameter("category");
-		String deptCode = calService.seletDept(userNo);
-		System.out.println("userNo : " + userNo 
+		String deptCode = calService.selectDept(userNo);
+		System.out.println("userNo : " + userNo
 				         + "\ntitle : " + title 
-				         + "\nstart : " + start 
-				         + "\nend : " + end 
-				         + "\nbody : " + body 
-				         + "\ncategory : " + category 
+				         + "\nstart : " + start
+				         + "\nend : " + end
+				         + "\nbody : " + body
+				         + "\ncategory : " + category
 				         + "\ndeptCode : " + deptCode);
 		calDTO.setMemberNo(userNo);
 		calDTO.setTitle(title);
@@ -132,7 +131,7 @@ public class CalendarController {
 		String title = request.getParameter("title");
 		String start = request.getParameter("start");
 		String end = request.getParameter("end");
-		String deptCode = calService.seletDept(userNo);
+		String deptCode = calService.selectDept(userNo);
 		System.out.println("userNo : " + userNo 
 				         + "\ntitle : " + title 
 				         + "\nstart : " + start 

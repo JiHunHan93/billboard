@@ -473,7 +473,7 @@
 							<div class="card-body">
 								<h5 class="card-title">
 								</h5>
-							<h1 class="poscenter white alignleft">
+							<h1 class="poscenter white alignleft" style="text-align: center;">
 											<span id="clock"></span>
 										</h1>
 								<div class="punch-info">

@@ -37,6 +37,18 @@ public class DepartmentServiceImpl implements DepartmentService {
 		
 		return departmentMapper.selectProductionDepartmentList();
 	}
+	
+	@Override
+	public List<DepartmentDTO> selectEducationDepartmentList() {
+		// TODO Auto-generated method stub
+		return departmentMapper.selectEducationDepartmentList();
+	}
+
+	@Override
+	public List<DepartmentDTO> selectEmployeeDepartmentList() {
+		// TODO Auto-generated method stub
+		return departmentMapper.selectEmployeeDepartmentList();
+	}
 
 	@Override
 	public DepartmentSpotDTO selectDeptInpoSpot(int memberName) {
@@ -49,6 +61,8 @@ public class DepartmentServiceImpl implements DepartmentService {
 		// TODO Auto-generated method stub
 		return departmentMapper.detailEmployeeProfile(no);
 	}
+
+	
 	
 	
 }

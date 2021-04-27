@@ -11,7 +11,7 @@ import com.sevenelite.billbo.workhour.work.model.dto.StatusAndWorkDTO;
    
    List<StatusAndWorkDTO> selectAllStatus();
 
-   int registWork(StatusAndWorkDTO status);
+   int registWork(StatusAndWorkDTO workList);
 
    List<StatusAndWorkDTO> detailWork(int no);
    
