@@ -1305,16 +1305,16 @@
                                           <input class="txt w_max" type="text" name="no" value=""/>">
                                           </td> -->
                                           <td class="start">
-                                          <input class="txt w_max" type="date" name="start" value=""/>">
+                                          <input class="txt w_max" type="date" name="start" value=""/>
                                           </td>
                                           <td class="end">
-                                          <input class="txt w_max" type="date" name="end" value=""/>">
+                                          <input class="txt w_max" type="date" name="end" value=""/>
                                           </td>
                                           <td class="position">
-                                          <input class="txt w_max" type="text" name="position" value=""/>">
+                                          <input class="txt w_max" type="text" name="position" value=""/>
                                           </td>
                                        	  <td class="member_no">
-                                          <input class="txt w_max" type="text" name="member_no" value=""/>">
+                                          <input class="txt w_max" type="text" name="member_no" value=""/>
                                           </td>
                                        </c:when>
                                        <c:otherwise>
@@ -1669,7 +1669,7 @@
                                              <input class="txt w_max" type="text" name="branch" value="<c:out value="${ armySelect.branch }"/>">
                                              </td>
                                              <td class="army_class">
-                                             <input class="txt w_max" type="date" name="army_class" value="<c:out value="${ armySelect.army_class }"/>">
+                                             <input class="txt w_max" type="text" name="army_class" value="<c:out value="${ armySelect.army_class }"/>">
                                              </td>
                                              <td class="service_num">
                                              <input class="txt w_max" type="text" name="service_num" value="<c:out value="${ armySelect.service_num }"/>">
@@ -2123,16 +2123,7 @@
 							</div>
 							<div class="modal-body">
 							 <div class="row">
-										<div class="col-md-12">
-											<!-- <div class="profile-img-wrap edit-img">
-												사진 업로드******************************************************** 
-												<img class="inline-block" src="hrtemp/img/profiles/avatar-02.jpg" alt="user">
-												<div class="fileupload btn">
-													<span class="btn-text">edit</span>
-													<input class="upload" type="file">
-												</div>
-											</div> -->
-											
+										<div class="col-md-12">	
 											<c:forEach var="detailMem" items="${ requestScope.detailMem }">
 											<div class="row">
 												<div class="col-md-6">

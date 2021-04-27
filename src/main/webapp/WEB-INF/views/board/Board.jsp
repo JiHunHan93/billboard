@@ -735,7 +735,7 @@
 																		<th>번호</th>
 																		<th>제목</th>
 																		<th>작성자</th>
-																		<th>사원번호</th>
+																		<th hidden="true">사원번호</th>
 																		<th>등록일</th>
 																		<th>만료일</th>
 																		<th>조회수</th>
@@ -747,7 +747,7 @@
 																		<td class="free-td"><c:out value="${ boardList.no }" />
 																		<td class="free-td"><c:out value="${ boardList.title }" />
 																		<td class="free-td"><c:out value="${ boardList.writer }" />
-																		<td class="free-td"><c:out value="${ boardList.memberNo }" />
+																		<td class="free-td" hidden="true"><c:out value="${ boardList.memberNo }" />
 																		<td class="free-td"><c:out value="${ boardList.enrollDate }" />
 																		<td class="free-td"><c:out value="${ boardList.endDate }" />
 																		<td class="free-td"><c:out value="${ boardList.count }" />
@@ -768,7 +768,7 @@
 																		<th>번호</th>
 																		<th>제목</th>
 																		<th>작성자</th>
-																		<th>사원번호</th>
+																		<!-- <th>사원번호</th> -->
 																		<th>등록일</th>
 																		<th>만료일</th>
 																		<th>조회수</th>
@@ -780,7 +780,7 @@
 																		<td class="emp-td"><c:out value="${ empBoardList.no }" />
 																		<td class="emp-td"><c:out value="${ empBoardList.title }" />
 																		<td class="emp-td"><c:out value="${ empBoardList.writer }" />
-																		<td class="emp-td"><c:out value="${ empBoardList.memberNo }" />
+																		<%-- <td class="emp-td"><c:out value="${ empBoardList.memberNo }" /> --%>
 																		<td class="emp-td"><c:out value="${ empBoardList.enrollDate }" />
 																		<td class="emp-td"><c:out value="${ empBoardList.endDate }" />
 																		<td class="emp-td"><c:out value="${ empBoardList.count }" />

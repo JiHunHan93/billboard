@@ -12,7 +12,7 @@
 	content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
 <meta name="author" content="Dreamguys - Bootstrap Admin Template">
 <meta name="robots" content="noindex, nofollow">
-        <title>BB-사원조회 및 부서조회</title>
+        <title>BB-내 연차 조회</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="../resources/hrtemp/img/favicon.png">
@@ -650,10 +650,10 @@
 					<div class="page-header">
 						<div class="row">
 							<div class="col-sm-12">
-								<h3 class="page-title">Profile</h3>
+								<h3 class="page-title">내 연차 조회</h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
-									<li class="breadcrumb-item active">Profile</li>
+									<li class="breadcrumb-item"><a href="index.html">휴가</a></li>
+									<li class="breadcrumb-item active">휴가정보내역</li>
 								</ul>
 							</div>
 						</div>
@@ -734,7 +734,7 @@
 					</div>
 					<br>
 					<div class="col-auto float-right ml-auto">
-								<a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_holiday"><i class="fa fa-plus"></i> Add Holiday</a>
+								<a href="#" class="btn add-btn" data-toggle="modal" data-target="#add_holiday"><i class="fa fa-plus"></i>휴가추가</a>
 							</div>
 					<div class="card tab-box">
 						<div class="row user-tabs">
@@ -755,8 +755,8 @@
 								<table class="table table-striped custom-table mb-0">
 									<thead>
 										<tr>
-											<th>번호</th>
-											<th>번호</th>
+											<th hidden="true">번호</th>
+											<th hidden="true">번호</th>
 											<th>휴가종류 </th>
 											<th>휴가시작날짜</th>
 											<th>휴가종료날짜</th>
@@ -769,8 +769,8 @@
 									<tbody>
 									<c:forEach var="holidaylist" items="${requestScope.holidaylist }">
 										<tr class="holiday-completed">
-											<td><c:out value="${holidaylist.no }"/></td>
-											<td><c:out value="${holidaylist.no }"/></td>
+											<td hidden="true"><c:out value="${holidaylist.no }"/></td>
+											<td hidden="true"><c:out value="${holidaylist.no }"/></td>
 											<td><c:out value="${holidaylist.type }"/></td>
 											<td><c:out value="${holidaylist.startDate }"/></td>
 											<td><c:out value="${holidaylist.endDate }"/></td>
@@ -864,7 +864,7 @@
 										<div class="cal-icon"><!-- <input class="form-control datetimepicker" type="text"> -->
 										<input type="text" name="memberNo" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno}"></div>
 								</div>
-								<div class="form-group">
+								<div class="form-group" hidden="true">
 										<label>휴가번호 <span class="text-danger">*</span></label>
 										<input type="text" name="no" id="no">
 									</div>
@@ -913,7 +913,7 @@
 								<div class="form-header">
 									<h3>Delete Holiday</h3>
 									<h3>휴가삭제</h3>
-										<div class="form-group">
+										<div class="form-group" hidden="">
 										<label>휴가번호 <span class="text-danger">*</span></label>
 										<input type="text" name="no" id="no2">
 									</div>

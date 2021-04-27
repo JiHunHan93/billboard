@@ -920,7 +920,7 @@
 											</div>
 										</div>
 									</div>
-									<div class="form-group" style="margin-left: 14px;">
+									<div class="form-group" style="margin-left: 14px;" hidden="true">
 											<label>상태</label> <input name="status" class="form-control" id="modifyTitle"
 												value="<c:out value="${ detailInfo.status }"/>" type="text" readOnly>
 										</div>
