@@ -35,11 +35,11 @@ public class PerformanceController {
 	
 	@GetMapping("main")
 	public String selectPerList(Model model) {
+		
 		List<PerformanceListDTO> perList = pfService.selectPer();
 		model.addAttribute("perList", perList);
 		
 		return "performance/Performance";
-//		return "performance/MyPerformanceReview";
 	}
 	
 	@GetMapping("detail")
