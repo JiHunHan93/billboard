@@ -81,8 +81,11 @@ SELECT
  WHERE A.MEMBER_NO = #{menberno}     
 </select>
 <insert id="registHoliday" parameterType="MemberHolidayDTO">
-INSERT INTO BB_HOLIDAY (HOLIDAY_NO, START_DATE, END_DATE, HOLIDAY_REASON, HOLIDAY_TYPE, HOLIDAY_TERM, MEMBER_NO)
-VALUES (SEQ_HOLIDAY_NO.NEXTVAL, #{startDate}, #{endDate}, #{reason}, #{type}, #{term}, #{memberNo})
+      INSERT 
+        INTO BB_HOLIDAY 
+        (HOLIDAY_NO, START_DATE, END_DATE, HOLIDAY_REASON, HOLIDAY_TYPE, HOLIDAY_TERM, MEMBER_NO)
+        VALUES 
+        (SEQ_HOLIDAY_NO.NEXTVAL, #{startDate}, #{endDate}, #{reason}, #{type}, #{term}, #{memberNo})
 </insert>
 <select id="selectHolidayInfo" resultMap="HolidayResultMap" parameterType="_int">
   SELECT 

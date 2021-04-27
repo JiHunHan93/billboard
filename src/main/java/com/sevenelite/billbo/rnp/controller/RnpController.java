@@ -34,10 +34,10 @@ public class RnpController {
 	public String selectRnpList(Model model) {
 
 		List<RnpDTO> rnpList = rnpService.selectRnp();
-		System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+		//조회해온 데이터를 rnpList에 담아준다.
 		model.addAttribute("rnpList", rnpList);
-			
-//		return "performance/Performance";
+		//키,밸류값으로 rnpList에 "rnpList" 키값을 지정해줍니다.
+		
 		return "rnp/Rnp";
 	}
 	
@@ -58,13 +58,7 @@ public class RnpController {
 	  
 	  return mv; 
 	}
-	 
-	/*
-	 * @GetMapping("insert") public String insertRnp() {
-	 * 
-	 * return "rnp/RnpInsert"; }
-	 */
-	 
+	
 	 @PostMapping("main")
 	 public String registRnp(@ModelAttribute RnpDTO rnpBody, RedirectAttributes redirect, Model model ) {
 		 
