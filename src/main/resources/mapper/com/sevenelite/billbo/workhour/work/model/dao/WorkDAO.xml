@@ -88,50 +88,7 @@
             FROM BB_WORKTYPE A
            WHERE A.WORKTYPE_CODE = 'B1'
     </select> 
-    
-    <select id="workTypeB2" resultType="String" parameterType="WorkDTO">
-    	 SELECT
-                 A.WORKTYPE_TYPE
-            FROM BB_WORKTYPE A
-           WHERE A.WORKTYPE_CODE = 'B2'
-    </select>     
-    
-    <select id="workTypeB3" resultType="String" parameterType="WorkDTO">
-    	 SELECT
-                 A.WORKTYPE_TYPE
-            FROM BB_WORKTYPE A
-           WHERE A.WORKTYPE_CODE = 'B3'
-    </select>   
-    <select id="workTypeB4" resultType="String" parameterType="WorkDTO">
-    	 SELECT
-                 A.WORKTYPE_TYPE
-            FROM BB_WORKTYPE A
-           WHERE A.WORKTYPE_CODE = 'B4'
-    </select>   
-    <select id="workTypeB5" resultType="String" parameterType="WorkDTO">
-    	 SELECT
-                 A.WORKTYPE_TYPE
-            FROM BB_WORKTYPE A
-           WHERE A.WORKTYPE_CODE = 'B5'
-    </select>   
-    <select id="workTypeB6" resultType="String" parameterType="WorkDTO">
-    	 SELECT
-                 A.WORKTYPE_TYPE
-            FROM BB_WORKTYPE A
-           WHERE A.WORKTYPE_CODE = 'B6'
-    </select>   
-    <select id="workTypeB7" resultType="String" parameterType="WorkDTO">
-    	 SELECT
-                A.WORKTYPE_TYPE
-          FROM BB_WORKTYPE A
-         WHERE A.WORKTYPE_CODE = 'B7'
-    </select>   
-    <select id="workTypeB8" resultType="String" parameterType="WorkDTO">
-    	 SELECT
-                 A.WORKTYPE_TYPE
-           FROM BB_WORKTYPE A
-           WHERE A.WORKTYPE_CODE = 'B8'
-    </select>   
+
     
     <update id="editWork" parameterType="StatusAndWorkDTO">
         UPDATE 
