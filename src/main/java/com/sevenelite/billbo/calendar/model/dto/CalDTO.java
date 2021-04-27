@@ -2,18 +2,18 @@ package com.sevenelite.billbo.calendar.model.dto;
 
 public class CalDTO {
 	
-	private int no;
-	private String title;
-	private String start;
-	private String end;
-	private boolean status;
-	private int memberNo;
-	private String calType;
-	private String location;
-	private String attendance;
-	private String body;
-	private String deleteStatus;
-	private String code;
+	private int no;							// 일정 번호
+	private String title;					// 일정 제목
+	private String start;					// 일정 시작일
+	private String end;						// 일정 종료일
+	private boolean status;					// 일정 종일여부
+	private int memberNo;					// 사번
+	private String calType;					// 일정 분류
+	private String location;				// 일정 이행 장소
+	private String attendance;				// 일정 참여자
+	private String body;					// 일정 내용
+	private String deleteStatus;			// 일정 표시 여부
+	private String code;					// 부서 코드
 	
 	public CalDTO() {}
 
