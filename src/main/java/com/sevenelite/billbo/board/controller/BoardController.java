@@ -49,7 +49,6 @@ public class BoardController {
 	}
 
 	@GetMapping("board/detail")
-	@ResponseBody
 	public ModelAndView detailBoard(HttpServletRequest request, HttpServletResponse response, Model model) {
 		
 		ModelAndView mv = new ModelAndView();
