@@ -75,17 +75,17 @@
                  , ROW_NUMBER() OVER (PARTITION BY E.DEPT_CODE ORDER BY F.SCHEDULE_NO DESC) 일정등록한사원 
               FROM (SELECT
                            C.*
-                         , ROW_NUMBER() OVER (PARTITION BY C.DEPT_CODE ORDER BY D.MEMBER_NO DESC) 중간다리
+                         , ROW_NUMBER() OVER (PARTITION BY D.MEMBER_NO ORDER BY C.DEPT_CODE DESC) 중간다리
                       FROM (SELECT
                                    B.*
                                  , ROW_NUMBER() OVER (PARTITION BY B.MEMBER_NO ORDER BY B.MODIFY_DEPT_NO DESC) 부서코드변경이력
                               FROM BB_DEPT A
                               JOIN BB_MODIFY_DEPT B ON (A.DEPT_CODE = B.DEPT_CODE)
-                            ) C
+                           ) C
                       JOIN BB_MEMBER D ON (C.MEMBER_NO = D.MEMBER_NO) 
                      WHERE 부서코드변경이력 = 1
                    ) E
-               JOIN BB_WORK_SCHEDULE F ON (F.MEMBER_NO = E.MEMBER_NO)
+              JOIN BB_WORK_SCHEDULE F ON (F.MEMBER_NO = E.MEMBER_NO)
              WHERE 중간다리 = 1
            ) G
      WHERE 일정등록한사원 = 1

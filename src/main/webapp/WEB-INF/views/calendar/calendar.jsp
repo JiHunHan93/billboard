@@ -101,9 +101,7 @@
 				$("#modal-sub-mod-btn").show();
 				
 				if(event.event._def.extendedProps.calType == '공휴일') {
-					$('.delete-event').hide();
-					$("#modal-sub-mod-btn").hide();
-					console.log('공휴일입니다.');
+					return;
 				}
 				
 				// detail modal focus [
@@ -116,11 +114,12 @@
 					$('#modal-sub-title-a').val(event.event._def.title);
 					$('.calSelect-a option').each(function() {
 				    	if($(this).val() == event.event._def.extendedProps.calType) {
-							  $(this).attr("selected", "selected");
+							$(this).attr("selected", "selected");
 						}
 					});
 					var txt = event.event._def.extendedProps.body;
 					if($('#modal-sub-txt-area-a') != null) {
+						console.log('null값 아님');
 						txt.replace(/(?:\r\n|\r|\n)/g, '<br/>');
 					}
 					$('#modal-sub-txt-area-a').html(txt);
@@ -136,6 +135,15 @@
 					$('.calSelect-a').attr('disabled', true);
 					$('#modal-sub-txt-area-a').attr('readonly', true);
 					
+					return;
+				})
+				// detail modal closed ]
+				
+				// modify submit button clicked [
+				$(document).on('click', '.modify-event', function(e) {
+					$('.delete-event').show();
+					$('.modify-event').hide();
+				    
 					// set arr for ajax [
 					var arr = [];		// []
 						arr.push(7);	// [7]
@@ -161,15 +169,6 @@
 							data: form
 						});
 						// transfer [form] to controller ]
-					calendar.render();
-				})
-				// detail modal closed ]
-				
-				// modify submit button clicked [
-				$(document).on('click', '.modify-event', function(e) {
-					$('.delete-event').show();
-					$('.modify-event').hide();
-				    
 					location.reload();
 				});
 				// modify submit button clicked ]
@@ -370,6 +369,9 @@
 				calendar.addEvent(item);
 				$.each(item, function(iii, ttt) {
 					console.log('click evt inner loop_in_cal => ' + iii + ' : ' + ttt);
+					if(ttt == '개인일정') {
+						console.log('부서일정');
+					}
 				});
 			});
 			// get parameters from [arr] ]
@@ -462,14 +464,10 @@
     				console.log('array' + array);
     				console.log('element' + element);
     				console.table(element);
-    				return element.code == $("#dept-code").val();
+    				return (element.code == $("#dept-code").val()) || (element.calType == '공휴일');
     			});
 	        	// set filter for applicable employee by deptcode ]
-	        	// set filter for applicable calendarType 공휴일 [
-	        	var arr2 = resp.filter(function(element, index, array) {
-    				return element.calType == '공휴일';
-    			});
-	        	// set filter for applicable calendarType 공휴일 ]
+	        	
 	        	$.each(resp, function(index, item) {
 	            	console.table(resp);
 	            	// for all date values on [{resp}] apply date format 'yyyy-MM-dd' [
@@ -492,7 +490,6 @@
 	                });
 	            });
                 arr = arr1;
-                arr = arr2;
                 console.table(arr);
                 console.log(arr);
 	        },
@@ -1163,48 +1160,6 @@ if($('.select11').length > 0) {
 				</div>
 			</div>
 			<!-- /Event Modal -->
-
-			<!-- Add Category Modal-->
-			<div class="modal custom-modal fade" id="add-category">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<div class="modal-header">
-							<button type="button" class="close" data-dismiss="modal">&times;</button>
-							<h4 class="modal-title">Add a category</h4>
-						</div>
-						<div class="modal-body p-20">
-							<form action="http://127.0.0.1:8001/billbo/calendar/main" method="post">
-								<div class="row">
-									<div class="col-md-6">
-										<label class="col-form-label">Category Name</label> 
-										<input class="form-control" placeholder="Enter name" type="text" name="category-name">
-									</div>
-									<div class="col-md-6">
-										<label class="col-form-label">Choose Category Color</label> 
-										<select	class="form-control" name="category-color">
-											<option value="success">개인</option>
-											<option value="danger">부서</option>
-											<option value="info">Info</option>
-											<option value="pink">Pink</option>
-											<option value="primary">Primary</option>
-											<option value="warning">Warning</option>
-											<option value="orange">Orange</option>
-											<option value="brown">Brown</option>
-											<option value="teal">Teal</option>
-										</select>
-									</div>
-								</div>
-							</form>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-white" data-dismiss="modal">Close</button>
-							<button type="button" class="btn btn-danger save-category"
-								data-dismiss="modal">Save</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- /Add Category Modal-->
 
 		</div>
 		<!-- /Page Wrapper -->

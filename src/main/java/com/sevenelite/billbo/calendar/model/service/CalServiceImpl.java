@@ -30,7 +30,7 @@ public class CalServiceImpl implements CalService {
 	}
 
 	@Override
-	public String seletDept(int userNo) {
+	public String selectDept(int userNo) {
 		return calDAO.selectDept(userNo);
 	}
 
