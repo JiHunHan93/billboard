@@ -3,8 +3,7 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sevenelite.billbo.calendar.model.dao.CalDAO">
-
-<resultMap type="map" id="calendarResultMap">
+	<resultMap type="map" id="calendarResultMap">
 		<id property="no" column="SCHEDULE_NO" />
 		<result property="memberNo" column="MEMBER_NO" />
 		<result property="title" column="SCHEDULE_NAME" />
@@ -18,135 +17,137 @@
 		<result property="status" column="SCHEDULE_STATUS" />
 		<result property="code" column="DEPT_CODE" />
 	</resultMap>
+	<!-- DB에 존재하는 모든 일정의 정보를 노출여부에 맞춰 조회한다. -->
 	<select id="selectCal" resultMap="calendarResultMap">
-		SELECT
-		       D.SCHEDULE_NO
-		     , D.SCHEDULE_NAME
-		     , D.START_DATE
-		     , D.END_DATE
-		     , C.DEPT_CODE
-		     , D.SCHEDULE_INFO
-		     , D.SCHEDULE_TYPE
-          FROM (SELECT
-                       *
-                  FROM (SELECT
-                               A.MEMBER_NO
-                             , B.DEPT_CODE
-                             , ROW_NUMBER() OVER (PARTITION BY A.MEMBER_NO ORDER BY A.MODIFY_DEPT_NO DESC) DEPTCODE
-                          FROM BB_MODIFY_DEPT A
-                          JOIN BB_DEPT B ON (A.DEPT_CODE = B.DEPT_CODE)
-                       )
-                 WHERE DEPTCODE = 1
-               ) C
-          JOIN BB_WORK_SCHEDULE D ON (C.MEMBER_NO = D.MEMBER_NO)
-         WHERE D.SCHEDULE_DELETE_STATUS = 'Y'
+			SELECT
+			       D.SCHEDULE_NO
+			     , D.SCHEDULE_NAME
+			     , D.START_DATE
+			     , D.END_DATE
+			     , C.DEPT_CODE
+			     , D.SCHEDULE_INFO
+			     , D.SCHEDULE_TYPE
+	          FROM (SELECT
+	                       *
+	                  FROM (SELECT
+	                               A.MEMBER_NO
+	                             , B.DEPT_CODE
+	                             , ROW_NUMBER() OVER (PARTITION BY A.MEMBER_NO ORDER BY A.MODIFY_DEPT_NO DESC) DEPTCODE
+	                          FROM BB_MODIFY_DEPT A
+	                          JOIN BB_DEPT B ON (A.DEPT_CODE = B.DEPT_CODE)
+	                       )
+	                 WHERE DEPTCODE = 1
+	               ) C
+	          JOIN BB_WORK_SCHEDULE D ON (C.MEMBER_NO = D.MEMBER_NO)
+	         WHERE D.SCHEDULE_DELETE_STATUS = 'Y'
 	</select>
- 	<insert id="insertEvt" parameterType="CalDTO">
+	<!-- 일정 정보를 DB에 insert한다. -->
+	<insert id="insertEvt" parameterType="CalDTO">
 		INSERT
-		       INTO BB_WORK_SCHEDULE A
-			        (
-			        A.SCHEDULE_NO
-			      , A.MEMBER_NO
-			      , A.SCHEDULE_NAME
-			      , A.SCHEDULE_TYPE
-			      , A.START_DATE
-			      , A.END_DATE
-			      , A.SCHEDULE_INFO
-			      , A.SCHEDULE_DELETE_STATUS
-		   	        )
-	           VALUES
-	                (
-	                SEQ_SCHEDULE_NO.NEXTVAL
-	              , #{ memberNo }
-	              , #{ title }
-	              , #{ calType }
-	              , #{ start }
-	              , #{ end }
-	              , #{ body }
-	              , 'Y'
-	                )
-</insert>
-
-<select id="selectDept" resultType="string" parameterType="_int">
-	SELECT
-           G.DEPT_CODE
-      FROM (SELECT
-                   E.*
-                 , ROW_NUMBER() OVER (PARTITION BY E.DEPT_CODE ORDER BY F.SCHEDULE_NO DESC) 일정등록한사원 
-              FROM (SELECT
-                           C.*
-                         , ROW_NUMBER() OVER (PARTITION BY D.MEMBER_NO ORDER BY C.DEPT_CODE DESC) 중간다리
-                      FROM (SELECT
-                                   B.*
-                                 , ROW_NUMBER() OVER (PARTITION BY B.MEMBER_NO ORDER BY B.MODIFY_DEPT_NO DESC) 부서코드변경이력
-                              FROM BB_DEPT A
-                              JOIN BB_MODIFY_DEPT B ON (A.DEPT_CODE = B.DEPT_CODE)
-                           ) C
-                      JOIN BB_MEMBER D ON (C.MEMBER_NO = D.MEMBER_NO) 
-                     WHERE 부서코드변경이력 = 1
-                   ) E
-              JOIN BB_WORK_SCHEDULE F ON (F.MEMBER_NO = E.MEMBER_NO)
-             WHERE 중간다리 = 1
-           ) G
-     WHERE 일정등록한사원 = 1
-       AND G.MEMBER_NO = #{ userNo }
-</select>
-
-<update id="updateEvt" parameterType="CalDTO">
-    UPDATE BB_WORK_SCHEDULE A
-	   SET A.SCHEDULE_NAME = #{ title }
-	     , A.START_DATE = #{ start }
-	     , A.END_DATE = #{ end }
-	     , A.SCHEDULE_INFO = #{ body }
-	     , A.SCHEDULE_TYPE = #{ calType }
-     WHERE A.SCHEDULE_NO = #{ no }
-</update>
-
-<update id="deleteEvt" parameterType="calDTO">
-    UPDATE BB_WORK_SCHEDULE A
-	   SET A.SCHEDULE_DELETE_STATUS = 'N'
-     WHERE A.SCHEDULE_NO = #{ no }
-</update>
-
-<insert id="insertDropEvt" parameterType="CalDTO">
-	INSERT
-	  INTO BB_WORK_SCHEDULE A
-		 (
-		   A.SCHEDULE_NO
-	     , A.MEMBER_NO
-	     , A.SCHEDULE_NAME
-	     , A.SCHEDULE_TYPE
-	     , A.START_DATE
-         , A.END_DATE
-         , A.SCHEDULE_INFO
-	     , A.SCHEDULE_DELETE_STATUS
-		 )
-	VALUES
-	     (
-	       SEQ_SCHEDULE_NO.NEXTVAL
-	     , #{ memberNo }
-	     , #{ title }
-	     , '개인일정'
-	     , #{ start }
-	     , #{ end }
-	     , '커스텀 일정'
-	     , 'Y'
-	     )
-</insert>
-
-<update id="draggEvt" parameterType="CalDTO">
-    UPDATE BB_WORK_SCHEDULE A
-	   SET A.START_DATE = #{ start }
-	     , A.END_DATE = #{ end }
-	     , A.SCHEDULE_DELETE_STATUS = 'Y'
-     WHERE A.SCHEDULE_NO = #{ no }
-</update>
-
-<update id="dropEvt" parameterType="CalDTO">
-    UPDATE BB_WORK_SCHEDULE A
-	   SET A.START_DATE = #{ start }
-	     , A.END_DATE = #{ end }
-	     , A.SCHEDULE_DELETE_STATUS = 'Y'
-     WHERE A.SCHEDULE_NO = #{ no }
-</update>
+		  INTO BB_WORK_SCHEDULE A
+		       (
+			   A.SCHEDULE_NO
+			 , A.MEMBER_NO
+			 , A.SCHEDULE_NAME
+			 , A.SCHEDULE_TYPE
+			 , A.START_DATE
+			 , A.END_DATE
+			 , A.SCHEDULE_INFO
+			 , A.SCHEDULE_DELETE_STATUS
+		   	   )
+		VALUES
+		       (
+		       SEQ_SCHEDULE_NO.NEXTVAL
+		     , #{ memberNo }
+		     , #{ title }
+		     , #{ calType }
+		     , #{ start }
+		     , #{ end }
+		     , #{ body }
+		     , 'Y'
+		       )
+	</insert>
+	<!-- 부서 코드를 조회한다. 이 때 변경이력에 쌓인 정보를 제외하고 가져오기위해 ROW_NUMBER()를 사용했다. -->
+	<select id="selectDept" resultType="string" parameterType="_int">
+		SELECT
+	           G.DEPT_CODE
+	      FROM (SELECT
+	                   E.*
+	                 , ROW_NUMBER() OVER (PARTITION BY F.MEMBER_NO ORDER BY E.DEPT_CODE DESC) 일정등록한사원 
+	              FROM (SELECT
+	                           C.*
+	                         , ROW_NUMBER() OVER (PARTITION BY D.MEMBER_NO ORDER BY C.DEPT_CODE DESC) 중간다리
+	                      FROM (SELECT
+	                                   B.*
+	                                 , ROW_NUMBER() OVER (PARTITION BY B.MEMBER_NO ORDER BY B.MODIFY_DEPT_NO DESC) 부서코드변경이력
+	                              FROM BB_DEPT A
+	                              JOIN BB_MODIFY_DEPT B ON (A.DEPT_CODE = B.DEPT_CODE)
+	                           ) C
+	                      JOIN BB_MEMBER D ON (C.MEMBER_NO = D.MEMBER_NO) 
+	                     WHERE 부서코드변경이력 = 1
+	                   ) E
+	              JOIN BB_WORK_SCHEDULE F ON (F.MEMBER_NO = E.MEMBER_NO)
+	             WHERE 중간다리 = 1
+	           ) G
+	     WHERE 일정등록한사원 = 1
+	       AND G.MEMBER_NO = #{ userNo }
+	</select>
+	<!-- 일정 정보를 update한다. -->
+	<update id="updateEvt" parameterType="CalDTO">
+	    UPDATE BB_WORK_SCHEDULE A
+		   SET A.SCHEDULE_NAME = #{ title }
+		     , A.START_DATE = #{ start }
+		     , A.END_DATE = #{ end }
+		     , A.SCHEDULE_INFO = #{ body }
+		     , A.SCHEDULE_TYPE = #{ calType }
+	     WHERE A.SCHEDULE_NO = #{ no }
+	</update>
+	<!-- 일정의 노출여부를 update한다. -->
+	<update id="deleteEvt" parameterType="calDTO">
+	    UPDATE BB_WORK_SCHEDULE A
+		   SET A.SCHEDULE_DELETE_STATUS = 'N'
+	     WHERE A.SCHEDULE_NO = #{ no }
+	</update>
+	<!-- 숏컷 이벤트의 정보를 받아 insert한다. -->
+	<insert id="insertDropEvt" parameterType="CalDTO">
+		INSERT
+		  INTO BB_WORK_SCHEDULE A
+			 (
+			   A.SCHEDULE_NO
+		     , A.MEMBER_NO
+		     , A.SCHEDULE_NAME
+		     , A.SCHEDULE_TYPE
+		     , A.START_DATE
+	         , A.END_DATE
+	         , A.SCHEDULE_INFO
+		     , A.SCHEDULE_DELETE_STATUS
+			 )
+		VALUES
+		     (
+		       SEQ_SCHEDULE_NO.NEXTVAL
+		     , #{ memberNo }
+		     , #{ title }
+		     , '개인일정'
+		     , #{ start }
+		     , #{ end }
+		     , '커스텀 일정'
+		     , 'Y'
+		     )
+	</insert>
+	<!-- 리사이징 한 일정의 정보를 받아 update한다. -->
+	<update id="draggEvt" parameterType="CalDTO">
+	    UPDATE BB_WORK_SCHEDULE A
+		   SET A.START_DATE = #{ start }
+		     , A.END_DATE = #{ end }
+		     , A.SCHEDULE_DELETE_STATUS = 'Y'
+	     WHERE A.SCHEDULE_NO = #{ no }
+	</update>
+	<!-- 드래그 앤 드롭한 일정의 정보를 받아 update한다. -->
+	<update id="dropEvt" parameterType="CalDTO">
+	    UPDATE BB_WORK_SCHEDULE A
+		   SET A.START_DATE = #{ start }
+		     , A.END_DATE = #{ end }
+		     , A.SCHEDULE_DELETE_STATUS = 'Y'
+	     WHERE A.SCHEDULE_NO = #{ no }
+	</update>
 </mapper>

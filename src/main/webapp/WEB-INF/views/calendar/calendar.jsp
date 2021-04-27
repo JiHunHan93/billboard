@@ -120,7 +120,7 @@
 					var txt = event.event._def.extendedProps.body;
 					if($('#modal-sub-txt-area-a') != null) {
 						console.log('null값 아님');
-						txt.replace(/(?:\r\n|\r|\n)/g, '<br/>');
+						/* txt.replace(/(?:\r\n|\r|\n)/g, '<br/>'); */
 					}
 					$('#modal-sub-txt-area-a').html(txt);
 				})

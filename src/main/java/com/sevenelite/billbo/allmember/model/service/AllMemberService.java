@@ -12,6 +12,7 @@ import com.sevenelite.billbo.profile.model.dto.MemberInfoDTO;
 
 public interface AllMemberService {
 
+	//전사 조회
 	List<MemberAndMemberInfoAndDeptAndModifyDeptDTO> selectAllEmployeeList();
 
 

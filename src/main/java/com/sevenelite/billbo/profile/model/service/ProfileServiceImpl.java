@@ -31,6 +31,17 @@ public class ProfileServiceImpl implements ProfileService{
 		this.mapper = mapper;
 
 	}
+	@Override
+	public boolean memberInfo(MemberInfoDTO memberInfo) {
+		// TODO Auto-generated method stub
+		return mapper.memberInfo(memberInfo) > 0? true : false;
+	}
+	
+	@Override
+	public List<MemberInfoDTO> memberInfo(int memberno) {
+		// TODO Auto-generated method stub
+		return mapper.memberInfo(memberno);
+	}
 
 	@Override
 	public boolean modifyspot(ModifySpotDTO modifyspot) {
@@ -91,17 +102,6 @@ public class ProfileServiceImpl implements ProfileService{
 		return mapper.member_info_phone();
 	}
 
-	@Override
-	public boolean memberInfo(MemberInfoDTO memberInfo) {
-		// TODO Auto-generated method stub
-		return mapper.memberInfo(memberInfo) > 0? true : false;
-	}
-
-	@Override
-	public List<MemberInfoDTO> memberInfo(int memberno) {
-		// TODO Auto-generated method stub
-		return mapper.memberInfo(memberno);
-	}
 	@Override
 	public List<CareerDTO> career() {
 		// TODO Auto-generated method stub

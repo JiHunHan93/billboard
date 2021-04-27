@@ -12,7 +12,6 @@ import com.sevenelite.billbo.workhour.work.model.dto.WorkDTO;
 
 	boolean insertWorkInfo(WorkDTO workInfo);
 	
-
 	String selectWork(int userno);
 
 	String selectCommute(StatusAndWorkDTO status);
@@ -22,20 +21,6 @@ import com.sevenelite.billbo.workhour.work.model.dto.WorkDTO;
 	int updateWorkCount();
 
 	String workTypeB1();
-
-	String workTypeB2();
-
-	String workTypeB3();
-
-	String workTypeB4();
-
-	String workTypeB5();
-
-	String workTypeB6();
-
-	String workTypeB7();
-
-	String workTypeB8();
 
 	boolean editWork(StatusAndWorkDTO status);
 
