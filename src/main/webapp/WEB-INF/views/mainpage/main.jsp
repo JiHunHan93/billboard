@@ -421,7 +421,7 @@
 						</li>
 						<div class="sidebar-line"></div>
 						<li>
-							<a href="${pageContext.servletContext.contextPath}/calender/main" class="sidebar-default">
+							<a href="${pageContext.servletContext.contextPath}/calendar/main" class="sidebar-default">
 								<i class="las la-calendar sidebar-icon"></i>
 								<span class="sidebar-text">Calendar</span>
 							</a>

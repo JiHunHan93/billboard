@@ -460,8 +460,8 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm:ss"); %>
 							<h6 style="font-weight: bold;">근무일</h6>
 							<h4 style="color: gray;">
 								<c:out value="${ workInfo.workCount }" />
-	
 							</h4>
+								<c:out value="${ workInfo.lateCount }" />
 					</div>		
 					
 					</div>

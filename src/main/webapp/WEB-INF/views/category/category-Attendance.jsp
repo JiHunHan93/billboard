@@ -699,6 +699,7 @@
 												<i class="fas fa-circle category-dot"><a class="category-sub-text" href="${pageContext.servletContext.contextPath}/selectList">전사조회</a></i>
 												<br>	
 												<i class="fas fa-circle category-dot"><a class="category-sub-text" href="${pageContext.servletContext.contextPath}/profile/insertMemberNo">인사 정보</a></i>
+												<br><br>
 												<!-- Payroll 개인급여 확인 -->
 												<!-- <i class="las la-user-plus category-icon"></i> -->
 												<!-- <i class="fas fa-circle category-dot"><div class="category-sub-text">급여 명세서 확인</div></i> -->
@@ -729,7 +730,7 @@
 												<p class="category-text">근태관리</p>
 												<i class="las la-user-clock category-icon"></i>
 												<i class="fas fa-circle category-dot"><div class="category-sub-text">내 근태 현황</div></i>
-												<i class="fas fa-circle category-dot"><div class="category-sub-text">내 연차 내역</div></i>
+												<i class="fas fa-circle category-dot"><a class="category-sub-text" href="${pageContext.servletContext.contextPath}/holiday/list">내 연차내역</a></i><br>
 												<i class="fas fa-circle category-dot"><a class="category-sub-text" href="${pageContext.servletContext.contextPath}/profile/mainProfile3">내 인사 정보</a></i>
 												
 												<!-- Payroll 연말정산 프로세스 -->

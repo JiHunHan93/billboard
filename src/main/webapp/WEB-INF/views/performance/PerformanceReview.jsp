@@ -2,7 +2,9 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-<% pageContext.setAttribute("replaceChar", "\n"); %>
+<%
+	pageContext.setAttribute("replaceChar", "\n");
+%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -46,7 +48,8 @@
 			<script src="assets/js/html5shiv.min.js"></script>
 			<script src="assets/js/respond.min.js"></script>
 		<![endif]-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 	<!-- Main Wrapper -->
@@ -366,26 +369,26 @@
 			<div class="sidebar-inner slimscroll">
 				<div id="sidebar-menu" class="sidebar-menu">
 					<ul>
-						
+
 						<!-- 사이드바 서브메뉴 안쓰는 방향으로 수정 -->
 						<li><a href="${pageContext.servletContext.contextPath}"
 							class="sidebar-default"> <i class="la la-home sidebar-icon"></i>
 								<!-- <span class="menu-arrow"></span> --> <span
 								class="sidebar-text">Home</span>
-						</a> </li>
+						</a></li>
 						<div class="sidebar-line"></div>
 						<li><a href="${pageContext.servletContext.contextPath}/apps"
 							class="sidebar-default"> <i class="la la-cube sidebar-icon"></i>
 								<span class="sidebar-text"> Apps</span> <!-- <span class="menu-arrow"></span> -->
 						</a></li>
 						<div class="sidebar-line"></div>
-						
+
 						<li><a
 							href="${pageContext.servletContext.contextPath}/employee"
 							class="noti-dot sidebar-default"> <i
 								class="la la-user sidebar-icon"></i> <span class="sidebar-text">
 									Employees</span> <!-- <span class="menu-arrow"></span> -->
-						</a> </li>
+						</a></li>
 						<div class="sidebar-line"></div>
 						<li><a
 							href="${pageContext.servletContext.contextPath}/attendance"
@@ -397,7 +400,7 @@
 						<li><a href="${pageContext.servletContext.contextPath}/admin"
 							class="sidebar-default"> <i class="la la-key sidebar-icon"></i>
 								<span class="sidebar-text">Admin</span> <!-- <span class="menu-arrow"></span> -->
-						</a> </li>
+						</a></li>
 						<div class="sidebar-line"></div>
 						<li><a href="#" class="sidebar-default"> <i
 								class="la la-money sidebar-icon"></i> <span class="sidebar-text">Payroll</span>
@@ -410,7 +413,7 @@
 								class="sidebar-text">Information</span>
 						</a></li>
 						<div class="sidebar-line"></div>
-						
+
 					</ul>
 				</div>
 			</div>
@@ -429,7 +432,8 @@
 						<div class="col">
 							<h3 class="page-title">인사평가</h3>
 							<ul class="breadcrumb">
-								<li class="breadcrumb-item"><a href="index.html">Performance appraisal</a></li>
+								<li class="breadcrumb-item"><a href="index.html">Performance
+										appraisal</a></li>
 							</ul>
 						</div>
 					</div>
@@ -437,120 +441,151 @@
 				<!-- /Page Header -->
 
 				<section class="review-section personal-excellence">
-						<div class="review-header text-center">
-							<h3 class="review-title">인사고과표<h3>
-							<c:forEach var="perReviewList" items="${ requestScope.perReviewList }">
-							<p class="text-muted"><c:out value="${ perReviewList.name }"/></p>
-							</c:forEach>
-						</div>
-						<div class="row">
-							<div class="col-md-12">
-						<form name="insertReview" action="http://127.0.0.1:8001/billbo/performance/detail" id="insertReview" method="post">
+					<div class="review-header text-center">
+						<h3 class="review-title">
+							인사고과표
+							<h3>
+								<c:forEach var="perReviewList"
+									items="${ requestScope.perReviewList }">
+									<p class="text-muted">
+										<c:out value="${ perReviewList.name }" />
+									</p>
+								</c:forEach>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<form name="insertReview"
+								action="http://127.0.0.1:8001/billbo/performance/detail"
+								id="insertReview" method="post">
 								<div class="table-responsive">
 									<table class="table table-bordered review-table mb-0">
 										<thead>
 											<tr>
-												<th style="width:40px;">#</th>
+												<th style="width: 40px;">#</th>
 												<th>고과요소</th>
 												<th>착안점</th>
 												<th>가중치</th>
 												<th>고과점수</th>
-												
+
 											</tr>
 										</thead>
 										<tbody>
 											<tr>
 												<td rowspan="3">업적</td>
 												<td>업무달성도</td>
-												<td>계획, 지시에 의해  부과된 업무의 달성 여부 타 직원과의 업무량 비교 및 일정 기간 내의 달성 여부</td>
-												<td><input type="text" class="form-control" readonly value="10"></td>
-												<td><input type="number" class="form-control" name="achOne" max="100"></td>
-												
+												<td>계획, 지시에 의해 부과된 업무의 달성 여부 타 직원과의 업무량 비교 및 일정 기간 내의
+													달성 여부</td>
+												<td><input type="text" class="form-control" readonly
+													value="10"></td>
+												<td><input type="number" class="form-control"
+													name="achOne" max="100"></td>
+
 											</tr>
 											<tr>
 												<td>업무의질</td>
 												<td>업무 달성 결과의 질적 수준과 착오 누락오류의 발생빈도 및 그 잘못의 경증</td>
-												<td><input type="text" class="form-control" readonly value="10"></td>
-												<td><input type="number" class="form-control" name="achTwo" max="100"></td>
-												
+												<td><input type="text" class="form-control" readonly
+													value="10"></td>
+												<td><input type="number" class="form-control"
+													name="achTwo" max="100"></td>
+
 											</tr>
-											<tr>	
+											<tr>
 												<td>업무개선</td>
-												<td>담당 업무 수행 시 능률 향상을 위한 구체적인 개선책 및 해결책을 꾸준히 모색하고 있는 지의 여부</td>
-												<td><input type="text" class="form-control" readonly value="10"></td>
-												<td><input type="number" class="form-control" name="achThree" max="100"></td>
+												<td>담당 업무 수행 시 능률 향상을 위한 구체적인 개선책 및 해결책을 꾸준히 모색하고 있는 지의
+													여부</td>
+												<td><input type="text" class="form-control" readonly
+													value="10"></td>
+												<td><input type="number" class="form-control"
+													name="achThree" max="100"></td>
 											</tr>
 											<tr>
 												<td rowspan="4">능력</td>
 												<td>업무 지식</td>
 												<td>당사 직무 수행에 필요한 사무 지식 및 전문적 지식의 정도</td>
-												<td><input type="text" class="form-control" readonly value="10"></td>
-												<td><input type="number" class="form-control" name="abilOne" max="100"></td>
+												<td><input type="text" class="form-control" readonly
+													value="10"></td>
+												<td><input type="number" class="form-control"
+													name="abilOne" max="100"></td>
 											</tr>
 											<tr>
 												<td>기획 창의력</td>
-												<td>창의력을 바탕으로 주도면밀한 계획을 수립하여 이를 실천하는 능력 </td>
-												<td><input type="text" class="form-control" readonly value="10"></td>
-												<td><input type="number" class="form-control" name="abilTwo" max="100"></td>
+												<td>창의력을 바탕으로 주도면밀한 계획을 수립하여 이를 실천하는 능력</td>
+												<td><input type="text" class="form-control" readonly
+													value="10"></td>
+												<td><input type="number" class="form-control"
+													name="abilTwo" max="100"></td>
 											</tr>
 											<tr>
 												<td>분석 판단력</td>
-												<td>계획, 지시된 업무의 문제점을 파악, 분석하여 올바른 결론, 정확한 대책을 강구하는 능력</td> 
-												<td><input type="text" class="form-control" readonly value="10"></td>
-												<td><input type="number" class="form-control" name="abilThree" max="100"></td>
+												<td>계획, 지시된 업무의 문제점을 파악, 분석하여 올바른 결론, 정확한 대책을 강구하는 능력</td>
+												<td><input type="text" class="form-control" readonly
+													value="10"></td>
+												<td><input type="number" class="form-control"
+													name="abilThree" max="100"></td>
 											</tr>
 											<tr>
 												<td>실천력</td>
-												<td>계획, 지시된 업무를 적극적으로 박력 있게 끝까지 추진하는 능력</td> 
-												<td><input type="text" class="form-control" readonly value="10"></td>
-												<td><input type="number" class="form-control" name="abilFour" max="100"></td>
+												<td>계획, 지시된 업무를 적극적으로 박력 있게 끝까지 추진하는 능력</td>
+												<td><input type="text" class="form-control" readonly
+													value="10"></td>
+												<td><input type="number" class="form-control"
+													name="abilFour" max="100"></td>
 											</tr>
 											<tr>
 												<td rowspan="3">태도</td>
 												<td>책임감</td>
 												<td>당사 직무 수행에 필요한 사무 지식 및 전문적 지식의 정도</td>
-												<td><input type="text" class="form-control" readonly value="10"></td>
-												<td><input type="number" class="form-control" name="attOne" max="100"></td>
+												<td><input type="text" class="form-control" readonly
+													value="10"></td>
+												<td><input type="number" class="form-control"
+													name="attOne" max="100"></td>
 											</tr>
 											<tr>
 												<td>협동심</td>
-												<td>창의력을 바탕으로 주도면밀한 계획을 수립하여 이를 실천하는 능력 </td>
-												<td><input type="text" class="form-control" readonly value="10"></td>
-												<td><input type="number" class="form-control" name="attTwo" max="100"></td>
+												<td>창의력을 바탕으로 주도면밀한 계획을 수립하여 이를 실천하는 능력</td>
+												<td><input type="text" class="form-control" readonly
+													value="10"></td>
+												<td><input type="number" class="form-control"
+													name="attTwo" max="100"></td>
 											</tr>
 											<tr>
 												<td>근무 태도</td>
-												<td>계획, 지시된 업무의 문제점을 파악, 분석하여 올바른 결론, 정확한 대책을 강구하는 능력</td> 
-												<td><input type="text" class="form-control" readonly value="10"></td>
-												<td><input type="number" class="form-control" name="attThree" max="100"></td>
-											</tr>		
+												<td>계획, 지시된 업무의 문제점을 파악, 분석하여 올바른 결론, 정확한 대책을 강구하는 능력</td>
+												<td><input type="text" class="form-control" readonly
+													value="10"></td>
+												<td><input type="number" class="form-control"
+													name="attThree" max="100"></td>
+											</tr>
 											<tr>
 												<td colspan="3" class="text-center"><b>종합 점수 백분율(%)</b></td>
-												<td colspan="5" class="text-center"><input type="text" class="form-control" readonly value="100"></td>
+												<td colspan="5" class="text-center"><input type="text"
+													class="form-control" readonly value="100"></td>
 											</tr>
 											<tr>
 												<td colspan="8" class="text-center">
 													<div class="grade-span">
 														<h4 style="margin-right: 36%;">종합 점수 평균</h4>
-														<span class="badge bg-inverse-danger"> 65점 미만  D</span> 
-														<span class="badge bg-inverse-warning">65점-74점 C</span> 
-														<span class="badge bg-inverse-info">75점-84점 B</span> 
-														<span class="badge bg-inverse-purple">85점-92점 A</span> 
-														<span class="badge bg-inverse-success">92점 이상 A+</span>
-														<input type="text" name="memberNo" class="memNo" value="${ no }">
-														<button type="submit" class="btn btn-primary" value="전송 하기" style="margin-left : 30%;">평가 하기</button>
+														<span class="badge bg-inverse-danger"> 65점 미만 D</span> <span
+															class="badge bg-inverse-warning">65점-74점 C</span> <span
+															class="badge bg-inverse-info">75점-84점 B</span> <span
+															class="badge bg-inverse-purple">85점-92점 A</span> <span
+															class="badge bg-inverse-success">92점 이상 A+</span> <input
+															type="text" name="memberNo" class="memNo" value="${ no }">
+														<button type="submit" class="btn btn-primary"
+															value="전송 하기" style="margin-left: 30%;">평가 하기</button>
 													</div>
 												</td>
 											</tr>
-										</tbody>	
+										</tbody>
 									</table>
 								</div>
-							</div>
-							</form>
-						</div>
-					</section>
+						 </div>
+						</form>
+					</div>
+				</section>
 			</div>
-		   
+
 			<!-- /Page Content -->
 
 		</div>

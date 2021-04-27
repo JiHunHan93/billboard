@@ -361,26 +361,26 @@
 		<div class="sidebar" id="sidebar">
 			<div class="sidebar-inner slimscroll">
 				<div id="sidebar-menu" class="sidebar-menu">
-					<ul>	
+					<ul>
 						<!-- 사이드바 서브메뉴 안쓰는 방향으로 수정 -->
 						<li><a href="${pageContext.servletContext.contextPath}"
 							class="sidebar-default"> <i class="la la-home sidebar-icon"></i>
 								<!-- <span class="menu-arrow"></span> --> <span
 								class="sidebar-text">Home</span>
-						</a> </li>
+						</a></li>
 						<div class="sidebar-line"></div>
 						<li><a href="${pageContext.servletContext.contextPath}/apps"
 							class="sidebar-default"> <i class="la la-cube sidebar-icon"></i>
 								<span class="sidebar-text"> Apps</span> <!-- <span class="menu-arrow"></span> -->
-						</a> </li>
+						</a></li>
 						<div class="sidebar-line"></div>
-						
+
 						<li><a
 							href="${pageContext.servletContext.contextPath}/employee"
 							class="noti-dot sidebar-default"> <i
 								class="la la-user sidebar-icon"></i> <span class="sidebar-text">
 									Employees</span> <!-- <span class="menu-arrow"></span> -->
-						</a> </li>
+						</a></li>
 						<div class="sidebar-line"></div>
 						<li><a
 							href="${pageContext.servletContext.contextPath}/attendance"
@@ -392,7 +392,7 @@
 						<li><a href="${pageContext.servletContext.contextPath}/admin"
 							class="sidebar-default"> <i class="la la-key sidebar-icon"></i>
 								<span class="sidebar-text">Admin</span> <!-- <span class="menu-arrow"></span> -->
-						</a> </li>
+						</a></li>
 						<div class="sidebar-line"></div>
 						<li><a href="#" class="sidebar-default"> <i
 								class="la la-money sidebar-icon"></i> <span class="sidebar-text">Payroll</span>
@@ -431,9 +431,9 @@
 				</div>
 				<!-- /Page Header -->
 				<div class="row bonus-sub-container">
-				
+
 					<div class="col-sm-12" style="height: 900px;">
-						<div class="card mb-0" >
+						<div class="card mb-0">
 							<div class="card-header">
 								<div class="col-md-6" style="max-width: 100%;">
 									<div class="card-board-style">
@@ -459,7 +459,7 @@
 													</div>
 												</div>
 											</form> -->
-												
+
 											<div class="tab-content">
 												<div class="tab-pane show active" id="solid-justified-tab1">
 													<div class="card-body">
@@ -475,17 +475,24 @@
 																		<th>휴대폰</th>
 																		<th>이메일</th>
 																		<th class="tb-hidden">상벌내역번호</th>
-																	</tr> 
+																	</tr>
 																</thead>
-																<c:forEach var="perList" items="${ requestScope.perList }">
+																<c:forEach var="perList"
+																	items="${ requestScope.perList }">
 																	<tr class="rowClick">
-																		<td><input type="checkbox"/>
-																		<td class="rnp-td"><c:out value="${ perList.memberNo }" />
-																		<td class="rnp-td"><c:out value="${ perList.name }" />
-																		<td class="rnp-td"><c:out value="${ perList.spot }" />
-																		<td class="rnp-td"><c:out value="${ perList.dept }" />
-																		<td class="rnp-td"><c:out value="${ perList.phone }" />
-																		<td class="rnp-td"><c:out value="${ perList.email}" />
+																		<td><input type="checkbox" />
+																		<td class="rnp-td"><c:out
+																				value="${ perList.memberNo }" />
+																		<td class="rnp-td"><c:out
+																				value="${ perList.name }" />
+																		<td class="rnp-td"><c:out
+																				value="${ perList.spot }" />
+																		<td class="rnp-td"><c:out
+																				value="${ perList.dept }" />
+																		<td class="rnp-td"><c:out
+																				value="${ perList.phone }" />
+																		<td class="rnp-td"><c:out
+																				value="${ perList.email}" />
 																		<td class="rnp-td tb-hidden"></td>
 																	</tr>
 																</c:forEach>
@@ -504,56 +511,53 @@
 			</div>
 		</div>
 	</div>
-	
+
 	<!-- /Page Wrapper -->
 
 	</div>
 	<!-- /Main Wrapper -->
 	<script type="text/javascript">
-     $("#modify-btn").click(function() {
-    	var memberNo = $("input[name='memberNo']").val();
-    	var enrollDate = $("input[name='enrollDate']").val();
-    	var rnpType = $("select[name='rnpType']").val();
-    	var reason = $("textarea[name='reason']").val();
-    	var body = $("textarea[name='body']").val();
-    	
-    	
-    	var jihwan = $('form[name="rnpInsert"]').serializeArray();
-    	console.table(jihwan);
-    	$("form[name='rnpInsert']").submit();	
-    	
-     });
-	
-	
-    </script>
+		$("#modify-btn").click(function() {
+			var memberNo = $("input[name='memberNo']").val();
+			var enrollDate = $("input[name='enrollDate']").val();
+			var rnpType = $("select[name='rnpType']").val();
+			var reason = $("textarea[name='reason']").val();
+			var body = $("textarea[name='body']").val();
+
+			var jihwan = $('form[name="rnpInsert"]').serializeArray();
+			console.table(jihwan);
+			$("form[name='rnpInsert']").submit();
+
+		});
+	</script>
 
 	<script>
-	
-	if(document.getElementsByTagName("td")) {
-		const $tds = document.getElementsByTagName("td");
-		const $rnp = document.getElementsByClassName("rnp-td");
-		
-		for(let i = 0; i < $tds.length; i++) {
-			
-			$tds[i].onmouseenter = function() {
-				this.parentNode.style.backgroundColor = "rgb(253,192,124)";
-				this.parentNode.style.cursor = "pointer";
+		if (document.getElementsByTagName("td")) {
+			const $tds = document.getElementsByTagName("td");
+			const $rnp = document.getElementsByClassName("rnp-td");
+
+			for (let i = 0; i < $tds.length; i++) {
+
+				$tds[i].onmouseenter = function() {
+					this.parentNode.style.backgroundColor = "rgb(253,192,124)";
+					this.parentNode.style.cursor = "pointer";
+				}
+
+				$tds[i].onmouseout = function() {
+					this.parentNode.style.background = "white";
+				}
+
+				$rnp[i].onclick = function() {
+					const no = this.parentNode.children[1].innerText;
+					console.log(no);
+					location.href = "${ pageContext.servletContext.contextPath }/performance/detail?no="
+							+ no;
+				}
+
 			}
-			
-			$tds[i].onmouseout = function() {
-				this.parentNode.style.background = "white";
-			}
-			
-			$rnp[i].onclick = function() {
-				const no = this.parentNode.children[1].innerText;
-				console.log(no);
-				location.href = "${ pageContext.servletContext.contextPath }/performance/detail?no=" + no;
-			} 
-			
 		}
-	}
 	</script>
-   
+
 	<script src="/resources/hrtemp/js/jquery-3.5.1.min.js"></script>
 
 	<!-- Bootstrap Core JS -->
