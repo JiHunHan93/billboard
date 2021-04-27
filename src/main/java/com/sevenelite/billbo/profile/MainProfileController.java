@@ -338,7 +338,7 @@ public class MainProfileController {
 		System.out.println(detailMem + "이거도 제발");
 		System.out.println(modidept + "이거도 제발Q");
 		System.out.println(modispotDto + "이거도 제발시발");
-		System.out.println(careerDto + "이거도 제발시발");
+		System.out.println(careerDto + "이거도 제발ㅇㅇ시발");
 		System.out.println(bonusDto + "이거도 제발시발");
 		System.out.println(LicenseDto + "젭알 되주세요");
 		System.out.println(certificateInsert + "젭알 되주세요");
