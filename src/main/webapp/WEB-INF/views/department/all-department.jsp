@@ -452,7 +452,9 @@
 					<div class="row">
 						<div class="col-md-12">
 							<div>
-								  <div id="chart-container"></div>
+								  <div id="chart-container">
+								  
+								  </div>
 							</div>
 						</div>
 					</div>
@@ -487,7 +489,7 @@
 	      'name': 'GENERAL',
 	      'title': 'KIM JINHO',
 	      'children': [
-	        { 'name': 'BUSINESS', 'title': 'CHOO JIHOON' },
+	        { 'name': 'BUSINESS', 'title': 'CHOO JIHOON' } ,
 	        { 'name': 'MANAGEMENT', 'title': 'SHIN SEONGROK',
 	        	'children': [
 		            { 'name': 'MANAGEMENT', 'title': 'CHOI HEUISANG' }]},
@@ -507,9 +509,8 @@
 	      'nodeContent': 'title',
 	      'verticalLevel': 4,
 	      'visibleLevel': 5
-	    });
-	
-	  });
+	   	 });
+		});
 	  </script>
 		
     </body>

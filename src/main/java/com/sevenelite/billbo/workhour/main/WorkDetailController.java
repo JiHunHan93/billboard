@@ -83,10 +83,10 @@ public class WorkDetailController {
 	    workList.setMemNo(userno);
 	    
 		if(workStatusService.registWork(workList)) {
-			rttr.addFlashAttribute("message" , "출근이 등록 되었습니다.");
+			rttr.addFlashAttribute("message" , "출근등록.");
 			
 		}
-		return "redirect:/work/detail";
+		return "redirect:/";
 	}
 	//퇴근하기
 	@PostMapping("/work/update")
@@ -115,7 +115,7 @@ public class WorkDetailController {
 			workList.setDate(dateFormat);
 			if(workStatusService.updateWork(workList)) {
 				System.out.println(userDetails);
-				rttr.addFlashAttribute("message", "퇴근하자");
+				rttr.addFlashAttribute("message", "퇴근등록");
 			};
 			
 			ModelAndView mv = new ModelAndView();
