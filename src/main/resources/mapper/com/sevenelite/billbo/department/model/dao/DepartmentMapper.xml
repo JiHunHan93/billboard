@@ -122,6 +122,66 @@
     WHERE C.DEPT_CODE = 'C2'      
     
     </select>
+    
+    <select id="selectEducationDepartmentList" resultMap="ALlmemberResultMap" parameterType="DepartmentDTO">
+  
+  SELECT
+         *
+         FROM
+         (
+         SELECT * FROM
+         (
+         SELECT
+       A.MODIFY_DEPT_NO
+     , A.MODIFY_DEPT_DATE
+     , A.MEMBER_NO
+     , B.DEPT_CODE
+     , ROW_NUMBER() OVER(PARTITION BY A.MEMBER_NO ORDER BY A.MODIFY_DEPT_NO DESC) 순번
+     , B.DEPT_NAME
+      , W.SPOT_NAME
+	FROM BB_MODIFY_DEPT A
+    JOIN BB_DEPT B ON (A.DEPT_CODE = B.DEPT_CODE)
+    JOIN BB_MEMBER S ON (A.MEMBER_NO = S.MEMBER_NO)
+     JOIN BB_MODIFY_SPOT T ON(S.MEMBER_NO = T.MEMBER_NO)
+    JOIN BB_SPOT W ON (T.SPOT_CODE = W.SPOT_CODE)
+    )
+    WHERE 순번 =1 ) C
+    JOIN BB_MEMBER_INFO D ON (C.MEMBER_NO = D.MEMBER_NO)
+    JOIN BB_MEMBER E ON( C.MEMBER_NO = E.MEMBER_NO)
+    JOIN BB_MODIFY_SPOT F ON ( D.MEMBER_NO = F.MEMBER_NO)
+    WHERE C.DEPT_CODE = 'D2'      
+    
+    </select>
+    
+    <select id="selectEmployeeDepartmentList" resultMap="ALlmemberResultMap" parameterType="DepartmentDTO">
+  
+  SELECT
+         *
+         FROM
+         (
+         SELECT * FROM
+         (
+         SELECT
+       A.MODIFY_DEPT_NO
+     , A.MODIFY_DEPT_DATE
+     , A.MEMBER_NO
+     , B.DEPT_CODE
+     , ROW_NUMBER() OVER(PARTITION BY A.MEMBER_NO ORDER BY A.MODIFY_DEPT_NO DESC) 순번
+     , B.DEPT_NAME
+      , W.SPOT_NAME
+	FROM BB_MODIFY_DEPT A
+    JOIN BB_DEPT B ON (A.DEPT_CODE = B.DEPT_CODE)
+    JOIN BB_MEMBER S ON (A.MEMBER_NO = S.MEMBER_NO)
+     JOIN BB_MODIFY_SPOT T ON(S.MEMBER_NO = T.MEMBER_NO)
+    JOIN BB_SPOT W ON (T.SPOT_CODE = W.SPOT_CODE)
+    )
+    WHERE 순번 =1 ) C
+    JOIN BB_MEMBER_INFO D ON (C.MEMBER_NO = D.MEMBER_NO)
+    JOIN BB_MEMBER E ON( C.MEMBER_NO = E.MEMBER_NO)
+    JOIN BB_MODIFY_SPOT F ON ( D.MEMBER_NO = F.MEMBER_NO)
+    WHERE C.DEPT_CODE = 'E1'      
+    
+    </select>
 
      <select id="detailEmployeeProfile" resultMap="ALlmemberResultMap" parameterType="DepartmentDTO">
        SELECT 

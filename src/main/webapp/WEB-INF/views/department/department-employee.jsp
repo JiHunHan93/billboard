@@ -41,10 +41,23 @@
 		<![endif]-->
     </head>
     <body>
-		<!-- Main Wrapper -->
-        <div class="main-wrapper">
-		
-			      <!-- Header -->
+	<!-- Main Wrapper -->
+	<div class="main-wrapper">
+
+		<!-- Loader -->
+		<div id="loader-wrapper">
+			<div id="loader">
+				<div class="loader-ellips">
+					<span class="loader-ellips__dot"></span> <span
+						class="loader-ellips__dot"></span> <span
+						class="loader-ellips__dot"></span> <span
+						class="loader-ellips__dot"></span>
+				</div>
+			</div>
+		</div>
+		<!-- /Loader -->
+
+		      <!-- Header -->
       <div class="header">
 
          <!-- Logo -->
@@ -440,9 +453,9 @@
 					<div class="page-header">
 						<div class="row align-items-center">
 							<div class="col">
-								<h3 class="page-title">Management Department</h3>
+								<h3 class="page-title">Employee Department</h3>
 								<ul class="breadcrumb">
-									<li class="breadcrumb-item"><a href="index.html">관리부</a></li>
+									<li class="breadcrumb-item"><a href="index.html">인사지원부</a></li>
 								</ul>
 							</div>
 							
@@ -462,8 +475,7 @@
 											<th>직위명</th> 
 										</tr>
 									</thead>
-									
-							   <c:forEach var="allDepartmentList" items="${requestScope.allManagementDepartmentList}">
+								<c:forEach var="allDepartmentList" items="${requestScope.allEmployeeDepartmentList}">	
 									<tr>
 										<td class="free-td"><c:out value="${allDepartmentList.no}" />
 										<td class="free-td"><c:out value="${allDepartmentList.memberName}" />	
@@ -501,7 +513,6 @@
 					}
 				}
 				</script>
-
 
 				<!-- Add Designation Modal -->
 				<div id="add_designation" class="modal custom-modal fade" role="dialog">
