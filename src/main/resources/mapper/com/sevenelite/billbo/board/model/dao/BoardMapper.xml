@@ -18,51 +18,50 @@
  	<result property="memberNo" column="MEMBER_NO"/>
  </resultMap>
  
- <select id="selectBoard" resultMap="boardResultMap" parameterType="BoardDTO">
- SELECT
-        A.BOARD_NO
-      , A.BOARD_TITLE
-      , A.BOARD_WRITER
-      , A.BOARD_COUNT
-      , A.BOARD_ENROLL_DATE
-      , A.BOARD_END_DATE
-      , A.MEMBER_NO  
-  FROM BB_BOARD A
-  WHERE A.BOARD_TYPE = '자유'
-    AND A.BOARD_STATUS = 'Y'
-   <!--  AND A.BOARD_ENROLL_DATE &lt;= SYSDATE -->
+<select id="selectBoard" resultMap="boardResultMap" parameterType="BoardDTO">
+       SELECT
+              A.BOARD_NO
+            , A.BOARD_TITLE
+            , A.BOARD_WRITER
+            , A.BOARD_COUNT
+            , A.BOARD_ENROLL_DATE
+            , A.BOARD_END_DATE
+            , A.MEMBER_NO  
+        FROM BB_BOARD A
+        WHERE A.BOARD_TYPE = '자유'
+          AND A.BOARD_STATUS = 'Y'
     ORDER BY A.BOARD_ENROLL_DATE DESC, A.BOARD_NO
  </select>
 
 <insert id="registBoard" parameterType="BoardDTO">
-	INSERT
-	  INTO BB_BOARD A
-	 (
-	  A.BOARD_NO, A.BOARD_TYPE, A.BOARD_TITLE, A.BOARD_BODY, A.BOARD_WRITER, A.BOARD_STATUS,
-	   A.BOARD_COUNT, A.BOARD_FILEATTACHMENT, A.BOARD_ENROLL_DATE, A.BOARD_END_DATE, A.MEMBER_NO 
-	 )
-	 VALUES
-	 (SEQ_BOARD_NO.NEXTVAL, #{boardType}, #{title}, #{body}, #{writer}, 'Y',
-	 DEFAULT, NULL, SYSDATE, SYSDATE, 3)
+        INSERT
+	      INTO BB_BOARD A
+	      (
+	       A.BOARD_NO, A.BOARD_TYPE, A.BOARD_TITLE, A.BOARD_BODY, A.BOARD_WRITER, A.BOARD_STATUS,
+	       A.BOARD_COUNT, A.BOARD_FILEATTACHMENT, A.BOARD_ENROLL_DATE, A.BOARD_END_DATE, A.MEMBER_NO 
+	      )
+	    VALUES
+	      (SEQ_BOARD_NO.NEXTVAL, #{boardType}, #{title}, #{body}, #{writer}, 'Y',
+	       DEFAULT, NULL, SYSDATE, SYSDATE, 3)
 	 
 </insert> 
 
 <select id="detailBoard" resultMap="boardResultMap" parameterType="BoardDTO">
- SELECT
-        A.BOARD_NO
-      , A.BOARD_TITLE
-      , A.BOARD_WRITER
-      , A.BOARD_COUNT
-      , A.BOARD_ENROLL_DATE
-      , A.BOARD_END_DATE
-      , A.BOARD_TYPE
-      , A.BOARD_STATUS
-      , A.BOARD_BODY
-      , A.MEMBER_NO  
-  FROM BB_BOARD A
-  WHERE A.BOARD_TYPE = '자유'
-    AND A.BOARD_STATUS = 'Y'
-    AND A.BOARD_NO = #{no}
+        SELECT
+               A.BOARD_NO
+             , A.BOARD_TITLE
+             , A.BOARD_WRITER
+             , A.BOARD_COUNT
+             , A.BOARD_ENROLL_DATE
+             , A.BOARD_END_DATE
+             , A.BOARD_TYPE
+             , A.BOARD_STATUS
+             , A.BOARD_BODY
+             , A.MEMBER_NO  
+         FROM BB_BOARD A
+        WHERE A.BOARD_TYPE = '자유'
+          AND A.BOARD_STATUS = 'Y'
+          AND A.BOARD_NO = #{no}
 </select> 
 
 <update id="updateCount" parameterType="_int">
@@ -78,32 +77,32 @@
 </update>
 
 <update id="updateBoard" parameterType="BoardDTO">
- UPDATE BB_BOARD A
-  SET A.BOARD_TITLE = #{title},
-      A.BOARD_TYPE = #{boardType},
-      A.BOARD_BODY = #{body},
-      A.BOARD_ENROLL_DATE = #{enrollDate},
-      A.BOARD_END_DATE = #{endDate},
-      A.BOARD_WRITER = #{writer},
-      A.BOARD_FILEATTACHMENT = #{fileAttachment},
-      A.BOARD_STATUS = #{status}
-  WHERE A.BOARD_NO = #{no}    
+        UPDATE BB_BOARD A
+           SET A.BOARD_TITLE = #{title},
+               A.BOARD_TYPE = #{boardType},
+               A.BOARD_BODY = #{body},
+               A.BOARD_ENROLL_DATE = #{enrollDate},
+               A.BOARD_END_DATE = #{endDate},
+               A.BOARD_WRITER = #{writer},
+               A.BOARD_FILEATTACHMENT = #{fileAttachment},
+               A.BOARD_STATUS = #{status}
+         WHERE A.BOARD_NO = #{no}    
 </update>
 
 <!-- EmpBoard -->
 <select id="selectEmpBoard" resultMap="boardResultMap" parameterType="BoardDTO">
-    SELECT
-        A.BOARD_NO
-      , A.BOARD_TITLE
-      , A.BOARD_WRITER
-      , A.BOARD_COUNT
-      , A.BOARD_ENROLL_DATE
-      , A.BOARD_END_DATE
-      , A.MEMBER_NO  
-   FROM BB_BOARD A
-  WHERE A.BOARD_TYPE = '인사'
-    AND A.BOARD_STATUS = 'Y'
-  ORDER BY A.BOARD_ENROLL_DATE DESC, A.BOARD_NO
+       SELECT
+              A.BOARD_NO
+            , A.BOARD_TITLE
+            , A.BOARD_WRITER
+            , A.BOARD_COUNT
+            , A.BOARD_ENROLL_DATE
+            , A.BOARD_END_DATE
+            , A.MEMBER_NO  
+         FROM BB_BOARD A
+        WHERE A.BOARD_TYPE = '인사'
+          AND A.BOARD_STATUS = 'Y'
+        ORDER BY A.BOARD_ENROLL_DATE DESC, A.BOARD_NO
 </select>
 
 <select id="empDetailBoard" resultMap="boardResultMap" parameterType="BoardDTO">
@@ -124,18 +123,18 @@
     AND A.BOARD_NO = #{no}
 </select>
 <select id="selectNotice" resultMap="boardResultMap" parameterType="BoardDTO">
- SELECT
-        A.BOARD_NO
-      , A.BOARD_TITLE
-      , A.BOARD_WRITER
-      , A.BOARD_COUNT
-      , A.BOARD_ENROLL_DATE
-      , A.BOARD_END_DATE
-      , A.MEMBER_NO  
-  FROM BB_BOARD A
-  WHERE A.BOARD_TYPE = '공지'
-  	AND A.BOARD_STATUS = 'Y'
-  ORDER BY A.BOARD_ENROLL_DATE DESC, A.BOARD_NO
+      SELECT
+              A.BOARD_NO
+            , A.BOARD_TITLE
+            , A.BOARD_WRITER
+            , A.BOARD_COUNT
+            , A.BOARD_ENROLL_DATE
+            , A.BOARD_END_DATE
+            , A.MEMBER_NO  
+       FROM BB_BOARD A
+      WHERE A.BOARD_TYPE = '공지'
+  	    AND A.BOARD_STATUS = 'Y'
+      ORDER BY A.BOARD_ENROLL_DATE DESC, A.BOARD_NO
 </select>
 <select id="detailNoticeBoard" resultMap="boardResultMap" parameterType="BoardDTO">
  	SELECT

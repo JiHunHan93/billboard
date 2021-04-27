@@ -441,9 +441,9 @@
 								<form action="http://127.0.0.1:8001/billbo/board" name="writeForm" method="post"
 									id="writeForm">
 									<div class="form-group row">
-										<label class="col-form-label col-md-2">작성자 : ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }</label><br>
+										<label class="col-form-label col-md-2">작성자 : <%-- ${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername } --%></label><br>
 										<div class="col-md-10">
-											<input type="text" class="form-control" name="writer">
+											<input type="text" class="form-control" name="writer" value="${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }">
 										</div>
 									</div>
 									<div class="form-group row">
