@@ -16,6 +16,12 @@ public class CheckApproveDTO {
 	public CheckApproveDTO(String appStatus) {
 		this.appStatus = appStatus;
 	}
+	
+	public CheckApproveDTO(int appCode, String appStatus) {
+		super();
+		this.appCode = appCode;
+		this.appStatus = appStatus;
+	}
 
 	public CheckApproveDTO(int appCode, String appStatus, int dRAFT_NO, int lINE_NO) {
 		super();

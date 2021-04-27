@@ -20,7 +20,9 @@ import com.sevenelite.billbo.approval.model.dto.ApproDeptDTO;
 import com.sevenelite.billbo.approval.model.dto.ApproDraftingDTO;
 import com.sevenelite.billbo.approval.model.dto.ApproLineMemDTO;
 import com.sevenelite.billbo.approval.model.dto.ApproSpotDTO;
+import com.sevenelite.billbo.approval.model.dto.CheckApproveDTO;
 import com.sevenelite.billbo.approval.model.dto.FormVacationDTO;
+import com.sevenelite.billbo.approval.model.dto.ListWaitingApprovalDTO;
 import com.sevenelite.billbo.approval.model.dto.MemListLine;
 import com.sevenelite.billbo.approval.model.dto.multitudeLineMem;
 import com.sevenelite.billbo.approval.model.service.ApprovalService;
@@ -238,6 +240,76 @@ public class ApprovaldocumentController {
 	    }
 	    
 		return gson.toJson(memListLine);
+	}
+	
+	@PostMapping(value="approvalCheck")
+	public String approvalCheck(@ModelAttribute("waitAppro") ListWaitingApprovalDTO waitAppro, Authentication authentication, Model model) {
+		
+		
+		ApproDeptDTO draftDept = appro.selectLoginDept(waitAppro.getMemberNo());
+		ApproSpotDTO draftSpot = appro.selectLoginSpot(waitAppro.getMemberNo());
+		FormVacationDTO vacation = appro.selectDraftVacation(waitAppro.getMemberNo());
+		
+		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
+		System.out.println("로그인한 회원 번호 : " + user.getMemberno());
+		
+		/* 부서 정보 조회 */
+		ApproDeptDTO dept = appro.selectLoginDept(user.getMemberno());
+		
+		/* 직위도 필요할듯 */
+		ApproSpotDTO spot = appro.selectLoginSpot(user.getMemberno());
+		
+		/* 결과 */
+		System.out.println("조회해온 소속 부서 : " + dept);
+		System.out.println("조회해온 해당 직위 : " + spot);
+		System.out.println("선택한 결재 : " + waitAppro);
+		System.out.println("조회해온 기안 작성자 부서 : " + draftDept);
+		System.out.println("조회해온 기안 작성자 직위 : " + draftSpot);
+		System.out.println("조회해온 기안 양식  : " + vacation);
+		
+		/* 부서 정보 추가하기 */
+		model.addAttribute("dept", dept);
+		
+		model.addAttribute("spot", spot);
+		
+		model.addAttribute("waitAppro", waitAppro);
+		
+		model.addAttribute("draftDept", draftDept);
+		
+		model.addAttribute("draftSpot", draftSpot);
+
+		model.addAttribute("vacation", vacation);
+		
+		
+		return "approval/document/1004approval";
+	}
+
+	
+	@PostMapping(value="approvalComplete", produces="application/json; charset=UTF-8")
+	@ResponseBody
+	public String approComplete(@RequestParam(required=false) String draftDateComplete, @RequestParam(required=false) String completeStatus
+			, @RequestParam(required=false) int lineNo, @RequestParam(required=false) int draftNo, @RequestParam(required=false) int approveCode) {
+		
+		Gson gson = new GsonBuilder().create();
+		
+		System.out.println("ajax로 가져온 draftDateComplete : " + draftDateComplete);
+		System.out.println("ajax로 가져온 completeStatus : " + completeStatus);
+		System.out.println("ajax로 가져온 lineNo : " + lineNo);
+		System.out.println("ajax로 가져온 draftNo : " + draftNo);
+		System.out.println("ajax로 가져온 approveCode : " + approveCode);
+		
+		/* 1. 기안서(DRAFTING) Update */
+		int result1 = appro.updateDrafting(new ApproDraftingDTO(draftNo, java.sql.Date.valueOf(draftDateComplete), completeStatus));
+		
+		/* 2. 결재선(LINE_MEM) Update */
+		int result2 = appro.updateLineMem(new ApproLineMemDTO(lineNo, java.sql.Date.valueOf(draftDateComplete), completeStatus));
+		
+		/* 3. 승인여부(APPROVE) Update */
+		int result3 = appro.updateCheckApp(new CheckApproveDTO(approveCode, completeStatus));
+		
+		System.out.println(result1 + result2 + result3);
+		
+		return gson.toJson("유후");
 	}
 	
 //	@PostMapping(value="1004LineCheck", produces="application/json; charset=UTF-8")

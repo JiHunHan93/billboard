@@ -337,4 +337,66 @@
          ORDER BY A.LINE_NO DESC
 	</select>
 	
+	<select id="selectDraftVacation" resultMap="vacation" parameterType="_int">
+        SELECT
+               A.RNUM
+             , A.FORM_VACATION_NO
+             , A.ANNUAL_TYPE
+             , A.VACATION_START
+             , A.VACATION_END
+             , A.HALF_DAY_POINT
+             , A.USED_ANNUAL_COUNT
+             , A.USED_ANNUAL_REASON
+             , A.PAYMENT_NO
+             , A.MEMBER_NO
+        FROM (SELECT ROWNUM RNUM
+                   , B.FORM_VACATION_NO
+                   , B.ANNUAL_TYPE
+                   , B.VACATION_START
+                   , B.VACATION_END
+                   , B.HALF_DAY_POINT
+                   , B.USED_ANNUAL_COUNT
+                   , B.USED_ANNUAL_REASON
+                   , B.PAYMENT_NO
+                   , B.MEMBER_NO
+               FROM (SELECT C.FORM_VACATION_NO
+                          , C.ANNUAL_TYPE
+                          , C.VACATION_START
+                          , C.VACATION_END
+                          , C.HALF_DAY_POINT
+                          , C.USED_ANNUAL_COUNT
+                          , C.USED_ANNUAL_REASON
+                          , C.PAYMENT_NO
+                          , C.MEMBER_NO
+                       FROM BB_FORM_VACATION C
+                      WHERE C.MEMBER_NO = #{ no } 
+                      ORDER BY C.FORM_VACATION_NO DESC
+                    ) B 
+             ) A
+         WHERE RNUM = 1
+	</select>
+	
+	<update id="updateDrafting" parameterType="ApproDraftingDTO">
+        UPDATE BB_DRAFTING A
+           SET
+               A.DRAFTING_COMPLETE_DATE = #{ draftDateComplete }
+             , A.DRAFTING_COMPLETE_STATUS = #{ completeStatus }
+         WHERE A.DRAFTING_NO = #{ draftNo }
+	</update>
+	
+	<update id="updateLineMem" parameterType="ApproLineMemDTO">
+        UPDATE BB_LINE_MEM A
+           SET
+               A.LINE_PROCESS = #{ processDate }
+             , A.LINE_PKINDS = #{ pKinds }
+         WHERE A.LINE_NO = #{ lineNo }
+	</update>
+	
+	<update id="updateCheckApp" parameterType="CheckApproveDTO">
+        UPDATE BB_APPROVE A
+           SET
+               A.APPROVE_STATUS = #{ appStatus }
+         WHERE A.APPROVE_CODE = #{ appCode }
+	</update>
+	
 </mapper>

@@ -18,6 +18,13 @@ public class ApproDraftingDTO {
 	
 	public ApproDraftingDTO() {}
 	
+	public ApproDraftingDTO(int draftNo, Date draftDateComplete, String completeStatus) {
+		super();
+		this.draftNo = draftNo;
+		this.draftDateComplete = draftDateComplete;
+		this.completeStatus = completeStatus;
+	}
+	
 	public ApproDraftingDTO(Date draftDateStart, String completeStatus, String docuName, String docuContents, String emergency, int memberNo, int paymentNo) {
 		super();
 		this.draftDateStart = draftDateStart;

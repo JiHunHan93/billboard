@@ -47,6 +47,18 @@ public interface ApprovalMapper {
 	
 	/* 결재 대기 중인 문서(로그인한 사원에 대한) */
 	List<ListWaitingApprovalDTO> selectWaitingApproval(ListWaitingApprovalDTO listWaitingApprovalDTO);
+	
+	FormVacationDTO selectDraftVacation(int memberNo);
+
+	/* 기안서 결재  */
+	int updateDrafting(ApproDraftingDTO approDraftingDTO);
+
+	/* 결재선 업뎃 */
+	int updateLineMem(ApproLineMemDTO approLineMemDTO);
+	
+	/* 승인여부 업뎃 */
+	int updateCheckApp(CheckApproveDTO checkApproveDTO);
+
 
 
 

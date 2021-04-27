@@ -152,6 +152,13 @@ public class ApproLineMemDTO {
 	
 	public ApproLineMemDTO() {}
 	
+	public ApproLineMemDTO(int lineNo, Date processDate, String pKinds) {
+		super();
+		this.lineNo = lineNo;
+		this.processDate = processDate;
+		this.pKinds = pKinds;
+	}
+	
 	public ApproLineMemDTO(String lineBody, String pKinds, String thumbnail,
 			String lineKinds, String deptCode, String spotCode) {
 		super();

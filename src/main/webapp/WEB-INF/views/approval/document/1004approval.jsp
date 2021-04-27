@@ -688,20 +688,16 @@
     
        <a id="act_draft" class="btn_tool" data-role="button">
             <span class="ic_toolbar approval"></span>
-            <span class="txt">결재요청</span>
+            <span class="txt">결재</span>
         </a>
         <span class="btn_tool_group">
            <a id="act_temp_save" class="btn_tool" data-role="button">
                 <span class="ic_toolbar save"></span>
-                <span class="txt">임시저장</span>
+                <span class="txt">반려</span>
             </a>
            <a id="act_document_preview" class="btn_tool" data-role="button">
                 <span class="ic_toolbar preview"></span>
-                <span class="txt">미리보기</span>
-            </a>
-           <a id="act_cancel_draft" class="btn_tool" data-role="button">
-                <span class="ic_toolbar cancel"></span>
-                <span class="txt">취소</span>
+                <span class="txt">보류</span>
             </a>
         </span>
           
@@ -784,6 +780,20 @@
 	           		<span class="sign_member_wrap" id="activity_16049">
 	           			<span class="sign_member">
 			            	<span class="sign_rank_wrap">
+			            		<span class="sign_rank">${ requestScope.draftSpot.spotName }</span>
+			            	</span>
+				            <span class="sign_wrap">
+				            	<span class="sign_stamp"><img src="/billbo/resources/jihunhan/images/stamp_approved.png"></span>
+				            	<span class="sign_name">${ requestScope.waitAppro.memberName }</span>
+				            </span>
+				            <span class="sign_date_wrap">
+				            	<span class="sign_date" id="date_16049"></span>
+				            </span>
+			            </span>
+		            </span>
+	           		<span class="sign_member_wrap" id="activity_16049">
+	           			<span class="sign_member">
+			            	<span class="sign_rank_wrap">
 			            		<span class="sign_rank">${ requestScope.spot.spotName }</span>
 			            	</span>
 				            <span class="sign_wrap">
@@ -806,15 +816,7 @@
             
             휴가&nbsp;종류
             </td><td style="background: rgb(255, 255, 255); padding: 5px; border: 1px solid black; border-image: none; height: 25px; text-align: left; color: rgb(0, 0, 0); font-size: 14px; font-weight: normal; vertical-align: middle;"><span id="vacationTypeArea" style="line-height: normal; font-family: malgun gothic, dotum, arial, tahoma; font-size: 11pt; margin-top: 0px; margin-bottom: 0px;" name="select"><!-- SELECT  -->
-            <select class="editor_slt" data-dsl="{{cSel_연차_조퇴_지각_경조_공가_질병휴가}}" name="annualType">
-                 <option value="연차">연차</option>
-                 <option value="조퇴">조퇴</option>
-                 <option value="지각">지각</option>
-                 <option value="경조">경조</option>
-                 <option value="공가">공가</option>
-                 <option value="질병휴가">질병휴가</option>
-                 <option value="반차">반차</option>
-            </select>
+            ${ requestScope.vacation.annualType }
             </span> 
             </td></tr>
             
@@ -822,38 +824,28 @@
             기간&nbsp;및&nbsp;일시
             </td>
             <td style="background: rgb(255, 255, 255); padding: 3px; border: 1px solid black; border-image: none; width: 700px; height: 22px; text-align: left; color: rgb(0, 0, 0); font-size: 12px; vertical-align: middle;">
-            <input type="date" class="ipt_editor ipt_editor_date hasDatepicker" id="startDate"  name="startDate" value="" style="width: 200px;">&nbsp;~&nbsp; 
-            <input type="date" class="ipt_editor ipt_editor_date hasDatepicker" id="endDate" name="endDate" value="" style="width: 200px;"> 
+            <input type="date" readonly="" class="ipt_editor ipt_editor_date hasDatepicker" id="startDate"  name="startDate" value="${ requestScope.vacation.startDate }" style="width: 200px;">&nbsp;~&nbsp; 
+            <input type="date" readonly="" class="ipt_editor ipt_editor_date hasDatepicker" id="endDate" name="endDate" value="${ requestScope.vacation.endDate }" style="width: 200px;"> 
             
             <!-- <span id="usingPointArea" style="line-height: normal; font-family: malgun gothic,dotum,arial,tahoma; font-size: 9pt; margin-top: 0px; margin-bottom: 0px;">
             <b>사용일수 : </b>
             <input type="text" class="ipt_editor ipt_editor_num" data-dsl="{{number:usingPoint}}" name="usingPoint" id="usingPoint" data-require="false" data-editable="true" value="1">
             <b id="usingPoint_Comment" style="font-weight:bold; color:red">신청가능일을 초과하였습니다.</b>
             </span>  -->
-            </td></tr><tr><td style="background: rgb(221, 221, 221); padding: 5px; border: 1px solid black; border-image: none; height: 25px; text-align: center; color: rgb(0, 0, 0); font-size: 14px; font-weight: bold; vertical-align: middle;">
-            
-            반차&nbsp;시점
-            </td><td style="background: rgb(255, 255, 255); padding: 5px; border: 1px solid black; border-image: none; height: 25px; text-align: left; color: rgb(0, 0, 0); font-size: 14px; font-weight: normal; vertical-align: middle;">
-            <span id="vacationHalfArea" style="line-height: normal; font-family: malgun gothic, dotum, arial, tahoma; font-size: 11pt; margin-top: 0px; margin-bottom: 0px;">
-	            <span class="halfArea">
-	                <input type="radio" class="editor_opt" data-dsl="{{radio_오전_오후}}" name="halfDayPoint" id="startAMHalf" value="오전" data-autotype="false" data-require="false" data-label="오전">
-	                <label class="editor_label" data-type="removeSpan">오전</label>
-	            
-	                <input type="radio" class="editor_opt" data-dsl="{{radio_오전_오후}}" name="halfDayPoint" id="startPMHalf" value="오후" data-autotype="false" data-require="false" data-label="오후">
-	                <label class="editor_label" data-type="removeSpan">오후</label>
-	            </span>
-            </span> 
-            </td></tr><tr><td style="background: rgb(221, 221, 221); padding: 5px; border: 1px solid black; border-image: none; height: 25px; text-align: center; color: rgb(0, 0, 0); font-size: 14px; font-weight: bold; vertical-align: middle;">
+            </td></tr>
+            <tr><td style="background: rgb(221, 221, 221); padding: 5px; border: 1px solid black; border-image: none; height: 25px; text-align: center; color: rgb(0, 0, 0); font-size: 14px; font-weight: bold; vertical-align: middle;">
             
             연차&nbsp;일수
             </td><td style="background: rgb(255, 255, 255); padding: 3px; border: 1px solid black; border-image: none; width: 700px; height: 22px; text-align: left; color: rgb(0, 0, 0); font-size: 12px; vertical-align: middle;">
             <span id="applyPointArea" style="line-height: normal; font-family: malgun gothic, dotum, arial, tahoma; font-size: 9pt; margin-top: 0px; margin-bottom: 0px;">
             <b>신청연차 : </b>
-            <input type="text" class="ipt_editor ipt_editor_num" data-dsl="{{number:applyPoint}}" name="annualCount" id="annualCount" data-require="false" data-editable="true" value="1">
+            ${ requestScope.vacation.annualCount }
             <b id="applyPoint_Comment" style="font-weight:bold; color:red"></b>
             </span> 
             </td></tr><tr><td style="background: rgb(221, 221, 221); padding: 5px; border: 1px solid black; border-image: none; height: 80px; text-align: center; color: rgb(0, 0, 0); font-size: 14px; font-weight: bold; vertical-align: middle;"><b style="color: rgb(255, 0, 0);">*</b>&nbsp;휴가&nbsp;사유 
-            </td><td style="background: rgb(255, 255, 255); padding: 3px; border: 1px solid black; border-image: none; width: 700px; height: 100px; text-align: left; color: rgb(0, 0, 0); font-size: 12px; vertical-align: top;"><textarea class="txta_editor" data-dsl="{{textarea:description}}" name="annualReason" id="annualReason" value="" data-id="description" data-name="description" data-require="false" data-maxlength="" data-width="" data-defaultstr="" data-editable="false" data-value="" placeholder=""></textarea> 
+            </td>
+            <td style="background: rgb(255, 255, 255); padding: 3px; border: 1px solid black; border-image: none; width: 700px; height: 100px; text-align: left; color: rgb(0, 0, 0); font-size: 12px; vertical-align: top;">
+            <textarea class="txta_editor" readonly="" data-dsl="{{textarea:description}}" name="annualReason" id="annualReason" value="${ requestScope.vacation.annualReason }" data-id="description" data-name="description" data-require="false" data-maxlength="" data-width="" data-defaultstr="" data-editable="false" data-value="" placeholder="">${ requestScope.vacation.annualReason }</textarea> 
             </td></tr><tr><td style="background: rgb(221, 221, 221); padding: 20px !important; border: 1px solid black; border-image: none; width: 800px; height: 22px; text-align: left; vertical-align: middle;" colspan="2">
             
             <span id="hiddenInput"></span>
@@ -933,6 +925,9 @@
    <!-- END 결재 정보 입력 FORM -->
    
 
+<section class="article_reply" style="display: none;"></section></div>
+       </section>
+       <!-- aside : right-->
 
        <!--[if IE 8]>
        <style>
@@ -957,20 +952,16 @@
     
        <a id="act_draft" class="btn_tool" data-role="button">
             <span class="ic_toolbar approval"></span>
-            <span class="txt">결재요청</span>
+            <span class="txt">결재</span>
         </a>
         <span class="btn_tool_group">
            <a id="act_temp_save" class="btn_tool" data-role="button">
                 <span class="ic_toolbar save"></span>
-                <span class="txt">임시저장</span>
+                <span class="txt">반려</span>
             </a>
            <a id="act_document_preview" class="btn_tool" data-role="button">
                 <span class="ic_toolbar preview"></span>
-                <span class="txt">미리보기</span>
-            </a>
-           <a id="act_cancel_draft" class="btn_tool" data-role="button">
-                <span class="ic_toolbar cancel"></span>
-                <span class="txt">취소</span>
+                <span class="txt">보류</span>
             </a>
         </span>
         
@@ -1348,10 +1339,10 @@
    
    <script>
 	   	console.log('안녕');
-	   	$("#memberName").val('${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.membername }');
+	   	$("#memberName").val('${ requestScope.waitAppro.memberName }');
 	   	$("#draftDate").val('<c:out value="${today}"/>');
 	   	$("#docNo").val(1004);
-	   	$("#draftDept").val('${ requestScope.dept.deptName }');
+	   	$("#draftDept").val('${ requestScope.draftDept.deptName }');
         	
    </script>
    <!-- 설정 -->
@@ -1361,51 +1352,35 @@
    <script>
    $("#act_draft").click(function() {
 	   console.log($("input[name='startDate']").val());
+	   const finalTime = '<c:out value="${todaytime}"/>';
+	   const draftDateComplete = '<c:out value="${today}"/>';
+	   const completeStatus = '승인';
+	   const lineNo = ${ requestScope.waitAppro.lineNo };
+	   const draftNo = ${ requestScope.waitAppro.draftNo };
+	   const approveCode = ${ requestScope.waitAppro.approveCode };
+	   console.log(draftDateComplete);
+	   console.log(completeStatus);
+	   console.log(lineNo);
+	   console.log(draftNo);
+	   console.log(approveCode);
 	   
-	   if($("input[name='startDate']").val() == "") {
-		   alert("시작 일시를 선택해주세요.");
-	   } else if($("input[name='endDate']").val() == "") {
-		   alert("종료 일시를 선택해주세요.");
-	   } else {
-			console.log('memNo : ' + memNo);	//3번 사원 기준 값 4
-			console.log('memNo2 : ' + memNo2);	//3번 사원 기준 값 3
-			/* console.log('memNo3 : ' + memNo3);	//3번 사원 기준 값 2 */
-			/* console.log('lineList[memNo2].memberNoLine : ' + lineList[memNo2].memberNoLine); */
-		   alert("컨트롤러로 이동");
-		   /* Hidden 추가 */
-		   const $span = $("#hiddenInput");
-		   /* memberno, time, paymentNo */
-		   $hiddenInput = $("<input name='memberno' type='hidden' value='${ sessionScope.SPRING_SECURITY_CONTEXT.authentication.principal.memberno }'> <input name='time' type='hidden' value='<c:out value="${todaytime}"/>'> <input name='paymentNo' type='hidden' value='1004'>")
-		   /* Login DeptDTO */
-		   $hiddenInputDeptDTO = $("<input name='deptRnum' type='hidden' value='${ requestScope.dept.deptRnum }'> <input name='deptCode' type='hidden' value='${ requestScope.dept.deptCode }'> <input name='deptName' type='hidden' value='${ requestScope.dept.deptName }'> <input name='upper' type='hidden' value='${ requestScope.dept.upper }'> <input name='level' type='hidden' value='${ requestScope.dept.level }'> <input name='modifyDeptDate' type='hidden' value='${ requestScope.dept.modifyDeptDate }'>")
-		   /* Login SpotDTO */
-		   $hiddenInputSpotDTO = $("<input name='spotRnum' type='hidden' value='${ requestScope.spot.spotRnum }'> <input name='spotCode' type='hidden' value='${ requestScope.spot.spotCode }'> <input name='spotName' type='hidden' value='${ requestScope.spot.spotName }'> <input name='modifySpotDate' type='hidden' value='${ requestScope.spot.modifySpotDate }'>")
-		   /* $hiddenInputlineMemDTO = $("<input name='lineMem[0].lineKinds' type='hidden' value='첫 번째 휴가휴가'> <input name='lineMem[1].lineKinds' type='hidden' value='두 번째 근무근무'> <input name='lineMem[0].deptCode' type='hidden' value='부서코드부서코드'> <input name='lineMem[1].deptCode' type='hidden' value='두번째에에에에부서코드부서코드'> <input name='lineMem[0].spotCode' type='hidden' value='직위는직급과직책과뭐가 다른가?'> <input name='lineMem[1].spotCode' type='hidden' value='피곤하다아아아아아아 피곤해ㅐ해해해해'>")
-		   
-		   /* 담기 */
-		   $span.append($hiddenInput);
-		   $span.append($hiddenInputDeptDTO);
-		   $span.append($hiddenInputSpotDTO);
-		   
-		   /* input 확인 및 submit */
-		   var jihun = $('form[name="vacation01"]').serializeArray();
-		   console.table(jihun);
-		   $("form[name='vacation01']").submit();
-	   }
-	   
-	   /* $.ajax({
-		   url: "${ pageContext.servletContext.contextPath }/approval/document/1004",
+	   $.ajax({
+		   url: "${ pageContext.servletContext.contextPath }/approval/document/approvalComplete",
 		   type: 'POST',
            dataType: 'json',
            data: {
-               jihun : jihun
+        	   draftDateComplete : draftDateComplete,
+        	   completeStatus : completeStatus,
+        	   lineNo : lineNo,
+        	   draftNo : draftNo,
+        	   approveCode : approveCode
            },
            success : function(data, textStatus, xhr) {
               alert(data);
-           	console.log("뭐가나오냐?");
+              location.href = "${ pageContext.servletContext.contextPath }/approval/"
            },
            error : function(xhr, status, error) {}
-       }); */
+       });
 
    });
    

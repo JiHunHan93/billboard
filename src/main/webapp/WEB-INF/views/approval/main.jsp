@@ -927,7 +927,7 @@
 					<li class="appr_compl">
 			            <p class="title">
 			                <a class="go_boards" data-deptid="130" data-navi="deptdraft" data-bypass="">
-			                    <ins class="ic"></ins><span class="txt" title="기안 완료함">기안 완료함</span>
+			                    <ins class="ic"></ins><span class="txt" title="기안 승인함">기안 승인함</span>
 			                </a>
 			            </p>
 			        </li>
@@ -967,7 +967,7 @@
 			        
 			        <div class="dashboard_box">
 				    <div>
-				    <div class="card_item_wrapper card_flex">
+				    <div id="finalClick" class="card_item_wrapper card_flex">
 				    
 				    
 					   	<c:choose>
@@ -977,8 +977,8 @@
 	         
 					    <!-- 04/26(월) 찐으로 시작 -->
 				    <section class="card_item approval_home_card">
-				    <div class="h_border"></div>
-								<div class="card_wrapper">
+				    <div class="h_border" value="이건가2"></div>
+								<div class="card_wrapper" value="이건가1">
 								    <header>
 								        <span class="state ongoing">진행중</span>
 								    </header>
@@ -1007,8 +1007,31 @@
 								            </div>
 								        </div>
 								    </div>
-								    <div class="card_action">
-								        <a class="btn_lead"><span class="ic ic_report"></span><span class="txt">결재하기</span></a>
+								    <div class="card_action" value="이건가3">
+								        	<form action="${ pageContext.servletContext.contextPath }/approval/document/approvalCheck" method="post">
+								        		<input name="lineNo" value="<c:out value="${ approInfo.lineNo }"/>" type="hidden">
+								        		<input name="draftNo" value="<c:out value="${ approInfo.draftNo }"/>" type="hidden">
+								        		<input name="lineBody" value="<c:out value="${ approInfo.lineBody }"/>" type="hidden">
+								        		<input name="pkinds" value="<c:out value="${ approInfo.pkinds }"/>" type="hidden">
+								        		<input name="thumbnail" value="<c:out value="${ approInfo.thumbnail }"/>" type="hidden">
+								        		<input name="lineKinds" value="<c:out value="${ approInfo.lineKinds }"/>" type="hidden">
+								        		<input name="deptCode" value="<c:out value="${ approInfo.deptCode }"/>" type="hidden">
+								        		<input name="spotCode" value="<c:out value="${ approInfo.spotCode }"/>" type="hidden">
+								        		
+								        		<input name="draftDate" value="<c:out value="${ approInfo.draftDate }"/>" type="hidden">
+								        		<input name="draftCompleteStatus" value="<c:out value="${ approInfo.draftCompleteStatus }"/>" type="hidden">
+								        		<input name="docuname" value="<c:out value="${ approInfo.docuname }"/>" type="hidden">
+								        		<input name="docuContents" value="<c:out value="${ approInfo.docuContents }"/>" type="hidden">
+								        		<input name="emergency" value="<c:out value="${ approInfo.emergency }"/>" type="hidden">
+								        		<input name="paymentNo" value="<c:out value="${ approInfo.paymentNo }"/>" type="hidden">
+								        		<input name="memberNo" value="<c:out value="${ approInfo.memberNo }"/>" type="hidden">
+								        		
+								        		<input name="approveCode" value="<c:out value="${ approInfo.approveCode }"/>" type="hidden">
+								        		<input name="approveStatus" value="<c:out value="${ approInfo.approveStatus }"/>" type="hidden">
+								        		<input name="memberName" value="<c:out value="${ approInfo.memberName }"/>" type="hidden">
+								        	</form>
+								        <a class="btn_lead"><span class="ic ic_report" value="자식1"><div value="자식이다"></div>
+								        </span><span class="txt">결재하기</span></a>
 								    </div>
 								</div>
 						
@@ -1030,6 +1053,39 @@
 			        
 			        
 			    </div>
+						<script>
+							$("#finalClick").click(function() {
+								console.log($(this).find('form'));
+								$(this).find('form').submit();
+								alert('하이하이');
+								
+								$("#finalClick > form").submit();
+								/* console.table($(this).attr("value"));
+								
+								console.table($(this).children("div").attr('value')); */
+								/* console.table($(this).find("form").attr).); */
+								/* $(this).find("form").submit(); */
+								
+								
+								/* $.ajax({
+									   url: "${ pageContext.servletContext.contextPath }/approval/document/approvalCheck",
+									   type: 'POST',
+							           dataType: 'json',
+							           data: {
+							        	   waitAppro : "${ requestScope.waitAppro }"
+							           },
+							           success : function(data, textStatus, xhr) {
+							        	   
+							        	alert(data);
+											
+										
+							           },
+							           error : function(xhr, status, error) {}
+							       }); */
+							
+								
+							});
+						</script>
 			
 			    <div class="dr_wrapper" id="home_reception_waiting_doclist" style="display:none">
 			        <h1 class="s_title">접수 대기 문서
@@ -1093,6 +1149,7 @@
 				
 				<!-- 04/26(월) 결재 넣기 -->
 				<c:forEach var="draftInfo" items="${ requestScope.draftList }">
+				<c:if test="${ draftInfo.draftCompleteStatus ne '승인' }">
 					<tr>
 						<td class="date first"><span class="txt"><c:out value="${ draftInfo.draftDate }"/></span></td>
 						<td class="division"><span class="txt"><c:out value="${ draftInfo.docuname }"/></span></td>
@@ -1101,6 +1158,7 @@
 						<td class="attach"></td>
 						<td class="state_wrap"><a><span class="state read"><c:out value="${ draftInfo.draftCompleteStatus }"/></span></a></td>
 					</tr>
+				</c:if>	
 				</c:forEach>
 				
 				
@@ -1184,12 +1242,12 @@
 			    </div>
 			
 			    <div class="dr_wrapper" id="home_completed_doclist">
-			        <h1 class="s_title">완료 문서
+			        <h1 class="s_title">승인 문서
 			            <span class="btn_wrap">
 			                 <span class="ic ic_info btn-toggle-desc">
 			                     <span class="layer_tail tooltip-desc" style="display:none;">
 			                         <i class="ic ic_tail"></i>
-			                         <div>최근에 결재 완료된 순서대로, 최대 5개의 목록을 표시합니다.</div>
+			                         <div>최근에 결재 승인된 순서대로, 최대 5개의 목록을 표시합니다.</div>
 			                     </span>
 			                  </span>
 			            </span>
@@ -1203,7 +1261,7 @@
 			            <th id="header_emergency" class="sorting_disabled doc_emergency"><span class="title_sort">긴급<ins class="ic"></ins></span></th>
 						<th id="header_title" class="sorting_disabled subject"><span class="title_sort">제목<ins class="ic"></ins></span></th>
 						<th id="header_attach" class="sorting_disabled attach"><span class="title_sort">첨부</span></th>
-						<th id="header_doc_no" class="sorting_disabled doc_num"><span class="title_sort">완료일<ins class="ic"></ins></span></th>
+						<th id="header_doc_no" class="sorting_disabled doc_num"><span class="title_sort">승인일<ins class="ic"></ins></span></th>
 						<th id="header_doc_status" class="sorting_disabled state_wrap"><span class="title_sort">결재상태</span></th>
 					</tr>
 				</thead>
@@ -1221,7 +1279,7 @@
 									<td class="subject"> <a><span class="txt"><c:out value="${ draftInfo.docuContents }"/></span></a></td>
 									<td class="attach"></td>
 									<td class="doc_num"><span class="txt"><c:out value="${ draftInfo.draftCompleteDate }"/></span></td>
-									<td class="state_wrap"><a><span class="state finish">완료</span></a></td>
+									<td class="state_wrap"><a><span class="state finish">승인</span></a></td>
 								</tr>
 				            </c:if>
 						</c:forEach>
@@ -1239,7 +1297,7 @@
 					<td class="subject"> <a><span class="txt">(신규)연장근무신청-근태관리연동</span></a></td>
 					<td class="attach"></td>
 					<td class="doc_num"><span class="txt">2021-03-01</span></td>
-					<td class="state_wrap"><a><span class="state finish">완료</span></a></td>
+					<td class="state_wrap"><a><span class="state finish">승인</span></a></td>
 				</tr>
 				
 				
@@ -1251,7 +1309,7 @@
 					<td class="subject"><a><span class="txt">자율 출퇴근 신청서</span></a></td>
 					<td class="attach"></td>
 					<td class="doc_num"><span class="txt">2021-01-31</span></td>
-					<td class="state_wrap"><a><span class="state finish">완료</span></a></td>
+					<td class="state_wrap"><a><span class="state finish">승인</span></a></td>
 				</tr>
 			
 			
@@ -1275,7 +1333,7 @@
 			
 			
 			<td class="doc_num"><span class="txt">2020-11-17</span></td>
-			<td class="state_wrap"><a><span class="state finish">완료</span></a></td>
+			<td class="state_wrap"><a><span class="state finish">승인</span></a></td>
 			</tr><tr>
 			<td class="date first"><span class="txt">2020-11-03</span></td>
 			
@@ -1296,7 +1354,7 @@
 			
 			
 			<td class="doc_num"><span class="txt">2020-11-16</span></td>
-			<td class="state_wrap"><a><span class="state finish">완료</span></a></td>
+			<td class="state_wrap"><a><span class="state finish">승인</span></a></td>
 			</tr><tr>
 			<td class="date first"><span class="txt">2020-11-03</span></td>
 			
@@ -1320,7 +1378,7 @@
 			
 			
 			<td class="doc_num"><span class="txt">2020-11-11</span></td>
-			<td class="state_wrap"><a><span class="state finish">완료</span></a></td>
+			<td class="state_wrap"><a><span class="state finish">승인</span></a></td>
 			</tr></tbody>
 			</table>
 			</div></div>

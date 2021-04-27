@@ -115,4 +115,29 @@ public class ApprovalServiceImpl implements ApprovalService {
 		return mapper.selectWaitingApproval(listWaitingApprovalDTO);
 	}
 
+	@Override
+	public FormVacationDTO selectDraftVacation(int memberNo) {
+		
+		return mapper.selectDraftVacation(memberNo);
+	}
+
+	@Override
+	public int updateDrafting(ApproDraftingDTO approDraftingDTO) {
+		
+		return  mapper.updateDrafting(approDraftingDTO);
+	}
+
+	@Override
+	public int updateLineMem(ApproLineMemDTO approLineMemDTO) {
+		
+		return mapper.updateLineMem(approLineMemDTO);
+		
+	}
+
+	@Override
+	public int updateCheckApp(CheckApproveDTO checkApproveDTO) {
+		
+		return mapper.updateCheckApp(checkApproveDTO);
+	}
+
 }
