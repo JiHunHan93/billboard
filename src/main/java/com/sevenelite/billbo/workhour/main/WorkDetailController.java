@@ -28,7 +28,6 @@ import
 com.sevenelite.billbo.workhour.work.model.service.WorkStatusService;
 
 @Controller 
-@SessionAttributes("memberno")
 public class WorkDetailController {
 
 	private final WorkStatusService workStatusService;
