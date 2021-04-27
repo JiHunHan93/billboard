@@ -216,20 +216,19 @@
 </select>
 
 
-	<!-- BB_MEMBER_INFO A
-    WHERE A.MEMBER_INFO_NO = #{ member_no } -->
+	
 <select id="member" parameterType="MemberInfoDTO" resultMap="memberInfoDTO">
     SELECT
-          A.MEMBER_INFO_NO
-	    , A.MEMBER_ADDRESS
-	    , A.MEMBER_ACCOUNT_NO
-	    , A.MEMBER_ACCOUNT_BANK
-	    , A.ACCOUNT_HOST
-	    , A.MEMBER_FILEATTACHMENT
-	    , A.ENROLL_DATE
-	    , A.MEMBER_WORK_CONTRACT
-	    , A.MEMBER_NO
-	FROM BB_MEMBER_INFO A
+           A.MEMBER_INFO_NO
+	     , A.MEMBER_ADDRESS
+	     , A.MEMBER_ACCOUNT_NO
+	     , A.MEMBER_ACCOUNT_BANK
+	     , A.ACCOUNT_HOST
+	     , A.MEMBER_FILEATTACHMENT
+	     , A.ENROLL_DATE
+	     , A.MEMBER_WORK_CONTRACT
+	     , A.MEMBER_NO
+      FROM BB_MEMBER_INFO A
     
 </select>
 <insert id="modifyspot" parameterType="ModifySpotDTO">
