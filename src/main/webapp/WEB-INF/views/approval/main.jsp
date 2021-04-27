@@ -1123,12 +1123,12 @@
 			    </div>
 			
 			    <div class="dr_wrapper" id="home_drafted_doclist">
-			        <h1 class="s_title">기안 진행 문서
+			        <h1 class="s_title">대기 문서
 			            <span class="btn_wrap">
 			                 <span class="ic ic_info btn-toggle-desc">
 			                     <span class="layer_tail tooltip-desc" style="display:none;">
 			                         <i class="ic ic_tail"></i>
-			                         <div>현재 진행중인 기안문서 5개를, 최근 등록 순서대로 표시합니다.</div>
+			                         <div>현재 대기중인 기안문서 5개를, 최근 등록 순서대로 표시합니다.</div>
 			                     </span>
 			                  </span>
 			            </span>
@@ -1184,7 +1184,7 @@
 			</td>
 			<td class="attach"></td>
 			
-			<td class="state_wrap"><a><span class="state read">진행중</span></a></td>
+			<td class="state_wrap"><a><span class="state read">대기중</span></a></td>
 			</tr>
 			
 			<tr>
@@ -1200,7 +1200,7 @@
 			</td>
 			<td class="attach">
 			</td>
-			<td class="state_wrap"><a><span class="state read">진행중</span></a></td>
+			<td class="state_wrap"><a><span class="state read">대기중</span></a></td>
 			</tr>
 			
 			<tr>
@@ -1235,7 +1235,7 @@
 			
 			
 			
-			<td class="state_wrap"><a><span class="state read">진행중</span></a></td>
+			<td class="state_wrap"><a><span class="state read">대기중</span></a></td>
 			</tr></tbody>
 			</table>
 			</div></div>
