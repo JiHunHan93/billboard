@@ -729,7 +729,8 @@
 												<!-- Attendance 근태관리 -->
 												<p class="category-text">근태관리</p>
 												<i class="las la-user-clock category-icon"></i>
-												<i class="fas fa-circle category-dot"><div class="category-sub-text">내 근태 현황</div></i>
+												<div></div><i class="fas fa-circle category-dot"><a class="category-sub-text" href="${pageContext.servletContext.contextPath}/work">내 근태현황</a></i></div>
+												<br>
 												<i class="fas fa-circle category-dot"><a class="category-sub-text" href="${pageContext.servletContext.contextPath}/holiday/list">내 연차내역</a></i><br>
 												<i class="fas fa-circle category-dot"><a class="category-sub-text" href="${pageContext.servletContext.contextPath}/profile/mainProfile3">내 인사 정보</a></i>
 												
