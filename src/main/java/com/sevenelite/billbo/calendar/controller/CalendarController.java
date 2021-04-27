@@ -21,35 +21,33 @@ import com.sevenelite.billbo.calendar.model.service.CalService;
 import com.sevenelite.billbo.member.model.dto.UserDetailsVO;
 
 @Controller
-@RequestMapping("/calender/*")
-public class CalenderController {
+@RequestMapping("/calendar/*")
+public class CalendarController {
 	
 	private final CalService calService;
 	
 	@Autowired
-	public CalenderController(CalService calService) {
+	public CalendarController(CalService calService) {
 		this.calService = calService;
 	}
 	
 	@GetMapping("/main")
-	public String CalenderMain(Authentication authentication, Model model) {
+	public String CalendarMain(Authentication authentication, Model model) {
 		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
 		int userNo = user.getMemberno();
 		String deptCode = calService.seletDept(userNo);
 		System.out.println(deptCode);
 		model.addAttribute("userNo", userNo);
 		model.addAttribute("deptCode", deptCode);
-		return "Calender/calender";
+		return "calendar/calendar";
 	}
 	
-	@RequestMapping(value = "calender/getMain", method = RequestMethod.POST)
+	@RequestMapping(value = "calendar/getMain", method = RequestMethod.POST)
 	@ResponseBody
-	public List<Map<String,CalDTO>> AjaxCalenderMain() {
-
+	public List<Map<String,CalDTO>> AjaxCalendarMain() {
+		
+		/*  */
 		List<Map<String,CalDTO>> calendarInfo = calService.selectCal();
-		System.out.println(calendarInfo.get(0).get("start"));
-		SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd");
-		System.out.println("아직 컨트롤러" + calendarInfo);
 
 		return calendarInfo;
 	}

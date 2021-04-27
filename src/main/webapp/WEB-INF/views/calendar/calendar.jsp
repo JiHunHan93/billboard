@@ -36,11 +36,11 @@
 <!-- Main CSS -->
 <link rel="stylesheet" href="../resources/hrtemp/css/style.css">
 
-<!-- Calender CSS -->
+<!-- Calendar CSS -->
 <link href="../resources/hrtemp/lib/main.css" rel='stylesheet' />
 <link rel="stylesheet" href="../resources/hrtemp/lib/main.min.css">
 
-<!-- Calendal JS  -->
+<!-- Calendar JS  -->
 <script src="../resources/hrtemp/lib/main.min.js"></script>
 <script src="../resources/hrtemp/lib/main.js"></script>
 <script src="../resources/hrtemp/lib/locales/ko.js"></script>
@@ -361,7 +361,7 @@
 		
 		// page loaded [
 		$(document).ready(function() {
-			// get value for add event on calender
+			// get value for add event on calendar
 			var arr = getCalendarDataInDB();
 			// get parameters from [arr] [
 			$.each(arr, function(index, item) {
@@ -465,8 +465,12 @@
     				return element.code == $("#dept-code").val();
     			});
 	        	// set filter for applicable employee by deptcode ]
-    			console.table(arr1);
-	            $.each(resp, function(index, item) {
+	        	// set filter for applicable calendarType 공휴일 [
+	        	var arr2 = resp.filter(function(element, index, array) {
+    				return element.calType == '공휴일';
+    			});
+	        	// set filter for applicable calendarType 공휴일 ]
+	        	$.each(resp, function(index, item) {
 	            	console.table(resp);
 	            	// for all date values on [{resp}] apply date format 'yyyy-MM-dd' [
 	            	for(let i = 0; i < Object.values(resp).length; i++) {
@@ -488,6 +492,9 @@
 	                });
 	            });
                 arr = arr1;
+                arr = arr2;
+                console.table(arr);
+                console.log(arr);
 	        },
 	        error:function() {
 	            alert('캘린더를 불러오는데 실패했습니다. 다시 시도해 주세요.');
@@ -933,7 +940,7 @@ if($('.select11').length > 0) {
 						</li>
 						<div class="sidebar-line"></div>
 						<li>
-							<a href="${pageContext.servletContext.contextPath}/calender/main" class="sidebar-default">
+							<a href="${pageContext.servletContext.contextPath}/calendar/main" class="sidebar-default">
 								<i class="la la-money sidebar-icon"></i>
 								<span class="sidebar-text">Payroll</span>
 							</a>
