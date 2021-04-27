@@ -19,11 +19,17 @@ public interface DepartmentService {
 	
 	/* 생산부서 조회 */
 	List<DepartmentDTO> selectProductionDepartmentList();
+	
+	/* 교육부서 조회 */
+	List<DepartmentDTO> selectEducationDepartmentList();
+	
+	/* 인사지원부서 조회 */
+	List<DepartmentDTO> selectEmployeeDepartmentList();
 
 	List<DepartmentDTO> memberDetailProfile(int no);
 
 	
-
+   
 
 	
 	

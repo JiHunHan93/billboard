@@ -15,4 +15,8 @@ public interface DepartmentMapper {
 
 	List<DepartmentDTO> detailEmployeeProfile(int no);
 	
+	List<DepartmentDTO> selectEducationDepartmentList();
+	
+	List<DepartmentDTO> selectEmployeeDepartmentList();
+	
 }
