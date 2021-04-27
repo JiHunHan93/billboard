@@ -14,10 +14,6 @@
 <meta name="robots" content="noindex, nofollow">
 <title>2조BB-게시판/문서함</title>
 
-<!-- Favicon -->
-<link rel="shortcut icon" type="image/x-icon"
-	href="assets/img/favicon.png">
-
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="../resources/hrtemp/css/bootstrap.min.css">
 
@@ -75,8 +71,9 @@
 			</div>
 			<!-- /Header Title -->
 
-			<a id="mobile_btn" class="mobile_btn" href="#sidebar"><i
-				class="fa fa-bars"></i></a>
+			<a id="mobile_btn" class="mobile_btn" href="#sidebar"> <i
+				class="fa fa-bars"></i>
+			</a>
 
 			<!-- Header Menu -->
 			<ul class="nav user-menu">
@@ -122,6 +119,7 @@
 				<!-- /Flag -->
 
 				<!-- Notifications -->
+
 				<li class="nav-item dropdown"><a href="#"
 					class="dropdown-toggle nav-link" data-toggle="dropdown"> <i
 						class="fa fa-bell-o"></i> <span class="badge badge-pill">3</span>
@@ -246,7 +244,7 @@
 												</span>
 											</div>
 											<div class="list-body">
-												<span class="message-author">Richard Miles </span> <span
+												<span class="message-author">Richard Miles</span> <span
 													class="message-time">12:28 AM</span>
 												<div class="clearfix"></div>
 												<span class="message-content">Lorem ipsum dolor sit
@@ -332,9 +330,10 @@
 
 				<li class="nav-item dropdown has-arrow main-drop"><a href="#"
 					class="dropdown-toggle nav-link" data-toggle="dropdown"> <span
-						class="user-img"><img
+						class="user-img"> <img
 							src="/billbo/resources/hrtemp/img/profiles/avatar-21.jpg" alt="">
-							<span class="status online"></span></span> <span> <!-- 해당 사원 명 -->
+							<span class="status online"></span>
+					</span> <span> <!-- 해당 사원 명 -->
 					</span>
 				</a>
 					<div class="dropdown-menu">
@@ -349,7 +348,8 @@
 			<!-- Mobile Menu -->
 			<div class="dropdown mobile-user-menu">
 				<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
-					aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+					aria-expanded="false"> <i class="fa fa-ellipsis-v"></i>
+				</a>
 				<div class="dropdown-menu dropdown-menu-right">
 					<a class="dropdown-item" href="profile.html">내 정보</a> <a
 						class="dropdown-item" href="settings.html">환경설정</a> <a
@@ -365,26 +365,22 @@
 		<div class="sidebar" id="sidebar">
 			<div class="sidebar-inner slimscroll">
 				<div id="sidebar-menu" class="sidebar-menu">
-					<ul>	
-						<!-- 사이드바 서브메뉴 안쓰는 방향으로 수정 -->
+					<ul>
 						<li><a href="${pageContext.servletContext.contextPath}"
 							class="sidebar-default"> <i class="la la-home sidebar-icon"></i>
-								<!-- <span class="menu-arrow"></span> --> <span
-								class="sidebar-text">Home</span>
-						</a> </li>
+								<span class="sidebar-text">Home</span>
+						</a></li>
 						<div class="sidebar-line"></div>
 						<li><a href="${pageContext.servletContext.contextPath}/apps"
 							class="sidebar-default"> <i class="la la-cube sidebar-icon"></i>
-								<span class="sidebar-text"> Apps</span> <!-- <span class="menu-arrow"></span> -->
-						</a> </li>
+								<span class="sidebar-text">Apps</span>
+						</a></li>
 						<div class="sidebar-line"></div>
-						
 						<li><a
 							href="${pageContext.servletContext.contextPath}/employee"
 							class="noti-dot sidebar-default"> <i
-								class="la la-user sidebar-icon"></i> <span class="sidebar-text">
-									Employees</span> <!-- <span class="menu-arrow"></span> -->
-						</a> </li>
+								class="la la-user sidebar-icon"></i> <span class="sidebar-text">Employees</span>
+						</a></li>
 						<div class="sidebar-line"></div>
 						<li><a
 							href="${pageContext.servletContext.contextPath}/attendance"
@@ -395,15 +391,14 @@
 						<div class="sidebar-line"></div>
 						<li><a href="${pageContext.servletContext.contextPath}/admin"
 							class="sidebar-default"> <i class="la la-key sidebar-icon"></i>
-								<span class="sidebar-text">Admin</span> <!-- <span class="menu-arrow"></span> -->
-						</a> <!-- <ul style="display: none;">
-                           <li><a href="projects.html">Projects</a></li>
-                           <li><a href="tasks.html">Tasks</a></li>
-                           <li><a href="task-board.html">Task Board</a></li>   
-                        </ul> --></li>
+								<span class="sidebar-text">Admin</span>
+						</a></li>
 						<div class="sidebar-line"></div>
-						<li><a href="#" class="sidebar-default"> <i
-								class="la la-money sidebar-icon"></i> <span class="sidebar-text">Payroll</span>
+						<li><a
+							href="${pageContext.servletContext.contextPath}/calendar/main"
+							class="sidebar-default"> <i
+								class="las la-calendar sidebar-icon"></i> <span
+								class="sidebar-text">Calendar</span>
 						</a></li>
 						<div class="sidebar-line"></div>
 						<li><a
@@ -439,9 +434,9 @@
 				</div>
 				<!-- /Page Header -->
 				<div class="row bonus-sub-container">
-				
+
 					<div class="col-sm-12" style="height: 900px;">
-						<div class="card mb-0" >
+						<div class="card mb-0">
 							<div class="card-header">
 								<div class="col-md-6" style="max-width: 100%;">
 									<div class="card-board-style">
@@ -454,9 +449,11 @@
 											</ul>
 											<br>
 											<form class="file-search">
-											<div class="col-auto float-right ml-auto">
-											<a href="#" class="btn btn-primary btn-sm sub-btn" data-toggle="modal" data-target="#edit_project"><i class="fa fa-plus"></i> 상벌 추가</a>
-											</div>
+												<div class="col-auto float-right ml-auto">
+													<a href="#" class="btn btn-primary btn-sm sub-btn"
+														data-toggle="modal" data-target="#edit_project"><i
+														class="fa fa-plus"></i> 상벌 추가</a>
+												</div>
 												<div class="input-group" style="width: 300px; float: left;">
 													<select>
 														<option>제목</option>
@@ -469,7 +466,7 @@
 													</div>
 												</div>
 											</form>
-											
+
 											<div class="tab-content">
 												<div class="tab-pane show active" id="solid-justified-tab1">
 													<div class="card-body">
@@ -485,18 +482,26 @@
 																		<th>상벌일자</th>
 																		<th>상벌사유</th>
 																		<th class="tb-hidden">상벌내역번호</th>
-																	</tr> 
+																	</tr>
 																</thead>
-																<c:forEach var="rnpList" items="${ requestScope.rnpList }">
+																<c:forEach var="rnpList"
+																	items="${ requestScope.rnpList }">
 																	<tr class="rowClick">
 																		<td><input type="checkbox" />
-																		<td class="rnp-td"><c:out value="${ rnpList.memNo }" />
-																		<td class="rnp-td"><c:out value="${ rnpList.memName }" />
-																		<td class="rnp-td"><c:out value="${ rnpList.deptName }" />
-																		<td class="rnp-td"><c:out value="${ rnpList.rnpType }" />
-																		<td class="rnp-td"><c:out value="${ rnpList.enrollDate }" />
-																		<td class="rnp-td"><c:out value="${ rnpList.reason}" />
-																		<td class="rnp-td tb-hidden"><c:out value="${ rnpList.no }"/></td>
+																		<td class="rnp-td"><c:out
+																				value="${ rnpList.memNo }" />
+																		<td class="rnp-td"><c:out
+																				value="${ rnpList.memName }" />
+																		<td class="rnp-td"><c:out
+																				value="${ rnpList.deptName }" />
+																		<td class="rnp-td"><c:out
+																				value="${ rnpList.rnpType }" />
+																		<td class="rnp-td"><c:out
+																				value="${ rnpList.enrollDate }" />
+																		<td class="rnp-td"><c:out
+																				value="${ rnpList.reason}" />
+																		<td class="rnp-td tb-hidden"><c:out
+																				value="${ rnpList.no }" /></td>
 																	</tr>
 																</c:forEach>
 															</table>
@@ -514,74 +519,78 @@
 			</div>
 		</div>
 		<!-- insert Board Modal -->
-				<div id="edit_project" class="modal custom-modal fade" role="dialog">
-					<div class="modal-dialog modal-dialog-centered modal-lg sub-modal" role="document">
-					<form name="rnpInsert" action="http://127.0.0.1:8001/billbo/Rnp/main" method="post">
-						<div class="modal-content sub-modal">
-							<div class="modal-header">
-								<h5 class="modal-title">상벌 추가</h5>
-								<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-									<span aria-hidden="true">&times;</span>
-								</button>
-							</div>
-							<div class="modal-body">
+		<div id="edit_project" class="modal custom-modal fade" role="dialog">
+			<div class="modal-dialog modal-dialog-centered modal-lg sub-modal"
+				role="document">
+				<form name="rnpInsert"
+					action="http://127.0.0.1:8001/billbo/Rnp/main" method="post">
+					<div class="modal-content sub-modal">
+						<div class="modal-header">
+							<h5 class="modal-title">상벌 추가</h5>
+							<button type="button" class="close" data-dismiss="modal"
+								aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
 							<%-- <c:forEach var="rnpDetailInfo" items="${ requestScope.rnpDetailInfo }">  --%>
-									<div class="row">
-										<div class="col-sm-6">
-											<div class="form-group">
-												<label>사번</label>
-												<input name="memberNo" class="form-control" id="modifyTitle" type="text"/>
-											</div>
-										</div>
-									</div>
-								<%--  </c:forEach>  --%>
-									<div class="row">	
-										<div class="col-sm-6">
-											<div class="form-group">
-												<label>게시일</label>
-												<div class="cal-icon">
-													<input type="date"
-													name="enrollDate" id="modifyEnrollDate">
-												</div>
-											</div>
-										</div>
-									</div>
-									<div class="row">
-										<div class="col-sm-3">
-											<div class="form-group">
-                                                <label>상벌 구분</label>
-												<select class="select1" name="rnpType" id="insertType" value="">
-													<option value="포상">포상</option>
-													<option value="징계">징계</option>
-												</select>
-											</div>
-										</div>
-										<div class="col-sm-6">
-											<div class="form-group">
-											</div>
-										</div>
-									</div>
+							<div class="row">
+								<div class="col-sm-6">
 									<div class="form-group">
-										<label>상벌 사유</label>
-										<textarea rows="4" class="form-control"
-										 placeholder="Enter your message here" name="reason" id="modifyBody"></textarea>
+										<label>사번</label> <input name="memberNo" class="form-control"
+											id="modifyTitle" type="text" />
 									</div>
+								</div>
+							</div>
+							<%--  </c:forEach>  --%>
+							<div class="row">
+								<div class="col-sm-6">
 									<div class="form-group">
-										<label>상벌 내용</label>
-										<textarea rows="4" class="form-control"
-										 placeholder="Enter your message here" name="body" id="modifyBody"></textarea>
+										<label>게시일</label>
+										<div class="cal-icon">
+											<input type="date" name="enrollDate" id="modifyEnrollDate">
+										</div>
 									</div>
-									<div class="submit-section">
-										<!-- <button class="btn btn-primary submit-btn" id="modify-btn" type="button" onclick="goInsert(this.form)">상벌 추가</button> -->
-										<button class="btn btn-primary submit-btn" id="modify-btn" type="button">상벌 추가</button>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-sm-3">
+									<div class="form-group">
+										<label>상벌 구분</label> <select class="select1" name="rnpType"
+											id="insertType" value="">
+											<option value="포상">포상</option>
+											<option value="징계">징계</option>
+										</select>
 									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="form-group"></div>
+								</div>
+							</div>
+							<div class="form-group">
+								<label>상벌 사유</label>
+								<textarea rows="4" class="form-control"
+									placeholder="Enter your message here" name="reason"
+									id="modifyBody"></textarea>
+							</div>
+							<div class="form-group">
+								<label>상벌 내용</label>
+								<textarea rows="4" class="form-control"
+									placeholder="Enter your message here" name="body"
+									id="modifyBody"></textarea>
+							</div>
+							<div class="submit-section">
+								<!-- <button class="btn btn-primary submit-btn" id="modify-btn" type="button" onclick="goInsert(this.form)">상벌 추가</button> -->
+								<button class="btn btn-primary submit-btn" id="modify-btn"
+									type="button">상벌 추가</button>
 							</div>
 						</div>
-						</form>
 					</div>
-				</div>
+				</form>
+			</div>
+		</div>
 	</div>
-	
+
 	<!-- /Page Wrapper -->
 
 	</div>
@@ -603,8 +612,8 @@
 	
 	
     </script>
-    
-<!-- 	<script type="text/javascript">
+
+	<!-- 	<script type="text/javascript">
      function goInsert(frm){
    	 var memberNo = frm.memberNo.value;
    	 var enrollDate = frm.enrollDate.value;
@@ -641,7 +650,7 @@
 		}
 	}
 	</script>
-    <!--\\\ <script type="text/javascript">
+	<!--\\\ <script type="text/javascript">
      function goInsert(frm){
    	 var memberNo = frm.memberNo.value;
    	 var enrollDate = frm.enrollDate.value;
@@ -652,7 +661,7 @@
    	 frm.submit();
     	}
     </script> -->
-	
+
 	<!-- jQuery -->
 	<script src="/resources/hrtemp/js/jquery-3.5.1.min.js"></script>
 

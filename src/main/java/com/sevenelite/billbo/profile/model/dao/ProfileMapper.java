@@ -31,10 +31,6 @@ public interface ProfileMapper {
 	List<FinalAcademicDTO> academic(int memberno);
 	int finalAcademic(FinalAcademicDTO finalAcademic);
 
-	
-	
-
-	
 	/*MemBbDTO*/
 	List<MemBbDTO> member_info_phone();
 
@@ -54,12 +50,6 @@ public interface ProfileMapper {
 	/*UserDetailsVO*/
 	List<UserDetailsVO> selectUserDetail(int memberno);
 
-
-
-
-
-	
-	
 	/*ModifyspotDTO*/
 	int modifyspot(ModifySpotDTO modifyspot);
 	List<ModifySpotDTO> selectspot(int memberno);
@@ -133,29 +123,3 @@ public interface ProfileMapper {
 	List<FileAttachmentDTO> selectFileAttach(int memberno);
 }
 
-//List<MemberInfoDTO> modifyMember();
-
-
-//List<MemberInfoDTO> memberInfoInsert(int memberno);
-
-//List<MemberInfoDTO> selectMemberInfo(int memberno);
-
-//List<CareerDTO> career();
-//보류	
-//	BonusDTO bonus();
-//	int bonus(BonusDTO bonus);
-//	
-
-//	List<MemDTO> member_address();
-//
-//	List<MemDTO> member_enrollDate();
-
-//	List<DeptDTO> member_name();
-
-//List<MemberInfoDTO> mainProfile();
-
-
-//	int memberInfoInsert(MemberInfoDTO memberInfoInsert);
-//List<MemberInfoDTO> main();
-
-//	int member_info_no(MemberInfoDTO member_info_no);

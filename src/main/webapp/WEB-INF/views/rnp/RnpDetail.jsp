@@ -16,10 +16,6 @@
 <meta name="robots" content="noindex, nofollow">
 <title>Project View - HRMS admin template</title>
 
-<!-- Favicon -->
-<link rel="shortcut icon" type="image/x-icon"
-	href="../resources/hrtemp/img/favicon.png">
-
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="../resources/hrtemp/css/bootstrap.min.css">
 
@@ -46,7 +42,8 @@
 			<script src="assets/js/html5shiv.min.js"></script>
 			<script src="assets/js/respond.min.js"></script>
 		<![endif]-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 	<!-- Main Wrapper -->
@@ -75,8 +72,9 @@
 			</div>
 			<!-- /Header Title -->
 
-			<a id="mobile_btn" class="mobile_btn" href="#sidebar"><i
-				class="fa fa-bars"></i></a>
+			<a id="mobile_btn" class="mobile_btn" href="#sidebar"> <i
+				class="fa fa-bars"></i>
+			</a>
 
 			<!-- Header Menu -->
 			<ul class="nav user-menu">
@@ -122,6 +120,7 @@
 				<!-- /Flag -->
 
 				<!-- Notifications -->
+
 				<li class="nav-item dropdown"><a href="#"
 					class="dropdown-toggle nav-link" data-toggle="dropdown"> <i
 						class="fa fa-bell-o"></i> <span class="badge badge-pill">3</span>
@@ -246,7 +245,7 @@
 												</span>
 											</div>
 											<div class="list-body">
-												<span class="message-author">Richard Miles </span> <span
+												<span class="message-author">Richard Miles</span> <span
 													class="message-time">12:28 AM</span>
 												<div class="clearfix"></div>
 												<span class="message-content">Lorem ipsum dolor sit
@@ -332,9 +331,10 @@
 
 				<li class="nav-item dropdown has-arrow main-drop"><a href="#"
 					class="dropdown-toggle nav-link" data-toggle="dropdown"> <span
-						class="user-img"><img
+						class="user-img"> <img
 							src="/billbo/resources/hrtemp/img/profiles/avatar-21.jpg" alt="">
-							<span class="status online"></span></span> <span> <!-- 해당 사원 명 -->
+							<span class="status online"></span>
+					</span> <span> <!-- 해당 사원 명 -->
 					</span>
 				</a>
 					<div class="dropdown-menu">
@@ -349,7 +349,8 @@
 			<!-- Mobile Menu -->
 			<div class="dropdown mobile-user-menu">
 				<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"
-					aria-expanded="false"><i class="fa fa-ellipsis-v"></i></a>
+					aria-expanded="false"> <i class="fa fa-ellipsis-v"></i>
+				</a>
 				<div class="dropdown-menu dropdown-menu-right">
 					<a class="dropdown-item" href="profile.html">내 정보</a> <a
 						class="dropdown-item" href="settings.html">환경설정</a> <a
@@ -366,26 +367,21 @@
 			<div class="sidebar-inner slimscroll">
 				<div id="sidebar-menu" class="sidebar-menu">
 					<ul>
-						
-						<!-- 사이드바 서브메뉴 안쓰는 방향으로 수정 -->
 						<li><a href="${pageContext.servletContext.contextPath}"
 							class="sidebar-default"> <i class="la la-home sidebar-icon"></i>
-								<!-- <span class="menu-arrow"></span> --> <span
-								class="sidebar-text">Home</span>
-						</a> </li>
+								<span class="sidebar-text">Home</span>
+						</a></li>
 						<div class="sidebar-line"></div>
 						<li><a href="${pageContext.servletContext.contextPath}/apps"
 							class="sidebar-default"> <i class="la la-cube sidebar-icon"></i>
-								<span class="sidebar-text"> Apps</span> <!-- <span class="menu-arrow"></span> -->
+								<span class="sidebar-text">Apps</span>
 						</a></li>
 						<div class="sidebar-line"></div>
-						
 						<li><a
 							href="${pageContext.servletContext.contextPath}/employee"
 							class="noti-dot sidebar-default"> <i
-								class="la la-user sidebar-icon"></i> <span class="sidebar-text">
-									Employees</span> <!-- <span class="menu-arrow"></span> -->
-						</a> </li>
+								class="la la-user sidebar-icon"></i> <span class="sidebar-text">Employees</span>
+						</a></li>
 						<div class="sidebar-line"></div>
 						<li><a
 							href="${pageContext.servletContext.contextPath}/attendance"
@@ -396,11 +392,14 @@
 						<div class="sidebar-line"></div>
 						<li><a href="${pageContext.servletContext.contextPath}/admin"
 							class="sidebar-default"> <i class="la la-key sidebar-icon"></i>
-								<span class="sidebar-text">Admin</span> <!-- <span class="menu-arrow"></span> -->
-						</a> </li>
+								<span class="sidebar-text">Admin</span>
+						</a></li>
 						<div class="sidebar-line"></div>
-						<li><a href="#" class="sidebar-default"> <i
-								class="la la-money sidebar-icon"></i> <span class="sidebar-text">Payroll</span>
+						<li><a
+							href="${pageContext.servletContext.contextPath}/calendar/main"
+							class="sidebar-default"> <i
+								class="las la-calendar sidebar-icon"></i> <span
+								class="sidebar-text">Calendar</span>
 						</a></li>
 						<div class="sidebar-line"></div>
 						<li><a
@@ -410,7 +409,6 @@
 								class="sidebar-text">Information</span>
 						</a></li>
 						<div class="sidebar-line"></div>
-						
 					</ul>
 				</div>
 			</div>
@@ -429,14 +427,15 @@
 						<div class="col">
 							<h3 class="page-title">상벌내역</h3>
 							<ul class="breadcrumb">
-								<li class="breadcrumb-item"><a href="index.html">Bonus management</a></li>
+								<li class="breadcrumb-item"><a href="index.html">Bonus
+										management</a></li>
 								<li class="breadcrumb-item"><a href="index.html">Detail</a></li>
 							</ul>
 						</div>
 						<div class="col-auto float-right ml-auto">
 							<a href="#" class="btn add-btn" data-toggle="modal"
-								data-target="#edit_project"><i class="fa fa-plus"></i> 내역
-								수정</a> <a href="#" class="btn add-btn" data-toggle="modal"
+								data-target="#edit_project"><i class="fa fa-plus"></i> 내역 수정</a>
+							<a href="#" class="btn add-btn" data-toggle="modal"
 								data-target="#edit_project1"><i class="fa fa-minus"></i> 내역
 								삭제</a>
 						</div>
@@ -447,7 +446,8 @@
 				<div class="row">
 					<div class="col-lg-8 col-xl-9">
 						<div class="card">
-							<c:forEach var="rnpDetailInfo" items="${requestScope.rnpDetailInfo}">
+							<c:forEach var="rnpDetailInfo"
+								items="${requestScope.rnpDetailInfo}">
 								<div class="card-body1">
 									<div class="project-title">
 										<h5 class="card-title">
@@ -458,7 +458,8 @@
 													value="${ rnpDetailInfo.enrollDate} " /></span></small>
 									</div>
 									<div style="white-space: pre-line;">
-										<c:out escapeXml="false" value="${ fn:replace( rnpDetailInfo.body, replaceChar, '<br>' ) }"/>
+										<c:out escapeXml="false"
+											value="${ fn:replace( rnpDetailInfo.body, replaceChar, '<br>' ) }" />
 									</div>
 
 								</div>
@@ -475,30 +476,30 @@
 											items="${requestScope.rnpDetailInfo }">
 											<tr>
 												<td>작성자</td>
-												<td class="text-right">
-												<c:out value="${ rnpDetailInfo.memName }" /></td>
+												<td class="text-right"><c:out
+														value="${ rnpDetailInfo.memName }" /></td>
 											</tr>
 											<tr>
 												<td>부서명</td>
-												<td class="text-right">
-												<c:out value="${ rnpDetailInfo.deptName }" /></td>
+												<td class="text-right"><c:out
+														value="${ rnpDetailInfo.deptName }" /></td>
 											</tr>
 											<tr>
 												<td>상벌 구분</td>
-												<td class="text-right">
-												<c:out value="${ rnpDetailInfo.rnpType }" /></td>
+												<td class="text-right"><c:out
+														value="${ rnpDetailInfo.rnpType }" /></td>
 											</tr>
 											<tr>
 												<td>상벌 일자</td>
-												<td class="text-right">
-												<c:out value="${ rnpDetailInfo.enrollDate }" /></td>
+												<td class="text-right"><c:out
+														value="${ rnpDetailInfo.enrollDate }" /></td>
 											</tr>
 											<tr>
 												<td>상벌 사유</td>
-												<td class="text-right">
-												<c:out value="${ rnpDetailInfo.reason }" /></td>
+												<td class="text-right"><c:out
+														value="${ rnpDetailInfo.reason }" /></td>
 											</tr>
-										
+
 										</c:forEach>
 									</tbody>
 								</table>
@@ -507,105 +508,116 @@
 					</div>
 				</div>
 			</div>
-		   
+
 			<!-- /Page Content -->
 
 			<!-- Edit Board Modal -->
 			<div id="edit_project" class="modal custom-modal fade" role="dialog">
 				<div class="modal-dialog modal-dialog-centered modal-lg"
 					role="document">
-					<form name="board5" action="${pageContext.servletContext.contextPath }/board/modify">
-					<div class="modal-content">
-						<div class="modal-header">
-							<h5 class="modal-title">게시글 수정</h5>
-							<button type="button" class="close" data-dismiss="modal"
-								aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="modal-body">
-							<c:forEach var="detailInfo" items="${ requestScope.detailInfo }">
-								
-								<div class="row">
-								<div class="col-sm-6">
-										<div class="form-group">
-											<label>글번호</label> <input name="no" class="form-control" id="modifyTitle"
-												value="<c:out value="${ detailInfo.no }"/>" type="text" readOnly>
+					<form name="board5"
+						action="${pageContext.servletContext.contextPath }/board/modify">
+						<div class="modal-content">
+							<div class="modal-header">
+								<h5 class="modal-title">게시글 수정</h5>
+								<button type="button" class="close" data-dismiss="modal"
+									aria-label="Close">
+									<span aria-hidden="true">&times;</span>
+								</button>
+							</div>
+							<div class="modal-body">
+								<c:forEach var="detailInfo" items="${ requestScope.detailInfo }">
+
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label>글번호</label> <input name="no" class="form-control"
+													id="modifyTitle"
+													value="<c:out value="${ detailInfo.no }"/>" type="text"
+													readOnly>
+											</div>
 										</div>
-									</div>
-									<div class="col-sm-6">
-										<div class="form-group">
-											<label>제목</label> <input name="title" class="form-control" id="modifyTitle"
-												value="<c:out value="${ detailInfo.title }"/>" type="text">
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label>제목</label> <input name="title" class="form-control"
+													id="modifyTitle"
+													value="<c:out value="${ detailInfo.title }"/>" type="text">
+											</div>
 										</div>
-									</div>
-									<div class="col-sm-6">
-										<div class="form-group">
-											<label>작성자</label> <input name="writer" class="form-control" readOnly
-												value="<c:out value="${ detailInfo.writer }"/>" type="text">
-										</div>
-									</div>
-								</div>
-								<div class="row">
-									<div class="col-sm-6">
-										<div class="form-group">
-											<label>게시일</label>
-											<div class="cal-icon">
-												<!-- <input class="form-control datetimepicker"> --> 
-												<input type="date"
-													name="enrollDate" id="modifyEnrollDate"
-													value="<c:out value="${ detailInfo.enrollDate }"/>">
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label>작성자</label> <input name="writer" class="form-control"
+													readOnly value="<c:out value="${ detailInfo.writer }"/>"
+													type="text">
 											</div>
 										</div>
 									</div>
-									<div class="col-sm-6">
-										<div class="form-group">
-											<label>만료일</label>
-											<div class="cal-icon">
-												<!-- <input class="form-control datetimepicker"> -->
-												<input type="date"
-													name="endDate" id="modifyEndDate"
-													value="<c:out value="${ detailInfo.endDate }"/>">
+									<div class="row">
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label>게시일</label>
+												<div class="cal-icon">
+													<!-- <input class="form-control datetimepicker"> -->
+													<input type="date" name="enrollDate" id="modifyEnrollDate"
+														value="<c:out value="${ detailInfo.enrollDate }"/>">
+												</div>
 											</div>
+										</div>
+										<div class="col-sm-6">
+											<div class="form-group">
+												<label>만료일</label>
+												<div class="cal-icon">
+													<!-- <input class="form-control datetimepicker"> -->
+													<input type="date" name="endDate" id="modifyEndDate"
+														value="<c:out value="${ detailInfo.endDate }"/>">
+												</div>
+											</div>
+										</div>
+										<div class="form-group">
+											<label>상태</label> <input name="status" class="form-control"
+												id="modifyTitle"
+												value="<c:out value="${ detailInfo.status }"/>" type="text"
+												readOnly>
+										</div>
+									</div>
+									<div class="row">
+										<div class="col-sm-3">
+											<div class="form-group">
+												<label>분류</label> <select class="select" name="boardType"
+													id="modify-type-sel">
+													<option value="공지"
+														<c:if test="${ detailInfo.boardType eq '공지'}">selected</c:if>>공지</option>
+													<option value="인사"
+														<c:if test="${ detailInfo.boardType eq '인사'}">selected</c:if>>인사</option>
+													<option value="자유"
+														<c:if test="${ detailInfo.boardType eq '자유'}">selected</c:if>>자유</option>
+												</select>
+											</div>
+										</div>
+										<div class="col-sm-6">
+											<div class="form-group"></div>
 										</div>
 									</div>
 									<div class="form-group">
-											<label>상태</label> <input name="status" class="form-control" id="modifyTitle"
-												value="<c:out value="${ detailInfo.status }"/>" type="text" readOnly>
-										</div>
-								</div>
-								<div class="row">
-									<div class="col-sm-3">
-										<div class="form-group">
-											<label>분류</label> <select class="select" name="boardType" id="modify-type-sel">
-												<option value="공지" <c:if test="${ detailInfo.boardType eq '공지'}">selected</c:if>>공지</option>
-												<option value="인사" <c:if test="${ detailInfo.boardType eq '인사'}">selected</c:if>>인사</option>
-												<option value="자유" <c:if test="${ detailInfo.boardType eq '자유'}">selected</c:if>>자유</option>
-											</select>
-										</div>
-									</div>
-									<div class="col-sm-6">
-										<div class="form-group"></div>
-									</div>
-								</div>
-								<div class="form-group">
-									<label>내용</label>
-									<textarea rows="4" class="form-control"	placeholder="Enter your message here" name="body" id="modifyBody" style="white-space: pre-line;">
-									<c:out escapeXml="false" value="${ detailInfo.body }"/>
+										<label>내용</label>
+										<textarea rows="4" class="form-control"
+											placeholder="Enter your message here" name="body"
+											id="modifyBody" style="white-space: pre-line;">
+									<c:out escapeXml="false" value="${ detailInfo.body }" />
 									</textarea>
-								</div>
-								<div class="form-group">
-									<label>업로드한 파일</label> <input class="form-control" type="file"
-										name="fileAttachment">
-								</div>
-								<div class="submit-section">
-									<button class="btn btn-primary submit-btn" id="modify-btn" type="button" onclick="goModify(this.form)">수정
-										완료</button>
-								</div>
+									</div>
+									<div class="form-group">
+										<label>업로드한 파일</label> <input class="form-control" type="file"
+											name="fileAttachment">
+									</div>
+									<div class="submit-section">
+										<button class="btn btn-primary submit-btn" id="modify-btn"
+											type="button" onclick="goModify(this.form)">수정 완료</button>
+									</div>
 
-							</c:forEach>
+								</c:forEach>
+							</div>
 						</div>
-					</div>
 					</form>
 				</div>
 			</div>
@@ -618,7 +630,8 @@
 					role="document">
 					<div class="modal-content">
 						<div class="modal-header">
-							<c:forEach var="rnpDetailInfo" items="${requestScope.rnpDetailInfo }">
+							<c:forEach var="rnpDetailInfo"
+								items="${requestScope.rnpDetailInfo }">
 								<h5 class="modal-title">
 									<c:out value="${ rnpDetailInfo.no }" />
 									번 게시물 삭제
