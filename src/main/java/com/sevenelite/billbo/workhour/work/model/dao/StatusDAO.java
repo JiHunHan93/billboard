@@ -4,7 +4,6 @@
    import java.util.Date;
 import java.util.List;
 
-import com.sevenelite.billbo.member.model.dto.UserDetailsVO;
 import com.sevenelite.billbo.workhour.work.model.dto.StatusAndWorkDTO;
    
    public interface StatusDAO {

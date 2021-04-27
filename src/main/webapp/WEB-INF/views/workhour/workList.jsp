@@ -475,25 +475,34 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm:ss"); %>
 							<h4 style="color: gray;">
 								<c:out value="${ workInfo.workCount }" />
 							</h4>
-					</div>		
-					
+						</div>
 					</div>
-			</div>
-				<!-- /Leave Statistics -->
-				<!-- Page Content -->
-				<div class="content container-fluid">
-					<!-- Page Header -->
-					<div class="page-header">
-						<div class="row align-items-center"></div>
+
+					<div class="col-md-3">
+						<div class="stats-info">
+							<h6 style="font-weight: bold;">지각</h6>
+							<h4 style="color: gray;">
+								<c:out value="${ workInfo.lateCount }" />
+							</h4>
+						</div>
 					</div>
-					<!-- /Page Header -->
-					<!-- Leave Statistics -->
-					</div>
-					</form>
-					
 
 
-					<!-- Search Filter -->
+					<!-- /Leave Statistics -->
+					<!-- Page Content -->
+					<div class="content container-fluid">
+						<!-- Page Header -->
+						<div class="page-header">
+							<div class="row align-items-center"></div>
+						</div>
+						<!-- /Page Header -->
+						<!-- Leave Statistics -->
+					</div>
+			</form>
+
+
+
+			<!-- Search Filter -->
 					<div class="row filter-row">
 						<div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12"></div>
 						<div class="col-sm-6 col-md-3 col-lg-3 col-xl-2 col-12"></div>
@@ -582,7 +591,7 @@ SimpleDateFormat sf = new SimpleDateFormat("yyyy년 MM월 dd일 a hh:mm:ss"); %>
 							<table>
 								<thead>
 									<tr>
-										<th>근무날짜</th>     <th>출근시간</th>      <th>퇴근시간</th>      <th>근무타입</th>
+										<th>근무날짜</th>     <th>출근시간</th>   <th>퇴근시간</th> <th>근무타입</th>
 									</tr>
 								</thead>
 								<tbody>
