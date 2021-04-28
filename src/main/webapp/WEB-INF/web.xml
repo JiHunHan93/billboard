@@ -23,6 +23,11 @@
     	<error-code>500</error-code>
         <location>/WEB-INF/views/mainpage/Error-500.jsp</location>
  	</error-page>
+ 	
+ 	 <error-page>
+    	<error-code>403</error-code>
+        <location>/WEB-INF/views/mainpage/Error-403.jsp</location>
+ 	</error-page>
 
 	<!-- Processes application requests -->
 	<servlet>

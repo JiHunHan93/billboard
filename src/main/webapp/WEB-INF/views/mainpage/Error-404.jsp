@@ -15,16 +15,16 @@
         <link rel="shortcut icon" type="image/x-icon" href="../resources/hrtemp/img/favicon.png">
 		
 		<!-- Bootstrap CSS -->
-        <link rel="stylesheet" href="../resources/hrtemp/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/billbo/resources/hrtemp/css/bootstrap.min.css">
 		
 		<!-- Fontawesome CSS -->
-        <link rel="stylesheet" href="../resources/hrtemp/css/font-awesome.min.css">
+        <link rel="stylesheet" href="/billbo/resources/hrtemp/css/font-awesome.min.css">
 		
 		<!-- Lineawesome CSS -->
-        <link rel="stylesheet" href="../resources/hrtemp/css/line-awesome.min.css">
+        <link rel="stylesheet" href="/billbo/resources/hrtemp/css/line-awesome.min.css">
 		
 		<!-- Main CSS -->
-        <link rel="stylesheet" href="../resources/hrtemp/css/style.css">
+        <link rel="stylesheet" href="/billbo/resources/hrtemp/css/style.css">
 		
     </head>
     <body class="error-page">

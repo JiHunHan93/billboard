@@ -27,6 +27,7 @@
 			     , C.DEPT_CODE
 			     , D.SCHEDULE_INFO
 			     , D.SCHEDULE_TYPE
+			     , D.MEMBER_NO
 	          FROM (SELECT
 	                       *
 	                  FROM (SELECT

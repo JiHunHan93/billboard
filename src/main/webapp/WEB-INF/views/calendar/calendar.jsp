@@ -112,6 +112,7 @@
 					event.event._instance.range.end = formatDate(event.event._instance.range.end);
 					$('.end-date-a').val(event.event._instance.range.end);
 					$('#modal-sub-title-a').val(event.event._def.title);
+					$('#user-no-a').val(event.event._def.extendedProps.memberNo);
 					$('.calSelect-a option').each(function() {
 				    	if($(this).val() == event.event._def.extendedProps.calType) {
 							$(this).attr("selected", "selected");
@@ -369,9 +370,6 @@
 				calendar.addEvent(item);
 				$.each(item, function(iii, ttt) {
 					console.log('click evt inner loop_in_cal => ' + iii + ' : ' + ttt);
-					if(ttt == '개인일정') {
-						console.log('부서일정');
-					}
 				});
 			});
 			// get parameters from [arr] ]
@@ -465,7 +463,7 @@
     				console.log('array' + array);
     				console.log('element' + element);
     				console.table(element);
-    				return (element.code == $("#dept-code").val()) || (element.calType == '공휴일');
+    				return (element.calType == '공휴일') || element.code == $("#dept-code").val() && (element.calType == '개인일정' && element.memberNo == $("#user-no").val());
     			});
 	        	// set filter for applicable employee by deptcode ]
 	        	
@@ -1138,7 +1136,7 @@ if($('.select11').length > 0) {
 										</select>
 									</div>
 									<div class="form-group">
-										<label>사번</label> <input class="form-control" type="text" id="user-no-a" readonly="readonly" value="${ userNo }">
+										<label>사번</label> <input class="form-control" type="text" id="user-no-a" readonly="readonly">
 									</div>
 									<div class="form-group">
 										<label>부서코드</label> <input class="form-control" type="text" id="dept-code-a" readonly="readonly" value="${ deptCode }">

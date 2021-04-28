@@ -9,7 +9,7 @@
 		<meta name="keywords" content="admin, estimates, bootstrap, business, corporate, creative, management, minimal, modern, accounts, invoice, html5, responsive, CRM, Projects">
         <meta name="author" content="Dreamguys - Bootstrap Admin Template">
         <meta name="robots" content="noindex, nofollow">
-        <title>Error 500 - HRMS admin template</title>
+        <title>Error 404 - HRMS admin template</title>
 		
 		<!-- Favicon -->
         <link rel="shortcut icon" type="image/x-icon" href="../resources/hrtemp/img/favicon.png">
@@ -20,23 +20,21 @@
 		<!-- Fontawesome CSS -->
         <link rel="stylesheet" href="/billbo/resources/hrtemp/css/font-awesome.min.css">
 		
+		<!-- Lineawesome CSS -->
+        <link rel="stylesheet" href="/billbo/resources/hrtemp/css/line-awesome.min.css">
+		
 		<!-- Main CSS -->
         <link rel="stylesheet" href="/billbo/resources/hrtemp/css/style.css">
 		
-		<!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-		<!--[if lt IE 9]>
-			<script src="../resources/hrtemp/js/html5shiv.min.js"></script>
-			<script src="../resources/hrtemp/js/respond.min.js"></script>
-		<![endif]-->
     </head>
     <body class="error-page">
 		<!-- Main Wrapper -->
         <div class="main-wrapper">
 			
 			<div class="error-box">
-				<h1>500</h1>
-				<h3><i class="fa fa-warning"></i> Oops! Something went wrong</h3>
-				<p>요청하신 페이지를 표시 할 수 없습니다.</p>
+				<h1>403</h1>
+				<h3><i class="fa fa-warning"></i> Page access denied.</h3>
+				<p>접근이 금지되었습니다.</p>
 				<a href="/billbo" class="btn btn-custom">메인으로 돌아가기</a>
 			</div>
 		
