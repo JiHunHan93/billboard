@@ -463,7 +463,7 @@
     				console.log('array' + array);
     				console.log('element' + element);
     				console.table(element);
-    				return (element.calType == '공휴일') || element.code == $("#dept-code").val() || (element.code == $("#dept-code").val() && (element.calType == '개인일정' && element.memberNo == $("#user-no").val()));
+    				return (element.calType == '공휴일') || (element.code == $("#dept-code").val() &&  element.calType == '부서일정')|| (element.calType == '개인일정' && element.memberNo == $("#user-no").val());
     			});
 	        	// set filter for applicable employee by deptcode ]
 	        	
