@@ -456,7 +456,7 @@
 						<div class="col-auto float-right ml-auto">
 							<a href="#" class="btn add-btn" data-toggle="modal"
 								data-target="#edit_project"><i class="fa fa-plus"></i> 게시글
-								수정</a> <a href="#" class="btn add-btn" data-toggle="modal"
+								수정</a> <a style="margin-right: 18px;" href="#" class="btn add-btn" data-toggle="modal"
 								data-target="#edit_project1"><i class="fa fa-minus"></i> 게시글
 								삭제</a>
 						</div>

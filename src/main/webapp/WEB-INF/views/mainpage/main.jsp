@@ -471,20 +471,20 @@
 					<div class="col-md-4">
 						<div class="card punch-status">
 							<div class="card-body">
-								<h5 class="card-title">
-								</h5>
-							<h1 class="poscenter white alignleft" style="text-align: center;">
-											<span id="clock"></span>
-										</h1>
+								<h5 class="card-title">출근 정보</h5>
+								<p class="poscenter white alignleft" style="text-align: center;">
+									출근시간 
+									<input type="text" id="kk" size="10" readonly style="width: 100%; border: none; font-size: 20px; text-align: center; margin: 15px 0 15px 0;">
+								</p>
 								<div class="punch-info">
 									<div class="punch-hours">
-										<span><strong>근무시간</strong></span>
+										<span><strong><span style="font-size: 15px;" id="clock"></span></strong></span>
 									</div>
 								</div>
 								<div class="work_btn_box">
-									<form class="work_btn" name="update" action="${pageContext.servletContext.contextPath }/work/regist" method="post">
-										<button class="btn btn-dark btn-lg">출근 등록</button>
-									</form>
+									<%-- <form class="work_btn" name="update" action="${pageContext.servletContext.contextPath }/work/regist" method="post"> --%>
+										<button class="btn btn-dark btn-lg" onclick="showClock()">출근 등록</button>
+									<!-- </form> -->
 									<form class="work_btn" name="update" action="${pageContext.servletContext.contextPath }/work/update"method="post">
 										<button class="btn btn-success btn-lg">퇴근 등록</button>
 									</form>
@@ -506,11 +506,11 @@
 					<div class="col-md-4">
 						<div class="card att-statistics">
 							<div class="card-body">
-								<h5 class="card-title">Statistics</h5>
+								<h5 class="card-title">출근 현황</h5>
 								<div class="stats-list">
 									<div class="stats-info">
 										<p>
-											Today <span id="clock"></span>/ 8 hrs
+											오늘 <span id="clock"></span>/ 8 hrs
 										</p>
 										<div class="progress">
 											<div class="progress-bar bg-primary" role="progressbar"
@@ -520,7 +520,7 @@
 									</div>
 									<div class="stats-info">
 										<p>
-											This Week <strong>28 <small>/ 40 hrs</small></strong>
+											이번 주 <strong>28 <small>/ 40 hrs</small></strong>
 										</p>
 										<div class="progress">
 											<div class="progress-bar bg-warning" role="progressbar"
@@ -530,7 +530,7 @@
 									</div>
 									<div class="stats-info">
 										<p>
-											This Month <strong>90 <small>/ 160 hrs</small></strong>
+											이번 달 <strong>90 <small>/ 160 hrs</small></strong>
 										</p>
 										<div class="progress">
 											<div class="progress-bar bg-success" role="progressbar"
@@ -540,7 +540,7 @@
 									</div>
 									<div class="stats-info">
 										<p>
-											Remaining <strong>90 <small>/ 160 hrs</small></strong>
+											총 근무 <strong>90 <small>/ 160 hrs</small></strong>
 										</p>
 										<div class="progress">
 											<div class="progress-bar bg-danger" role="progressbar"
@@ -550,11 +550,11 @@
 									</div>
 									<div class="stats-info">
 										<p>
-											Overtime <strong>4</strong>
+											초과근무 <strong>1</strong>
 										</p>
 										<div class="progress">
 											<div class="progress-bar bg-info" role="progressbar"
-												style="width: 22%" aria-valuenow="22" aria-valuemin="0"
+												style="width: 8%" aria-valuenow="22" aria-valuemin="0"
 												aria-valuemax="100"></div>
 										</div>
 									</div>
@@ -565,7 +565,7 @@
 					<div class="col-md-4">
 						<div class="card recent-activity">
 							<div class="card-body">
-								<h5 class="card-title">Today Activity</h5>
+								<h5 class="card-title">오늘 활동</h5>
 								<ul class="res-activity-list">
 									<li>
 										<p class="res-activity-time">
@@ -879,7 +879,6 @@
 						</div>
 					</div>
 				</div>
-
 			</div>
 			<!-- /Page Content -->
 
@@ -956,7 +955,13 @@
 	<script src="/billbo/resources/hrtemp/js/app.js"></script>
 </body>
 
-
+	<script>
+		function showClock(){
+			 
+	        var s =new Date(); //현재 시간
+	        var e= document.getElementById('kk');
+	        e.value=s.toLocaleString();
+		}
     </script>
 		<script type="text/javascript">
 

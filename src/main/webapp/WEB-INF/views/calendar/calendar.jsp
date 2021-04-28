@@ -385,6 +385,7 @@
 		
 		// add event submit button clicked for add event on calendar [
 		$(".asdfasdf").click(function() {
+			$('#add_event').modal("hide");
 			var events_array = [{
 				title: $('.modal-sub-text').val(),
 	 		    start: $('.start-date').val(),
@@ -570,7 +571,7 @@ if($('.select11').length > 0) {
 	<!-- Main Wrapper -->
 	<div class="main-wrapper">
 
-		<!-- Header -->
+				<!-- Header -->
 		<div class="header">
 
 			<!-- Logo -->
@@ -938,8 +939,8 @@ if($('.select11').length > 0) {
 						<div class="sidebar-line"></div>
 						<li>
 							<a href="${pageContext.servletContext.contextPath}/calendar/main" class="sidebar-default">
-								<i class="la la-money sidebar-icon"></i>
-								<span class="sidebar-text">Payroll</span>
+								<i class="las la-calendar sidebar-icon"></i>
+								<span class="sidebar-text">Calendar</span>
 							</a>
 						</li>
 						<div class="sidebar-line"></div>
@@ -955,7 +956,7 @@ if($('.select11').length > 0) {
 			</div>
 		</div>
 		<!-- /Sidebar -->
-
+		
 		<!-- Page Wrapper -->
 		<div class="page-wrapper">
 
@@ -1089,8 +1090,7 @@ if($('.select11').length > 0) {
 								</div>
 							</div>
 							<div class="submit-section">
-								<button class="btn btn-primary submit-btn">Submit</button>
-								<button type="button" class="asdfasdf">textBtn</button>
+								<button class="btn btn-primary submit-btn asdfasdf">Submit</button>
 							</div>
 						</div>
 					</div>

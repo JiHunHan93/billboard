@@ -663,11 +663,9 @@
 			for(let i = 0; i < $tds.length; i++) {
 				const ED = $tds[i].parentNode.children[6].innerText;
 				var str = $tds[i].parentNode.children[6].innerText.substring(0,1);
-				console.log("if문 안읽음");
 				console.log(str);
 				console.log(typeof str);
 				if(str == "" || str == null || str != 2) {
-					console.log("if문 읽음");
 					$tds[i].parentNode.children[6].innerText = "무기한";
 				}
 			}
