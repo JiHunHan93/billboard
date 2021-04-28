@@ -55,8 +55,8 @@
 </resultMap>
 
 <delete id="deleteHoliday" parameterType="_int">
-DELETE FROM BB_HOLIDAY
-WHERE HOLIDAY_NO = #{no}
+        DELETE FROM BB_HOLIDAY
+         WHERE HOLIDAY_NO = #{no}
 
 </delete>
 <update id="modifyHoliday" parameterType="MemberHolidayDTO">
