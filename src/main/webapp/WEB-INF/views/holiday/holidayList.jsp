@@ -769,7 +769,7 @@
 		}
 		</script>
 		
-		<!-- 휴가삭ㅈ -->
+		<!-- 휴가삭제 -->
 		<script>
 			function deleteHoliday(delete2){
 				var no = delete2.no.value;

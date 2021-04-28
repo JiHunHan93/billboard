@@ -766,8 +766,7 @@
 						<div class="modal-header">
 							<c:forEach var="detailInfo" items="${requestScope.detailInfo }">
 								<h5 class="modal-title">
-									<c:out value="${ detailInfo.no }" />
-									번 게시물 삭제
+									<c:out value="${ detailInfo.no }" />번 게시물 삭제
 								</h5>
 							</c:forEach>
 							<button type="button" class="close" data-dismiss="modal"

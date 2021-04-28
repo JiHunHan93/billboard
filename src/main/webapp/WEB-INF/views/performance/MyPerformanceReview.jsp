@@ -518,7 +518,6 @@
 							인사고과표
 							<h3>
 								<p class="text-muted">
-									<%-- <c:out value="${ detailReview.memberName }"/> --%>
 								</p>
 					</div>
 					<div class="row">
@@ -647,7 +646,6 @@
 																		value="${ detailReview.reviewAvg }" />점 D</span>
 															</c:when>
 														</c:choose>
-														<%-- <input type="text" name="reviewNo" class="reviewNo" value="${no}">		 --%>
 													</div>
 												</td>
 											</tr>

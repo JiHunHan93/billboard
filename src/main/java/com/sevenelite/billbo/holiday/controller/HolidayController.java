@@ -119,7 +119,7 @@ public class HolidayController {
 
 	@PostMapping("modify")
 	public String modifyHoliday(Model model, @ModelAttribute MemberHolidayDTO holiday2,Authentication authentication, HttpServletRequest request ) throws ParseException {
-
+		//로그인 된 사원 번호 가지고오기
 		UserDetailsVO user = (UserDetailsVO) authentication.getPrincipal();
 		int memberno = user.getMemberno();
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
@@ -130,7 +130,6 @@ public class HolidayController {
 		java.util.Date end = format.parse(endDate);
 
 		//String시작
-		//추가해야되는것 날짜끼리먼저계산
 		String st = format.format(start);
 		String ed = format.format(end);
 		String startYear = st.substring(0,4);
@@ -147,8 +146,7 @@ public class HolidayController {
 		System.out.println("newStart :" + newStart);
 		System.out.println("newEnd :" + newEnd);
 
-
-
+		//종료날짜와 시작날짜를 int로 parsing을 해줬으니 두개의 차로 인하여 term을 구한다.
 		int term = FEnd - FStart;
 
 		System.out.println("start : " + st);
@@ -156,13 +154,11 @@ public class HolidayController {
 		System.out.println("Fs: "  + FStart);
 		System.out.println("FEnd: "  + FEnd);
 		System.out.println("term: "  + term);
-
+		// holiday2에 term과 memberno set해준다.
 		holiday2.setTerm(term);
 		holiday2.setMemberNo(memberno);
 
-
 		holidayService.modifyHoliday(holiday2);
-
 
 		List<HolidayDTO> holidayInfo = holidayService.selectHolidayInfo(user.getMemberno());
 
@@ -170,13 +166,7 @@ public class HolidayController {
 
 		List<MemberHolidayDTO> holidaylist = holidayService.selectHolidayList(user.getMemberno());
 
-
-
-
-
 		model.addAttribute("holidaylist", holidaylist);
-
-
 
 		return "holiday/holidayList";
 	}

@@ -150,29 +150,29 @@
 
 	<select id="selectMyPer" resultMap="perResultMap"
 		parameterType="_int">
-		SELECT
-		D.MODIFY_DEPT_NO
-		, D.MODIFY_DEPT_DATE
-		, D.MEMBER_NO
-		, D.DEPT_CODE
-		, D.순번
-		, D.EMAIL
-		, D.PHONE
-		, D.MEMBER_NAME
-		, D.DEPT_NAME
-		, D.SPOT_NAME
-		, D.REVIEW_DATE
-		, D.REVIEW_GRADE
-		, D.PER_NO
-		FROM
-		(
-		SELECT
-		C.MODIFY_DEPT_NO
-		, C.MODIFY_DEPT_DATE
-		, C.MEMBER_NO
-		, C.MEMBER_NAME
-		, C.PHONE
-		, C.EMAIL
+		 SELECT
+		    D.MODIFY_DEPT_NO
+		  , D.MODIFY_DEPT_DATE
+		  , D.MEMBER_NO
+	      , D.DEPT_CODE
+		  , D.순번
+		  , D.EMAIL
+		  , D.PHONE
+		  , D.MEMBER_NAME
+		  , D.DEPT_NAME
+		  , D.SPOT_NAME
+		  , D.REVIEW_DATE
+		  , D.REVIEW_GRADE
+		  , D.PER_NO
+		  FROM
+		   (
+		    SELECT
+		      C.MODIFY_DEPT_NO
+		    , C.MODIFY_DEPT_DATE
+		    , C.MEMBER_NO
+		    , C.MEMBER_NAME
+		    , C.PHONE
+		    , C.EMAIL
 		, C.DEPT_CODE
 		, C.순번
 		, C.DEPT_NAME
