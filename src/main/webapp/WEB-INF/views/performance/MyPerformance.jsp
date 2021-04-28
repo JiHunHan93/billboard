@@ -536,11 +536,6 @@
 												<div class="tab-pane show active" id="solid-justified-tab1">
 													<div class="card-body">
 														<div class="table-responsive board-table-sort">
-															<!-- <button type="button" class="btn btn-primary dropdown-toggle" style="float: right;" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">해당 연도</button>
-															<div class="dropdown-menu">
-															<a class="dropdown-item" href="#" name="2021">2021</a>
-															<a class="dropdown-item" href="#" name="2020">2020</a>
-															</div> -->
 															<table class="datatable table table-stripped mb-0">
 																<thead>
 																	<tr>

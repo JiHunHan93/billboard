@@ -436,8 +436,7 @@
 							<a href="#" class="btn add-btn" data-toggle="modal"
 								data-target="#edit_project"><i class="fa fa-plus"></i> 내역 수정</a>
 							<a href="#" class="btn add-btn" data-toggle="modal"
-								data-target="#edit_project1"><i class="fa fa-minus"></i> 내역
-								삭제</a>
+								data-target="#edit_project1"><i class="fa fa-minus"></i> 내역 삭제</a>
 						</div>
 					</div>
 				</div>
