@@ -515,23 +515,6 @@
 												<h3 class="review-title">인사 고과</h3>
 												<p class="text-muted">업무 평가</p>
 											</div>
-											<!-- <form class="file-search">
-											<div class="col-auto float-right ml-auto">
-											<a href="#" class="btn btn-primary btn-sm sub-btn" data-toggle="modal" data-target="#edit_project"><i class="fa fa-plus"></i> 업무 평가</a>
-											</div>
-												<div class="input-group" style="width: 300px; float: left;">
-													<select>
-														<option>제목</option>
-														<option>내용</option>
-														<option>통합</option>
-													</select> <input type="text" class="form-control"
-														placeholder="Search">
-													<div class="input-group-prepend">
-														<i class="fa fa-search board-icon"></i>
-													</div>
-												</div>
-											</form> -->
-
 											<div class="tab-content">
 												<div class="tab-pane show active" id="solid-justified-tab1">
 													<div class="card-body">

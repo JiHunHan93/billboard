@@ -43,7 +43,6 @@ public class PerformanceController {
 	}
 	
 	@GetMapping("detail")
-	@ResponseBody
 	public ModelAndView perReview(Model model, HttpServletRequest request,
 			HttpServletResponse response) {
 		
@@ -61,7 +60,6 @@ public class PerformanceController {
 	
 	@PostMapping("detail")
 	public String insertReview(@ModelAttribute ReviewListDTO reviewDTO, RedirectAttributes redirect, Model model, HttpServletRequest request ) {
-		System.out.println("????" + reviewDTO);
 	      
 	      String no = request.getParameter("memberNo");
 	      

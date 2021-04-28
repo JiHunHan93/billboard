@@ -67,20 +67,6 @@
  </select>
  
  <select id="detailRnp" resultMap="DeptAndMemResultMap" parameterType="ModifyDeptAndMemAndRnpDTO">
- <!-- 	SELECT
- 	    A.BONUS_NO
- 	  , A.BONUS_BODY
- 	  ,	A.MEMBER_NO
-      , B.MEMBER_NAME
-      , D.DEPT_NAME
-      , A.BONUS_TYPE
-      , A.BONUS_DATE
-      , A.BONUS_REASON
-    FROM BB_BONUS A
-    JOIN BB_MEMBER B ON ( A.MEMBER_NO = B.MEMBER_NO)
-    JOIN BB_MODIFY_DEPT C ON ( B.MEMBER_NO = C.MEMBER_NO)
-    JOIN BB_DEPT D ON ( C.DEPT_CODE = D.DEPT_CODE)
-    WHERE A.BONUS_NO = #{no} -->
     SELECT
 	D.BONUS_NO, 
 	C.MEMBER_NO,

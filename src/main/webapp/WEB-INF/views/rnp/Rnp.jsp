@@ -426,7 +426,6 @@
 						<div class="col">
 							<h3 class="page-title">상벌 관리</h3>
 							<ul class="breadcrumb">
-								<!-- <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li> -->
 								<li class="breadcrumb-item active">Bonus management</li>
 							</ul>
 						</div>
@@ -522,7 +521,7 @@
 		<div id="edit_project" class="modal custom-modal fade" role="dialog">
 			<div class="modal-dialog modal-dialog-centered modal-lg sub-modal"
 				role="document">
-				<form name="rnpInsert"
+				<form name	="rnpInsert"
 					action="http://127.0.0.1:8001/billbo/Rnp/main" method="post">
 					<div class="modal-content sub-modal">
 						<div class="modal-header">
@@ -533,7 +532,6 @@
 							</button>
 						</div>
 						<div class="modal-body">
-							<%-- <c:forEach var="rnpDetailInfo" items="${ requestScope.rnpDetailInfo }">  --%>
 							<div class="row">
 								<div class="col-sm-6">
 									<div class="form-group">
@@ -542,7 +540,6 @@
 									</div>
 								</div>
 							</div>
-							<%--  </c:forEach>  --%>
 							<div class="row">
 								<div class="col-sm-6">
 									<div class="form-group">
@@ -580,7 +577,6 @@
 									id="modifyBody"></textarea>
 							</div>
 							<div class="submit-section">
-								<!-- <button class="btn btn-primary submit-btn" id="modify-btn" type="button" onclick="goInsert(this.form)">상벌 추가</button> -->
 								<button class="btn btn-primary submit-btn" id="modify-btn"
 									type="button">상벌 추가</button>
 							</div>
